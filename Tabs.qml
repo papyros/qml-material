@@ -3,7 +3,7 @@ import QtQuick 2.0
 Row {
     id: tabbar
 
-    property var tabs
+    property var tabs: []
 
     height: units.dp(48)
 

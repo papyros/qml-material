@@ -16,8 +16,12 @@ Item {
 
     property alias border: rect.border
 
-    property bool fullWidth: width == parent.width && x == 0
-    property bool fullHeight: height == parent.height && y == 0
+    property bool fullWidth: parent && width == parent.width && x == 0
+    property bool fullHeight: parent && height == parent.height && y == 0
+
+    property alias clipContent: rect.clip
+
+    default property alias content: rect.data
 
     property var topShadow: [
         {

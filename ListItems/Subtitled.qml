@@ -25,8 +25,10 @@ BaseListItem {
 
     property alias text: label.text
     property alias subText: subLabel.text
+    property alias valueText: valueLabel.text
 
     property alias action: actionItem.children
+    property alias secondaryItem: secondaryItem.children
 
     Item {
         id: actionItem
@@ -54,13 +56,38 @@ BaseListItem {
 
         spacing: units.dp(3)
 
-        Label {
-            id: label
-
-            elide: Text.ElideRight
-            fontStyle: "subheading"
-
+        Item {
             width: parent.width
+            height: childrenRect.height
+            Label {
+                id: label
+
+                elide: Text.ElideRight
+                fontStyle: "subheading"
+
+                width: valueLabel.text || secondaryItem.children.length > 0
+                       ? parent.width * 0.8 : parent.width
+            }
+
+            Label {
+                id: valueLabel
+
+                color: theme.blackColor('secondary')
+                elide: Text.ElideRight
+                width: parent.width * 0.2
+                anchors.right: parent.right
+                horizontalAlignment: Text.AlignRight
+
+                fontStyle: "body1"
+                visible: text != ""
+            }
+
+            Item {
+                id: secondaryItem
+                anchors.right: parent.right
+                height: parent.height
+                width: parent.width * 0.2
+            }
         }
 
         Label {

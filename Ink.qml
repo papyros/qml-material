@@ -5,6 +5,9 @@ MouseArea {
 
     property int startSize: width/2
     property int endSize: width - 10
+    z: 2
+
+    hoverEnabled: true
 
     onClicked: {
         print("TAPPED")

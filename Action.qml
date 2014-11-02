@@ -8,5 +8,8 @@ QtObject {
     property string style: "default"
     property bool hasDividerAfter
 
+    property bool visible: true
+    property bool enabled: true
+
     signal triggered
 }

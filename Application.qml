@@ -26,6 +26,8 @@ Window {
     width: units.gu(120)
     height: units.gu(80)
 
+    //flags: Qt.FramelessWindowHint
+
     default property alias content: contents.data
 
     property alias theme: __theme
@@ -44,6 +46,14 @@ Window {
         id: __device
 
         property string mode: "desktop"
+    }
+
+    property alias animations: __animations
+
+    QtObject {
+        id: __animations
+
+        property int pageTransition: 250
     }
 
     QtObject {
@@ -73,9 +83,27 @@ Window {
     }
 
     Rectangle {
-        id: contents
-        anchors.fill: parent
+        id: header
 
+        anchors {
+            left: parent.left
+            right: parent.right
+        }
+
+        height: flags & Qt.FramelessWindowHint ? units.dp(24) : 0
+        color: theme.primaryDark
+    }
+
+    Rectangle {
+        id: contents
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: header.bottom
+            bottom: parent.bottom
+        }
+
+        color: theme.defaultBackground
 
         Rectangle {
             id: overlay
@@ -92,20 +120,5 @@ Window {
         }
     }
 
-    property NavigationDrawer drawer: findChild(contents, "navDrawer")
-
-    function findChild(obj,objectName) {
-        var childs = new Array(0);
-        childs.push(obj)
-        while (childs.length > 0) {
-            if (childs[0].objectName == objectName) {
-                return childs[0]
-            }
-            for (var i in childs[0].data) {
-                childs.push(childs[0].data[i])
-            }
-            childs.splice(0, 1);
-        }
-        return null;
-    }
+    property NavigationDrawer drawer
 }

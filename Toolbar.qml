@@ -6,7 +6,16 @@ View {
     implicitHeight: device.mode == "mobile" ? units.dp(48)
                                             : device.mode == "tablet" ? units.dp(56)
                                                                       : units.dp(64)
-    height: implicitHeight + (tabs.length > 0 ? tabbar.height : 0)
+    height: targetHeight
+
+    property int targetHeight: implicitHeight + (tabs.length > 0 ? tabbar.height : 0)
+                                              + (expanded ? implicitHeight : 0)
+
+    property bool expanded: false
+
+    Behavior on height {
+        NumberAnimation { duration: animations.pageTransition }
+    }
 
     anchors {
         left: parent.left
@@ -16,90 +25,161 @@ View {
     elevation: 2
     fullWidth: true
 
-    property string color: "white"
+    clipContent: true
 
-    property alias title: label.text
+    property string color: "white"
 
     property alias tabs: tabbar.tabs
     property alias selectedTab: tabbar.selectedIndex
 
-    property NavigationDrawer drawer
-
-    property list<Action> actions
+    property bool showBackButton
 
     property int maxActionCount: (device.mode == "desktop"
                                   ? 5 : device.mode.tablet ? 4 : 3) - (drawer ? 1 : 0)
 
+    property Item actionBar
+    property Item previousActionBar: actionBar
+
+    function pushActionBar(nextPage, lastPage) {
+        print("Pushing action bar..")
+
+        actionBar = nextPage.actionBar
+        previousActionBar = lastPage ? lastPage.actionBar : null
+
+        if (previousActionBar != null) {
+            previousActionBar.parent = actionBarItem
+
+            previousHideAnimation.start()
+            print("Hiding previous action bar...")
+        }
+
+        actionBar.parent = actionBarItem
+
+        actionBarShowAnimation.start()
+    }
+
+    function popActionBar(previousPage, currentPage) {
+        print("Pushing action bar..")
+
+        actionBar = currentPage.actionBar
+        previousActionBar = previousPage ? previousPage.actionBar : null
+
+        if (previousActionBar != null) {
+            previousActionBar.parent = actionBarItem
+
+            previousShowAnimation.start()
+            print("Hiding previous action bar...")
+        }
+
+        actionBar.parent = actionBarItem
+
+        actionBarHideAnimation.start()
+    }
+
+    SequentialAnimation {
+        id: previousHideAnimation
+
+        ParallelAnimation {
+
+            NumberAnimation {
+                duration: animations.pageTransition
+                target: previousActionBar
+                property: "opacity"
+                to: 0
+            }
+
+            NumberAnimation {
+                duration: animations.pageTransition
+                target: previousActionBar
+                property: "y"
+                to: previousActionBar ? -previousActionBar.height : 0
+            }
+        }
+    }
+
+    SequentialAnimation {
+        id: previousShowAnimation
+
+        ParallelAnimation {
+
+            NumberAnimation {
+                duration: animations.pageTransition
+                target: previousActionBar
+                property: "opacity"
+                from: 0
+                to: 1
+            }
+
+            NumberAnimation {
+                duration: animations.pageTransition
+                target: previousActionBar
+                property: "y"
+                from: previousActionBar ? -previousActionBar.height : 0
+                to: 0
+            }
+        }
+    }
+
+    SequentialAnimation {
+        id: actionBarShowAnimation
+
+        ParallelAnimation {
+            NumberAnimation {
+                duration: animations.pageTransition
+                target: actionBar
+                property: "opacity"
+                from: 0
+                to: 1
+            }
+
+            NumberAnimation {
+                duration: animations.pageTransition
+                target: actionBar
+                property: "y"
+                from: actionBar.height
+                to: 0
+            }
+        }
+    }
+
+    SequentialAnimation {
+        id: actionBarHideAnimation
+
+        ParallelAnimation {
+            NumberAnimation {
+                duration: animations.pageTransition
+                target: actionBar
+                property: "opacity"
+                from: 1
+                to: 0
+            }
+
+            NumberAnimation {
+                duration: animations.pageTransition
+                target: actionBar
+                property: "y"
+                to: actionBar.height
+                from: 0
+            }
+        }
+    }
+
     Item {
-        id: actionBar
+        id: actionBarItem
 
         width: parent.width
-        height: parent.implicitHeight
+        height: toolbar.implicitHeight
 
-        IconAction {
-            anchors {
-                verticalCenter: parent.verticalCenter
-                left: parent.left
-                leftMargin: units.dp(16)
-            }
 
-            name: "navigation/menu"
-            color: toolbar.color
-            size: units.dp(27)
-            visible: drawer
-
-            onTriggered: drawer.open()
-        }
-
-        Row {
-            anchors {
-                verticalCenter: parent.verticalCenter
-                right: parent.right
-                rightMargin: units.dp(16)
-            }
-
-            spacing: units.dp(24)
-
-            Repeater {
-                model: actions.length > maxActionCount ? maxActionCount - 1 : actions.length
-
-                delegate: IconAction {
-                    property Action action: actions[index]
-
-                    name: action.iconName
-                    color: toolbar.color
-                    size: name == "content/add" ? units.dp(30) : units.dp(27)
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-            }
-
-            IconAction {
-                name: "navigation/more_vert"
-                color: toolbar.color
-                size: units.dp(27)
-                visible: actions.length > maxActionCount
-                anchors.verticalCenter: parent.verticalCenter
-            }
-        }
-
-        Label {
-            id: label
-
-            anchors {
-                verticalCenter: parent.verticalCenter
-                left: parent.left
-                leftMargin: drawer ? units.dp(72) : units.dp(16)
-            }
-
-            fontStyle: "title"
-            color: toolbar.color
-        }
     }
 
     Tabs {
         id: tabbar
         anchors {
-            top: actionBar.bottom
+            top: toolbar.height <= toolbar.implicitHeight + tabbar.height
+                 ? actionBarItem.bottom : undefined
+            bottom: toolbar.height <= toolbar.implicitHeight + tabbar.height
+                    ? undefined : parent.bottom
         }
         color: toolbar.color
         highlight: theme.secondary

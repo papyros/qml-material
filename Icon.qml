@@ -9,7 +9,10 @@ Image {
         if (list[0] == "awesome")
             return ""
 
-        print(Qt.resolvedUrl("icons/%1/ic_%2_%3_48dp.png".arg(list[0]).arg(list[1]).arg(color)))
+        var color = icon.color
+
+        if (color == 'gray' || color == 'grey')
+            color = 'grey600'
 
         return Qt.resolvedUrl("icons/%1/ic_%2_%3_48dp.png".arg(list[0]).arg(list[1]).arg(color))
     }
@@ -38,8 +41,6 @@ Image {
 
         name: {
             var list = icon.name.split("/")
-
-            print(list[1])
 
             if (list[0] == "awesome") {
                 return list[1]

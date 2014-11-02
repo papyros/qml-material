@@ -3,7 +3,10 @@ import QtQuick 2.0
 QtObject {
 
     property color primary: "#5677fc"
+    property color primaryDark: "#5677fc"
     property color secondary: "white"
+
+    property color defaultBackground: "#f3f3f3"
 
     property color temp
 

@@ -33,6 +33,7 @@ View {
     property bool shadow: false
 
     property var icons: {
+        "cube": "",
         "cubes": "",
         "power": "",
         "shopping-cart": "",
@@ -85,7 +86,9 @@ View {
         "trash": "",
         "code": "",
         "users": "",
-        "exchange": ""
+        "exchange": "",
+        "star": "",
+        "star-o": ""
     }
 
     property alias weight: text.font.weight
