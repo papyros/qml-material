@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 View {
     id: button
-    height: 36
-    width: Math.max(88, label.width + 32)
+    height: units.dp(36)
+    width: Math.max(units.dp(64), label.width + units.dp(16))
 
     radius: units.dp(2)
 

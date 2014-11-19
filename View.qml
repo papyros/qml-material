@@ -16,12 +16,14 @@ Item {
 
     property alias border: rect.border
 
-    property bool fullWidth: parent && width == parent.width && x == 0
-    property bool fullHeight: parent && height == parent.height && y == 0
+    property bool fullWidth
+    property bool fullHeight
 
     property alias clipContent: rect.clip
 
     default property alias content: rect.data
+
+    property bool elevationInverted: false
 
     property var topShadow: [
         {
@@ -105,7 +107,7 @@ Item {
         anchors.centerIn: parent
         width: parent.width + (fullWidth ? units.dp(10) : 0)
         height: parent.height + (fullHeight ? units.dp(20) : 0)
-        anchors.verticalCenterOffset: elevationInfo.offset
+        anchors.verticalCenterOffset: elevationInfo.offset * (elevationInverted ? -1 : 1)
         glowRadius: elevationInfo.blur
         opacity: elevationInfo.opacity
         spread: 0.05
@@ -119,7 +121,7 @@ Item {
         anchors.centerIn: parent
         width: parent.width + (fullWidth ? units.dp(10) : 0)
         height: parent.height + (fullHeight ? units.dp(20) : 0)
-        anchors.verticalCenterOffset: elevationInfo.offset
+        anchors.verticalCenterOffset: elevationInfo.offset * (elevationInverted ? -1 : 1)
         glowRadius: elevationInfo.blur
         opacity: elevationInfo.opacity
         spread: 0.05
@@ -132,6 +134,8 @@ Item {
         anchors.fill: parent
         color: Qt.tint(backgroundColor, tintColor)
         radius: item.radius
+
+        clip: true
 
         Behavior on color {
             ColorAnimation { duration: 200 }

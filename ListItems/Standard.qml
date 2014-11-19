@@ -37,7 +37,7 @@ BaseListItem {
         }
 
         height: width
-        width: listItem.height - 2 * listItem.margins
+        width: units.dp(36)
     }
 
     dividerInset: actionItem.children.length == 0 ? 0 : listItem.height
@@ -50,7 +50,7 @@ BaseListItem {
             left: parent.left
             right: parent.right
             rightMargin: listItem.margins
-            leftMargin: actionItem.children.length == 0 ? listItem.margins : listItem.height
+            leftMargin: actionItem.children.length == 0 ? listItem.margins : units.dp(52) + listItem.margins
         }
 
         elide: Text.ElideRight

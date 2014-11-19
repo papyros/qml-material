@@ -46,6 +46,8 @@ View {
             right: parent.right
             margins: margins
         }
+
+        color: theme.blackColor('secondary')
     }
 
     property bool showDivider: false

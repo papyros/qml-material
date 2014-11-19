@@ -18,7 +18,7 @@ Item {
 
     property int maxActionCount: toolbar.maxActionCount
 
-    property bool showContents: !page.cardStyle
+    property bool showContents: page != undefined && !page.cardStyle
 
     property color background: theme.primary
 
@@ -47,7 +47,7 @@ Item {
             NumberAnimation { duration: 200 }
         }
 
-        property bool show: (page.backAction && page.backAction.visible) &&
+        property bool show: page && (page.backAction && page.backAction.visible) &&
                             (!page.cardStyle || !showContents)
     }
 
@@ -81,7 +81,7 @@ Item {
         Repeater {
             model: !showContents ? []
                                 : page.actions.length > maxActionCount
-                                  ? maxActionCount - 1 : actions.length
+                                  ? maxActionCount - 1 : page.actions.length
 
             delegate: IconAction {
                 id: iconAction
@@ -101,7 +101,7 @@ Item {
             name: "navigation/more_vert"
             size: units.dp(27)
             color: actionBar.color
-            visible: showContents && page.actions.length > maxActionCount
+            visible: showContents && page && page.actions.length > maxActionCount
             anchors.verticalCenter: parent.verticalCenter
         }
     }
