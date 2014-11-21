@@ -63,7 +63,7 @@ BaseListItem {
                 id: label
 
                 elide: Text.ElideRight
-                fontStyle: "subheading"
+                style: "subheading"
 
                 width: valueLabel.text || secondaryItem.children.length > 0
                        ? Math.min(implicitWidth, parent.width * 0.8) : parent.width
@@ -79,7 +79,7 @@ BaseListItem {
                 anchors.right: parent.right
                 horizontalAlignment: Text.AlignRight
 
-                fontStyle: "body1"
+                style: "body1"
                 visible: text != ""
             }
 
@@ -98,7 +98,7 @@ BaseListItem {
             elide: Text.ElideRight
             width: parent.width
 
-            fontStyle: "body1"
+            style: "body1"
             visible: text != ""
         }
     }

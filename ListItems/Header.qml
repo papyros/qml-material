@@ -38,7 +38,7 @@ View {
     Label {
         id: label
 
-        fontStyle: "body1"
+        style: "body1"
 
         anchors {
             verticalCenter: parent.verticalCenter

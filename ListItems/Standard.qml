@@ -54,7 +54,7 @@ BaseListItem {
         }
 
         elide: Text.ElideRight
-        fontStyle: "subheading"
+        style: "subheading"
 
         width: parent.width
     }

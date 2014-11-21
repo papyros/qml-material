@@ -6,7 +6,7 @@ Image {
     source: {
         var list = name.split("/")
 
-        if (list[0] == "awesome")
+        if (name == "" || list[0] == "awesome")
             return ""
 
         var color = icon.color
@@ -14,7 +14,17 @@ Image {
         if (color == 'gray' || color == 'grey')
             color = 'grey600'
 
-        return Qt.resolvedUrl("icons/%1/ic_%2_%3_48dp.png".arg(list[0]).arg(list[1]).arg(color))
+        var dp_size = "18"
+
+        if (size > units.dp(36))
+            dp_size = "48"
+        if (size > units.dp(24))
+            dp_size = "36"
+        else if (size > units.dp(18))
+            dp_size = "24"
+
+
+        return Qt.resolvedUrl("icons/%1/ic_%2_%3_%4dp.png".arg(list[0]).arg(list[1]).arg(color).arg(dp_size))
     }
 
     /*!

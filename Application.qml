@@ -26,6 +26,8 @@ Window {
     width: units.gu(120)
     height: units.gu(80)
 
+    property bool useClientSideDecorations;
+
     //flags: Qt.FramelessWindowHint
 
     default property alias content: contents.data
@@ -90,7 +92,7 @@ Window {
             right: parent.right
         }
 
-        height: flags & Qt.FramelessWindowHint ? units.dp(24) : 0
+        height: useClientSideDecorations ? units.dp(24) : 0
         color: theme.primaryDark
     }
 

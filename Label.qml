@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Text {
     id: label
-    property string fontStyle: "body1"
+    property string style: "body1"
 
     property var fontStyles: {
         "display4": {
@@ -72,7 +72,7 @@ Text {
 
     property bool desktop: true
 
-    property var fontInfo: fontStyles[fontStyle]
+    property var fontInfo: fontStyles[style]
 
     font.pixelSize: 1.3 * units.dp(desktop && fontInfo.size_desktop ? fontInfo.size_desktop : fontInfo.size)
     //font.family: "Roboto"

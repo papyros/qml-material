@@ -71,7 +71,7 @@ Row {
                     id: label
                     text: modelData.hasOwnProperty("text") ? modelData.text : ""
                     color: tabbar.color
-                    fontStyle: "body2"
+                    style: "body2"
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
