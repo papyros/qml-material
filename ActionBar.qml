@@ -82,7 +82,7 @@ Item {
         }
 
         text: showContents ? page.title : ""
-        fontStyle: "title"
+        fontStyles: "title"
         color: actionBar.color
     }
 
@@ -114,7 +114,7 @@ Item {
             }
         }
 
-        IconAction {
+        IconAfction {
             name: "navigation/more_vert"
             size: units.dp(27)
             color: actionBar.color
