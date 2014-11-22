@@ -114,7 +114,7 @@ Item {
             }
         }
 
-        IconAfction {
+        IconAction {
             name: "navigation/more_vert"
             size: units.dp(27)
             color: actionBar.color
