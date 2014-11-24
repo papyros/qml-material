@@ -1,17 +1,11 @@
 import QtQuick 2.0
-import QtQuick.Window 2.2
 
 Item {
 	property string placeholder
 	property color color: theme.primary
 	property string text: field.text
 
-	function getPx (dp){
-		var ppi = 25.4*Screen.pixelDensity;
-		return 1.5*(dp*(ppi/160));
-	}
-
-	height: getPx(72)
+	height: units.dp(72)
 	width: 200
 
 	states: State {
@@ -19,8 +13,8 @@ Item {
 		when: field.activeFocus
 		PropertyChanges {
 			target: fieldPlaceholder
-			font.pixelSize: getPx(12)
-			y: getPx(16)
+			font.pixelSize: units.dp(12)
+			y: units.dp(16)
 		}
 	}
 
@@ -38,8 +32,8 @@ Item {
 		id: field
 		height: font.pixelSize
 		width: parent.width
-		font.pixelSize: getPx(16)
-		y: 2*getPx(16) + getPx(8)
+		font.pixelSize: units.dp(16)
+		y: 2*units.dp(16) + units.dp(8)
 		color: theme.blackColor('text')
 		font.family: theme.font.name
 	}
@@ -47,7 +41,7 @@ Item {
 	Text {
 		id: fieldPlaceholder
 		text: parent.placeholder
-		font.pixelSize: getPx(16)
+		font.pixelSize: units.dp(16)
 		y: field.y
 		font.family: theme.font.name
 		color: theme.blackColor('text')
@@ -55,9 +49,9 @@ Item {
 
 	Rectangle {
 		color: parent.color
-		height: getPx(4)
+		height: units.dp(4)
 		width: field.width
 		anchors.top: field.bottom
-		anchors.topMargin: getPx(8)
+		anchors.topMargin: units.dp(8)
 	}
 }
