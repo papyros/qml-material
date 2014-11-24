@@ -6,7 +6,7 @@ Item {
 	property string text: field.text
 
 	height: units.dp(72)
-	width: 200
+	width: units.dp(200)
 
 	states: State {
 		name: "focused"
