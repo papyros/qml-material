@@ -6,5 +6,5 @@ Toolbar 0.1 Toolbar.qml
 View 0.1 View.qml
 ProgressBar 0.1 ProgressBar.qml
 MainView 0.1 MainView.qml
-TextField 0.1 TextInput.qml
+TextField 0.1 TextField.qml
 Wave 0.1 Wave.qml
