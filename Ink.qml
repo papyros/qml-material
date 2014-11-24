@@ -1,6 +1,7 @@
 /*
  * QML Material - An application framework implementing Material Design.
  * Copyright (C) 2014 Michael Spencer
+ * Copyright (C) 2014 Marcin Baszczewski
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -20,73 +21,78 @@ import QtQuick 2.0
 MouseArea {
     id: view
 
-    property int startSize: width/2
-    property int endSize: width - 10
+    clip: true
+    hoverEnabled: true
     z: 2
 
-    hoverEnabled: true
+    property int startSize: width/3
+    property int endSize: width - 10
 
-    onClicked: {
-        print("TAPPED")
-        focusAnimation.stop()
-        tapAnimation.restart()
+    property Item currentCircle
+    property color color: Qt.rgba(0,0,0,0.1)
+
+    onPressed: {
+        print("PRESSED")
+
+        createTapCircle(mouse.x, mouse.y)
     }
 
-    ParallelAnimation {
-        id: tapAnimation
+    onCanceled: {
+        currentCircle.removeCircle();
+    }
 
-        ColorAnimation { target: tapCircle; property: "color"; to: Qt.rgba(0,0,0,0.1); duration: 200 }
+    onReleased: {
+        currentCircle.removeCircle();
+    }
 
-        NumberAnimation { target: tapCircle; property: "height"; duration: 200; from: startSize; to: endSize; easing.type: Easing.InOutQuad }
+    function createTapCircle(x, y) {
+        if (!currentCircle)
+            currentCircle = tapCircle.createObject(view, {"x": x, "y": y });
+    }
 
-        SequentialAnimation {
-            NumberAnimation { target: tapCircle; property: "opacity"; duration: 100; from: 0; to: 1; easing.type: Easing.InOutQuad }
-            NumberAnimation { target: tapCircle; property: "opacity"; duration: 100; from: 1; to: 0; easing.type: Easing.InOutQuad }
-        }
+    Component {
+        id: tapCircle
 
-        onRunningChanged: {
-            if (!running && focused) {
-                focusAnimation.restart()
+        Item
+        {
+            id: circleItem
+
+            function removeCircle()
+            {
+                circleItem.destroy(200);
+                closeAnimation.start();
+
+                currentCircle = null;
+            }
+
+            Rectangle {
+                id: circleRectangle
+                anchors.centerIn: parent
+
+                property double size: view.height * 2
+
+                width: size
+                height: size
+                radius: size/2
+
+                opacity: 0
+                color: view.color
+
+                ParallelAnimation {
+                    id: fillAnimation
+                    running: true
+
+                    NumberAnimation { target: circleRectangle; property: "size"; duration: 200; from: startSize; to: endSize; easing.type: Easing.InOutQuad }
+                    NumberAnimation { target: circleRectangle; property: "opacity"; duration: 100; from: 0; to: 1; easing.type: Easing.InOutQuad }
+                }
+
+                ParallelAnimation {
+                    id: closeAnimation
+
+                    NumberAnimation { target: circleRectangle; property: "size"; duration: 200;  to: endSize*1.5; easing.type: Easing.InOutQuad }
+                    NumberAnimation { target: circleRectangle; property: "opacity"; duration: 200; from: 1; to: 0; easing.type: Easing.InOutQuad }
+                }
             }
         }
-    }
-
-    property bool focused: false
-
-    onFocusedChanged: {
-        if (focused) {
-            tapAnimation.stop()
-            focusAnimation.restart()
-        }
-    }
-
-    ParallelAnimation {
-        id: focusAnimation
-
-        ColorAnimation { target: tapCircle; property: "color"; to: Qt.rgba(0,0,0,0.05); duration: 200 }
-
-        NumberAnimation { target: tapCircle; property: "opacity"; duration: 200; from: 0; to: 1; easing.type: Easing.InOutQuad }
-
-        SequentialAnimation {
-            loops: Animation.Infinite;
-
-            NumberAnimation { target: tapCircle; property: "height"; duration: 600; from: view.width - 25; to: view.width - 15; easing.type: Easing.InOutQuad }
-
-            NumberAnimation { target: tapCircle; property: "height"; duration: 600; to: view.width - 25; from: view.width - 15; easing.type: Easing.InOutQuad }
-        }
-    }
-
-    clip: true
-
-    Rectangle {
-        id: tapCircle
-        anchors.centerIn: parent
-
-        height: view.height * 2
-        width: height
-        radius: width/2
-
-        opacity: 0
-        color: Qt.rgba(0,0,0,0.1)//Qt.rgba(9/16,9/16,9/16,0.4)
     }
 }
