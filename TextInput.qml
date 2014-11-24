@@ -38,13 +38,12 @@ Item {
 		font.family: theme.font.name
 	}
 
-	Text {
+	Label {
 		id: fieldPlaceholder
 		text: parent.placeholder
 		font.pixelSize: units.dp(16)
 		y: field.y
 		font.family: theme.font.name
-		color: theme.blackColor('text')
 	}
 
 	Rectangle {
