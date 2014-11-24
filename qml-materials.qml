@@ -51,7 +51,7 @@ Rectangle {
     property alias units: units
 
 
-    property real scale: Screen.pixelDensity // pixels/mm
+    property real scale: Screen.pixelDensity * 1.2 // pixels/mm
 
     QtObject {
         id: units
