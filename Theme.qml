@@ -22,6 +22,7 @@ QtObject {
     property color primary: "#5677fc"
     property color primaryDark: "#5677fc"
     property color secondary: "white"
+    property var font: robotoFont
 
     property color defaultBackground: "#f3f3f3"
 
@@ -52,5 +53,10 @@ QtObject {
             return blackColor('text')
         else
             return primary
+    }
+    
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf")
+        id: robotoFont
     }
 }
