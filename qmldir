@@ -7,3 +7,4 @@ View 0.1 View.qml
 ProgressBar 0.1 ProgressBar.qml
 MainView 0.1 MainView.qml
 TextInput 0.1 TextInput.qml
+TextField 0.1 TextInput.qml
