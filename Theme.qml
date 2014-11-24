@@ -17,7 +17,7 @@
  */
 import QtQuick 2.0
 
-QtObject {
+Object {
 
     property color primary: "#5677fc"
     property color primaryDark: "#5677fc"
