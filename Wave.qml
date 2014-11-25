@@ -27,7 +27,7 @@ Rectangle {
 	y: realY-(size/2)
 
 	property real size: 0
-	property real diameter: 2*(Math.sqrt(Math.pow(Math.max(x, parent.width - x), 2) + Math.pow(Math.max(y, parent.height - y), 2)))
+	property real diameter: 2*Math.sqrt(Math.pow(Math.max(x, parent.width - x), 2) + Math.pow(Math.max(y, parent.height - y), 2))
 
 	signal finished
 
