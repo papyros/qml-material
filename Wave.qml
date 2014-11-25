@@ -26,12 +26,8 @@ Rectangle {
 	x: realX-(size/2)
 	y: realY-(size/2)
 
-	function getDiameter() {
-		return 2*(Math.sqrt(Math.pow(Math.max(x, parent.width - x), 2) + Math.pow(Math.max(y, parent.height - y), 2)));
-	}
-
 	property real size: 0
-	property real diameter: getDiameter()
+	property real diameter: 2*(Math.sqrt(Math.pow(Math.max(x, parent.width - x), 2) + Math.pow(Math.max(y, parent.height - y), 2)))
 
 	signal finished
 
