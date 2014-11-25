@@ -50,6 +50,6 @@ View {
 
         color: button.textColor
 
-        fontStyle: "button"
+        fontStyles: "button"
     }
 }
