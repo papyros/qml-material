@@ -15,6 +15,7 @@ PageApplication 0.1 PageApplication.qml
 PageStack 0.1 PageStack.qml
 ProgressBar 0.1 ProgressBar.qml
 Sidebar 0.1 Sidebar.qml
+Snackbar 0.1 Snackbar.qml
 TextField 0.1 TextField.qml
 Theme 0.1 Theme.qml
 Toolbar 0.1 Toolbar.qml
