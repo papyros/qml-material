@@ -93,7 +93,7 @@ View {
 
     property alias weight: text.font.weight
 
-    FontLoader { id: fontAwesome; source: Qt.resolvedUrl("FontAwesome.otf") }
+    FontLoader { id: fontAwesome; source: Qt.resolvedUrl("fonts/fontawesome/FontAwesome.otf") }
 
     Text {
         id: text
