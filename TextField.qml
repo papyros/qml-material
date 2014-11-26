@@ -21,6 +21,9 @@ Item {
 	property string placeholder
 	property color color: theme.primary
 	property string text: field.text
+	property TextInput input: field
+
+	id: textField
 
 	height: units.dp(72)
 	width: units.dp(200)
@@ -30,8 +33,8 @@ Item {
 		when: field.activeFocus
 		PropertyChanges {
 			target: fieldPlaceholder
-			font.pixelSize: units.dp(12)
-			y: units.dp(16)
+			font.pixelSize: textField.height/6 
+			y: textField.height/4.5
 		}
 	}
 
@@ -49,8 +52,8 @@ Item {
 		id: field
 		height: font.pixelSize
 		width: parent.width
-		font.pixelSize: units.dp(16)
-		y: 2*units.dp(16) + units.dp(8)
+		font.pixelSize: textField.height/4.5
+		y: (2*textField.height)/3
 		color: theme.blackColor('text')
 		font.family: theme.font.name
 	}
@@ -58,16 +61,16 @@ Item {
 	Label {
 		id: fieldPlaceholder
 		text: parent.placeholder
-		font.pixelSize: units.dp(16)
+		font.pixelSize: textField.height/4.5
 		y: field.y
 		font.family: theme.font.name
 	}
 
 	Rectangle {
 		color: parent.color
-		height: units.dp(4)
+		height: textField.height/18
 		width: field.width
 		anchors.top: field.bottom
-		anchors.topMargin: units.dp(8)
+		anchors.topMargin: textField.height/9
 	}
 }
