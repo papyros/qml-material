@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 deployment.files += qmldir \
                     *.qml \
+                    js \
                     icons \
                     fonts \
                     ListItems \
