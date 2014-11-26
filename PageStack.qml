@@ -75,6 +75,10 @@ Item {
     }
 
     function push(page, args) {
+        if (!page) {
+             throw "Trying to push 'null' page. Did you forget to set the 'initialPage' property?";
+        }
+
         pushFrom(undefined, page, args)
     }
 
