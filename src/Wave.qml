@@ -22,20 +22,12 @@ Rectangle {
 
 	property real realX
 	property real realY
-		
+
 	x: realX-(size/2)
 	y: realY-(size/2)
 
-	function getDiameter() {
-		var topLeftCorner = Math.sqrt(Math.pow((x - 0), 2) + Math.pow((y - 0), 2));
-		var topRightCorner = Math.sqrt(Math.pow((x - parent.width), 2) + Math.pow((y - 0), 2));
-		var bottomLeftCorner = Math.sqrt(Math.pow((x - 0), 2) + Math.pow((y - parent.height), 2));
-		var bottomRightCorner = Math.sqrt(Math.pow((x - parent.width), 2) + Math.pow((y - parent.height), 2));
-		return 2*Math.max(topLeftCorner, topRightCorner, bottomLeftCorner, bottomRightCorner);
-	}
-
 	property real size: 0
-	property real diameter: getDiameter()
+	property real diameter: 2*Math.sqrt(Math.pow(Math.max(x, parent.width - x), 2) + Math.pow(Math.max(y, parent.height - y), 2))
 
 	signal finished
 
