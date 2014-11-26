@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
-import "Transitions"
+import Material.Transitions 0.1
 
 Page {
     id: page
@@ -31,7 +31,7 @@ Page {
 
     property bool showing: currentPage
 
-    transition: SlideTransition {
+    transition: CardSlideTransition {
 
     }
 
