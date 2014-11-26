@@ -59,6 +59,7 @@ Rectangle {
 			to: wave.diameter
 			easing.type: Easing.InCubic
 		}
+
 		NumberAnimation {
 			target: wave
 			properties: "opacity"

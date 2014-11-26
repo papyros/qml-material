@@ -23,7 +23,7 @@ View {
     property bool rotate: widget.name.match(/.*-rotate/) !== null
 
     property alias color: text.color
-    property int size: units.dp(24)
+    property int size: Units.dp(24)
 
     color: "transparent"
 

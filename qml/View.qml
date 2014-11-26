@@ -45,76 +45,76 @@ Item {
     property var topShadow: [
         {
             "opacity": 0,
-            "offset": units.dp(0),
-            "blur": units.dp(0)
+            "offset": Units.dp(0),
+            "blur": Units.dp(0)
         },
 
         {
             "opacity": 0.12,
-            "offset": units.dp(1),
-            "blur": units.dp(1.5)
+            "offset": Units.dp(1),
+            "blur": Units.dp(1.5)
         },
 
         {
             "opacity": 0.16,
-            "offset": units.dp(3),
-            "blur": units.dp(3)
+            "offset": Units.dp(3),
+            "blur": Units.dp(3)
         },
 
         {
             "opacity": 0.19,
-            "offset": units.dp(10),
-            "blur": units.dp(10)
+            "offset": Units.dp(10),
+            "blur": Units.dp(10)
         },
 
         {
             "opacity": 0.25,
-            "offset": units.dp(14),
-            "blur": units.dp(14)
+            "offset": Units.dp(14),
+            "blur": Units.dp(14)
         },
 
         {
             "opacity": 0.30,
-            "offset": units.dp(19),
-            "blur": units.dp(19)
+            "offset": Units.dp(19),
+            "blur": Units.dp(19)
         }
     ]
 
     property var bottomShadow: [
         {
             "opacity": 0,
-            "offset": units.dp(0),
-            "blur": units.dp(0)
+            "offset": Units.dp(0),
+            "blur": Units.dp(0)
         },
 
         {
             "opacity": 0.24,
-            "offset": units.dp(1),
-            "blur": units.dp(1)
+            "offset": Units.dp(1),
+            "blur": Units.dp(1)
         },
 
         {
             "opacity": 0.23,
-            "offset": units.dp(3),
-            "blur": units.dp(3)
+            "offset": Units.dp(3),
+            "blur": Units.dp(3)
         },
 
         {
             "opacity": 0.23,
-            "offset": units.dp(6),
-            "blur": units.dp(3)
+            "offset": Units.dp(6),
+            "blur": Units.dp(3)
         },
 
         {
             "opacity": 0.22,
-            "offset": units.dp(10),
-            "blur": units.dp(5)
+            "offset": Units.dp(10),
+            "blur": Units.dp(5)
         },
 
         {
             "opacity": 0.22,
-            "offset": units.dp(15),
-            "blur": units.dp(6)
+            "offset": Units.dp(15),
+            "blur": Units.dp(6)
         }
     ]
 

@@ -16,22 +16,25 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
-import ".."
+import Quantum.Controls 1.0
 
 Item {
 
     property real progress
     property alias color: bar.color
+    implicitWidth: 100
+    implicitHeight: 30
 
-    height: progress > 0 && progress < 1 ? units.dp(4) : 0
+    height: progress > 0 && progress < 1 ? Units.dp(4) : 0
 
     Behavior on height {
         NumberAnimation { duration: 200 }
     }
 
     Rectangle {
-        radius: units.dp(2)
-        color: theme.secondary
+        radius: Units.dp(2)
+        color: Theme.backgroundColor(Theme.SecondaryColor)
+
         opacity: 0.2
 
         anchors.fill: parent
@@ -40,9 +43,9 @@ Item {
     Rectangle {
         id: bar
 
-        radius: units.dp(2)
+        radius: Units.dp(2)
         height: parent.height
         width: parent.width * progress
-        color: theme.secondary
+        color: Theme.backgroundColor(Theme.SecondaryColor)
     }
 }

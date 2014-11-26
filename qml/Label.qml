@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Quantum.Controls 1.0
 
 Text {
     id: label
@@ -91,7 +92,10 @@ Text {
 
     property var fontInfo: fontStyles[style]
 
-    font.pixelSize: 1.3 * units.dp(desktop && fontInfo.size_desktop ? fontInfo.size_desktop : fontInfo.size)
+//    text: 1.3 * Units.dp(desktop && fontInfo.size_desktop ? fontInfo.size_desktop : fontInfo.size)
+    font.pixelSize: 1.3 * Units.dp(desktop && fontInfo.size_desktop ? fontInfo.size_desktop : fontInfo.size)
+
+
     //font.family: "Roboto"
 //    font.weight: {
 //        var weight = fontInfo.font
@@ -105,7 +109,8 @@ Text {
 //        }
 //    }
 
-    color: theme.blackColor('text')
+//    color: theme.blackColor('text')
+    color: Theme.fontColor(Theme.TextColor)
 
     //FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf") }
     //FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Medium.ttf") }

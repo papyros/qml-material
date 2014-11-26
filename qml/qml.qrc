@@ -1,0 +1,41 @@
+<RCC>
+    <qresource prefix="/controls">
+        <file>Action.qml</file>
+        <file>ActionBar.qml</file>
+        <file>Application.qml</file>
+        <file>AwesomeIcon.qml</file>
+        <file>Button.qml</file>
+        <file>Card.qml</file>
+        <file>CardPage.qml</file>
+        <file>Dialog.qml</file>
+        <file>Icon.qml</file>
+        <file>IconAction.qml</file>
+        <file>Ink.qml</file>
+        <file>Label.qml</file>
+        <file>MainView.qml</file>
+        <file>NavigationDrawer.qml</file>
+        <file>Object.qml</file>
+        <file>Page.qml</file>
+        <file>PageApplication.qml</file>
+        <file>PageStack.qml</file>
+        <file>ProgressBar.qml</file>
+        <file>Scrollbar.qml</file>
+        <file>Sidebar.qml</file>
+        <file>Tabs.qml</file>
+        <file>TabView.qml</file>
+        <file>TextField.qml</file>
+        <file>Theme.qml</file>
+        <file>ThinDivider.qml</file>
+        <file>Toolbar.qml</file>
+        <file>View.qml</file>
+        <file>Wave.qml</file>
+        <file>ListItems/BaseListItem.qml</file>
+        <file>ListItems/Header.qml</file>
+        <file>ListItems/Standard.qml</file>
+        <file>ListItems/Subtitled.qml</file>
+        <file>Transitions/CardSlideTransition.qml</file>
+        <file>Transitions/CardTransition.qml</file>
+        <file>Transitions/ExpandTransition.qml</file>
+        <file>Transitions/PageTransition.qml</file>
+    </qresource>
+</RCC>
