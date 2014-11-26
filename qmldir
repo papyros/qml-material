@@ -21,12 +21,11 @@ ProgressBar 0.1 ProgressBar.qml
 Sidebar 0.1 Sidebar.qml
 Scrollbar 0.1 Scrollbar.qml
 Snackbar 0.1 Snackbar.qml
-TabView.qml 0.1 TabView
-Tabs.qml 0.1 Tabs
+TabView 0.1 TabView
+Tabs 0.1 Tabs
 TextField 0.1 TextField.qml
 Theme 0.1 Theme.qml
-ThinDivider.qml 0.1 ThinDivider
+ThinDivider 0.1 ThinDivider
 Toolbar 0.1 Toolbar.qml
 View 0.1 View.qml
 Wave 0.1 Wave.qml
-
