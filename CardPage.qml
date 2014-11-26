@@ -76,7 +76,7 @@ Page {
                     }
                 }
 
-                fontStyle: "title"
+                style: "title"
                 color: theme.blackColor('secondary')
             }
 
