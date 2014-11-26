@@ -27,7 +27,7 @@ View {
     Label {
         text: title
 
-        fontStyles: "title"
+        style: "title"
 
         anchors {
             left: parent.left

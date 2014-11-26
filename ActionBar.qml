@@ -82,7 +82,7 @@ Item {
         }
 
         text: showContents ? page.title : ""
-        fontStyles: "title"
+        style: "title"
         color: actionBar.color
     }
 
