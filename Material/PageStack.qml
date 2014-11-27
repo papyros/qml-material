@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
-import "../qml-extras/utils.js" as Utils
+import Material.Extras 0.1
 
 Item {
     id: pageStack

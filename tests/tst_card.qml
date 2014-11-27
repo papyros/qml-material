@@ -2,7 +2,6 @@ import QtQuick 2.3
 import QtTest 1.0
 import Material 0.1
 
-
 Card {
     width: 100
     height: 100
