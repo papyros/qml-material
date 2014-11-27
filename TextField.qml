@@ -30,7 +30,7 @@ Item {
 
 	states: State {
 		name: "focused"
-		when: field.activeFocus
+		when: field.activeFocus || field.text != ""
 		PropertyChanges {
 			target: fieldPlaceholder
 			font.pixelSize: textField.height/6 
