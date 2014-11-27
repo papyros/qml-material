@@ -1,0 +1,5 @@
+module Material.Transitions
+CardSlideTransition 0.1 CardSlideTransition.qml
+CardTransition 0.1 CardTransition.qml
+ExpandTransition 0.1 ExpandTransition.qml
+PageTransition 0.1 PageTransition.qml

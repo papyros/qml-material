@@ -1,4 +1,5 @@
 module Material
+Action 0.1 Action.qml
 ActionBar 0.1 ActionBar.qml
 Application 0.1 Application.qml
 AwesomeIcon 0.1 AwesomeIcon.qml
@@ -7,17 +8,24 @@ Card 0.1 Card.qml
 CardPage 0.1 CardPage.qml
 Dialog 0.1 Dialog.qml
 Icon 0.1 Icon.qml
+IconAction 0.1 IconAction.qml
+Ink 0.1 Ink.qml
 Label 0.1 Label.qml
 MainView 0.1 MainView.qml
 NavigationDrawer 0.1 NavigationDrawer.qml
+Object 0.1 Object.qml
 Page 0.1 Page.qml
 PageApplication 0.1 PageApplication.qml
 PageStack 0.1 PageStack.qml
 ProgressBar 0.1 ProgressBar.qml
 Sidebar 0.1 Sidebar.qml
+Scrollbar 0.1 Scrollbar.qml
 Snackbar 0.1 Snackbar.qml
+TabView 0.1 TabView.qml
+Tabs 0.1 Tabs.qml
 TextField 0.1 TextField.qml
 Theme 0.1 Theme.qml
+ThinDivider 0.1 ThinDivider.qml
 Toolbar 0.1 Toolbar.qml
 View 0.1 View.qml
 Wave 0.1 Wave.qml
