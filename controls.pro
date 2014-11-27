@@ -4,7 +4,7 @@ TARGET = $$qtLibraryTarget($$TARGET)
 TEMPLATE = lib
 DESTDIR = Quantum/Controls
 
-VERSION = 0.0.1 #major.minor.patch
+VERSION = 0.0.2 #major.minor.patch
 
 QT += qml quick
 

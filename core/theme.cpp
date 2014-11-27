@@ -1,35 +1,67 @@
 #include "core/theme.h"
 
+#include <QDebug>
+
 Theme::Theme(QObject *parent)
     : QObject(parent)
+    , m_currentTheme(LightTheme)
 {
+    reloadTheme();
+
+    connect(this, &Theme::currentThemeChanged, this, &Theme::reloadTheme);
 }
 
-QColor Theme::fontColor(const Theme::FontColor &color) const
+Theme::Themes Theme::currentTheme() const
 {
-    switch(color)
-    {
-    case TextColor:
-        return QColor(0,0,0,200);
-    case TestColor:
-        return QColor(255,0,0);
-    case DefaultColor:
-    default:
-        return QColor(0,0,0);
-    }
-
-    return QColor(0,0,0);
+    return m_currentTheme;
 }
 
-QColor Theme::backgroundColor(const Theme::BackgroundColor &color) const
+void Theme::setCurrentTheme(const Theme::Themes &currentTheme)
 {
-    switch(color)
+    if (m_currentTheme!=currentTheme)
     {
-    case SecondaryColor:
-        return QColor(0, 0, 0, 122);
-    default:
-        return QColor(0, 0, 0);
+        m_currentTheme = currentTheme;
+        emit currentThemeChanged();
     }
+}
 
-    return QColor(0, 0, 0);
+QColor Theme::primaryColor() const
+{
+    return m_primaryColor;
+}
+
+void Theme::setPrimaryColor(const QColor &primaryColor)
+{
+    if (m_primaryColor!=primaryColor)
+    {
+        m_primaryColor = primaryColor;
+        emit primaryColorChanged();
+    }
+}
+
+QColor Theme::secondaryColor() const
+{
+    return m_secondaryColor;
+}
+
+void Theme::setSecondaryColor(const QColor &secondaryColor)
+{
+    if (m_secondaryColor!=secondaryColor)
+    {
+        m_secondaryColor = secondaryColor;
+        emit secondaryColorChanged();
+    }
+}
+
+void Theme::reloadTheme()
+{
+    m_primaryColor = QColor(0,0,0);
+
+    if (m_currentTheme==LightTheme)
+        m_secondaryColor = QColor(255,0,0);
+    else
+        m_secondaryColor = QColor(0,255,0);
+
+    emit primaryColorChanged();
+    emit secondaryColorChanged();
 }

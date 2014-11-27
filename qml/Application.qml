@@ -26,6 +26,8 @@ Window {
     width: units.gu(120)
     height: units.gu(80)
 
+
+
     property bool useClientSideDecorations;
 
     //flags: Qt.FramelessWindowHint

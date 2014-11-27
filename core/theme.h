@@ -7,30 +7,40 @@
 class Theme : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(FontColor)
-    Q_ENUMS(BackgroundColor)
+    Q_ENUMS(Themes)
+    Q_PROPERTY(Themes currentTheme READ currentTheme WRITE setCurrentTheme NOTIFY currentThemeChanged)
+    Q_PROPERTY(QColor primaryColor READ primaryColor NOTIFY primaryColorChanged)
+    Q_PROPERTY(QColor secondaryColor READ secondaryColor NOTIFY secondaryColorChanged)
 public:
     explicit Theme(QObject *parent = 0);
 
-    enum FontColor
+    enum Themes
     {
-        DefaultColor,
-        TextColor,
-        TestColor
+        LightTheme,
+        DarkTheme
     };
 
-    enum BackgroundColor
-    {
-        SecondaryColor
-    };
+    Themes currentTheme() const;
+    void setCurrentTheme(const Themes &currentTheme);
 
-    Q_INVOKABLE QColor fontColor(const FontColor &color) const;
-    Q_INVOKABLE QColor backgroundColor(const BackgroundColor &color) const;
+    QColor primaryColor() const;
+    void setPrimaryColor(const QColor &primaryColor);
+
+    QColor secondaryColor() const;
+    void setSecondaryColor(const QColor &secondaryColor);
+
+protected slots:
+    void reloadTheme();
 
 signals:
+    void currentThemeChanged();
+    void primaryColorChanged();
+    void secondaryColorChanged();
 
-public slots:
-
+private:
+    Themes m_currentTheme;
+    QColor m_primaryColor;
+    QColor m_secondaryColor;
 };
 
 #endif // THEME_H

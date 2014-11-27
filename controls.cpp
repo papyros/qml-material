@@ -27,6 +27,7 @@ qmldir [] =
     { "Action", 1, 0 },
     { "ActionBar", 1, 0 },
     { "Application", 1, 0 },
+    { "Application2", 1, 0 },
     { "AwesomeIcon", 1, 0 },
     { "Button", 1, 0 },
     { "Card", 1, 0 },

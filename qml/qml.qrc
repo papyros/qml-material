@@ -37,5 +37,7 @@
         <file>Transitions/CardTransition.qml</file>
         <file>Transitions/ExpandTransition.qml</file>
         <file>Transitions/PageTransition.qml</file>
+        <file>Application2.qml</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>
