@@ -1,2 +1,2 @@
 TEMPLATE = subdirs
-SUBDIRS = modules/Material
+SUBDIRS = modules/Material tests
