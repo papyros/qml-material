@@ -10,12 +10,13 @@
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
+ * GNU Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import 'awesome.js' as Awesome
 
 View {
     id: widget
@@ -32,64 +33,7 @@ View {
 
     property bool shadow: false
 
-    property var icons: {
-        "cube": "",
-        "cubes": "",
-        "power": "",
-        "shopping-cart": "",
-        "envelope-o": "",
-        "grid": "",
-        "check-circle": "",
-        "check-square-o": "",
-        "circle": "",
-        "exclamation-triangle": "",
-        "calendar": "",
-        "github": "",
-        "file": "",
-        "clock": "",
-        "bookmark-o": "",
-        "user": "",
-        "comments-o": "",
-        "check": "",
-        "ellipse-h": "",
-        "ellipse-v": "",
-        "save": "",
-        "smile-o": "",
-        "spinner": "",
-        "square-o": "",
-        "times": "",
-        "times-circle": "",
-        "plus": "",
-        "bell-o": "",
-        "bell": "",
-        "chevron-left": "",
-        "chevron-right": "",
-        "chevron-down": "",
-        "cog": "",
-        "minus": "",
-        "dashboard": "",
-        "calendar-empty": "",
-        "calendar": "",
-        "bars":"",
-        "inbox": "",
-        "list": "",
-        "long-list": "",
-        "comment": "",
-        "download": "",
-        "tasks": "",
-        "bug": "",
-        "code-fork": "",
-        "clock-o": "",
-        "pencil-square-o":"",
-        "check-square-o":"",
-        "picture-o":"",
-        "trash": "",
-        "code": "",
-        "users": "",
-        "exchange": "",
-        "star": "",
-        "star-o": ""
-    }
+    property var icons: Awesome.map
 
     property alias weight: text.font.weight
 
