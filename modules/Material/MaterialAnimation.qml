@@ -19,20 +19,8 @@ import QtQuick 2.0
 
 pragma Singleton
 
-Object {
-    id: units
+QtObject {
+    id: materialAnimation
 
-    // Screen.pixelDensity is dependent on the current screen, so we hardcode
-    // it here and update it via ApplicationWindow
-    property real __pixelDensity: 4.5
-
-    property real scale: __pixelDensity * 1.2 // pixels/mm
-
-    function mm(number) {
-        return number * scale
-    }
-
-    function dp(number) {
-        return number * scale * 0.15
-    }
+    property int pageTransitionDuration: 250
 }
