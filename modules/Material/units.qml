@@ -19,20 +19,58 @@ import QtQuick 2.0
 
 pragma Singleton
 
+/*!
+   \qmltype units
+   \inqmlmodule Material 0.1
+   \ingroup material
+
+   \brief Provides access to screen-independent units known as DPs (device-independent pixels).
+
+   This singleton provides methods for building a user interface that automatically scales based on
+   the screen density. Use the \l units::dp function wherever you need to specify a screen size,
+   and your app will automatically scale to any screen density.
+
+   Here is a short example:
+
+   \qml
+   import QtQuick 2.0
+   import Material 0.1
+
+   Rectangle {
+       width: units.dp(100)
+       height: units.dp(80)
+
+       Label {
+           text:"A"
+           font.pixelSize: units.dp(50)
+       }
+   }
+   \endqml
+*/
 Object {
     id: units
 
-    // Screen.pixelDensity is dependent on the current screen, so we hardcode
-    // it here and update it via ApplicationWindow
-    property real __pixelDensity: 4.5
+    /*!
+       \internal
+       This holds the pixel density used for converting millimeters into pixels. This is the exact
+       value from \l Screen:pixelDensity, but that property only works from within a \l Window type,
+       so this is hardcoded here and we update it from within \l ApplicationWindow
+     */
+    property real __pixelDensity: 4.5 // pixels/mm
 
-    property real scale: __pixelDensity * 1.2 // pixels/mm
-
+    /*!
+       Converts millimeters into pixels. Used primarily by \l units::dp, but there might be other
+       uses for it as well.
+     */
     function mm(number) {
-        return number * scale
+        return number * __pixelDensity
     }
 
+    /*!
+       This is the standard function to use for accessing device-independent pixels. You should use
+       this anywhere you need to refer to distances on the screen.
+     */
     function dp(number) {
-        return number * scale * 0.15
+        return number * __pixelDensity * 0.15875
     }
 }

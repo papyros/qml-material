@@ -19,49 +19,104 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import Material 0.1
 
+/*!
+   \qmltype ApplicationWindow
+   \inqmlmodule Material 0.1
+   \ingroup material
+
+   \brief A subclass of \l Window that provides some additional features for developing Applications
+   that conform to Material Design.
+
+   This is normally what you should use as your root component. It provides a \l Toolbar and
+   \l PageStack to provide access to standard features used by Material Design applications.
+
+   Here is a short working example of an application:
+
+   \qml
+   import QtQuick 2.0
+   import Material 0.1
+
+   ApplicationWindow {
+       title: "Application Name"
+
+       initialPage: page
+
+       Page {
+           id: page
+           title: "Page Title"
+
+           Label {
+               anchors.centerIn: parent
+               text: "Hello World!"
+           }
+       }
+   }
+   \endqml
+*/
 Window {
     id: app
+
+    default property alias content: pageStack.children
+
+    /*!
+       A grouped property that allows the application to customize the the primary color, the
+       primary dark color, and the accent color. See \l Theme for more details.
+     */
+    property alias theme: __theme
+
+    /*!
+       The initial page shown when the application starts.
+     */
+    property alias initialPage: pageStack.initialPage
+
+    /*!
+       The \l PageStack used for controlling pages and transitions between pages.
+     */
+    property alias pageStack: pageStack
+
+    /*!
+       The \l Toolbar used to display the current page's title, actions, and back button. See
+       \l ActionBar and \l Page for more details.
+     */
+    property alias toolbar: toolbar
+
+    /*!
+       \internal
+       The pixel density of the screen the application's window is currently on. See \l Screen
+       and \l units.
+     */
+    property real __pixelDensity: Screen.pixelDensity
+
 
     width: units.dp(800)
     height: units.dp(600)
 
-    property real __pixelDensity: Screen.pixelDensity
-
     on__PixelDensityChanged: units.__pixelDensity = __pixelDensity
-
-    default property alias content: pageStack.children
-
-    property alias theme: __theme
 
     QtObject {
         id: __theme
 
         property color primaryColor: Theme.primaryColor
         property color primaryDarkColor: Theme.primaryDarkColor
-        property color secondaryColor: Theme.secondaryColor
+        property color accentColor: Theme.accentColor
         property color backgroundColor: Theme.backgroundColor
 
         onPrimaryColorChanged: Theme.primaryColor = primaryColor
         onPrimaryDarkColorChanged: Theme.primaryDarkColor = primaryDarkColor
-        onSecondaryColorChanged: Theme.secondaryColor = secondaryColor
+        onAccentColorChanged: Theme.accentColor = accentColor
         onBackgroundColorChanged: Theme.backgroundColor = backgroundColor
     }
-
-    property alias initialPage: pageStack.initialPage
 
     Toolbar {
         id: toolbar
         z: 2
 
-        backgroundColor: pageStack.currentPage ? pageStack.currentPage.actionBar.background
+        backgroundColor: pageStack.currentPage ? pageStack.currentPage.actionBar.backgroundColor
                                                     : Theme.primaryColor
 
         tabs: pageStack.currentPage.tabs
         expanded: pageStack.currentPage.cardStyle
     }
-
-    property alias pageStack: pageStack
-    property alias toolbar: toolbar
 
     PageStack {
         id: pageStack

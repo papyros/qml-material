@@ -42,11 +42,6 @@ Item {
         right: parent.right
     }
 
-	/*!
-	   The foreground color used for the title and actions.
-	 */
-    property string color: "white"
-
     /*!
        \internal
        The page holding this \c ActionBar
@@ -70,7 +65,7 @@ Item {
 	   The background color for the toolbar when the action bar's page is active. By default this is
 	   the primary color defined in \l Theme::primaryColor
 	 */
-    property color background: Theme.primaryColor
+    property color backgroundColor: Theme.primaryColor
 
     IconAction {
         id: leftItem
@@ -85,7 +80,8 @@ Item {
             }
         }
 
-        color: actionBar.color
+        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
+                                                            Theme.dark.iconColor)
         size: units.dp(27)
         name: page.backAction ? page.backAction.iconName : ""
 
@@ -116,7 +112,8 @@ Item {
 
         text: showContents ? page.title : ""
         style: "title"
-        color: actionBar.color
+        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
+                                                            Theme.dark.textColor)
     }
 
     Row {
@@ -139,7 +136,8 @@ Item {
                 property Action action: page.actions[index]
 
                 name: action.iconName
-                color: actionBar.color
+                color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
+                                                                     Theme.dark.textColor)
                 size: name == "content/add" ? units.dp(30) : units.dp(27)
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
 
@@ -150,7 +148,8 @@ Item {
         IconAction {
             name: "navigation/more_vert"
             size: units.dp(27)
-            color: actionBar.color
+            color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
+                                                                 Theme.dark.textColor)
             visible: showContents && page && page.actions.length > maxActionCount
             anchors.verticalCenter: parent.verticalCenter
         }

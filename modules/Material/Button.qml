@@ -46,9 +46,8 @@ Button {
             id: label
             anchors.centerIn: parent
             text: control.text.toUpperCase()
-            color: ( style === 'default') ? Theme.textColor : Theme.iconColor
-            style: "button"
+            color: Theme.lightDark(backgroundColor, Theme.light.textColor,
+                                                                  Theme.dark.textColor)
         }
     }
-}
 
