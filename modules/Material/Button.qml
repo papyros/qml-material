@@ -15,45 +15,41 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.3
-import QtQuick.Controls 1.3
-import QtQuick.Controls.Styles 1.3
-import Material 0.1 as Material
+import QtQuick 2.0
+import Material 0.1
 
-Button {
-
-    property bool raised: false
-    property color textColor: style === 'default' ? theme.blackColor("text") : theme.styleColor(style)
-
+View {
+    id: button
     height: units.dp(36)
-    width: Math.max(units.dp(64),buttonStyle.label.width + units.dp(16))
+    width: Math.max(units.dp(64), label.width + units.dp(16))
 
-    style: ButtonStyle {
-        id: buttonStyle
-        background: View {
-            height: control.height
-            width: control.width
-            radius: units.dp(2)
-            tintColor: mouseArea.pressed ? Qt.rgba(0,0,0, 0.1) : "transparent"
-            Material.Ink {
-                id: mouseArea
-                anchors.fill: parent
-                onClicked: {
-                    mouseArea.focused = true
-                    control.clicked()
-                }
-            }
-        }
+    radius: units.dp(2)
 
-        label: Material.Label {
-            id: buttonLabel
-            height: fontMetrics.height
-            width: fontMetrics.boundingRect(buttonLabel.text)
-            text: control.text.toUpperCase()
-            FontMetrics {
-                id: fontMetrics
-                font: buttonLabel.font
-            }
+    property bool raised
+
+    property string text
+    property color textColor: style == 'default' ? theme.blackColor("text") : theme.styleColor(style)
+
+    signal triggered
+
+    tintColor: mouseArea.pressed ? Qt.rgba(0,0,0, 0.1) : "transparent"
+
+    Ink {
+        id: mouseArea
+        anchors.fill: parent
+        onClicked: {
+            button.triggered()
         }
+    }
+
+    Label {
+        id: label
+
+        anchors.centerIn: parent
+        text: button.text.toUpperCase()
+
+        color: button.textColor
+
+        style: "button"
     }
 }

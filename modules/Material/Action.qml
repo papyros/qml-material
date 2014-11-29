@@ -35,7 +35,7 @@ QtObject {
     /*!
        The icon displayed for the action. This can be a Material Design icon or an icon from
        FontAwesome. See \l Icon from more details.
-    */
+     */
     property string iconName
 
     /*!

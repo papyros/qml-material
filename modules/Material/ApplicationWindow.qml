@@ -16,10 +16,36 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
-import "."
+import QtQuick.Window 2.2
+import Material 0.1
 
-Application {
+Window {
     id: app
+
+    width: units.dp(800)
+    height: units.dp(600)
+
+    property real __pixelDensity: Screen.pixelDensity
+
+    on__PixelDensityChanged: units.__pixelDensity = __pixelDensity
+
+    default property alias content: pageStack.children
+
+    property alias theme: __theme
+
+    QtObject {
+        id: __theme
+
+        property color primaryColor: Theme.primaryColor
+        property color primaryDarkColor: Theme.primaryDarkColor
+        property color secondaryColor: Theme.secondaryColor
+        property color backgroundColor: Theme.backgroundColor
+
+        onPrimaryColorChanged: Theme.primaryColor = primaryColor
+        onPrimaryDarkColorChanged: Theme.primaryDarkColor = primaryDarkColor
+        onSecondaryColorChanged: Theme.secondaryColor = secondaryColor
+        onBackgroundColorChanged: Theme.backgroundColor = backgroundColor
+    }
 
     property alias initialPage: pageStack.initialPage
 
@@ -27,7 +53,8 @@ Application {
         id: toolbar
         z: 2
 
-        backgroundColor: pageStack.currentPage ? pageStack.currentPage.actionBar.background : theme.primary
+        backgroundColor: pageStack.currentPage ? pageStack.currentPage.actionBar.background
+                                                    : Theme.primaryColor
 
         tabs: pageStack.currentPage.tabs
         expanded: pageStack.currentPage.cardStyle

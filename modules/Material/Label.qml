@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 
 Text {
     id: label
@@ -105,7 +106,7 @@ Text {
 //        }
 //    }
 
-    color: theme.blackColor('text')
+    color: Theme.textColor
 
     //FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf") }
     //FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Medium.ttf") }
