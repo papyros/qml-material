@@ -81,11 +81,15 @@ Object {
         light: false
     }
 
-    property color temp
+    /*!
+       Select a color depending on whether the background is light or dark.
 
+       \c lightColor is the color used on a light background.
+
+       \c darkColor is the color used on a dark background.
+     */
     function lightDark(background, lightColor, darkColor) {
-        temp = background
-       if (temp != background) throw "Color not set correctly"
+        var temp = Qt.darker(background, 1)
 
         var a = 1 - ( 0.299 * temp.r + 0.587 * temp.g + 0.114 * temp.b);
 
