@@ -16,13 +16,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 
 View {
     id: toolbar
 
-    implicitHeight: device.mode == "mobile" ? units.dp(48)
-                                            : device.mode == "tablet" ? units.dp(56)
-                                                                      : units.dp(64)
+    implicitHeight: Device.formFactor == "mobile" ? units.dp(48)
+                                                       : Device.formFactor == "tablet" ? units.dp(56)
+                                                                                         : units.dp(64)
     height: targetHeight
 
     property int targetHeight: implicitHeight + (tabs.length > 0 ? tabbar.height : 0)
@@ -31,10 +32,11 @@ View {
     property bool expanded: false
 
     Behavior on height {
-        NumberAnimation { duration: animations.pageTransition }
+        NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
     }
 
     anchors {
+        top: parent.top
         left: parent.left
         right: parent.right
     }
@@ -51,8 +53,10 @@ View {
 
     property bool showBackButton
 
-    property int maxActionCount: (device.mode == "desktop"
-                                  ? 5 : device.mode.tablet ? 4 : 3) - (drawer ? 1 : 0)
+    property NavigationDrawer drawer
+
+    property int maxActionCount: (Device.formFactor == "desktop"
+                                  ? 5 : Device.formFactor == "tablet" ? 4 : 3) - (drawer ? 1 : 0)
 
     property Item actionBar
     property Item previousActionBar: actionBar
@@ -99,14 +103,14 @@ View {
         ParallelAnimation {
 
             NumberAnimation {
-                duration: animations.pageTransition
+                duration: MaterialAnimation.pageTransitionDuration
                 target: previousActionBar
                 property: "opacity"
                 to: 0
             }
 
             NumberAnimation {
-                duration: animations.pageTransition
+                duration: MaterialAnimation.pageTransitionDuration
                 target: previousActionBar
                 property: "y"
                 to: previousActionBar ? -previousActionBar.height : 0
@@ -120,7 +124,7 @@ View {
         ParallelAnimation {
 
             NumberAnimation {
-                duration: animations.pageTransition
+                duration: MaterialAnimation.pageTransitionDuration
                 target: previousActionBar
                 property: "opacity"
                 from: 0
@@ -128,7 +132,7 @@ View {
             }
 
             NumberAnimation {
-                duration: animations.pageTransition
+                duration: MaterialAnimation.pageTransitionDuration
                 target: previousActionBar
                 property: "y"
                 from: previousActionBar ? -previousActionBar.height : 0
@@ -142,7 +146,7 @@ View {
 
         ParallelAnimation {
             NumberAnimation {
-                duration: animations.pageTransition
+                duration: MaterialAnimation.pageTransitionDuration
                 target: actionBar
                 property: "opacity"
                 from: 0
@@ -150,7 +154,7 @@ View {
             }
 
             NumberAnimation {
-                duration: animations.pageTransition
+                duration: MaterialAnimation.pageTransitionDuration
                 target: actionBar
                 property: "y"
                 from: actionBar.height
@@ -164,7 +168,7 @@ View {
 
         ParallelAnimation {
             NumberAnimation {
-                duration: animations.pageTransition
+                duration: MaterialAnimation.pageTransitionDuration
                 target: actionBar
                 property: "opacity"
                 from: 1
@@ -172,7 +176,7 @@ View {
             }
 
             NumberAnimation {
-                duration: animations.pageTransition
+                duration: MaterialAnimation.pageTransitionDuration
                 target: actionBar
                 property: "y"
                 to: actionBar.height
@@ -199,6 +203,6 @@ View {
                     ? undefined : parent.bottom
         }
         color: toolbar.color
-        highlight: theme.secondary
+        highlight: Theme.accentColor
     }
 }

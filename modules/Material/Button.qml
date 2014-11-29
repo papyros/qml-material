@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 
 View {
     id: button
@@ -27,7 +28,8 @@ View {
     property bool raised
 
     property string text
-    property color textColor: style == 'default' ? theme.blackColor("text") : theme.styleColor(style)
+    property color textColor: Theme.lightDark(backgroundColor, Theme.light.textColor,
+                                                                  Theme.dark.textColor)
 
     signal triggered
 
@@ -37,7 +39,6 @@ View {
         id: mouseArea
         anchors.fill: parent
         onClicked: {
-            mouseArea.focused = true
             button.triggered()
         }
     }
