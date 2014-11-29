@@ -106,7 +106,7 @@ Text {
 //        }
 //    }
 
-    color: Theme.textColor
+    color: Theme.light.textColor
 
     //FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf") }
     //FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Medium.ttf") }

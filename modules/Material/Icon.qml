@@ -31,6 +31,10 @@ Image {
 
         if (color == 'gray' || color == 'grey')
             color = 'grey600'
+         else if (color == Theme.light.iconColor)
+            color = 'grey600'
+        else if  (color == Theme.dark.iconColor)
+            color = 'white'
 
         var dp_size = "18"
 

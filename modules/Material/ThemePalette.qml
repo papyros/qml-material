@@ -17,8 +17,6 @@
 */
 import QtQuick 2.0
 
-pragma Singleton
-
 /*!
    \qmltype Theme
    \inqmlmodule Material 0.1
@@ -35,10 +33,10 @@ QtObject {
 
     property bool light
 
-    readonly property color textColor: shade(0.70)
-    readonly property color subTextColor: shade(0.54)
+    readonly property color textColor: light ? shade(0.7) : shade(1)
+    readonly property color subTextColor: light ? shade(0.54) : shade(0.70)
     readonly property color iconColor: subTextColor
-    readonly property color hintColor: shade(0.26)
+    readonly property color hintColor: light ? shade(0.26) : shade(0.30)
     readonly property color dividerColor: shade(0.12)
 
     /*!
@@ -54,9 +52,9 @@ QtObject {
 
     function shade(alpha) {
         if (light) {
-            return Qt.rgba(1,1,1,alpha)
-        } else {
             return Qt.rgba(0,0,0,alpha)
+        } else {
+            return Qt.rgba(1,1,1,alpha)
         }
     }
 }

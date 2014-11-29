@@ -203,6 +203,6 @@ View {
                     ? undefined : parent.bottom
         }
         color: toolbar.color
-        highlight: Theme.secondaryColor
+        highlight: Theme.accentColor
     }
 }

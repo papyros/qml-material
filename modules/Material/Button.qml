@@ -28,7 +28,8 @@ View {
     property bool raised
 
     property string text
-    property color textColor: style == 'default' ? theme.blackColor("text") : theme.styleColor(style)
+    property color textColor: Theme.lightDark(backgroundColor, Theme.light.textColor,
+                                                                  Theme.dark.textColor)
 
     signal triggered
 

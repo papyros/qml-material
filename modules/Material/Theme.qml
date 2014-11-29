@@ -81,6 +81,20 @@ Object {
         light: false
     }
 
+    property color temp
+
+    function lightDark(background, lightColor, darkColor) {
+        temp = background
+       if (temp != background) throw "Color not set correctly"
+
+        var a = 1 - ( 0.299 * temp.r + 0.587 * temp.g + 0.114 * temp.b);
+
+        if (a < 0.3)
+            return lightColor
+        else
+            return darkColor
+    }
+
     // TODO: Load all the fonts!
     FontLoader {
         source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf")
