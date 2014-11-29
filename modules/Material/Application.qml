@@ -17,16 +17,15 @@
  */
 import QtQuick 2.0
 import QtQuick.Window 2.2
+import Material 0.1
 
 Window {
     id: app
 
-    //opacity: 0.5
+    width: units.dp(800)
+    height: units.dp(600)
 
-    width: units.gu(120)
-    height: units.gu(80)
-
-    property bool useClientSideDecorations;
+    property bool useClientSideDecorations
 
     //flags: Qt.FramelessWindowHint
 
@@ -34,54 +33,18 @@ Window {
 
     property alias theme: __theme
 
-    Theme {
+    QtObject {
         id: __theme
-    }
 
-    property alias units: __units
+        property color primaryColor: Theme.primaryColor
+        property color primaryDarkColor: Theme.primaryDarkColor
+        property color secondaryColor: Theme.secondaryColor
+        property color backgroundColor: Theme.backgroundColor
 
-    property real scale: Screen.pixelDensity * 1.2// pixels/mm
-
-    property alias device: __device
-
-    QtObject {
-        id: __device
-
-        property string mode: "desktop"
-    }
-
-    property alias animations: __animations
-
-    QtObject {
-        id: __animations
-
-        property int pageTransition: 250
-    }
-
-    QtObject {
-        id: __units
-
-        function mm(number) {
-            return number * scale
-        }
-
-        function dp(number) {
-            return number * scale * 0.15
-        }
-
-        function gu(number) {
-            return dp(number * 8)
-        }
-    }
-
-    property alias i18n: __i18n
-
-    QtObject {
-        id: __i18n
-
-        function tr(text) {
-            return text
-        }
+        onPrimaryColorChanged: Theme.primaryColor = primaryColor
+        onPrimaryDarkColorChanged: Theme.primaryDarkColor = primaryDarkColor
+        onSecondaryColorChanged: Theme.secondaryColor = secondaryColor
+        onBackgroundColorChanged: Theme.backgroundColor = backgroundColor
     }
 
     Rectangle {
@@ -93,11 +56,12 @@ Window {
         }
 
         height: useClientSideDecorations ? units.dp(24) : 0
-        color: theme.primaryDark
+        color: Theme.primaryDarkColor
     }
 
     Rectangle {
         id: contents
+
         anchors {
             left: parent.left
             right: parent.right
@@ -105,22 +69,6 @@ Window {
             bottom: parent.bottom
         }
 
-        color: theme.defaultBackground
-
-        Rectangle {
-            id: overlay
-            anchors.fill: parent
-            color: "black"
-            opacity: drawer && drawer.showing ? 0.4 : 0
-            visible: opacity > 0
-            z: 10
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: drawer.close()
-            }
-        }
+       color: Theme.backgroundColor
     }
-
-    property NavigationDrawer drawer
 }

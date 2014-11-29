@@ -17,44 +17,34 @@
  */
 import QtQuick 2.0
 
+pragma Singleton
+
 Object {
+    id: theme
 
-    property color primary: "#5677fc"
-    property color primaryDark: "#5677fc"
-    property color secondary: "white"
-    property var font: robotoFont
+    property color primaryColor: "#5677fc"
+    property color primaryDarkColor: "#5677fc"
+    property color secondaryColor: "white"
+    property color backgroundColor: "#f3f3f3"
 
-    property color defaultBackground: "#f3f3f3"
+    readonly property color textColor: Qt.rgba(0,0,0,0.70)
+    readonly property color subTextColor: Qt.rgba(0,0,0,0.54)
+    readonly property color iconColor: subTextColor
+    readonly property color hintColor: Qt.rgba(0,0,0,0.26)
+    readonly property color dividerColor: Qt.rgba(0,0,0,0.12)
 
+    // Temporary color used by alphaColor
     property color temp
 
-    function blackColor(style) {
-        if (style == 'text') {
-            return Qt.rgba(0,0,0,0.7)
-            //return Qt.rgba(0,0,0,0.87)
-        } else if (style == 'secondary' || style == 'icon') {
-            return Qt.rgba(0,0,0,0.54)
-        } else if (style == 'hint') {
-            return Qt.rgba(0,0,0,0.26)
-        } else if (style == 'divider') {
-            return Qt.rgba(0,0,0,0.12)
-        }
-    }
-
-    function colorize(color, alpha) {
+    // TODO: Do we need this?
+    function alphaColor(color, alpha) {
         temp = color
         print(temp.r,temp.g,temp.b,alpha)
         print(Qt.rgba(temp.r,temp.g,temp.b,alpha))
         return Qt.rgba(temp.r,temp.g,temp.b,alpha)
     }
 
-    function styleColor(style) {
-        if (style == "default")
-            return blackColor('text')
-        else
-            return primary
-    }
-    
+    // TODO: Load all the fonts!
     FontLoader {
         source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf")
         id: robotoFont
