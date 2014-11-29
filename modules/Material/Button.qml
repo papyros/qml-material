@@ -22,15 +22,17 @@ import Material 0.1
 
 Button {
     id: button
+    property color backgroundColor: "white"
 
     style: ButtonStyle {
-
         background: View {
-            height: Math.max(units.dp(36), label.height + units.dp(16))
-            width: Math.max(units.dp(64), label.width + units.dp(16))
+            id:backgroundElement
             radius: units.dp(2)
             elevation: ((control.hovered || control.activeFocus ) ? 1:0) + (control.isDefault ? 1:0)
             tintColor: control.pressed ? Qt.rgba(0,0,0, 0.1) : "transparent"
+            backgroundColor: button.backgroundColor
+            height: Math.max(units.dp(36), label.height + units.dp(16))
+            width: Math.max(units.dp(64), label.width + units.dp(16))
             Ink {
                 id: mouseArea
                 anchors.fill: parent
@@ -46,8 +48,9 @@ Button {
             id: label
             anchors.centerIn: parent
             text: control.text.toUpperCase()
-            color: Theme.lightDark(backgroundColor, Theme.light.textColor,
-                                                                  Theme.dark.textColor)
+            color: Theme.lightDark(button.backgroundColor,
+                                   Theme.light.textColor,
+                                   Theme.dark.textColor)
         }
     }
-
+}

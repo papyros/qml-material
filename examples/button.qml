@@ -18,10 +18,11 @@ Rectangle {
             id: button2
             text: "Button 2"
             checkable: true
+            width: 200
         }
         Material.Button {
             id: button3
-            text: "Button 3"
+            text: "Button with really long text"
         }
         Material.Button {
             id: button4
