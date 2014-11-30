@@ -1,4 +1,4 @@
-import QtQuick 2.3
+import QtQuick 2.2
 import QtTest 1.0
 import Material 0.1
 

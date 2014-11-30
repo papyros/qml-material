@@ -22,12 +22,10 @@ Rectangle {
     id: page
 
     property string title
-
     property alias actionBar: __actionBar
 
     ActionBar {
         id: __actionBar
-
         page: page
     }
 
@@ -43,7 +41,7 @@ Rectangle {
 
     anchors.fill: parent
 
-    property bool currentPage: pageStack.currentPage == page
+    property bool currentPage: pageStack.currentPage === page
 
     property bool dynamic: false
 

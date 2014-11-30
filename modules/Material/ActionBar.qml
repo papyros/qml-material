@@ -52,7 +52,7 @@ Item {
 	   The maximum number of actions that can be displayed before they spill over into a drop-down
 	   menu. By default this inherits from the global \l Toolbar::maxActionCount.
 	 */
-    property int maxActionCount: toolbar.maxActionCount
+    property int maxActionCount: 10
 
 	/*!
 	   \internal
