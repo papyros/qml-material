@@ -9,6 +9,9 @@ Rectangle {
     ApplicationWindow {
         id: mainwin
         title: "Application Name"
+        width: 100
+        height: 100
+
         initialPage: Page {
             id: page
             pageStack: mainwin.pageStack
