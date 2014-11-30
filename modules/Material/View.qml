@@ -47,107 +47,86 @@ Item {
     property var topShadow: [
         {
             "opacity": 0,
-            "offset": __units.dp(0),
-            "blur": __units.dp(0)
+            "offset": units.dp(0),
+            "blur": units.dp(0)
         },
 
         {
             "opacity": 0.12,
-            "offset": __units.dp(1),
-            "blur": __units.dp(1.5)
+            "offset": units.dp(1),
+            "blur": units.dp(1.5)
         },
 
         {
             "opacity": 0.16,
-            "offset": __units.dp(3),
-            "blur": __units.dp(3)
+            "offset": units.dp(3),
+            "blur": units.dp(3)
         },
 
         {
             "opacity": 0.19,
-            "offset": __units.dp(10),
-            "blur": __units.dp(10)
+            "offset": units.dp(10),
+            "blur": units.dp(10)
         },
 
         {
             "opacity": 0.25,
-            "offset": __units.dp(14),
-            "blur": __units.dp(14)
+            "offset": units.dp(14),
+            "blur": units.dp(14)
         },
 
         {
             "opacity": 0.30,
-            "offset": __units.dp(19),
-            "blur": __units.dp(19)
+            "offset": units.dp(19),
+            "blur": units.dp(19)
         }
     ]
 
     property var bottomShadow: [
         {
             "opacity": 0,
-            "offset": __units.dp(0),
-            "blur": __units.dp(0)
+            "offset": units.dp(0),
+            "blur": units.dp(0)
         },
 
         {
             "opacity": 0.24,
-            "offset": __units.dp(1),
-            "blur": __units.dp(1)
+            "offset": units.dp(1),
+            "blur": units.dp(1)
         },
 
         {
             "opacity": 0.23,
-            "offset": __units.dp(3),
-            "blur": __units.dp(3)
+            "offset": units.dp(3),
+            "blur": units.dp(3)
         },
 
         {
             "opacity": 0.23,
-            "offset": __units.dp(6),
-            "blur": __units.dp(3)
+            "offset": units.dp(6),
+            "blur": units.dp(3)
         },
 
         {
             "opacity": 0.22,
-            "offset": __units.dp(10),
-            "blur": __units.dp(5)
+            "offset": units.dp(10),
+            "blur": units.dp(5)
         },
 
         {
             "opacity": 0.22,
-            "offset": __units.dp(15),
-            "blur": __units.dp(6)
+            "offset": units.dp(15),
+            "blur": units.dp(6)
         }
     ]
 
     property real scale: Screen.pixelDensity * 1.2// pixels/mm
 
 
-    property alias theme: __theme
-    property alias units: __units
     property alias device: __device
     property alias animations: __animations
     property alias i18n: __i18n
 
-
-    QtObject {
-        id: __units
-        function mm(number) {
-            return number * scale
-        }
-
-        function dp(number) {
-            return number * scale * 0.15
-        }
-
-        function gu(number) {
-            return dp(number * 8)
-        }
-    }
-
-    Theme {
-        id: __theme
-    }
 
     QtObject {
         id: __device
