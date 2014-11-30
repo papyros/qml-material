@@ -22,14 +22,17 @@ Rectangle {
 
 	property real realX
 	property real realY
+	property real abstractWidth: parent.width
+	property real abstractHeight: parent.height
 
 	x: realX-(size/2)
 	y: realY-(size/2)
 
 	property real size: 0
-	property real diameter: 2*Math.sqrt(Math.pow(Math.max(x, parent.width - x), 2) + Math.pow(Math.max(y, parent.height - y), 2))
+	property real diameter: 2*Math.sqrt(Math.pow(Math.max(x, abstractWidth - x), 2) + Math.pow(Math.max(y, abstractHeight - y), 2))
 
 	signal finished
+	signal partlyFinished
 
 	width: size
 	height: size
@@ -58,6 +61,11 @@ Rectangle {
 			from: 0
 			to: wave.diameter
 			easing.type: Easing.InCubic
+			onRunningChanged: {
+				if(!running) {
+					wave.partlyFinished();
+				}
+			}
 		}
 		NumberAnimation {
 			target: wave

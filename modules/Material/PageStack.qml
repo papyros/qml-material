@@ -66,7 +66,7 @@ Item {
         currentPage = page
 
         if (!page.transition)
-            page.transition = Utils.newObject(Qt.resolvedUrl('Transitions/PageTransition.qml'))
+            page.transition = Utils.newObject(Qt.resolvedUrl('Transitions/PageTransition.qml'), {pageStack: pageStack}, pageStack)
 
         if (caller)
             page.transition.transitionTo(caller, page)
@@ -92,6 +92,10 @@ Item {
     }
 
     function objectify(page, args) {
+        if (!args) args = {}
+
+        args['pageStack'] = pageStack
+
         print(typeof(page), page)
         if (typeof(page) == "string") {
             page = Utils.newObject(page, args, pageStack)

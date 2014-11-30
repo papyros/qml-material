@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.3
+import Material 0.1
 
 Image {
     id: icon
@@ -30,6 +31,10 @@ Image {
 
         if (color == 'gray' || color == 'grey')
             color = 'grey600'
+         else if (color == Theme.light.iconColor)
+            color = 'grey600'
+        else if  (color == Theme.dark.iconColor)
+            color = 'white'
 
         var dp_size = "18"
 

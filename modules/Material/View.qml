@@ -18,6 +18,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtGraphicalEffects 1.0
+import Material 0.1
 
 Item {
     id: item

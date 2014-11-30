@@ -16,14 +16,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 
 /*!
    \qmltype ActionBar
    \inqmlmodule Material 0.1
    \ingroup material
-   
+
    \brief An action bar holds the title and actions displayed in the application toolbar.
-   
+
    The reason this exists separately from \l Toolbar is for animation purposes. Each page contains
    its own \c ActionBar, and when the application transitions between pages, the toolbar animates
    the transition between action bars.
@@ -32,19 +33,14 @@ Item {
     id: actionBar
 
 	// TODO: Replace with enum values for device.mode
-    implicitHeight: device.mode === "mobile"
-                    ? units.dp(48) : device.mode == "tablet"
+    implicitHeight: Device.formFactor === "mobile"
+                    ? units.dp(48) : Device.formFactor == "tablet"
                       ? units.dp(56) : units.dp(64)
 
     anchors {
         left: parent.left
         right: parent.right
     }
-
-	/*!
-	   The foreground color used for the title and actions.
-	 */
-    property string color: "white"
 
     /*!
        \internal
@@ -67,9 +63,9 @@ Item {
 
 	/*!
 	   The background color for the toolbar when the action bar's page is active. By default this is
-	   the primary color defined in \l Theme::primary
+	   the primary color defined in \l Theme::primaryColor
 	 */
-    property color background: theme.primary
+    property color backgroundColor: Theme.primaryColor
 
     IconAction {
         id: leftItem
@@ -84,7 +80,8 @@ Item {
             }
         }
 
-        color: actionBar.color
+        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
+                                                            Theme.dark.iconColor)
         size: units.dp(27)
         name: page.backAction ? page.backAction.iconName : ""
 
@@ -115,7 +112,8 @@ Item {
 
         text: showContents ? page.title : ""
         style: "title"
-        color: actionBar.color
+        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
+                                                            Theme.dark.textColor)
     }
 
     Row {
@@ -138,7 +136,8 @@ Item {
                 property Action action: page.actions[index]
 
                 name: action.iconName
-                color: actionBar.color
+                color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
+                                                                     Theme.dark.textColor)
                 size: name == "content/add" ? units.dp(30) : units.dp(27)
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
 
@@ -149,7 +148,8 @@ Item {
         IconAction {
             name: "navigation/more_vert"
             size: units.dp(27)
-            color: actionBar.color
+            color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
+                                                                 Theme.dark.textColor)
             visible: showContents && page && page.actions.length > maxActionCount
             anchors.verticalCenter: parent.verticalCenter
         }
