@@ -28,7 +28,7 @@ Button {
         background: View {
             id:backgroundElement
             radius: units.dp(2)
-            elevation: ((control.hovered || control.activeFocus ) ? 1:0) + (control.isDefault ? 1:0)
+            elevation: 1 + ((control.hovered || control.activeFocus ) ? 1:0) + (control.isDefault ? 1:0)
             tintColor: control.pressed ? Qt.rgba(0,0,0, 0.1) : "transparent"
             backgroundColor: button.backgroundColor
             height: Math.max(units.dp(36), label.height + units.dp(16))
