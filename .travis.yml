@@ -9,7 +9,7 @@ install:
 - sudo apt-get -y install pep8 pyflakes
 - sudo apt-get -y install qt53quickcontrols
 - sudo apt-get -y install qt53tools
-- /opt/qt53/bin/qt53-env.sh
 script:
+- source /opt/qt53/bin/qt53-env.sh
 - qmake
 - make check
