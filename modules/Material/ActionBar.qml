@@ -83,11 +83,9 @@ Item {
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                             Theme.dark.iconColor)
         size: units.dp(27)
-        name: page.backAction ? page.backAction.iconName : ""
+        action: page.backAction
 
-        onTriggered: page.backAction.triggered(leftItem)
-
-        opacity: show ? 1 : 0
+        opacity: show ? enabled ? 1 : 0.3 : 0
 
         Behavior on opacity {
             NumberAnimation { duration: 200 }

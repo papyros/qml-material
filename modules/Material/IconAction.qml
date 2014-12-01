@@ -23,12 +23,24 @@ Icon {
 
     signal triggered
 
+    name: action ? action.iconName : ""
+    enabled: action ? action.enabled : true
+
+    onTriggered: {
+        if (action) action.triggered(icon)
+    }
+
+    opacity: enabled ? 1 : 0.6
+
+    property Action action
+
     Ink {
         id: ink
 
         anchors.centerIn: parent
 
         endSize: width * 3
+        enabled: icon.enabled
 
         width: Math.max(parent.width, units.dp(48))
         height: Math.max(parent.height, units.dp(48))
