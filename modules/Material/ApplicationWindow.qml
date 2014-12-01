@@ -74,18 +74,11 @@ Window {
      */
     property alias toolbar: __toolbar
 
-    /*!
-       \internal
-       The pixel density of the screen the application's window is currently on. See \l Screen
-       and \l units.
-     */
-    property real __pixelDensity: Screen.pixelDensity
-
 
     width: units.dp(800)
     height: units.dp(600)
 
-    on__PixelDensityChanged: units.__pixelDensity = __pixelDensity
+    Component.onCompleted: units.__pixelDensity = Screen.pixelDensity
 
     Toolbar {
         id: __toolbar

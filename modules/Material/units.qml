@@ -56,7 +56,7 @@ Object {
        value from \l Screen:pixelDensity, but that property only works from within a \l Window type,
        so this is hardcoded here and we update it from within \l ApplicationWindow
      */
-    property real __pixelDensity: 4.5 // pixels/mm
+    property real __pixelDensity: 0 // pixels/mm
 
     /*!
        Converts millimeters into pixels. Used primarily by \l units::dp, but there might be other
