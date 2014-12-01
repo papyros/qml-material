@@ -47,7 +47,7 @@ View {
             margins: margins
         }
 
-        color: theme.blackColor('secondary')
+        color: Theme.light.subTextColor
     }
 
     property bool showDivider: false

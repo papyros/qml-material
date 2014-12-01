@@ -24,4 +24,10 @@ Object {
 
     // TODO: Actually set this up correctly
     property string formFactor: "desktop"
+
+    // TODO: Actually set this up correctly
+    property string iconName: "hardware/computer"
+
+    // TODO: Actually set this up correctly
+    property string name: "Computer"
 }
