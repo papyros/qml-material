@@ -120,7 +120,6 @@ Item {
         }
     ]
 
-    property real scale: Screen.pixelDensity * 1.2// pixels/mm
 
 
     property alias device: __device
