@@ -6,8 +6,7 @@ Rectangle {
     id: container
     color: Theme.backgroundColor
 
-    default property alias sourceComponent: __contentArea.sourceComponent
-    property alias source: __contentArea.source
+    default property alias content: __contentArea.children
 
     property string title: ''
     property alias actionBar: __actionBar
@@ -29,8 +28,6 @@ Rectangle {
         visible: false
     }
 
-    property alias page: __contentArea.item
-
     function pop()
     {
         Controls.Stack.view.pop();
@@ -41,7 +38,7 @@ Rectangle {
         Controls.Stack.view.push( {item: component, properties: properties} );
     }
 
-    Loader {
+    Item {
         id: __contentArea
         anchors.fill: parent
     }

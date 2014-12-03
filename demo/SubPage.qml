@@ -14,6 +14,7 @@ NGPage {
         }
     ]
     Rectangle {
+        anchors.fill: parent
         ListView {
             id: list
             model: 3

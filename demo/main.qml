@@ -24,6 +24,7 @@ NGApplicationWindow {
         ]
 
         Rectangle {
+            anchors.fill: parent
             Column {
                 spacing: units.dp(10)
                 anchors.centerIn: parent
