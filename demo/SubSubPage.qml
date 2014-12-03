@@ -5,7 +5,7 @@ import Material.ListItems 0.1 as ListItem
 NGPage {
     id: page
 
-    property string coolness: ''
+    property alias coolness: button.text
     title: "Sub Sub Page"
 
     actions: [
@@ -66,7 +66,7 @@ NGPage {
                 bottom: parent.bottom
             }
 
-            text: page.coolness
+            text: 'button'
             elevation: 1
             onTriggered: page.push( Qt.createComponent("SubPage.qml") );
         }
