@@ -6,7 +6,6 @@
         <file>NGToolbar.qml</file>
         <file>NGPage.qml</file>
         <file>NGPageStack.qml</file>
-        <file>NGActionBar.qml</file>
         <file>SubSubPage.qml</file>
     </qresource>
 </RCC>

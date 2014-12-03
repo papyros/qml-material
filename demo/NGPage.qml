@@ -14,9 +14,10 @@ Rectangle {
     property list<Action> actions
     property bool cardStyle: false
 
-    NGActionBar {
+    ActionBar {
         id: __actionBar
         page: container
+        maxActionCount: 0
     }
 
     property alias backAction: __backAction
