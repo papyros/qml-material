@@ -17,11 +17,6 @@ Controls.ApplicationWindow {
     NGPageStack {
         id: __pageStack
         anchors.fill: parent;
-        onCurrentItemChanged: {
-            if ( __pageStack.currentItem ) {
-                __pageStack.currentItem.actionBar.maxActionCount = Qt.binding( function() { return __toolbar.maxActionCount } );
-            }
-        }
         onPushed: __toolbar.push( page )
         onPopped: __toolbar.pop(  )
     }

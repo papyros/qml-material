@@ -48,53 +48,6 @@ View
         height: toolbar.implicitHeight
 
         delegate: Controls.StackViewDelegate {
-            popTransition: Controls.StackViewTransition {
-                SequentialAnimation {
-                    id: previousShowAnimation
-
-                    ParallelAnimation {
-
-                        NumberAnimation {
-                            duration: MaterialAnimation.pageTransitionDuration
-                            target: enterItem
-                            property: "opacity"
-                            from: 0
-                            to: 1
-                        }
-
-                        NumberAnimation {
-                            duration: MaterialAnimation.pageTransitionDuration
-                            target: enterItem
-                            property: "y"
-                            from: enterItem ? -enterItem.height : 0
-                            to: 0
-                        }
-                    }
-                }
-                SequentialAnimation {
-                    id: actionBarHideAnimation
-
-                    ParallelAnimation {
-                        NumberAnimation {
-                            duration: MaterialAnimation.pageTransitionDuration
-                            target: exitItem
-                            property: "opacity"
-                            from: 1
-                            to: 0
-                        }
-
-                        NumberAnimation {
-                            duration: MaterialAnimation.pageTransitionDuration
-                            target: exitItem
-                            property: "y"
-                            to: exitItem.height
-                            from: 0
-                        }
-                    }
-                }
-
-            }
-
             pushTransition: Controls.StackViewTransition {
                 SequentialAnimation {
                     id: actionBarShowAnimation
@@ -149,6 +102,7 @@ View
 
     function push( page )
     {
+        page.actionBar.maxActionCount = Qt.binding( function() { return toolbar.maxActionCount } );
         stack.push(page.actionBar);
     }
 
