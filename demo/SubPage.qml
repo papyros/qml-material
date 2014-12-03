@@ -30,7 +30,7 @@ NGPage {
                 bottom: button.top
             }
         }
-        Button {
+        NGButton {
             id: button
             anchors {
                 left: parent.left

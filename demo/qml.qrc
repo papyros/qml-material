@@ -7,5 +7,6 @@
         <file>NGPage.qml</file>
         <file>NGPageStack.qml</file>
         <file>SubSubPage.qml</file>
+        <file>NGButton.qml</file>
     </qresource>
 </RCC>

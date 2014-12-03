@@ -33,7 +33,7 @@ NGApplicationWindow {
                     text: i18n.tr("Demo!")
                 }
 
-                Button {
+                NGButton {
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: "Open sub page!"
                     elevation: 1
