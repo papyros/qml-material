@@ -158,6 +158,7 @@ Item {
         anchors.fill: parent
         color: Qt.tint(backgroundColor, tintColor)
         radius: item.radius
+        antialiasing: parent.rotation ? true : false
 
         clip: true
 
