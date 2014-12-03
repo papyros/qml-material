@@ -16,61 +16,69 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 
 Item {
-	property string placeholder
-	property color color: theme.primary
-	property string text: field.text
-	property TextInput input: field
-
 	id: textField
-
-	height: units.dp(72)
+	
+	property bool floatingLabel: false
+	
+	property string hintText
+	property color color: Theme.accentColor
+	property alias text: field.text
+	
+	height: floatingLabel ? units.dp(72) : units.dp(48)
 	width: units.dp(200)
-
-	states: State {
-		name: "focused"
-		when: field.activeFocus || field.text != ""
-		PropertyChanges {
-			target: fieldPlaceholder
-			font.pixelSize: textField.height/6 
-			y: textField.height/4.5
-		}
-	}
-
-	transitions: Transition {
-		from: ""
-		to: "focused"
-		reversible: true
-		NumberAnimation {
-			properties: "y, font.pixelSize"
-			duration: 150
-		}
-	}
-
+	
+	property bool empty: field.text == ""
+	
 	TextInput {
 		id: field
-		height: font.pixelSize
 		width: parent.width
-		font.pixelSize: textField.height/4.5
-		y: (2*textField.height)/3
-		color: theme.blackColor('text')
-		font.family: theme.font.name
+		font.pixelSize: 1 * units.dp(16)
+		y: textField.floatingLabel ? units.dp(37.0) : units.dp(16)
+		
+		color: Theme.light.textColor
+		font.family: "Roboto"
 	}
 
 	Label {
 		id: fieldPlaceholder
-		text: parent.placeholder
-		font.pixelSize: textField.height/4.5
-		y: field.y
-		font.family: theme.font.name
+		text: textField.hintText
+		font.pixelSize: 1 * (!textField.empty && textField.floatingLabel ? units.dp(12) : units.dp(16))
+		
+		y: !textField.empty && textField.floatingLabel ? units.dp(16) : field.y
+		
+		opacity: !textField.empty && !textField.floatingLabel ? 0 : 1
+		color: Theme.light.hintColor
+		
+		Behavior on y {
+			NumberAnimation { duration: 200}
+		}
+		
+		Behavior on font.pixelSize {
+			NumberAnimation { duration: 200}
+		}
 	}
-
+	
 	Rectangle {
-		color: parent.color
-		height: textField.height/18
-		width: field.width
-		anchors.top: field.bottom
-		anchors.topMargin: textField.height/9
+		color: field.activeFocus ? textField.color : Theme.light.hintColor
+		
+		height: field.activeFocus ? units.dp(2) : units.dp(1)
+		
+		Behavior on height {
+			NumberAnimation { duration: 200}
+		}
+		
+		Behavior on color {
+			ColorAnimation { duration: 200}
+		}
+		
+		anchors {
+			left: parent.left
+			right: parent.right
+			bottom: parent.bottom
+			bottomMargin: units.dp(8) - height/2
+		}
 	}
 }
