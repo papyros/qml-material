@@ -68,7 +68,7 @@ NGPage {
 
             text: 'button'
             elevation: 1
-            onTriggered: page.push( Qt.createComponent("SubPage.qml") );
+            onTriggered: page.push( Qt.resolvedUrl("SubPage.qml") );
         }
     }
 }
