@@ -36,9 +36,9 @@ Rectangle {
         Controls.Stack.view.pop();
     }
 
-    function push( component )
+    function push( component, properties )
     {
-        Controls.Stack.view.push( {item: component, destroyOnPop: true} );
+        Controls.Stack.view.push( {item: component, properties: properties} );
     }
 
     Loader {

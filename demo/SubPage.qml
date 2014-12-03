@@ -38,7 +38,7 @@ NGPage {
 
             text: "Open sub sub page!"
             elevation: 1
-            onTriggered: page.push( Qt.createComponent("SubSubPage.qml") );
+            onTriggered: page.push( Qt.createComponent("SubSubPage.qml"), {coolness: 'cool'} );
         }
     }
 }
