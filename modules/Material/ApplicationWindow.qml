@@ -116,6 +116,8 @@ Window {
 
         tabs: pageStack.currentPage.tabs
         expanded: pageStack.currentPage.cardStyle
+        
+	    onSelectedTabChanged: pageStack.currentPage.selectedTab = selectedTab 
     }
 
     PageStack {

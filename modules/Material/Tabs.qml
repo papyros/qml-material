@@ -87,7 +87,7 @@ Row {
 
                 Label {
                     id: label
-                    text: modelData.hasOwnProperty("text") ? modelData.text : ""
+                    text: modelData.hasOwnProperty("text") ? modelData.text : modelData
                     color: tabbar.color
                     style: "body2"
                     anchors.verticalCenter: parent.verticalCenter
