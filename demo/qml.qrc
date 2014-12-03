@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>SubPage.qml</file>
+        <file>NGApplicationWindow.qml</file>
+        <file>NGToolbar.qml</file>
+        <file>NGPage.qml</file>
+        <file>NGPageStack.qml</file>
+        <file>NGActionBar.qml</file>
+        <file>SubSubPage.qml</file>
+    </qresource>
+</RCC>
