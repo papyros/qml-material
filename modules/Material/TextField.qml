@@ -35,7 +35,7 @@ Item {
 	TextInput {
 		id: field
 		width: parent.width
-		font.pixelSize: 1 * units.dp(16)
+		font.pixelSize: units.dp(16)
 		y: textField.floatingLabel ? units.dp(37.0) : units.dp(16)
 		
 		color: Theme.light.textColor
@@ -45,7 +45,7 @@ Item {
 	Label {
 		id: fieldPlaceholder
 		text: textField.hintText
-		font.pixelSize: 1 * (!textField.empty && textField.floatingLabel ? units.dp(12) : units.dp(16))
+		font.pixelSize: !textField.empty && textField.floatingLabel ? units.dp(12) : units.dp(16)
 		
 		y: !textField.empty && textField.floatingLabel ? units.dp(16) : field.y
 		
