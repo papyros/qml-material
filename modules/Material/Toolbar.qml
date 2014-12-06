@@ -31,6 +31,8 @@ View {
 
     property bool expanded: false
 
+    property bool clientSideDecorations: false
+
     Behavior on height {
         NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
     }
@@ -65,6 +67,7 @@ View {
         print("Pushing action bar..")
 
         actionBar = nextPage.actionBar
+        actionBar.toolbar = toolbar
         previousActionBar = lastPage ? lastPage.actionBar : null
 
         if (previousActionBar != null) {
@@ -188,10 +191,35 @@ View {
     Item {
         id: actionBarItem
 
-        width: parent.width
+        anchors {
+            left: parent.left
+            right: windowControls.left
+            rightMargin: clientSideDecorations ? units.dp(8) : 0
+        }
         height: toolbar.implicitHeight
 
 
+    }
+
+    Row {
+        id: windowControls
+        visible: clientSideDecorations
+
+        anchors {
+            verticalCenter: parent.verticalCenter
+            right: parent.right
+            rightMargin: units.dp(16)
+        }
+
+        spacing: units.dp(24)
+
+        IconAction {
+            name: "navigation/close"
+            color: "white"
+            onTriggered: {
+                Qt.quit()
+            }
+        }
     }
 
     Tabs {
