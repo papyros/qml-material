@@ -1,2 +1,3 @@
 .qmake.stash
 Makefile
+tests/tst_material

@@ -7,7 +7,7 @@ install:
   - sudo apt-get update
   - sudo apt-get -y install qt53declarative
   - sudo apt-get -y install pep8 pyflakes
-  - sudo apt-get -y install qt53quickcontrols qt53graphicaleffects 
+  - sudo apt-get -y install qt53quickcontrols qt53graphicaleffects
   - sudo apt-get -y install qt53tools
 
 before_script:
