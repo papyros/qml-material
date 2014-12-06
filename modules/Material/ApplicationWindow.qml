@@ -119,6 +119,8 @@ Window {
         expanded: pageStack.currentPage.cardStyle
 
         clientSideDecorations: app.clientSideDecorations
+
+	    onSelectedTabChanged: pageStack.currentPage.selectedTab = selectedTab
     }
 
     PageStack {

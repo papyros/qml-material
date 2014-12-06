@@ -52,7 +52,7 @@ View {
 
     property alias tabs: tabbar.tabs
     property alias selectedTab: tabbar.selectedIndex
-
+    
     property bool showBackButton
 
     property NavigationDrawer drawer

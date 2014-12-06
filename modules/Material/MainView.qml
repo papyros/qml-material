@@ -16,95 +16,42 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
-import QtQuick.Window 2.0
+import QtQuick.Window 2.2
+import Material 0.1
 
 Item {
     id: app
 
-    //opacity: 0.5
-
-    width: units.gu(120)
-    height: units.gu(80)
-
-    default property alias content: contents.data
-
+    /*!
+       A grouped property that allows the application to customize the the primary color, the
+       primary dark color, and the accent color. See \l Theme for more details.
+     */
     property alias theme: __theme
 
-    Theme {
+    /*!
+       \internal
+       The pixel density of the screen the application's window is currently on. See \l Screen
+       and \l units.
+     */
+    property real __pixelDensity: Screen.pixelDensity
+
+
+    width: units.dp(800)
+    height: units.dp(600)
+
+    on__PixelDensityChanged: units.__pixelDensity = __pixelDensity
+
+    QtObject {
         id: __theme
+
+        property color primaryColor: Theme.primaryColor
+        property color primaryDarkColor: Theme.primaryDarkColor
+        property color accentColor: Theme.accentColor
+        property color backgroundColor: Theme.backgroundColor
+
+        onPrimaryColorChanged: Theme.primaryColor = primaryColor
+        onPrimaryDarkColorChanged: Theme.primaryDarkColor = primaryDarkColor
+        onAccentColorChanged: Theme.accentColor = accentColor
+        onBackgroundColorChanged: Theme.backgroundColor = backgroundColor
     }
-
-    property alias units: __units
-
-    property real scale: Screen.pixelDensity * 1.2// pixels/mm
-
-    property alias device: __device
-
-    QtObject {
-        id: __device
-
-        property string mode: "desktop"
-    }
-
-    property alias animations: __animations
-
-    QtObject {
-        id: __animations
-
-        property int pageTransition: 250
-    }
-
-    QtObject {
-        id: __units
-
-        function mm(number) {
-            return number * scale
-        }
-
-        function dp(number) {
-            return number * scale * 0.15
-        }
-
-        function gu(number) {
-            return dp(number * 8)
-        }
-    }
-
-    property alias i18n: __i18n
-
-    QtObject {
-        id: __i18n
-
-        function tr(text) {
-            return text
-        }
-    }
-
-    Rectangle {
-        id: contents
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-            bottom: parent.bottom
-        }
-
-        color: theme.defaultBackground
-
-        Rectangle {
-            id: overlay
-            anchors.fill: parent
-            color: "black"
-            opacity: drawer && drawer.showing ? 0.4 : 0
-            visible: opacity > 0
-            z: 10
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: drawer.close()
-            }
-        }
-    }
-
-    property NavigationDrawer drawer
 }
