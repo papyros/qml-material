@@ -35,21 +35,21 @@ Page {
 	VisualItemModel {
 		id: tabs
 		
-		// Tab 1
+		// Tab 1 "Overview"
 		Rectangle {
 			width: tabView.width
 			height: tabView.height
 			color: "green"
 		}
 		
-		// Tab 3
+		// Tab 2 "Projects"
 		Rectangle {
 			width: tabView.width
 			height: tabView.height
 			color: "orange"
 		}
 		
-		// Tab 2
+		// Tab 3 "Inbox"
 		Rectangle {
 			width: tabView.width
 			height: tabView.height
