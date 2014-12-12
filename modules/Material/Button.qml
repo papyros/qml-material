@@ -22,15 +22,16 @@ import Material 0.1
 
 Button {
     id: button
-    property color backgroundColor: "white"
+
+    property int elevation: 1 + ((button.hovered || button.activeFocus ) ? 1:0) + (button.isDefault ? 1:0)
 
     style: ButtonStyle {
         background: View {
             id:backgroundElement
             radius: units.dp(2)
-            elevation: 1 + ((control.hovered || control.activeFocus ) ? 1:0) + (control.isDefault ? 1:0)
+            elevation: button.elevation
             tintColor: control.pressed ? Qt.rgba(0,0,0, 0.1) : "transparent"
-            backgroundColor: button.backgroundColor
+            backgroundColor: button.elevation > 0 ? "white" : "transparent"
             height: Math.max(units.dp(36), label.height + units.dp(16))
             width: Math.max(units.dp(64), label.width + units.dp(16))
             Ink {
@@ -48,7 +49,7 @@ Button {
             id: label
             anchors.centerIn: parent
             text: control.text.toUpperCase()
-            color: Theme.lightDark(button.backgroundColor,
+            color: Theme.lightDark(button.elevation > 0 ? "white" : "transparent",
                                    Theme.light.textColor,
                                    Theme.dark.textColor)
         }
