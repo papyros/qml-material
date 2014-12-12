@@ -21,8 +21,7 @@ ApplicationWindow {
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Open sub page!"
-                elevation: 1
-                onTriggered: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
             }
         }
     }
