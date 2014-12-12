@@ -58,7 +58,7 @@ Object {
        complements the primary color palette at
        \l {http://www.google.com/design/spec/style/color.html#color-color-palette}.
     */
-    property color accentColor: "white"
+    property color accentColor: "#ff4081"
 
     /*!
        The default background color for the application.

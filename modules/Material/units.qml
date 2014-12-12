@@ -63,7 +63,7 @@ Object {
        uses for it as well.
      */
     function mm(number) {
-        return number * __pixelDensity
+        return number * __pixelDensity * 1.4
     }
 
     /*!
@@ -71,6 +71,6 @@ Object {
        this anywhere you need to refer to distances on the screen.
      */
     function dp(number) {
-        return number * __pixelDensity * 0.15875
+        return number * __pixelDensity * 1.4 * 0.15875
     }
 }

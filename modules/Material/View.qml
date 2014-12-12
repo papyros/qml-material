@@ -146,11 +146,14 @@ Item {
 
     RectangularGlow {
         property var elevationInfo: bottomShadow[Math.min(elevation, 5)]
+        property real horizontalShadowOffset: elevationInfo.offset * Math.sin((2 * Math.PI) * (parent.rotation / 360.0))
+        property real verticalShadowOffset: elevationInfo.offset * Math.cos((2 * Math.PI) * (parent.rotation / 360.0))
 
         anchors.centerIn: parent
         width: parent.width + (fullWidth ? units.dp(10) : 0)
         height: parent.height + (fullHeight ? units.dp(20) : 0)
-        anchors.verticalCenterOffset: elevationInfo.offset * (elevationInverted ? -1 : 1)
+        anchors.horizontalCenterOffset: horizontalShadowOffset * (elevationInverted ? -1 : 1)
+        anchors.verticalCenterOffset: verticalShadowOffset * (elevationInverted ? -1 : 1)
         glowRadius: elevationInfo.blur
         opacity: elevationInfo.opacity
         spread: 0.05
@@ -160,11 +163,14 @@ Item {
 
     RectangularGlow {
         property var elevationInfo: topShadow[Math.min(elevation, 5)]
+        property real horizontalShadowOffset: elevationInfo.offset * Math.sin((2 * Math.PI) * (parent.rotation / 360.0))
+        property real verticalShadowOffset: elevationInfo.offset * Math.cos((2 * Math.PI) * (parent.rotation / 360.0))
 
         anchors.centerIn: parent
         width: parent.width + (fullWidth ? units.dp(10) : 0)
         height: parent.height + (fullHeight ? units.dp(20) : 0)
-        anchors.verticalCenterOffset: elevationInfo.offset * (elevationInverted ? -1 : 1)
+        anchors.horizontalCenterOffset: horizontalShadowOffset * (elevationInverted ? -1 : 1)
+        anchors.verticalCenterOffset: verticalShadowOffset * (elevationInverted ? -1 : 1)
         glowRadius: elevationInfo.blur
         opacity: elevationInfo.opacity
         spread: 0.05
@@ -177,6 +183,7 @@ Item {
         anchors.fill: parent
         color: Qt.tint(backgroundColor, tintColor)
         radius: item.radius
+        antialiasing: parent.rotation ? true : false
 
         clip: true
 

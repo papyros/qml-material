@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
-import ".."
+import Material 0.1
 
 Item {
 
@@ -31,7 +31,7 @@ Item {
 
     Rectangle {
         radius: units.dp(2)
-        color: theme.secondary
+        color: Theme.accentColor
         opacity: 0.2
 
         anchors.fill: parent
@@ -43,6 +43,6 @@ Item {
         radius: units.dp(2)
         height: parent.height
         width: parent.width * progress
-        color: theme.secondary
+        color: Theme.accentColor
     }
 }

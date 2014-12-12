@@ -54,6 +54,8 @@ Item {
 	 */
     property int maxActionCount: 10
 
+    property Item toolbar
+
 	/*!
 	   \internal
 	   The action bar in the toolbar will only be shown if the page is not card-style. In that case,
