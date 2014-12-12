@@ -92,23 +92,23 @@ Text {
 
     property var fontInfo: fontStyles[style]
 
-    font.pixelSize: 1.3 * units.dp(desktop && fontInfo.size_desktop ? fontInfo.size_desktop : fontInfo.size)
-    //font.family: "Roboto"
-//    font.weight: {
-//        var weight = fontInfo.font
+    font.pixelSize: units.dp(desktop && fontInfo.size_desktop ? fontInfo.size_desktop : fontInfo.size)
+    font.family: "Roboto"
+    font.weight: {
+        var weight = fontInfo.font
 
-//        if (weight == "medium") {
-//            return Font.DemiBold
-//        } else if (weight == "regular") {
-//            return Font.Normal
-//        } else if (weight == "light") {
-//            return Font.Light
-//        }
-//    }
+        if (weight == "medium") {
+            return Font.DemiBold
+        } else if (weight == "regular") {
+            return Font.Normal
+        } else if (weight == "light") {
+            return Font.Light
+        }
+    }
 
     color: Theme.light.textColor
 
-    //FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf") }
-    //FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Medium.ttf") }
-    //FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Bold.ttf") }
+    FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf") }
+    FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Medium.ttf") }
+    FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Bold.ttf") }
 }

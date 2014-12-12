@@ -38,13 +38,14 @@ Image {
 
         var dp_size = "18"
 
-        if (size > units.dp(36))
+        if (size > 36 * 3)
             dp_size = "48"
-        if (size > units.dp(24))
+        if (size > 24 * 3)
             dp_size = "36"
-        else if (size > units.dp(18))
+        else if (size > 18 * 3)
             dp_size = "24"
 
+		//print(size/units.dp(1) + "dp = " + size + ' -> ' + dp_size + "dp")
 
         return Qt.resolvedUrl("icons/%1/ic_%2_%3_%4dp.png".arg(list[0]).arg(list[1]).arg(color).arg(dp_size))
     }
@@ -55,7 +56,7 @@ Image {
     */
     property string name
 
-    property int size: units.dp(24)
+    property real size: units.dp(24)
 
     width: icon.name.indexOf("awesome/") == 0
            ? height : sourceSize.width * height/sourceSize.height

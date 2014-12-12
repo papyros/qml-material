@@ -15,34 +15,6 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
-import Material 0.1
 
-Item {
-
-    property real progress
-    property alias color: bar.color
-
-    height: progress > 0 && progress < 1 ? units.dp(4) : 0
-
-    Behavior on height {
-        NumberAnimation { duration: 200 }
-    }
-
-    Rectangle {
-        radius: units.dp(2)
-        color: Theme.accentColor
-        opacity: 0.2
-
-        anchors.fill: parent
-    }
-
-    Rectangle {
-        id: bar
-
-        radius: units.dp(2)
-        height: parent.height
-        width: parent.width * progress
-        color: Theme.accentColor
-    }
-}
+#include <QtQuickTest/QtQuickTest>
+QUICK_TEST_MAIN(materials)

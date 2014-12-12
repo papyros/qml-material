@@ -15,34 +15,45 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
+
+import QtQuick 2.2
+import QtTest 1.0
 import Material 0.1
 
-Item {
+Rectangle {
+    width: 100
+    height: 100
 
-    property real progress
-    property alias color: bar.color
+    ApplicationWindow {
+        id: mainwin
+        title: "Application Name"
+        width: 100
+        height: 100
 
-    height: progress > 0 && progress < 1 ? units.dp(4) : 0
+        initialPage: Page {
+            id: page
+            pageStack: mainwin.pageStack
+            title: "Page Title"
 
-    Behavior on height {
-        NumberAnimation { duration: 200 }
+            Label {
+                anchors.centerIn: parent
+                text: "Hello World!"
+            }
+        }
+        Component.onCompleted: mainwin.show()
     }
 
-    Rectangle {
-        radius: units.dp(2)
-        color: Theme.accentColor
-        opacity: 0.2
+    TestCase {
+        name: "PageStack Test"
+        when: mainwin.visible
 
-        anchors.fill: parent
+        function test_showCard() {
+            wait(2000);
+            console.log('here');
+
+            verify( page !== null )
+            verify( page !== undefined )
+        }
     }
 
-    Rectangle {
-        id: bar
-
-        radius: units.dp(2)
-        height: parent.height
-        width: parent.width * progress
-        color: Theme.accentColor
-    }
 }

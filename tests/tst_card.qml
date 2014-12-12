@@ -15,34 +15,23 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
+
+import QtQuick 2.2
+import QtTest 1.0
 import Material 0.1
 
-Item {
+Card {
+    width: 100
+    height: 100
+    id: card
 
-    property real progress
-    property alias color: bar.color
+    TestCase {
+        name: "Card Test"
+        when: windowShown
 
-    height: progress > 0 && progress < 1 ? units.dp(4) : 0
-
-    Behavior on height {
-        NumberAnimation { duration: 200 }
+        function test_showCard() {
+            wait(2000);
+        }
     }
 
-    Rectangle {
-        radius: units.dp(2)
-        color: Theme.accentColor
-        opacity: 0.2
-
-        anchors.fill: parent
-    }
-
-    Rectangle {
-        id: bar
-
-        radius: units.dp(2)
-        height: parent.height
-        width: parent.width * progress
-        color: Theme.accentColor
-    }
 }
