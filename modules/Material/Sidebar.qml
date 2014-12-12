@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 import "ListItems" as ListItem
 
 /*!
@@ -49,8 +50,8 @@ View {
     property string mode: "left" // or "right"
     property alias header: headerItem.text
 
-    backgroundColor: style === "default" ? Qt.rgba(0.9,0.9,0.9,0.1) : "#333"
-    property color borderColor: style === "dark" ? Qt.rgba(0.5,0.5,0.5,0.5) : Qt.rgba(0,0,0,0.2)
+    backgroundColor: style === "default" ? "white" : "#333"
+    property color borderColor: style === "dark" ? Qt.rgba(0.5,0.5,0.5,0.5) : Theme.light.dividerColor
 
     anchors {
         left: mode === "left" ? parent.left : undefined
@@ -72,7 +73,7 @@ View {
         }
     }
 
-    width: units.gu(35)
+    width: units.dp(250)
 
 
     anchors.leftMargin: expanded ? 0 : -width

@@ -22,7 +22,7 @@ MouseArea {
     id: view
 
     clip: true
-    hoverEnabled: true
+    hoverEnabled: enabled
     z: 2
 
     property int startSize: width/3

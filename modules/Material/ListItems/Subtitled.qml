@@ -72,7 +72,7 @@ BaseListItem {
             Label {
                 id: valueLabel
 
-                color: theme.blackColor('secondary')
+                color: theme.light.subTextColor
                 elide: Text.ElideRight
                 anchors.left: label.right
                 anchors.leftMargin: units.dp(16)
@@ -94,7 +94,7 @@ BaseListItem {
         Label {
             id: subLabel
 
-            color: theme.blackColor('secondary')
+            color: theme.light.subTextColor
             elide: Text.ElideRight
             width: parent.width
 

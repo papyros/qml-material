@@ -52,7 +52,9 @@ Item {
 	   The maximum number of actions that can be displayed before they spill over into a drop-down
 	   menu. By default this inherits from the global \l Toolbar::maxActionCount.
 	 */
-    property int maxActionCount: toolbar.maxActionCount
+    property int maxActionCount: toolbar ? toolbar.maxActionCount : 3
+
+    property Item toolbar
 
 	/*!
 	   \internal
@@ -83,11 +85,9 @@ Item {
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                             Theme.dark.iconColor)
         size: units.dp(27)
-        name: page.backAction ? page.backAction.iconName : ""
+        action: page.backAction
 
-        onTriggered: page.backAction.triggered(leftItem)
-
-        opacity: show ? 1 : 0
+        opacity: show ? enabled ? 1 : 0.3 : 0
 
         Behavior on opacity {
             NumberAnimation { duration: 200 }
@@ -133,15 +133,12 @@ Item {
             delegate: IconAction {
                 id: iconAction
 
-                property Action action: page.actions[index]
+                action: page.actions[index]
 
-                name: action.iconName
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
                                                                      Theme.dark.textColor)
                 size: name == "content/add" ? units.dp(30) : units.dp(27)
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
-
-                onTriggered: action.triggered(iconAction)
             }
         }
 
