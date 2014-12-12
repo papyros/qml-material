@@ -15,65 +15,63 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 2.0
 
 Rectangle {
 	id: wave
 
-	property real realX
-	property real realY
+	property bool opened
+	property real size
+	property real initialX
+	property real initialY
 	property real abstractWidth: parent.width
 	property real abstractHeight: parent.height
+	property real diameter: 2*Math.sqrt(Math.pow(Math.max(initialX, abstractWidth - initialX), 2) + Math.pow(Math.max(initialY, abstractHeight - initialY), 2))
 
-	x: realX-(size/2)
-	y: realY-(size/2)
+	signal finished(bool opened)
 
-	property real size: 0
-	property real diameter: 2*Math.sqrt(Math.pow(Math.max(x, abstractWidth - x), 2) + Math.pow(Math.max(y, abstractHeight - y), 2))
+	function open(x, y) {
+		wave.initialX = x;
+		wave.initialY = y;
+		wave.opened = true;
+	}
 
-	signal finished
-	signal partlyFinished
+	function close(x, y) {
+		wave.initialX = x;
+		wave.initialY = y;
+		wave.opened = false;
+	}
 
 	width: size
 	height: size
 	radius: size/2
+	x: initialX - size/2
+	y: initialY - size/2
 
-	function run() {
-		waveAnim.start();
+	states: State {
+		name: "opened"
+		when: wave.opened
+
+		PropertyChanges {
+			target: wave
+			size: wave.diameter
+		}
 	}
 
-	SequentialAnimation {
-		running: false
-		id: waveAnim
+	transitions: Transition {
+		from: ""
+		to: "opened"
+		reversible: true
 
-		onRunningChanged: {
-			if (!running) {
-				wave.size = 0;
-				wave.opacity = 1;
-				wave.finished();
+		SequentialAnimation {
+			NumberAnimation {
+				property: "size"
+				easing.type: Easing.OutCubic
 			}
-		}
-
-		NumberAnimation {
-			target: wave
-			properties: "size"
-			duration: 500
-			from: 0
-			to: wave.diameter
-			easing.type: Easing.InCubic
-			onRunningChanged: {
-				if(!running) {
-					wave.partlyFinished();
-				}
+			ScriptAction {
+				script: wave.finished(wave.opened)
 			}
-		}
-		NumberAnimation {
-			target: wave
-			properties: "opacity"
-			duration: 250
-			from: 1
-			to: 0
-			easing.type: Easing.InCubic
 		}
 	}
 }
