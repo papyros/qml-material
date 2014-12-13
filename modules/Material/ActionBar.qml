@@ -36,12 +36,6 @@ Item {
     implicitHeight: Device.formFactor === "mobile"
                     ? units.dp(48) : Device.formFactor == "tablet"
                       ? units.dp(56) : units.dp(64)
-/*
-    anchors {
-        left: parent.left
-        right: parent.right
-    }
-*/
     /*!
        \internal
        The page holding this \c ActionBar
