@@ -52,7 +52,7 @@ Item {
 	   The maximum number of actions that can be displayed before they spill over into a drop-down
 	   menu. By default this inherits from the global \l Toolbar::maxActionCount.
 	 */
-    property int maxActionCount: toolbar ? toolbar.maxActionCount : 3
+    property int maxActionCount: 10
 
     property Item toolbar
 
@@ -133,12 +133,15 @@ Item {
             delegate: IconAction {
                 id: iconAction
 
-                action: page.actions[index]
+                property Action action: page.actions[index]
 
+                name: action.iconName
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
                                                                      Theme.dark.textColor)
                 size: name == "content/add" ? units.dp(30) : units.dp(27)
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
+
+                onTriggered: action.triggered(iconAction)
             }
         }
 
