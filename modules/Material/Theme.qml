@@ -93,7 +93,7 @@ Object {
 
         var a = 1 - ( 0.299 * temp.r + 0.587 * temp.g + 0.114 * temp.b);
 
-        if (a < 0.3)
+        if (temp.a === 0 || a < 0.3)
             return lightColor
         else
             return darkColor

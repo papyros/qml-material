@@ -2,3 +2,5 @@
 Makefile
 tests/tst_material
 *.o
+*.pro.user*
+build

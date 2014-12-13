@@ -1,40 +1,41 @@
 import QtQuick 2.0
-import Material 0.1 as Material
+import Material 0.1
 
 Rectangle {
     height: 400
     width: 400
-    Grid {
-        anchors.fill: parent
-        rows: 3
-        columns: 3
+    Column {
+        anchors.centerIn: parent
+        spacing: units.dp(20)
 
-        Material.Button {
-            id: button1
-            text: "Button 1"
-            isDefault: true
+        Button {
+            text: "Simple Button"
+            anchors.horizontalCenter: parent.horizontalCenter
         }
-        Material.Button {
-            id: button2
-            text: "Button 2"
-            checkable: true
-            width: 200
+
+        Button {
+            text: "Raised Button"
+            elevation: 2
+            anchors.horizontalCenter: parent.horizontalCenter
         }
-        Material.Button {
-            id: button3
+
+        Button {
+            text: "Wide Button"
+
+            width: units.dp(200)
+            elevation: 2
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Button {
             text: "Button with really long text"
+            anchors.horizontalCenter: parent.horizontalCenter
         }
-        Material.Button {
-            id: button4
-            text: "Button 4"
-        }
-        Material.Button {
-            id: button5
-            text: "Button 5"
-        }
-        Material.Button {
-            id: button6
-            text: "Button 6"
+
+        Button {
+            text: "Colored button"
+            textColor: Theme.accentColor
+            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
 }

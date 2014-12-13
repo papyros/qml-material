@@ -16,24 +16,31 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
-import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
+import QtQuick.Controls 1.2 as Controls
+import QtQuick.Controls.Styles 1.2 as ControlStyles
 import Material 0.1
 
-Button {
+Controls.Button {
     id: button
 
-    property int elevation: 1 + ((button.hovered || button.activeFocus ) ? 1:0) + (button.isDefault ? 1:0)
+    property int elevation
+    property color backgroundColor: elevation > 0 ? "white" : "transparent"
+    property color textColor: Theme.lightDark(button.backgroundColor,
+                                              Theme.light.textColor,
+                                              Theme.dark.textColor)
 
-    style: ButtonStyle {
+    style: ControlStyles.ButtonStyle {
         background: View {
-            id:backgroundElement
             radius: units.dp(2)
+
             elevation: button.elevation
+            backgroundColor: button.backgroundColor
+
             tintColor: control.pressed ? Qt.rgba(0,0,0, 0.1) : "transparent"
-            backgroundColor: button.elevation > 0 ? "white" : "transparent"
+
             height: Math.max(units.dp(36), label.height + units.dp(16))
             width: Math.max(units.dp(64), label.width + units.dp(16))
+
             Ink {
                 id: mouseArea
                 anchors.fill: parent
@@ -45,13 +52,16 @@ Button {
                 }
             }
         }
-        label: Label {
-            id: label
-            anchors.centerIn: parent
-            text: control.text.toUpperCase()
-            color: Theme.lightDark(button.elevation > 0 ? "white" : "transparent",
-                                   Theme.light.textColor,
-                                   Theme.dark.textColor)
+        label: Item {
+            implicitWidth: label.implicitWidth
+            implicitHeight: label.implicitHeight
+
+            Label {
+                id: label
+                anchors.centerIn: parent
+                text: control.text.toUpperCase()
+                color: button.textColor
+            }
         }
     }
 }
