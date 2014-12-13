@@ -20,11 +20,16 @@ import Material 0.1
 
 Item {
     id: trans
-    anchors.fill: parent
 
     property PageStack pageStack
-
-    parent: pageStack
+    onPageStackChanged: {
+        if ( pageStack ) {
+            anchors.left = pageStack.left;
+            anchors.right = pageStack.right;
+            anchors.top = pageStack.top;
+            anchors.bottom = pageStack.bottom;
+        }
+    }
 
     default property alias content: transView.children
 
