@@ -15,7 +15,8 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
- import QtQuick 2.0
+import QtQuick 2.0
+import QtQuick.Controls 1.2 as Controls
 
 /*!
    \qmltype Action
@@ -24,19 +25,8 @@
 
    \brief Represents an action shown in an action bar, context menu, or list.
  */
-QtObject {
+Controls.Action {
     id: action
-
-	/*!
-	   The text displayed for the action.
-	 */
-    property string name
-
-    /*!
-       The icon displayed for the action. This can be a Material Design icon or an icon from
-       FontAwesome. See \l Icon from more details.
-     */
-    property string iconName
 
     /*!
       A short summary of the action, which may be displayed depending on the UI showing the
@@ -56,14 +46,4 @@ QtObject {
      */
     property bool visible: true
 
-    /*!
-       Set to \c false to disable the action.
-     */
-    property bool enabled: true
-
-	/*!
-	   Called when the UI representing the action is triggered. \c caller contains the UI element
-	   that triggered the action.
-	 */
-    signal triggered(var caller)
 }

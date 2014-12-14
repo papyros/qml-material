@@ -96,9 +96,6 @@ Page {
                         id: iconAction
 
                         property Action action: actions[index]
-
-                        name: action.iconName
-                        //color:
                         size: name == "content/add" ? units.dp(30) : units.dp(27)
                         anchors.verticalCenter: parent ? parent.verticalCenter : undefined
 

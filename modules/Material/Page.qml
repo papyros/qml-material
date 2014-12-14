@@ -38,7 +38,7 @@ Rectangle {
 
     property list<Action> actions
     property Action backAction: Action {
-        name: "Back"
+        text: "Back"
         iconName: "navigation/arrow_back"
         onTriggered: pageStack.pop()
         visible: showBackButton
