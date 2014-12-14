@@ -15,7 +15,7 @@ Rectangle {
 
         Button {
             text: "Raised Button"
-            elevation: 2
+            elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
@@ -23,12 +23,13 @@ Rectangle {
             text: "Wide Button"
 
             width: units.dp(200)
-            elevation: 2
+            elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Button {
             text: "Button with really long text"
+            elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
