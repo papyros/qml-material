@@ -38,9 +38,6 @@ Controls.Button {
 
             tintColor: control.pressed ? Qt.rgba(0,0,0, 0.1) : "transparent"
 
-            height: Math.max(units.dp(36), label.height + units.dp(16))
-            width: Math.max(units.dp(64), label.width + units.dp(16))
-
             Ink {
                 id: mouseArea
                 anchors.fill: parent
@@ -53,13 +50,14 @@ Controls.Button {
             }
         }
         label: Item {
-            implicitWidth: label.implicitWidth
-            implicitHeight: label.implicitHeight
+            implicitHeight: Math.max(units.dp(36), label.height + units.dp(16))
+            implicitWidth: Math.max(units.dp(64), label.width + units.dp(16))
 
             Label {
                 id: label
                 anchors.centerIn: parent
-                text: control.text.toUpperCase()
+                text: control.text
+                style: "button"
                 color: button.textColor
             }
         }
