@@ -42,6 +42,7 @@ ApplicationWindow {
 
             // selectedComponent will always be valid, as it defaults to the first component
             source: Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent)
+            asynchronous: true
         }
     }
 }

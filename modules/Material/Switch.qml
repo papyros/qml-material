@@ -1,27 +1,49 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
+import QtQuick.Controls 1.2 as Controls
+import QtQuick.Controls.Styles 1.2 as ControlStyles
+
 import Material 0.1
 
-Switch {
-	id: materialSwitch
-	style: SwitchStyle {
-		handle: Rectangle {
-			height: units.dp(30)
-			width: units.dp(30)
-			radius: units.dp(15)
-            color: materialSwitch.checked ? "#009688"  : "#FAFAFA"
+Controls.Switch {
+    id: switchView
+
+    property color color: Theme.accentColor
+
+    style: ControlStyles.SwitchStyle {
+        handle: View {
+            width: units.dp(22)
+            height: units.dp(22)
+
+            radius: height/2
+
+            elevation: 2
+            backgroundColor: switchView.enabled ? switchView.checked ? switchView.color  : "#FAFAFA"
+                                                : "#BDBDBD"
 		}
-		groove: Rectangle {
-			width: units.dp(75)
-			height: units.dp(30)
+
+        groove: Item {
+            width: units.dp(40)
+            height: units.dp(22)
 			
 			Rectangle {
-				width: parent.width
+
 				anchors.centerIn: parent
-				height: units.dp(15)
-				radius: units.dp(7.5)
-				color: materialSwitch.checked ? "#80009688"  : Qt.rgba(0, 0, 0, 0.26)
+
+                width: parent.width - units.dp(2)
+                height: units.dp(16)
+
+                radius: height/2
+
+                color: switchView.enabled ? switchView.checked ? Theme.alpha(switchView.color, 0.5)
+                                                               : Qt.rgba(0, 0, 0, 0.26)
+                                          : Qt.rgba(0, 0, 0, 0.12)
+
+                Behavior on color {
+
+                    ColorAnimation {
+                        duration: 200
+                    }
+                }
 			}
 		}
 	}

@@ -82,6 +82,19 @@ Object {
     }
 
     /*!
+       A utility method for changing the alpha on colors. Returns a new object, and does not modify
+       the original color at all.
+     */
+    function alpha(color, alpha) {
+        // Make sure we have a real color object to work with (versus a string like "#ccc")
+        var realColor = Qt.darker(color, 1)
+
+        realColor.a = alpha
+
+        return realColor
+    }
+
+    /*!
        Select a color depending on whether the background is light or dark.
 
        \c lightColor is the color used on a light background.
