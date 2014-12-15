@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
+import QtQuick 2.2
 import QtQuick.Window 2.2
 import Material 0.1
 
@@ -62,7 +62,9 @@ Window {
        A grouped property that allows the application to customize the the primary color, the
        primary dark color, and the accent color. See \l Theme for more details.
      */
-    property alias theme: __theme
+    readonly property AppTheme theme: AppTheme {
+
+    }
 
     /*!
        The initial page shown when the application starts.
@@ -93,20 +95,6 @@ Window {
     height: units.dp(600)
 
     on__PixelDensityChanged: units.__pixelDensity = __pixelDensity
-
-    QtObject {
-        id: __theme
-
-        property color primaryColor: Theme.primaryColor
-        property color primaryDarkColor: Theme.primaryDarkColor
-        property color accentColor: Theme.accentColor
-        property color backgroundColor: Theme.backgroundColor
-
-        onPrimaryColorChanged: Theme.primaryColor = primaryColor
-        onPrimaryDarkColorChanged: Theme.primaryDarkColor = primaryDarkColor
-        onAccentColorChanged: Theme.accentColor = accentColor
-        onBackgroundColorChanged: Theme.backgroundColor = backgroundColor
-    }
 
     Toolbar {
         id: toolbar

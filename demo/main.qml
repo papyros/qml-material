@@ -5,6 +5,10 @@ import Material.ListItems 0.1 as ListItem
 ApplicationWindow {
     id: demo
 
+    theme {
+        accentColor: "#009688"
+    }
+
     initialPage: page
 
     property var components: ["Button", "Switch"]

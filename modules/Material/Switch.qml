@@ -5,7 +5,7 @@ import QtQuick.Controls.Styles 1.2 as ControlStyles
 import Material 0.1
 
 Controls.Switch {
-    id: switchView
+    id: control
 
     /*!
        The switch color. By default this is the app's accent color
@@ -25,7 +25,7 @@ Controls.Switch {
             radius: height/2
 
             elevation: 2
-            backgroundColor: switchView.enabled ? switchView.checked ? switchView.color  : "#FAFAFA"
+            backgroundColor: control.enabled ? control.checked ? control.color  : "#FAFAFA"
                                                 : darkBackground ? "#424242" : "#BDBDBD"
 		}
 
@@ -42,7 +42,7 @@ Controls.Switch {
 
                 radius: height/2
 
-                color: switchView.enabled ? switchView.checked ? Theme.alpha(switchView.color, 0.5)
+                color: control.enabled ? control.checked ? Theme.alpha(control.color, 0.5)
                                                                : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
                                                                                 : Qt.rgba(0, 0, 0, 0.26)
                                           : darkBackground ? Qt.rgba(1, 1, 1, 0.12)

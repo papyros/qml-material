@@ -2,6 +2,7 @@ module Material
 Action 0.1 Action.qml
 ActionBar 0.1 ActionBar.qml
 ApplicationWindow 0.1 ApplicationWindow.qml
+AppTheme 0.1 AppTheme.qml
 AwesomeIcon 0.1 AwesomeIcon.qml
 Button 0.1 Button.qml
 Card 0.1 Card.qml
