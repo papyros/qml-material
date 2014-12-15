@@ -4,3 +4,4 @@ tests/tst_material
 *.o
 *.pro.user*
 build
+*.qmlproject.user*

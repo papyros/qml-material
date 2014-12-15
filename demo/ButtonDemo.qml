@@ -1,9 +1,8 @@
 import QtQuick 2.0
 import Material 0.1
 
-Rectangle {
-    height: 400
-    width: 400
+Item {
+
     Column {
         anchors.centerIn: parent
         spacing: units.dp(20)

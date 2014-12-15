@@ -10,6 +10,8 @@ View {
 
     property int margins: units.dp(16)
 
+    property bool selected
+
     property int dividerInset: 0
     property bool showDivider: false
 
@@ -28,5 +30,5 @@ View {
         anchors.fill: parent
     }
 
-    tintColor: ink.containsMouse ? Qt.rgba(0,0,0,0.05) : Qt.rgba(0,0,0,0)
+    tintColor: selected ? Qt.rgba(0,0,0,0.07) : ink.containsMouse ? Qt.rgba(0,0,0,0.03) : Qt.rgba(0,0,0,0)
 }
