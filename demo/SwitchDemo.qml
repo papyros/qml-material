@@ -3,12 +3,44 @@ import Material 0.1
 
 Item {
 
-    Column {
+    Grid {
         anchors.centerIn: parent
-        spacing: units.dp(20)
+        spacing: units.dp(40)
+        columns: 3
+
+        // Empty filler
+        Item { width: 1; height: 1 }
+
+        Label {
+            text: "Normal"
+        }
+
+        Label {
+            text: "Disabled"
+        }
+
+        Label {
+            text: "On"
+        }
 
         Switch {
-            anchors.horizontalCenter: parent.horizontalCenter
+            checked: true
+        }
+
+        Switch {
+            checked: true
+            enabled: false
+        }
+
+        Label {
+            text: "Off"
+        }
+
+        Switch {
+        }
+
+        Switch {
+            enabled: false
         }
     }
 }
