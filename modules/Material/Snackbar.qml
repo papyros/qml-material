@@ -95,7 +95,7 @@ Card {
 		textColor: "white"
 		raised: false
 		text: snackbar.buttonText
-		onTriggered: snackbar.click()
+		onClicked: snackbar.click()
 		anchors {
 			right: parent.right
 			//left: snackText.right
