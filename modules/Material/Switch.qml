@@ -7,7 +7,15 @@ import Material 0.1
 Controls.Switch {
     id: switchView
 
-    property color color: Theme.accentColor
+    /*!
+       The switch color. By default this is the app's accent color
+     */
+    property color color: darkBackground ? Theme.dark.accentColor : Theme.light.accentColor
+
+    /*!
+       Set to \c true if the switch is on a dark background
+     */
+    property bool darkBackground
 
     style: ControlStyles.SwitchStyle {
         handle: View {
@@ -18,7 +26,7 @@ Controls.Switch {
 
             elevation: 2
             backgroundColor: switchView.enabled ? switchView.checked ? switchView.color  : "#FAFAFA"
-                                                : "#BDBDBD"
+                                                : darkBackground ? "#424242" : "#BDBDBD"
 		}
 
         groove: Item {
@@ -35,8 +43,10 @@ Controls.Switch {
                 radius: height/2
 
                 color: switchView.enabled ? switchView.checked ? Theme.alpha(switchView.color, 0.5)
-                                                               : Qt.rgba(0, 0, 0, 0.26)
-                                          : Qt.rgba(0, 0, 0, 0.12)
+                                                               : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
+                                                                                : Qt.rgba(0, 0, 0, 0.26)
+                                          : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
+                                                           : Qt.rgba(0, 0, 0, 0.12)
 
                 Behavior on color {
 

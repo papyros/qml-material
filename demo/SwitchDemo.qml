@@ -3,44 +3,69 @@ import Material 0.1
 
 Item {
 
-    Grid {
+    Column {
         anchors.centerIn: parent
-        spacing: units.dp(40)
-        columns: 3
+        spacing: units.dp(20)
 
-        // Empty filler
-        Item { width: 1; height: 1 }
+        Repeater {
+            model: 2
 
-        Label {
-            text: "Normal"
-        }
+            Rectangle {
+                color: index == 0 ? "#EEE" : "#333"
+                width: grid.implicitWidth + units.dp(50)
+                height: grid.implicitHeight + units.dp(50)
+                radius: units.dp(2)
 
-        Label {
-            text: "Disabled"
-        }
+                Grid {
+                    id: grid
+                    anchors.centerIn: parent
+                    spacing: units.dp(40)
+                    columns: 3
 
-        Label {
-            text: "On"
-        }
+                    // Empty filler
+                    Item { width: 1; height: 1 }
 
-        Switch {
-            checked: true
-        }
+                    Label {
+                        text: "Normal"
+                        color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    }
 
-        Switch {
-            checked: true
-            enabled: false
-        }
+                    Label {
+                        text: "Disabled"
+                        color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    }
 
-        Label {
-            text: "Off"
-        }
+                    Label {
+                        text: "On"
+                        color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    }
 
-        Switch {
-        }
+                    Switch {
+                        checked: true
+                        darkBackground: index == 1
+                    }
 
-        Switch {
-            enabled: false
+                    Switch {
+                        checked: true
+                        enabled: false
+                        darkBackground: index == 1
+                    }
+
+                    Label {
+                        text: "Off"
+                        color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    }
+
+                    Switch {
+                        darkBackground: index == 1
+                    }
+
+                    Switch {
+                        enabled: false
+                        darkBackground: index == 1
+                    }
+                }
+            }
         }
     }
 }
