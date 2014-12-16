@@ -104,4 +104,80 @@ Object {
         source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf")
         id: robotoFont
     }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-BlackItalic.ttf")
+        id: robotoBlackItalic
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-Black.ttf")
+        id: robotoBlack
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-Bold.ttf")
+        id: robotoBold
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-BoldItalic.ttf")
+        id: robotoBoldItalic
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-Condensed.ttf")
+        id: robotoCondensed
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedBold.ttf")
+        id: robotoCondensedBold
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedBoldItalic.ttf")
+        id: robotoCondensedBoldItalic
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedItalic.ttf")
+        id: robotoCondensedItalic
+    }
+
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedLight.ttf")
+        id: robotoCondensedLight
+    }
+
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedLightItalic.ttf")
+        id: robotoCondensedLightItalic
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedRegular.ttf")
+        id: robotoCondensedRegular
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-Italic.ttf")
+        id: robotoItalic
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-Light.ttf")
+        id: robotoLight
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-LightItalic.ttf")
+        id: robotoLightItalic
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-Medium.ttf")
+        id: robotoMedium
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-MediumItalic.ttf")
+        id: robotoMediumItalic
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-Thin.ttf")
+        id: robotoThin
+    }
+    FontLoader {
+        source: Qt.resolvedUrl("fonts/roboto/Roboto-ThinItalic.ttf")
+        id: robotoThinItalic
+    }
+
+
 }
