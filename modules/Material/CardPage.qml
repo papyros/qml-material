@@ -31,7 +31,7 @@ Page {
 
     property bool showing: currentPage
 
-    transition: SlideTransition {
+    transition: CardSlideTransition {
 
     }
 
