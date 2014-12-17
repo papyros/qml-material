@@ -62,9 +62,7 @@ Window {
        A grouped property that allows the application to customize the the primary color, the
        primary dark color, and the accent color. See \l Theme for more details.
      */
-    readonly property AppTheme theme: AppTheme {
-
-    }
+    property alias theme: __theme
 
     /*!
        The initial page shown when the application starts.
@@ -95,6 +93,10 @@ Window {
     height: units.dp(600)
 
     on__PixelDensityChanged: units.__pixelDensity = __pixelDensity
+
+    AppTheme {
+        id: __theme
+    }
 
     Toolbar {
         id: toolbar
