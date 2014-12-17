@@ -108,7 +108,5 @@ Text {
 
     color: Theme.light.textColor
 
-    FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf") }
-    FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Medium.ttf") }
-    FontLoader { source: Qt.resolvedUrl("fonts/roboto/Roboto-Bold.ttf") }
+
 }
