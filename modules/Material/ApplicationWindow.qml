@@ -56,7 +56,7 @@ import Material 0.1
 Window {
     id: app
 
-    default property alias content: pageStack.children
+    default property alias content: pageStack.data
 
     /*!
        A grouped property that allows the application to customize the the primary color, the
