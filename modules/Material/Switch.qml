@@ -25,7 +25,8 @@ Controls.Switch {
             radius: height/2
 
             elevation: 2
-            backgroundColor: control.enabled ? control.checked ? control.color  : "#FAFAFA"
+            backgroundColor: control.enabled ? control.checked ? control.color  : darkBackground ? "#BDBDBD"
+                                                                                                 : "#FAFAFA"
                                                 : darkBackground ? "#424242" : "#BDBDBD"
 		}
 
