@@ -100,8 +100,25 @@ Object {
     }
 
     // TODO: Load all the fonts!
-    FontLoader {
-        source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf")
-        id: robotoFont
-    }
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-BlackItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Black.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Bold.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-BoldItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Condensed.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedBold.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedBoldItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedLight.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedLightItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedRegular.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Italic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Light.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-LightItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Medium.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-MediumItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Thin.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-ThinItalic.ttf")}
+
+
 }
