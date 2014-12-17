@@ -11,7 +11,7 @@ ApplicationWindow {
 
     initialPage: page
 
-    property var components: ["Button", "Switch"]
+    property var components: ["Button", "Switch", "Progress Bar", "Icon"]
     property string selectedComponent: components[0]
 
     Page {
@@ -45,7 +45,7 @@ ApplicationWindow {
             }
 
             // selectedComponent will always be valid, as it defaults to the first component
-            source: Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent)
+            source: Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
             asynchronous: true
         }
     }
