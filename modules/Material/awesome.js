@@ -2,6 +2,8 @@
 .pragma library
 
 var map = {
+    'cubes': '',
+    'cube': '',
 	'glass' : '',
 	'music' : '',
 	'search' : '',
