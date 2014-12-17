@@ -25,7 +25,7 @@ Icon {
 
     name: action ? action.iconName : ""
     enabled: action ? action.enabled : true
-
+    visible: action ? action.visible : true
     onTriggered: {
         if (action) action.triggered(icon)
     }
