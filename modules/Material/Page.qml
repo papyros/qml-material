@@ -27,15 +27,18 @@ Rectangle {
 
     ActionBar {
         id: __actionBar
-
         page: page
+        anchors {
+            left: page.left
+            right: page.right
+        }
     }
 
     property Item pageStack
 
     property list<Action> actions
     property Action backAction: Action {
-        name: "Back"
+        text: "Back"
         iconName: "navigation/arrow_back"
         onTriggered: pageStack.pop()
         visible: showBackButton
@@ -43,7 +46,7 @@ Rectangle {
 
     anchors.fill: parent
 
-    property bool currentPage: pageStack.currentPage == page
+    property bool currentPage: pageStack ? pageStack.currentPage === page : false
 
     property bool dynamic: false
 

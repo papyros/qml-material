@@ -46,7 +46,6 @@ Icon {
         height: Math.max(parent.height, units.dp(48))
 
         onClicked: {
-            //ink.focused = true
             icon.triggered()
         }
     }
