@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
+import QtQuick 2.2
 import QtQuick.Window 2.2
 import Material 0.1
 
@@ -56,7 +56,7 @@ import Material 0.1
 Window {
     id: app
 
-    default property alias content: pageStack.children
+    default property alias content: pageStack.data
 
     /*!
        A grouped property that allows the application to customize the the primary color, the
@@ -94,18 +94,8 @@ Window {
 
     on__PixelDensityChanged: units.__pixelDensity = __pixelDensity
 
-    QtObject {
+    AppTheme {
         id: __theme
-
-        property color primaryColor: Theme.primaryColor
-        property color primaryDarkColor: Theme.primaryDarkColor
-        property color accentColor: Theme.accentColor
-        property color backgroundColor: Theme.backgroundColor
-
-        onPrimaryColorChanged: Theme.primaryColor = primaryColor
-        onPrimaryDarkColorChanged: Theme.primaryDarkColor = primaryDarkColor
-        onAccentColorChanged: Theme.accentColor = accentColor
-        onBackgroundColorChanged: Theme.backgroundColor = backgroundColor
     }
 
     Toolbar {
