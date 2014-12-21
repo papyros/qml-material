@@ -8,10 +8,17 @@ Item {
 
         Label {
             text: "Determinate"
+            horizontalAlignment: Text.AlignHCenter
         }
 
         ProgressBar {
             id: progressBar1
+            width: 200
+            height: 2
+            /* If needed, you can set a custom color :
+            color: "red"
+            */
+
 
             SequentialAnimation {
                 running: true
@@ -21,7 +28,7 @@ Item {
 
                 NumberAnimation {
                     target: progressBar1
-                    property: "value"
+                    property: "progress"
                     duration: 3000
                     from: 0
                     to: 1
@@ -30,4 +37,3 @@ Item {
         }
     }
 }
-
