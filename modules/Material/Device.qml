@@ -22,12 +22,13 @@ pragma Singleton
 Object {
     id: device
 
-    // TODO: Actually set this up correctly
-    property string formFactor: "desktop"
+    //some kind of enum, by screen size
+    property int type
+    property int phone: 0
+    property int phablet: 1
+   	property int tablet: 2
+   	property int desktop: 3
+   	property int tv: 4
+   	property int unknown: 5 //is either bigger than TV or smaller than Phone
 
-    // TODO: Actually set this up correctly
-    property string iconName: "hardware/computer"
-
-    // TODO: Actually set this up correctly
-    property string name: "Computer"
 }
