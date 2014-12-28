@@ -57,8 +57,6 @@ Object {
        so this is hardcoded here and we update it from within \l ApplicationWindow
      */
     property real pixelDensity
-    property real screenWidth
-    property real screenHeight
 
     /*!
        Converts millimeters into pixels. Used primarily by \l units::dp, but there might be other
@@ -74,7 +72,6 @@ Object {
        this anywhere you need to refer to distances on the screen.
      */
     function dp(number) {
-        var nr = (pixelDensity*25.4)/160;
-        return number*nr*Math.pow(((screenWidth*screenHeight*pixelDensity*25.4)/(320*720*1280)), -1);
+        return number*((pixelDensity*25.4)/160);
     }
 }
