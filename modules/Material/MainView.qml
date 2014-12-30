@@ -33,13 +33,28 @@ Item {
        The pixel density of the screen the application's window is currently on. See \l Screen
        and \l units.
      */
-    property real __pixelDensity: Screen.pixelDensity
-
 
     width: units.dp(800)
     height: units.dp(600)
-
-    on__PixelDensityChanged: units.__pixelDensity = __pixelDensity
+    
+    Component.onCompleted: {
+      units.pixelDensity = Screen.pixelDensity;
+      units.devicePixelRatio = Screen.devicePixelRatio;
+      var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) + Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370; //inches, even though I use the metric system :P
+      if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
+        Device.type = Device.phone;
+      } else if (diagonal >= 5 && diagonal < 6.5) {
+        Device.type = Device.phablet;
+      } else if (diagonal >= 6.5 && diagonal < 10.1) {
+        Device.type = Device.tablet;
+      } else if (diagonal >= 10.1 && diagonal < 29) {
+        Device.type = Device.desktop;
+      } else if (diagonal >= 29 && diagonal < 92) {
+        Device.type = Device.tv;
+      } else {
+        Device.type = Device.unknown;
+      }
+    }
 
     QtObject {
         id: __theme
