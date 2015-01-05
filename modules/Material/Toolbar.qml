@@ -26,14 +26,21 @@ View {
                                                                                          : units.dp(64)
     height: targetHeight
 
-    property int targetHeight: implicitHeight + (tabs.length > 0 ? tabbar.height : 0)
-                                              + (expanded ? implicitHeight : 0)
+    property int targetHeight: actionBar.hidden ? 0
+                                                : implicitHeight + (tabs.length > 0 ? tabbar.height : 0)
+                                                                 + (expanded ? implicitHeight : 0)
 
     property bool expanded: false
 
     property bool clientSideDecorations: false
 
+    opacity: actionBar.hidden ? 0 : 1
+
     Behavior on height {
+        NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
+    }
+
+    Behavior on opacity {
         NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
     }
 
