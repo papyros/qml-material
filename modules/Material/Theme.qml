@@ -38,7 +38,7 @@ Object {
        Material Design guidelines, this should normally be a 500 color from one of the color
        palettes at \l {http://www.google.com/design/spec/style/color.html#color-color-palette}.
      */
-    property color primaryColor: "#5677fc"
+    property color primaryColor: "#2196F3"
 
     /*!
        A darker version of the primary color used for the window titlebar (if client-side
@@ -48,7 +48,7 @@ Object {
        aplication's primary color, taken from one of the color palettes at
        \l {http://www.google.com/design/spec/style/color.html#color-color-palette}.
     */
-    property color primaryDarkColor: "#5677fc"
+    property color primaryDarkColor: "#1976D2"
 
     /*!
        The accent color complements the primary color, and is used for any primary action buttons
@@ -118,13 +118,12 @@ Object {
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Black.ttf")}
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Bold.ttf")}
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-BoldItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Condensed.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedBold.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedBoldItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedLight.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedLightItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-CondensedRegular.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-Bold.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-BoldItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-Italic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-Light.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-LightItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-Regular.ttf")}
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Italic.ttf")}
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Light.ttf")}
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-LightItalic.ttf")}

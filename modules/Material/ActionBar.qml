@@ -42,6 +42,8 @@ Item {
         right: parent.right
     }
 
+    property bool hidden: false
+
     /*!
        \internal
        The page holding this \c ActionBar
