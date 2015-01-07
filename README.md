@@ -1,7 +1,7 @@
 Material Design implemented in QtQuick
 ======================================
 
-[![Build Status](https://travis-ci.org/papyros/qml-material.svg?branch=master)](https://travis-ci.org/papyros/qml-material)
+[![Build Status](https://travis-ci.org/papyros/qml-material.svg?branch=develop)](https://travis-ci.org/papyros/qml-material)
 
 This is a library of QML widgets implementing Google's [Material Design](https://www.google.com/design/spec). It is completely cross platform, and runs on Linux, OS X, and Windows. It may also run on iOS and Android, though those platforms have not been tested and are not currently officially supported.
 
