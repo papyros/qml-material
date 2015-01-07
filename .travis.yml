@@ -12,7 +12,7 @@ install:
 
 before_script:
   - source /opt/qt53/bin/qt53-env.sh
-  - git clone git://github.com/quantum-os/qml-extras.git
+  - git clone git://github.com/papyros/qml-extras.git
   - pushd qml-extras
   - qmake
   - sudo make install
