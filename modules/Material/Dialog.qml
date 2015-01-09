@@ -1,3 +1,21 @@
+/*
+ * QML Material - An application framework implementing Material Design.
+ * Copyright (C) 2014 Michael Spencer
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 2.1 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import QtQuick 2.0
 import Material 0.1
 
@@ -9,19 +27,19 @@ View {
 	property string positiveBtnText: "OK"
 	property real minWidth: negativeBtn.width + positiveBtn.width + units.dp(124) //min 100dp padding
 	property real maxHeight: view.parent.height/2
-    property real minHeight: units.dp(96) + titleLabel.height
+        property real minHeight: units.dp(96) + titleLabel.height
 	property string title
 
 	width: view.parent.width/2 >= minWidth ? view.parent.width/2 : minWidth
 	height: {
-        if (mainCol.height <= maxHeight && mainCol.height >= minHeight) {
-            return mainCol.height;
-        } else if (mainCol.height < minHeight) {
-            return minHeight;
-        } else {
-            return maxHeight;
-        }
-    }
+        	if (mainCol.height <= maxHeight && mainCol.height >= minHeight) {
+            		return mainCol.height;
+        	} else if (mainCol.height < minHeight) {
+            		return minHeight;
+        	} else {
+            		return maxHeight;
+        	}
+    	}
 	elevation: 5
 	anchors.centerIn: parent
 
@@ -41,21 +59,21 @@ View {
 		clip: true
 		interactive: contentHeight > height
 		contentHeight: mainCol.height
-        contentWidth: width
+        	contentWidth: width
 
 		Column {
 			id: mainCol
 
-            spacing: units.dp(5)
-            width: parent.width
+           		spacing: units.dp(5)
+            		width: parent.width
 
 			Label {
-                id: titleLabel
+                		id: titleLabel
 
 				style: "title"
-                width: parent.width
+                		width: parent.width
 				text: view.title
-                wrapMode: Text.Wrap
+                		wrapMode: Text.Wrap
 			}
 		}
 	}
@@ -91,7 +109,7 @@ View {
 		}
 	}
 
-    Scrollbar {
-        flickableItem: mainFlick
-    }
+	Scrollbar {
+        	flickableItem: mainFlick
+    	}
 }
