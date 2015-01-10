@@ -57,17 +57,7 @@ Object {
        so this is hardcoded here and we update it from within \l ApplicationWindow
      */
     property real pixelDensity
-    property real devicePixelRatio
-    property real multiplier: devicePixelRatio
-
-    /*!
-       Converts millimeters into pixels. Used primarily by \l units::dp, but there might be other
-       uses for it as well.
-     */
-     //probably needs modifications as well
-    function mm(number) {
-        return number * pixelDensity * 1.4
-    }
+    property real multiplier: 1.4 //default multiplier, but can be changed by user
 
     /*!
        This is the standard function to use for accessing device-independent pixels. You should use
