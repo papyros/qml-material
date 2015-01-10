@@ -25,7 +25,7 @@ Item {
 
     property bool alwaysShow
 
-    height: alwaysShow || (progress > 0 && progress) < 1 ? units.dp(4) : 0
+    height: alwaysShow || (progress > 0 && progress < 1) ? units.dp(4) : 0
 
     Behavior on height {
         NumberAnimation { duration: 200 }
