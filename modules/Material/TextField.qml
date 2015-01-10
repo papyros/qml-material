@@ -25,24 +25,51 @@ Controls.TextField {
 	id: field
 
 	property color accentColor: Theme.accentColor
-	
-	height: units.dp(48)
+    property bool floatingLabel: false
+
+    height: floatingLabel ? units.dp(72) : units.dp(48)
 	width: units.dp(200)
-	y: units.dp(16)
+    verticalAlignment: Text.AlignBottom
 
 	style: ControlStyles.TextFieldStyle {
 		textColor: "black"
-		font {
-			family: "Roboto"
-			pixelSize: units.dp(16)
-		}
-		placeholderTextColor: Theme.light.hintColor
+        padding { top: 0; left: 0; right: 0; bottom: units.dp(16) }
+
+        font {
+            family: echoMode == TextInput.Password && field.text.length > 0 ? "" : "Roboto"
+            pixelSize: units.dp(16)
+        }
+
+        placeholderTextColor: field.floatingLabel ? "transparent" : Theme.light.hintColor
 		selectedTextColor: "white"
 		selectionColor: Qt.darker(field.accentColor, 1)
+
 		background: Rectangle {
+            color: "transparent"
+            implicitHeight: height
+            implicitWidth: width
+
+            Label {
+                id: fieldPlaceholder
+                text: field.placeholderText
+                visible: field.floatingLabel
+                font.pixelSize: field.text.length > 0 && field.floatingLabel ? units.dp(12) : units.dp(16)
+                y: field.text.length > 0 && field.floatingLabel ? units.dp(16) : field.height / 2
+                opacity: field.text.length > 0 && !field.floatingLabel ? 0 : 1
+                color: Theme.light.hintColor
+
+                Behavior on y {
+                    NumberAnimation { duration: 200}
+                }
+
+                Behavior on font.pixelSize {
+                    NumberAnimation { duration: 200}
+                }
+            }
+
 			Rectangle {
-				color: field.activeFocus ? field.accentColor : Theme.light.hintColor
-				
+                id: underline
+				color: field.activeFocus ? field.accentColor : Theme.light.hintColor	
 				height: field.activeFocus ? units.dp(2) : units.dp(1)
 				
 				Behavior on height {
