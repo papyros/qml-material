@@ -21,8 +21,8 @@ import Material 0.1
 View {
     id: toolbar
 
-    implicitHeight: Device.formFactor == "mobile" ? units.dp(48)
-                                                       : Device.formFactor == "tablet" ? units.dp(56)
+    implicitHeight: Device.type == Device.phone ? units.dp(48)
+                                                       : Device.type == Device.tablet ? units.dp(56)
                                                                                          : units.dp(64)
     height: targetHeight
 
@@ -64,8 +64,8 @@ View {
 
     property NavigationDrawer drawer
 
-    property int maxActionCount: (Device.formFactor == "desktop"
-                                  ? 5 : Device.formFactor == "tablet" ? 4 : 3) - (drawer ? 1 : 0)
+    property int maxActionCount: (Device.type == Device.desktop
+                                  ? 5 : Device.type == Device.tablet ? 4 : 3) - (drawer ? 1 : 0)
 
     property Item actionBar
     property Item previousActionBar: actionBar
