@@ -24,8 +24,10 @@ BaseListItem {
     height: units.dp(48)
 
     property alias text: label.text
+    property alias valueText: valueLabel.text
 
     property alias action: actionItem.children
+    property alias secondaryItem: secondaryItem.children
 
     Item {
         id: actionItem
@@ -48,14 +50,38 @@ BaseListItem {
         anchors {
             verticalCenter: parent.verticalCenter
             left: parent.left
-            right: parent.right
-            rightMargin: listItem.margins
             leftMargin: actionItem.children.length == 0 ? listItem.margins : units.dp(52) + listItem.margins
         }
 
         elide: Text.ElideRight
         style: "subheading"
 
-        width: parent.width
+        width: valueLabel.text || secondaryItem.children.length > 0
+                   ? Math.min(implicitWidth, parent.width * 0.8) : parent.width
+    }
+
+    Label {
+        id: valueLabel
+
+        color: Theme.light.subTextColor
+        elide: Text.ElideRight
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: label.right
+        anchors.leftMargin: units.dp(16)
+        anchors.right: parent.right
+        anchors.rightMargin: listItem.margins
+        horizontalAlignment: Text.AlignRight
+
+        style: "body1"
+        visible: text != ""
+    }
+
+    Item {
+        id: secondaryItem
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        anchors.rightMargin: listItem.margins
+        height: parent.height
+        width: parent.width * 0.2
     }
 }
