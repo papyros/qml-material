@@ -28,6 +28,7 @@ View {
         id: ink
         onClicked: listItem.triggered()
         anchors.fill: parent
+        z: -1
     }
 
     tintColor: selected ? Qt.rgba(0,0,0,0.07) : ink.containsMouse ? Qt.rgba(0,0,0,0.03) : Qt.rgba(0,0,0,0)
