@@ -22,12 +22,56 @@ pragma Singleton
 Object {
     id: device
 
-    // TODO: Actually set this up correctly
-    property string formFactor: "desktop"
-
-    // TODO: Actually set this up correctly
-    property string iconName: "hardware/computer"
-
-    // TODO: Actually set this up correctly
-    property string name: "Computer"
+    //some kind of enum, by screen size
+    property int type
+    readonly property int phone: 0
+    readonly property int phablet: 1
+    readonly property int tablet: 2
+    readonly property int desktop: 3
+    readonly property int tv: 4
+    readonly property int unknown: 5 //it's either bigger than tv or smaller than phone
+    readonly property string name: {
+    	switch (type) {
+    		case 0:
+    			return "phone";
+    			break;
+    		case 1:
+    			return "phablet";
+    			break;
+    		case 2:
+    			return "tablet";
+    			break;
+    		case 3:
+    			return "desktop";
+    			break;
+    		case 4:
+    			return "tv";
+    			break;
+    		case 5:
+    			return "unknown";
+    			break;
+    	}
+    }
+    readonly property string iconName: {
+    	switch (type) {
+    		case 0:
+    			return "hardware/smartphone";
+    			break;
+    		case 1:
+    			return "hardware/tablet";
+    			break;
+    		case 2:
+    			return "hardware/tablet";
+    			break;
+    		case 3:
+    			return "hardware/desktop_windows";
+    			break;
+    		case 4:
+    			return "hardware/tv";
+    			break;
+    		case 5:
+    			return "hardware/computer";
+    			break;
+    	}
+    }
 }

@@ -33,8 +33,8 @@ Item {
     id: actionBar
 
 	// TODO: Replace with enum values for device.mode
-    implicitHeight: Device.formFactor === "mobile"
-                    ? units.dp(48) : Device.formFactor == "tablet"
+    implicitHeight: Device.type === Device.phone
+                    ? units.dp(48) : Device.type == Device.tablet
                       ? units.dp(56) : units.dp(64)
 
     anchors {

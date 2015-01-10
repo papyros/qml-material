@@ -56,21 +56,14 @@ Object {
        value from \l Screen:pixelDensity, but that property only works from within a \l Window type,
        so this is hardcoded here and we update it from within \l ApplicationWindow
      */
-    property real __pixelDensity: 4.5 // pixels/mm
-
-    /*!
-       Converts millimeters into pixels. Used primarily by \l units::dp, but there might be other
-       uses for it as well.
-     */
-    function mm(number) {
-        return number * __pixelDensity * 1.4
-    }
+    property real pixelDensity
+    property real multiplier: 1.4 //default multiplier, but can be changed by user
 
     /*!
        This is the standard function to use for accessing device-independent pixels. You should use
        this anywhere you need to refer to distances on the screen.
      */
     function dp(number) {
-        return number * __pixelDensity * 1.4 * 0.15875
+        return number*((pixelDensity*25.4)/160)*multiplier;
     }
 }
