@@ -34,3 +34,4 @@ Toolbar 0.1 Toolbar.qml
 singleton units 0.1 units.qml
 View 0.1 View.qml
 Wave 0.1 Wave.qml
+Window 0.1 Window.qml
