@@ -32,7 +32,7 @@ Controls.TextField {
     verticalAlignment: Text.AlignBottom
 
 	style: ControlStyles.TextFieldStyle {
-		textColor: "black"
+		textColor: Theme.light.textColor
         padding { top: 0; left: 0; right: 0; bottom: units.dp(16) }
 
         font {
@@ -40,7 +40,7 @@ Controls.TextField {
             pixelSize: units.dp(16)
         }
 
-        placeholderTextColor: field.floatingLabel ? "transparent" : Theme.light.hintColor
+        placeholderTextColor: field.floatingLabel ? Qt.rgba(0,0,0,0) : Theme.light.hintColor
 		selectedTextColor: "white"
 		selectionColor: Qt.darker(field.accentColor, 1)
 
@@ -69,17 +69,17 @@ Controls.TextField {
 
 			Rectangle {
                 id: underline
-				color: field.activeFocus ? field.accentColor : Theme.light.hintColor	
+				color: field.activeFocus ? field.accentColor : Theme.light.hintColor
 				height: field.activeFocus ? units.dp(2) : units.dp(1)
-				
+
 				Behavior on height {
 					NumberAnimation { duration: 200}
 				}
-				
+
 				Behavior on color {
 					ColorAnimation { duration: 200}
 				}
-				
+
 				anchors {
 					left: parent.left
 					right: parent.right

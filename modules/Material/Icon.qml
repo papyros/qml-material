@@ -62,7 +62,7 @@ Image {
            ? height : sourceSize.width * height/sourceSize.height
     height: size
 
-    property string color: "grey600"
+    property string color: Theme.light.iconColor
 
     mipmap: true
 
