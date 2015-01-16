@@ -106,6 +106,8 @@ Text {
         }
     }
 
+    font.capitalization: style == "button" ? Font.AllUppercase : Font.MixedCase
+
     color: Theme.light.textColor
 
 
