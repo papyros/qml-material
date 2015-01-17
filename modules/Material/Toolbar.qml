@@ -29,7 +29,7 @@ View {
         right: parent.right
     }
 
-    opacity: actionBar.hidden ? 0 : 1
+    opacity: page && page.actionBar.hidden ? 0 : 1
 
     implicitHeight: Device.type == Device.phone ? units.dp(48)
                                                 : Device.type == Device.tablet ? units.dp(56)
@@ -42,16 +42,14 @@ View {
 
     clipContent: true
 
-    property int targetHeight: actionBar.hidden ? 0
+    property int targetHeight: page && page.actionBar.hidden ? 0
                                                 : implicitHeight + (tabs.length > 0 ? tabbar.height : 0)
                                                                  + (expanded ? implicitHeight : 0)
 
     property int maxActionCount: (Device.formFactor == "desktop"
-                                  ? 5 : Device.formFactor == "tablet" ? 4 : 3) - (drawer ? 1 : 0)
+                                  ? 5 : Device.formFactor == "tablet" ? 4 : 3)
 
     property bool expanded: false
-
-    property bool clientSideDecorations: false
 
     property bool clientSideDecorations: false
 
