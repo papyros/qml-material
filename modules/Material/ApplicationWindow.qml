@@ -15,7 +15,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.2
+import QtQuick 2.0
+import QtQuick.Controls 1.2 as Controls
+import QtQuick.Window 2.0
 import Material 0.1
 
 /*!
@@ -52,10 +54,8 @@ import Material 0.1
    }
    \endqml
 */
-Window {
+Controls.ApplicationWindow {
     id: app
-
-    default property alias content: pageStack.data
 
     /*!
        A grouped property that allows the application to customize the the primary color, the
@@ -66,18 +66,12 @@ Window {
     /*!
        The initial page shown when the application starts.
      */
-    property alias initialPage: pageStack.initialPage
+    property alias initialPage: __pageStack.initialItem
 
     /*!
        The \l PageStack used for controlling pages and transitions between pages.
      */
-    property alias pageStack: pageStack
-
-    /*!
-       The \l Toolbar used to display the current page's title, actions, and back button. See
-       \l ActionBar and \l Page for more details.
-     */
-    property alias toolbar: toolbar
+    property alias pageStack: __pageStack
 
     property bool clientSideDecorations: false
 
@@ -85,32 +79,42 @@ Window {
         id: __theme
     }
 
-    Toolbar {
-        id: toolbar
-        z: 2
-
-        backgroundColor: pageStack.currentPage ? pageStack.currentPage.actionBar.backgroundColor
-                                                    : Theme.primaryColor
-
-        tabs: pageStack.currentPage.tabs
-        expanded: pageStack.currentPage.cardStyle
-
-        clientSideDecorations: app.clientSideDecorations
-
-      onSelectedTabChanged: pageStack.currentPage.selectedTab = selectedTab
+    toolBar: Toolbar {
+        id: __toolbar
+        width: parent.width
+        backgroundColor: Theme.primaryDarkColor
     }
 
     PageStack {
-        id: pageStack
+        id: __pageStack
+        anchors.fill: parent;
+        onPushed: __toolbar.push( page )
+        onPopped: __toolbar.pop(  )
+    }
 
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: toolbar.bottom
-            bottom: parent.bottom
+    width: units.dp(800)
+    height: units.dp(600)
+
+    Component.onCompleted: {
+      units.pixelDensity = Qt.binding( function() { return Screen.pixelDensity } );
+      Device.type = Qt.binding( function () {
+        var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) + Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
+        if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
+          units.multiplier = 1;
+          return Device.phone;
+        } else if (diagonal >= 5 && diagonal < 6.5) {
+          units.multiplier = 1;
+          return Device.phablet;
+        } else if (diagonal >= 6.5 && diagonal < 10.1) {
+          units.multiplier = 1;
+          return Device.tablet;
+        } else if (diagonal >= 10.1 && diagonal < 29) {
+          return Device.desktop;
+        } else if (diagonal >= 29 && diagonal < 92) {
+          return Device.tv;
+        } else {
+          return Device.unknown;
         }
-
-        onPagePushed: toolbar.pushActionBar(newPage, oldPage)
-        onPagePopped: toolbar.popActionBar(previousPage, currentPage)
+      } );
     }
 }
