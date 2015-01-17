@@ -22,11 +22,25 @@ import Material 0.1
 
 Controls.RadioButton {
     id: radioButton
+
+    /*!
+       The switch color. By default this is the app's accent color
+     */
+    property color color: darkBackground ? Theme.dark.accentColor : Theme.light.accentColor
+
+    /*!
+       Set to \c true if the switch is on a dark background
+     */
+    property bool darkBackground
+
     style: ControlStyles.RadioButtonStyle {
-        label :
-            Label {
-                text: control.text
-                style: "button"
+        label :Label {
+            text: control.text
+            style: "button"
+            color: control.enabled ? radioButton.darkBackground ? Theme.dark.textColor
+                                                                : Theme.light.textColor
+                                   : radioButton.darkBackground ? Theme.alpha("#fff", 0.30)
+                                                                : Theme.alpha("#000", 0.26)
         }
 
         background: Rectangle {
@@ -37,15 +51,17 @@ Controls.RadioButton {
             implicitWidth: units.dp(48)
             implicitHeight: units.dp(48)
             radius: implicitHeight / 2
-            color: control.activeFocus ? Theme.alpha(Theme.accentColor, 0.20) : "transparent"
+            color: control.activeFocus ? Theme.alpha(radioButton.color, 0.20) : "transparent"
 
             Rectangle {
                 anchors.centerIn: parent
-                implicitWidth: units.dp(16)
-                implicitHeight: units.dp(16)
+                implicitWidth: units.dp(20)
+                implicitHeight: units.dp(20)
                 radius: implicitHeight / 2
                 color: "transparent"
-                border.color: control.checked ? Theme.accentColor : Theme.light.textColor
+                border.color: control.enabled ? control.checked ? radioButton.color
+                              : radioButton.darkBackground ? Theme.alpha("#fff", 0.70) : Theme.alpha("#000", 0.54)
+                              : radioButton.darkBackground ? Theme.alpha("#fff", 0.30) : Theme.alpha("#000", 0.26)
                 border.width: units.dp(2)
                 antialiasing: true
 
@@ -55,9 +71,11 @@ Controls.RadioButton {
 
                 Rectangle {
                     anchors.centerIn: parent
-                    implicitWidth: control.checked ? units.dp(16) : 0
-                    implicitHeight: control.checked ? units.dp(16) : 0
-                    color: Theme.accentColor
+                    implicitWidth: control.checked ? units.dp(10) : 0
+                    implicitHeight: control.checked ? units.dp(10) : 0
+                    color: control.enabled ? radioButton.color
+                                           : radioButton.darkBackground ? Theme.alpha("#fff", 0.30)
+                                                                        : Theme.alpha("#000", 0.26)
                     radius: implicitHeight / 2
                     antialiasing: true
 

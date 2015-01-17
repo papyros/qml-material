@@ -11,7 +11,7 @@ ApplicationWindow {
 
     initialPage: page
 
-    property var components: ["Button", "Switch", "Progress Bar", "Icon", "TextField", "Page Stack"]
+    property var components: ["Button", "Switch", "Radio Button", "Progress Bar", "Icon", "TextField", "Page Stack"]
     property string selectedComponent: components[0]
 
     Page {
