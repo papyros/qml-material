@@ -25,6 +25,7 @@ Item {
 
     property bool alwaysShow
 
+    width: units.dp(200)
     height: alwaysShow || (progress > 0 && progress < 1) ? units.dp(4) : 0
 
     Behavior on height {
