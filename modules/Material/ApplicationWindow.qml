@@ -82,7 +82,7 @@ Controls.ApplicationWindow {
     toolBar: Toolbar {
         id: __toolbar
         width: parent.width
-        backgroundColor: Theme.primaryDarkColor
+        backgroundColor: Theme.primaryColor
     }
 
     PageStack {
