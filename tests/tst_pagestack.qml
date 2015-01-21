@@ -32,7 +32,6 @@ Rectangle {
 
         initialPage: Page {
             id: page
-            pageStack: mainwin.pageStack
             title: "Page Title"
 
             Label {
@@ -40,6 +39,7 @@ Rectangle {
                 text: "Hello World!"
             }
         }
+
         Component.onCompleted: mainwin.show()
     }
 

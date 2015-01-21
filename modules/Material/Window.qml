@@ -15,21 +15,17 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
-import QtQuick.Controls 1.2 as Controls
-import QtQuick.Window 2.0
+import QtQuick 2.2
 import Material 0.1
+import QtQuick.Window 2.2
 
 /*!
-   \qmltype ApplicationWindow
+   \qmltype Window
    \inqmlmodule Material 0.1
    \ingroup material
 
    \brief A subclass of \l Window that provides some additional features for developing Applications
    that conform to Material Design.
-
-   This is normally what you should use as your root component. It provides a \l Toolbar and
-   \l PageStack to provide access to standard features used by Material Design applications.
 
    Here is a short working example of an application:
 
@@ -37,61 +33,12 @@ import Material 0.1
    import QtQuick 2.0
    import Material 0.1
 
-   ApplicationWindow {
+   Window {
        title: "Application Name"
-
-       initialPage: page
-
-       Page {
-           id: page
-           title: "Page Title"
-
-           Label {
-               anchors.centerIn: parent
-               text: "Hello World!"
-           }
-       }
    }
    \endqml
 */
-Controls.ApplicationWindow {
-    id: app
-
-    /*!
-       A grouped property that allows the application to customize the the primary color, the
-       primary dark color, and the accent color. See \l Theme for more details.
-     */
-    property alias theme: __theme
-
-    /*!
-       The initial page shown when the application starts.
-     */
-    property alias initialPage: __pageStack.initialItem
-
-    /*!
-       The \l PageStack used for controlling pages and transitions between pages.
-     */
-    property alias pageStack: __pageStack
-
-    property bool clientSideDecorations: false
-
-    AppTheme {
-        id: __theme
-    }
-
-    toolBar: Toolbar {
-        id: __toolbar
-        width: parent.width
-        backgroundColor: Theme.primaryColor
-    }
-
-    PageStack {
-        id: __pageStack
-        anchors.fill: parent;
-        onPushed: __toolbar.push( page )
-        onPopped: __toolbar.pop(  )
-    }
-
+Window {
     width: units.dp(800)
     height: units.dp(600)
 
