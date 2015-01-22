@@ -15,78 +15,173 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
-import QtQuick.Controls 1.2 as Controls
-import QtQuick.Controls.Styles 1.2 as ControlStyles
+import QtQuick 2.1
 import Material 0.1
 
 
-Controls.TextField {
-	id: field
+Item {
+   id: field
 
-	property color accentColor: Theme.accentColor
-    property bool floatingLabel: false
+   property color accentColor: Theme.accentColor
+   property color errorColor: "#F44336"
+   property bool floatingLabel: false
+   property bool showHelperText: helperText.length > 0
+   property alias helperText: helperTextLabel.text
+   property bool displayError: false
+   property bool showCharacterCounter: characterLimit > 0
+   property int characterLimit
+   readonly property int characterCount: text.length
+   property alias text: textInput.text
+   property alias placeholderText: fieldPlaceholder.text
+   property alias echoMode: textInput.echoMode
+   property alias readOnly: textInput.readOnly
+   property alias font: textInput.font
+   property alias validator: textInput.validator
+   property alias inputMethodHints: textInput.inputMethodHints
+   property alias cursorPosition: textInput.cursorPosition
+   property alias maximumLength: textInput.maximumLength
+   //Is there a better way to expose these properties like this?
 
-    height: floatingLabel ? units.dp(72) : units.dp(48)
-	width: units.dp(200)
-    verticalAlignment: Text.AlignBottom
+   signal accepted()
 
-	style: ControlStyles.TextFieldStyle {
-		textColor: "black"
-        padding { top: 0; left: 0; right: 0; bottom: units.dp(16) }
+   implicitHeight: showHelperText ? helperTextLabel.y + helperTextLabel.height + units.dp(4)
+                          : underline.y + units.dp(8)
+   width: units.dp(200)
 
-        font {
-            family: echoMode == TextInput.Password && field.text.length > 0 ? "" : "Roboto"
-            pixelSize: units.dp(16)
-        }
+   MouseArea {
+      anchors.fill: parent
+      onClicked: field.forceActiveFocus(Qt.MouseFocusReason)
+   }
 
-        placeholderTextColor: field.floatingLabel ? "transparent" : Theme.light.hintColor
-		selectedTextColor: "white"
-		selectionColor: Qt.darker(field.accentColor, 1)
+   TextInput {
+      id: textInput
+      focus: true
+      color: "black"
+      selectedTextColor: "white"
+      selectionColor: Qt.darker(field.accentColor, 1)
+      selectByMouse: Device.type === Device.desktop
+      activeFocusOnTab: true
+      width: parent.width
+      clip: true
+      y: {
+         if( !floatingLabel )
+            return units.dp(16)
+         if( floatingLabel && !showHelperText )
+            return units.dp(40)
+         return units.dp(28)
+      }
+      font {
+         family: echoMode == TextInput.Password && field.text.length > 0 ? "" : "Roboto"
+         pixelSize: units.dp(16)
+      }
 
-		background: Rectangle {
-            color: "transparent"
-            implicitHeight: height
-            implicitWidth: width
+      onAccepted: field.accepted()
+   }
 
-            Label {
-                id: fieldPlaceholder
-                text: field.placeholderText
-                visible: field.floatingLabel
-                font.pixelSize: field.text.length > 0 && field.floatingLabel ? units.dp(12) : units.dp(16)
-                y: field.text.length > 0 && field.floatingLabel ? units.dp(16) : field.height / 2
-                opacity: field.text.length > 0 && !field.floatingLabel ? 0 : 1
-                color: Theme.light.hintColor
+   Label {
+      id: fieldPlaceholder
+      text: field.placeholderText
+      font.pixelSize: units.dp(16)
+      anchors.baseline: textInput.baseline
+      anchors.bottomMargin: units.dp(8)
+      color: Theme.light.hintColor
 
-                Behavior on y {
-                    NumberAnimation { duration: 200}
-                }
-
-                Behavior on font.pixelSize {
-                    NumberAnimation { duration: 200}
-                }
+      states: [
+         State {
+            name: "floating"
+            when: textInput.text.length > 0 && floatingLabel
+            AnchorChanges {
+               target: fieldPlaceholder
+               anchors.baseline: undefined
+               anchors.bottom: textInput.top
             }
+            PropertyChanges {
+               target: fieldPlaceholder
+               font.pixelSize: units.dp(12)
+            }
+         },
+         State {
+            name: "hidden"
+            when: textInput.text.length > 0 && !floatingLabel
+            PropertyChanges {
+               target: fieldPlaceholder
+               visible: false
+            }
+         }
+      ]
+      transitions: [
+         Transition {
+            id: floatingTransition
+            enabled: false
+            AnchorAnimation {
+               duration: 200
+            }
+            NumberAnimation {
+               duration: 200
+               property: "font.pixelSize"
+            }
+         }
+      ]
 
-			Rectangle {
-                id: underline
-				color: field.activeFocus ? field.accentColor : Theme.light.hintColor	
-				height: field.activeFocus ? units.dp(2) : units.dp(1)
-				
-				Behavior on height {
-					NumberAnimation { duration: 200}
-				}
-				
-				Behavior on color {
-					ColorAnimation { duration: 200}
-				}
-				
-				anchors {
-					left: parent.left
-					right: parent.right
-					bottom: parent.bottom
-					bottomMargin: units.dp(8)
-				}
-			}
-		}
-	}
+      Component.onCompleted: floatingTransition.enabled = true
+   }
+
+   Rectangle {
+      id: underline
+      color: field.displayError ||
+             (field.showCharacterCounter &&
+              field.characterCount > field.characterLimit) ? field.errorColor
+                                                           : field.activeFocus ? field.accentColor
+                                                                               : Theme.light.hintColor
+      height: field.activeFocus ? units.dp(2) : units.dp(1)
+      anchors {
+         left: parent.left
+         right: parent.right
+         top: textInput.bottom
+         topMargin: units.dp(8)
+      }
+
+      Behavior on height {
+         NumberAnimation { duration: 200 }
+      }
+
+      Behavior on color {
+         ColorAnimation { duration: 200 }
+      }
+   }
+
+   Label {
+      id: helperTextLabel
+      visible: field.showHelperText
+      font.pixelSize: units.dp(12)
+      color: field.displayError? field.errorColor : Qt.darker(Theme.light.hintColor)
+      anchors {
+         left: parent.left
+         right: parent.right
+         top: underline.top
+         topMargin: units.dp(4)
+      }
+
+      Behavior on color {
+         ColorAnimation { duration: 200 }
+      }
+   }
+
+   Label {
+      id: characterCounterLabel
+      visible: field.showCharacterCounter
+      font.pixelSize: units.dp(12)
+      font.weight: Font.Light
+      color: field.characterCount <= field.characterLimit? Qt.darker(Theme.light.hintColor) : field.errorColor
+      text: field.characterCount + " / " + field.characterLimit
+      anchors {
+         right: parent.right
+         top: underline.top
+         topMargin: units.dp(8)
+      }
+
+      Behavior on color {
+         ColorAnimation { duration: 200 }
+      }
+   }
 }
