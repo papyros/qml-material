@@ -30,10 +30,10 @@ Controls.Slider {
     implicitWidth: Material.units.dp(200)
     style: ControlStyles.SliderStyle {
         property Component knob : Item {
-            implicitHeight: control.pressed && !control.activeFocus ?
+            implicitHeight: control.pressed || control.activeFocus ?
                                 Material.units.dp(32) :
                                 0
-            implicitWidth: control.pressed && !control.activeFocus ?
+            implicitWidth: control.pressed || control.activeFocus ?
                                Material.units.dp(32) :
                                0
 
@@ -45,7 +45,7 @@ Controls.Slider {
                 color: Material.Theme.lightDark(Material.Theme.primaryColor,
                                                 Material.Theme.light.textColor,
                                                 Material.Theme.dark.textColor)
-                opacity: control.pressed ? 1 : 0
+                opacity: control.pressed || control.activeFocus ? 1 : 0
                 z: 1
 
                 Behavior on opacity {
