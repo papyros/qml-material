@@ -19,7 +19,7 @@ import QtQuick 2.1
 import Material 0.1
 
 
-Item {
+FocusScope {
    id: field
 
    property color accentColor: Theme.accentColor
