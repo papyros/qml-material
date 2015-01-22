@@ -31,6 +31,7 @@ FocusScope {
    property bool showCharacterCounter: characterLimit > 0
    property int characterLimit
    readonly property int characterCount: text.length
+   readonly property rect inputRect: Qt.rect(textInput.x, textInput.y, textInput.width, textInput.height)
    property alias text: textInput.text
    property alias placeholderText: fieldPlaceholder.text
    property alias echoMode: textInput.echoMode
