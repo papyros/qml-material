@@ -23,6 +23,7 @@ Page 0.1 Page.qml
 PageStack 0.1 PageStack.qml
 singleton Palette 0.1 Palette.qml
 ProgressBar 0.1 ProgressBar.qml
+RadioButton 0.1 RadioButton.qml
 Sidebar 0.1 Sidebar.qml
 Scrollbar 0.1 Scrollbar.qml
 Snackbar 0.1 Snackbar.qml

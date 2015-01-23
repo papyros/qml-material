@@ -16,25 +16,54 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtQuick.Controls 1.2 as Controls
+import QtQuick.Layouts 1.1
 import Material 0.1
 
 View {
     id: toolbar
 
+    anchors {
+        top: parent.top
+        left: parent.left
+        right: parent.right
+    }
+
+    opacity: page && page.actionBar.hidden ? 0 : 1
+
     implicitHeight: Device.type == Device.phone ? units.dp(48)
-                                                       : Device.type == Device.tablet ? units.dp(56)
-                                                                                         : units.dp(64)
+                                                : Device.type == Device.tablet ? units.dp(56)
+                                                                               : units.dp(64)
     height: targetHeight
 
-    property int targetHeight: actionBar.hidden ? 0
+    elevation: 2
+
+    fullWidth: true
+
+    clipContent: true
+
+    property int targetHeight: page && page.actionBar.hidden ? 0
                                                 : implicitHeight + (tabs.length > 0 ? tabbar.height : 0)
                                                                  + (expanded ? implicitHeight : 0)
+
+    property int maxActionCount: (Device.formFactor == "desktop"
+                                  ? 5 : Device.formFactor == "tablet" ? 4 : 3)
 
     property bool expanded: false
 
     property bool clientSideDecorations: false
 
-    opacity: actionBar.hidden ? 0 : 1
+    property string color: "white"
+
+    property var page
+
+    property alias tabs: tabbar.tabs
+
+    property alias selectedTab: tabbar.selectedIndex
+
+    property bool showBackButton
+
+    property var pages: []
 
     Behavior on height {
         NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
@@ -44,200 +73,89 @@ View {
         NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
     }
 
-    anchors {
-        top: parent.top
-        left: parent.left
-        right: parent.right
+    onSelectedTabChanged: {
+        if (page)
+            page.selectedTab = selectedTab
     }
 
-    elevation: 2
-    fullWidth: true
-
-    clipContent: true
-
-    property string color: "white"
-
-    property alias tabs: tabbar.tabs
-    property alias selectedTab: tabbar.selectedIndex
-    
-    property bool showBackButton
-
-    property NavigationDrawer drawer
-
-    property int maxActionCount: (Device.type == Device.desktop
-                                  ? 5 : Device.type == Device.tablet ? 4 : 3) - (drawer ? 1 : 0)
-
-    property Item actionBar
-    property Item previousActionBar: actionBar
-
-    function pushActionBar(nextPage, lastPage) {
-        print("Pushing action bar..")
-
-        actionBar = nextPage.actionBar
-        actionBar.toolbar = toolbar
-        previousActionBar = lastPage ? lastPage.actionBar : null
-
-        if (previousActionBar != null) {
-            previousActionBar.parent = actionBarItem
-
-            previousHideAnimation.start()
-            print("Hiding previous action bar...")
-        }
-
-        actionBar.parent = actionBarItem
-
-        actionBarShowAnimation.start()
+    function pop() {
+        stack.pop()
+        page = pages.pop()
+        tabs = page.tabs
     }
 
-    function popActionBar(previousPage, currentPage) {
-        print("Pushing action bar..")
-
-        actionBar = currentPage.actionBar
-        previousActionBar = previousPage ? previousPage.actionBar : null
-
-        if (previousActionBar != null) {
-            previousActionBar.parent = actionBarItem
-
-            previousShowAnimation.start()
-            print("Hiding previous action bar...")
-        }
-
-        actionBar.parent = actionBarItem
-
-        actionBarHideAnimation.start()
+    function push( page ) {
+        page.actionBar.maxActionCount = Qt.binding( function() { return toolbar.maxActionCount } );
+        stack.push(page.actionBar);
+        tabs = page.tabs
+        pages.push(toolbar.page)
+        toolbar.page = page
     }
 
-    SequentialAnimation {
-        id: previousHideAnimation
-
-        ParallelAnimation {
-
-            NumberAnimation {
-                duration: MaterialAnimation.pageTransitionDuration
-                target: previousActionBar
-                property: "opacity"
-                to: 0
-            }
-
-            NumberAnimation {
-                duration: MaterialAnimation.pageTransitionDuration
-                target: previousActionBar
-                property: "y"
-                to: previousActionBar ? -previousActionBar.height : 0
-            }
-        }
-    }
-
-    SequentialAnimation {
-        id: previousShowAnimation
-
-        ParallelAnimation {
-
-            NumberAnimation {
-                duration: MaterialAnimation.pageTransitionDuration
-                target: previousActionBar
-                property: "opacity"
-                from: 0
-                to: 1
-            }
-
-            NumberAnimation {
-                duration: MaterialAnimation.pageTransitionDuration
-                target: previousActionBar
-                property: "y"
-                from: previousActionBar ? -previousActionBar.height : 0
-                to: 0
-            }
-        }
-    }
-
-    SequentialAnimation {
-        id: actionBarShowAnimation
-
-        ParallelAnimation {
-            NumberAnimation {
-                duration: MaterialAnimation.pageTransitionDuration
-                target: actionBar
-                property: "opacity"
-                from: 0
-                to: 1
-            }
-
-            NumberAnimation {
-                duration: MaterialAnimation.pageTransitionDuration
-                target: actionBar
-                property: "y"
-                from: actionBar.height
-                to: 0
-            }
-        }
-    }
-
-    SequentialAnimation {
-        id: actionBarHideAnimation
-
-        ParallelAnimation {
-            NumberAnimation {
-                duration: MaterialAnimation.pageTransitionDuration
-                target: actionBar
-                property: "opacity"
-                from: 1
-                to: 0
-            }
-
-            NumberAnimation {
-                duration: MaterialAnimation.pageTransitionDuration
-                target: actionBar
-                property: "y"
-                to: actionBar.height
-                from: 0
-            }
-        }
-    }
-
-    Item {
-        id: actionBarItem
-
-        anchors {
-            left: parent.left
-            right: clientSideDecorations ? windowControls.left : parent.right
-            rightMargin: clientSideDecorations ? units.dp(8) : 0
-        }
+    Controls.StackView {
+        id: stack
+        width: parent.width
         height: toolbar.implicitHeight
 
+        delegate: Controls.StackViewDelegate {
+            pushTransition: Controls.StackViewTransition {
+                SequentialAnimation {
+                    id: actionBarShowAnimation
 
-    }
+                    ParallelAnimation {
+                        NumberAnimation {
+                            duration: MaterialAnimation.pageTransitionDuration
+                            target: enterItem
+                            property: "opacity"
+                            from: 0
+                            to: 1
+                        }
 
-    Row {
-        id: windowControls
-        visible: clientSideDecorations
+                        NumberAnimation {
+                            duration: MaterialAnimation.pageTransitionDuration
+                            target: enterItem
+                            property: "y"
+                            from: enterItem.height
+                            to: 0
+                        }
+                    }
+                }
+                SequentialAnimation {
+                    id: previousHideAnimation
 
-        anchors {
-            verticalCenter: parent.verticalCenter
-            right: parent.right
-            rightMargin: units.dp(16)
-        }
+                    ParallelAnimation {
 
-        spacing: units.dp(24)
+                        NumberAnimation {
+                            duration: MaterialAnimation.pageTransitionDuration
+                            target: exitItem
+                            property: "opacity"
+                            to: 0
+                        }
 
-        IconAction {
-            name: "navigation/close"
-            color: "white"
-            onTriggered: {
-                Qt.quit()
+                        NumberAnimation {
+                            duration: MaterialAnimation.pageTransitionDuration
+                            target: exitItem
+                            property: "y"
+                            to: exitItem ? -exitItem.height : 0
+                        }
+                    }
+                }
             }
+
         }
     }
 
     Tabs {
         id: tabbar
-        anchors {
-            top: toolbar.height <= toolbar.implicitHeight + tabbar.height
-                 ? actionBarItem.bottom : undefined
-            bottom: toolbar.height <= toolbar.implicitHeight + tabbar.height
-                    ? undefined : parent.bottom
-        }
-        color: toolbar.color
+        color: toolbar.backgroundColor
         highlight: Theme.accentColor
+        visible: tabs.length > 0
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: stack.bottom
+        }
     }
+
 }

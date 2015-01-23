@@ -12,16 +12,15 @@ Item {
 
         ProgressBar {
             id: progressBar1
+            width: units.dp(50)
 
-            SequentialAnimation {
+            SequentialAnimation on progress {
                 running: true
                 loops: NumberAnimation.Infinite
 
                 PauseAnimation { duration: 1000 } // This puts a bit of time between the loop
 
                 NumberAnimation {
-                    target: progressBar1
-                    property: "value"
                     duration: 3000
                     from: 0
                     to: 1
@@ -30,4 +29,3 @@ Item {
         }
     }
 }
-

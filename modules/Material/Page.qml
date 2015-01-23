@@ -16,12 +16,32 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtQuick.Controls 1.2 as Controls
 import Material 0.1
 
 Rectangle {
     id: page
 
+    color: Theme.backgroundColor
+
     property string title
+
+    property list<Action> actions
+
+    property Action backAction: Action {
+        name: "Back"
+        iconName: "navigation/arrow_back"
+        onTriggered: page.pop()
+        visible: showBackButton
+    }
+
+    property bool showBackButton: true
+
+    property bool cardStyle: false
+
+    property var tabs: []
+
+    property int selectedTab
 
     property alias actionBar: __actionBar
 
@@ -31,41 +51,11 @@ Rectangle {
         page: page
     }
 
-    property Item pageStack
-
-    property list<Action> actions
-    property Action backAction: Action {
-        name: "Back"
-        iconName: "navigation/arrow_back"
-        onTriggered: pageStack.pop()
-        visible: showBackButton
-    }
-
-    anchors.fill: parent
-
-    property bool currentPage: pageStack.currentPage == page
-
-    property bool dynamic: false
-
-    signal close
-
-    property bool showBackButton: true
-
-    property var tabs: []
-    property int selectedTab
-    property Item transition
-
-    property bool cardStyle: false
-
-    z: 0
-
-    color: Theme.backgroundColor
-
-    function push() {
-        z = pageStack.count
-    }
-
     function pop() {
+        Controls.Stack.view.pop();
+    }
 
+    function push(component, properties) {
+        Controls.Stack.view.push({item: component, properties: properties});
     }
 }
