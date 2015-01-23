@@ -71,6 +71,10 @@ Item {
 	 */
     property color backgroundColor: Theme.primaryColor
 
+    property alias title: label.text
+
+    property Action backAction: page ? page.backAction : undefined
+
     IconAction {
         id: leftItem
 
@@ -95,8 +99,8 @@ Item {
             NumberAnimation { duration: 200 }
         }
 
-        property bool show: page && (page.backAction && page.backAction.visible) &&
-                            (!page.cardStyle || !showContents)
+        property bool show: backAction && backAction.visible &&
+                            (!page || !page.cardStyle || !showContents)
     }
 
     Label {

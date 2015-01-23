@@ -33,7 +33,7 @@ Item {
 
     Rectangle {
         radius: units.dp(2)
-        color: Theme.accentColor
+        color: bar.color
         opacity: 0.2
 
         anchors.fill: parent

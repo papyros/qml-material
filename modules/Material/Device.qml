@@ -42,13 +42,13 @@ Object {
     			return "tablet";
     			break;
     		case 3:
-    			return "desktop";
+    			return "computer";
     			break;
     		case 4:
-    			return "tv";
+    			return "TV";
     			break;
     		case 5:
-    			return "unknown";
+    			return "device";
     			break;
     	}
     }
