@@ -5,11 +5,11 @@ Material Design implemented in QtQuick
 
 This is a library of QML widgets implementing Google's [Material Design](https://www.google.com/design/spec). It is completely cross platform, and runs on Linux, OS X, and Windows. It may also run on iOS and Android, though those platforms have not been tested and are not currently officially supported.
 
-Brought to you by the [Quantum OS development team](https://github.com/quantum-os/qml-material/graphs/contributors).
+Brought to you by the [Papyros development team](https://github.com/papyros/qml-material/graphs/contributors).
 
 ### Dependencies
 
-Requires Qt 5.3 or higher and [QML Extras](https://github.com/quantum-os/qml-extras) installed as QML module.
+Requires Qt 5.3 or higher and [QML Extras](https://github.com/papyros/qml-extras) installed as QML module.
 
 ### Installation
 
