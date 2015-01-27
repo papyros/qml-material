@@ -23,19 +23,23 @@ import Material 0.1 as Material
 Controls.Slider {
     id: slider
 
+    /*!
+       Set to \c true to enable a float numeric value label above the slider knob
+     */
     property bool numericValueLabel: false
+
+    /*!
+       Set to \c true if the switch is on a dark background
+     */
+    property bool darkBackground
 
     tickmarksEnabled: false
     implicitHeight: numericValueLabel ? Material.units.dp(54) : Material.units.dp(32)
     implicitWidth: Material.units.dp(200)
     style: ControlStyles.SliderStyle {
         property Component knob : Item {
-            implicitHeight: control.pressed || control.activeFocus ?
-                                Material.units.dp(32) :
-                                0
-            implicitWidth: control.pressed || control.activeFocus ?
-                               Material.units.dp(32) :
-                               0
+            implicitHeight: control.pressed || control.activeFocus ? Material.units.dp(32) : 0
+            implicitWidth: control.pressed || control.activeFocus ? Material.units.dp(32) : 0
 
             Material.Label {
                 anchors.fill: parent
@@ -59,7 +63,9 @@ Controls.Slider {
                 implicitWidth: parent.width
                 radius: implicitWidth / 2
                 color: Material.Theme.primaryColor
+                antialiasing: true
                 clip: true
+
                 Rectangle {
                     implicitHeight: parent.height / 2
                     implicitWidth: parent.width / 2
@@ -68,6 +74,7 @@ Controls.Slider {
                     anchors.bottom: parent.bottom
                     antialiasing: true
                 }
+
                 transform: [
                     Rotation {
                         origin { x: parent.width / 2; y: parent.height / 2 }
@@ -89,7 +96,7 @@ Controls.Slider {
             implicitWidth: 200
             implicitHeight: Material.units.dp(2)
             anchors.verticalCenter: parent.verticalCenter
-            color: Material.Theme.alpha("#000000", 0.26)
+            color: slider.darkBackground ? Material.Theme.alpha("#FFFFFF", 0.3) : Material.Theme.alpha("#000000", 0.26)
             Rectangle {
                 height: parent.height
                 width: styleData.handlePosition
@@ -119,25 +126,25 @@ Controls.Slider {
                            "transparent"
                 radius: implicitHeight / 2
                 Rectangle {
+                    property var diameter: control.enabled ? Material.units.dp(16) : Material.units.dp(12)
                     anchors.centerIn: parent
-
                     color: control.value === control.minimumValue ?
                                Material.Theme.backgroundColor :
                                Material.Theme.primaryColor
 
                     border.color: control.value === control.minimumValue ?
-                                      Material.Theme.alpha("#000000", 0.26) :
+                                      slider.darkBackground ? Material.Theme.alpha("#FFFFFF", 0.3) : Material.Theme.alpha("#000000", 0.26) :
                                       Material.Theme.primaryColor
 
                     border.width: Material.units.dp(2)
 
                     implicitHeight: control.pressed && !control.activeFocus && !slider.numericValueLabel ?
-                                        Material.units.dp(24) :
-                                        Material.units.dp(16)
+                                        diameter + Material.units.dp(8) :
+                                        diameter
 
                     implicitWidth: control.pressed && !control.activeFocus && !slider.numericValueLabel ?
-                                       Material.units.dp(24) :
-                                       Material.units.dp(16)
+                                       diameter + Material.units.dp(8) :
+                                       diameter
 
                     radius: implicitWidth / 2
 
@@ -156,8 +163,8 @@ Controls.Slider {
             id: repeater
             model: control.stepSize > 0 ? 1 + (control.maximumValue - control.minimumValue) / control.stepSize : 0
             Rectangle {
-                color: "#000000"
-                width: Material.units.dp(2) ; height: Material.units.dp(2)
+                color: slider.darkBackground ? "#FFFFFF" : "#000000"
+                width: Math.round(Material.units.dp(2)); height: Material.units.dp(2)
                 y: repeater.height / 2
                 x: styleData.handleWidth / 2 + index * ((repeater.width - styleData.handleWidth) / (repeater.count-1))
             }
