@@ -15,10 +15,13 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.1
+import QtQuick 2.2
 import Material 0.1
 
-
+/*
+ * Note that this is a FocusScope, not a TextInput. If you need to read or
+ * write properties of the input itself, use the input property.
+ */
 FocusScope {
    id: field
 
@@ -34,16 +37,10 @@ FocusScope {
    readonly property rect inputRect: Qt.rect(textInput.x, textInput.y, textInput.width, textInput.height)
    property alias text: textInput.text
    property alias placeholderText: fieldPlaceholder.text
-   property alias echoMode: textInput.echoMode
-   property alias readOnly: textInput.readOnly
-   property alias font: textInput.font
-   property alias validator: textInput.validator
-   property alias inputMethodHints: textInput.inputMethodHints
-   property alias cursorPosition: textInput.cursorPosition
-   property alias maximumLength: textInput.maximumLength
-   //Is there a better way to expose these properties like this?
+   readonly property alias input: textInput
 
    signal accepted()
+   signal editingFinished()
 
    implicitHeight: showHelperText ? helperTextLabel.y + helperTextLabel.height + units.dp(4)
                           : underline.y + units.dp(8)
@@ -77,6 +74,7 @@ FocusScope {
       }
 
       onAccepted: field.accepted()
+      onEditingFinished: field.editingFinished()
    }
 
    Label {
