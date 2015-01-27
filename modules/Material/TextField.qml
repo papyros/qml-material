@@ -54,7 +54,7 @@ FocusScope {
    TextInput {
       id: textInput
       focus: true
-      color: "black"
+      color: Theme.light.textColor
       selectedTextColor: "white"
       selectionColor: Qt.darker(field.accentColor, 1)
       selectByMouse: Device.type === Device.desktop

@@ -2,6 +2,7 @@
 .pragma library
 
 var map = {
+    'power_off': '',
     'cubes': '',
     'cube': '',
 	'glass' : '',

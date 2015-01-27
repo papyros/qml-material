@@ -36,7 +36,7 @@ Item {
 
     width: units.dp(800)
     height: units.dp(600)
-    
+
     Component.onCompleted: {
       units.pixelDensity = Qt.binding( function() { return Screen.pixelDensity } );
       Device.type = Qt.binding( function () {
@@ -60,17 +60,7 @@ Item {
       } );
     }
 
-    QtObject {
+    AppTheme {
         id: __theme
-
-        property color primaryColor: Theme.primaryColor
-        property color primaryDarkColor: Theme.primaryDarkColor
-        property color accentColor: Theme.accentColor
-        property color backgroundColor: Theme.backgroundColor
-
-        onPrimaryColorChanged: Theme.primaryColor = primaryColor
-        onPrimaryDarkColorChanged: Theme.primaryDarkColor = primaryDarkColor
-        onAccentColorChanged: Theme.accentColor = accentColor
-        onBackgroundColorChanged: Theme.backgroundColor = backgroundColor
     }
 }
