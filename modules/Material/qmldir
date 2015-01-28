@@ -1,6 +1,7 @@
 module Material
 Action 0.1 Action.qml
 ActionBar 0.1 ActionBar.qml
+ActionButton 0.1 ActionButton.qml
 ApplicationWindow 0.1 ApplicationWindow.qml
 AppTheme 0.1 AppTheme.qml
 AwesomeIcon 0.1 AwesomeIcon.qml
@@ -20,6 +21,7 @@ NavigationDrawer 0.1 NavigationDrawer.qml
 Object 0.1 Object.qml
 Page 0.1 Page.qml
 PageStack 0.1 PageStack.qml
+singleton Palette 0.1 Palette.qml
 ProgressBar 0.1 ProgressBar.qml
 RadioButton 0.1 RadioButton.qml
 Sidebar 0.1 Sidebar.qml
