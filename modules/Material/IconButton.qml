@@ -41,7 +41,7 @@ Icon {
         anchors.centerIn: parent
 
         enabled: icon.enabled
-        circleClip: true
+        circular: true
 
         width: parent.width + units.dp(8)
         height: parent.height + units.dp(8)

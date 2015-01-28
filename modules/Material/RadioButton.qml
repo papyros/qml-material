@@ -80,11 +80,11 @@ Controls.RadioButton {
                     antialiasing: true
 
                     Behavior on implicitWidth {
-                        NumberAnimation { duration: 200}
+                        NumberAnimation { duration: 200 }
                     }
 
                     Behavior on implicitHeight {
-                        NumberAnimation { duration: 200}
+                        NumberAnimation { duration: 200 }
                     }
                 }
             }
@@ -97,7 +97,10 @@ Controls.RadioButton {
         anchors.left: parent.left
         width: units.dp(48)
         height: units.dp(48)
-        color: radioButton.checked ? Qt.rgba(0,0,0,0.1) : Theme.alpha(Theme.accentColor, 0.20)
+        color: radioButton.checked ? Theme.alpha(radioButton.color, 0.20) : Qt.rgba(0,0,0,0.1)
         onClicked: radioButton.checked = !radioButton.checked
+
+        circular: true
+        centered: true
     }
 }

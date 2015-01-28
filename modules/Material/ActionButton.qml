@@ -72,7 +72,7 @@ Controls.Button {
                         onReleased: mouseArea.onReleased(mouse)
                     }
 
-                    circleClip: true
+                    circular: true
                 }
             }
         }

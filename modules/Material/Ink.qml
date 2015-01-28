@@ -26,14 +26,16 @@ MouseArea {
     hoverEnabled: enabled
     z: 2
 
-    property int startSize: circleClip ? width/5 : width/3
-    property int middleSize: circleClip ? width * 3/4 : width - 10
-    property int endSize: circleClip ? width * 3 : width * 1.5
+    property int startSize: circular ? width/5 : width/3
+    property int middleSize: circular ? width * 3/4 : width - 10
+    property int endSize: circular ? centered ? width: width * 3
+                                   : width * 1.5
 
     property Item currentCircle
     property color color: Qt.rgba(0,0,0,0.1)
 
-    property bool circleClip: false
+    property bool circular: false
+    property bool centered: false
 
     onPressed: {
         print("PRESSED")
@@ -51,7 +53,10 @@ MouseArea {
 
     function createTapCircle(x, y) {
         if (!currentCircle)
-            currentCircle = tapCircle.createObject(view, {"circleX": x, "circleY": y });
+            currentCircle = tapCircle.createObject(view, {
+                                                       "circleX": centered ? width/2 : x,
+                                                       "circleY": centered ? height/2 : y
+                                                   });
     }
 
     Component {
@@ -63,19 +68,29 @@ MouseArea {
             anchors.fill: parent
 
             function removeCircle() {
-                circleItem.destroy(200);
-                closeAnimation.start();
+                if (fillAnimation.running) {
+                    fillAnimation.stop()
 
-                currentCircle = null;
+                    slowCloseAnimation.start()
+
+                    circleItem.destroy(400);
+                    currentCircle = null;
+                } else {
+                    circleItem.destroy(400);
+                    closeAnimation.start();
+                    currentCircle = null;
+                }
             }
 
             property real circleX
             property real circleY
 
+            property bool closed
+
             Item {
                 id: circleParent
                 anchors.fill: parent
-                visible: !circleClip
+                visible: !circular
 
                 Rectangle {
                     id: circleRectangle
@@ -92,19 +107,58 @@ MouseArea {
                     opacity: 0
                     color: view.color
 
-                    ParallelAnimation {
+                    SequentialAnimation {
                         id: fillAnimation
                         running: true
 
-                        NumberAnimation { target: circleRectangle; property: "size"; duration: 200; from: startSize; to: middleSize; easing.type: Easing.InOutQuad }
-                        NumberAnimation { target: circleRectangle; property: "opacity"; duration: 100; from: 0; to: 1; easing.type: Easing.InOutQuad }
+                        ParallelAnimation {
+
+                            NumberAnimation {
+                                target: circleRectangle; property: "size"; duration: 400;
+                                from: startSize; to: middleSize; easing.type: Easing.InOutQuad
+                            }
+
+                            NumberAnimation {
+                                target: circleRectangle; property: "opacity"; duration: 200;
+                                from: 0; to: 1; easing.type: Easing.InOutQuad
+                            }
+                        }
                     }
 
                     ParallelAnimation {
                         id: closeAnimation
 
-                        NumberAnimation { target: circleRectangle; property: "size"; duration: 200;  to: endSize; easing.type: Easing.InOutQuad }
-                        NumberAnimation { target: circleRectangle; property: "opacity"; duration: 200; from: 1; to: 0; easing.type: Easing.InOutQuad }
+                        NumberAnimation {
+                            target: circleRectangle; property: "size"; duration: 400;
+                            to: endSize; easing.type: Easing.InOutQuad
+                        }
+
+                        NumberAnimation {
+                            target: circleRectangle; property: "opacity"; duration: 400;
+                            from: 1; to: 0; easing.type: Easing.InOutQuad
+                        }
+                    }
+
+                    ParallelAnimation {
+                        id: slowCloseAnimation
+
+                        SequentialAnimation {
+
+                            NumberAnimation {
+                                target: circleRectangle; property: "opacity"; duration: 150;
+                                from: 0; to: 1; easing.type: Easing.InOutQuad
+                            }
+
+                            NumberAnimation {
+                                target: circleRectangle; property: "opacity"; duration: 250;
+                                from: 1; to: 0; easing.type: Easing.InOutQuad
+                            }
+                        }
+
+                        NumberAnimation {
+                            target: circleRectangle; property: "size"; duration: 400;
+                            to: endSize; easing.type: Easing.InOutQuad
+                        }
                     }
                 }
             }
@@ -112,7 +166,7 @@ MouseArea {
             CircleMask {
                 anchors.fill: parent
                 source: circleParent
-                visible: circleClip
+                visible: circular
             }
         }
     }
