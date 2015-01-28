@@ -49,7 +49,7 @@ View {
         font.family: fontAwesome.name
         font.weight: Font.Light
         text: widget.icons.hasOwnProperty(name) ? widget.icons[name] : ""
-        color: theme.blackColor('icon')
+        color: Theme.light.iconColor
         style: shadow ? Text.Raised : Text.Normal
         styleColor: Qt.rgba(0,0,0,0.5)
         font.pixelSize: widget.size

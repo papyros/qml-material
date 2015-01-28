@@ -134,6 +134,7 @@ Item {
         spread: 0.05
         color: "black"
         cornerRadius: item.radius + glowRadius * 2.5
+        visible: parent.opacity == 1
     }
 
     RectangularGlow {
@@ -151,6 +152,7 @@ Item {
         spread: 0.05
         color: "black"
         cornerRadius: item.radius + glowRadius * 2.5
+        visible: parent.opacity == 1
     }
 
     Rectangle {
