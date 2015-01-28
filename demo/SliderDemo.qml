@@ -45,7 +45,6 @@ Item {
                             Slider {
                                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                                 darkBackground: index == 1
-                                orientation: Qt.Vertical
                             }
 
                             Label {
