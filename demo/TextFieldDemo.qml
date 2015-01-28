@@ -26,8 +26,18 @@ Item {
         }
 
         TextField {
-            placeholderText: "Floating placeholder label"
+            placeholderText: "Character limit"
             floatingLabel: true
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            characterLimit: 10
+        }
+
+        TextField {
+            placeholderText: "Password"
+            floatingLabel: true
+
+            input.echoMode: TextInput.Password
 
             anchors.horizontalCenter: parent.horizontalCenter
         }

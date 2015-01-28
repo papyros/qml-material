@@ -27,24 +27,35 @@ FocusScope {
 
    property color accentColor: Theme.accentColor
    property color errorColor: "#F44336"
-   property bool floatingLabel: false
-   property bool showHelperText: helperText.length > 0
-   property alias helperText: helperTextLabel.text
-   property bool displayError: false
-   property bool showCharacterCounter: characterLimit > 0
-   property int characterLimit
-   readonly property int characterCount: text.length
-   readonly property rect inputRect: Qt.rect(textInput.x, textInput.y, textInput.width, textInput.height)
+
    property alias text: textInput.text
+
    property alias placeholderText: fieldPlaceholder.text
+   property alias helperText: helperTextLabel.text
+
+   readonly property int characterCount: text.length
+
+   property bool floatingLabel: false
+   property bool hasError: false
+   property int characterLimit
+
+   readonly property rect inputRect: Qt.rect(textInput.x, textInput.y, textInput.width, textInput.height)
+
    readonly property alias input: textInput
 
    signal accepted()
    signal editingFinished()
 
-   implicitHeight: showHelperText ? helperTextLabel.y + helperTextLabel.height + units.dp(4)
+   implicitHeight: __internal.showHelperText ? helperTextLabel.y + helperTextLabel.height + units.dp(4)
                           : underline.y + units.dp(8)
    width: units.dp(200)
+
+   QtObject {
+       id: __internal
+
+       property bool showHelperText: helperText.length > 0
+       property bool showCharacterCounter: characterLimit > 0
+   }
 
    MouseArea {
       anchors.fill: parent
@@ -53,21 +64,29 @@ FocusScope {
 
    TextInput {
       id: textInput
+
       focus: true
+
       color: Theme.light.textColor
       selectedTextColor: "white"
       selectionColor: Qt.darker(field.accentColor, 1)
+
       selectByMouse: Device.type === Device.desktop
+
       activeFocusOnTab: true
+
       width: parent.width
+
       clip: true
+
       y: {
          if( !floatingLabel )
             return units.dp(16)
-         if( floatingLabel && !showHelperText )
+         if( floatingLabel && !__internal.showHelperText )
             return units.dp(40)
          return units.dp(28)
       }
+
       font {
          family: echoMode == TextInput.Password && field.text.length > 0 ? "" : "Roboto"
          pixelSize: units.dp(16)
@@ -79,10 +98,14 @@ FocusScope {
 
    Label {
       id: fieldPlaceholder
+
       text: field.placeholderText
+
       font.pixelSize: units.dp(16)
+
       anchors.baseline: textInput.baseline
       anchors.bottomMargin: units.dp(8)
+
       color: Theme.light.hintColor
 
       states: [
@@ -108,6 +131,7 @@ FocusScope {
             }
          }
       ]
+
       transitions: [
          Transition {
             id: floatingTransition
@@ -127,12 +151,11 @@ FocusScope {
 
    Rectangle {
       id: underline
-      color: field.displayError ||
-             (field.showCharacterCounter &&
-              field.characterCount > field.characterLimit) ? field.errorColor
-                                                           : field.activeFocus ? field.accentColor
-                                                                               : Theme.light.hintColor
+      color: field.hasError || (__internal.showCharacterCounter && field.characterCount > field.characterLimit)
+             ? field.errorColor : field.activeFocus ? field.accentColor : Theme.light.hintColor
+
       height: field.activeFocus ? units.dp(2) : units.dp(1)
+
       anchors {
          left: parent.left
          right: parent.right
@@ -151,9 +174,9 @@ FocusScope {
 
    Label {
       id: helperTextLabel
-      visible: field.showHelperText
+      visible: __internal.showHelperText
       font.pixelSize: units.dp(12)
-      color: field.displayError? field.errorColor : Qt.darker(Theme.light.hintColor)
+      color: field.hasError ? field.errorColor : Qt.darker(Theme.light.hintColor)
       anchors {
          left: parent.left
          right: parent.right
@@ -168,10 +191,10 @@ FocusScope {
 
    Label {
       id: characterCounterLabel
-      visible: field.showCharacterCounter
+      visible: __internal.showCharacterCounter
       font.pixelSize: units.dp(12)
       font.weight: Font.Light
-      color: field.characterCount <= field.characterLimit? Qt.darker(Theme.light.hintColor) : field.errorColor
+      color: field.characterCount <= field.characterLimit ? Qt.darker(Theme.light.hintColor) : field.errorColor
       text: field.characterCount + " / " + field.characterLimit
       anchors {
          right: parent.right
