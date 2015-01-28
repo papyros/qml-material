@@ -1,6 +1,8 @@
 /*
  * QML Material - An application framework implementing Material Design.
  * Copyright (C) 2014 Michael Spencer
+ * Copyright (C) 2015 Bogdan Cuza <bogdan.cuza@hotmail.com>
+ * Copyright (C) 2015 Mikhail Ivchenko <ematirov@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -30,11 +32,22 @@ View {
         property real minHeight: units.dp(96) + titleLabel.height
 	property string title
 
+	signal accepted()
+	signal rejected()
+
+	function open() {
+		visible = true;
+	}
+
+	function close() {
+		visible = false;
+	}
+
 	width: view.parent.width/2 >= minWidth ? view.parent.width/2 : minWidth
 	height: {
-        	if (mainCol.height <= maxHeight && mainCol.height >= minHeight) {
-            		return mainCol.height;
-        	} else if (mainCol.height < minHeight) {
+        	if (units.dp(96) + mainCol.height <= maxHeight && units.dp(96) + mainCol.height >= minHeight) {
+            		return units.dp(96) + mainCol.height;
+        	} else if (units.dp(96) + mainCol.height < minHeight) {
             		return minHeight;
         	} else {
             		return maxHeight;
@@ -95,6 +108,10 @@ View {
 				right: positiveBtn.left
 				rightMargin: units.dp(8)
 			}
+			onClicked: {
+				view.close();
+				view.rejected();
+			}
 		}
 
 		Button {
@@ -105,6 +122,10 @@ View {
 				verticalCenter: parent.verticalCenter
 				right: parent.right
 				rightMargin: units.dp(16)
+			}
+			onClicked: {
+				view.close();
+				view.accepted();
 			}
 		}
 	}
