@@ -45,9 +45,9 @@ View {
 
 	width: view.parent.width/2 >= minWidth ? view.parent.width/2 : minWidth
 	height: {
-        	if (mainCol.height <= maxHeight && mainCol.height >= minHeight) {
-            		return mainCol.height;
-        	} else if (mainCol.height < minHeight) {
+        	if (units.dp(96) + mainCol.height <= maxHeight && units.dp(96) + mainCol.height >= minHeight) {
+            		return units.dp(96) + mainCol.height;
+        	} else if (units.dp(96) + mainCol.height < minHeight) {
             		return minHeight;
         	} else {
             		return maxHeight;
