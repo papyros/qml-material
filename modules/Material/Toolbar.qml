@@ -31,12 +31,16 @@ View {
 
     opacity: page && page.actionBar.hidden ? 0 : 1
 
+    backgroundColor: page && page.actionBar.backgroundColor ? Qt.darker(page.actionBar.backgroundColor,1).a == 0
+                                                              ? page.color : page.actionBar.backgroundColor
+                                                            : Theme.primaryColor
+
     implicitHeight: Device.type == Device.phone ? units.dp(48)
                                                 : Device.type == Device.tablet ? units.dp(56)
                                                                                : units.dp(64)
     height: targetHeight
 
-    elevation: 2
+    elevation: backgroundColor == page.color ? 0 : 2
 
     fullWidth: true
 
@@ -81,13 +85,11 @@ View {
     function pop() {
         stack.pop()
         page = pages.pop()
-        tabs = page.tabs
     }
 
     function push( page ) {
         page.actionBar.maxActionCount = Qt.binding( function() { return toolbar.maxActionCount } );
         stack.push(page.actionBar);
-        tabs = page.tabs
         pages.push(toolbar.page)
         toolbar.page = page
     }
@@ -150,6 +152,8 @@ View {
         color: toolbar.backgroundColor
         highlight: Theme.accentColor
         visible: tabs.length > 0
+
+        tabs: page ? page.tabs : []
 
         anchors {
             left: parent.left

@@ -75,7 +75,7 @@ Item {
 
     property Action backAction: page ? page.backAction : undefined
 
-    IconAction {
+    IconButton {
         id: leftItem
 
         anchors {
@@ -136,7 +136,7 @@ Item {
                                 : page.actions.length > maxActionCount
                                   ? maxActionCount - 1 : page.actions.length
 
-            delegate: IconAction {
+            delegate: IconButton {
                 id: iconAction
 
                 action: page.actions[index]
@@ -148,7 +148,7 @@ Item {
             }
         }
 
-        IconAction {
+        IconButton {
             name: "navigation/more_vert"
             size: units.dp(27)
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,

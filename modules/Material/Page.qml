@@ -52,7 +52,8 @@ Rectangle {
     }
 
     function pop() {
-        Controls.Stack.view.pop();
+        if (Controls.Stack.view.currentItem == page)
+            Controls.Stack.view.pop();
     }
 
     function push(component, properties) {

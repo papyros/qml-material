@@ -17,6 +17,7 @@
  */
 import QtQuick 2.0
 import Material 0.1
+import Material.Extras 0.1
 
 Icon {
     id: icon
@@ -39,15 +40,16 @@ Icon {
 
         anchors.centerIn: parent
 
-        endSize: width * 3
         enabled: icon.enabled
+        circular: true
 
-        width: Math.max(parent.width, units.dp(48))
-        height: Math.max(parent.height, units.dp(48))
+        width: parent.width + units.dp(8)
+        height: parent.height + units.dp(8)
 
         onClicked: {
             //ink.focused = true
             icon.triggered()
         }
     }
+
 }

@@ -38,4 +38,14 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }
+
+    ActionButton {
+        anchors {
+            right: parent.right
+            bottom: parent.bottom
+            margins: units.dp(32)
+        }
+
+        iconName: "content/add"
+    }
 }

@@ -71,6 +71,8 @@ Controls.Button {
                         onCanceled: mouseArea.onCanceled()
                         onReleased: mouseArea.onReleased(mouse)
                     }
+
+                    circular: true
                 }
             }
         }

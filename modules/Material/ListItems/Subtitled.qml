@@ -65,17 +65,20 @@ BaseListItem {
                 elide: Text.ElideRight
                 style: "subheading"
 
-                width: valueLabel.text || secondaryItem.children.length > 0
-                       ? Math.min(implicitWidth, parent.width * 0.8) : parent.width
+
+                anchors.right: valueLabel.text  ? valueLabel.left
+                                                : secondaryItem.children.length > 0 ? secondaryItem.left
+                                                                                    : parent.right
+                anchors.left: parent.left
+                anchors.rightMargin: valueLabel.text || secondaryItem.children.length > 0
+                                     ? units.dp(16) : 0
             }
 
             Label {
                 id: valueLabel
 
-                color: theme.light.subTextColor
+                color: Theme.light.subTextColor
                 elide: Text.ElideRight
-                anchors.left: label.right
-                anchors.leftMargin: units.dp(16)
                 anchors.right: parent.right
                 horizontalAlignment: Text.AlignRight
 
@@ -94,7 +97,7 @@ BaseListItem {
         Label {
             id: subLabel
 
-            color: theme.light.subTextColor
+            color: Theme.light.subTextColor
             elide: Text.ElideRight
             width: parent.width
 
