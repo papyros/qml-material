@@ -57,7 +57,7 @@ Object {
        so this is hardcoded here and we update it from within \l ApplicationWindow
      */
     property real pixelDensity
-    property real multiplier: 160 / 72 //default multiplier, but can be changed by user
+    property real multiplier: Qt.platform.os === "osx" ? (160 / 72) : (160 / 96)
 
     /*!
        This is the standard function to use for accessing device-independent pixels. You should use
