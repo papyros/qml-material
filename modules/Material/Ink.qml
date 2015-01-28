@@ -109,9 +109,9 @@ MouseArea {
                 }
             }
 
-            CircleItem {
+            CircleMask {
                 anchors.fill: parent
-                content: circleParent
+                source: circleParent
                 visible: circleClip
             }
         }
