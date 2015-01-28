@@ -19,6 +19,12 @@ ApplicationWindow {
 
         title: "Component Demo"
 
+        actions: [
+            Action {
+                iconName: "content/add"
+            }
+        ]
+
         Sidebar {
             id: sidebar
 

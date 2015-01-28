@@ -45,8 +45,6 @@ Image {
         else if (size > 18 * 3)
             dp_size = "24"
 
-		//print(size/units.dp(1) + "dp = " + size + ' -> ' + dp_size + "dp")
-
         return Qt.resolvedUrl("icons/%1/ic_%2_%3_%4dp.png".arg(list[0]).arg(list[1]).arg(color).arg(dp_size))
     }
 
