@@ -16,9 +16,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 import QtQuick.Controls 1.2 as Controls
 import QtQuick.Controls.Styles 1.2 as ControlStyles
-import Material 0.1 as Material
 
 Controls.Slider {
     id: slider
@@ -33,22 +33,27 @@ Controls.Slider {
      */
     property bool darkBackground
 
+    property color color: darkBackground ? Theme.dark.accentColor
+                                         : Theme.light.accentColor
+
     tickmarksEnabled: false
-    implicitHeight: numericValueLabel ? Material.units.dp(54) : Material.units.dp(32)
-    implicitWidth: Material.units.dp(200)
+
+    implicitHeight: numericValueLabel ? units.dp(54) : units.dp(32)
+    implicitWidth: units.dp(200)
+
     style: ControlStyles.SliderStyle {
         property Component knob : Item {
-            implicitHeight: control.pressed || control.activeFocus ? Material.units.dp(32) : 0
-            implicitWidth: control.pressed || control.activeFocus ? Material.units.dp(32) : 0
+            implicitHeight: control.pressed || control.activeFocus ? units.dp(32) : 0
+            implicitWidth: control.pressed || control.activeFocus ? units.dp(32) : 0
 
-            Material.Label {
+            Label {
                 anchors.fill: parent
                 horizontalAlignment: Qt.AlignHCenter
                 verticalAlignment: Qt.AlignVCenter
                 text: control.value
-                color: Material.Theme.lightDark(Material.Theme.primaryColor,
-                                                Material.Theme.light.textColor,
-                                                Material.Theme.dark.textColor)
+                color: Theme.lightDark(control.color,
+                                                Theme.light.textColor,
+                                                Theme.dark.textColor)
                 opacity: control.pressed || control.activeFocus ? 1 : 0
                 z: 1
 
@@ -62,14 +67,14 @@ Controls.Slider {
                 implicitHeight: parent.height
                 implicitWidth: parent.width
                 radius: implicitWidth / 2
-                color: Material.Theme.primaryColor
+                color: control.color
                 antialiasing: true
                 clip: true
 
                 Rectangle {
                     implicitHeight: parent.height / 2
                     implicitWidth: parent.width / 2
-                    color: Material.Theme.primaryColor
+                    color: Theme.primaryColor
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     antialiasing: true
@@ -94,56 +99,60 @@ Controls.Slider {
 
         groove: Rectangle {
             implicitWidth: 200
-            implicitHeight: Material.units.dp(2)
+            implicitHeight: units.dp(2)
+
             anchors.verticalCenter: parent.verticalCenter
-            color: slider.darkBackground ? Material.Theme.alpha("#FFFFFF", 0.3) : Material.Theme.alpha("#000000", 0.26)
+
+            color: slider.darkBackground ? Theme.alpha("#FFFFFF", 0.3)
+                                         : Theme.alpha("#000000", 0.26)
+
             Rectangle {
                 height: parent.height
                 width: styleData.handlePosition
-                implicitHeight: Material.units.dp(2)
+                implicitHeight: units.dp(2)
                 implicitWidth: 200
-                color: Material.Theme.primaryColor
+                color: control.color
             }
         }
         handle: Item {
             anchors.centerIn: parent
-            implicitHeight: Material.units.dp(8)
-            implicitWidth: Material.units.dp(8)
+            implicitHeight: units.dp(8)
+            implicitWidth: units.dp(8)
 
             Loader {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.top
-                anchors.bottomMargin: Material.units.dp(16)
+                anchors.bottomMargin: units.dp(16)
                 sourceComponent: slider.numericValueLabel ? knob : null
             }
 
             Rectangle {
                 anchors.centerIn: parent
-                implicitHeight: Material.units.dp(32)
-                implicitWidth: Material.units.dp(32)
+                implicitHeight: units.dp(32)
+                implicitWidth: units.dp(32)
                 color: control.activeFocus ?
-                           Material.Theme.alpha(Material.Theme.primaryColor, 0.20) :
+                           Theme.alpha(control.color, 0.20) :
                            "transparent"
                 radius: implicitHeight / 2
                 Rectangle {
-                    property var diameter: control.enabled ? Material.units.dp(16) : Material.units.dp(12)
+                    property var diameter: control.enabled ? units.dp(16) : units.dp(12)
                     anchors.centerIn: parent
                     color: control.value === control.minimumValue ?
-                               Material.Theme.backgroundColor :
-                               Material.Theme.primaryColor
+                               Theme.backgroundColor : control.color
 
-                    border.color: control.value === control.minimumValue ?
-                                      slider.darkBackground ? Material.Theme.alpha("#FFFFFF", 0.3) : Material.Theme.alpha("#000000", 0.26) :
-                                      Material.Theme.primaryColor
+                    border.color: control.value === control.minimumValue
+                                  ? slider.darkBackground ? Theme.alpha("#FFFFFF", 0.3)
+                                                          : Theme.alpha("#000000", 0.26)
+                                  : control.color
 
-                    border.width: Material.units.dp(2)
+                    border.width: units.dp(2)
 
                     implicitHeight: control.pressed && !control.activeFocus && !slider.numericValueLabel ?
-                                        diameter + Material.units.dp(8) :
+                                        diameter + units.dp(8) :
                                         diameter
 
                     implicitWidth: control.pressed && !control.activeFocus && !slider.numericValueLabel ?
-                                       diameter + Material.units.dp(8) :
+                                       diameter + units.dp(8) :
                                        diameter
 
                     radius: implicitWidth / 2
@@ -164,7 +173,7 @@ Controls.Slider {
             model: control.stepSize > 0 ? 1 + (control.maximumValue - control.minimumValue) / control.stepSize : 0
             Rectangle {
                 color: slider.darkBackground ? "#FFFFFF" : "#000000"
-                width: Math.round(Material.units.dp(2)); height: Material.units.dp(2)
+                width: Math.round(units.dp(2)); height: units.dp(2)
                 y: repeater.height / 2
                 x: styleData.handleWidth / 2 + index * ((repeater.width - styleData.handleWidth) / (repeater.count-1))
             }

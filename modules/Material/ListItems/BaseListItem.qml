@@ -11,6 +11,7 @@ View {
     property int margins: units.dp(16)
 
     property bool selected
+    property bool interactive
 
     property int dividerInset: 0
     property bool showDivider: false
@@ -28,6 +29,7 @@ View {
         id: ink
         onClicked: listItem.triggered()
         anchors.fill: parent
+        enabled: listItem.interactive
         z: -1
     }
 
