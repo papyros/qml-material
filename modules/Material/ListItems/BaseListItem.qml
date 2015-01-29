@@ -11,7 +11,7 @@ View {
     property int margins: units.dp(16)
 
     property bool selected
-    property bool interactive
+    property bool interactive: true
 
     property int dividerInset: 0
     property bool showDivider: false

@@ -56,8 +56,8 @@ BaseListItem {
         elide: Text.ElideRight
         style: "subheading"
 
-        width: valueLabel.text || secondaryItem.children.length > 0
-                   ? parent.width * 0.8 : parent.width
+        width: (valueLabel.text ? parent.width * 0.8 : parent.width)
+                - label.leftMargin - listItem.margins
     }
 
     Label {
