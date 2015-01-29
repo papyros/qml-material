@@ -1,5 +1,6 @@
 module Material.ListItems
 BaseListItem 0.1 BaseListItem.qml
 Header 0.1 Header.qml
+SimpleMenu 0.1 SimpleMenu.qml
 Standard 0.1 Standard.qml
 Subtitled 0.1 Subtitled.qml
