@@ -120,7 +120,16 @@ Controls.ApplicationWindow {
     height: units.dp(600)
 
     Component.onCompleted: {
-      units.pixelDensity = Qt.binding( function() { return Screen.pixelDensity } );
+      units.pixelDensity = Qt.binding( function() {
+          switch(Qt.platform.os) {
+              case "windows":
+              case "osx":
+              case "linux":
+                  return Screen.logicalPixelDensity;
+              default:
+                  return Screen.pixelDensity;
+          }
+      } );
       Device.type = Qt.binding( function () {
         var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) + Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
         if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
