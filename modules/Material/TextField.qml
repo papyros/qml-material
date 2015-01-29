@@ -94,6 +94,12 @@ FocusScope {
 
       onAccepted: field.accepted()
       onEditingFinished: field.editingFinished()
+
+      MouseArea {
+          anchors.fill: parent
+          cursorShape: Qt.IBeamCursor
+          acceptedButtons: Qt.NoButton
+      }
    }
 
    Label {
