@@ -17,6 +17,7 @@
  */
 import QtQuick 2.0
 import Material 0.1
+import Material.ListItems 0.1 as ListItem
 
 /*!
    \qmltype ActionBar
@@ -149,12 +150,56 @@ Item {
         }
 
         IconButton {
+            id: overflowButton
+
             name: "navigation/more_vert"
             size: units.dp(27)
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
                                                                  Theme.dark.textColor)
             visible: showContents && page && page.actions.length > maxActionCount
             anchors.verticalCenter: parent.verticalCenter
+
+            onTriggered: overflowMenu.open(overflowButton, units.dp(4), units.dp(-4))
+        }
+    }
+
+    Dropdown {
+        id: overflowMenu
+
+        width: units.dp(200)
+        height: listView.contentHeight + units.dp(16)
+
+        ListView {
+            id: listView
+
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                topMargin: units.dp(8)
+            }
+
+            interactive: false
+            height: contentHeight
+
+            model: page.actions.length - (maxActionCount - 1)
+
+            delegate: ListItem.Standard {
+                id: listItem
+
+                property Action actionItem: page.actions[index + maxActionCount - 1]
+
+                text: actionItem.name
+                action: Icon {
+                    name: listItem.actionItem.iconName
+                    anchors.centerIn: parent
+                }
+
+                onTriggered: {
+                    actionItem.triggered(listItem)
+                    overflowMenu.close()
+                }
+            }
         }
     }
 }

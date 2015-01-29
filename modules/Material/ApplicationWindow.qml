@@ -79,17 +79,41 @@ Controls.ApplicationWindow {
         id: __theme
     }
 
-    toolBar: Toolbar {
+    Toolbar {
         id: __toolbar
         width: parent.width
         backgroundColor: Theme.primaryColor
+        z: 1
     }
 
     PageStack {
         id: __pageStack
-        anchors.fill: parent;
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: __toolbar.bottom
+            bottom: parent.bottom
+        }
+
         onPushed: __toolbar.push( page )
         onPopped: __toolbar.pop(  )
+    }
+
+    Item {
+        id: overlayLayer
+        objectName: "overlayLayer"
+
+        anchors.fill: parent
+        z: 100
+
+        property Item currentOverlay
+
+        MouseArea {
+            anchors.fill: parent
+            enabled: overlayLayer.currentOverlay != null
+            hoverEnabled: enabled
+            onClicked: overlayLayer.currentOverlay.close()
+        }
     }
 
     width: units.dp(800)

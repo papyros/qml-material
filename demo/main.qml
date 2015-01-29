@@ -14,6 +14,21 @@ ApplicationWindow {
     property var components: ["Button", "Switch", "Radio Button", "Slider", "Progress Bar", "Icon", "TextField", "Page Stack"]
     property string selectedComponent: components[0]
 
+    Dropdown {
+        id: dropdown
+
+        anchors {
+            right: parent.right
+            top: parent.top
+            topMargin: units.dp(8) - toolBar.height
+            margins: units.dp(8)
+        }
+
+        width: units.dp(200)
+        height: units.dp(400)
+        z: 100
+    }
+
     Page {
         id: page
 
@@ -22,6 +37,27 @@ ApplicationWindow {
         actions: [
             Action {
                 iconName: "content/add"
+                onTriggered: dropdown.showing = !dropdown.showing
+            },
+
+            Action {
+                iconName: "action/search"
+                name: "Search"
+            },
+
+            Action {
+                iconName: "action/language"
+                name: "Language"
+            },
+
+            Action {
+                iconName: "action/account_circle"
+                name: "Account"
+            },
+
+            Action {
+                iconName: "action/settings"
+                name: "Settings"
             }
         ]
 

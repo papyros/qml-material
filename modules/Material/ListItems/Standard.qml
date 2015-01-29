@@ -57,7 +57,7 @@ BaseListItem {
         style: "subheading"
 
         width: valueLabel.text || secondaryItem.children.length > 0
-                   ? Math.min(implicitWidth, parent.width * 0.8) : parent.width
+                   ? parent.width * 0.8 : parent.width
     }
 
     Label {
