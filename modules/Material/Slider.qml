@@ -74,7 +74,7 @@ Controls.Slider {
                 Rectangle {
                     implicitHeight: parent.height / 2
                     implicitWidth: parent.width / 2
-                    color: Theme.primaryColor
+                    color: control.color
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     antialiasing: true
