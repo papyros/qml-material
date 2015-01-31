@@ -96,8 +96,12 @@ View {
 
     Controls.StackView {
         id: stack
-        width: parent.width
         height: toolbar.implicitHeight
+
+        anchors {
+            left: parent.left
+            right: clientSideDecorations ? windowControls.left : parent.right
+        }
 
         delegate: Controls.StackViewDelegate {
             pushTransition: Controls.StackViewTransition {
@@ -144,6 +148,24 @@ View {
                 }
             }
 
+        }
+    }
+
+    Row {
+        id: windowControls
+
+        anchors {
+            verticalCenter: stack.verticalCenter
+            right: parent.right
+            rightMargin: units.dp(16)
+        }
+
+        spacing: units.dp(24)
+
+        IconButton {
+            name: "navigation/close"
+            color: Theme.lightDark(toolbar.backgroundColor, Theme.light.textColor,
+                Theme.dark.textColor)
         }
     }
 

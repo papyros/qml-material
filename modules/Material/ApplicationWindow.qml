@@ -75,6 +75,8 @@ Controls.ApplicationWindow {
 
     property bool clientSideDecorations: false
 
+    flags: clientSideDecorations ? Qt.FramelessWindowHint : 0
+
     AppTheme {
         id: __theme
     }
@@ -84,6 +86,8 @@ Controls.ApplicationWindow {
         width: parent.width
         backgroundColor: Theme.primaryColor
         z: 1
+
+        clientSideDecorations: app.clientSideDecorations
     }
 
     PageStack {
