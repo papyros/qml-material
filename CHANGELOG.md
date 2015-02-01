@@ -9,3 +9,4 @@ QML Material CHANGELOG
  * Improve the layout of the Subtitled list item
  * Add the Material Design menu field component
  * Improve the layout of the Standard list item
+ * Add an equals symbol to the "extra" icon collection
