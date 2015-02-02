@@ -23,6 +23,7 @@ Object 0.1 Object.qml
 Page 0.1 Page.qml
 PageStack 0.1 PageStack.qml
 singleton Palette 0.1 Palette.qml
+Popover 0.1 Popover.qml
 ProgressBar 0.1 ProgressBar.qml
 RadioButton 0.1 RadioButton.qml
 Sidebar 0.1 Sidebar.qml

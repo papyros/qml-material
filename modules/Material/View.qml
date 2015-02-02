@@ -161,7 +161,6 @@ Item {
         color: Qt.tint(backgroundColor, tintColor)
         radius: item.radius
         antialiasing: parent.rotation || radius > 0 ? true : false
-
         clip: true
 
         Behavior on color {
