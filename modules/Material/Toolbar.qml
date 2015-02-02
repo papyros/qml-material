@@ -153,7 +153,6 @@ View {
 
     Row {
         id: windowControls
-
         anchors {
             verticalCenter: stack.verticalCenter
             right: parent.right
