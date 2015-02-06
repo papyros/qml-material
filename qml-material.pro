@@ -1,4 +1,4 @@
 TEMPLATE = subdirs
 SUBDIRS = modules/Material tests
 
-OTHER_FILES = README.md
+OTHER_FILES = README.md CHANGELOG.md

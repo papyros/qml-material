@@ -8,6 +8,7 @@ AwesomeIcon 0.1 AwesomeIcon.qml
 Button 0.1 Button.qml
 Card 0.1 Card.qml
 CardPage 0.1 CardPage.qml
+Checkbox 0.1 Checkbox.qml
 singleton Device 0.1 Device.qml
 Dialog 0.1 Dialog.qml
 Dropdown 0.1 Dropdown.qml
