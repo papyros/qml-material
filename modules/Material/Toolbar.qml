@@ -153,6 +153,7 @@ View {
 
     Row {
         id: windowControls
+        visible: clientSideDecorations
         anchors {
             verticalCenter: stack.verticalCenter
             right: parent.right
