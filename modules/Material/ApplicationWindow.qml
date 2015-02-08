@@ -75,8 +75,6 @@ Controls.ApplicationWindow {
 
     property bool clientSideDecorations: false
 
-    flags: clientSideDecorations ? Qt.FramelessWindowHint : 0
-
     AppTheme {
         id: __theme
     }
@@ -124,6 +122,9 @@ Controls.ApplicationWindow {
     height: units.dp(600)
 
     Component.onCompleted: {
+        if (clientSideDecorations)
+            flags |= Qt.FramelessWindowHint
+
       units.pixelDensity = Qt.binding( function() { return Screen.pixelDensity } );
       Device.type = Qt.binding( function () {
         var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) + Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
