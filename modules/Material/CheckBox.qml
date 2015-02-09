@@ -24,12 +24,12 @@ Controls.CheckBox {
     id: checkBox
 
     /*!
-       The switch color. By default this is the app's accent color
+       The checkbox color. By default this is the app's accent color
      */
     property color color: darkBackground ? Theme.dark.accentColor : Theme.light.accentColor
 
     /*!
-       Set to \c true if the switch is on a dark background
+       Set to \c true if the checkbox is on a dark background
      */
     property bool darkBackground
 
