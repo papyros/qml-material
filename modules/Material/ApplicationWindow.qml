@@ -75,8 +75,6 @@ Controls.ApplicationWindow {
 
     property bool clientSideDecorations: false
 
-    flags: clientSideDecorations ? Qt.FramelessWindowHint : 0
-
     AppTheme {
         id: __theme
     }
@@ -103,7 +101,8 @@ Controls.ApplicationWindow {
         onPopped: __toolbar.pop(  )
     }
 
-    Item {
+
+    Rectangle {
         id: overlayLayer
         objectName: "overlayLayer"
 
@@ -111,12 +110,32 @@ Controls.ApplicationWindow {
         z: 100
 
         property Item currentOverlay
+        color: "transparent"
+
+        states: State {
+            name: "ShowState"
+            when: overlayLayer.currentOverlay != null
+
+            PropertyChanges {
+                target: overlayLayer
+                color: currentOverlay.backdropColor
+            }
+        }
+
+        transitions: Transition {
+            ColorAnimation {
+                duration: 300
+                easing.type: Easing.InOutQuad
+            }
+
+        }
 
         MouseArea {
             anchors.fill: parent
             enabled: overlayLayer.currentOverlay != null
             hoverEnabled: enabled
             onClicked: overlayLayer.currentOverlay.close()
+            onWheel: wheel.accepted = true
         }
     }
 
@@ -124,6 +143,9 @@ Controls.ApplicationWindow {
     height: units.dp(600)
 
     Component.onCompleted: {
+        if (clientSideDecorations)
+            flags |= Qt.FramelessWindowHint
+
       units.pixelDensity = Qt.binding( function() { return Screen.pixelDensity } );
       Device.type = Qt.binding( function () {
         var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) + Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
