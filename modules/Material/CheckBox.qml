@@ -140,7 +140,8 @@ Controls.CheckBox {
     }
 
     Ink {
-        anchors.centerIn: parent
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
         width: units.dp(54)
         height: units.dp(54)
         color: checkBox.checked ? Theme.alpha(checkBox.color, 0.20) : Qt.rgba(0,0,0,0.1)
