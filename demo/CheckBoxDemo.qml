@@ -53,16 +53,18 @@ Item {
                         color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                     }
 
-                    CheckBox {
+                    Checkbox {
                         Layout.alignment: Qt.AlignCenter
                         checked: true
+                        text: "On"
                         darkBackground: index == 1
                     }
 
-                    CheckBox {
+                    Checkbox {
                         Layout.alignment: Qt.AlignCenter
                         checked: true
                         enabled: false
+                        text: "Disabled"
                         darkBackground: index == 1
                     }
 
@@ -75,13 +77,15 @@ Item {
                         color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                     }
 
-                    CheckBox {
+                    Checkbox {
                         Layout.alignment: Qt.AlignCenter
+                        text: "Off"
                         darkBackground: index == 1
                     }
 
-                    CheckBox {
+                    Checkbox {
                         Layout.alignment: Qt.AlignCenter
+                        text: "Disabled"
                         enabled: false
                         darkBackground: index == 1
                     }

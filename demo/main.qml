@@ -5,13 +5,15 @@ import Material.ListItems 0.1 as ListItem
 ApplicationWindow {
     id: demo
 
+    flags: Qt.Window
+
     theme {
         accentColor: "#009688"
     }
 
     initialPage: page
 
-    property var components: ["Button", "Switch", "Radio Button", "Slider", "Progress Bar", "Icon", "TextField", "Page Stack", "List Items"]
+    property var components: ["Button", "Checkbox", "Switch", "Radio Button", "Slider", "Progress Bar", "Icon", "TextField", "Page Stack", "List Items"]
     property string selectedComponent: components[0]
 
     Page {
