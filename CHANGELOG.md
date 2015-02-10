@@ -6,3 +6,4 @@ QML Material CHANGELOG
  * Improve the dialog component to better follow Material Design
  * Add the Material Design Checkbox component
  * Support replacing the current page in a PageStack
+ * Improve the layout of the Subtitled list item

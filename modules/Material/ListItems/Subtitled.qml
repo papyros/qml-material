@@ -1,6 +1,7 @@
 /*
- * QML Air - A lightweight and mostly flat UI widget collection for QML
- * Copyright (C) 2014 Michael Spencer
+ * QML Material - An application framework implementing Material Design.
+ * Copyright (C) 2014 Michael Spencer <sonrisesoftware@gmail.com>
+ *               2015 Jordan Neidlinger <jneidlinger@barracuda.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,12 +17,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 import ".."
 
 BaseListItem {
     id: listItem
 
-    height: units.dp(72)
+    height: maximumLineCount == 2 ? units.dp(72) : units.dp(88)
 
     property alias text: label.text
     property alias subText: subLabel.text
@@ -30,79 +32,91 @@ BaseListItem {
     property alias action: actionItem.children
     property alias secondaryItem: secondaryItem.children
 
-    Item {
-        id: actionItem
+    dividerInset: actionItem.children.length === 0 ? 0 : listItem.height
 
-        anchors {
-            left: parent.left
-            leftMargin: listItem.margins
-            verticalCenter: parent.verticalCenter
-        }
+    property int maximumLineCount: 2
 
-        height: width
-        width: units.dp(40)
-    }
+    GridLayout {
+        anchors.fill: parent
 
-    dividerInset: actionItem.children.length == 0 ? 0 : listItem.height
+        anchors.leftMargin: listItem.margins
+        anchors.rightMargin: listItem.margins
 
-    Column {
-        anchors {
-            verticalCenter: parent.verticalCenter
-            left: parent.left
-            right: parent.right
-            rightMargin: listItem.margins
-            leftMargin: actionItem.children.length == 0 ? listItem.margins : listItem.margins + units.dp(56)
-        }
-
-        spacing: units.dp(3)
+        columns: 4
+        rows: 1
+        columnSpacing: units.dp(16)
 
         Item {
-            width: parent.width
-            height: childrenRect.height
-            Label {
-                id: label
+            id: actionItem
 
-                elide: Text.ElideRight
-                style: "subheading"
+            Layout.preferredWidth: children.length === 0 ? 0 : units.dp(40)
+            Layout.preferredHeight: width
+            Layout.alignment: Qt.AlignCenter
+            Layout.column: 1
 
+            visible: childrenRect.width > 0
+        }
 
-                anchors.right: valueLabel.text  ? valueLabel.left
-                                                : secondaryItem.children.length > 0 ? secondaryItem.left
-                                                                                    : parent.right
-                anchors.left: parent.left
-                anchors.rightMargin: valueLabel.text || secondaryItem.children.length > 0
-                                     ? units.dp(16) : 0
+        ColumnLayout {
+            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+            Layout.fillWidth: true
+            Layout.column: 2
+
+            spacing: units.dp(3)
+
+            RowLayout {
+                Layout.fillWidth: true
+
+                spacing: units.dp(8)
+
+                Label {
+                    id: label
+
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.fillWidth: true
+
+                    elide: Text.ElideRight
+                    style: "subheading"
+                }
+
+                Label {
+                    id: valueLabel
+
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.preferredWidth: visible ? implicitWidth : 0
+
+                    color: Theme.light.subTextColor
+                    elide: Text.ElideRight
+                    horizontalAlignment: Qt.AlignHCenter
+                    style: "body1"
+                    visible: text != ""
+                }
             }
 
             Label {
-                id: valueLabel
+                id: subLabel
+
+                Layout.fillWidth: true
+                Layout.preferredHeight: implicitHeight * maximumLineCount/lineCount
 
                 color: Theme.light.subTextColor
                 elide: Text.ElideRight
-                anchors.right: parent.right
-                horizontalAlignment: Text.AlignRight
-
+                wrapMode: Text.WordWrap
                 style: "body1"
-                visible: text != ""
-            }
 
-            Item {
-                id: secondaryItem
-                anchors.right: parent.right
-                height: parent.height
-                width: parent.width * 0.2
+                visible: text != ""
+                maximumLineCount: listItem.maximumLineCount - 1
             }
         }
 
-        Label {
-            id: subLabel
+        Item {
+            id: secondaryItem
+            Layout.alignment: Qt.AlignCenter
+            Layout.preferredWidth: childrenRect.width
+            Layout.preferredHeight: parent.height
+            Layout.column: 4
 
-            color: Theme.light.subTextColor
-            elide: Text.ElideRight
-            width: parent.width
-
-            style: "body1"
-            visible: text != ""
+            visible: childrenRect.width > 0
         }
     }
 }

@@ -28,6 +28,31 @@ Item {
                 subText: "With some subtext!"
             }
 
+            ListItem.Subtitled {
+                text: "Subtitled list item"
+                subText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec eleifend arcu, eu convallis nisi."
+                valueText: "2h ago"
+
+                maximumLineCount: 3
+            }
+
+            ListItem.Subtitled {
+                text: "Subtitled list item"
+                subText: "With some subtext, icon, and secondary item!"
+                secondaryItem: Switch {
+                    id: enablingSwitch
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                onTriggered: enablingSwitch.checked = !enablingSwitch.checked
+
+                action: Icon {
+                    anchors.centerIn: parent
+                    name: "device/access_alarm"
+                    size: units.dp(32)
+                }
+            }
+
             ListItem.SimpleMenu {
                 text: "Subtitled list item"
                 model: ["A", "B", "C"]
