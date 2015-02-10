@@ -28,6 +28,22 @@ Item {
                 subText: "With some subtext!"
             }
 
+            ListItem.Subtitled {
+                text: "Subtitled list item"
+                subText: "With some subtext, icon, and secondary item!"
+                secondaryItem: Switch {
+                    id: enablingSwitch
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                onTriggered: enablingSwitch.checked = !enablingSwitch.checked
+
+                action: Icon {
+                    anchors.centerIn: parent
+                    name: "device/access_alarm"
+                }
+            }
+
             ListItem.SimpleMenu {
                 text: "Subtitled list item"
                 model: ["A", "B", "C"]
