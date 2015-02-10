@@ -99,6 +99,7 @@ Controls.ApplicationWindow {
 
         onPushed: __toolbar.push( page )
         onPopped: __toolbar.pop(  )
+        onReplaced: __toolbar.replace( page )
     }
 
 

@@ -24,6 +24,7 @@ Controls.StackView {
 
     signal pushed( Item page )
     signal popped( )
+    signal replaced( Item page )
 
     property int __lastDepth: 0
     property Item __oldItem: null
@@ -40,6 +41,10 @@ Controls.StackView {
 
         if ( stackView.currentItem  ) {
             stackView.currentItem.backAction.visible = (stackView.depth > 1);
+        }
+
+        if ( stackView.currentItem && __lastDepth === stackView.depth ) {
+            replaced( stackView.currentItem );
         }
 
         __lastDepth = stackView.depth;
