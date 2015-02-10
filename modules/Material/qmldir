@@ -18,6 +18,7 @@ singleton i18n 0.1 i18n.qml
 Label 0.1 Label.qml
 MainView 0.1 MainView.qml
 singleton MaterialAnimation 0.1 MaterialAnimation.qml
+MenuField 0.1 MenuField.qml
 NavigationDrawer 0.1 NavigationDrawer.qml
 Object 0.1 Object.qml
 Page 0.1 Page.qml
