@@ -22,24 +22,24 @@ import Material 0.1
 Controls.StackView {
     id: stackView
 
-    signal pushed( Item page )
-    signal popped( )
+    signal pushed(Item page)
+    signal popped()
+    signal replaced(Item page)
 
     property int __lastDepth: 0
     property Item __oldItem: null
 
     onCurrentItemChanged: {
-        if ( stackView.currentItem && __lastDepth > stackView.depth ) {
-            popped( );
+        if (stackView.currentItem) {
+            stackView.currentItem.backAction.visible = stackView.depth > 1;
 
-        }
-
-        if ( stackView.currentItem && __lastDepth < stackView.depth ) {
-            pushed( stackView.currentItem);
-        }
-
-        if ( stackView.currentItem  ) {
-            stackView.currentItem.backAction.visible = (stackView.depth > 1);
+            if (__lastDepth > stackView.depth) {
+                popped();
+            } else if (__lastDepth < stackView.depth) {
+                pushed(stackView.currentItem);
+            } else {
+                replaced(stackView.currentItem);
+            }
         }
 
         __lastDepth = stackView.depth;

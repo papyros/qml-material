@@ -87,11 +87,23 @@ View {
         page = pages.pop()
     }
 
-    function push( page ) {
-        page.actionBar.maxActionCount = Qt.binding( function() { return toolbar.maxActionCount } );
-        stack.push(page.actionBar);
-        pages.push(toolbar.page)
+    function push(page) {
+        page.actionBar.maxActionCount = Qt.binding(function() { return toolbar.maxActionCount })
         toolbar.page = page
+
+        stack.push(page.actionBar)
+
+        pages.push(toolbar.page)
+    }
+
+    function replace(page) {
+        page.actionBar.maxActionCount = Qt.binding(function() { return toolbar.maxActionCount })
+        toolbar.page = page
+
+        stack.replace(page.actionBar)
+
+        pages.pop()
+        pages.push(toolbar.page)
     }
 
     Controls.StackView {

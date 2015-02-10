@@ -97,8 +97,9 @@ Controls.ApplicationWindow {
             bottom: parent.bottom
         }
 
-        onPushed: __toolbar.push( page )
-        onPopped: __toolbar.pop(  )
+        onPushed: __toolbar.push(page)
+        onPopped: __toolbar.pop()
+        onReplaced: __toolbar.replace(page)
     }
 
 
