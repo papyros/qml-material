@@ -21,23 +21,17 @@ Item {
 
    property bool floatingLabel: false
    property bool hasError: false
-   property alias hasHelperText: __internal.showHelperText
+   property bool hasHelperText: helperText.length > 0
 
    readonly property rect inputRect: Qt.rect(spinBox.x, spinBox.y, spinBox.width, spinBox.height)
 
-   implicitHeight: __internal.showHelperText ? helperTextLabel.y + helperTextLabel.height + units.dp(4)
-                          : underline.y + units.dp(8)
+   implicitHeight: hasHelperText ? helperTextLabel.y + helperTextLabel.height + units.dp(4)
+                                  : underline.y + units.dp(8)
    implicitWidth: spinBox.width
 
    activeFocusOnTab: true
 
    signal itemSelected(int index)
-
-   QtObject {
-       id: __internal
-
-       property bool showHelperText: helperText.length > 0
-   }
 
    Ink {
       anchors.fill: parent
@@ -55,7 +49,7 @@ Item {
       y: {
          if( !floatingLabel )
             return units.dp(16)
-         if( floatingLabel && !__internal.showHelperText )
+         if( floatingLabel && !hasHelperText )
             return units.dp(40)
          return units.dp(28)
       }
@@ -150,7 +144,7 @@ Item {
 
    Label {
       id: helperTextLabel
-      visible: __internal.showHelperText
+      visible: hasHelperText
       font.pixelSize: units.dp(12)
       color: field.hasError ? field.errorColor : Qt.darker(Theme.light.hintColor)
       anchors {
