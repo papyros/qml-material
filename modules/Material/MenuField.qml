@@ -65,7 +65,6 @@ Item {
          height: parent.height
          width: parent.width
 
-         Item { Layout.minimumWidth: units.dp(16) }
          Label {
             id: label
             Layout.fillWidth: true
