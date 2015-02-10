@@ -39,7 +39,7 @@ Item {
 
     property alias clipContent: rect.clip
 
-    default property alias content: rect.data
+    default property alias data: rect.data
 
     property bool elevationInverted: false
 

@@ -14,7 +14,7 @@ Item {
     property bool showing
     property color backdropColor: "transparent"
 
-    default property alias content: view.content
+    default property alias data: view.data
     property alias internalView: view
 
     onShowingChanged: {
