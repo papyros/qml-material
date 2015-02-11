@@ -91,7 +91,7 @@ Item {
             width: menu.width
             height: menu.height
             interactive: true
-            model: ["Apple","Orange","Banana","Grapefruit","Kiwi","Lemon","Watermelon"]
+            model: []
             delegate: Standard {
                id: delegateItem
                text: modelData
