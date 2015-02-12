@@ -24,6 +24,7 @@ BaseListItem {
     height: units.dp(48)
 
     property alias text: label.text
+    readonly property Item itemLabel: label
     property alias valueText: valueLabel.text
 
     property alias action: actionItem.children
