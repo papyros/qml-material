@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 import ".."
 
 BaseListItem {
@@ -24,65 +25,82 @@ BaseListItem {
     height: units.dp(48)
 
     property alias text: label.text
-    readonly property Item itemLabel: label
     property alias valueText: valueLabel.text
 
     property alias action: actionItem.children
     property alias secondaryItem: secondaryItem.children
+    property alias content: contentItem.children
 
-    Item {
-        id: actionItem
-
-        anchors {
-            left: parent.left
-            leftMargin: listItem.margins
-            verticalCenter: parent.verticalCenter
-        }
-
-        height: width
-        width: units.dp(36)
-    }
+    property alias itemLabel: label
 
     dividerInset: actionItem.children.length == 0 ? 0 : listItem.height
 
-    Label {
-        id: label
+    interactive: contentItem.children.length == 0
 
-        anchors {
-            verticalCenter: parent.verticalCenter
-            left: parent.left
-            leftMargin: actionItem.children.length == 0 ? listItem.margins : units.dp(52) + listItem.margins
+    RowLayout {
+        anchors.fill: parent
+
+        anchors.leftMargin: listItem.margins
+        anchors.rightMargin: listItem.margins
+
+        spacing: units.dp(16)
+
+        Item {
+            id: actionItem
+
+            Layout.preferredWidth: children.length === 0 ? 0 : units.dp(36)
+            Layout.preferredHeight: width
+            Layout.alignment: Qt.AlignCenter
+
+            visible: children.length > 0
         }
 
-        elide: Text.ElideRight
-        style: "subheading"
+        ColumnLayout {
+            Layout.alignment: Qt.AlignVCenter
+            Layout.preferredHeight: parent.height
 
-        width: (valueLabel.text ? parent.width * 0.8 : parent.width)
-                - label.leftMargin - listItem.margins
-    }
+            Item {
+                id: contentItem
 
-    Label {
-        id: valueLabel
+                Layout.fillWidth: true
+                Layout.preferredHeight: parent.height
 
-        color: Theme.light.subTextColor
-        elide: Text.ElideRight
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: label.right
-        anchors.leftMargin: units.dp(16)
-        anchors.right: parent.right
-        anchors.rightMargin: listItem.margins
-        horizontalAlignment: Text.AlignRight
+                visible: children.length > 0
+            }
 
-        style: "body1"
-        visible: text != ""
-    }
+            Label {
+                id: label
 
-    Item {
-        id: secondaryItem
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.right: parent.right
-        anchors.rightMargin: listItem.margins
-        height: parent.height
-        width: parent.width * 0.2
+                Layout.alignment: Qt.AlignVCenter
+                Layout.fillWidth: true
+
+                elide: Text.ElideRight
+                style: "subheading"
+
+                visible: !contentItem.visible
+            }
+        }
+
+        Label {
+            id: valueLabel
+
+            Layout.alignment: Qt.AlignVCenter
+
+            color: Theme.light.subTextColor
+            elide: Text.ElideRight
+            style: "body1"
+
+            visible: text != ""
+        }
+
+        Item {
+            id: secondaryItem
+
+            Layout.alignment: Qt.AlignCenter
+            Layout.preferredWidth: childrenRect.width
+            Layout.preferredHeight: parent.height
+
+            visible: childrenRect.width > 0
+        }
     }
 }

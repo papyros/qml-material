@@ -8,3 +8,4 @@ QML Material CHANGELOG
  * Support replacing the current page in a PageStack
  * Improve the layout of the Subtitled list item
  * Add the Material Design menu field component
+ * Improve the layout of the Standard list item
