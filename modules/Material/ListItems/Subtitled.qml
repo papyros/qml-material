@@ -1,5 +1,5 @@
 /*
- * QML Air - A lightweight and mostly flat UI widget collection for QML
+ * QML Material - An application framework implementing Material Design.
  * Copyright (C) 2014 Michael Spencer
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 import ".."
 
 BaseListItem {
@@ -30,79 +31,71 @@ BaseListItem {
     property alias action: actionItem.children
     property alias secondaryItem: secondaryItem.children
 
-    Item {
-        id: actionItem
+    dividerInset: actionItem.children.length === 0 ? 0 : listItem.height
 
-        anchors {
-            left: parent.left
-            leftMargin: listItem.margins
-            verticalCenter: parent.verticalCenter
-        }
-
-        height: width
-        width: units.dp(40)
-    }
-
-    dividerInset: actionItem.children.length == 0 ? 0 : listItem.height
-
-    Column {
-        anchors {
-            verticalCenter: parent.verticalCenter
-            left: parent.left
-            right: parent.right
-            rightMargin: listItem.margins
-            leftMargin: actionItem.children.length == 0 ? listItem.margins : listItem.margins + units.dp(56)
-        }
-
-        spacing: units.dp(3)
+    GridLayout {
+        anchors.fill: parent
+        anchors.leftMargin: actionItem.children.length === 0 ? listItem.margins : 0
+        anchors.rightMargin: listItem.margins
+        columns: 4
+        rows: 1
+        columnSpacing: 0
 
         Item {
-            width: parent.width
-            height: childrenRect.height
+            id: actionItem
+            Layout.preferredWidth: children.length === 0 ? 0 : units.dp(72)
+            Layout.alignment: Qt.AlignCenter
+            Layout.preferredHeight: parent.height
+            Layout.column: 1
+        }
+
+        ColumnLayout {
+            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+            Layout.fillWidth: true
+            Layout.column: 2
+            spacing: units.dp(3)
+
             Label {
                 id: label
+                Layout.fillWidth: true
 
                 elide: Text.ElideRight
                 style: "subheading"
-
-
-                anchors.right: valueLabel.text  ? valueLabel.left
-                                                : secondaryItem.children.length > 0 ? secondaryItem.left
-                                                                                    : parent.right
-                anchors.left: parent.left
-                anchors.rightMargin: valueLabel.text || secondaryItem.children.length > 0
-                                     ? units.dp(16) : 0
             }
 
             Label {
-                id: valueLabel
+                id: subLabel
+                Layout.fillWidth: true
 
                 color: Theme.light.subTextColor
                 elide: Text.ElideRight
-                anchors.right: parent.right
-                horizontalAlignment: Text.AlignRight
-
+                width: parent.width
+                wrapMode: Text.WordWrap
                 style: "body1"
                 visible: text != ""
-            }
-
-            Item {
-                id: secondaryItem
-                anchors.right: parent.right
-                height: parent.height
-                width: parent.width * 0.2
+                maximumLineCount : 2
             }
         }
 
         Label {
-            id: subLabel
+            id: valueLabel
+            Layout.alignment: Qt.AlignCenter
+            Layout.preferredWidth: visible ? implicitWidth + units.dp(32) : 0
+            Layout.column: 3
 
             color: Theme.light.subTextColor
             elide: Text.ElideRight
-            width: parent.width
-
+            horizontalAlignment: Qt.AlignHCenter
             style: "body1"
             visible: text != ""
+        }
+
+        Item {
+            id: secondaryItem
+            Layout.alignment: Qt.AlignCenter
+            Layout.preferredWidth: childrenRect.width
+            Layout.preferredHeight: parent.height
+            Layout.column: 4
         }
     }
 }
