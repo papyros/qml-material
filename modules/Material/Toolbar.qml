@@ -94,6 +94,13 @@ View {
         toolbar.page = page
     }
 
+    function replace( page ) {
+        toolbar.page = page
+        stack.replace(page.actionBar);
+        pages.pop();
+        pages.push(toolbar.page);
+    }
+
     Controls.StackView {
         id: stack
         height: toolbar.implicitHeight
