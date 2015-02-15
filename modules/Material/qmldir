@@ -28,6 +28,7 @@ singleton Palette 0.1 Palette.qml
 Popover 0.1 Popover.qml
 ProgressBar 0.1 ProgressBar.qml
 RadioButton 0.1 RadioButton.qml
+RightDrawer 0.1 RightDrawer.qml
 Sidebar 0.1 Sidebar.qml
 Scrollbar 0.1 Scrollbar.qml
 Slider 0.1 Slider.qml
