@@ -24,14 +24,21 @@ View {
     objectName: "navDrawer"
     z: 15
 
+    property string mode: "left" // or "right"
+
     anchors {
-        left: parent.left
+        left: mode === "left" ? parent.left : undefined
+        right: mode === "right" ? parent.right : undefined
         top: parent.top
         bottom: parent.bottom
 
         leftMargin: showing ? 0 : -width
+        rightMargin: showing ? 0 : -width
 
         Behavior on leftMargin {
+            NumberAnimation { duration: 200 }
+        }       
+        Behavior on rightMargin {
             NumberAnimation { duration: 200 }
         }
     }
