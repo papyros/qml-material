@@ -11,3 +11,4 @@ QML Material CHANGELOG
  * Improve the layout of the Standard list item
  * Add an equals symbol to the "extra" icon collection
  * Add a right mode to the navigation drawer
+ * Allow pages to customize the action count in the toolbar

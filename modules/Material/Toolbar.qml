@@ -88,7 +88,7 @@ View {
     }
 
     function push(page) {
-        page.actionBar.maxActionCount = Qt.binding(function() { return toolbar.maxActionCount })
+        page.actionBar.toolbar = toolbar
         toolbar.page = page
 
         stack.push(page.actionBar)
