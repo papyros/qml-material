@@ -9,15 +9,11 @@ ApplicationWindow {
         accentColor: "#009688"
     }
 
-    initialPage: page
-
     property var components: ["Button", "Checkbox", "Dialog", "Forms", "Icon", "List Items", "Page Stack", "Progress Bar", "Radio Button", "Slider", "Switch", "TextField"]
 
     property string selectedComponent: components[0]
 
-    Page {
-        id: page
-
+    initialPage: Page {
         title: "Component Demo"
 
         actions: [
@@ -64,18 +60,25 @@ ApplicationWindow {
                 }
             }
         }
-
-        Loader {
+        Flickable {
+            id: flickable
             anchors {
                 left: sidebar.right
                 right: parent.right
                 top: parent.top
                 bottom: parent.bottom
             }
-
-            // selectedComponent will always be valid, as it defaults to the first component
-            source: Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
-            asynchronous: true
+            clip: true
+            contentHeight: Math.max(example.implicitHeight, height)
+            Loader {
+                id: example
+                anchors.fill: parent
+                // selectedComponent will always be valid, as it defaults to the first component
+                source: Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
+            }
+        }
+        Scrollbar {
+            flickableItem: flickable
         }
     }
 
