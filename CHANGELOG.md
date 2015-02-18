@@ -18,3 +18,4 @@ QML Material CHANGELOG
  * [MenuField] Fix issues with the menu not being the right size
  * [Demo] Clean up and refactor the demo
  * [Slider] change check for activeFocus to focus so we can set it
+ * [Ink] Remove PRESSED debug message

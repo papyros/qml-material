@@ -38,8 +38,6 @@ MouseArea {
     property bool centered: false
 
     onPressed: {
-        print("PRESSED")
-
         createTapCircle(mouse.x, mouse.y)
     }
 
