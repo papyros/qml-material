@@ -59,17 +59,25 @@ ApplicationWindow {
                 }
             }
         }
-
-        Loader {
+        Flickable {
+            id: flickable
             anchors {
                 left: sidebar.right
                 right: parent.right
                 top: parent.top
                 bottom: parent.bottom
             }
-
-            // selectedComponent will always be valid, as it defaults to the first component
-            source: Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
+            clip: true
+            contentHeight: Math.max(example.implicitHeight, height)
+            Loader {
+                id: example
+                anchors.fill: parent
+                // selectedComponent will always be valid, as it defaults to the first component
+                source: Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
+            }
+        }
+        Scrollbar {
+            flickableItem: flickable
         }
     }
 
