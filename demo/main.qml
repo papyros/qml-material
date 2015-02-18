@@ -15,7 +15,6 @@ ApplicationWindow {
 
     initialPage: Page {
         title: "Component Demo"
-
         actions: [
             Action {
                 iconName: "image/color_lens"
