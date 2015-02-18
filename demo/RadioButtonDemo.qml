@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 import Material 0.1
 
 Item {
@@ -16,21 +17,24 @@ Item {
                 height: grid.implicitHeight + units.dp(50)
                 radius: units.dp(2)
 
-                Grid {
+                GridLayout {
                     id: grid
                     anchors.centerIn: parent
-                    spacing: units.dp(40)
+                    rowSpacing: units.dp(20)
+                    columnSpacing: units.dp(20)
                     columns: 3
 
                     // Empty filler
                     Item { width: 1; height: 1 }
 
                     Label {
+                        Layout.alignment : Qt.AlignHCenter
                         text: "Normal"
                         color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                     }
 
                     Label {
+                        Layout.alignment : Qt.AlignHCenter
                         text: "Disabled"
                         color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                     }

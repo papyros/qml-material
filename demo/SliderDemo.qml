@@ -43,7 +43,7 @@ Item {
                             }
 
                             Slider {
-                                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                                Layout.alignment: Qt.AlignCenter
                                 darkBackground: index == 1
                             }
 
@@ -53,7 +53,7 @@ Item {
                             }
 
                             Slider {
-                                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                                Layout.alignment: Qt.AlignCenter
                                 tickmarksEnabled: true
                                 stepSize: 20
                                 minimumValue: 0
@@ -68,7 +68,7 @@ Item {
                             }
 
                             Slider {
-                                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                                Layout.alignment: Qt.AlignCenter
                                 tickmarksEnabled: true
                                 numericValueLabel: true
                                 stepSize: 20
@@ -85,7 +85,7 @@ Item {
                             }
 
                             Slider {
-                                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                                Layout.alignment: Qt.AlignCenter
                                 tickmarksEnabled: true
                                 numericValueLabel: true
                                 stepSize: 20
@@ -102,7 +102,7 @@ Item {
 
                             Slider {
                                 enabled: false
-                                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                                Layout.alignment: Qt.AlignCenter
                                 darkBackground: index == 1
                             }
                         }
