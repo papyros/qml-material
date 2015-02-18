@@ -43,8 +43,8 @@ Controls.Slider {
 
     style: ControlStyles.SliderStyle {
         property Component knob : Item {
-            implicitHeight: control.pressed || control.activeFocus ? units.dp(32) : 0
-            implicitWidth: control.pressed || control.activeFocus ? units.dp(32) : 0
+            implicitHeight: control.pressed || control.focus ? units.dp(32) : 0
+            implicitWidth: control.pressed || control.focus ? units.dp(32) : 0
 
             Label {
                 anchors.fill: parent
@@ -54,7 +54,7 @@ Controls.Slider {
                 color: Theme.lightDark(control.color,
                                                 Theme.light.textColor,
                                                 Theme.dark.textColor)
-                opacity: control.pressed || control.activeFocus ? 1 : 0
+                opacity: control.pressed || control.focus ? 1 : 0
                 z: 1
 
                 Behavior on opacity {
@@ -130,7 +130,7 @@ Controls.Slider {
                 anchors.centerIn: parent
                 implicitHeight: units.dp(32)
                 implicitWidth: units.dp(32)
-                color: control.activeFocus ?
+                color: control.focus ?
                            Theme.alpha(control.color, 0.20) :
                            "transparent"
                 radius: implicitHeight / 2
@@ -147,11 +147,11 @@ Controls.Slider {
 
                     border.width: units.dp(2)
 
-                    implicitHeight: control.pressed && !control.activeFocus && !slider.numericValueLabel ?
+                    implicitHeight: control.pressed && !control.focus && !slider.numericValueLabel ?
                                         diameter + units.dp(8) :
                                         diameter
 
-                    implicitWidth: control.pressed && !control.activeFocus && !slider.numericValueLabel ?
+                    implicitWidth: control.pressed && !control.focus && !slider.numericValueLabel ?
                                        diameter + units.dp(8) :
                                        diameter
 

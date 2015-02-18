@@ -28,6 +28,7 @@ ColumnLayout {
 
                 Slider {
                     Layout.alignment: Qt.AlignCenter
+                    value: 0.2
                     darkBackground: index == 1
                 }
 
@@ -38,6 +39,7 @@ ColumnLayout {
 
                 Slider {
                     Layout.alignment: Qt.AlignCenter
+                    value: 40
                     tickmarksEnabled: true
                     stepSize: 20
                     minimumValue: 0
@@ -53,6 +55,7 @@ ColumnLayout {
 
                 Slider {
                     Layout.alignment: Qt.AlignCenter
+                    value: 60
                     tickmarksEnabled: true
                     numericValueLabel: true
                     stepSize: 20
@@ -70,6 +73,8 @@ ColumnLayout {
 
                 Slider {
                     Layout.alignment: Qt.AlignCenter
+                    value: 80
+                    focus: true
                     tickmarksEnabled: true
                     numericValueLabel: true
                     stepSize: 20

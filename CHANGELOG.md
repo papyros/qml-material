@@ -17,3 +17,4 @@ QML Material CHANGELOG
  * [Dialog] Fix an issue preventing popovers from working
  * [MenuField] Fix issues with the menu not being the right size
  * [Demo] Clean up and refactor the demo
+ * [Slider] change check for activeFocus to focus so we can set it
