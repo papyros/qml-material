@@ -79,15 +79,6 @@ Controls.ApplicationWindow {
         id: __theme
     }
 
-    Toolbar {
-        id: __toolbar
-        width: parent.width
-        backgroundColor: Theme.primaryColor
-        z: 1
-
-        clientSideDecorations: app.clientSideDecorations
-    }
-
     PageStack {
         id: __pageStack
         anchors {
@@ -100,6 +91,13 @@ Controls.ApplicationWindow {
         onPushed: __toolbar.push(page)
         onPopped: __toolbar.pop()
         onReplaced: __toolbar.replace(page)
+    }
+
+    Toolbar {
+        id: __toolbar
+        width: parent.width
+        backgroundColor: Theme.primaryColor
+        clientSideDecorations: app.clientSideDecorations
     }
 
     OverlayLayer {

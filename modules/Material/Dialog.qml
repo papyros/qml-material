@@ -90,6 +90,14 @@ Popover {
                 placeholder.anchors.bottomMargin +
                 buttonContainer.height
 
+        MouseArea {
+            anchors.fill: parent
+            propagateComposedEvents: false
+            onClicked: {
+                mouse.accepted = false
+            }
+        }
+
         Label {
             id: titleLabel
             height: implicitHeight
@@ -103,7 +111,6 @@ Popover {
         }
 
         Item {
-            z: parent.z + 5
             anchors {
                 left: parent.left
                 leftMargin: units.dp(16)
@@ -119,7 +126,6 @@ Popover {
 
         Item {
             id: buttonContainer
-            z: parent.z + 5
             width: negativeButton.width + positiveButton.width + units.dp(24)
             height: hasActions ? units.dp(64) : 0
             visible: hasActions
@@ -165,14 +171,6 @@ Popover {
                     close()
                     accepted();
                 }
-            }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            propagateComposedEvents: false
-            onClicked: {
-                mouse.accepted = false
             }
         }
     }

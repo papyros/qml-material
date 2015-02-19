@@ -23,7 +23,6 @@ Rectangle {
     objectName: "overlayLayer"
 
     anchors.fill: parent
-    z: 100
 
     property Item currentOverlay
     color: "transparent"
