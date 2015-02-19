@@ -13,3 +13,4 @@ QML Material CHANGELOG
  * Add a right mode to the navigation drawer
  * Allow pages to customize the action count in the toolbar
  * [Pallete] Update with color swatches from Material Design
+ * [Demo] Add color picker to change theme colors
