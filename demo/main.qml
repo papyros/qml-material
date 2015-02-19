@@ -91,6 +91,7 @@ ApplicationWindow {
             MenuField {
                 id: selection
                 model: ["Primary color", "Accent color", "Background color"]
+                width: units.dp(160)
             }
 
             Grid {

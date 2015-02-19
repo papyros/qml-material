@@ -15,3 +15,4 @@ QML Material CHANGELOG
  * [Palette] Update with color swatches from Material Design
  * [Demo] Add color picker to change theme colors
  * [Dialog] Fix an issue preventing popovers from working
+ * [MenuField] Fix issues with the menu not being the right size

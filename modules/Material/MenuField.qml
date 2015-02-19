@@ -10,7 +10,7 @@ Item {
 
     implicitHeight: hasHelperText ? helperTextLabel.y + helperTextLabel.height + units.dp(4)
                                   : underline.y + units.dp(8)
-    implicitWidth: spinBox.width
+    implicitWidth: spinBoxContents.implicitWidth
 
     activeFocusOnTab: true
 
@@ -38,7 +38,7 @@ Item {
         onClicked: {
             listView.positionViewAtIndex(listView.currentIndex, ListView.Center)
             var offset = listView.currentItem.itemLabel.mapToItem(menu, 0, 0)
-            menu.open(label, -offset.x, -offset.y)
+            menu.open(label, 0, -offset.y)
         }
     }
 
@@ -46,7 +46,7 @@ Item {
         id: spinBox
 
         height: units.dp(24)
-        width: spinBoxContents.implicitWidth
+        width: parent.width
 
         y: {
             if(!floatingLabel)
@@ -90,8 +90,10 @@ Item {
 
             anchor: Item.TopLeft
 
-            width: Math.max(units.dp(56*2), Math.min(spinBox.width - 2 * x, listView.contentWidth))
-            //If there are more than max items, show an extra half item so it's clear the user can scroll
+            width: spinBox.width
+
+            //If there are more than max items, show an extra half item so
+            // it's clear the user can scroll
             height: Math.min(maxVisibleItems*units.dp(48) + units.dp(24), listView.contentHeight)
 
             ListView {
