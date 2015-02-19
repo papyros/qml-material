@@ -112,6 +112,17 @@ Object {
             return darkColor
     }
 
+    /*!
+       Returns true if the color is dark and should have light content on top
+     */
+    function isDarkColor(background) {
+        var temp = Qt.darker(background, 1)
+
+        var a = 1 - ( 0.299 * temp.r + 0.587 * temp.g + 0.114 * temp.b);
+
+        return temp.a >= 0 && a >= 0.3
+    }
+
     // TODO: Load all the fonts!
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-BlackItalic.ttf")}
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Black.ttf")}
