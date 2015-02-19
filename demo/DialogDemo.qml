@@ -30,7 +30,6 @@ Item {
 
         Flickable {
             id: mainFlick
-            z: parent.z + 1
             width: units.dp(200)
             height: units.dp(200)
             clip: true
