@@ -12,5 +12,6 @@ QML Material CHANGELOG
  * Add an equals symbol to the "extra" icon collection
  * Add a right mode to the navigation drawer
  * Allow pages to customize the action count in the toolbar
- * [Pallete] Update with color swatches from Material Design
+ * [Palette] Update with color swatches from Material Design
  * [Demo] Add color picker to change theme colors
+ * [Dialog] Fix an issue preventing popovers from working

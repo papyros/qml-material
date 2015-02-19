@@ -5,8 +5,10 @@ import Material.Extras 0.1
 Item {
     id: dropdown
 
+    property string overlayLayer: "overlayLayer"
+
     Component.onCompleted: {
-        parent = Utils.findRootChild(dropdown, "overlayLayer")
+        parent = Utils.findRootChild(dropdown, overlayLayer)
     }
 
     property int anchor: Item.TopRight
@@ -114,4 +116,3 @@ Item {
         anchors.verticalCenter: __internal.center ? dropdown.verticalCenter : undefined
     }
 }
-
