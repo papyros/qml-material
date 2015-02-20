@@ -37,20 +37,26 @@ Item {
 
         var position = caller.mapToItem(dropdown.parent, 0, 0)
 
+        // Check to make sure we are within the window bounds, move if we need to
+        var globalPos = caller.mapToItem(null, 0, 0)
+        var root = Utils.findRoot(dropdown)
+
+        if(globalPos.y + height > root.height)
+            offsetY = -((globalPos.y + height + units.dp(16)) - root.height)
+        if(globalPos.x + width > root.width)
+            offsetX = -((globalPos.x + width + units.dp(16)) - root.width)
+
         if (__internal.left) {
             dropdown.x = position.x
-        }
-        else if (__internal.center) {
+        } else if (__internal.center) {
             dropdown.x = caller.width / 2 - dropdown.width / 2
-        }
-        else {
+        } else {
             dropdown.x = position.x + caller.width - dropdown.width
         }
 
         if (__internal.top) {
             dropdown.y = position.y
-        }
-        else if (__internal.center){
+        } else if (__internal.center) {
             dropdown.y = caller.height / 2 - dropdown.height / 2
         } else {
             dropdown.y = position.y + caller.height - dropdown.height
