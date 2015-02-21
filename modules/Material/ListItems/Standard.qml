@@ -77,6 +77,8 @@ BaseListItem {
                 elide: Text.ElideRight
                 style: "subheading"
 
+		color: listItem.selected ? Theme.primaryColor : Theme.light.textColor
+
                 visible: !contentItem.visible
             }
         }
