@@ -31,7 +31,7 @@ Controls.StackView {
 
     onCurrentItemChanged: {
         if (stackView.currentItem) {
-            stackView.currentItem.backAction.visible = stackView.depth > 1;
+            stackView.currentItem.canGoBack = stackView.depth > 1;
 
             if (__lastDepth > stackView.depth) {
                 popped();

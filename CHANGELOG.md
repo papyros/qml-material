@@ -20,3 +20,4 @@ QML Material CHANGELOG
  * [Slider] change check for activeFocus to focus so we can set it
  * [Ink] Remove PRESSED debug message
  * [Theme] Add a method for determining if a color is dark or light
+ * [PageStack] Fixes and improvements to the page stack and toolbar

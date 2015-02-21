@@ -72,6 +72,8 @@ Item {
 	 */
     property color backgroundColor: Theme.primaryColor
 
+    property int elevation: 2
+
     property alias title: label.text
 
     property Action backAction: page ? page.backAction : undefined

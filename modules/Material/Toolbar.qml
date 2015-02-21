@@ -40,7 +40,7 @@ View {
                                                                                : units.dp(64)
     height: targetHeight
 
-    elevation: backgroundColor == page.color ? 0 : 2
+    elevation: backgroundColor == page.color ? 0 : page.actionBar.elevation
 
     fullWidth: true
 

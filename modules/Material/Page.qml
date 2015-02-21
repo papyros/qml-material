@@ -32,10 +32,10 @@ Rectangle {
         name: "Back"
         iconName: "navigation/arrow_back"
         onTriggered: page.pop()
-        visible: showBackButton
+        visible: canGoBack
     }
 
-    property bool showBackButton: true
+    property bool canGoBack: true
 
     property bool cardStyle: false
 
