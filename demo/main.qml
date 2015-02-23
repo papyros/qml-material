@@ -47,6 +47,12 @@ ApplicationWindow {
             }
         ]
 
+        backAction: Action {
+            name: "Menu"
+            iconName: "navigation/menu"
+            onTriggered: sidebar.expanded = !sidebar.expanded
+        }
+
         Sidebar {
             id: sidebar
 
