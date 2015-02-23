@@ -2,6 +2,7 @@ QML Material CHANGELOG
 ======================
 
  * Move popovers as necessary to prevent them being clipped by the window
+ * [PageStack] Add support for a divided page and toolbar
  * Minor bug fixes and code improvements
 
 

@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Michael Spencer
+ * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -35,7 +35,7 @@ Rectangle {
         visible: canGoBack
     }
 
-    property bool canGoBack: true
+    property bool canGoBack: false
 
     property bool cardStyle: false
 
@@ -44,6 +44,15 @@ Rectangle {
     property int selectedTab
 
     property alias actionBar: __actionBar
+
+    default property alias data: content.data
+
+    property Item rightSidebar
+
+    onRightSidebarChanged: {
+        if (rightSidebar)
+            rightSidebar.mode = "right"
+    }
 
     ActionBar {
         id: __actionBar
@@ -58,5 +67,32 @@ Rectangle {
 
     function push(component, properties) {
         Controls.Stack.view.push({item: component, properties: properties});
+    }
+
+    Item {
+        id: content
+
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            left: parent.left
+            right: rightSidebarContent.left
+        }
+    }
+
+    Item {
+        id: rightSidebarContent
+
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            right: parent.right
+        }
+
+        children: [rightSidebar]
+
+        width: rightSidebar
+               ? rightSidebar.width + rightSidebar.anchors.rightMargin
+               : 0
     }
 }

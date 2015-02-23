@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Michael Spencer
+ * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -84,6 +84,10 @@ View {
 
     function pop() {
         stack.pop()
+
+        if (page.rightSidebar && page.rightSidebar.actionBar)
+            rightSidebarStack.pop()
+
         page = pages.pop()
     }
 
@@ -92,6 +96,9 @@ View {
         toolbar.page = page
 
         stack.push(page.actionBar)
+
+        if (page.rightSidebar && page.rightSidebar.actionBar)
+            rightSidebarStack.push(page.rightSidebar.actionBar)
 
         pages.push(toolbar.page)
     }
@@ -102,8 +109,21 @@ View {
 
         stack.replace(page.actionBar)
 
+        if (page.rightSidebar && page.rightSidebar.actionBar)
+            rightSidebarStack.replace(page.rightSidebar.actionBar)
+
         pages.pop()
         pages.push(toolbar.page)
+    }
+
+    Rectangle {
+        anchors.fill: rightSidebarStack
+
+        color: page.rightSidebar && page.rightSidebar.actionBar.backgroundColor
+               ? Qt.darker(page.rightSidebar.actionBar.backgroundColor,1).a == 0
+                 ? page.rightSidebar.color
+                 : page.rightSidebar.actionBar.backgroundColor
+               : Theme.primaryColor
     }
 
     Controls.StackView {
@@ -112,54 +132,76 @@ View {
 
         anchors {
             left: parent.left
-            right: clientSideDecorations ? windowControls.left : parent.right
+            right: page && page.rightSidebar
+                   ? rightSidebarStack.left
+                   : clientSideDecorations ? windowControls.left : parent.right
+            rightMargin: 0
         }
 
-        delegate: Controls.StackViewDelegate {
-            pushTransition: Controls.StackViewTransition {
-                SequentialAnimation {
-                    id: actionBarShowAnimation
+        delegate: toolbarDelegate
+    }
 
-                    ParallelAnimation {
-                        NumberAnimation {
-                            duration: MaterialAnimation.pageTransitionDuration
-                            target: enterItem
-                            property: "opacity"
-                            from: 0
-                            to: 1
-                        }
+    Controls.StackView {
+        id: rightSidebarStack
+        height: toolbar.implicitHeight
+        width: page && page.rightSidebar
+            ? page.rightSidebar.width
+            : 0
+        clip: true
 
-                        NumberAnimation {
-                            duration: MaterialAnimation.pageTransitionDuration
-                            target: enterItem
-                            property: "y"
-                            from: enterItem.height
-                            to: 0
-                        }
+        anchors {
+            right: clientSideDecorations ? windowControls.left : parent.right
+            rightMargin: page.rightSidebar.anchors.rightMargin
+        }
+
+        delegate: toolbarDelegate
+    }
+
+    Controls.StackViewDelegate {
+        id: toolbarDelegate
+
+        pushTransition: Controls.StackViewTransition {
+            SequentialAnimation {
+                id: actionBarShowAnimation
+
+                ParallelAnimation {
+                    NumberAnimation {
+                        duration: MaterialAnimation.pageTransitionDuration
+                        target: enterItem
+                        property: "opacity"
+                        from: 0
+                        to: 1
                     }
-                }
-                SequentialAnimation {
-                    id: previousHideAnimation
 
-                    ParallelAnimation {
-
-                        NumberAnimation {
-                            duration: MaterialAnimation.pageTransitionDuration
-                            target: exitItem
-                            property: "opacity"
-                            to: 0
-                        }
-
-                        NumberAnimation {
-                            duration: MaterialAnimation.pageTransitionDuration
-                            target: exitItem
-                            property: "y"
-                            to: exitItem ? -exitItem.height : 0
-                        }
+                    NumberAnimation {
+                        duration: MaterialAnimation.pageTransitionDuration
+                        target: enterItem
+                        property: "y"
+                        from: enterItem.height
+                        to: 0
                     }
                 }
             }
+            SequentialAnimation {
+                id: previousHideAnimation
 
+                ParallelAnimation {
+
+                    NumberAnimation {
+                        duration: MaterialAnimation.pageTransitionDuration
+                        target: exitItem
+                        property: "opacity"
+                        to: 0
+                    }
+
+                    NumberAnimation {
+                        duration: MaterialAnimation.pageTransitionDuration
+                        target: exitItem
+                        property: "y"
+                        to: exitItem ? -exitItem.height : 0
+                    }
+                }
+            }
         }
     }
 
