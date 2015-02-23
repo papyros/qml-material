@@ -109,7 +109,7 @@ Item {
 
                     text: modelData
 
-                    onTriggered: {
+                    onClicked: {
                         itemSelected(index)
                         listView.currentIndex = index
                         menu.close()

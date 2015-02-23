@@ -197,7 +197,7 @@ Item {
                     anchors.centerIn: parent
                 }
 
-                onTriggered: {
+                onClicked: {
                     actionItem.triggered(listItem)
                     overflowMenu.close()
                 }

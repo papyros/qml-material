@@ -7,10 +7,6 @@ Item {
 
     property string overlayLayer: "overlayLayer"
 
-    Component.onCompleted: {
-        parent = Utils.findRootChild(dropdown, overlayLayer)
-    }
-
     property int anchor: Item.TopRight
 
     property bool showing
@@ -20,15 +16,16 @@ Item {
     property alias internalView: view
 
     onShowingChanged: {
-        if (showing)
-        {
+        if (showing) {
             parent.currentOverlay = dropdown
-        }
-        else
+        } else {
             parent.currentOverlay = null
+        }
     }
 
     function open(caller, offsetX, offsetY) {
+        parent = Utils.findRootChild(dropdown, overlayLayer)
+
         if(typeof offsetX === "undefined")
             offsetX = 0
 
@@ -40,11 +37,6 @@ Item {
         // Check to make sure we are within the window bounds, move if we need to
         var globalPos = caller.mapToItem(null, 0, 0)
         var root = Utils.findRoot(dropdown)
-
-        if(globalPos.y + height > root.height)
-            offsetY = -((globalPos.y + height + units.dp(16)) - root.height)
-        if(globalPos.x + width > root.width)
-            offsetX = -((globalPos.x + width + units.dp(16)) - root.width)
 
         if (__internal.left) {
             dropdown.x = position.x
@@ -61,6 +53,11 @@ Item {
         } else {
             dropdown.y = position.y + caller.height - dropdown.height
         }
+
+        if(dropdown.y + height > root.height)
+            offsetY = -((globalPos.y + height + units.dp(16)) - root.height)
+        if(dropdown.x + width > root.width)
+            offsetX = -((globalPos.x + width + units.dp(16)) - root.width)
 
         dropdown.x += offsetX
         dropdown.y += offsetY

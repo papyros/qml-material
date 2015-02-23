@@ -22,12 +22,12 @@ import Material.Extras 0.1
 Icon {
     id: icon
 
-    signal triggered
+    signal clicked
 
     name: action ? action.iconName : ""
     enabled: action ? action.enabled : true
 
-    onTriggered: {
+    onClicked: {
         if (action) action.triggered(icon)
     }
 
@@ -48,7 +48,7 @@ Icon {
 
         onClicked: {
             //ink.focused = true
-            icon.triggered()
+            icon.clicked()
         }
     }
 

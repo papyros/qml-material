@@ -55,7 +55,7 @@ ApplicationWindow {
                     delegate: ListItem.Standard {
                         text: modelData
                         selected: modelData == selectedComponent
-                        onTriggered: selectedComponent = modelData
+                        onClicked: selectedComponent = modelData
                     }
                 }
             }

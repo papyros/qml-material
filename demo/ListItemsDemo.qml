@@ -44,7 +44,7 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                onTriggered: enablingSwitch.checked = !enablingSwitch.checked
+                onClicked: enablingSwitch.checked = !enablingSwitch.checked
 
                 action: Icon {
                     anchors.centerIn: parent
