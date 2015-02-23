@@ -33,7 +33,6 @@ import Material.ListItems 0.1 as ListItem
 Item {
     id: actionBar
 
-	// TODO: Replace with enum values for device.mode
     implicitHeight: Device.type === Device.phone
                     ? units.dp(48) : Device.type == Device.tablet
                       ? units.dp(56) : units.dp(64)
@@ -78,11 +77,17 @@ Item {
 
     property Action backAction: page ? page.backAction : undefined
 
+    property alias customContent: customContentView.data
+
+    property alias extendedContent: extendedContentView.data
+
+    readonly property int extendedHeight: extendedContentView.childrenRect.height
+
     IconButton {
         id: leftItem
 
         anchors {
-            verticalCenter: parent.verticalCenter
+            verticalCenter: actionsRow.verticalCenter
             left: parent.left
             leftMargin: leftItem.show ? units.dp(16) : -leftItem.width
 
@@ -93,7 +98,7 @@ Item {
 
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                             Theme.dark.iconColor)
-        size: units.dp(27)
+        size: units.dp(24)
         action: page.backAction
 
         opacity: show ? enabled ? 1 : 0.3 : 0
@@ -110,14 +115,18 @@ Item {
         id: label
 
         anchors {
-            verticalCenter: parent.verticalCenter
+            verticalCenter: actionsRow.verticalCenter
             left: parent.left
+            right: actionsRow.left
             leftMargin: leftItem.show ? units.dp(72) : units.dp(16)
+            rightMargin: units.dp(16)
 
             Behavior on leftMargin {
                 NumberAnimation { duration: 200 }
             }
         }
+
+        visible: customContentView.children.length == 0
 
         text: showContents ? page.title : ""
         style: "title"
@@ -126,11 +135,14 @@ Item {
     }
 
     Row {
+        id: actionsRow
+
         anchors {
-            verticalCenter: parent.verticalCenter
             right: parent.right
             rightMargin: units.dp(16)
         }
+
+        height: parent.implicitHeight
 
         spacing: units.dp(24)
 
@@ -146,7 +158,7 @@ Item {
 
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
                                                                      Theme.dark.textColor)
-                size: name == "content/add" ? units.dp(30) : units.dp(27)
+                size: name == "content/add" ? units.dp(27) : units.dp(24)
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
         }
@@ -161,7 +173,28 @@ Item {
             visible: showContents && page && page.actions.length > maxActionCount
             anchors.verticalCenter: parent.verticalCenter
 
-            onTriggered: overflowMenu.open(overflowButton, units.dp(4), units.dp(-4))
+            onClicked: overflowMenu.open(overflowButton, units.dp(4), units.dp(-4))
+        }
+    }
+
+    Item {
+        id: customContentView
+
+        height: parent.height
+
+        anchors {
+            left: label.left
+            right: label.right
+        }
+    }
+
+    Item {
+        id: extendedContentView
+        anchors {
+            top: actionsRow.bottom
+            left: label.left
+            right: parent.right
+            rightMargin: units.dp(16)
         }
     }
 

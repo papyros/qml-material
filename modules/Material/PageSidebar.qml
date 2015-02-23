@@ -24,6 +24,16 @@ Page {
 
     height: parent.height
 
+    property bool showing: true
+
+    anchors {
+        rightMargin: showing ? 0 : -width
+
+        Behavior on rightMargin {
+            NumberAnimation { duration: 200 }
+        }
+    }
+
     property alias mode: sidebar.mode
 
     default property alias sidebar: sidebar.data

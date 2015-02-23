@@ -46,14 +46,25 @@ View {
 
     clipContent: true
 
-    property int targetHeight: page && page.actionBar.hidden ? 0
-                                                : implicitHeight + (tabs.length > 0 ? tabbar.height : 0)
-                                                                 + (expanded ? implicitHeight : 0)
+    property int actionBarHeight: {
+        if (!page || page.actionBar.hidden)
+            return 0
+
+        var height = implicitHeight + page.actionBar.extendedHeight
+
+        if (page.rightSidebar && page.rightSidebar.showing) {
+            var sidebarHeight = implicitHeight + page.rightSidebar.actionBar.extendedHeight
+
+            height = Math.max(height, sidebarHeight)
+        }
+
+        return height
+    }
+
+    property int targetHeight: actionBarHeight + (tabs.length > 0 ? tabbar.height : 0)
 
     property int maxActionCount: (Device.formFactor == "desktop"
                                   ? 5 : Device.formFactor == "tablet" ? 4 : 3)
-
-    property bool expanded: false
 
     property bool clientSideDecorations: false
 
@@ -128,7 +139,11 @@ View {
 
     Controls.StackView {
         id: stack
-        height: toolbar.implicitHeight
+        height: actionBarHeight
+
+        Behavior on height {
+            NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
+        }
 
         anchors {
             left: parent.left
@@ -143,11 +158,14 @@ View {
 
     Controls.StackView {
         id: rightSidebarStack
-        height: toolbar.implicitHeight
+        height: actionBarHeight
         width: page && page.rightSidebar
-            ? page.rightSidebar.width
-            : 0
-        clip: true
+               ? page.rightSidebar.width
+               : 0
+
+        Behavior on height {
+            NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
+        }
 
         anchors {
             right: clientSideDecorations ? windowControls.left : parent.right
