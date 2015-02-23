@@ -19,10 +19,10 @@ import QtQuick 2.0
 import QtQuick.Controls 1.2 as Controls
 import Material 0.1
 
-Rectangle {
+FocusScope {
     id: page
 
-    color: Theme.backgroundColor
+    property color backgroundColor: Theme.backgroundColor
 
     property string title
 
@@ -58,6 +58,11 @@ Rectangle {
         id: __actionBar
 
         page: page
+    }
+
+    Rectangle {
+        anchors.fill: parent
+        color: backgroundColor
     }
 
     function pop() {

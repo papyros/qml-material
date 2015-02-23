@@ -32,6 +32,7 @@ Controls.StackView {
     onCurrentItemChanged: {
         if (stackView.currentItem) {
             stackView.currentItem.canGoBack = stackView.depth > 1;
+            stackView.currentItem.forceActiveFocus()
 
             if (__lastDepth > stackView.depth) {
                 popped();

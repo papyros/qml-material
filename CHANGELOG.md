@@ -4,7 +4,8 @@ QML Material CHANGELOG
  * Move popovers as necessary to prevent them being clipped by the window
  * [PageStack] Add support for a divided page and toolbar
  * Rename list item and IconButton onTriggered to onClicked
- * [ToolBar] Add support for custom and extended content in the toolbar
+ * [Toolbar] Add support for custom and extended content in the toolbar
+ * [PageStack] Make Page a FocusScope
  * Minor bug fixes and code improvements
 
 
