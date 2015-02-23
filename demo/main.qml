@@ -53,26 +53,10 @@ ApplicationWindow {
             onTriggered: sidebar.expanded = !sidebar.expanded
         }
 
-        Sidebar {
-            id: sidebar
-
-            Column {
-                width: parent.width
-
-                Repeater {
-                    model: demo.components
-                    delegate: ListItem.Standard {
-                        text: modelData
-                        selected: modelData == selectedComponent
-                        onClicked: selectedComponent = modelData
-                    }
-                }
-            }
-        }
         Flickable {
             id: flickable
             anchors {
-                left: sidebar.right
+                left: sidebar.visible && demo.width < units.dp(500) ? parent.left : sidebar.right
                 right: parent.right
                 top: parent.top
                 bottom: parent.bottom
@@ -88,6 +72,23 @@ ApplicationWindow {
         }
         Scrollbar {
             flickableItem: flickable
+        }
+        Sidebar {
+            id: sidebar
+            expanded: demo.width > units.dp(500)
+
+            Column {
+                width: parent.width
+
+                Repeater {
+                    model: demo.components
+                    delegate: ListItem.Standard {
+                        text: modelData
+                        selected: modelData == selectedComponent
+                        onClicked: selectedComponent = modelData
+                    }
+                }
+            }
         }
     }
 
