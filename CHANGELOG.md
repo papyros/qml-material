@@ -8,6 +8,7 @@ QML Material CHANGELOG
  * [PageStack] Make Page a FocusScope
  * [Dialog] Refactor the dialog code to use anchors
  * [Snackbar] Improve the snackbar and add support for mobile layouts
+ * [PageStack] Fix going back from a pushed page
  * Minor bug fixes and code improvements
 
 

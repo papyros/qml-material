@@ -103,15 +103,14 @@ View {
     }
 
     function push(page) {
+        stack.push(page.actionBar)
+        pages.push(toolbar.page)
+
         page.actionBar.toolbar = toolbar
         toolbar.page = page
 
-        stack.push(page.actionBar)
-
         if (page.rightSidebar && page.rightSidebar.actionBar)
             rightSidebarStack.push(page.rightSidebar.actionBar)
-
-        pages.push(toolbar.page)
     }
 
     function replace(page) {
@@ -169,7 +168,7 @@ View {
 
         anchors {
             right: clientSideDecorations ? windowControls.left : parent.right
-            rightMargin: page.rightSidebar.anchors.rightMargin
+            rightMargin: page.rightSidebar ? page.rightSidebar.anchors.rightMargin : 0
         }
 
         delegate: toolbarDelegate
