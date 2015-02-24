@@ -6,7 +6,8 @@ QML Material CHANGELOG
  * Rename list item and IconButton onTriggered to onClicked
  * [Toolbar] Add support for custom and extended content in the toolbar
  * [PageStack] Make Page a FocusScope
- * [Dialog Refactor the dialog code to use anchors
+ * [Dialog] Refactor the dialog code to use anchors
+ * [Snackbar] Improve the snackbar and add support for mobile layouts
  * Minor bug fixes and code improvements
 
 
