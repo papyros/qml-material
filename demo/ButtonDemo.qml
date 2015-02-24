@@ -10,12 +10,14 @@ Item {
         Button {
             text: "Simple Button"
             anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: snackbar.open("Simple, isn't it?")
         }
 
         Button {
             text: "Raised Button"
             elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: snackbar.open("This is a snackbar")
         }
 
         Button {
@@ -24,18 +26,24 @@ Item {
             width: units.dp(200)
             elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
+
+            onClicked: snackbar.open("That button is too wide!")
         }
 
         Button {
             text: "Button with really long text"
             elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
+
+            onClicked: snackbar.open("The text is really long")
         }
 
         Button {
             text: "Colored button"
             textColor: Theme.accentColor
             anchors.horizontalCenter: parent.horizontalCenter
+            
+            onClicked: snackbar.open("That button is colored!")
         }
     }
 
@@ -47,5 +55,9 @@ Item {
         }
 
         iconName: "content/add"
+    }
+
+    Snackbar {
+        id: snackbar
     }
 }
