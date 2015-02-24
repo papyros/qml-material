@@ -26,10 +26,15 @@ Page {
 
     property bool showing: true
 
+    Component.onCompleted: behavior.enabled = true
+
     anchors {
         rightMargin: showing ? 0 : -width
 
         Behavior on rightMargin {
+            id: behavior
+            enabled: false
+            
             NumberAnimation { duration: 200 }
         }
     }

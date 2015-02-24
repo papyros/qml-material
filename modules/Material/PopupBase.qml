@@ -15,41 +15,39 @@
 * You should have received a copy of the GNU Lesser General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-
 import QtQuick 2.0
+import Material 0.1
+import Material.Extras 0.1
 
-Rectangle {
-    id: overlayLayer
-    objectName: "overlayLayer"
+FocusScope {
+    id: popup
 
-    anchors.fill: parent
+    property color overlayColor: "transparent"
+    property string overlayLayer: "overlayLayer"
 
-    property Item currentOverlay
-    color: "transparent"
+    property bool showing: false
 
-    states: State {
-        name: "ShowState"
-        when: overlayLayer.currentOverlay != null
+    signal opened
 
-        PropertyChanges {
-            target: overlayLayer
-            color: currentOverlay.overlayColor
+    function toggle(widget) {
+        if (showing) {
+            close()
+        } else {
+            open(widget)
         }
     }
 
-    transitions: Transition {
-        ColorAnimation {
-            duration: 300
-            easing.type: Easing.InOutQuad
-        }
+    function open() {
+        parent = Utils.findRootChild(popup, overlayLayer)
+        showing = true
+        forceActiveFocus()
+        parent.currentOverlay = popup
 
+        opened()
     }
 
-    MouseArea {
-        anchors.fill: parent
-        enabled: overlayLayer.currentOverlay != null
-        hoverEnabled: enabled
-        onClicked: overlayLayer.currentOverlay.close()
-        onWheel: wheel.accepted = true
+    function close() {
+        showing = false
+        parent.currentOverlay = null
     }
 }
