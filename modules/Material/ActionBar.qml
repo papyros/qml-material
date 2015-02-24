@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 import Material 0.1
 import Material.ListItems 0.1 as ListItem
 
@@ -202,37 +203,31 @@ Item {
         id: overflowMenu
 
         width: units.dp(200)
-        height: listView.contentHeight + units.dp(16)
+        height: columnView.height + units.dp(16)
 
-        ListView {
-            id: listView
+        ColumnLayout {
+            id: columnView
+            width: parent.width
+            anchors.centerIn: parent
 
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                topMargin: units.dp(8)
-            }
+            Repeater {
+                model: page.actions.length - (maxActionCount - 1)
 
-            interactive: false
-            height: contentHeight
+                ListItem.Standard {
+                    id: listItem
 
-            model: page.actions.length - (maxActionCount - 1)
+                    property Action actionItem: page.actions[index + maxActionCount - 1]
 
-            delegate: ListItem.Standard {
-                id: listItem
+                    text: actionItem.name
+                    action: Icon {
+                        name: listItem.actionItem.iconName
+                        anchors.centerIn: parent
+                    }
 
-                property Action actionItem: page.actions[index + maxActionCount - 1]
-
-                text: actionItem.name
-                action: Icon {
-                    name: listItem.actionItem.iconName
-                    anchors.centerIn: parent
-                }
-
-                onClicked: {
-                    actionItem.triggered(listItem)
-                    overflowMenu.close()
+                    onClicked: {
+                        actionItem.triggered(listItem)
+                        overflowMenu.close()
+                    }
                 }
             }
         }
