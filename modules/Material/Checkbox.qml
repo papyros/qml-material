@@ -69,8 +69,7 @@ Controls.CheckBox {
 
                 anchors.centerIn: parent
 
-                property color __internalColor: control.enabled ? control.darkBackground ? control.color
-                                                                                         : control.color
+                property color __internalColor: control.enabled ? control.color
                                                                 : control.darkBackground ? Theme.alpha("#fff", 0.30)
                                                                                          : Theme.alpha("#000", 0.26)
 
@@ -81,8 +80,10 @@ Controls.CheckBox {
                 border.width: units.dp(2)
 
                 border.color: control.enabled ? control.checked ? control.color
-                    : control.darkBackground ? Theme.alpha("#fff", 0.70) : Theme.alpha("#000", 0.54)
-                    : control.darkBackground ? Theme.alpha("#fff", 0.30) : Theme.alpha("#000", 0.26)
+                                                                : control.darkBackground ? Theme.alpha("#fff", 0.70)
+                                                                                         : Theme.alpha("#000", 0.54)
+                                              : control.darkBackground ? Theme.alpha("#fff", 0.30)
+                                                                       : Theme.alpha("#000", 0.26)
 
                 color: control.checked ? __internalColor : "transparent"
 
@@ -136,7 +137,7 @@ Controls.CheckBox {
                     Rectangle {
                         anchors {
                             left: parent.left
-                            right: parent.right
+                            right: vert.left
                             bottom: parent.bottom
                         }
 
