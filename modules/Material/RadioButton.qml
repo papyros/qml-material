@@ -37,10 +37,10 @@ Controls.RadioButton {
         label :Label {
             text: control.text
             style: "button"
-            color: control.enabled ? radioButton.darkBackground ? Theme.dark.textColor
-                                                                : Theme.light.textColor
-                                   : radioButton.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                                : Theme.alpha("#000", 0.26)
+            color: control.enabled ? darkBackground ? Theme.dark.textColor
+                                                    : Theme.light.textColor
+                                   : darkBackground ? Theme.alpha("#fff", 0.30)
+                                                    : Theme.alpha("#000", 0.26)
         }
 
         background: Rectangle {
@@ -60,8 +60,10 @@ Controls.RadioButton {
                 radius: implicitHeight / 2
                 color: "transparent"
                 border.color: control.enabled ? control.checked ? radioButton.color
-                              : radioButton.darkBackground ? Theme.alpha("#fff", 0.70) : Theme.alpha("#000", 0.54)
-                              : radioButton.darkBackground ? Theme.alpha("#fff", 0.30) : Theme.alpha("#000", 0.26)
+                                                                : darkBackground ? Theme.alpha("#fff", 0.70)
+                                                                                 : Theme.alpha("#000", 0.54)
+                                              : darkBackground ? Theme.alpha("#fff", 0.30)
+                                                               : Theme.alpha("#000", 0.26)
                 border.width: units.dp(2)
                 antialiasing: true
 
@@ -74,8 +76,8 @@ Controls.RadioButton {
                     implicitWidth: control.checked ? units.dp(10) : 0
                     implicitHeight: control.checked ? units.dp(10) : 0
                     color: control.enabled ? radioButton.color
-                                           : radioButton.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                                        : Theme.alpha("#000", 0.26)
+                                           : darkBackground ? Theme.alpha("#fff", 0.30)
+                                                            : Theme.alpha("#000", 0.26)
                     radius: implicitHeight / 2
                     antialiasing: true
 
@@ -97,7 +99,7 @@ Controls.RadioButton {
         anchors.left: parent.left
         width: units.dp(48)
         height: units.dp(48)
-        color: radioButton.checked ? Theme.alpha(radioButton.color, 0.20) : Qt.rgba(0,0,0,0.1)
+        color: radioButton.checked ? Theme.alpha(radioButton.color, 0.20) : Theme.alpha("#000", 0.1)
         onClicked: radioButton.checked = !radioButton.checked
 
         circular: true

@@ -21,33 +21,29 @@ Controls.Switch {
         handle: View {
             width: units.dp(22)
             height: units.dp(22)
-
-            radius: height/2
-
+            radius: height / 2
             elevation: 2
-            backgroundColor: control.enabled ? control.checked ? control.color  : darkBackground ? "#BDBDBD"
-                                                                                                 : "#FAFAFA"
-                                                : darkBackground ? "#424242" : "#BDBDBD"
-		}
+            backgroundColor: control.enabled ? control.checked ? control.color
+                                                               : darkBackground ? "#BDBDBD"
+                                                                                : "#FAFAFA"
+                                             : darkBackground ? "#424242"
+                                                              : "#BDBDBD"
+        }
 
         groove: Item {
             width: units.dp(40)
             height: units.dp(22)
-			
-			Rectangle {
 
-				anchors.centerIn: parent
-
+            Rectangle {
+                anchors.centerIn: parent
                 width: parent.width - units.dp(2)
                 height: units.dp(16)
-
-                radius: height/2
-
+                radius: height / 2
                 color: control.enabled ? control.checked ? Theme.alpha(control.color, 0.5)
-                                                               : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
-                                                                                : Qt.rgba(0, 0, 0, 0.26)
-                                          : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
-                                                           : Qt.rgba(0, 0, 0, 0.12)
+                                                         : darkBackground ? Theme.alpha("#FFF", 0.30)
+                                                                          : Theme.alpha("#000", 0.26)
+                                       : darkBackground ? Theme.alpha("#FFF", 0.10)
+                                                        : Theme.alpha("#000", 0.12)
 
                 Behavior on color {
 
@@ -55,7 +51,7 @@ Controls.Switch {
                         duration: 200
                     }
                 }
-			}
-		}
-	}
+            }
+        }
+    }
 }

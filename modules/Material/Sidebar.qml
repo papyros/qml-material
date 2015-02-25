@@ -51,7 +51,8 @@ View {
     property alias header: headerItem.text
 
     backgroundColor: style === "default" ? "white" : "#333"
-    property color borderColor: style === "dark" ? Qt.rgba(0.5,0.5,0.5,0.5) : Theme.light.dividerColor
+    property color borderColor: style === "dark" ? Theme.alpha("#808080", 0.5)
+                                                 : Theme.light.dividerColor
 
     anchors {
         left: mode === "left" ? parent.left : undefined

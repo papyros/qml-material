@@ -60,7 +60,7 @@ Controls.Button {
                 tintColor: control.pressed ||
                            (control.focus && !button.elevation) ||
                            (control.hovered && !button.elevation) ?
-                           Qt.rgba(0,0,0, control.pressed ? 0.1 : 0.05) : "transparent"
+                           Theme.alpha("#000", control.pressed ? 0.1 : 0.05) : "transparent"
 
                 Ink {
                     id: mouseArea

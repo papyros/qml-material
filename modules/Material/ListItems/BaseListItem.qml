@@ -38,7 +38,7 @@ View {
         z: -1
     }
 
-    tintColor: selected
-               ? Qt.rgba(0,0,0,0.05)
-               : ink.containsMouse ? Qt.rgba(0,0,0,0.03) : Qt.rgba(0,0,0,0)
+    tintColor: selected ? Theme.alpha("#000", 0.05)
+                        : ink.containsMouse ? Theme.alpha("#000", 0.03)
+                                            : "transparent"
 }

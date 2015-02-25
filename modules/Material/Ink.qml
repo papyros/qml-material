@@ -17,6 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 import Material.Extras 0.1
 
 MouseArea {
@@ -32,7 +33,7 @@ MouseArea {
                                    : width * 1.5
 
     property Item currentCircle
-    property color color: Qt.rgba(0,0,0,0.1)
+    property color color: Theme.alpha("#000", 0.1)
 
     property bool circular: false
     property bool centered: false

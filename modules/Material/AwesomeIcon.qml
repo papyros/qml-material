@@ -44,14 +44,15 @@ View {
         id: text
         anchors.centerIn: parent
 
-        property string name: widget.name.match(/.*-rotate/) !== null ? widget.name.substring(0, widget.name.length - 7) : widget.name
+        property string name: widget.name.match(/.*-rotate/) !== null ? widget.name.substring(0, widget.name.length - 7)
+                                                                      : widget.name
 
         font.family: fontAwesome.name
         font.weight: Font.Light
         text: widget.icons.hasOwnProperty(name) ? widget.icons[name] : ""
         color: Theme.light.iconColor
         style: shadow ? Text.Raised : Text.Normal
-        styleColor: Qt.rgba(0,0,0,0.5)
+        styleColor: Theme.alpha("#000", 0.5)
         font.pixelSize: widget.size
 
         Behavior on color {
