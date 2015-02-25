@@ -22,6 +22,7 @@ singleton MaterialAnimation 0.1 MaterialAnimation.qml
 MenuField 0.1 MenuField.qml
 NavigationDrawer 0.1 NavigationDrawer.qml
 Object 0.1 Object.qml
+OverlayLayer 0.1 OverlayLayer.qml
 Page 0.1 Page.qml
 PageSidebar 0.1 PageSidebar.qml
 PageStack 0.1 PageStack.qml
