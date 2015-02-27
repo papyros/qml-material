@@ -28,6 +28,7 @@ PageStack 0.1 PageStack.qml
 singleton Palette 0.1 Palette.qml
 PopupBase 0.1 PopupBase.qml
 ProgressBar 0.1 ProgressBar.qml
+ProgressCircle 0.1 ProgressCircle.qml
 RadioButton 0.1 RadioButton.qml
 Sidebar 0.1 Sidebar.qml
 Scrollbar 0.1 Scrollbar.qml
