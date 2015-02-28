@@ -10,7 +10,7 @@ ApplicationWindow {
     }
 
     property var components: [
-            "Button", "Checkbox", "Dialog", "Forms", "Icon", "List Items", "Page Stack",
+            "Button", "Checkbox", "Color Palette", "Dialog", "Forms", "Icon", "List Items", "Page Stack",
             "Progress Bar", "Radio Button", "Slider", "Switch", "TextField"
     ]
 
@@ -72,7 +72,7 @@ ApplicationWindow {
                 bottom: parent.bottom
             }
             clip: true
-            contentHeight: Math.max(example.implicitHeight, height)
+            contentHeight: Math.max(example.implicitHeight + 40, height)
             Loader {
                 id: example
                 anchors.fill: parent
