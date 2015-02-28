@@ -13,6 +13,7 @@ QML Material CHANGELOG
  * [Ink] Polished the ink animations
  * [Dialog] Improved the dialog component
  * [Icon] Switch to using SVGs instead of PNGs
+ * [Demo] Add the color palette to the demo
  * Minor bug fixes and code improvements
 
 
