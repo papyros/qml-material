@@ -21,6 +21,7 @@ import 'awesome.js' as Awesome
 
 Item {
     id: widget
+
     property string name
     property bool rotate: widget.name.match(/.*-rotate/) !== null
 
