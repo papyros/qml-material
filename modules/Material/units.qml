@@ -64,6 +64,6 @@ Object {
        this anywhere you need to refer to distances on the screen.
      */
     function dp(number) {
-        return number*((pixelDensity*25.4)/160)*multiplier;
+        return Math.round(number*((pixelDensity*25.4)/160)*multiplier);
     }
 }
