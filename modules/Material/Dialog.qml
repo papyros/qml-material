@@ -27,7 +27,7 @@ PopupBase {
     id: dialog
 
     overlayLayer: "dialogOverlayLayer"
-    overlayColor: Qt.rgba(0, 0, 0, 0.3)
+    overlayColor: Theme.alpha("#000", 0.3)
 
     opacity: showing ? 1 : 0
     visible: opacity > 0

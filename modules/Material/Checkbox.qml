@@ -26,7 +26,8 @@ Controls.CheckBox {
     /*!
        The checkbox color. By default this is the app's accent color
      */
-    property color color: darkBackground ? Theme.dark.accentColor : Theme.light.accentColor
+    property color color: darkBackground ? Theme.dark.accentColor
+                                         : Theme.light.accentColor
 
     /*!
        Set to \c true if the checkbox is on a dark background
@@ -50,10 +51,10 @@ Controls.CheckBox {
                 anchors.centerIn: parent
 
                 style: "button"
-                color: control.enabled ? control.darkBackground ? Theme.dark.textColor
-                                                                : Theme.light.textColor
-                                       : control.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                                : Theme.alpha("#000", 0.26)
+                color: control.enabled ? darkBackground ? Theme.dark.textColor
+                                                        : Theme.light.textColor
+                                       : darkBackground ? Theme.alpha("#fff", 0.30)
+                                                        : Theme.alpha("#000", 0.26)
                 text: control.text
             }
         }
@@ -70,8 +71,8 @@ Controls.CheckBox {
                 anchors.centerIn: parent
 
                 property color __internalColor: control.enabled ? control.color
-                                                                : control.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                                                         : Theme.alpha("#000", 0.26)
+                                                                : darkBackground ? Theme.alpha("#fff", 0.30)
+                                                                                 : Theme.alpha("#000", 0.26)
 
                 width: units.dp(24)
                 height: units.dp(24)
@@ -80,10 +81,10 @@ Controls.CheckBox {
                 border.width: units.dp(2)
 
                 border.color: control.enabled ? control.checked ? control.color
-                                                                : control.darkBackground ? Theme.alpha("#fff", 0.70)
-                                                                                         : Theme.alpha("#000", 0.54)
-                                              : control.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                                       : Theme.alpha("#000", 0.26)
+                                                                : darkBackground ? Theme.alpha("#fff", 0.70)
+                                                                                 : Theme.alpha("#000", 0.54)
+                                              : darkBackground ? Theme.alpha("#fff", 0.30)
+                                                               : Theme.alpha("#000", 0.26)
 
                 color: control.checked ? __internalColor : "transparent"
 
@@ -129,10 +130,9 @@ Controls.CheckBox {
                             bottom: parent.bottom
                         }
 
-                        radius: units.dp(1)
-                        color: control.darkBackground ? Theme.light.textColor : Theme.dark.textColor
+                        color: darkBackground ? Theme.light.textColor
+                                              : Theme.dark.textColor
                         width: container.thickness * 2
-
                     }
                     Rectangle {
                         anchors {
@@ -141,8 +141,8 @@ Controls.CheckBox {
                             bottom: parent.bottom
                         }
 
-                        radius: units.dp(1)
-                        color: control.darkBackground ? Theme.light.textColor : Theme.dark.textColor
+                        color: darkBackground ? Theme.light.textColor
+                                              : Theme.dark.textColor
                         height: container.thickness
                     }
 
@@ -192,7 +192,8 @@ Controls.CheckBox {
 
         width: units.dp(54)
         height: units.dp(54)
-        color: checkBox.checked ? Theme.alpha(checkBox.color, 0.20) : Qt.rgba(0,0,0,0.1)
+        color: checkBox.checked ? Theme.alpha(checkBox.color, 0.20)
+                                : Theme.alpha("#000", 0.1)
         enabled: checkBox.enabled
 
         circular: true
