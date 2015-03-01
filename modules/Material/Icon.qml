@@ -33,7 +33,7 @@ Image {
             color = 'grey600'
          else if (color == Theme.light.iconColor)
             color = 'grey600'
-        else if  (color == Theme.dark.iconColor)
+        else if  (color == Theme.dark.iconColor || color == "#ffffff")
             color = 'white'
 
         var dp_size = "18"
@@ -60,7 +60,7 @@ Image {
            ? height : sourceSize.width * height/sourceSize.height
     height: size
 
-    property string color: Theme.light.iconColor
+    property color color: Theme.light.iconColor
 
     mipmap: true
 

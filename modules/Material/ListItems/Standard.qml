@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.1
 import ".."
 
@@ -28,6 +29,7 @@ BaseListItem {
     property alias valueText: valueLabel.text
 
     property alias action: actionItem.children
+    property alias iconName: icon.name
     property alias secondaryItem: secondaryItem.children
     property alias content: contentItem.children
 
@@ -52,7 +54,20 @@ BaseListItem {
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
 
-            visible: children.length > 0
+            visible: children.length > 2 || icon.visible
+
+            Icon {
+                id: icon
+                anchors.centerIn: parent
+                visible: name != ""
+            }
+
+            ColorOverlay {
+                anchors.fill: icon
+                source: icon
+                color: Theme.primaryColor
+                visible: listItem.selected
+            }
         }
 
         ColumnLayout {

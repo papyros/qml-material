@@ -9,6 +9,7 @@ QML Material CHANGELOG
  * [Dialog] Refactor the dialog code to use anchors
  * [Snackbar] Improve the snackbar and add support for mobile layouts
  * [PageStack] Fix going back from a pushed page
+ * [ListItems] Add direct support for icons to Standard
  * Minor bug fixes and code improvements
 
 
