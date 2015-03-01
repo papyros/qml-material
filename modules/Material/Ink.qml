@@ -17,6 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 import Material.Extras 0.1
 
 MouseArea {
@@ -26,16 +27,20 @@ MouseArea {
     hoverEnabled: enabled
     z: 2
 
-    property int startSize: circular ? width/5 : width/3
-    property int middleSize: circular ? width * 3/4 : width - 10
-    property int endSize: circular ? centered ? width: width * 3
-                                   : width * 1.5
+    property int startRadius: circular ? width/10 : width/6
+    property int endRadius
 
     property Item currentCircle
     property color color: Qt.rgba(0,0,0,0.1)
 
     property bool circular: false
     property bool centered: false
+
+    property int focusWidth: width - units.dp(32)
+    property bool focused
+    property color focusColor: "transparent"
+
+    property bool showFocus: true
 
     onPressed: {
         createTapCircle(mouse.x, mouse.y)
@@ -50,11 +55,85 @@ MouseArea {
     }
 
     function createTapCircle(x, y) {
+        endRadius = centered ? width/2 : radius(x, y)
+        showFocus = false
+
         if (!currentCircle)
             currentCircle = tapCircle.createObject(view, {
                                                        "circleX": centered ? width/2 : x,
                                                        "circleY": centered ? height/2 : y
                                                    });
+    }
+
+    function radius(x, y) {
+        var dist1 = Math.max(dist(x, y, 0, 0), dist(x, y, width, height))
+        var dist2 = Math.max(dist(x, y, width, 0), dist(x, y, 0, height))
+
+        return Math.max(dist1, dist2)
+    }
+
+    function dist(x1, y1, x2, y2) {
+        var xs = 0;
+        var ys = 0;
+
+        xs = x2 - x1;
+        xs = xs * xs;
+
+        ys = y2 - y1;
+        ys = ys * ys;
+
+        return Math.sqrt( xs + ys );
+    }
+
+    Rectangle {
+        id: focusBackground
+
+        anchors.fill: parent
+
+        color: Qt.rgba(0,0,0,0.1)
+
+        opacity: showFocus && focused ? 1 : 0
+
+        Behavior on opacity {
+            NumberAnimation { duration: 500; easing.type: Easing.InOutQuad }
+        }
+    }
+
+    Rectangle {
+        id: focusCircle
+
+        anchors.centerIn: parent
+
+        width: focused
+                ? focusedState ? focusWidth
+                               : Math.min(parent.width - units.dp(8), focusWidth + units.dp(12))
+                : parent.width/5
+        height: width
+
+        radius: width/2
+
+        opacity: showFocus && focused ? 1 : 0
+
+        Behavior on opacity {
+            NumberAnimation { duration: 500; easing.type: Easing.InOutQuad }
+        }
+
+        Behavior on width {
+            NumberAnimation { duration: focusTimer.interval; }
+        }
+
+        color: focusColor.a == 0 ? Qt.rgba(1,1,1,0.4) : focusColor
+
+        property bool focusedState
+
+        Timer {
+            id: focusTimer
+            running: focused
+            repeat: true
+            interval: 800
+
+            onTriggered: focusCircle.focusedState = !focusCircle.focusedState
+        }
     }
 
     Component {
@@ -65,18 +144,21 @@ MouseArea {
 
             anchors.fill: parent
 
+            property bool done
+
             function removeCircle() {
-                if (fillAnimation.running) {
-                    fillAnimation.stop()
+                done = true
 
-                    slowCloseAnimation.start()
+                if (fillSizeAnimation.running) {
+                    fillOpacityAnimation.stop()
+                    closeAnimation.start()
 
-                    circleItem.destroy(400);
-                    currentCircle = null;
+                    circleItem.destroy(500);
                 } else {
-                    circleItem.destroy(400);
-                    closeAnimation.start();
-                    currentCircle = null;
+                    showFocus = true
+                    fadeAnimation.start();
+
+                    circleItem.destroy(300);
                 }
             }
 
@@ -93,69 +175,54 @@ MouseArea {
                 Rectangle {
                     id: circleRectangle
 
-                    x: circleItem.circleX - width/2
-                    y: circleItem.circleY - height/2
+                    x: circleItem.circleX - radius
+                    y: circleItem.circleY - radius
 
-                    property double size
-
-                    width: size
-                    height: size
-                    radius: size/2
+                    width: radius * 2
+                    height: radius * 2
 
                     opacity: 0
                     color: view.color
 
-                    SequentialAnimation {
-                        id: fillAnimation
+                    NumberAnimation {
+                        id: fillSizeAnimation
                         running: true
 
-                        ParallelAnimation {
+                        target: circleRectangle; property: "radius"; duration: 500;
+                        from: startRadius; to: endRadius; easing.type: Easing.InOutQuad
 
-                            NumberAnimation {
-                                target: circleRectangle; property: "size"; duration: 400;
-                                from: startSize; to: middleSize; easing.type: Easing.InOutQuad
-                            }
-
-                            NumberAnimation {
-                                target: circleRectangle; property: "opacity"; duration: 200;
-                                from: 0; to: 1; easing.type: Easing.InOutQuad
-                            }
+                        onStopped: {
+                            if (done)
+                                showFocus = true
                         }
                     }
 
-                    ParallelAnimation {
+                    NumberAnimation {
+                        id: fillOpacityAnimation
+                        running: true
+
+                        target: circleRectangle; property: "opacity"; duration: 300;
+                        from: 0; to: 1; easing.type: Easing.InOutQuad
+                    }
+
+                    NumberAnimation {
+                        id: fadeAnimation
+
+                        target: circleRectangle; property: "opacity"; duration: 300;
+                        from: 1; to: 0; easing.type: Easing.InOutQuad
+                    }
+
+                    SequentialAnimation {
                         id: closeAnimation
 
                         NumberAnimation {
-                            target: circleRectangle; property: "size"; duration: 400;
-                            to: endSize; easing.type: Easing.InOutQuad
+                            target: circleRectangle; property: "opacity"; duration: 250;
+                            to: 1; easing.type: Easing.InOutQuad
                         }
 
                         NumberAnimation {
-                            target: circleRectangle; property: "opacity"; duration: 400;
+                            target: circleRectangle; property: "opacity"; duration: 250;
                             from: 1; to: 0; easing.type: Easing.InOutQuad
-                        }
-                    }
-
-                    ParallelAnimation {
-                        id: slowCloseAnimation
-
-                        SequentialAnimation {
-
-                            NumberAnimation {
-                                target: circleRectangle; property: "opacity"; duration: 150;
-                                from: 0; to: 1; easing.type: Easing.InOutQuad
-                            }
-
-                            NumberAnimation {
-                                target: circleRectangle; property: "opacity"; duration: 250;
-                                from: 1; to: 0; easing.type: Easing.InOutQuad
-                            }
-                        }
-
-                        NumberAnimation {
-                            target: circleRectangle; property: "size"; duration: 400;
-                            to: endSize; easing.type: Easing.InOutQuad
                         }
                     }
                 }

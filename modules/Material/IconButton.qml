@@ -41,10 +41,11 @@ Icon {
         anchors.centerIn: parent
 
         enabled: icon.enabled
+        centered: true
         circular: true
 
-        width: parent.width + units.dp(8)
-        height: parent.height + units.dp(8)
+        width: parent.width + units.dp(20)
+        height: parent.height + units.dp(20)
 
         onClicked: {
             //ink.focused = true

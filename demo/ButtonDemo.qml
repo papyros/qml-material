@@ -31,8 +31,10 @@ Item {
         }
 
         Button {
-            text: "Button with really long text"
+            id: focusableButton
+            text: "Focusable with really long text"
             elevation: 1
+            activeFocusOnPress: true
             anchors.horizontalCenter: parent.horizontalCenter
 
             onClicked: snackbar.open("The text is really long")
@@ -42,7 +44,17 @@ Item {
             text: "Colored button"
             textColor: Theme.accentColor
             anchors.horizontalCenter: parent.horizontalCenter
-            
+
+            onClicked: snackbar.open("That button is colored!")
+        }
+
+        Button {
+            text: "Focusable button #2"
+            elevation: 1
+            activeFocusOnPress: true
+            backgroundColor: Theme.primaryColor
+            anchors.horizontalCenter: parent.horizontalCenter
+
             onClicked: snackbar.open("That button is colored!")
         }
     }
