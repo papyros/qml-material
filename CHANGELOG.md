@@ -11,6 +11,7 @@ QML Material CHANGELOG
  * [PageStack] Fix going back from a pushed page
  * [ListItems] Add direct support for icons to Standard
  * [Ink] Polished the ink animations
+ * [Dialog] Improved the dialog component
  * Minor bug fixes and code improvements
 
 

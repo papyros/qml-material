@@ -14,7 +14,7 @@ Item {
         TextField {
             id: optionText
             text: currentText
-            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width
             placeholderText: "New Option to Confirm"
         }
 
@@ -26,62 +26,44 @@ Item {
     Dialog {
         id: scrollingDialog
         title: "Choose Size"
-        hasActions: false
+        //hasActions: false
 
-        Flickable {
-            id: mainFlick
-            width: units.dp(200)
-            height: units.dp(200)
-            clip: true
-            interactive: contentHeight > height
-            contentHeight: mainCol.height
-            contentWidth: width
-
-            Column {
-                id: mainCol
-
-                QuickControls.ExclusiveGroup {
-                    id: optionGroup
-                }
-
-                RadioButton {
-                    text: "Small"
-                    checked: true
-                    exclusiveGroup: optionGroup
-                }
-                RadioButton {
-                    text: "Normal"
-                    exclusiveGroup: optionGroup
-                }
-                RadioButton {
-                    text: "Big"
-                    exclusiveGroup: optionGroup
-                }
-                RadioButton {
-                    text: "Gigantic"
-                    exclusiveGroup: optionGroup
-                }
-                RadioButton {
-                    text: "Enourmous"
-                    exclusiveGroup: optionGroup
-                }
-                RadioButton {
-                    text: "Titanic"
-                    exclusiveGroup: optionGroup
-                }
-                RadioButton {
-                    text: "Humongous"
-                    exclusiveGroup: optionGroup
-                }
-                RadioButton {
-                    text: "Ginourmous"
-                    exclusiveGroup: optionGroup
-                }
-            }
+        QuickControls.ExclusiveGroup {
+            id: optionGroup
         }
 
-        Scrollbar {
-            flickableItem: mainFlick
+        RadioButton {
+            text: "Small"
+            checked: true
+            exclusiveGroup: optionGroup
+        }
+        RadioButton {
+            text: "Normal"
+            exclusiveGroup: optionGroup
+        }
+        RadioButton {
+            text: "Big"
+            exclusiveGroup: optionGroup
+        }
+        RadioButton {
+            text: "Gigantic"
+            exclusiveGroup: optionGroup
+        }
+        RadioButton {
+            text: "Enourmous"
+            exclusiveGroup: optionGroup
+        }
+        RadioButton {
+            text: "Titanic"
+            exclusiveGroup: optionGroup
+        }
+        RadioButton {
+            text: "Humongous"
+            exclusiveGroup: optionGroup
+        }
+        RadioButton {
+            text: "Ginourmous"
+            exclusiveGroup: optionGroup
         }
     }
 
