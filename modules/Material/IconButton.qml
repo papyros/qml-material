@@ -19,13 +19,19 @@ import QtQuick 2.0
 import Material 0.1
 import Material.Extras 0.1
 
-Icon {
-    id: icon
+Item {
+    id: iconButton
+
+    width: icon.width
+    height: icon.height
+    
+    enabled: action ? action.enabled : true
+
+    property string name: action ? action.iconName : ""
+    property alias color: icon.color
+    property alias size: icon.size
 
     signal clicked
-
-    name: action ? action.iconName : ""
-    enabled: action ? action.enabled : true
 
     onClicked: {
         if (action) action.triggered(icon)
@@ -40,17 +46,23 @@ Icon {
 
         anchors.centerIn: parent
 
-        enabled: icon.enabled
+        enabled: iconButton.enabled
         centered: true
         circular: true
 
         width: parent.width + units.dp(20)
         height: parent.height + units.dp(20)
 
+        z: 0
+
         onClicked: {
-            //ink.focused = true
-            icon.clicked()
+            iconButton.clicked()
         }
     }
 
+    Icon {
+        id: icon
+
+        name: iconButton.name
+    }
 }
