@@ -53,6 +53,12 @@ Text {
             "font": "medium"
         },
 
+        "dialog": {
+            "size": 18,
+            "size_desktop": 17,
+            "font": "regular"
+        },
+
         "subheading": {
             "size": 16,
             "size_desktop": 15,

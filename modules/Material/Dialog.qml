@@ -33,27 +33,26 @@ PopupBase {
     visible: opacity > 0
 
     width: Math.max(minimumWidth,
-                    (placeholder.childrenRect.width +
-                     placeholder.anchors.leftMargin +
-                     placeholder.anchors.rightMargin))
+                    (content.contentWidth + units.dp(32)))
 
-    height: titleLabel.height +
-            titleLabel.anchors.topMargin +
-            placeholder.childrenRect.height +
-            placeholder.anchors.topMargin +
-            placeholder.anchors.bottomMargin +
-            buttonContainer.height
+    height: Math.min(units.dp(350),
+            headerView.height + units.dp(32) +
+            content.contentHeight +
+            content.topMargin +
+            content.bottomMargin +
+            buttonContainer.height)
 
-    property int minimumWidth: units.dp(240)
+    property int minimumWidth: units.dp(270)
 
     property alias title: titleLabel.text
+    property alias text: textLabel.text
 
     property string negativeButtonText: "Cancel"
     property string positiveButtonText: "Ok"
 
     property bool hasActions: true
 
-    default property alias dialogContent: placeholder.children
+    default property alias dialogContent: column.data
 
     signal accepted()
     signal rejected()
@@ -81,6 +80,7 @@ PopupBase {
 
         anchors.fill: parent
         elevation: 5
+        radius: units.dp(2)
 
         MouseArea {
             anchors.fill: parent
@@ -91,85 +91,172 @@ PopupBase {
             }
         }
 
-        Label {
-            id: titleLabel
-
-            style: "title"
-
+        Item {
             anchors {
-                top: parent.top
-                topMargin: units.dp(16)
                 left: parent.left
-                leftMargin: units.dp(16)
+                right: parent.right
+                top: parent.top
+                topMargin: units.dp(8)
+            }
+
+            clip: true
+            height: headerView.height + units.dp(32)
+
+            View {
+                backgroundColor: "white"
+                elevation: content.atYBeginning ? 0 : 1
+                fullWidth: true
+
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    top: parent.top
+                }
+
+                height: headerView.height + units.dp(16)
             }
         }
 
-        Item {
-            id: placeholder
+
+        Column {
+            id: headerView
+
+            spacing: units.dp(16)
 
             anchors {
                 left: parent.left
                 right: parent.right
-                top: titleLabel.bottom
-                bottom: buttonContainer.top
+                top: parent.top
 
                 leftMargin: units.dp(16)
                 rightMargin: units.dp(16)
                 topMargin: units.dp(16)
-                bottomMargin: hasActions ? 0 : units.dp(16)
             }
+
+            Label {
+                id: titleLabel
+
+                width: parent.width
+                wrapMode: Text.Wrap
+                style: "title"
+
+                visible: text != ""
+            }
+
+            Label {
+                id: textLabel
+
+                width: parent.width
+                wrapMode: Text.Wrap
+                style: "dialog"
+
+                visible: text != ""
+            }
+        }
+
+        Flickable {
+            id: content
+
+            contentWidth: column.implicitWidth
+            contentHeight: column.height
+            clip: true
+
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: headerView.bottom
+                topMargin: units.dp(8)
+                bottomMargin: units.dp(-8)
+                bottom: buttonContainer.top
+            }
+
+            interactive: contentHeight + units.dp(8) > height
+            bottomMargin: hasActions ? 0 : units.dp(8)
+
+            Column {
+                id: column
+                anchors {
+                    left: parent.left
+                    margins: units.dp(16)
+                }
+
+                width: content.width - units.dp(32)
+                spacing: units.dp(16)
+            }
+        }
+
+        Scrollbar {
+            flickableItem: content
         }
 
         Item {
             id: buttonContainer
-            width: negativeButton.width + positiveButton.width + units.dp(24)
-            height: hasActions ? units.dp(64) : 0
-            visible: hasActions
 
             anchors {
+                bottomMargin: units.dp(8)
                 bottom: parent.bottom
                 right: parent.right
+                left: parent.left
             }
 
-            Button {
-                id: negativeButton
+            height: hasActions ? buttonView.height + units.dp(8) : 0
+            clip: true
 
-                text: negativeButtonText
-                textColor: Theme.accentColor
+            View {
+                id: buttonView
+
+                height: hasActions ? positiveButton.implicitHeight + units.dp(8) : 0
+                visible: hasActions
+
+                backgroundColor: "white"
+                elevation: content.atYEnd ? 0 : 1
+                fullWidth: true
+                elevationInverted: true
 
                 anchors {
-                    top: parent.top
-                    right: positiveButton.left
                     bottom: parent.bottom
-                    topMargin: units.dp(8)
-                    rightMargin: units.dp(8)
-                    bottomMargin: units.dp(8)
-                }
-
-                onClicked: {
-                    close();
-                    rejected();
-                }
-            }
-
-            Button {
-                id: positiveButton
-
-                text: positiveButtonText
-                textColor: Theme.accentColor
-
-                anchors {
-                    top: parent.top
-                    topMargin: units.dp(8)
-                    rightMargin: units.dp(16)
-                    bottomMargin: units.dp(8)
                     right: parent.right
-                    bottom: parent.bottom
+                    left: parent.left
                 }
 
-                onClicked: {
-                    close()
-                    accepted();
+                Button {
+                    id: negativeButton
+
+                    text: negativeButtonText
+                    textColor: Theme.accentColor
+                    context: "dialog"
+
+                    anchors {
+                        top: parent.top
+                        right: positiveButton.left
+                        topMargin: units.dp(8)
+                        rightMargin: units.dp(8)
+                    }
+
+                    onClicked: {
+                        close();
+                        rejected();
+                    }
+                }
+
+                Button {
+                    id: positiveButton
+
+                    text: positiveButtonText
+                    textColor: Theme.accentColor
+                    context: "dialog"
+
+                    anchors {
+                        top: parent.top
+                        topMargin: units.dp(8)
+                        rightMargin: units.dp(16)
+                        right: parent.right
+                    }
+
+                    onClicked: {
+                        close()
+                        accepted();
+                    }
                 }
             }
         }

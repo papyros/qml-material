@@ -19,15 +19,13 @@ import QtQuick 2.0
 import Material 0.1
 import 'awesome.js' as Awesome
 
-View {
+Item {
     id: widget
     property string name
     property bool rotate: widget.name.match(/.*-rotate/) !== null
 
     property alias color: text.color
     property int size: units.dp(24)
-
-    color: "transparent"
 
     width: text.width
     height: text.height

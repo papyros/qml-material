@@ -28,22 +28,35 @@ Controls.Button {
     property color textColor: Theme.lightDark(button.backgroundColor,
                                               Theme.light.textColor,
                                               Theme.dark.textColor)
+    property string context: "default" // or "dialog"
 
     style: ControlStyles.ButtonStyle {
         background: View {
             radius: units.dp(2)
 
-            elevation: button.elevation
+            elevation: {
+                var elevation = button.elevation
+
+                if (elevation > 0 && (control.focus || mouseArea.currentCircle))
+                    elevation++;
+
+                return elevation;
+            }
             backgroundColor: button.backgroundColor
 
-            tintColor: control.pressed ||
-                       (control.focus && !button.elevation) ||
-                       (control.hovered && !button.elevation) ?
-                       Qt.rgba(0,0,0, control.pressed ? 0.1 : 0.05) : "transparent"
+            tintColor: mouseArea.currentCircle || control.focus || control.hovered
+                    ? Qt.rgba(0,0,0, mouseArea.currentCircle
+                           ? 0.1 : button.elevation > 0 ? 0.03 : 0.05)
+                    : "transparent"
 
             Ink {
                 id: mouseArea
+
                 anchors.fill: parent
+                focused: control.focus && button.context != "dialog"
+                focusWidth: parent.width - units.dp(30)
+                focusColor: Qt.darker(button.backgroundColor, 1.05)
+
                 Connections {
                     target: control.__behavior
                     onPressed: mouseArea.onPressed(mouse)
@@ -54,7 +67,9 @@ Controls.Button {
         }
         label: Item {
             implicitHeight: Math.max(units.dp(36), label.height + units.dp(16))
-            implicitWidth: Math.max(units.dp(64), label.width + units.dp(16))
+            implicitWidth: button.context == "dialog"
+                    ? Math.max(units.dp(64), label.width + units.dp(16))
+                    : Math.max(units.dp(88), label.width + units.dp(32))
 
             Label {
                 id: label
