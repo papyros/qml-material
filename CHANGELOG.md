@@ -13,6 +13,7 @@ QML Material CHANGELOG
  * [Ink] Polished the ink animations
  * [Dialog] Improved the dialog component
  * Minor bug fixes and code improvements
+ * [ProgressBar] Port to inherit QtQuick Controls ProgressBar
 
 
 ### Version 0.0.4 (February 20, 2015)
