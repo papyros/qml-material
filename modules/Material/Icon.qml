@@ -18,13 +18,17 @@
  */
 
 import QtQuick 2.3
+import QtQuick.Window 2.0
 import Material 0.1
 import QtGraphicalEffects 1.0
 
-Image {
+Item {
     id: icon
+    
+    width: size
+    height: size
 
-    property alias color: overlay.color
+    property color color: Theme.light.iconColor
     property real size: units.dp(24)
 
     /*!
@@ -33,32 +37,40 @@ Image {
     */
     property string name
 
-    source: {
-        var list = name.split("/");
-        if (name == "" || list[0] == "awesome")
-            return "";
-        return Qt.resolvedUrl("icons/%1/%2.svg".arg(list[0]).arg(list[1]));
+    Image {
+        id: image
+
+        anchors.fill: parent
+
+        source: {
+            var list = name.split("/");
+            if (name == "" || list[0] == "awesome")
+                return "";
+            return Qt.resolvedUrl("icons/%1/%2.svg".arg(list[0]).arg(list[1]));
+        }
+
+        sourceSize {
+            width: size * Screen.devicePixelRatio
+            height: size * Screen.devicePixelRatio
+        }
     }
-    mipmap: true
-    fillMode: Image.PreserveAspectFit
-    sourceSize.width: size
-    sourceSize.height: size
-    width: sourceSize.width
-    height: sourceSize.height
 
     ColorOverlay {
         id: overlay
 
         anchors.fill: parent
-        source: parent
-        color: Theme.light.iconColor
+
+        source: image
+        color: icon.color
         cached: true
-    }
+    }  
 
     AwesomeIcon {
         anchors.centerIn: parent
+
         size: icon.size * 0.9
         visible: icon.name.indexOf("awesome/") == 0
+        
         name: {
             var list = icon.name.split("/")
             if (list[0] == "awesome") {
