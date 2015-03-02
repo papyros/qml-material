@@ -63,9 +63,10 @@ Item {
         anchors.fill: parent
 
         source: image
-        color: icon.color
+        color: Theme.alpha(icon.color, 1)
         cached: true
         visible: image.source != ""
+        opacity: icon.color.a
     }  
 
     AwesomeIcon {
