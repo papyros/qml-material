@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 2.3
 import Material 0.1
 import QtGraphicalEffects 1.0
@@ -38,10 +39,12 @@ Image {
             return "";
         return Qt.resolvedUrl("icons/%1/%2.svg".arg(list[0]).arg(list[1]));
     }
-    width: height
-    height: size
     mipmap: true
     fillMode: Image.PreserveAspectFit
+    sourceSize.width: size
+    sourceSize.height: size
+    width: sourceSize.width
+    height: sourceSize.height
 
     ColorOverlay {
         id: overlay
