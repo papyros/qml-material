@@ -53,6 +53,8 @@ Item {
             width: size * Screen.devicePixelRatio
             height: size * Screen.devicePixelRatio
         }
+
+        visible: false
     }
 
     ColorOverlay {
@@ -63,6 +65,7 @@ Item {
         source: image
         color: icon.color
         cached: true
+        visible: image.source != ""
     }  
 
     AwesomeIcon {
