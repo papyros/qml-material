@@ -14,6 +14,7 @@ QML Material CHANGELOG
  * [Dialog] Improved the dialog component
  * [Icon] Switch to using SVGs instead of PNGs
  * [Demo] Add the color palette to the demo
+ * [ProgressBar] Port ProgressBar to inherit from QtQuick Controls
  * Minor bug fixes and code improvements
 
 
