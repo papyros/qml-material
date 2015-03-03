@@ -15,6 +15,7 @@ QML Material CHANGELOG
  * [Icon] Switch to using SVGs instead of PNGs
  * [Demo] Add the color palette to the demo
  * Minor bug fixes and code improvements
+ * [ProgressBar] Port to inherit QtQuick Controls ProgressBar
 
 
 ### Version 0.0.4 (February 20, 2015)
