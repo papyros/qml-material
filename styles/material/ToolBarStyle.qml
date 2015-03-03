@@ -22,15 +22,15 @@ import Material 0.1
 
 ToolBarStyle {
 	padding {
-        left: units.dp(8)
-        right: units.dp(8)
-        top: units.dp(8)
-        bottom: units.dp(8)
+        left: units.dp(16)
+        right: units.dp(16)
+        top: units.dp(0)
+        bottom: units.dp(0)
     }
     background: View {
         implicitHeight: (Device.type == Device.phone ? units.dp(48)
                                                     : Device.type == Device.tablet ? units.dp(56)
-                                                                                   : units.dp(64)) - units.dp(16)
+                                                                                   : units.dp(64))
         fullWidth: true
         elevation: 2
         

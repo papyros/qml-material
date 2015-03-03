@@ -31,6 +31,8 @@ ButtonStyle {
     background: View {
         id: background
 
+        implicitHeight: units.dp(36)
+
         radius: units.dp(2)
 
         elevation: {
@@ -84,9 +86,10 @@ ButtonStyle {
 
 
         implicitHeight: Math.max(units.dp(36), label.height + units.dp(16))
-        implicitWidth: context == "dialog" ? Math.max(units.dp(64), label.width + units.dp(16))
-                     : context == "snackbar" ? label.width + units.dp(16)
-                     : Math.max(units.dp(88), label.width + units.dp(32))
+        implicitWidth: context == "dialog" 
+                ? Math.max(units.dp(64), label.width + units.dp(16))
+                : context == "snackbar" ? label.width + units.dp(16)
+                                        : Math.max(units.dp(88), label.width + units.dp(32))
 
         Label {
             id: label

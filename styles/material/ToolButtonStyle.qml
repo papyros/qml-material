@@ -25,18 +25,18 @@ ToolButtonStyle {
 	panel: View {
 		radius: units.dp(2)
 
-		implicitHeight: Math.max(units.dp(36), label.height + units.dp(16))
-        implicitWidth: Math.max(units.dp(64), label.width + units.dp(16))
-
-        tintColor: control.pressed || control.focus || control.hovered 
-        		? Qt.rgba(0,0,0, control.pressed ? 0.2 : 0.1) : "transparent"
+		implicitHeight: label.text == "" 
+                ? units.dp(44) : Math.max(units.dp(36), label.height + units.dp(16))
+        implicitWidth: label.text == "" 
+                ? units.dp(44) : Math.max(units.dp(64), label.width + units.dp(16))
 
         Ink {
             id: mouseArea
             
             anchors.fill: parent
 
-            circular: contrl.text == ""
+            centered: true
+            circular: label.text == ""
 
 	        width: parent.width + units.dp(8)
 	        height: parent.height + units.dp(8)
@@ -55,17 +55,21 @@ ToolButtonStyle {
             spacing: units.dp(8)
 
             Image {
-	            id: label
+	            id: image
 	            anchors.verticalCenter: parent.verticalCenter
 	            source: control.iconSource
+                width: units.dp(24)
+                height: width
 	        }
 
         	Label {
 	            id: label
 	            anchors.verticalCenter: parent.verticalCenter
-	            text: control.text
+	            text: control.iconSource != "" ? "" : control.text
 	            style: "button"
-	            color: Theme.dark.textColor
+	            color: Theme.lightDark(Theme.primaryColor, Theme.light.textColor,
+                                                           Theme.dark.textColor)
+                visible: text == ""
 	        }
 	    }
     }
