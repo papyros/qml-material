@@ -157,8 +157,8 @@ Item {
 
                 action: page.actions[index]
 
-                color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
-                                                                     Theme.dark.textColor)
+                color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
+                                                                  Theme.dark.iconColor)
                 size: name == "content/add" ? units.dp(27) : units.dp(24)
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
@@ -169,8 +169,8 @@ Item {
 
             name: "navigation/more_vert"
             size: units.dp(27)
-            color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
-                                                                 Theme.dark.textColor)
+            color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
+                                                              Theme.dark.iconColor)
             visible: showContents && page && page.actions.length > maxActionCount
             anchors.verticalCenter: parent.verticalCenter
 
@@ -202,7 +202,7 @@ Item {
     Dropdown {
         id: overflowMenu
 
-        width: units.dp(200)
+        width: units.dp(250)
         height: columnView.height + units.dp(16)
 
         ColumnLayout {
@@ -219,10 +219,7 @@ Item {
                     property Action actionItem: page.actions[index + maxActionCount - 1]
 
                     text: actionItem.name
-                    action: Icon {
-                        name: listItem.actionItem.iconName
-                        anchors.centerIn: parent
-                    }
+                    iconName: actionItem.iconName
 
                     onClicked: {
                         actionItem.triggered(listItem)

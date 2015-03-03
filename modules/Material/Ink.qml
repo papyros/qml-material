@@ -90,7 +90,8 @@ MouseArea {
 
         anchors.fill: parent
 
-        color: Qt.rgba(0,0,0,0.1)
+        color: Theme.isDarkColor(focusColor) && focusColor.a > 0    
+                ? Qt.rgba(0,0,0,0.2) : Qt.rgba(0,0,0,0.1)
 
         opacity: showFocus && focused ? 1 : 0
 
