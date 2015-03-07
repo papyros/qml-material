@@ -23,6 +23,12 @@ import Material 0.1
 View {
     id: toolbar
 
+    anchors {
+        top: parent.top
+        left: parent.left
+        right: parent.right
+    }
+
     property int actionBarHeight: {
         if (!page || page.actionBar.hidden)
             return 0
@@ -48,18 +54,12 @@ View {
     property bool showBackButton
     property var pages: []
 
-    anchors {
-        top: parent.top
-        left: parent.left
-        right: parent.right
-    }
-
     opacity: page && page.actionBar.hidden ? 0 : 1
 
-    backgroundColor: page && page.actionBar.backgroundColor
-        ? Qt.darker(page.actionBar.backgroundColor,1).a == 0
-            ? page.color : page.actionBar.backgroundColor
-        : Theme.primaryColor
+    backgroundColor: page ? page.actionBar.backgroundColor.a == 0 
+                            ? page.backgroundColor : page.actionBar.backgroundColor
+                          : Theme.primaryColor
+
     implicitHeight: Device.type == Device.phone ? units.dp(48)
                                                 : Device.type == Device.tablet ? units.dp(56)
                                                                                : units.dp(64)
@@ -227,6 +227,7 @@ View {
             name: "navigation/close"
             color: Theme.lightDark(toolbar.backgroundColor, Theme.light.textColor,
                 Theme.dark.textColor)
+            onClicked: Qt.quit()
         }
     }
 
@@ -237,6 +238,7 @@ View {
         visible: tabs.length > 0
 
         tabs: page ? page.tabs : []
+        darkBackground: Theme.isDarkColor(toolbar.backgroundColor)
 
         anchors {
             left: parent.left
