@@ -106,6 +106,11 @@ Controls.ApplicationWindow {
     }
 
     OverlayLayer {
+        id: tooltipOverlayLayer
+        objectName: "tooltipOverlayLayer"
+    }
+
+    OverlayLayer {
         id: overlayLayer
     }
 
