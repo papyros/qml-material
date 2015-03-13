@@ -58,11 +58,49 @@ Item {
         onClicked: {
             iconButton.clicked()
         }
+
+        onPressAndHold: {
+            if(tooltip.tooltipText !== "" && !tooltip.showing)
+                tooltip.open(ink, 0, units.dp(4))
+        }
+
+        onReleased: {
+            if(tooltip.showing)
+                tooltip.close()
+        }
+
+        onEntered: {
+            if(tooltip.tooltipText !== "" && !tooltip.showing)
+                tooltip.open(ink, 0, units.dp(4))
+        }
+
+        onExited: {
+            if(tooltip.showing)
+                tooltip.close()
+        }
     }
 
     Icon {
         id: icon
 
         name: iconButton.name
+    }
+
+    Tooltip {
+        id: tooltip
+
+        property alias tooltipText : tooltipLabel.text
+
+        internalView.backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
+        width: tooltipLabel.paintedWidth + units.dp(32)
+        height: units.dp(44)
+
+        Label {
+            id: tooltipLabel
+            style: "tooltip"
+            color: Theme.dark.textColor
+            anchors.centerIn: parent
+            text: action ? action.name : ""
+        }
     }
 }

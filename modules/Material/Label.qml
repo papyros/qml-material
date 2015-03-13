@@ -91,7 +91,12 @@ Text {
         "button": {
             "size": 14,
             "font": "medium"
-        }
+        },
+
+        "tooltip": {
+            "size": 14,
+            "font": "medium"
+        },
     }
 
     property bool desktop: true

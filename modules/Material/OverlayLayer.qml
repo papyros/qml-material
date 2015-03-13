@@ -47,7 +47,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        enabled: overlayLayer.currentOverlay != null
+        enabled: overlayLayer.currentOverlay != null && overlayLayer.currentOverlay.globalMouseAreaEnabled
         hoverEnabled: enabled
         onClicked: overlayLayer.currentOverlay.close()
         onWheel: wheel.accepted = true
