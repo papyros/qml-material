@@ -61,6 +61,8 @@ QtObject {
      */
     property bool enabled: true
 
+    property string keybinding
+
 	/*!
 	   Called when the UI representing the action is triggered. \c caller contains the UI element
 	   that triggered the action.
