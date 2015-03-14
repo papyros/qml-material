@@ -54,7 +54,7 @@ BaseListItem {
             Layout.alignment: Qt.AlignCenter
             Layout.column: 1
 
-            visible: childrenRect.width > 0
+            visible: children.length > 0
         }
 
         ColumnLayout {
