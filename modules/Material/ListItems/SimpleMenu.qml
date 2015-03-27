@@ -30,7 +30,7 @@ Subtitled {
             }
 
             interactive: false
-            height: contentHeight
+            height: count > 0 ? contentHeight : 0
 
             delegate: Standard {
                 id: delegateItem
