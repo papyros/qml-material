@@ -94,13 +94,13 @@ Item {
 
             //If there are more than max items, show an extra half item so
             // it's clear the user can scroll
-            height: Math.min(maxVisibleItems*units.dp(48) + units.dp(24), listView.contentHeight)
+            height: Math.min(maxVisibleItems*units.dp(48) + units.dp(24), listView.height)
 
             ListView {
                 id: listView
 
                 width: menu.width
-                height: menu.height
+                height: count > 0 ? contentHeight : 0
 
                 interactive: true
 
