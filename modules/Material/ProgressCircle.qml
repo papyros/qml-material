@@ -50,7 +50,8 @@ Controls.ProgressBar {
     style: Styles.ProgressBarStyle {
         id: progressBarStyle
         background: Rectangle {
-            anchors.fill: parent
+            implicitWidth: control.width
+            implicitHeight: control.height
             color: "transparent"
         }
 
@@ -61,8 +62,17 @@ Controls.ProgressBar {
             onWidthChanged: requestPaint()
             onHeightChanged: requestPaint()
 
+            renderStrategy: Canvas.Threaded
             antialiasing: true
             onPaint: drawSpinner();
+
+            opacity:  visible ? 1.0 : 0
+
+            Behavior on opacity {
+                PropertyAnimation {
+                    duration: 800
+                }
+            }
 
             Connections {
                 target: control
@@ -104,13 +114,13 @@ Controls.ProgressBar {
                 from: 0
                 to: 2 * Math.PI
                 loops: Animation.Infinite
-                running: control.indeterminate
+                running: control.indeterminate && canvas.visible
                 easing.type: Easing.Linear
                 duration: 3000
             }
 
             SequentialAnimation {
-                running: control.indeterminate
+                running: control.indeterminate && canvas.visible
                 loops: Animation.Infinite
 
                 ParallelAnimation {
