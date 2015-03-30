@@ -93,15 +93,20 @@ View {
 		opacity: snackbar.buttonText == "" ? 0 : 1
 		textColor: snackbar.buttonColor
 		text: snackbar.buttonText
+		context: "snackbar"
 		onClicked: snackbar.clicked()
 		anchors {
 			right: parent.right
 			//left: snackText.right
 			top: parent.top
 			bottom: parent.bottom
-			topMargin: units.dp(16)
-			bottomMargin: units.dp(16)
-			rightMargin: snackbar.buttonText == "" ? 0 : units.dp(24)
+
+			// Recommended button touch target is 36dp
+			topMargin: units.dp(6)
+			bottomMargin: units.dp(6)
+
+			// Normal margin is 24dp, but button itself uses 8dp margins
+			rightMargin: snackbar.buttonText == "" ? 0 : units.dp(16)
 		}
 	}
 
