@@ -37,7 +37,7 @@ Item {
             activeFocusOnPress: true
             anchors.horizontalCenter: parent.horizontalCenter
 
-            onClicked: snackbar.open("The text is really long")
+            onClicked: snackbar.open("The text is really very very very long")
         }
 
         Button {

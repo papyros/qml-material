@@ -24,7 +24,7 @@ View {
 	radius: fullWidth ? 0 : units.dp(2)
 	backgroundColor: "#323232"
 	height: units.dp(48)
-	width: fullWidth ? parent.width : Math.min(implicitWidth, units.dp(568))
+	width: fullWidth ? parent.width : Math.min(Math.max(implicitWidth, units.dp(288)), units.dp(568))
 	opacity: opened ? 1 : 0
 
 	implicitWidth: buttonText == "" ? snackText.paintedWidth + units.dp(48) : snackText.paintedWidth + units.dp(72) + snackButton.width
