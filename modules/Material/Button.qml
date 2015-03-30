@@ -31,6 +31,13 @@ Controls.Button {
     property string context: "default" // or "dialog"
 
     style: ControlStyles.ButtonStyle {
+        padding {
+            left: 0
+            right: 0
+            top: 0
+            bottom: 0
+        }
+
         background: View {
             radius: units.dp(2)
 
