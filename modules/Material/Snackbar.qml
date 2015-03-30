@@ -58,7 +58,7 @@ View {
 	function open(text) {
 		snackbar.text = text
 		opened = true;
-		timer.start();
+		timer.restart();
 	}
 
 	Timer {
