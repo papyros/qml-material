@@ -41,7 +41,7 @@ TextField 0.1 TextField.qml
 singleton Theme 0.1 Theme.qml
 ThinDivider 0.1 ThinDivider.qml
 Toolbar 0.1 Toolbar.qml
-singleton units 0.1 units.qml
+singleton Units 0.1 Units.qml
 View 0.1 View.qml
 Wave 0.1 Wave.qml
 Window 0.1 Window.qml

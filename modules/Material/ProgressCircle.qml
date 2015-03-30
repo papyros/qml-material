@@ -40,10 +40,10 @@ Controls.ProgressBar {
        The thickness of the progress circle's stroke,
        3 dp by default
      */
-    property real dashThickness: units.dp(3)
+    property real dashThickness: Units.dp(3)
 
-    width: units.dp(32)
-    height: units.dp(32)
+    width: Units.dp(32)
+    height: Units.dp(32)
 
     indeterminate: true
 

@@ -46,9 +46,9 @@ FocusScope {
    signal accepted()
    signal editingFinished()
 
-   implicitHeight: __internal.showHelperText ? helperTextLabel.y + helperTextLabel.height + units.dp(4)
-                          : underline.y + units.dp(8)
-   width: units.dp(200)
+   implicitHeight: __internal.showHelperText ? helperTextLabel.y + helperTextLabel.height + Units.dp(4)
+                          : underline.y + Units.dp(8)
+   width: Units.dp(200)
 
    QtObject {
        id: __internal
@@ -81,15 +81,15 @@ FocusScope {
 
       y: {
          if( !floatingLabel )
-            return units.dp(16)
+            return Units.dp(16)
          if( floatingLabel && !__internal.showHelperText )
-            return units.dp(40)
-         return units.dp(28)
+            return Units.dp(40)
+         return Units.dp(28)
       }
 
       font {
          family: echoMode == TextInput.Password && field.text.length > 0 ? "" : "Roboto"
-         pixelSize: units.dp(16)
+         pixelSize: Units.dp(16)
       }
 
       onAccepted: field.accepted()
@@ -107,10 +107,10 @@ FocusScope {
 
       text: field.placeholderText
 
-      font.pixelSize: units.dp(16)
+      font.pixelSize: Units.dp(16)
 
       anchors.baseline: textInput.baseline
-      anchors.bottomMargin: units.dp(8)
+      anchors.bottomMargin: Units.dp(8)
 
       color: Theme.light.hintColor
 
@@ -125,7 +125,7 @@ FocusScope {
             }
             PropertyChanges {
                target: fieldPlaceholder
-               font.pixelSize: units.dp(12)
+               font.pixelSize: Units.dp(12)
             }
          },
          State {
@@ -160,13 +160,13 @@ FocusScope {
       color: field.hasError || (__internal.showCharacterCounter && field.characterCount > field.characterLimit)
              ? field.errorColor : field.activeFocus ? field.accentColor : Theme.light.hintColor
 
-      height: field.activeFocus ? units.dp(2) : units.dp(1)
+      height: field.activeFocus ? Units.dp(2) : Units.dp(1)
 
       anchors {
          left: parent.left
          right: parent.right
          top: textInput.bottom
-         topMargin: units.dp(8)
+         topMargin: Units.dp(8)
       }
 
       Behavior on height {
@@ -181,13 +181,13 @@ FocusScope {
    Label {
       id: helperTextLabel
       visible: __internal.showHelperText
-      font.pixelSize: units.dp(12)
+      font.pixelSize: Units.dp(12)
       color: field.hasError ? field.errorColor : Qt.darker(Theme.light.hintColor)
       anchors {
          left: parent.left
          right: parent.right
          top: underline.top
-         topMargin: units.dp(4)
+         topMargin: Units.dp(4)
       }
 
       Behavior on color {
@@ -198,14 +198,14 @@ FocusScope {
    Label {
       id: characterCounterLabel
       visible: __internal.showCharacterCounter
-      font.pixelSize: units.dp(12)
+      font.pixelSize: Units.dp(12)
       font.weight: Font.Light
       color: field.characterCount <= field.characterLimit ? Qt.darker(Theme.light.hintColor) : field.errorColor
       text: field.characterCount + " / " + field.characterLimit
       anchors {
          right: parent.right
          top: underline.top
-         topMargin: units.dp(8)
+         topMargin: Units.dp(8)
       }
 
       Behavior on color {

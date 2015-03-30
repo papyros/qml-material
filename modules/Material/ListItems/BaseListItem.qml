@@ -8,7 +8,7 @@ View {
         right: parent.right
     }
 
-    property int margins: units.dp(16)
+    property int margins: Units.dp(16)
 
     property bool selected
     property bool interactive: true

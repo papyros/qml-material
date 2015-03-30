@@ -47,7 +47,7 @@ PopupBase {
         dropdown.y = position.y + caller.height - dropdown.height
 
         if(dropdown.x + width > root.width)
-            offsetX = -(((dropdown.x + width) - root.width) + units.dp(8))
+            offsetX = -(((dropdown.x + width) - root.width) + Units.dp(8))
 
         dropdown.x += offsetX
         dropdown.y += offsetY
@@ -90,7 +90,7 @@ PopupBase {
     View {
         id: view
         elevation: 2
-        radius: units.dp(2)
+        radius: Units.dp(2)
         anchors.top: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
     }

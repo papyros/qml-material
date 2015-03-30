@@ -69,7 +69,7 @@ Page {
                 anchors {
                     verticalCenter: parent.verticalCenter
                     left: parent.left
-                    leftMargin: units.dp(16)
+                    leftMargin: Units.dp(16)
 
                     Behavior on leftMargin {
                         NumberAnimation { duration: 200 }
@@ -84,10 +84,10 @@ Page {
                 anchors {
                     verticalCenter: parent.verticalCenter
                     right: parent.right
-                    rightMargin: units.dp(16)
+                    rightMargin: Units.dp(16)
                 }
 
-                spacing: units.dp(24)
+                spacing: Units.dp(24)
 
                 Repeater {
                     model: actions.length > toolbar.maxActionCount ? toolbar.maxActionCount - 1 : actions.length
@@ -99,7 +99,7 @@ Page {
 
                         name: action.iconName
                         //color:
-                        size: name == "content/add" ? units.dp(30) : units.dp(27)
+                        size: name == "content/add" ? Units.dp(30) : Units.dp(27)
                         anchors.verticalCenter: parent ? parent.verticalCenter : undefined
 
                         onTriggered: action.triggered(iconAction)
@@ -108,7 +108,7 @@ Page {
 
                 IconAction {
                     name: "navigation/more_vert"
-                    size: units.dp(27)
+                    size: Units.dp(27)
                     visible: actions.length > toolbar.maxActionCount
                     anchors.verticalCenter: parent.verticalCenter
                 }

@@ -19,8 +19,8 @@ Controls.Switch {
 
     style: ControlStyles.SwitchStyle {
         handle: View {
-            width: units.dp(22)
-            height: units.dp(22)
+            width: Units.dp(22)
+            height: Units.dp(22)
 
             radius: height/2
 
@@ -31,15 +31,15 @@ Controls.Switch {
 		}
 
         groove: Item {
-            width: units.dp(40)
-            height: units.dp(22)
+            width: Units.dp(40)
+            height: Units.dp(22)
 			
 			Rectangle {
 
 				anchors.centerIn: parent
 
-                width: parent.width - units.dp(2)
-                height: units.dp(16)
+                width: parent.width - Units.dp(2)
+                height: Units.dp(16)
 
                 radius: height/2
 

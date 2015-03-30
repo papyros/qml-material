@@ -19,7 +19,7 @@
 import QtQuick 2.0
 
 View {
-    width: units.dp(320)
+    width: Units.dp(320)
     fullHeight: true
 
     objectName: "navDrawer"

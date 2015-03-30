@@ -50,8 +50,8 @@ Item {
         centered: true
         circular: true
 
-        width: parent.width + units.dp(20)
-        height: parent.height + units.dp(20)
+        width: parent.width + Units.dp(20)
+        height: parent.height + Units.dp(20)
 
         z: 0
 
@@ -61,7 +61,7 @@ Item {
 
         onPressAndHold: {
             if(tooltip.tooltipText !== "" && !tooltip.showing)
-                tooltip.open(ink, 0, units.dp(4))
+                tooltip.open(ink, 0, Units.dp(4))
         }
 
         onReleased: {
@@ -71,7 +71,7 @@ Item {
 
         onEntered: {
             if(tooltip.tooltipText !== "" && !tooltip.showing)
-                tooltip.open(ink, 0, units.dp(4))
+                tooltip.open(ink, 0, Units.dp(4))
         }
 
         onExited: {
@@ -92,8 +92,8 @@ Item {
         property alias tooltipText : tooltipLabel.text
 
         internalView.backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
-        width: tooltipLabel.paintedWidth + units.dp(32)
-        height: units.dp(44)
+        width: tooltipLabel.paintedWidth + Units.dp(32)
+        height: Units.dp(44)
 
         Label {
             id: tooltipLabel

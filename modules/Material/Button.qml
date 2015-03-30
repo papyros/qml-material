@@ -32,7 +32,7 @@ Controls.Button {
 
     style: ControlStyles.ButtonStyle {
         background: View {
-            radius: units.dp(2)
+            radius: Units.dp(2)
 
             elevation: {
                 var elevation = button.elevation
@@ -54,7 +54,7 @@ Controls.Button {
 
                 anchors.fill: parent
                 focused: control.focus && button.context != "dialog"
-                focusWidth: parent.width - units.dp(30)
+                focusWidth: parent.width - Units.dp(30)
                 focusColor: Qt.darker(button.backgroundColor, 1.05)
 
                 Connections {
@@ -66,10 +66,10 @@ Controls.Button {
             }
         }
         label: Item {
-            implicitHeight: Math.max(units.dp(36), label.height + units.dp(16))
+            implicitHeight: Math.max(Units.dp(36), label.height + Units.dp(16))
             implicitWidth: button.context == "dialog"
-                    ? Math.max(units.dp(64), label.width + units.dp(16))
-                    : Math.max(units.dp(88), label.width + units.dp(32))
+                    ? Math.max(Units.dp(64), label.width + Units.dp(16))
+                    : Math.max(Units.dp(88), label.width + Units.dp(32))
 
             Label {
                 id: label

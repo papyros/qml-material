@@ -23,8 +23,8 @@ View {
 
     //----- STYLE PROPERTIES -----//
 
-    height: units.dp(48)
-    property int margins: units.dp(16)
+    height: Units.dp(48)
+    property int margins: Units.dp(16)
 
     anchors {
         left: parent.left
