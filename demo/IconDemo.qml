@@ -24,16 +24,16 @@ Item {
                 id: grid
                 anchors {
                     fill: parent
-                    margins: units.dp(20)
+                    margins: Units.dp(20)
                 }
 
-                rowSpacing: units.dp(10)
-                columns: Math.floor(width/units.dp(180))
+                rowSpacing: Units.dp(10)
+                columns: Math.floor(width/Units.dp(180))
 
                 Repeater {
                     model: ListUtils.objectKeys(icon.icons)
                     delegate: Row {
-                        spacing: units.dp(20)
+                        spacing: Units.dp(20)
                         width: grid.width/grid.columns
 
                         Icon {
