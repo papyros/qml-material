@@ -48,6 +48,7 @@ View {
 	}
 
 	property string buttonText
+	property color buttonColor: Theme.accentColor
 	property string text
 	property bool opened
 	property int duration: 2000
@@ -90,7 +91,7 @@ View {
 	Button {
 		id: snackButton
 		opacity: snackbar.buttonText == "" ? 0 : 1
-		textColor: "white"
+		textColor: snackbar.buttonColor
 		text: snackbar.buttonText
 		onClicked: snackbar.clicked()
 		anchors {
