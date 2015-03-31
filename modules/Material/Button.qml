@@ -30,6 +30,11 @@ Controls.Button {
                                               Theme.dark.textColor)
     property string context: "default" // or "dialog"
 
+    /*!
+       Set to \c true if the button is on a dark background
+     */
+    property bool darkBackground
+
     style: ControlStyles.ButtonStyle {
         background: View {
             radius: units.dp(2)
@@ -40,9 +45,15 @@ Controls.Button {
                 if (elevation > 0 && (control.focus || mouseArea.currentCircle))
                     elevation++;
 
+                if(!control.enabled)
+                    elevation = 0;
+
                 return elevation;
             }
-            backgroundColor: button.backgroundColor
+
+            backgroundColor: control.enabled || control.elevation === 0 ? button.backgroundColor
+                                : control.darkBackground ? Qt.rgba(1, 1, 1, 0.12)
+                                                         : Qt.rgba(0, 0, 0, 0.12)
 
             tintColor: mouseArea.currentCircle || control.focus || control.hovered
                     ? Qt.rgba(0,0,0, mouseArea.currentCircle
@@ -76,7 +87,8 @@ Controls.Button {
                 anchors.centerIn: parent
                 text: control.text
                 style: "button"
-                color: button.textColor
+                color: control.enabled ? button.textColor : control.darkBackground ? Qt.rgba(1, 1, 1, 0.30)
+                                                                                   : Qt.rgba(0, 0, 0, 0.26)
             }
         }
     }
