@@ -49,6 +49,22 @@ PopupBase {
     property alias title: titleLabel.text
     property alias text: textLabel.text
 
+    /*!
+       \qmlproperty Button negativeButton
+
+       The negative button, displayed as the leftmost button on the right of the dialog buttons.
+       This is usually used to dismiss the dialog.
+     */
+    property alias negativeButton: negativeButton
+
+    /*!
+       \qmlproperty Button primaryButton
+
+       The primary button, displayed as the rightmost button in the dialog buttons row. This is
+       usually used to accept the dialog's action.
+     */
+    property alias positiveButton: positiveButton
+
     property string negativeButtonText: "Cancel"
     property string positiveButtonText: "Ok"
     property alias positiveButtonEnabled: positiveButton.enabled
