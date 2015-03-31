@@ -35,8 +35,8 @@ Item {
     id: actionBar
 
     implicitHeight: Device.type === Device.phone
-                    ? units.dp(48) : Device.type == Device.tablet
-                      ? units.dp(56) : units.dp(64)
+                    ? Units.dp(48) : Device.type == Device.tablet
+                      ? Units.dp(56) : Units.dp(64)
 
     anchors {
         left: parent.left
@@ -90,7 +90,7 @@ Item {
         anchors {
             verticalCenter: actionsRow.verticalCenter
             left: parent.left
-            leftMargin: leftItem.show ? units.dp(16) : -leftItem.width
+            leftMargin: leftItem.show ? Units.dp(16) : -leftItem.width
 
             Behavior on leftMargin {
                 NumberAnimation { duration: 200 }
@@ -99,7 +99,7 @@ Item {
 
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                             Theme.dark.iconColor)
-        size: units.dp(24)
+        size: Units.dp(24)
         action: page.backAction
 
         opacity: show ? enabled ? 1 : 0.3 : 0
@@ -119,8 +119,8 @@ Item {
             verticalCenter: actionsRow.verticalCenter
             left: parent.left
             right: actionsRow.left
-            leftMargin: leftItem.show ? units.dp(72) : units.dp(16)
-            rightMargin: units.dp(16)
+            leftMargin: leftItem.show ? Units.dp(72) : Units.dp(16)
+            rightMargin: Units.dp(16)
 
             Behavior on leftMargin {
                 NumberAnimation { duration: 200 }
@@ -140,12 +140,12 @@ Item {
 
         anchors {
             right: parent.right
-            rightMargin: units.dp(16)
+            rightMargin: Units.dp(16)
         }
 
         height: parent.implicitHeight
 
-        spacing: units.dp(24)
+        spacing: Units.dp(24)
 
         Repeater {
             model: !showContents ? []
@@ -159,7 +159,7 @@ Item {
 
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                                   Theme.dark.iconColor)
-                size: name == "content/add" ? units.dp(27) : units.dp(24)
+                size: name == "content/add" ? Units.dp(27) : Units.dp(24)
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
         }
@@ -168,13 +168,13 @@ Item {
             id: overflowButton
 
             name: "navigation/more_vert"
-            size: units.dp(27)
+            size: Units.dp(27)
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                               Theme.dark.iconColor)
             visible: showContents && page && page.actions.length > maxActionCount
             anchors.verticalCenter: parent.verticalCenter
 
-            onClicked: overflowMenu.open(overflowButton, units.dp(4), units.dp(-4))
+            onClicked: overflowMenu.open(overflowButton, Units.dp(4), Units.dp(-4))
         }
     }
 
@@ -195,15 +195,15 @@ Item {
             top: actionsRow.bottom
             left: label.left
             right: parent.right
-            rightMargin: units.dp(16)
+            rightMargin: Units.dp(16)
         }
     }
 
     Dropdown {
         id: overflowMenu
 
-        width: units.dp(250)
-        height: columnView.height + units.dp(16)
+        width: Units.dp(250)
+        height: columnView.height + Units.dp(16)
 
         ColumnLayout {
             id: columnView

@@ -23,7 +23,7 @@ Row {
 
     property var tabs: []
 
-    height: units.dp(48)
+    height: Units.dp(48)
 
     property int selectedIndex: 0
 
@@ -36,7 +36,7 @@ Row {
 
         delegate: View {
             id: tabItem
-            width:units.dp(48) + row.width
+            width:Units.dp(48) + row.width
             height: tabbar.height
 
             property bool selected: index == tabbar.selectedIndex
@@ -53,7 +53,7 @@ Row {
                     bottom: parent.bottom
                 }
 
-                height: units.dp(2)
+                height: Units.dp(2)
                 color: tabbar.highlight
                 opacity: tabItem.selected ? 1 : 0
                 //x: index < tabbar.selectedIndex ? tabItem.width : 0
@@ -76,7 +76,7 @@ Row {
             Row {
                 id: row
                 anchors.centerIn: parent
-                spacing: units.dp(10)
+                spacing: Units.dp(10)
 
                 Icon {
                     anchors.verticalCenter: parent.verticalCenter

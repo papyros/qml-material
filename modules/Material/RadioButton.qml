@@ -48,21 +48,21 @@ Controls.RadioButton {
         }
 
         indicator: Rectangle {
-            implicitWidth: units.dp(48)
-            implicitHeight: units.dp(48)
+            implicitWidth: Units.dp(48)
+            implicitHeight: Units.dp(48)
             radius: implicitHeight / 2
             color: control.activeFocus ? Theme.alpha(radioButton.color, 0.20) : "transparent"
 
             Rectangle {
                 anchors.centerIn: parent
-                implicitWidth: units.dp(20)
-                implicitHeight: units.dp(20)
+                implicitWidth: Units.dp(20)
+                implicitHeight: Units.dp(20)
                 radius: implicitHeight / 2
                 color: "transparent"
                 border.color: control.enabled ? control.checked ? radioButton.color
                               : radioButton.darkBackground ? Theme.alpha("#fff", 0.70) : Theme.alpha("#000", 0.54)
                               : radioButton.darkBackground ? Theme.alpha("#fff", 0.30) : Theme.alpha("#000", 0.26)
-                border.width: units.dp(2)
+                border.width: Units.dp(2)
                 antialiasing: true
 
                 Behavior on border.color {
@@ -71,8 +71,8 @@ Controls.RadioButton {
 
                 Rectangle {
                     anchors.centerIn: parent
-                    implicitWidth: control.checked ? units.dp(10) : 0
-                    implicitHeight: control.checked ? units.dp(10) : 0
+                    implicitWidth: control.checked ? Units.dp(10) : 0
+                    implicitHeight: control.checked ? Units.dp(10) : 0
                     color: control.enabled ? radioButton.color
                                            : radioButton.darkBackground ? Theme.alpha("#fff", 0.30)
                                                                         : Theme.alpha("#000", 0.26)
@@ -96,12 +96,12 @@ Controls.RadioButton {
     Ink {
         anchors {
             left: parent.left
-            leftMargin: units.dp(4)
+            leftMargin: Units.dp(4)
             verticalCenter: parent.verticalCenter
         }
 
-        width: units.dp(40)
-        height: units.dp(40)
+        width: Units.dp(40)
+        height: Units.dp(40)
         color: radioButton.checked ? Theme.alpha(radioButton.color, 0.20) : Qt.rgba(0,0,0,0.1)
         onClicked: radioButton.checked = !radioButton.checked
 

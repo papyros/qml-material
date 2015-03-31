@@ -103,7 +103,7 @@ Text {
 
     property var fontInfo: fontStyles[style]
 
-    font.pixelSize: units.dp(desktop && fontInfo.size_desktop ? fontInfo.size_desktop : fontInfo.size)
+    font.pixelSize: Units.dp(desktop && fontInfo.size_desktop ? fontInfo.size_desktop : fontInfo.size)
     font.family: "Roboto"
     font.weight: {
         var weight = fontInfo.font

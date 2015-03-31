@@ -20,14 +20,14 @@ import QtQuick 2.0
 pragma Singleton
 
 /*!
-   \qmltype units
+   \qmltype Units
    \inqmlmodule Material 0.1
    \ingroup material
 
    \brief Provides access to screen-independent units known as DPs (device-independent pixels).
 
    This singleton provides methods for building a user interface that automatically scales based on
-   the screen density. Use the \l units::dp function wherever you need to specify a screen size,
+   the screen density. Use the \l Units::dp function wherever you need to specify a screen size,
    and your app will automatically scale to any screen density.
 
    Here is a short example:
@@ -37,12 +37,12 @@ pragma Singleton
    import Material 0.1
 
    Rectangle {
-       width: units.dp(100)
-       height: units.dp(80)
+       width: Units.dp(100)
+       height: Units.dp(80)
 
        Label {
            text:"A"
-           font.pixelSize: units.dp(50)
+           font.pixelSize: Units.dp(50)
        }
    }
    \endqml

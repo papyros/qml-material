@@ -5,7 +5,7 @@ Item {
 
     Column {
         anchors.centerIn: parent
-        spacing: units.dp(20)
+        spacing: Units.dp(20)
 
         TextField {
             text: "Text Field with text"

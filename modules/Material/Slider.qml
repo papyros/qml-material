@@ -38,13 +38,13 @@ Controls.Slider {
 
     tickmarksEnabled: false
 
-    implicitHeight: numericValueLabel ? units.dp(54) : units.dp(32)
-    implicitWidth: units.dp(200)
+    implicitHeight: numericValueLabel ? Units.dp(54) : Units.dp(32)
+    implicitWidth: Units.dp(200)
 
     style: ControlStyles.SliderStyle {
         property Component knob : Item {
-            implicitHeight: control.pressed || control.focus ? units.dp(32) : 0
-            implicitWidth: control.pressed || control.focus ? units.dp(32) : 0
+            implicitHeight: control.pressed || control.focus ? Units.dp(32) : 0
+            implicitWidth: control.pressed || control.focus ? Units.dp(32) : 0
 
             Label {
                 anchors.fill: parent
@@ -99,7 +99,7 @@ Controls.Slider {
 
         groove: Rectangle {
             implicitWidth: 200
-            implicitHeight: units.dp(2)
+            implicitHeight: Units.dp(2)
 
             anchors.verticalCenter: parent.verticalCenter
 
@@ -109,33 +109,33 @@ Controls.Slider {
             Rectangle {
                 height: parent.height
                 width: styleData.handlePosition
-                implicitHeight: units.dp(2)
+                implicitHeight: Units.dp(2)
                 implicitWidth: 200
                 color: control.color
             }
         }
         handle: Item {
             anchors.centerIn: parent
-            implicitHeight: units.dp(8)
-            implicitWidth: units.dp(8)
+            implicitHeight: Units.dp(8)
+            implicitWidth: Units.dp(8)
 
             Loader {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.top
-                anchors.bottomMargin: units.dp(16)
+                anchors.bottomMargin: Units.dp(16)
                 sourceComponent: slider.numericValueLabel ? knob : null
             }
 
             Rectangle {
                 anchors.centerIn: parent
-                implicitHeight: units.dp(32)
-                implicitWidth: units.dp(32)
+                implicitHeight: Units.dp(32)
+                implicitWidth: Units.dp(32)
                 color: control.focus ?
                            Theme.alpha(control.color, 0.20) :
                            "transparent"
                 radius: implicitHeight / 2
                 Rectangle {
-                    property var diameter: control.enabled ? units.dp(16) : units.dp(12)
+                    property var diameter: control.enabled ? Units.dp(16) : Units.dp(12)
                     anchors.centerIn: parent
                     color: control.value === control.minimumValue ?
                                Theme.backgroundColor : control.color
@@ -145,14 +145,14 @@ Controls.Slider {
                                                           : Theme.alpha("#000000", 0.26)
                                   : control.color
 
-                    border.width: units.dp(2)
+                    border.width: Units.dp(2)
 
                     implicitHeight: control.pressed && !control.focus && !slider.numericValueLabel ?
-                                        diameter + units.dp(8) :
+                                        diameter + Units.dp(8) :
                                         diameter
 
                     implicitWidth: control.pressed && !control.focus && !slider.numericValueLabel ?
-                                       diameter + units.dp(8) :
+                                       diameter + Units.dp(8) :
                                        diameter
 
                     radius: implicitWidth / 2
@@ -173,7 +173,7 @@ Controls.Slider {
             model: control.stepSize > 0 ? 1 + (control.maximumValue - control.minimumValue) / control.stepSize : 0
             Rectangle {
                 color: slider.darkBackground ? "#FFFFFF" : "#000000"
-                width: Math.round(units.dp(2)); height: units.dp(2)
+                width: Math.round(Units.dp(2)); height: Units.dp(2)
                 y: repeater.height / 2
                 x: styleData.handleWidth / 2 + index * ((repeater.width - styleData.handleWidth) / (repeater.count-1))
             }

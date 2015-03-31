@@ -33,7 +33,7 @@ import "ListItems" as ListItem
 
     Examples:
     \qml
-        property bool wideAspect: width > units.gu(80)
+        property bool wideAspect: width > Units.dp(80)
 
         Sidebar {
             expanded: wideAspect
@@ -73,7 +73,7 @@ View {
         }
     }
 
-    width: units.dp(250)
+    width: Units.dp(250)
 
 
     anchors.leftMargin: expanded ? 0 : -width

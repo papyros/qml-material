@@ -94,12 +94,12 @@ ApplicationWindow {
         MenuField {
             id: selection
             model: ["Primary color", "Accent color", "Background color"]
-            width: units.dp(160)
+            width: Units.dp(160)
         }
 
         Grid {
             columns: 7
-            spacing: units.dp(8)
+            spacing: Units.dp(8)
 
             Repeater {
                 model: [
@@ -111,11 +111,11 @@ ApplicationWindow {
                 ]
 
                 Rectangle {
-                    width: units.dp(30)
-                    height: units.dp(30)
-                    radius: units.dp(2)
+                    width: Units.dp(30)
+                    height: Units.dp(30)
+                    radius: Units.dp(2)
                     color: Palette.colors[modelData]["500"]
-                    border.width: modelData === "white" ? units.dp(2) : 0
+                    border.width: modelData === "white" ? Units.dp(2) : 0
                     border.color: Theme.alpha("#000", 0.26)
 
                     Ink {

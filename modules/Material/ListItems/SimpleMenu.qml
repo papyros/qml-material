@@ -9,15 +9,15 @@ Subtitled {
 
     subText: listView.currentItem.text
 
-    onClicked: menu.open(listItem, units.dp(16), 0)
+    onClicked: menu.open(listItem, Units.dp(16), 0)
 
     Dropdown {
         id: menu
 
         anchor: Item.TopLeft
 
-        width: Math.max(units.dp(56 * 2), Math.min(listItem.width - 2 * x, listView.contentWidth))
-        height: Math.min(10 * units.dp(48) + units.dp(16), listView.contentHeight + units.dp(16))
+        width: Math.max(Units.dp(56 * 2), Math.min(listItem.width - 2 * x, listView.contentWidth))
+        height: Math.min(10 * Units.dp(48) + Units.dp(16), listView.contentHeight + Units.dp(16))
 
         ListView {
             id: listView
@@ -26,7 +26,7 @@ Subtitled {
                 left: parent.left
                 right: parent.right
                 top: parent.top
-                topMargin: units.dp(8)
+                topMargin: Units.dp(8)
             }
 
             interactive: false
