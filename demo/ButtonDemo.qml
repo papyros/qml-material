@@ -21,6 +21,13 @@ Item {
         }
 
         Button {
+            text: "Disabled Raised Button"
+            elevation: 1
+            enabled: false
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Button {
             text: "Wide Button"
 
             width: units.dp(200)
