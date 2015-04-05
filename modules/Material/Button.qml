@@ -52,13 +52,14 @@ Controls.Button {
             }
 
             backgroundColor: control.enabled || control.elevation === 0 ? button.backgroundColor
-                                : control.darkBackground ? Qt.rgba(1, 1, 1, 0.12)
-                                                         : Qt.rgba(0, 0, 0, 0.12)
+                : control.darkBackground ? Qt.rgba(1, 1, 1, 0.12)
+                : Qt.rgba(0, 0, 0, 0.12)
 
             tintColor: mouseArea.currentCircle || control.focus || control.hovered
-                    ? Qt.rgba(0,0,0, mouseArea.currentCircle
-                           ? 0.1 : button.elevation > 0 ? 0.03 : 0.05)
-                    : "transparent"
+               ? Qt.rgba(0,0,0, mouseArea.currentCircle ? 0.1
+                                : button.elevation > 0 ? 0.03
+                                : 0.05)
+               : "transparent"
 
             Ink {
                 id: mouseArea
@@ -87,8 +88,9 @@ Controls.Button {
                 anchors.centerIn: parent
                 text: control.text
                 style: "button"
-                color: control.enabled ? button.textColor : control.darkBackground ? Qt.rgba(1, 1, 1, 0.30)
-                                                                                   : Qt.rgba(0, 0, 0, 0.26)
+                color: control.enabled ? button.textColor
+                    : control.darkBackground ? Qt.rgba(1, 1, 1, 0.30)
+                    : Qt.rgba(0, 0, 0, 0.26)
             }
         }
     }
