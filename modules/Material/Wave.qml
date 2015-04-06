@@ -19,59 +19,59 @@
 import QtQuick 2.0
 
 Rectangle {
-	id: wave
+    id: wave
 
-	property bool opened
-	property real size
-	property real initialX
-	property real initialY
-	property real abstractWidth: parent.width
-	property real abstractHeight: parent.height
-	property real diameter: 2*Math.sqrt(Math.pow(Math.max(initialX, abstractWidth - initialX), 2) + Math.pow(Math.max(initialY, abstractHeight - initialY), 2))
+    property bool opened
+    property real size
+    property real initialX
+    property real initialY
+    property real abstractWidth: parent.width
+    property real abstractHeight: parent.height
+    property real diameter: 2*Math.sqrt(Math.pow(Math.max(initialX, abstractWidth - initialX), 2) + Math.pow(Math.max(initialY, abstractHeight - initialY), 2))
 
-	signal finished(bool opened)
+    signal finished(bool opened)
 
-	function open(x, y) {
-		wave.initialX = x;
-		wave.initialY = y;
-		wave.opened = true;
-	}
+    function open(x, y) {
+        wave.initialX = x;
+        wave.initialY = y;
+        wave.opened = true;
+    }
 
-	function close(x, y) {
-		wave.initialX = x;
-		wave.initialY = y;
-		wave.opened = false;
-	}
+    function close(x, y) {
+        wave.initialX = x;
+        wave.initialY = y;
+        wave.opened = false;
+    }
 
-	width: size
-	height: size
-	radius: size/2
-	x: initialX - size/2
-	y: initialY - size/2
+    width: size
+    height: size
+    radius: size/2
+    x: initialX - size/2
+    y: initialY - size/2
 
-	states: State {
-		name: "opened"
-		when: wave.opened
+    states: State {
+        name: "opened"
+        when: wave.opened
 
-		PropertyChanges {
-			target: wave
-			size: wave.diameter
-		}
-	}
+        PropertyChanges {
+            target: wave
+            size: wave.diameter
+        }
+    }
 
-	transitions: Transition {
-		from: ""
-		to: "opened"
-		reversible: true
+    transitions: Transition {
+        from: ""
+        to: "opened"
+        reversible: true
 
-		SequentialAnimation {
-			NumberAnimation {
-				property: "size"
-				easing.type: Easing.OutCubic
-			}
-			ScriptAction {
-				script: wave.finished(wave.opened)
-			}
-		}
-	}
+        SequentialAnimation {
+            NumberAnimation {
+                property: "size"
+                easing.type: Easing.OutCubic
+            }
+            ScriptAction {
+                script: wave.finished(wave.opened)
+            }
+        }
+    }
 }

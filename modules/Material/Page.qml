@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 2.0
 import QtQuick.Controls 1.2 as Controls
 import Material 0.1
@@ -23,30 +24,20 @@ FocusScope {
     id: page
 
     property color backgroundColor: Theme.backgroundColor
-
     property string title
-
     property list<Action> actions
-
     property Action backAction: Action {
         name: "Back"
         iconName: "navigation/arrow_back"
         onTriggered: page.pop()
         visible: canGoBack
     }
-
     property bool canGoBack: false
-
     property bool cardStyle: false
-
     property var tabs: []
-
     property int selectedTab
-
     property alias actionBar: __actionBar
-
     default property alias data: content.data
-
     property Item rightSidebar
 
     onRightSidebarChanged: {

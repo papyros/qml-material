@@ -22,11 +22,11 @@ import Material.Extras 0.1
 PopupBase {
     id: dropdown
 
-    overlayLayer: "tooltipOverlayLayer"
-    globalMouseAreaEnabled: false
-
     default property alias data: view.data
     property alias internalView: view
+
+    overlayLayer: "tooltipOverlayLayer"
+    globalMouseAreaEnabled: false
 
     visible: view.opacity > 0
 
@@ -63,6 +63,14 @@ PopupBase {
         parent.currentOverlay = null
     }
 
+    View {
+        id: view
+        elevation: 2
+        radius: units.dp(2)
+        anchors.top: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
     state: showing ? "open" : "closed"
 
     states: [
@@ -86,14 +94,6 @@ PopupBase {
             }
         }
     ]
-
-    View {
-        id: view
-        elevation: 2
-        radius: units.dp(2)
-        anchors.top: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
 
     transitions: [
         Transition {

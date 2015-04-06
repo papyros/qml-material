@@ -24,9 +24,6 @@ import QtGraphicalEffects 1.0
 
 Item {
     id: icon
-    
-    width: size
-    height: size
 
     property color color: Theme.light.iconColor
     property real size: units.dp(24)
@@ -37,10 +34,14 @@ Item {
     */
     property string name
 
+    width: size
+    height: size
+
     Image {
         id: image
 
         anchors.fill: parent
+        visible: false
 
         source: {
             var list = name.split("/");
@@ -53,15 +54,12 @@ Item {
             width: size * Screen.devicePixelRatio
             height: size * Screen.devicePixelRatio
         }
-
-        visible: false
     }
 
     ColorOverlay {
         id: overlay
 
         anchors.fill: parent
-
         source: image
         color: Theme.alpha(icon.color, 1)
         cached: true
@@ -71,10 +69,10 @@ Item {
 
     AwesomeIcon {
         anchors.centerIn: parent
-
         size: icon.size * 0.9
         visible: icon.name.indexOf("awesome/") == 0
-        
+        color: icon.color
+
         name: {
             var list = icon.name.split("/")
             if (list[0] == "awesome") {
@@ -82,6 +80,5 @@ Item {
             }
             return ''
         }
-        color: icon.color
     }
 }

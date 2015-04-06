@@ -22,13 +22,11 @@ Row {
     id: tabbar
 
     property var tabs: []
-
-    height: units.dp(48)
-
     property int selectedIndex: 0
-
     property color color: Theme.dark.textColor
     property color highlight: Theme.dark.accentColor
+
+    height: units.dp(48)
 
     Repeater {
         id: repeater
@@ -75,19 +73,22 @@ Row {
 
             Row {
                 id: row
+
                 anchors.centerIn: parent
                 spacing: units.dp(10)
 
                 Icon {
                     anchors.verticalCenter: parent.verticalCenter
-                    name: modelData.hasOwnProperty("icon") ? modelData.icon : ""
+                    name: modelData.hasOwnProperty("icon") ? modelData.icon
+                                                           : ""
                     color: Theme.dark.iconColor
                     visible: name != ""
                 }
 
                 Label {
                     id: label
-                    text: modelData.hasOwnProperty("text") ? modelData.text : modelData
+                    text: modelData.hasOwnProperty("text") ? modelData.text
+                                                           : modelData
                     color: Theme.dark.textColor
                     style: "body2"
                     anchors.verticalCenter: parent.verticalCenter

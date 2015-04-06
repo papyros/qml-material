@@ -19,95 +19,93 @@ import QtQuick 2.0
 import Material 0.1
 
 View {
-	id: snackbar
+    id: snackbar
 
-	radius: fullWidth ? 0 : units.dp(2)
-	backgroundColor: "#323232"
-	height: units.dp(48)
-	width: fullWidth ? parent.width : Math.min(Math.max(implicitWidth, units.dp(288)), units.dp(568))
-	opacity: opened ? 1 : 0
+    property string buttonText
+    property color buttonColor: Theme.accentColor
+    property string text
+    property bool opened
+    property int duration: 2000
+    property bool fullWidth: Device.type === Device.phone
 
-	implicitWidth: buttonText == "" ? snackText.paintedWidth + units.dp(48) : snackText.paintedWidth + units.dp(72) + snackButton.width
+    signal clicked
 
-	property bool fullWidth: Device.type === Device.phone
+    function open(text) {
+        snackbar.text = text
+        opened = true;
+        timer.restart();
+    }
 
-	anchors {
-		left: parent.left
-		right: fullWidth ? parent.right : undefined
-		bottom: parent.bottom
-		leftMargin: fullWidth ? 0 : units.dp(16)
-		bottomMargin: opened ? fullWidth ? 0 : units.dp(16) :  -snackbar.height
+    anchors {
+        left: parent.left
+        right: fullWidth ? parent.right : undefined
+        bottom: parent.bottom
+        leftMargin: fullWidth ? 0 : units.dp(16)
+        bottomMargin: opened ? fullWidth ? 0 : units.dp(16) :  -snackbar.height
 
-		Behavior on bottomMargin {
-			NumberAnimation { duration: 300 }
-		}
-	}
+        Behavior on bottomMargin {
+            NumberAnimation { duration: 300 }
+        }
+    }
+    radius: fullWidth ? 0 : units.dp(2)
+    backgroundColor: "#323232"
+    height: units.dp(48)
+    width: fullWidth ? parent.width
+                     : Math.min(Math.max(implicitWidth, units.dp(288)), units.dp(568))
+    opacity: opened ? 1 : 0
+    implicitWidth: buttonText == "" ? snackText.paintedWidth + units.dp(48)
+                                    : snackText.paintedWidth + units.dp(72) + snackButton.width
 
-	Behavior on opacity {
-		NumberAnimation { duration: 300 }
-	}
+    Timer {
+        id: timer
 
-	property string buttonText
-	property color buttonColor: Theme.accentColor
-	property string text
-	property bool opened
-	property int duration: 2000
+        interval: snackbar.duration
 
-	signal clicked
+        onTriggered: {
+            if (!running) {
+                snackbar.opened = false;
+            }
+        }
+    }
 
-	function open(text) {
-		snackbar.text = text
-		opened = true;
-		timer.restart();
-	}
+    Label {
+        id: snackText
+        anchors {
+            right: snackbar.buttonText == "" ? parent.right : snackButton.left
+            left: parent.left
+            top: parent.top
+            bottom: parent.bottom
+            leftMargin: units.dp(24)
+            topMargin: units.dp(16)
+            rightMargin: units.dp(24)
+        }
+        text: snackbar.text
+        color: "white"
+    }
 
-	Timer {
-		id: timer
+    Button {
+        id: snackButton
+        opacity: snackbar.buttonText == "" ? 0 : 1
+        textColor: snackbar.buttonColor
+        text: snackbar.buttonText
+        context: "snackbar"
+        onClicked: snackbar.clicked()
+        anchors {
+            right: parent.right
+            //left: snackText.right
+            top: parent.top
+            bottom: parent.bottom
 
-		interval: snackbar.duration
+            // Recommended button touch target is 36dp
+            topMargin: units.dp(6)
+            bottomMargin: units.dp(6)
 
-		onTriggered: {
-			if (!running) {
-				snackbar.opened = false;
-			}
-		}
-	}
+            // Normal margin is 24dp, but button itself uses 8dp margins
+            rightMargin: snackbar.buttonText == "" ? 0 : units.dp(16)
+        }
+    }
 
-	Label {
-		id: snackText
-		anchors {
-			right: snackbar.buttonText == "" ? parent.right : snackButton.left
-			left: parent.left
-			top: parent.top
-			bottom: parent.bottom
-			leftMargin: units.dp(24)
-			topMargin: units.dp(16)
-			rightMargin: units.dp(24)
-		}
-		text: snackbar.text
-		color: "white"
-	}
-
-	Button {
-		id: snackButton
-		opacity: snackbar.buttonText == "" ? 0 : 1
-		textColor: snackbar.buttonColor
-		text: snackbar.buttonText
-		context: "snackbar"
-		onClicked: snackbar.clicked()
-		anchors {
-			right: parent.right
-			//left: snackText.right
-			top: parent.top
-			bottom: parent.bottom
-
-			// Recommended button touch target is 36dp
-			topMargin: units.dp(6)
-			bottomMargin: units.dp(6)
-
-			// Normal margin is 24dp, but button itself uses 8dp margins
-			rightMargin: snackbar.buttonText == "" ? 0 : units.dp(16)
-		}
-	}
-
+    Behavior on opacity {
+        NumberAnimation { duration: 300 }
+    }
 }

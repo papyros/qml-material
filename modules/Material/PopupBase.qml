@@ -25,7 +25,6 @@ FocusScope {
     property color overlayColor: "transparent"
     property string overlayLayer: "overlayLayer"
     property bool globalMouseAreaEnabled: true
-
     property bool showing: false
 
     signal opened

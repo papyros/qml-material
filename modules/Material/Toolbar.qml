@@ -23,29 +23,6 @@ import Material 0.1
 View {
     id: toolbar
 
-    anchors {
-        top: parent.top
-        left: parent.left
-        right: parent.right
-    }
-
-    opacity: page && page.actionBar.hidden ? 0 : 1
-
-    backgroundColor: page && page.actionBar.backgroundColor ? Qt.darker(page.actionBar.backgroundColor,1).a == 0
-                                                              ? page.color : page.actionBar.backgroundColor
-                                                            : Theme.primaryColor
-
-    implicitHeight: Device.type == Device.phone ? units.dp(48)
-                                                : Device.type == Device.tablet ? units.dp(56)
-                                                                               : units.dp(64)
-    height: targetHeight
-
-    elevation: backgroundColor == page.color ? 0 : page.actionBar.elevation
-
-    fullWidth: true
-
-    clipContent: true
-
     property int actionBarHeight: {
         if (!page || page.actionBar.hidden)
             return 0
@@ -60,25 +37,36 @@ View {
 
         return height
     }
-
     property int targetHeight: actionBarHeight + (tabs.length > 0 ? tabbar.height : 0)
-
     property int maxActionCount: (Device.formFactor == "desktop"
                                   ? 5 : Device.formFactor == "tablet" ? 4 : 3)
-
     property bool clientSideDecorations: false
-
     property string color: "white"
-
     property var page
-
     property alias tabs: tabbar.tabs
-
     property alias selectedTab: tabbar.selectedIndex
-
     property bool showBackButton
-
     property var pages: []
+
+    anchors {
+        top: parent.top
+        left: parent.left
+        right: parent.right
+    }
+
+    opacity: page && page.actionBar.hidden ? 0 : 1
+
+    backgroundColor: page && page.actionBar.backgroundColor
+        ? Qt.darker(page.actionBar.backgroundColor,1).a == 0
+            ? page.color : page.actionBar.backgroundColor
+        : Theme.primaryColor
+    implicitHeight: Device.type == Device.phone ? units.dp(48)
+                                                : Device.type == Device.tablet ? units.dp(56)
+                                                                               : units.dp(64)
+    height: targetHeight
+    elevation: backgroundColor == page.color ? 0 : page.actionBar.elevation
+    fullWidth: true
+    clipContent: true
 
     Behavior on height {
         NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }

@@ -22,30 +22,26 @@ import Material.Extras 0.1
 Item {
     id: iconButton
 
-    width: icon.width
-    height: icon.height
-    
-    enabled: action ? action.enabled : true
-
+    property Action action
     property string name: action ? action.iconName : ""
     property alias color: icon.color
     property alias size: icon.size
 
     signal clicked
 
+    width: icon.width
+    height: icon.height
+    enabled: action ? action.enabled : true
+    opacity: enabled ? 1 : 0.6
+
     onClicked: {
         if (action) action.triggered(icon)
     }
-
-    opacity: enabled ? 1 : 0.6
-
-    property Action action
 
     Ink {
         id: ink
 
         anchors.centerIn: parent
-
         enabled: iconButton.enabled
         centered: true
         circular: true

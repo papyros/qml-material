@@ -31,47 +31,47 @@ Object {
     readonly property int tv: 4
     readonly property int unknown: 5 //it's either bigger than tv or smaller than phone
     readonly property string name: {
-    	switch (type) {
-    		case 0:
-    			return "phone";
-    			break;
-    		case 1:
-    			return "phablet";
-    			break;
-    		case 2:
-    			return "tablet";
-    			break;
-    		case 3:
-    			return "computer";
-    			break;
-    		case 4:
-    			return "TV";
-    			break;
-    		case 5:
-    			return "device";
-    			break;
-    	}
+        switch (type) {
+            case 0:
+                return "phone";
+                break;
+            case 1:
+                return "phablet";
+                break;
+            case 2:
+                return "tablet";
+                break;
+            case 3:
+                return "computer";
+                break;
+            case 4:
+                return "TV";
+                break;
+            case 5:
+                return "device";
+                break;
+        }
     }
     readonly property string iconName: {
-    	switch (type) {
-    		case 0:
-    			return "hardware/smartphone";
-    			break;
-    		case 1:
-    			return "hardware/tablet";
-    			break;
-    		case 2:
-    			return "hardware/tablet";
-    			break;
-    		case 3:
-    			return "hardware/desktop_windows";
-    			break;
-    		case 4:
-    			return "hardware/tv";
-    			break;
-    		case 5:
-    			return "hardware/computer";
-    			break;
-    	}
+        switch (type) {
+            case 0:
+                return "hardware/smartphone";
+                break;
+            case 1:
+                return "hardware/tablet";
+                break;
+            case 2:
+                return "hardware/tablet";
+                break;
+            case 3:
+                return "hardware/desktop_windows";
+                break;
+            case 4:
+                return "hardware/tv";
+                break;
+            case 5:
+                return "hardware/computer";
+                break;
+        }
     }
 }
