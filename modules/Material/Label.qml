@@ -94,16 +94,16 @@ Text {
         },
 
         "tooltip": {
+            "size_desktop": 10,
             "size": 14,
             "font": "medium"
-        },
+        }
     }
-
-    property bool desktop: true
 
     property var fontInfo: fontStyles[style]
 
-    font.pixelSize: units.dp(desktop && fontInfo.size_desktop ? fontInfo.size_desktop : fontInfo.size)
+    font.pixelSize: units.dp(!Device.isMobile && fontInfo.size_desktop 
+            ? fontInfo.size_desktop : fontInfo.size)
     font.family: "Roboto"
     font.weight: {
         var weight = fontInfo.font

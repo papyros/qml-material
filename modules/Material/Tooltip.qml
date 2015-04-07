@@ -19,16 +19,33 @@ import QtQuick 2.0
 import Material 0.1
 import Material.Extras 0.1
 
+/*!
+   \qmltype Tooltip
+   \inqmlmodule Material 0.1
+   \ingroup material
+
+   \brief A tooltip is a label that appears on hover and explains a non-text UI element.
+
+   To display a tooltip for your view, simply create an instance of Tooltip, 
+   set the text property to your tooltip text, and then set the mouseArea property
+   to your MouseArea or Ink that will trigger the tooltip. If you use a MouseArea,
+   make sure hoverEnabled is set to true.
+
+   See the Material Design guidelines for more details: 
+   http://www.google.com/design/spec/components/tooltips.html
+ */
 PopupBase {
     id: dropdown
 
     property alias text: tooltipLabel.text
+
+    property MouseArea mouseArea
     
     overlayLayer: "tooltipOverlayLayer"
     globalMouseAreaEnabled: false
 
-    width: tooltipLabel.paintedWidth + units.dp(32)
-    height: units.dp(44)
+    width: tooltipLabel.paintedWidth + (Device.isMobile ? units.dp(32) : units.dp(16))
+    height: Device.isMobile ? units.dp(44) : units.dp(22)
 
     visible: view.opacity > 0
 
@@ -63,6 +80,39 @@ PopupBase {
     function close() {
         showing = false
         parent.currentOverlay = null
+    }
+
+    Timer {
+        id: timer
+
+        interval: 1000
+        onTriggered: open(mouseArea, 0, units.dp(4))
+    }
+
+    Connections {
+        target: mouseArea
+
+        onReleased: {
+            if(showing)
+                close()
+        }
+
+        onPressAndHold: {
+            if(text !== "" && !showing)
+                open(mouseArea, 0, units.dp(4))
+        }
+
+        onEntered: {
+            if(text !== "" && !showing)
+                timer.start()    
+        }
+
+        onExited: {
+            timer.stop()
+
+            if(showing)
+                close()
+        }
     }
 
     View {

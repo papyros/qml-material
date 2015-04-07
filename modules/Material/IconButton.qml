@@ -54,26 +54,6 @@ Item {
         onClicked: {
             iconButton.clicked()
         }
-
-        onPressAndHold: {
-            if(tooltip.text !== "" && !tooltip.showing)
-                tooltip.open(ink, 0, units.dp(4))
-        }
-
-        onReleased: {
-            if(tooltip.showing)
-                tooltip.close()
-        }
-
-        onEntered: {
-            if(tooltip.text !== "" && !tooltip.showing)
-                tooltip.open(ink, 0, units.dp(4))
-        }
-
-        onExited: {
-            if(tooltip.showing)
-                tooltip.close()
-        }
     }
 
     Icon {
@@ -83,8 +63,7 @@ Item {
     }
 
     Tooltip {
-        id: tooltip
-
-        text: action.name
+        text: action ? action.name : ""
+        mouseArea: ink
     }
 }
