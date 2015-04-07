@@ -3,6 +3,7 @@ import QtQuick.Layouts 1.1
 import Material 0.1
 
 ColumnLayout {
+    spacing: 0
 
     Repeater {
         model: 2
