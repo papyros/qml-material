@@ -56,7 +56,7 @@ Item {
         }
 
         onPressAndHold: {
-            if(tooltip.tooltipText !== "" && !tooltip.showing)
+            if(tooltip.text !== "" && !tooltip.showing)
                 tooltip.open(ink, 0, units.dp(4))
         }
 
@@ -66,7 +66,7 @@ Item {
         }
 
         onEntered: {
-            if(tooltip.tooltipText !== "" && !tooltip.showing)
+            if(tooltip.text !== "" && !tooltip.showing)
                 tooltip.open(ink, 0, units.dp(4))
         }
 
@@ -85,18 +85,6 @@ Item {
     Tooltip {
         id: tooltip
 
-        property alias tooltipText : tooltipLabel.text
-
-        internalView.backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
-        width: tooltipLabel.paintedWidth + units.dp(32)
-        height: units.dp(44)
-
-        Label {
-            id: tooltipLabel
-            style: "tooltip"
-            color: Theme.dark.textColor
-            anchors.centerIn: parent
-            text: action ? action.name : ""
-        }
+        text: action.name
     }
 }

@@ -22,11 +22,13 @@ import Material.Extras 0.1
 PopupBase {
     id: dropdown
 
-    default property alias data: view.data
-    property alias internalView: view
-
+    property alias text: tooltipLabel.text
+    
     overlayLayer: "tooltipOverlayLayer"
     globalMouseAreaEnabled: false
+
+    width: tooltipLabel.paintedWidth + units.dp(32)
+    height: units.dp(44)
 
     visible: view.opacity > 0
 
@@ -44,7 +46,7 @@ PopupBase {
         var root = Utils.findRoot(dropdown)
 
         dropdown.x = position.x + (caller.width / 2 - dropdown.width / 2)
-        dropdown.y = position.y + caller.height - dropdown.height
+        dropdown.y = position.y + caller.height//    - dropdown.height
 
         if(dropdown.x + width > root.width)
             offsetX = -(((dropdown.x + width) - root.width) + units.dp(8))
@@ -65,87 +67,35 @@ PopupBase {
 
     View {
         id: view
+
         elevation: 2
         radius: units.dp(2)
-        anchors.top: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            topMargin: dropdown.showing ? 0 : -dropdown.height/4
+
+            Behavior on topMargin {
+                NumberAnimation { duration: 200 }
+            }
+        }
+
+        height: dropdown.height
+
+        backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
+
+        opacity: dropdown.showing ? 1 : 0
+
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
+
+        Label {
+            id: tooltipLabel
+            style: "tooltip"
+            color: Theme.dark.textColor
+            anchors.centerIn: parent
+        }
     }
-
-    state: showing ? "open" : "closed"
-
-    states: [
-        State {
-            name: "closed"
-            PropertyChanges {
-                target: view
-                opacity: 0
-                width: 0
-                height: 0
-            }
-        },
-
-        State {
-            name: "open"
-            PropertyChanges {
-                target: view
-                opacity: 1
-                width: dropdown.width
-                height: dropdown.height
-            }
-        }
-    ]
-
-    transitions: [
-        Transition {
-            from: "open"
-            to: "closed"
-
-            NumberAnimation {
-                target: internalView
-                property: "opacity"
-                duration: 200
-                easing.type: Easing.InOutQuad
-            }
-
-            NumberAnimation {
-                target: internalView
-                property: "width"
-                duration: 200
-                easing.type: Easing.InOutQuad
-            }
-
-            NumberAnimation {
-                target: internalView
-                property: "height"
-                duration: 400
-                easing.type: Easing.InOutQuad
-            }
-        },
-
-        Transition {
-            from: "closed"
-            to: "open"
-
-            NumberAnimation {
-                target: internalView
-                property: "opacity"
-                duration: 200
-                easing.type: Easing.InOutQuad
-            }
-
-            NumberAnimation {
-                target: internalView
-                property: "width"
-                duration: 200
-                easing.type: Easing.InOutQuad
-            }
-
-            NumberAnimation {
-                target: internalView
-                property: "height"
-                duration: 400
-                easing.type: Easing.InOutQuad
-            }
-        }
-    ]
 }
