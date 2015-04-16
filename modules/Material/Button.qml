@@ -35,6 +35,11 @@ Controls.Button {
      */
     property bool darkBackground
 
+    /*!
+       Set to \c true if the button is on a dark background
+     */
+    property bool darkBackground
+
     style: ControlStyles.ButtonStyle {
         padding {
             left: 0
