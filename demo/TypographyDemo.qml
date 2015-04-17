@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Material 0.1
+import Material.ListItems 0.1 as ListItem
 
 Item {
 
@@ -22,24 +23,79 @@ Item {
 
 		anchors.fill: parent
 
-		contentWidth: column.width + 2 * column.anchors.margins
+		contentWidth: column.width + units.dp(16)
 		contentHeight: column.height
 
-		topMargin: units.dp(20)
-		bottomMargin: units.dp(20)
+		topMargin: units.dp(16)
+		bottomMargin: units.dp(16)
 
 		Column {
 			id: column
-	        spacing: units.dp(20)
+	        spacing: units.dp(16)
 
-	        anchors {
-	        	left: parent.left
-	        	margins: units.dp(20)
+	        ListItem.Header {
+	        	text: "Font Weights"
+	        }
+
+	        Label {
+	        	font.family: "Roboto"
+			    font.weight: Font.Light
+			    text: "Roboto Light"
+			    font.pixelSize: units.dp(34)
+
+			    anchors {
+		        	left: parent.left
+		        	margins: units.dp(16)
+		        }
+	        }
+
+	        Label {
+	        	font.family: "Roboto"
+			    text: "Roboto Regular"
+			    font.pixelSize: units.dp(34)
+
+			    anchors {
+		        	left: parent.left
+		        	margins: units.dp(16)
+		        }
+	        }
+
+	        Label {
+	        	font.family: "Roboto"
+			    font.weight: Font.DemiBold
+			    text: "Roboto Medium"
+			    font.pixelSize: units.dp(34)
+
+			    anchors {
+		        	left: parent.left
+		        	margins: units.dp(16)
+		        }
+	        }
+
+	        Label {
+	        	font.family: "Roboto"
+			    font.weight: Font.Bold
+			    text: "Roboto Bold"
+			    font.pixelSize: units.dp(34)
+
+			    anchors {
+		        	left: parent.left
+		        	margins: units.dp(16)
+		        }
+	        }
+
+	        ListItem.Header {
+	        	text: "Label Styles"
 	        }
 
 	        Repeater {
 	        	model: styles
 	        	delegate: Row {
+					anchors {
+			        	left: parent.left
+			        	margins: units.dp(16)
+			        }
+
 					Label {
 		        		text: modelData
 		        		width: units.dp(100)
