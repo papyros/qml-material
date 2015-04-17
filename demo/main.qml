@@ -13,7 +13,7 @@ ApplicationWindow {
 
     property var components: [
             "Button", "CheckBox", "Color Palette", "Dialog", "Forms", "Icon", "List Items", "Page Stack",
-            "Progress Bar", "Radio Button", "Slider", "Switch", "TextField"
+            "Progress Bar", "Radio Button", "Slider", "Switch", "TextField", "Typography"
     ]
 
     property string selectedComponent: components[0]
