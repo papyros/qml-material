@@ -35,8 +35,10 @@ ButtonStyle {
 
         radius: units.dp(2)
 
+        property int controlElevation: control.hasOwnProperty("elevation") ? control.elevation : 1
+
         elevation: {
-            var elevation = control.hasOwnProperty("elevation") ? control.elevation : 1
+            var elevation = controlElevation
 
             if (elevation > 0 && (control.focus || mouseArea.currentCircle))
                 elevation++;
@@ -52,7 +54,7 @@ ButtonStyle {
 
         property string context: control.hasOwnProperty("context") ? control.context : "default"
 
-        backgroundColor: (control.enabled || elevation === 0)  
+        backgroundColor: control.enabled || controlElevation === 0
                 ? control.hasOwnProperty("backgroundColor") ? button.backgroundColor
                                                             : "transparent"
                 : darkBackground ? Qt.rgba(1, 1, 1, 0.12)

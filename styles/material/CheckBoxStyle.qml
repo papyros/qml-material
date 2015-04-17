@@ -42,11 +42,14 @@ CheckBoxStyle {
 
             anchors.centerIn: parent
 
+            property bool darkBackground: control.hasOwnProperty("darkBackground")
+            ? control.darkBackground : false
+
             style: "button"
-            color: control.enabled ? style.darkBackground ? Theme.dark.textColor
-                                                            : Theme.light.textColor
-                                   : style.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                            : Theme.alpha("#000", 0.26)
+            color: control.enabled ? darkBackground ? Theme.dark.textColor
+                                                    : Theme.light.textColor
+                                   : darkBackground ? Theme.alpha("#fff", 0.30)
+                                                    : Theme.alpha("#000", 0.26)
             text: control.text
         }
     }
