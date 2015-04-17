@@ -23,8 +23,8 @@ Object {
     id: device
 
     //some kind of enum, by screen size
-    property int type
-    
+    property int type: desktop
+
     readonly property int phone: 0
     readonly property int phablet: 1
     readonly property int tablet: 2

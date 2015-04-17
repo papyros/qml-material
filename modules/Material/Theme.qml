@@ -38,7 +38,7 @@ Object {
        Material Design guidelines, this should normally be a 500 color from one of the color
        palettes at \l {http://www.google.com/design/spec/style/color.html#color-color-palette}.
      */
-    property color primaryColor: "#2196F3"
+    property color primaryColor: "#FAFAFA"
 
     /*!
        A darker version of the primary color used for the window titlebar (if client-side
@@ -48,7 +48,7 @@ Object {
        aplication's primary color, taken from one of the color palettes at
        \l {http://www.google.com/design/spec/style/color.html#color-color-palette}.
     */
-    property color primaryDarkColor: "#1976D2"
+    property color primaryDarkColor: Qt.rgba(0,0,0, 0.54)
 
     /*!
        The accent color complements the primary color, and is used for any primary action buttons
@@ -58,7 +58,7 @@ Object {
        complements the primary color palette at
        \l {http://www.google.com/design/spec/style/color.html#color-color-palette}.
     */
-    property color accentColor: "#009688"
+    property color accentColor: "#2196F3"
 
     /*!
        The default background color for the application.
