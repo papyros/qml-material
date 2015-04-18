@@ -37,7 +37,7 @@ Item {
             placeholderText: "Password"
             floatingLabel: true
 
-            input.echoMode: TextInput.Password
+            echoMode: TextInput.Password
 
             anchors.horizontalCenter: parent.horizontalCenter
         }

@@ -30,6 +30,7 @@ QML Material CHANGELOG
  * [ActionButton] Add support for the mini and default FAB sizes
  * [Dialog] Expose dialog buttons via aliases
  * Create separate styles for RadioButton and Slider
+ * [TextField] Port to QtQuick.Controls
 
 
 ### Version 0.0.6 (April 16, 2015)
