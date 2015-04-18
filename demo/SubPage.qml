@@ -22,6 +22,16 @@ Page {
         "Inbox"
     ]
 
+    actionBar {
+        customContent: TextField {
+            placeholderText: "Custom action bar content..."
+
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+       }
+    }
+
     // TabView is simply a customized ListView
     // You can use any model/delegate for the tab contents,
     // but a VisualItemModel works well

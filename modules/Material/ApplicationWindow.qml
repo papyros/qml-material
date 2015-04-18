@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Michael Spencer
+ * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -25,8 +25,7 @@ import Material 0.1
    \inqmlmodule Material 0.1
    \ingroup material
 
-   \brief A subclass of \l Window that provides some additional features for developing Applications
-   that conform to Material Design.
+   \brief A window that provides features commonly used for Material Design apps.
 
    This is normally what you should use as your root component. It provides a \l Toolbar and
    \l PageStack to provide access to standard features used by Material Design applications.
@@ -58,22 +57,32 @@ Controls.ApplicationWindow {
     id: app
 
     /*!
-       A grouped property that allows the application to customize the the primary color, the
-       primary dark color, and the accent color. See \l Theme for more details.
+       Set to \c true to include window decorations in your app's toolbar and hide
+       the regular window decorations header.
      */
-    property alias theme: __theme
+    property bool clientSideDecorations: false
 
     /*!
+       \qmlproperty Page initialPage
+
        The initial page shown when the application starts.
      */
     property alias initialPage: __pageStack.initialItem
 
     /*!
+       \qmlproperty PageStack pageStack
+
        The \l PageStack used for controlling pages and transitions between pages.
      */
     property alias pageStack: __pageStack
 
-    property bool clientSideDecorations: false
+    /*!
+       \qmlproperty AppTheme theme
+
+       A grouped property that allows the application to customize the the primary color, the
+       primary dark color, and the accent color. See \l Theme for more details.
+     */
+    property alias theme: __theme
 
     AppTheme {
         id: __theme
@@ -119,25 +128,30 @@ Controls.ApplicationWindow {
         if (clientSideDecorations)
             flags |= Qt.FramelessWindowHint
 
-      units.pixelDensity = Qt.binding( function() { return Screen.pixelDensity } );
-      Device.type = Qt.binding( function () {
-        var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) + Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
-        if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
-          units.multiplier = 1;
-          return Device.phone;
-        } else if (diagonal >= 5 && diagonal < 6.5) {
-          units.multiplier = 1;
-          return Device.phablet;
-        } else if (diagonal >= 6.5 && diagonal < 10.1) {
-          units.multiplier = 1;
-          return Device.tablet;
-        } else if (diagonal >= 10.1 && diagonal < 29) {
-          return Device.desktop;
-        } else if (diagonal >= 29 && diagonal < 92) {
-          return Device.tv;
-        } else {
-          return Device.unknown;
-        }
-      } );
+        units.pixelDensity = Qt.binding(function() { 
+            return Screen.pixelDensity
+        });
+
+        Device.type = Qt.binding(function () {
+            var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) + 
+                    Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
+            
+            if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
+                units.multiplier = 1;
+                return Device.phone;
+            } else if (diagonal >= 5 && diagonal < 6.5) {
+                units.multiplier = 1;
+                return Device.phablet;
+            } else if (diagonal >= 6.5 && diagonal < 10.1) {
+                units.multiplier = 1;
+                return Device.tablet;
+            } else if (diagonal >= 10.1 && diagonal < 29) {
+                return Device.desktop;
+            } else if (diagonal >= 29 && diagonal < 92) {
+                return Device.tv;
+            } else {
+                return Device.unknown;
+            }
+        });
     }
 }

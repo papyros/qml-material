@@ -3,7 +3,7 @@ Material Design implemented in QtQuick
 
 [![Join the chat at https://gitter.im/papyros/qml-material](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/papyros/qml-material?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![License](https://img.shields.io/badge/license-LGPLv3%2B-blue.svg)](https://img.shields.io/badge/license-LGPL%203%2B-blue.svg)
+[![License](https://img.shields.io/badge/license-LGPLv2.1%2B-blue.svg)](https://img.shields.io/badge/license-LGPL%203%2B-blue.svg)
 [![GitHub release](https://img.shields.io/github/release/papyros/qml-material.svg)](https://github.com/papyros/qml-material)
 [![Build Status](https://travis-ci.org/papyros/qml-material.svg?branch=develop)](https://travis-ci.org/papyros/qml-material)
 [![GitHub issues](https://img.shields.io/github/issues/papyros/qml-material.svg)](https://github.com/papyros/qml-material/issues)
@@ -30,4 +30,4 @@ Now checkout out the `examples` folder to see how to use Material Design from Qt
 
 ### Licensing
 
-QML Material is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+QML Material is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.

@@ -4,7 +4,6 @@ description = Material Design for QtQuick Documentation
 sourcedirs = ./
 sourcedirs += ../modules/Material/
 sourcedirs += ../modules/Material/ListItems
-sourcedirs += ../modules/Material/Transitions
 exampledirs += snippets
 imagedirs = images
 sources.fileextensions = "*.qml *.qdoc *.cpp"
