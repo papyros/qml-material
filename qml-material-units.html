@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>units | Material for QtQuick</title>
+  
+  <meta name="description" content="">
+
+  <link href="css/materialize.css"  
+        type="text/css" rel="stylesheet" media="screen,projection">
+
+  <link href="css/main.css"  
+        type="text/css" rel="stylesheet" media="screen,projection">
+
+</head>
+
+  <body>
+
+    <div class="navbar-fixed">
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo" 
+         style="font-family: Roboto; font-weight: 300;">
+        Material for QtQuick
+      </a>
+    </div>
+  </nav>
+</div>
+
+    <div class="container">
+		<br>
+		<h3 class="header">units</h3>
+	  	<div class="divider"></div>
+		<br>
+
+		Provides access to screen-independent units known as DPs (device-independent pixels). <a href="#description">More...</a>
+
+		<blockquote>
+			<code>import Material 0.1</code>
+		</blockquote>
+
+		<h5>Properties and Methods</h5>
+		
+		<ul>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#multiplier">multiplier : real</a>
+			</li>
+		
+
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#dp">dp(<i>number</i>)</a>
+			</li>
+		
+		</ul>
+
+		<h4 id="description">Detailed Description</h4>
+		<div class="divider"></div>
+
+		
+			
+            <p outputclass="brief">Provides access to screen-independent units known as DPs (device-independent pixels).</p>
+            <p>This singleton provides methods for building a user interface that automatically scales based on the screen density. Use the <a href="qml-material-units.dita#id-qml-method-units-dp">units::dp</a> function wherever you need to specify a screen size, and your app will automatically scale to any screen density.</p>
+            <p>Here is a short example:</p>
+            <blockquote><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">Material</span> <span class="mf">0.1</span>
+
+<span class="nx">Rectangle</span> <span class="p">{</span>
+    <span class="k">width:</span> <span class="nx">units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">height:</span> <span class="nx">units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+
+    <span class="nx">Label</span> <span class="p">{</span>
+        <span class="k">text:</span><span class="s2">"A"</span>
+        <span class="k">font.pixelSize:</span> <span class="nx">units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div></blockquote>
+        
+		
+
+		
+			<h4>Properties</h4>
+			<div class="divider"></div>
+		
+
+		
+
+			<h5 id="multiplier">multiplier : real</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+		
+			<h4>Methods</h4>
+			<div class="divider"></div>
+		
+
+		
+
+			<h5 id="dp">dp(<i>number</i>)</h5>
+
+			
+				
+                <p>This is the standard function to use for accessing device-independent pixels. You should use this anywhere you need to refer to distances on the screen.</p>
+            
+			
+		
+
+		<br/>
+    </div>
+
+    <footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Material for QtQuick</h5>
+        <p class="grey-text text-lighten-4"></p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Resources</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="https://github.com/papyros">GitHub organization</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://plus.google.com/113262712329378697012">Follow us on Google+</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://groups.google.com/forum/#!forum/papyros">Join our mailing list</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2015 Papyros
+    <a class="grey-text text-lighten-4 right" href="https://github.com/papyros/qml-material">LGPLv3+ license</a>
+    </div>
+  </div>
+
+</footer>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/materialize.js"></script>
+
+  </body>
+
+</html>

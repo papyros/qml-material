@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Page | Material for QtQuick</title>
+  
+  <meta name="description" content="">
+
+  <link href="css/materialize.css"  
+        type="text/css" rel="stylesheet" media="screen,projection">
+
+  <link href="css/main.css"  
+        type="text/css" rel="stylesheet" media="screen,projection">
+
+</head>
+
+  <body>
+
+    <div class="navbar-fixed">
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo" 
+         style="font-family: Roboto; font-weight: 300;">
+        Material for QtQuick
+      </a>
+    </div>
+  </nav>
+</div>
+
+    <div class="container">
+		<br>
+		<h3 class="header">Page</h3>
+	  	<div class="divider"></div>
+		<br>
+
+		Brief description... <a href="#description">More...</a>
+
+		<blockquote>
+			<code>import Material 0.1</code>
+		</blockquote>
+
+		<h5>Properties and Methods</h5>
+		
+		<ul>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#actionBar">actionBar : alias</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#actions">actions : <a href="qml-material-action.dita">Action</a>
+                </a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#backAction">backAction : <a href="qml-material-action.dita">Action</a>
+                </a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#backgroundColor">backgroundColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#rightSidebar">rightSidebar : Item</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#selectedTab">selectedTab : int</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#tabs">tabs : var</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#title">title : string</a>
+			</li>
+		
+
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#pop">pop()</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#push">push(<i>component</i>, <i>properties</i>)</a>
+			</li>
+		
+		</ul>
+
+		<h4 id="description">Detailed Description</h4>
+		<div class="divider"></div>
+
+		
+			
+            <p outputclass="brief">Brief description...</p>
+            <p>Details...</p>
+            <blockquote><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">Material</span> <span class="mf">0.1</span>
+
+<span class="nx">Page</span> <span class="p">{</span>
+    <span class="k">title:</span> <span class="s2">"Application Name"</span>
+
+    <span class="k">actions:</span> <span class="p">[</span>
+        <span class="nx">Action</span> <span class="p">{</span>
+            <span class="k">name:</span> <span class="s2">"Print"</span>
+
+            <span class="c1">// Icon name from the Google Material Design icon pack</span>
+            <span class="k">iconName:</span> <span class="s2">"action/print"</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+
+    <span class="nx">actionBar</span> <span class="p">{</span>
+        <span class="c1">// Set a custom background color, if you don't want to use</span>
+        <span class="c1">// the theme's primary color</span>
+        <span class="k">backgroundColor:</span> <span class="nx">Palette</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">red</span><span class="p">[</span><span class="s2">"500"</span><span class="p">]</span>
+
+        <span class="c1">// You can also set a custom content view instead of the title</span>
+        <span class="k">customContent:</span> <span class="nx">TextField</span> <span class="p">{</span>
+            <span class="k">placeholderText:</span> <span class="s2">"Search..."</span>
+            <span class="nx">anchors</span> <span class="p">{</span>
+                <span class="k">left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
+                <span class="k">right:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">right</span>
+                <span class="k">verticalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">verticalCenter</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div></blockquote>
+        
+		
+
+		
+			<h4>Properties</h4>
+			<div class="divider"></div>
+		
+
+		
+
+			<h5 id="actionBar">actionBar : alias</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="actions">actions : <a href="qml-material-action.dita">Action</a>
+                </h5>
+
+			
+				
+                <p>The page's actions shown in the action bar.</p>
+            
+			
+		
+
+			<h5 id="backAction">backAction : <a href="qml-material-action.dita">Action</a>
+                </h5>
+
+			
+				
+                <p>The action shown to the left of the title in the action bar. By default, this is a back button which shows when there is a page behind the current page in the page stack. However, you can replace it with your own action, for example, an icon to open a navigation drawer when on your root page.</p>
+            
+			
+		
+
+			<h5 id="backgroundColor">backgroundColor : color</h5>
+
+			
+				
+                <p>The background color of the page. Defaults to the global background color defined in <a href="qml-material-theme.dita#id-qml-property-backgroundColor">Theme::backgroundColor</a></p>
+            
+			
+		
+
+			<h5 id="rightSidebar">rightSidebar : Item</h5>
+
+			
+				
+                <p>A sidebar to show on the right of the page. This will have its own action bar and title, which will split the toolbar into two action bars.</p>
+            
+			
+		
+
+			<h5 id="selectedTab">selectedTab : int</h5>
+
+			
+				
+                <p>The index of the selected tab. This will be an index from the <a href="qml-material-page.dita#id-qml-property-tabs">tabs</a> property.</p>
+            
+			
+		
+
+			<h5 id="tabs">tabs : var</h5>
+
+			
+				
+                <p>An array of tab titles displayed under the page title in the action bar. Each item can either be a simple string or a Javascript object with a title property and an optional icon property with the name of an icon from the Google Material Design icon collection.</p>
+                <p>The following example highlights the different available tab items:</p>
+                <blockquote><div class="highlight"><pre><span class="k">tabs:</span> <span class="p">[</span>
+    <span class="c1">// Each tab can have text and an icon</span>
+    <span class="p">{</span>
+        <span class="k">text:</span> <span class="s2">"Overview"</span><span class="p">,</span>
+        <span class="k">icon:</span> <span class="s2">"action/home"</span>
+    <span class="p">},</span>
+
+    <span class="c1">// You can also leave out the icon</span>
+    <span class="p">{</span>
+        <span class="k">text:</span><span class="s2">"Projects"</span><span class="p">,</span>
+    <span class="p">},</span>
+
+    <span class="c1">// Or just simply use a string</span>
+    <span class="s2">"Inbox"</span>
+<span class="p">]</span>
+</pre></div></blockquote>
+            
+			
+		
+
+			<h5 id="title">title : string</h5>
+
+			
+				
+                <p>The title of the page shown in the action bar.</p>
+            
+			
+		
+
+		
+			<h4>Methods</h4>
+			<div class="divider"></div>
+		
+
+		
+
+			<h5 id="pop">pop()</h5>
+
+			
+				
+                <p>Pop this page from the page stack. This does nothing if this page is not the current page on the page stack.</p>
+            
+			
+		
+
+			<h5 id="push">push(<i>component</i>, <i>properties</i>)</h5>
+
+			
+				
+                <p>Push the specified component onto the page stack.</p>
+            
+			
+		
+
+		<br/>
+    </div>
+
+    <footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Material for QtQuick</h5>
+        <p class="grey-text text-lighten-4"></p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Resources</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="https://github.com/papyros">GitHub organization</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://plus.google.com/113262712329378697012">Follow us on Google+</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://groups.google.com/forum/#!forum/papyros">Join our mailing list</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2015 Papyros
+    <a class="grey-text text-lighten-4 right" href="https://github.com/papyros/qml-material">LGPLv3+ license</a>
+    </div>
+  </div>
+
+</footer>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/materialize.js"></script>
+
+  </body>
+
+</html>

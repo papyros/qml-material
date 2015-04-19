@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Theme | Material for QtQuick</title>
+  
+  <meta name="description" content="">
+
+  <link href="css/materialize.css"  
+        type="text/css" rel="stylesheet" media="screen,projection">
+
+  <link href="css/main.css"  
+        type="text/css" rel="stylesheet" media="screen,projection">
+
+</head>
+
+  <body>
+
+    <div class="navbar-fixed">
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo" 
+         style="font-family: Roboto; font-weight: 300;">
+        Material for QtQuick
+      </a>
+    </div>
+  </nav>
+</div>
+
+    <div class="container">
+		<br>
+		<h3 class="header">Theme</h3>
+	  	<div class="divider"></div>
+		<br>
+
+		Provides access to standard colors that follow the Material Design specification. <a href="#description">More...</a>
+
+		<blockquote>
+			<code>import Material 0.1</code>
+		</blockquote>
+
+		<h5>Properties and Methods</h5>
+		
+		<ul>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#accentColor">accentColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#backgroundColor">backgroundColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#dark">dark : <a href="qml-material-themepalette.dita">ThemePalette</a>
+                </a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#light">light : <a href="qml-material-themepalette.dita">ThemePalette</a>
+                </a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#primaryColor">primaryColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#primaryDarkColor">primaryDarkColor : color</a>
+			</li>
+		
+
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#alpha">alpha(<i>color</i>, <i>alpha</i>)</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#isDarkColor">isDarkColor(<i>background</i>)</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#lightDark">lightDark(<i>background</i>, <i>lightColor</i>, <i>darkColor</i>)</a>
+			</li>
+		
+		</ul>
+
+		<h4 id="description">Detailed Description</h4>
+		<div class="divider"></div>
+
+		
+			
+            <p outputclass="brief">Provides access to standard colors that follow the Material Design specification.</p>
+            <p>See <a href="http://www.google.com/design/spec/style/color.html#color-ui-color-application" scope="external">http://www.google.com/design/spec/style/color.html#color-ui-color-application</a> for details about choosing a color scheme for your application.</p>
+        
+		
+
+		
+			<h4>Properties</h4>
+			<div class="divider"></div>
+		
+
+		
+
+			<h5 id="accentColor">accentColor : color</h5>
+
+			
+				
+                <p>The accent color complements the primary color, and is used for any primary action buttons along with switches, sliders, and other components that do not specifically set a color. This can be customized via the <a href="qml-material-applicationwindow.dita#id-qml-property-theme">ApplicationWindow::theme</a> group property. According to the Material Design guidelines, this should taken from a second color palette that complements the primary color palette at <a href="http://www.google.com/design/spec/style/color.html#color-color-palette" scope="external">http://www.google.com/design/spec/style/color.html#color-color-palette</a>.</p>
+            
+			
+		
+
+			<h5 id="backgroundColor">backgroundColor : color</h5>
+
+			
+				
+                <p>The default background color for the application.</p>
+            
+			
+		
+
+			<h5 id="dark">dark : <a href="qml-material-themepalette.dita">ThemePalette</a>
+                </h5>
+
+			
+				
+                <p>Standard colors specifically meant for dark surfaces. This includes text colors along with a dark version of the accent color.</p>
+            
+			
+		
+
+			<h5 id="light">light : <a href="qml-material-themepalette.dita">ThemePalette</a>
+                </h5>
+
+			
+				
+                <p>Standard colors specifically meant for light surfaces. This includes text colors along with a light version of the accent color.</p>
+            
+			
+		
+
+			<h5 id="primaryColor">primaryColor : color</h5>
+
+			
+				
+                <p>The primary color used for the toolbar background unless a page specifies its own color. This can be customized via the <a href="qml-material-applicationwindow.dita#id-qml-property-theme">ApplicationWindow::theme</a> group property. According to the Material Design guidelines, this should normally be a 500 color from one of the color palettes at <a href="http://www.google.com/design/spec/style/color.html#color-color-palette" scope="external">http://www.google.com/design/spec/style/color.html#color-color-palette</a>.</p>
+            
+			
+		
+
+			<h5 id="primaryDarkColor">primaryDarkColor : color</h5>
+
+			
+				
+                <p>A darker version of the primary color used for the window titlebar (if client-side decorations are not used), unless a <a href="qml-material-page.dita">Page</a> specifies its own primary and primary dark colors. This can be customized via the <a href="qml-material-applicationwindow.dita#id-qml-property-theme">ApplicationWindow::theme</a> group property. According to the Material Design guidelines, this should normally be the 700 color version of your aplication's primary color, taken from one of the color palettes at <a href="http://www.google.com/design/spec/style/color.html#color-color-palette" scope="external">http://www.google.com/design/spec/style/color.html#color-color-palette</a>.</p>
+            
+			
+		
+
+		
+			<h4>Methods</h4>
+			<div class="divider"></div>
+		
+
+		
+
+			<h5 id="alpha">alpha(<i>color</i>, <i>alpha</i>)</h5>
+
+			
+				
+                <p>A utility method for changing the alpha on colors. Returns a new object, and does not modify the original color at all.</p>
+            
+			
+		
+
+			<h5 id="isDarkColor">isDarkColor(<i>background</i>)</h5>
+
+			
+				
+                <p>Returns true if the color is dark and should have light content on top</p>
+            
+			
+		
+
+			<h5 id="lightDark">lightDark(<i>background</i>, <i>lightColor</i>, <i>darkColor</i>)</h5>
+
+			
+				
+                <p>Select a color depending on whether the background is light or dark.</p>
+                <p>
+                    <tt>lightColor</tt> is the color used on a light background.</p>
+                <p>
+                    <tt>darkColor</tt> is the color used on a dark background.</p>
+            
+			
+		
+
+		<br/>
+    </div>
+
+    <footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Material for QtQuick</h5>
+        <p class="grey-text text-lighten-4"></p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Resources</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="https://github.com/papyros">GitHub organization</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://plus.google.com/113262712329378697012">Follow us on Google+</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://groups.google.com/forum/#!forum/papyros">Join our mailing list</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2015 Papyros
+    <a class="grey-text text-lighten-4 right" href="https://github.com/papyros/qml-material">LGPLv3+ license</a>
+    </div>
+  </div>
+
+</footer>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/materialize.js"></script>
+
+  </body>
+
+</html>

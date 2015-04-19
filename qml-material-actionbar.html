@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ActionBar | Material for QtQuick</title>
+  
+  <meta name="description" content="">
+
+  <link href="css/materialize.css"  
+        type="text/css" rel="stylesheet" media="screen,projection">
+
+  <link href="css/main.css"  
+        type="text/css" rel="stylesheet" media="screen,projection">
+
+</head>
+
+  <body>
+
+    <div class="navbar-fixed">
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo" 
+         style="font-family: Roboto; font-weight: 300;">
+        Material for QtQuick
+      </a>
+    </div>
+  </nav>
+</div>
+
+    <div class="container">
+		<br>
+		<h3 class="header">ActionBar</h3>
+	  	<div class="divider"></div>
+		<br>
+
+		An action bar holds the title and actions displayed in the application toolbar. <a href="#description">More...</a>
+
+		<blockquote>
+			<code>import Material 0.1</code>
+		</blockquote>
+
+		<h5>Properties and Methods</h5>
+		
+		<ul>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#actions">actions : <a href="qml-material-action.dita">Action</a>
+                </a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#backAction">backAction : <a href="qml-material-action.dita">Action</a>
+                </a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#backgroundColor">backgroundColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#customContent">customContent : Item</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#elevation">elevation : int</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#extendedContent">extendedContent : Item</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#hidden">hidden : bool</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#maxActionCount">maxActionCount : int</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#title">title : string</a>
+			</li>
+		
+
+		
+		</ul>
+
+		<h4 id="description">Detailed Description</h4>
+		<div class="divider"></div>
+
+		
+			
+            <p outputclass="brief">An action bar holds the title and actions displayed in the application toolbar.</p>
+            <p>The reason this exists separately from Toolbar is for animation purposes. Each page contains its own <tt>ActionBar</tt>, and when the application transitions between pages, the toolbar animates the transition between action bars.</p>
+            <p>Normally, you don't need to manually create an instance of this class, and just use the instance provided by the page. See the example in the <a href="qml-material-page.dita">Page</a> documentation for more details.</p>
+        
+		
+
+		
+			<h4>Properties</h4>
+			<div class="divider"></div>
+		
+
+		
+
+			<h5 id="actions">actions : <a href="qml-material-action.dita">Action</a>
+                </h5>
+
+			
+				
+                <p>A list of actions to show in the action bar. These actions will be shown anchored to the right, and will overflow if there are more than the maximum number of actions as defined in <a href="qml-material-actionbar.dita#id-qml-property-maxActionCount">maxActionCount</a>.</p>
+                <p>When used with a page, the actions will be set to the page's <a href="qml-material-page.dita#id-qml-property-actions">Page::actions</a> property, so set that instead of changing this directly.</p>
+            
+			
+		
+
+			<h5 id="backAction">backAction : <a href="qml-material-action.dita">Action</a>
+                </h5>
+
+			
+				
+                <p>The back action to display to the left of the title in the action bar. When used with a page, this will pick up the page's back action, which by default is a back arrow when there is a page behind the current page on the page stack. However, you can customize this, for example, to show a navigation drawer at the root of your app.</p>
+                <p>When using an action bar in a page, set the <a href="qml-material-page.dita#id-qml-property-backAction">Page::backAction</a> instead of directly setting this property.</p>
+            
+			
+		
+
+			<h5 id="backgroundColor">backgroundColor : color</h5>
+
+			
+				
+                <p>The background color for the toolbar when the action bar's page is active. By default this is the primary color defined in <a href="qml-material-theme.dita#id-qml-property-primaryColor">Theme::primaryColor</a></p>
+            
+			
+		
+
+			<h5 id="customContent">customContent : Item</h5>
+
+			
+				
+                <p>A custom view to show instead of the title in the action bar.</p>
+            
+			
+		
+
+			<h5 id="elevation">elevation : int</h5>
+
+			
+				
+                <p>The elevation of the action bar. Set to 0 if you want have a header or some other view below the action bar that you want to appear as part of the action bar.</p>
+            
+			
+		
+
+			<h5 id="extendedContent">extendedContent : Item</h5>
+
+			
+				
+                <p>A custom view to show under the row containing the title and actions. Causes the action bar to be extend in height to contain this view.</p>
+            
+			
+		
+
+			<h5 id="hidden">hidden : bool</h5>
+
+			
+				
+                <p>Set to true to hide the action bar. This is used when displaying an action bar in a toolbar through the use of a page and the page stack. If you are using an action bar for custom purposes, set the opacity or visibility instead.</p>
+            
+			
+		
+
+			<h5 id="maxActionCount">maxActionCount : int</h5>
+
+			
+				
+                <p>The maximum number of actions that can be displayed before they spill over into a drop-down menu. When using an action bar with a page, this inherits from the global <a href="qml-toolbar.dita#id-qml-property-maxActionCount">Toolbar::maxActionCount</a>. If you are using an action bar for custom purposes outside of a toolbar, this defaults to <tt>3</tt>.</p>
+            
+			
+		
+
+			<h5 id="title">title : string</h5>
+
+			
+				
+                <p>The title displayed in the action bar. When used in a page, the title will be set to the title of the page, so set the <a href="qml-material-page.dita#id-qml-property-title">Page::title</a> property instead of changing this directly.</p>
+            
+			
+		
+
+		
+
+		
+
+		<br/>
+    </div>
+
+    <footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Material for QtQuick</h5>
+        <p class="grey-text text-lighten-4"></p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Resources</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="https://github.com/papyros">GitHub organization</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://plus.google.com/113262712329378697012">Follow us on Google+</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://groups.google.com/forum/#!forum/papyros">Join our mailing list</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2015 Papyros
+    <a class="grey-text text-lighten-4 right" href="https://github.com/papyros/qml-material">LGPLv3+ license</a>
+    </div>
+  </div>
+
+</footer>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/materialize.js"></script>
+
+  </body>
+
+</html>
