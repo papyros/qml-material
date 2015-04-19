@@ -22,7 +22,6 @@ import Material.Extras 0.1
 /*!
    \qmltype Tooltip
    \inqmlmodule Material 0.1
-   \ingroup material
 
    \brief A tooltip is a label that appears on hover and explains a non-text UI element.
 

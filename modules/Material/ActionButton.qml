@@ -24,7 +24,6 @@ import QtGraphicalEffects 1.0
 /*!
    \qmltype ActionBar
    \inqmlmodule Material 0.1
-   \ingroup material
 
    \brief A floating action button.
 

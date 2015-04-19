@@ -20,27 +20,29 @@ import Material 0.1
 import "ListItems" as ListItem
 
 /*!
-    \qmltype Sidebar
-    \brief A sidebar component for use in adaptive layouts
+   \qmltype Sidebar
+   \inqmlmodule Material 0.1
 
-    To use, simply add an instance to your code, and anchor other components to it.
+   \brief A sidebar component for use in adaptive layouts
 
-    To show or hide, set the expanded property.
+   To use, simply add an instance to your code, and anchor other components to it.
 
-    By default, the sidebar has a flickable built in, and whatever contents are added
-    will be placed in the flickable. When you want this disabled, or want to fill the
-    entire sidebar, set the autoFill property to false.
+   To show or hide, set the expanded property.
 
-    Examples:
-    \qml
-        property bool wideAspect: width > units.gu(80)
+   By default, the sidebar has a flickable built in, and whatever contents are added
+   will be placed in the flickable. When you want this disabled, or want to fill the
+   entire sidebar, set the autoFill property to false.
 
-        Sidebar {
-            expanded: wideAspect
+   Examples:
+   \qml
+       property bool wideAspect: width > units.gu(80)
 
-            // Anchoring is automatic
-        }
-    \endqml
+       Sidebar {
+           expanded: wideAspect
+
+           // Anchoring is automatic
+       }
+   \endqml
 */
 View {
     id: root

@@ -24,7 +24,6 @@ import Material 0.1
 /*!
    \qmltype ProgressBar
    \inqmlmodule Material
-   \ingroup material
 
    \brief Visual indicator of progress in some operation.
 */

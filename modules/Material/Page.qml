@@ -23,7 +23,6 @@ import Material 0.1
 /*!
    \qmltype ActionBar
    \inqmlmodule Material 0.1
-   \ingroup material
 
    \brief Brief description...
 

@@ -14,6 +14,7 @@ QML Material CHANGELOG
  * [RadioButton] Improve selection support
  * [Demo] Update radio button demo with grouping
 
+
 ### Version 0.0.6 (April 16, 2015)
 
  * Add a ProgressCircle component following the Google spec
@@ -50,6 +51,7 @@ QML Material CHANGELOG
 
 
 ### Version 0.0.4 (February 20, 2015)
+
  * Hide the CSD window controls when client-side decorations are disabled
  * Improve the dialog component to better follow Material Design
  * Add the Material Design Checkbox component

@@ -20,7 +20,6 @@
 /*!
    \qmltype Action
    \inqmlmodule Material 0.1
-   \ingroup material
 
    \brief Represents an action shown in an action bar, context menu, or list.
 

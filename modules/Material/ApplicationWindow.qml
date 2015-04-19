@@ -23,7 +23,6 @@ import Material 0.1
 /*!
    \qmltype ApplicationWindow
    \inqmlmodule Material 0.1
-   \ingroup material
 
    \brief A window that provides features commonly used for Material Design apps.
 

@@ -22,7 +22,6 @@ pragma Singleton
 /*!
    \qmltype Theme
    \inqmlmodule Material 0.1
-   \ingroup material
 
    \brief Provides access to standard colors that follow the Material Design specification.
 

@@ -6,7 +6,7 @@ install:
   - sudo add-apt-repository -y ppa:beineri/opt-qt532
   - sudo apt-get update
   - sudo apt-get -y install qt53declarative
-  - sudo apt-get -y install pep8 pyflakes
+  - sudo apt-get -y install pep8 pyflakes python python-pip
   - sudo apt-get -y install qt53quickcontrols qt53graphicaleffects
   - sudo apt-get -y install qt53tools
 
@@ -17,11 +17,27 @@ before_script:
   - qmake
   - sudo make install
   - popd
+  - git clone git://github.com/papyros/docmaker.git
+  - sudo pip install -r docmaker/requirements.txt
+  - export PATH=$PATH:$(pwd)/docmaker
 
 script:
   - source /opt/qt53/bin/qt53-env.sh
   - qmake
   - make check
+  - ./build_docs.sh
+
+after_success:
+  - ./deploy.sh
 
 notifications:
   slack: papyros:Z7PeY2Y4mh0GWPoypZZNLd3D
+
+# The encryption label is the unique key used in the environment
+# variables set up when calling `travis encrypt-file` on the SSH key
+env:
+  global:
+    - ENCRYPTION_LABEL="a0d7d9cd7ef9"
+    - GIT_NAME="Travis CI"
+    - GIT_EMAIL="sonrisesoftware@gmail.com"
+    - SOURCE_BRANCH="develop"
