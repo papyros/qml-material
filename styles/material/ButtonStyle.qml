@@ -21,6 +21,8 @@ import QtQuick.Controls.Styles 1.3
 import Material 0.1
 
 ButtonStyle {
+    id: style
+
     padding {
         left: 0
         right: 0
@@ -29,15 +31,14 @@ ButtonStyle {
     }
 
     property bool darkBackground: control.hasOwnProperty("darkBackground") 
-                ? control.darkBackground : Theme.isDarkColor(backgroundColor)
+                ? control.darkBackground : Theme.isDarkColor(controlBackground)
 
     property int controlElevation: control.hasOwnProperty("elevation") ? control.elevation : 1
 
-    property color backgroundColor: control.enabled || controlElevation === 0
-                ? control.hasOwnProperty("backgroundColor") ? button.backgroundColor
-                                                            : "transparent"
-                : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
-                                 : Qt.rgba(0, 0, 0, 0.12)
+    property color controlBackground: control.hasOwnProperty("backgroundColor") 
+            ? control.backgroundColor : "transparent"
+
+    property string context: control.hasOwnProperty("context") ? control.context : "default"
 
     background: View {
         id: background
@@ -45,6 +46,11 @@ ButtonStyle {
         implicitHeight: units.dp(36)
 
         radius: units.dp(2)
+
+        backgroundColor: control.enabled || controlElevation === 0 
+                ? controlBackground
+                : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
+                                 : Qt.rgba(0, 0, 0, 0.12)
 
         elevation: {
             var elevation = controlElevation
@@ -57,8 +63,6 @@ ButtonStyle {
 
             return elevation;
         }
-
-        property string context: control.hasOwnProperty("context") ? control.context : "default"
 
         tintColor: mouseArea.currentCircle || control.focus || control.hovered
            ? Qt.rgba(0,0,0, mouseArea.currentCircle ? 0.1
@@ -84,9 +88,6 @@ ButtonStyle {
         }
     }
     label: Item {
-        property string context: control.hasOwnProperty("context") ? control.context : "default"
-
-
         implicitHeight: Math.max(units.dp(36), label.height + units.dp(16))
         implicitWidth: context == "dialog" 
                 ? Math.max(units.dp(64), label.width + units.dp(16))
