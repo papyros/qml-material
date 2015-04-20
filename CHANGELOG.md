@@ -4,7 +4,7 @@ QML Material CHANGELOG
  * Initial work on a QtQuick.Controls theme
  * [Demo] Add a Typography section to the demo
  * [Button] Properly handle dark background for flat buttons
-
+ * [Tabs] Allow switching tabs programmatically in a page
 
 ### Version 0.0.6 (April 16, 2015)
 

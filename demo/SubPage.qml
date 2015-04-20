@@ -40,6 +40,13 @@ Page {
             width: tabView.width
             height: tabView.height
             color: "green"
+
+            Button {
+                anchors.centerIn: parent
+                darkBackground: true
+                text: "Go to tab 3"
+                onClicked: page.selectedTab = 2
+            }
         }
 
         // Tab 2 "Projects"

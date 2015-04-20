@@ -81,6 +81,17 @@ View {
             page.selectedTab = selectedTab
     }
 
+    Connections {
+        target: page
+
+        // Ignore errors when the page is invalid or null
+        ignoreUnknownSignals: true
+
+        onSelectedTabChanged: {
+            toolbar.selectedTab = page.selectedTab
+        }
+    }
+
     function pop() {
         stack.pop()
 
