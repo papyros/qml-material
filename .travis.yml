@@ -3,15 +3,15 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 
 install:
-  - sudo add-apt-repository -y ppa:beineri/opt-qt532
+  - sudo add-apt-repository -y ppa:beineri/opt-qt541
   - sudo apt-get update
-  - sudo apt-get -y install qt53declarative
-  - sudo apt-get -y install pep8 pyflakes python python-pip
-  - sudo apt-get -y install qt53quickcontrols qt53graphicaleffects
-  - sudo apt-get -y install qt53tools
+  - sudo apt-get -y install pep8 pyflakes python python-pip npm
+  - sudo apt-get -y install qt54declarative
+  - sudo apt-get -y install qt54quickcontrols qt54graphicaleffects
+  - sudo apt-get -y install qt54tools
 
 before_script:
-  - source /opt/qt53/bin/qt53-env.sh
+  - source /opt/qt54/bin/qt54-env.sh
   - git clone git://github.com/papyros/qml-extras.git
   - pushd qml-extras
   - qmake
@@ -19,12 +19,14 @@ before_script:
   - popd
   - git clone git://github.com/papyros/docmaker.git
   - sudo pip install -r docmaker/requirements.txt
+  - npm install -g jslint
   - export PATH=$PATH:$(pwd)/docmaker
 
 script:
-  - source /opt/qt53/bin/qt53-env.sh
+  - source /opt/qt54/bin/qt54-env.sh
   - qmake
   - make check
+  - ./lint.sh
   - ./build_docs.sh
 
 after_success:
