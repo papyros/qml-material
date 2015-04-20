@@ -28,14 +28,23 @@ ButtonStyle {
         bottom: 0
     }
 
+    property bool darkBackground: control.hasOwnProperty("darkBackground") 
+                ? control.darkBackground : Theme.isDarkColor(backgroundColor)
+
+    property int controlElevation: control.hasOwnProperty("elevation") ? control.elevation : 1
+
+    property color backgroundColor: control.enabled || controlElevation === 0
+                ? control.hasOwnProperty("backgroundColor") ? button.backgroundColor
+                                                            : "transparent"
+                : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
+                                 : Qt.rgba(0, 0, 0, 0.12)
+
     background: View {
         id: background
 
         implicitHeight: units.dp(36)
 
         radius: units.dp(2)
-
-        property int controlElevation: control.hasOwnProperty("elevation") ? control.elevation : 1
 
         elevation: {
             var elevation = controlElevation
@@ -49,16 +58,7 @@ ButtonStyle {
             return elevation;
         }
 
-        property bool darkBackground: control.hasOwnProperty("darkBackground") 
-                ? control.darkBackground : false
-
         property string context: control.hasOwnProperty("context") ? control.context : "default"
-
-        backgroundColor: control.enabled || controlElevation === 0
-                ? control.hasOwnProperty("backgroundColor") ? button.backgroundColor
-                                                            : "transparent"
-                : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
-                                 : Qt.rgba(0, 0, 0, 0.12)
 
         tintColor: mouseArea.currentCircle || control.focus || control.hovered
            ? Qt.rgba(0,0,0, mouseArea.currentCircle ? 0.1
@@ -99,7 +99,8 @@ ButtonStyle {
             text: control.text
             style: "button"
             color: control.enabled ? control.hasOwnProperty("textColor")
-                                     ? control.textColor : Theme.light.textColor 
+                                     ? control.textColor : darkBackground ? Theme.dark.textColor
+                                                                          : Theme.light.textColor
                     : control.darkBackground ? Qt.rgba(1, 1, 1, 0.30)
                                              : Qt.rgba(0, 0, 0, 0.26)
         }

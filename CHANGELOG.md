@@ -3,6 +3,8 @@ QML Material CHANGELOG
 
  * Initial work on a QtQuick.Controls theme
  * [Demo] Add a Typography section to the demo
+ * [Button] Properly handle dark background for flat buttons
+
 
 ### Version 0.0.6 (April 16, 2015)
 

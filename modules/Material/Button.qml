@@ -25,15 +25,14 @@ Controls.Button {
 
     property int elevation
     property color backgroundColor: elevation > 0 ? "white" : "transparent"
-    property color textColor: Theme.lightDark(button.backgroundColor,
-                                              Theme.light.textColor,
-                                              Theme.dark.textColor)
+    property color textColor: darkBackground ? Theme.dark.textColor : Theme.light.textColor
+
     property string context: "default" // or "dialog" or "snackbar"
 
     /*!
        Set to \c true if the button is on a dark background
      */
-    property bool darkBackground
+    property bool darkBackground: Theme.isDarkColor(backgroundColor)
 
     style: MaterialStyle.ButtonStyle {}
 }

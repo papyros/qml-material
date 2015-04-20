@@ -102,14 +102,7 @@ Object {
        \c darkColor is the color used on a dark background.
      */
     function lightDark(background, lightColor, darkColor) {
-        var temp = Qt.darker(background, 1)
-
-        var a = 1 - ( 0.299 * temp.r + 0.587 * temp.g + 0.114 * temp.b);
-
-        if (temp.a === 0 || a < 0.3)
-            return lightColor
-        else
-            return darkColor
+        return isDarkColor(background) ? darkColor : lightColor
     }
 
     /*!
@@ -120,7 +113,7 @@ Object {
 
         var a = 1 - ( 0.299 * temp.r + 0.587 * temp.g + 0.114 * temp.b);
 
-        return temp.a >= 0 && a >= 0.3
+        return temp.a > 0 && a >= 0.3
     }
 
     // TODO: Load all the fonts!
