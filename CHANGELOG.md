@@ -11,6 +11,7 @@ QML Material CHANGELOG
  * [Demo] Display all the Material Design icons in the Icons demo
  * Move the QtQuick.Controls style into the modules directory
  * [Icon] Update the FontAwesome icon table
+ * [RadioButton] Improve selection support
 
 ### Version 0.0.6 (April 16, 2015)
 
