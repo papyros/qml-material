@@ -39,7 +39,7 @@ Page {
         Rectangle {
             width: tabView.width
             height: tabView.height
-            color: "green"
+            color: Palette.colors.red["200"]
 
             Button {
                 anchors.centerIn: parent
@@ -53,14 +53,14 @@ Page {
         Rectangle {
             width: tabView.width
             height: tabView.height
-            color: "orange"
+            color: Palette.colors.purple["200"]
         }
 
         // Tab 3 "Inbox"
         Rectangle {
             width: tabView.width
             height: tabView.height
-            color: "purple"
+            color: Palette.colors.orange["200"]
         }
     }
 }
