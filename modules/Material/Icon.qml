@@ -37,6 +37,8 @@ Item {
     property bool valid: name.indexOf("awesome") == 0 
             ? awesomeIcon.valid : image.status == Image.Ready
 
+    property url iconDirectory: Qt.resolvedUrl("icons")
+
     width: size
     height: size
 

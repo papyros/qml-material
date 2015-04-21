@@ -8,6 +8,7 @@ QML Material CHANGELOG
  * [Demo] Organize the different demos into tabs
  * [Tabs] Implement the MD spec for coloring tab text
  * [Icon] Add a valid property to Icon and AwesomeIcon
+ * [Demo] Display all the Material Design icons in the Icons demo
 
 ### Version 0.0.6 (April 16, 2015)
 

@@ -13,7 +13,7 @@ ApplicationWindow {
     }
 
     property var styles: [
-            "Icon", "Color Palette", "Typography"
+            "Icons", "Color Palette", "Typography"
     ]
 
     property var basicComponents: [
