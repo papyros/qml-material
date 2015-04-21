@@ -5,6 +5,8 @@ QML Material CHANGELOG
  * [Demo] Add a Typography section to the demo
  * [Button] Properly handle dark background for flat buttons
  * [Tabs] Allow switching tabs programmatically in a page
+ * [Demo] Organize the different demos into tabs
+ * [Tabs] Implement the MD spec for coloring tab text
 
 ### Version 0.0.6 (April 16, 2015)
 

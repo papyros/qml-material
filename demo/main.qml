@@ -9,6 +9,7 @@ ApplicationWindow {
         primaryColor: Palette.colors["blue"]["500"]
         primaryDarkColor: Palette.colors["blue"]["700"]
         accentColor: Palette.colors["teal"]["500"]
+        tabHighlightColor: "white"
     }
 
     property var styles: [

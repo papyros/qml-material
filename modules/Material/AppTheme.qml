@@ -8,10 +8,12 @@ QtObject {
     property color primaryDarkColor: Theme.primaryDarkColor
     property color accentColor: Theme.accentColor
     property color backgroundColor: Theme.backgroundColor
+    property color tabHighlightColor: Theme.tabHighlightColor
 
     onPrimaryColorChanged: Theme.primaryColor = primaryColor
     onPrimaryDarkColorChanged: Theme.primaryDarkColor = primaryDarkColor
     onAccentColorChanged: Theme.accentColor = accentColor
     onBackgroundColorChanged: Theme.backgroundColor = backgroundColor
+    onTabHighlightColorChanged: Theme.tabHighlightColor = tabHighlightColor
 }
 

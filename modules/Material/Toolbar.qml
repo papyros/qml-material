@@ -81,6 +81,10 @@ View {
             page.selectedTab = selectedTab
     }
 
+    onPageChanged: {
+        toolbar.selectedTab = page.selectedTab
+    }
+
     Connections {
         target: page
 
@@ -245,7 +249,6 @@ View {
     Tabs {
         id: tabbar
         color: toolbar.backgroundColor
-        highlight: Theme.accentColor
         visible: tabs.length > 0
 
         tabs: page ? page.tabs : []
