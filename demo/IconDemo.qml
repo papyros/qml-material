@@ -35,8 +35,10 @@ Item {
                     delegate: Row {
                         spacing: units.dp(20)
                         width: grid.width/grid.columns
+                        visible: icon.valid
 
                         Icon {
+                            id: icon
                             name: "awesome/" + modelData
                             anchors.verticalCenter: parent.verticalCenter
                         }

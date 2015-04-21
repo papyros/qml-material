@@ -34,6 +34,9 @@ Item {
     */
     property string name
 
+    property bool valid: name.indexOf("awesome") == 0 
+            ? awesomeIcon.valid : image.status == Image.Ready
+
     width: size
     height: size
 
@@ -68,6 +71,8 @@ Item {
     }  
 
     AwesomeIcon {
+        id: awesomeIcon
+
         anchors.centerIn: parent
         size: icon.size * 0.9
         visible: icon.name.indexOf("awesome/") == 0
