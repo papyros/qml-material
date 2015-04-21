@@ -35,6 +35,11 @@ Controls.RadioButton {
      */
     property bool darkBackground
 
+    /*!
+       Set to \c true if the radio button can be toggled from checked to unchecked
+     */
+    property bool canToggle
+
     style: ControlStyles.RadioButtonStyle {
         label :Label {
             text: control.text
@@ -99,6 +104,7 @@ Controls.RadioButton {
     }
 
     Ink {
+        id: inkArea
         anchors {
             left: parent.left
             leftMargin: units.dp(4)
@@ -108,9 +114,26 @@ Controls.RadioButton {
         width: units.dp(40)
         height: units.dp(40)
         color: radioButton.checked ? Theme.alpha(radioButton.color, 0.20) : Qt.rgba(0,0,0,0.1)
-        onClicked: radioButton.checked = !radioButton.checked
+
+        onClicked: {
+            if(radioButton.canToggle || !radioButton.checked)
+                radioButton.checked = !radioButton.checked
+        }
 
         circular: true
         centered: true
+    }
+
+    MouseArea {
+        anchors {
+            left: inkArea.right
+            top: parent.top
+            right: parent.right
+            bottom: parent.bottom
+        }
+        onClicked: {
+            if(radioButton.canToggle || !radioButton.checked)
+                radioButton.checked = !radioButton.checked
+        }
     }
 }
