@@ -12,6 +12,7 @@ QML Material CHANGELOG
  * Move the QtQuick.Controls style into the modules directory
  * [Icon] Update the FontAwesome icon table
  * [RadioButton] Improve selection support
+ * [Demo] Update radio button demo with grouping
 
 ### Version 0.0.6 (April 16, 2015)
 
