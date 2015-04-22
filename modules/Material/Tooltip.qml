@@ -19,14 +19,33 @@ import QtQuick 2.0
 import Material 0.1
 import Material.Extras 0.1
 
+/*!
+   \qmltype Tooltip
+   \inqmlmodule Material 0.1
+   \ingroup material
+
+   \brief A tooltip is a label that appears on hover and explains a non-text UI element.
+
+   To display a tooltip for your view, simply create an instance of Tooltip, 
+   set the text property to your tooltip text, and then set the mouseArea property
+   to your MouseArea or Ink that will trigger the tooltip. If you use a MouseArea,
+   make sure hoverEnabled is set to true.
+
+   See the Material Design guidelines for more details: 
+   http://www.google.com/design/spec/components/tooltips.html
+ */
 PopupBase {
     id: dropdown
 
+    property alias text: tooltipLabel.text
+
+    property MouseArea mouseArea
+    
     overlayLayer: "tooltipOverlayLayer"
     globalMouseAreaEnabled: false
 
-    default property alias data: view.data
-    property alias internalView: view
+    width: tooltipLabel.paintedWidth + (Device.isMobile ? Units.dp(32) : Units.dp(16))
+    height: Device.isMobile ? Units.dp(44) : Units.dp(22)
 
     visible: view.opacity > 0
 
@@ -44,7 +63,7 @@ PopupBase {
         var root = Utils.findRoot(dropdown)
 
         dropdown.x = position.x + (caller.width / 2 - dropdown.width / 2)
-        dropdown.y = position.y + caller.height - dropdown.height
+        dropdown.y = position.y + caller.height//    - dropdown.height
 
         if(dropdown.x + width > root.width)
             offsetX = -(((dropdown.x + width) - root.width) + Units.dp(8))
@@ -63,89 +82,70 @@ PopupBase {
         parent.currentOverlay = null
     }
 
-    state: showing ? "open" : "closed"
+    Timer {
+        id: timer
 
-    states: [
-        State {
-            name: "closed"
-            PropertyChanges {
-                target: view
-                opacity: 0
-                width: 0
-                height: 0
-            }
-        },
+        interval: 1000
+        onTriggered: open(mouseArea, 0, Units.dp(4))
+    }
 
-        State {
-            name: "open"
-            PropertyChanges {
-                target: view
-                opacity: 1
-                width: dropdown.width
-                height: dropdown.height
-            }
+    Connections {
+        target: mouseArea
+
+        onReleased: {
+            if(showing)
+                close()
         }
-    ]
+
+        onPressAndHold: {
+            if(text !== "" && !showing)
+                open(mouseArea, 0, Units.dp(4))
+        }
+
+        onEntered: {
+            if(text !== "" && !showing)
+                timer.start()    
+        }
+
+        onExited: {
+            timer.stop()
+
+            if(showing)
+                close()
+        }
+    }
 
     View {
         id: view
+
         elevation: 2
         radius: Units.dp(2)
-        anchors.top: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            topMargin: dropdown.showing ? 0 : -dropdown.height/4
 
-    transitions: [
-        Transition {
-            from: "open"
-            to: "closed"
-
-            NumberAnimation {
-                target: internalView
-                property: "opacity"
-                duration: 200
-                easing.type: Easing.InOutQuad
-            }
-
-            NumberAnimation {
-                target: internalView
-                property: "width"
-                duration: 200
-                easing.type: Easing.InOutQuad
-            }
-
-            NumberAnimation {
-                target: internalView
-                property: "height"
-                duration: 400
-                easing.type: Easing.InOutQuad
-            }
-        },
-
-        Transition {
-            from: "closed"
-            to: "open"
-
-            NumberAnimation {
-                target: internalView
-                property: "opacity"
-                duration: 200
-                easing.type: Easing.InOutQuad
-            }
-
-            NumberAnimation {
-                target: internalView
-                property: "width"
-                duration: 200
-                easing.type: Easing.InOutQuad
-            }
-
-            NumberAnimation {
-                target: internalView
-                property: "height"
-                duration: 400
-                easing.type: Easing.InOutQuad
+            Behavior on topMargin {
+                NumberAnimation { duration: 200 }
             }
         }
-    ]
+
+        height: dropdown.height
+
+        backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
+
+        opacity: dropdown.showing ? 1 : 0
+
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
+
+        Label {
+            id: tooltipLabel
+            style: "tooltip"
+            color: Theme.dark.textColor
+            anchors.centerIn: parent
+        }
+    }
 }

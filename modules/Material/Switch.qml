@@ -10,7 +10,8 @@ Controls.Switch {
     /*!
        The switch color. By default this is the app's accent color
      */
-    property color color: darkBackground ? Theme.dark.accentColor : Theme.light.accentColor
+    property color color: darkBackground ? Theme.dark.accentColor
+                                         : Theme.light.accentColor
 
     /*!
        Set to \c true if the switch is on a dark background
@@ -21,41 +22,36 @@ Controls.Switch {
         handle: View {
             width: Units.dp(22)
             height: Units.dp(22)
-
-            radius: height/2
-
+            radius: height / 2
             elevation: 2
-            backgroundColor: control.enabled ? control.checked ? control.color  : darkBackground ? "#BDBDBD"
-                                                                                                 : "#FAFAFA"
-                                                : darkBackground ? "#424242" : "#BDBDBD"
-		}
+            backgroundColor: control.enabled ? control.checked ? control.color
+                                                               : darkBackground ? "#BDBDBD"
+                                                                                : "#FAFAFA"
+                                             : darkBackground ? "#424242"
+                                                              : "#BDBDBD"
+        }
 
         groove: Item {
             width: Units.dp(40)
             height: Units.dp(22)
-			
-			Rectangle {
 
-				anchors.centerIn: parent
-
+            Rectangle {
+                anchors.centerIn: parent
                 width: parent.width - Units.dp(2)
                 height: Units.dp(16)
-
-                radius: height/2
-
+                radius: height / 2
                 color: control.enabled ? control.checked ? Theme.alpha(control.color, 0.5)
-                                                               : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
-                                                                                : Qt.rgba(0, 0, 0, 0.26)
-                                          : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
-                                                           : Qt.rgba(0, 0, 0, 0.12)
+                                                         : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
+                                                                          : Qt.rgba(0, 0, 0, 0.26)
+                                       : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
+                                                        : Qt.rgba(0, 0, 0, 0.12)
 
                 Behavior on color {
-
                     ColorAnimation {
                         duration: 200
                     }
                 }
-			}
-		}
-	}
+            }
+        }
+    }
 }

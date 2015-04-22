@@ -22,9 +22,8 @@ import Material.Extras 0.1
 PopupBase {
     id: dropdown
 
-    property int anchor: Item.TopRight
-
     default property alias data: view.data
+    property int anchor: Item.TopRight
     property alias internalView: view
 
     visible: view.opacity > 0
@@ -94,6 +93,18 @@ PopupBase {
         property bool center: dropdown.anchor == Item.Center
     }
 
+    View {
+        id: view
+        elevation: 2
+        radius: Units.dp(2)
+        anchors.left: __internal.left ? parent.left : undefined
+        anchors.right: __internal.right ? parent.right : undefined
+        anchors.top: __internal.top ? parent.top : undefined
+        anchors.bottom: __internal.bottom ? parent.bottom : undefined
+        anchors.horizontalCenter: __internal.center ? parent.horizontalCenter : undefined
+        anchors.verticalCenter: __internal.center ? parent.verticalCenter : undefined
+    }
+
     state: showing ? "open" : "closed"
 
     states: [
@@ -117,18 +128,6 @@ PopupBase {
             }
         }
     ]
-
-    View {
-        id: view
-        elevation: 2
-        radius: Units.dp(2)
-        anchors.left: __internal.left ? parent.left : undefined
-        anchors.right: __internal.right ? parent.right : undefined
-        anchors.top: __internal.top ? parent.top : undefined
-        anchors.bottom: __internal.bottom ? parent.bottom : undefined
-        anchors.horizontalCenter: __internal.center ? parent.horizontalCenter : undefined
-        anchors.verticalCenter: __internal.center ? parent.verticalCenter : undefined
-    }
 
     transitions: [
         Transition {

@@ -21,6 +21,13 @@ Item {
         }
 
         Button {
+            text: "Disabled Raised Button"
+            elevation: 1
+            enabled: false
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Button {
             text: "Wide Button"
 
             width: Units.dp(200)
@@ -37,7 +44,7 @@ Item {
             activeFocusOnPress: true
             anchors.horizontalCenter: parent.horizontalCenter
 
-            onClicked: snackbar.open("The text is really long")
+            onClicked: snackbar.open("The text is really very very very long")
         }
 
         Button {

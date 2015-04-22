@@ -21,8 +21,10 @@ import 'awesome.js' as Awesome
 
 Item {
     id: widget
+
     property string name
     property bool rotate: widget.name.match(/.*-rotate/) !== null
+    property bool valid: text.implicitWidth > 0
 
     property alias color: text.color
     property int size: Units.dp(24)

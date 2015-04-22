@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Michael Spencer
+ * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
  * Copyright (C) 2015 Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
  */
 import QtQuick 2.0
 import QtQuick.Controls 1.3 as Controls
-import QtQuick.Controls.Styles 1.3 as Styles
+import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
 import Material 0.1
 
 /*!
@@ -39,59 +39,5 @@ Controls.ProgressBar {
     width: Units.dp(200)
     height: Units.dp(4)
 
-    style: Styles.ProgressBarStyle {
-        background: Rectangle {
-            width: control.width
-            height: control.height
-            color: control.color
-            opacity: 0.2
-        }
-        progress: Rectangle {
-            color: control.indeterminate ? "transparent" : control.color
-
-            // Indeterminate animation
-            Item {
-                id: independentRect
-                anchors.fill: parent
-                visible: control.indeterminate
-                Rectangle {
-                    id: rect
-                    property var end: 0
-                    width: end - x
-                    height: control.height
-                    color: control.color
-                    ParallelAnimation {
-                        running: control.indeterminate
-                        SequentialAnimation {
-                            loops: Animation.Infinite
-                            PauseAnimation {
-                                duration: 500
-                            }
-
-                            NumberAnimation{
-                                target: rect; property: "x"
-                                from: 0; to: control.width
-                                duration: 1500
-                                easing.type: Easing.InCubic
-                            }
-                        }
-                        SequentialAnimation {
-                            loops: Animation.Infinite
-                            NumberAnimation {
-                                target: rect; property: "end"
-                                from: 0; to: control.width
-                                duration: 1500
-                            }
-                            PauseAnimation {
-                                duration: 500
-                            }
-                            ScriptAction {
-                                script: rect.x = 0
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    style: MaterialStyle.ProgressBarStyle {}
 }

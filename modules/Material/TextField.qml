@@ -117,7 +117,7 @@ FocusScope {
       states: [
          State {
             name: "floating"
-            when: textInput.text.length > 0 && floatingLabel
+            when: textInput.displayText.length > 0 && floatingLabel
             AnchorChanges {
                target: fieldPlaceholder
                anchors.baseline: undefined
@@ -130,7 +130,7 @@ FocusScope {
          },
          State {
             name: "hidden"
-            when: textInput.text.length > 0 && !floatingLabel
+            when: textInput.displayText.length > 0 && !floatingLabel
             PropertyChanges {
                target: fieldPlaceholder
                visible: false

@@ -95,8 +95,6 @@ Controls.ApplicationWindow {
 
     Toolbar {
         id: __toolbar
-        width: parent.width
-        backgroundColor: Theme.primaryColor
         clientSideDecorations: app.clientSideDecorations
     }
 

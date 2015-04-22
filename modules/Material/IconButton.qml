@@ -22,30 +22,26 @@ import Material.Extras 0.1
 Item {
     id: iconButton
 
-    width: icon.width
-    height: icon.height
-    
-    enabled: action ? action.enabled : true
-
+    property Action action
     property string name: action ? action.iconName : ""
     property alias color: icon.color
     property alias size: icon.size
 
     signal clicked
 
+    width: icon.width
+    height: icon.height
+    enabled: action ? action.enabled : true
+    opacity: enabled ? 1 : 0.6
+
     onClicked: {
         if (action) action.triggered(icon)
     }
-
-    opacity: enabled ? 1 : 0.6
-
-    property Action action
 
     Ink {
         id: ink
 
         anchors.centerIn: parent
-
         enabled: iconButton.enabled
         centered: true
         circular: true
@@ -58,26 +54,6 @@ Item {
         onClicked: {
             iconButton.clicked()
         }
-
-        onPressAndHold: {
-            if(tooltip.tooltipText !== "" && !tooltip.showing)
-                tooltip.open(ink, 0, Units.dp(4))
-        }
-
-        onReleased: {
-            if(tooltip.showing)
-                tooltip.close()
-        }
-
-        onEntered: {
-            if(tooltip.tooltipText !== "" && !tooltip.showing)
-                tooltip.open(ink, 0, Units.dp(4))
-        }
-
-        onExited: {
-            if(tooltip.showing)
-                tooltip.close()
-        }
     }
 
     Icon {
@@ -87,20 +63,7 @@ Item {
     }
 
     Tooltip {
-        id: tooltip
-
-        property alias tooltipText : tooltipLabel.text
-
-        internalView.backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
-        width: tooltipLabel.paintedWidth + Units.dp(32)
-        height: Units.dp(44)
-
-        Label {
-            id: tooltipLabel
-            style: "tooltip"
-            color: Theme.dark.textColor
-            anchors.centerIn: parent
-            text: action ? action.name : ""
-        }
+        text: action ? action.name : ""
+        mouseArea: ink
     }
 }

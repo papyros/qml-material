@@ -20,8 +20,8 @@ import QtQuick.Window 2.0
 import "ListItems" as ListItem
 
 Rectangle {
-    width: units.dp(300)
-    height: units.dp(72) * 4
+    width: Units.dp(300)
+    height: Units.dp(72) * 4
     color: Qt.rgba(0.9,0.9,0.9,1)
 
     property alias theme: theme
@@ -32,13 +32,13 @@ Rectangle {
 
     ListView {
         anchors.centerIn: parent
-        width: units.dp(300)
-        height: count * units.dp(72)
+        width: Units.dp(300)
+        height: count * Units.dp(72)
 
         model: 4
         delegate: ListItem.Subtitled {
             text: "Two line item"
-            subText: units.dp(72) + " == " + (6 * 8)
+            subText: Units.dp(72) + " == " + (6 * 8)
 
             action: Rectangle {
                 anchors.fill: parent

@@ -22,11 +22,9 @@ import Material 0.1
 Page {
     id: pageSidebar
 
-    height: parent.height
-
+    default property alias sidebar: sidebar.data
+    property alias mode: sidebar.mode
     property bool showing: true
-
-    Component.onCompleted: behavior.enabled = true
 
     anchors {
         rightMargin: showing ? 0 : -width
@@ -39,13 +37,13 @@ Page {
         }
     }
 
-    property alias mode: sidebar.mode
-
-    default property alias sidebar: sidebar.data
+    height: parent.height
 
     Sidebar {
         id: sidebar
 
         anchors.fill: parent
     }
+
+    Component.onCompleted: behavior.enabled = true
 }

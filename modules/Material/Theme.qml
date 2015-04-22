@@ -38,7 +38,7 @@ Object {
        Material Design guidelines, this should normally be a 500 color from one of the color
        palettes at \l {http://www.google.com/design/spec/style/color.html#color-color-palette}.
      */
-    property color primaryColor: "#2196F3"
+    property color primaryColor: "#FAFAFA"
 
     /*!
        A darker version of the primary color used for the window titlebar (if client-side
@@ -48,7 +48,7 @@ Object {
        aplication's primary color, taken from one of the color palettes at
        \l {http://www.google.com/design/spec/style/color.html#color-color-palette}.
     */
-    property color primaryDarkColor: "#1976D2"
+    property color primaryDarkColor: Qt.rgba(0,0,0, 0.54)
 
     /*!
        The accent color complements the primary color, and is used for any primary action buttons
@@ -58,12 +58,18 @@ Object {
        complements the primary color palette at
        \l {http://www.google.com/design/spec/style/color.html#color-color-palette}.
     */
-    property color accentColor: "#009688"
+    property color accentColor: "#2196F3"
 
     /*!
        The default background color for the application.
      */
     property color backgroundColor: "#f3f3f3"
+
+    /*!
+       The color of the higlight indicator for selected tabs. By default this is the accent color,
+       but it can also be white (for a dark primary color/toolbar background).
+     */
+    property color tabHighlightColor: accentColor
 
     /*!
        Standard colors specifically meant for light surfaces. This includes text colors along with
@@ -102,14 +108,7 @@ Object {
        \c darkColor is the color used on a dark background.
      */
     function lightDark(background, lightColor, darkColor) {
-        var temp = Qt.darker(background, 1)
-
-        var a = 1 - ( 0.299 * temp.r + 0.587 * temp.g + 0.114 * temp.b);
-
-        if (temp.a === 0 || a < 0.3)
-            return lightColor
-        else
-            return darkColor
+        return isDarkColor(background) ? darkColor : lightColor
     }
 
     /*!
@@ -120,7 +119,7 @@ Object {
 
         var a = 1 - ( 0.299 * temp.r + 0.587 * temp.g + 0.114 * temp.b);
 
-        return temp.a >= 0 && a >= 0.3
+        return temp.a > 0 && a >= 0.3
     }
 
     // TODO: Load all the fonts!

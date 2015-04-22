@@ -29,23 +29,6 @@ View {
         right: parent.right
     }
 
-    opacity: page && page.actionBar.hidden ? 0 : 1
-
-    backgroundColor: page && page.actionBar.backgroundColor ? Qt.darker(page.actionBar.backgroundColor,1).a == 0
-                                                              ? page.color : page.actionBar.backgroundColor
-                                                            : Theme.primaryColor
-
-    implicitHeight: Device.type == Device.phone ? Units.dp(48)
-                                                : Device.type == Device.tablet ? Units.dp(56)
-                                                                               : Units.dp(64)
-    height: targetHeight
-
-    elevation: backgroundColor == page.color ? 0 : page.actionBar.elevation
-
-    fullWidth: true
-
-    clipContent: true
-
     property int actionBarHeight: {
         if (!page || page.actionBar.hidden)
             return 0
@@ -60,25 +43,30 @@ View {
 
         return height
     }
-
     property int targetHeight: actionBarHeight + (tabs.length > 0 ? tabbar.height : 0)
-
     property int maxActionCount: (Device.formFactor == "desktop"
                                   ? 5 : Device.formFactor == "tablet" ? 4 : 3)
-
     property bool clientSideDecorations: false
-
     property string color: "white"
-
     property var page
-
     property alias tabs: tabbar.tabs
-
     property alias selectedTab: tabbar.selectedIndex
-
     property bool showBackButton
-
     property var pages: []
+
+    opacity: page && page.actionBar.hidden ? 0 : 1
+
+    backgroundColor: page ? page.actionBar.backgroundColor.a == 0 
+                            ? page.backgroundColor : page.actionBar.backgroundColor
+                          : Theme.primaryColor
+
+    implicitHeight: Device.type == Device.phone ? Units.dp(48)
+                                                : Device.type == Device.tablet ? Units.dp(56)
+                                                                               : Units.dp(64)
+    height: targetHeight
+    elevation: backgroundColor == page.color ? 0 : page.actionBar.elevation
+    fullWidth: true
+    clipContent: true
 
     Behavior on height {
         NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
@@ -91,6 +79,21 @@ View {
     onSelectedTabChanged: {
         if (page)
             page.selectedTab = selectedTab
+    }
+
+    onPageChanged: {
+        toolbar.selectedTab = page.selectedTab
+    }
+
+    Connections {
+        target: page
+
+        // Ignore errors when the page is invalid or null
+        ignoreUnknownSignals: true
+
+        onSelectedTabChanged: {
+            toolbar.selectedTab = page.selectedTab
+        }
     }
 
     function pop() {
@@ -239,16 +242,17 @@ View {
             name: "navigation/close"
             color: Theme.lightDark(toolbar.backgroundColor, Theme.light.textColor,
                 Theme.dark.textColor)
+            onClicked: Qt.quit()
         }
     }
 
     Tabs {
         id: tabbar
         color: toolbar.backgroundColor
-        highlight: Theme.accentColor
         visible: tabs.length > 0
 
         tabs: page ? page.tabs : []
+        darkBackground: Theme.isDarkColor(toolbar.backgroundColor)
 
         anchors {
             left: parent.left

@@ -33,14 +33,14 @@ PopupBase {
     visible: opacity > 0
 
     width: Math.max(minimumWidth,
-                    (content.contentWidth + Units.dp(32)))
+                    content.contentWidth + Units.dp(32))
 
     height: Math.min(Units.dp(350),
-            headerView.height + Units.dp(32) +
-            content.contentHeight +
-            content.topMargin +
-            content.bottomMargin +
-            buttonContainer.height)
+                     headerView.height + Units.dp(32) +
+                     content.contentHeight +
+                     content.topMargin +
+                     content.bottomMargin +
+                     buttonContainer.height)
 
     property int minimumWidth: Units.dp(270)
 
@@ -60,6 +60,7 @@ PopupBase {
     anchors {
         centerIn: parent
         verticalCenterOffset: showing ? 0 : -(dialog.height/3)
+
         Behavior on verticalCenterOffset {
             NumberAnimation { duration: 200 }
         }
@@ -139,7 +140,6 @@ PopupBase {
                 width: parent.width
                 wrapMode: Text.Wrap
                 style: "title"
-
                 visible: text != ""
             }
 
@@ -149,7 +149,6 @@ PopupBase {
                 width: parent.width
                 wrapMode: Text.Wrap
                 style: "dialog"
-
                 visible: text != ""
             }
         }

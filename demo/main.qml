@@ -6,18 +6,31 @@ ApplicationWindow {
     id: demo
 
     theme {
-        accentColor: "#009688"
+        primaryColor: Palette.colors["blue"]["500"]
+        primaryDarkColor: Palette.colors["blue"]["700"]
+        accentColor: Palette.colors["teal"]["500"]
+        tabHighlightColor: "white"
     }
 
-    property var components: [
-            "Button", "Checkbox", "Color Palette", "Dialog", "Forms", "Icon", "List Items", "Page Stack",
-            "Progress Bar", "Radio Button", "Slider", "Switch", "TextField"
+    property var styles: [
+            "Icons", "Color Palette", "Typography"
     ]
 
-    property string selectedComponent: components[0]
+    property var basicComponents: [
+            "Button", "CheckBox", "Progress Bar", "Radio Button", 
+            "Slider", "Switch", "TextField"
+    ]
+
+    property var compoundComponents: [
+            "Dialog", "Forms", "List Items", "Page Stack"
+    ]
 
     initialPage: Page {
-        title: "Component Demo"
+        id: page
+
+        title: "Material Demo"
+
+        tabs: [ "Style", "Basic Components", "Compound Components" ]
 
         actions: [
             Action {
@@ -47,41 +60,57 @@ ApplicationWindow {
             }
         ]
 
-        Sidebar {
-            id: sidebar
+        TabView {
+            id: tabView
+            anchors.fill: parent
+            currentIndex: page.selectedTab
+            model: [
+                styles, basicComponents, compoundComponents
+            ]
 
-            Column {
-                width: parent.width
+            delegate: Item {
+                width: tabView.width
+                height: tabView.height
 
-                Repeater {
-                    model: demo.components
-                    delegate: ListItem.Standard {
-                        text: modelData
-                        selected: modelData == selectedComponent
-                        onClicked: selectedComponent = modelData
+                property string selectedComponent: modelData[0]
+
+                Sidebar {
+                    id: sidebar
+
+                    Column {
+                        width: parent.width
+
+                        Repeater {
+                            model: modelData
+                            delegate: ListItem.Standard {
+                                text: modelData
+                                selected: modelData == selectedComponent
+                                onClicked: selectedComponent = modelData
+                            }
+                        }
                     }
                 }
+                Flickable {
+                    id: flickable
+                    anchors {
+                        left: sidebar.right
+                        right: parent.right
+                        top: parent.top
+                        bottom: parent.bottom
+                    }
+                    clip: true
+                    contentHeight: Math.max(example.implicitHeight + 40, height)
+                    Loader {
+                        id: example
+                        anchors.fill: parent
+                        // selectedComponent will always be valid, as it defaults to the first component
+                        source: Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
+                    }
+                }
+                Scrollbar {
+                    flickableItem: flickable
+                }
             }
-        }
-        Flickable {
-            id: flickable
-            anchors {
-                left: sidebar.right
-                right: parent.right
-                top: parent.top
-                bottom: parent.bottom
-            }
-            clip: true
-            contentHeight: Math.max(example.implicitHeight + 40, height)
-            Loader {
-                id: example
-                anchors.fill: parent
-                // selectedComponent will always be valid, as it defaults to the first component
-                source: Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
-            }
-        }
-        Scrollbar {
-            flickableItem: flickable
         }
     }
 

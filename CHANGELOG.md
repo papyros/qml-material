@@ -1,8 +1,31 @@
 QML Material CHANGELOG
 ======================
 
+ * Initial work on a QtQuick.Controls theme
+ * [Demo] Add a Typography section to the demo
+ * [Button] Properly handle dark background for flat buttons
+ * [Tabs] Allow switching tabs programmatically in a page
+ * [Demo] Organize the different demos into tabs
+ * [Tabs] Implement the MD spec for coloring tab text
+ * [Icon] Add a valid property to Icon and AwesomeIcon
+ * [Demo] Display all the Material Design icons in the Icons demo
+ * Move the QtQuick.Controls style into the modules directory
+
+### Version 0.0.6 (April 16, 2015)
+
  * Add a ProgressCircle component following the Google spec
  * Add a tooltip component and use it in the ActionBar
+ * Add an OverlayView component for view transitions  
+ * [Snackbar] Bug fixes and style improvements
+ * [Button] Remove default Qt Quick Controls padding
+ * [SimpleMenu/MenuField] Fixes some binding loops
+ * [TextField] Fixes floating label behavior on devices
+ * [Action] Support for keybindings in Action
+ * [ListItem] Fix bug with Subtitled action not showing
+ * [ListItem] Add support for a custom view in the subtitled list item
+ * [Button] Add disabled state to button
+ * General bug fixing and code refactoring
+
 
 ### Version 0.0.5 (March 4, 2015)
 
