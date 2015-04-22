@@ -200,6 +200,8 @@ Item {
             delegate: IconButton {
                 id: iconAction
 
+                objectName: "action/" + action.objectName
+
                 action: actions[index]
 
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
@@ -213,6 +215,7 @@ Item {
             id: overflowButton
 
             name: "navigation/more_vert"
+            objectName: "action/overflow"
             size: units.dp(27)
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                               Theme.dark.iconColor)
@@ -246,6 +249,7 @@ Item {
 
     Dropdown {
         id: overflowMenu
+        objectName: "overflowMenu"
 
         width: units.dp(250)
         height: columnView.height + units.dp(16)
@@ -261,13 +265,15 @@ Item {
                 ListItem.Standard {
                     id: listItem
 
-                    property Action actionItem: actions[index + maxActionCount - 1]
+                    objectName: "action/" + action.objectName
 
-                    text: actionItem.name
-                    iconName: actionItem.iconName
+                    property Action action: actions[index + maxActionCount - 1]
+
+                    text: action.name
+                    iconName: action.iconName
 
                     onClicked: {
-                        actionItem.triggered(listItem)
+                        action.triggered(listItem)
                         overflowMenu.close()
                     }
                 }

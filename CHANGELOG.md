@@ -13,6 +13,7 @@ QML Material CHANGELOG
  * [Icon] Update the FontAwesome icon table
  * [RadioButton] Improve selection support
  * [Demo] Update radio button demo with grouping
+ * [Tests] Add UI tests for the ActionBar component
 
 
 ### Version 0.0.6 (April 16, 2015)
