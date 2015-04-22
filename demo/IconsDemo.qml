@@ -65,7 +65,7 @@ Item {
                                 Icon {
                                     id: icon
                                     name: {
-                                        var iconName = modelData + "/" + fileName
+                                        var iconName = modelData.toLowerCase() + "/" + fileName
 
                                         var index = iconName.indexOf("svg")
 
