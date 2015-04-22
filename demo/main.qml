@@ -46,6 +46,13 @@ ApplicationWindow {
             },
 
             Action {
+                iconName: "alert/warning"
+                name: "THIS SHOULD BE HIDDEN!"
+                visible: false
+            },
+
+
+            Action {
                 iconName: "action/search"
                 name: "Search"
             },
