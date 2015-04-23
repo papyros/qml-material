@@ -35,10 +35,21 @@ Item {
 
                 delegate: Column {
                     width: parent.width
+                    spacing: units.dp(16)
+
 
                     ListItem.SectionHeader {
                         id: header
                         text: modelData + " (" + folderModel.count + ")"
+
+                        ThinDivider {
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                top: parent.top
+                            }
+                            visible: header.expanded
+                        }
                     }
 
                     FolderListModel {
@@ -88,6 +99,14 @@ Item {
                                 }
                             }
                         }
+                    }
+
+                    ThinDivider {
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+                        visible: header.expanded
                     }
                 }
             }
