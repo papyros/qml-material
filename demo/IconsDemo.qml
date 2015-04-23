@@ -38,7 +38,7 @@ Item {
 
                     ListItem.SectionHeader {
                         id: header
-                        text: modelData
+                        text: modelData + " (" + folderModel.count + ")"
                     }
 
                     FolderListModel {
@@ -94,7 +94,7 @@ Item {
 
             ListItem.SectionHeader {
                 id: fontHeader
-                text: "FontAwesome"
+                text: "FontAwesome" + " (" + awesomeList.count + ")"
             }
 
             Grid {
@@ -110,7 +110,8 @@ Item {
                 columns: Math.floor(width/units.dp(240))
 
                 Repeater {
-                    model: ListUtils.objectKeys(awesomeIcon.icons)
+                    id: awesomeList
+                    model: Object.keys(awesomeIcon.icons)
                     delegate: Row {
                         spacing: units.dp(20)
                         width: grid.width/grid.columns
