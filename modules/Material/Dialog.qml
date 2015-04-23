@@ -49,6 +49,7 @@ PopupBase {
 
     property string negativeButtonText: "Cancel"
     property string positiveButtonText: "Ok"
+    property alias positiveButtonEnabled: positiveButton.enabled
 
     property bool hasActions: true
 
@@ -153,6 +154,10 @@ PopupBase {
             }
         }
 
+        Rectangle {
+            anchors.fill: content
+        }
+
         Flickable {
             id: content
 
@@ -172,15 +177,17 @@ PopupBase {
             interactive: contentHeight + units.dp(8) > height
             bottomMargin: hasActions ? 0 : units.dp(8)
 
-            Column {
-                id: column
-                anchors {
-                    left: parent.left
-                    margins: units.dp(16)
-                }
+            Rectangle {
+                Column {
+                    id: column
+                    anchors {
+                        left: parent.left
+                        margins: units.dp(16)
+                    }
 
-                width: content.width - units.dp(32)
-                spacing: units.dp(16)
+                    width: content.width - units.dp(32)
+                    spacing: units.dp(16)
+                }
             }
         }
 

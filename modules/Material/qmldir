@@ -14,6 +14,7 @@ Dropdown 0.1 Dropdown.qml
 Icon 0.1 Icon.qml
 IconButton 0.1 IconButton.qml
 Ink 0.1 Ink.qml
+InputDialog 0.1 InputDialog.qml
 Label 0.1 Label.qml
 MainView 0.1 MainView.qml
 singleton MaterialAnimation 0.1 MaterialAnimation.qml

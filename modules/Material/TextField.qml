@@ -25,6 +25,10 @@ import Material 0.1
 FocusScope {
    id: field
 
+   property alias acceptableInput: textInput.acceptableInput
+   property alias validator: textInput.validator
+   property alias inputMask: textInput.inputMask
+
    property color accentColor: Theme.accentColor
    property color errorColor: "#F44336"
 
