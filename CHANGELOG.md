@@ -15,6 +15,7 @@ QML Material CHANGELOG
  * [Demo] Update radio button demo with grouping
  * [Tests] Add UI tests for the ActionBar component
  * [IconButton] Add animation on mouse over
+ * [ListItem] Add a new expandable section header list item
 
 
 ### Version 0.0.6 (April 16, 2015)

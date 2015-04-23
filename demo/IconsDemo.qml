@@ -36,7 +36,8 @@ Item {
                 delegate: Column {
                     width: parent.width
 
-                    ListItem.Header {
+                    ListItem.SectionHeader {
+                        id: header
                         text: modelData
                     }
 
@@ -52,6 +53,7 @@ Item {
                             margins: units.dp(16)
                         }
 
+                        visible: header.expanded
                         rowSpacing: units.dp(10)
                         columns: Math.floor(width/units.dp(240))
 
@@ -90,7 +92,8 @@ Item {
                 }
             }
 
-            ListItem.Header {
+            ListItem.SectionHeader {
+                id: fontHeader
                 text: "FontAwesome"
             }
 
@@ -102,6 +105,7 @@ Item {
                     margins: units.dp(16)
                 }
 
+                visible: fontHeader.expanded
                 rowSpacing: units.dp(10)
                 columns: Math.floor(width/units.dp(240))
 
