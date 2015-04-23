@@ -69,6 +69,11 @@ QtObject {
     property bool visible: true
 
     /*!
+       Set to \c true to rotate the icon 90 degrees on mouseover.
+     */    
+    property bool hoverAnimation: false
+
+    /*!
        Called when the UI representing the action is triggered. \c caller contains the UI element
        that triggered the action.
      */

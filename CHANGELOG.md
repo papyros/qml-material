@@ -14,6 +14,7 @@ QML Material CHANGELOG
  * [RadioButton] Improve selection support
  * [Demo] Update radio button demo with grouping
  * [Tests] Add UI tests for the ActionBar component
+ * [IconButton] Add animation on mouse over
 
 
 ### Version 0.0.6 (April 16, 2015)
