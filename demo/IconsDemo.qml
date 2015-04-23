@@ -39,6 +39,15 @@ Item {
                     ListItem.SectionHeader {
                         id: header
                         text: modelData + " (" + folderModel.count + ")"
+
+                        ThinDivider {
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                top: parent.top
+                            }
+                            visible: header.expanded
+                        }
                     }
 
                     FolderListModel {
@@ -98,7 +107,15 @@ Item {
 
                     Item {
                         width: parent.width
-                        height: units.dp(8)
+                        height: units.dp(16)
+                        visible: header.expanded
+                    }
+
+                    ThinDivider {
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
                         visible: header.expanded
                     }
                 }
@@ -107,6 +124,15 @@ Item {
             ListItem.SectionHeader {
                 id: fontHeader
                 text: "FontAwesome" + " (" + awesomeList.count + ")"
+
+                ThinDivider {
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        top: parent.top
+                    }
+                    visible: fontHeader.expanded
+                }
             }
 
             Item {
