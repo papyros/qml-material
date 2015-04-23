@@ -40,6 +40,12 @@ ApplicationWindow {
             },
 
             Action {
+                iconName: "action/settings"
+                name: "Settings"
+                hoverAnimation: true
+            },
+
+            Action {
                 iconName: "action/search"
                 name: "Search"
             },
@@ -52,11 +58,6 @@ ApplicationWindow {
             Action {
                 iconName: "action/account_circle"
                 name: "Account"
-            },
-
-            Action {
-                iconName: "action/settings"
-                name: "Settings"
             }
         ]
 
