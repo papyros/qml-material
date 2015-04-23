@@ -25,7 +25,7 @@ Item {
         Column {
             id: content
             width: flickable.width
-            height: implicitHeight + units.dp(16)
+            y: units.dp(8)
 
             Repeater {
                 model: [
@@ -38,12 +38,18 @@ Item {
 
                     ListItem.SectionHeader {
                         id: header
-                        text: modelData
+                        text: modelData + " (" + folderModel.count + ")"
                     }
 
                     FolderListModel {
                         id: folderModel
                         folder: icon.iconDirectory + "/" + modelData.toLowerCase()
+                    }
+
+                    Item {
+                        width: parent.width
+                        height: units.dp(8)
+                        visible: header.expanded
                     }
 
                     Grid {
@@ -89,12 +95,24 @@ Item {
                             }
                         }
                     }
+
+                    Item {
+                        width: parent.width
+                        height: units.dp(8)
+                        visible: header.expanded
+                    }
                 }
             }
 
             ListItem.SectionHeader {
                 id: fontHeader
-                text: "FontAwesome"
+                text: "FontAwesome" + " (" + awesomeList.count + ")"
+            }
+
+            Item {
+                width: parent.width
+                height: units.dp(8)
+                visible: fontHeader.expanded
             }
 
             Grid {
@@ -110,7 +128,8 @@ Item {
                 columns: Math.floor(width/units.dp(240))
 
                 Repeater {
-                    model: ListUtils.objectKeys(awesomeIcon.icons)
+                    id: awesomeList
+                    model: Object.keys(awesomeIcon.icons)
                     delegate: Row {
                         spacing: units.dp(20)
                         width: grid.width/grid.columns
