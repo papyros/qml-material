@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
+ * Copyright (C) 2014 Jordan Neidlinger
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -20,20 +20,38 @@ import QtQuick.Controls 1.2 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
 import Material 0.1
 
-Controls.Button {
-    id: button
-
-    property int elevation
-    property color backgroundColor: elevation > 0 ? "white" : "transparent"
-    property color textColor: Theme.lightDark(button.backgroundColor,
-                                              Theme.light.textColor,
-                                              Theme.dark.textColor)
-    property string context: "default" // or "dialog" or "snackbar"
+Controls.CheckBox {
+    id: checkBox
 
     /*!
-       Set to \c true if the button is on a dark background
+       The checkbox color. By default this is the app's accent color
+     */
+    property color color: darkBackground ? Theme.dark.accentColor : Theme.light.accentColor
+
+    /*!
+       Set to \c true if the checkbox is on a dark background
      */
     property bool darkBackground
 
-    style: MaterialStyle.ButtonStyle {}
+    style: MaterialStyle.CheckBoxStyle {}
+
+    Ink {
+        anchors {
+            verticalCenter: parent.verticalCenter
+            left: parent.left
+            leftMargin: units.dp(3)
+        }
+
+        width: units.dp(48)
+        height: units.dp(48)
+        color: checkBox.checked ? Theme.alpha(checkBox.color, 0.20) 
+                                : checkBox.darkBackground ? Qt.rgba(1,1,1,0.1)
+                                                          : Qt.rgba(0,0,0,0.1)
+        enabled: checkBox.enabled
+
+        circular: true
+        centered: true
+
+        onClicked: checkBox.checked = !checkBox.checked
+    }
 }

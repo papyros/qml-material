@@ -23,8 +23,11 @@ Row {
 
     property var tabs: []
     property int selectedIndex: 0
-    property color color: Theme.dark.textColor
-    property color highlight: Theme.dark.accentColor
+
+    property bool darkBackground
+
+    property color color: darkBackground ? Theme.dark.textColor : Theme.light.textColor
+    property color highlight: darkBackground ? Theme.dark.accentColor : Theme.light.accentColor
 
     height: units.dp(48)
 
@@ -79,17 +82,19 @@ Row {
 
                 Icon {
                     anchors.verticalCenter: parent.verticalCenter
-                    name: modelData.hasOwnProperty("icon") ? modelData.icon
-                                                           : ""
-                    color: Theme.dark.iconColor
+
+                    name: modelData.hasOwnProperty("icon") ? modelData.icon : ""
+                    color: darkBackground ? Theme.dark.iconColor : Theme.light.iconColor
+
                     visible: name != ""
                 }
 
                 Label {
                     id: label
-                    text: modelData.hasOwnProperty("text") ? modelData.text
-                                                           : modelData
-                    color: Theme.dark.textColor
+
+                    text: modelData.hasOwnProperty("text") ? modelData.text : modelData
+                    color: darkBackground ? Theme.dark.textColor : Theme.light.textColor
+
                     style: "body2"
                     anchors.verticalCenter: parent.verticalCenter
                 }

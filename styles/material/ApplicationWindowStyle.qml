@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Bogdan Cuza <bogdan.cuza@hotmail.com>
+ * Copyright (C) 2015 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -15,17 +15,13 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 2.0
-import ".."
+import QtQuick.Controls.Styles 1.3
+import Material 0.1
 
-ExpandTransition {
-    id: trans
-
-    Card {
-        id: card
-        anchors.fill: parent
-
-        fullHeight: false
-        fullWidth: false
+ApplicationWindowStyle {
+	background: Rectangle {
+        color: Theme.backgroundColor
     }
 }

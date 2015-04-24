@@ -56,7 +56,7 @@ Object {
        value from \l Screen:pixelDensity, but that property only works from within a \l Window type,
        so this is hardcoded here and we update it from within \l ApplicationWindow
      */
-    property real pixelDensity
+    property real pixelDensity: 4.46
     property real multiplier: 1.4 //default multiplier, but can be changed by user
 
     /*!

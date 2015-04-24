@@ -1,6 +1,9 @@
 QML Material CHANGELOG
 ======================
 
+ * Initial work on a QtQuick.Controls theme
+ * [Demo] Add a Typography section to the demo
+
 ### Version 0.0.6 (April 16, 2015)
 
  * Add a ProgressCircle component following the Google spec

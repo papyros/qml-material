@@ -35,6 +35,9 @@ BaseListItem {
 
     property alias itemLabel: label
 
+    property alias textColor: label.color
+    property alias iconColor: icon.color
+
     dividerInset: actionItem.visible ? listItem.height : 0 
 
     interactive: contentItem.children.length == 0
