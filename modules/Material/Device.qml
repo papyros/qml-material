@@ -78,5 +78,5 @@ Object {
         }
     }
 
-    readonly property bool isMobile: type == phone || type == tablet
+    readonly property bool isMobile: type == phone || type == phablet || type == tablet
 }
