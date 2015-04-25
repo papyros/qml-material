@@ -17,6 +17,7 @@ QML Material CHANGELOG
  * [IconButton] Add animation on mouse over
  * [ListItem] Add a new expandable section header list item
  * [Dialog] Add support for full-width content
+ * [Icons] Update the FontAwesome parsing script to pull from the website
 
 
 ### Version 0.0.6 (April 16, 2015)
