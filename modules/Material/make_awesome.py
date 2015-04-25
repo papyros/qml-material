@@ -22,7 +22,7 @@ javascriptOut.write(js_template_header)
 ttf = TTFont(sys.argv[1], fontNumber=0)
 for code,name in list( ttf['cmap'].getcmap(3,1).cmap.items() ):
     if not name.startswith("_"):
-        javascriptOut.write(u"\t'%s' : '%s',\n" % (name, unichr(code)))
+        javascriptOut.write("\t'%s' : '\u%s',\n" % (name, hex(code)[2:].zfill(4)))
 
 javascriptOut.write(js_template_footer)
 javascriptOut.close()
