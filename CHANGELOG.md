@@ -16,6 +16,7 @@ QML Material CHANGELOG
  * [Tests] Add UI tests for the ActionBar component
  * [IconButton] Add animation on mouse over
  * [ListItem] Add a new expandable section header list item
+ * [Dialog] Add support for full-width content
 
 
 ### Version 0.0.6 (April 16, 2015)
