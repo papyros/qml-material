@@ -49,7 +49,7 @@ if [ -n "$TRAVIS_BUILD_ID" ]; then
     fi
 fi
 
-REPO=$(git config remote.origin.url)
+REPO=git@github.com:papyros/qml-material
 TARGET_BRANCH=gh-pages
 SOURCE_DIR=documentation/html
 
@@ -66,4 +66,4 @@ rsync -rt --delete --exclude=".git" $SOURCE_DIR/ $TARGET_DIR/
 cd $TARGET_DIR
 git add -A .
 git commit --allow-empty -m "Documentation built from commit $REV"
-git push $REPO $TARGET_BRANCH
+git push origin $TARGET_BRANCH
