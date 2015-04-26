@@ -18,6 +18,7 @@ QML Material CHANGELOG
  * [ListItem] Add a new expandable section header list item
  * [Dialog] Add support for full-width content
  * [Icons] Update the FontAwesome parsing script to pull from the website
+ * [ListItem] Correctly calculate the width of a simple menu item
 
 
 ### Version 0.0.6 (April 16, 2015)

@@ -42,7 +42,28 @@ BaseListItem {
 
     interactive: contentItem.children.length == 0
 
+    implicitWidth: {
+        var width = listItem.margins * 2
+
+        if (actionItem.visible)
+            width += actionItem.width + row.spacing
+
+        if (contentItem.visible)
+            width += contentItem.implicitWidth + row.spacing
+        else
+            width += label.implicitWidth + row.spacing
+
+        if (valueLabel.visible)
+            width += valueLabel.width + row.spacing
+
+        if (secondaryItem.visible)
+            width += secondaryItem.width + row.spacing
+
+        return width
+    }
+
     RowLayout {
+        id: row
         anchors.fill: parent
 
         anchors.leftMargin: listItem.margins
@@ -120,7 +141,7 @@ BaseListItem {
             Layout.preferredWidth: childrenRect.width
             Layout.preferredHeight: parent.height
 
-            visible: childrenRect.width > 0
+            visible: children.length > 0
         }
     }
 }
