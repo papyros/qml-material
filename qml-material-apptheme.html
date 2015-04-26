@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ProgressBar | Material for QtQuick</title>
+  <title>AppTheme | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">ProgressBar</h3>
+		<h3 class="header">AppTheme</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Visual indicator of progress in some operation. <a href="#description">More...</a>
+		A helper class used in ApplicationWindow to set your app's theme colors. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -49,7 +49,27 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#color">color : color</a>
+				<a href="#accentColor">accentColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#backgroundColor">backgroundColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#primaryColor">primaryColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#primaryDarkColor">primaryDarkColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#tabHighlightColor">tabHighlightColor : color</a>
 			</li>
 		
 
@@ -63,7 +83,7 @@
 
 		
 			
-            <p outputclass="brief">Visual indicator of progress in some operation.</p>
+            <p outputclass="brief">A helper class used in <a href="qml-material-applicationwindow.dita">ApplicationWindow</a> to set your app's theme colors.</p>
         
 		
 
@@ -74,12 +94,46 @@
 
 		
 
-			<h5 id="color">color : color</h5>
+			<h5 id="accentColor">accentColor : color</h5>
 
 			
 				
-                <p>The color for the progress bar. By default this is the primary color defined in <a href="qml-material-theme.dita#id-qml-property-primaryColor">Theme::primaryColor</a></p>
+                <p>The accent theme color used in your app for a highlight color in many UI components. This is a helper property to set <a href="qml-material-theme.dita#id-qml-property-accentColor">Theme::accentColor</a>.</p>
             
+			
+		
+
+			<h5 id="backgroundColor">backgroundColor : color</h5>
+
+			
+				
+                <p>The default background color used throughout the app. This is a helper property to set <a href="qml-material-theme.dita#id-qml-property-backgroundColor">Theme::backgroundColor</a>.</p>
+            
+			
+		
+
+			<h5 id="primaryColor">primaryColor : color</h5>
+
+			
+				
+                <p>The primary theme color used in your app for the toolbar and other primary UI elements. This is a helper property to set <a href="qml-material-theme.dita#id-qml-property-primaryColor">Theme::primaryColor</a>.</p>
+            
+			
+		
+
+			<h5 id="primaryDarkColor">primaryDarkColor : color</h5>
+
+			
+				
+                <p>A darker version of the primary theme color used by the system status bar and window decorations. This is a helper property to set <a href="qml-material-theme.dita#id-qml-property-primaryDarkColor">Theme::primaryDarkColor</a>.</p>
+            
+			
+		
+
+			<h5 id="tabHighlightColor">tabHighlightColor : color</h5>
+
+			
+				<i class="light">No description provided.</i>
 			
 		
 

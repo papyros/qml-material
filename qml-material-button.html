@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ApplicationWindow | Material for QtQuick</title>
+  <title>Button | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">ApplicationWindow</h3>
+		<h3 class="header">Button</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		A window that provides features commonly used for Material Design apps. <a href="#description">More...</a>
+		A push button with a text label. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -49,24 +49,22 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#clientSideDecorations">clientSideDecorations : bool</a>
+				<a href="#backgroundColor">backgroundColor : color</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#initialPage">initialPage : <a href="qml-material-page.dita">Page</a>
-                </a>
+				<a href="#darkBackground">darkBackground : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#pageStack">pageStack : PageStack</a>
+				<a href="#elevation">elevation : int</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#theme">theme : <a href="qml-material-apptheme.dita">AppTheme</a>
-                </a>
+				<a href="#textColor">textColor : color</a>
 			</li>
 		
 
@@ -80,28 +78,22 @@
 
 		
 			
-            <p outputclass="brief">A window that provides features commonly used for Material Design apps.</p>
-            <p>This is normally what you should use as your root component. It provides a Toolbar and PageStack to provide access to standard features used by Material Design applications.</p>
-            <p>Here is a short working example of an application:</p>
-            <blockquote><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
-<span class="kr">import</span> <span class="nx">Material</span> <span class="mf">0.1</span>
-
-<span class="nx">ApplicationWindow</span> <span class="p">{</span>
-    <span class="k">title:</span> <span class="s2">"Application Name"</span>
-
-    <span class="k">initialPage:</span> <span class="nx">page</span>
-
-    <span class="nx">Page</span> <span class="p">{</span>
-        <span class="kd">id: page</span>
-        <span class="k">title:</span> <span class="s2">"Page Title"</span>
-
-        <span class="nx">Label</span> <span class="p">{</span>
-            <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
-            <span class="k">text:</span> <span class="s2">"Hello World!"</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div></blockquote>
+            <p outputclass="brief">A push button with a text label.</p>
+            <p>A button clearly communicates what action will occur when the user touches it. It consists of text, an image, or both, designed in accordance with your app&#8217;s color theme.</p>
+            <p>There are three standard types of buttons:</p>
+            <ul>
+                <li>Floating action button: A circular material button that lifts and displays an ink reaction on press.</li>
+                <li>Raised button: A typically rectangular material button that lifts and displays ink reactions on press.</li>
+                <li>Flat button: A button made of ink that displays ink reactions on press but does not lift.</li>
+            </ul>
+            <p>This componenent provides raised and flat buttons. For floating action buttons, see <a href="qml-material-actionbutton.dita">ActionButton</a>.</p>
+            <p>Here are some example buttons:</p>
+            <fig>
+                <image align="center" href="images/buttons.png" placement="break">
+                    <alt>Button examples</alt>
+                </image>
+            </fig>
+            <p>See the <a href="http://www.google.com/design/spec/components/buttons.html" scope="external">Material Design spec</a> for details on how to use buttons.</p>
         
 		
 
@@ -112,40 +104,38 @@
 
 		
 
-			<h5 id="clientSideDecorations">clientSideDecorations : bool</h5>
+			<h5 id="backgroundColor">backgroundColor : color</h5>
 
 			
 				
-                <p>Set to <tt>true</tt> to include window decorations in your app's toolbar and hide the regular window decorations header.</p>
+                <p>The background color of the button. By default, this is white for a raised button and transparent for a flat button.</p>
             
 			
 		
 
-			<h5 id="initialPage">initialPage : <a href="qml-material-page.dita">Page</a>
-                </h5>
+			<h5 id="darkBackground">darkBackground : bool</h5>
 
 			
 				
-                <p>The initial page shown when the application starts.</p>
+                <p>Set to <tt>true</tt> if the button is on a dark background</p>
             
 			
 		
 
-			<h5 id="pageStack">pageStack : PageStack</h5>
+			<h5 id="elevation">elevation : int</h5>
 
 			
 				
-                <p>The PageStack used for controlling pages and transitions between pages.</p>
+                <p>The elevation of the button. Normally either <tt>0</tt> or <tt>1</tt>.</p>
             
 			
 		
 
-			<h5 id="theme">theme : <a href="qml-material-apptheme.dita">AppTheme</a>
-                </h5>
+			<h5 id="textColor">textColor : color</h5>
 
 			
 				
-                <p>A grouped property that allows the application to customize the the primary color, the primary dark color, and the accent color. See <a href="qml-material-theme.dita">Theme</a> for more details.</p>
+                <p>The text color of the button. By default, this is calculated based on the background color, but it can be customized to the theme's primary color or another color.</p>
             
 			
 		

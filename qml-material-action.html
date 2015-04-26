@@ -59,7 +59,17 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#hoverAnimation">hoverAnimation : bool</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
 				<a href="#iconName">iconName : string</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#iconSource">iconSource : string</a>
 			</li>
 		
 			<li>
@@ -84,6 +94,13 @@
 		
 
 		
+
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#triggered">signal triggered(var<i>caller</i>)</a>
+			</li>
+		
 		</ul>
 
 		<h4 id="description">Detailed Description</h4>
@@ -92,6 +109,7 @@
 		
 			
             <p outputclass="brief">Represents an action shown in an action bar, context menu, or list.</p>
+            <p>One of the most common uses of actions is displaying actions in the action bar of a page using the <a href="qml-material-page.dita#id-qml-property-actions">Page::actions</a> property. See the example for <a href="qml-material-page.dita">Page</a> for more details.</p>
         
 		
 
@@ -120,6 +138,15 @@
 			
 		
 
+			<h5 id="hoverAnimation">hoverAnimation : bool</h5>
+
+			
+				
+                <p>Set to <tt>true</tt> to rotate the icon 90 degrees on mouseover.</p>
+            
+			
+		
+
 			<h5 id="iconName">iconName : string</h5>
 
 			
@@ -129,10 +156,24 @@
 			
 		
 
+			<h5 id="iconSource">iconSource : string</h5>
+
+			
+				
+                <p>A URL pointing to an image to display as the icon. By default, this is a special URL representing the icon named by <a href="qml-material-action.dita#id-qml-property-iconName">iconName</a> from the Material Design icon collection or FontAwesome. The icon will be colorized using the specificed color, unless you put ".color." in the filename, for example, "app-icon.color.svg".</p>
+                <p>
+                    <b>See also </b>
+                    <a href="qml-material-action.dita#id-qml-property-iconName">iconName</a> and Icon.</p>
+            
+			
+		
+
 			<h5 id="keybinding">keybinding : string</h5>
 
 			
-				<i class="light">No description provided.</i>
+				
+                <p>A string representation of a keybinding, for example, "Ctrl+Shift+A" or "Alt+T".</p>
+            
 			
 		
 
@@ -165,6 +206,22 @@
 
 		
 
+		
+
+		
+			<h4>Signals</h4>
+			<div class="divider"></div>
+		
+
+		
+
+			<h5 id="triggered">signal triggered(var<i>caller</i>)</h5>
+
+			
+				
+                <p>Called when the UI representing the action is triggered. <tt>caller</tt> contains the UI element that triggered the action.</p>
+            
+			
 		
 
 		<br/>
