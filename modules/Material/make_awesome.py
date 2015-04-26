@@ -30,7 +30,7 @@ lines = [line[8:].strip().split(': ') for line in scssIn if line.startswith('$fa
 for line in lines:
     name = line[0].replace('-','_')
     code = line[1][2:].strip(';').strip('"')
-    javascriptOut.write("    '%s' : '\u%s',\n" % (name, code))
+    javascriptOut.write("    '%s': '\u%s',\n" % (name, code))
 
 javascriptOut.write(js_template_footer)
 javascriptOut.close()
