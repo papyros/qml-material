@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from fontTools.ttLib import TTFont, TTLibError
+import urllib2
 import codecs
 import os
 import sys
@@ -15,14 +15,32 @@ js_template_footer = """
 };
 """
 
-javascriptOut = codecs.open(sys.argv[2], encoding='utf-8', mode='w')
+jsFilename = 'awesome.js'
+fontFilename = 'fonts/fontawesome/FontAwesome.otf'
+
+print 'Downloading SCSS file...'
+scssReq = urllib2.Request('http://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/scss/_variables.scss')
+scssIn = urllib2.urlopen(scssReq)
+javascriptOut = codecs.open(jsFilename, encoding='utf-8', mode='w')
 
 javascriptOut.write(js_template_header)
 
-ttf = TTFont(sys.argv[1], fontNumber=0)
-for code,name in list( ttf['cmap'].getcmap(3,1).cmap.items() ):
-    if not name.startswith("_"):
-        javascriptOut.write("    '%s' : '\u%s',\n" % (name, hex(code)[2:].zfill(4)))
+lines = [line[8:].strip().split(': ') for line in scssIn if line.startswith('$fa-var-')]
+
+for line in lines:
+    name = line[0].replace('-','_')
+    code = line[1][2:].strip(';').strip('"')
+    javascriptOut.write("    '%s' : '\u%s',\n" % (name, code))
 
 javascriptOut.write(js_template_footer)
 javascriptOut.close()
+print 'wrote %d icons to %s' % (len(lines), jsFilename)
+
+print 'Downloading font'
+fontReq = urllib2.Request('http://github.com/FortAwesome/Font-Awesome/raw/master/fonts/FontAwesome.otf')
+fontIn = urllib2.urlopen(fontReq)
+fontOut = open(fontFilename,'wb')
+fontOut.write(fontIn.read())
+fontOut.close()
+
+print 'wrote %s' % fontFilename
