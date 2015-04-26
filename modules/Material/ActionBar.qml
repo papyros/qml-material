@@ -207,6 +207,7 @@ Item {
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                                   Theme.dark.iconColor)
                 size: name == "content/add" ? units.dp(27) : units.dp(24)
+                visible: action.visible
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
         }
@@ -271,6 +272,7 @@ Item {
 
                     text: action.name
                     iconName: action.iconName
+                    visible: action.visible
 
                     onClicked: {
                         action.triggered(listItem)
