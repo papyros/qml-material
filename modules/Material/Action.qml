@@ -47,6 +47,15 @@ QtObject {
     property string iconName
 
     /*!
+       A URL representing a custom image to display as the action's icon. If this is not explicitly
+       set, the icon named in \l iconName will be used. The icon color will not be changed unless you
+       set the \l colorize property to true or put ".tint." in the filename, in which case the i
+       con will be colored based on the context of the icon and the color of the background behind 
+       the icon.
+     */
+    property string iconSource: "icon://" + iconName
+
+    /*!
        A string representation of a keybinding, for example, "Ctrl+Shift+A" or "Alt+T".
      */
     property string keybinding

@@ -62,9 +62,16 @@ ApplicationWindow {
                 name: "Language"
             },
 
+            // Demo a sample custom icon (borrowed from elementary OS)
             Action {
-                iconName: "action/account_circle"
-                name: "Account"
+                iconSource: Qt.resolvedUrl("list-add.svg")
+                name: "Custom icon"
+            },
+
+            // Demo a sample tinted custom icon (borrowed from elementary OS)
+            Action {
+                iconSource: Qt.resolvedUrl("go-last.tint.svg")
+                name: "Custom tinted icon"
             }
         ]
 

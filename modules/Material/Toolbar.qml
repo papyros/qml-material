@@ -239,7 +239,7 @@ View {
         spacing: units.dp(24)
 
         IconButton {
-            name: "navigation/close"
+            iconName: "navigation/close"
             color: Theme.lightDark(toolbar.backgroundColor, Theme.light.textColor,
                 Theme.dark.textColor)
             onClicked: Qt.quit()

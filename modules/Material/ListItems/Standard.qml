@@ -30,6 +30,7 @@ BaseListItem {
 
     property alias action: actionItem.children
     property alias iconName: icon.name
+    property alias iconSource: icon.source
     property alias secondaryItem: secondaryItem.children
     property alias content: contentItem.children
 
@@ -78,7 +79,7 @@ BaseListItem {
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
 
-            visible: children.length > 1 || iconName != ""
+            visible: children.length > 1 || icon.valid
 
             Icon {
                 id: icon
@@ -88,7 +89,7 @@ BaseListItem {
                     left: parent.left
                 }
 
-                visible: name != ""
+                visible: valid
                 color: listItem.selected ? Theme.primaryColor : Theme.light.iconColor
                 size: units.dp(24)
             }

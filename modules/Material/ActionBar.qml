@@ -216,7 +216,7 @@ Item {
 
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                                   Theme.dark.iconColor)
-                size: name == "content/add" ? units.dp(27) : units.dp(24)
+                size: iconSource == "icon://content/add" ? units.dp(27) : units.dp(24)
                 
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
@@ -225,7 +225,7 @@ Item {
         IconButton {
             id: overflowButton
 
-            name: "navigation/more_vert"
+            iconName: "navigation/more_vert"
             objectName: "action/overflow"
             size: units.dp(27)
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
@@ -281,7 +281,7 @@ Item {
                     property Action action: __internal.visibleActions[index + maxActionCount - 1]
 
                     text: action.name
-                    iconName: action.iconName
+                    iconSource: action.iconSource
 
                     onClicked: {
                         action.triggered(listItem)

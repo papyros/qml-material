@@ -71,10 +71,10 @@ Item {
 	            delegate: IconButton {
 	                id: iconAction
 
-	                name: modelData
+	                iconName: modelData
 
 	                color: Theme.dark.iconColor
-	                size: name == "content/add" ? units.dp(27) : units.dp(24)
+	                size: iconName == "content/add" ? units.dp(27) : units.dp(24)
 	                anchors.verticalCenter: parent.verticalCenter
 	            }
 	        }

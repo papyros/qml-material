@@ -20,6 +20,7 @@ QML Material CHANGELOG
  * [Icons] Update the FontAwesome parsing script to pull from the website
  * [ListItem] Correctly calculate the width of a simple menu item
  * [ActionBar] Hide non-visible actions in the action bar
+ * [Icon] Support custom icons with an iconSource property
 
 
 ### Version 0.0.6 (April 16, 2015)
