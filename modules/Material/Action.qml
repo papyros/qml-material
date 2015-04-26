@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
- import QtQuick 2.0
+import QtQuick 2.0
 
 /*!
    \qmltype Action
@@ -47,12 +47,14 @@ QtObject {
     property string iconName
 
     /*!
-       A URL representing a custom image to display as the action's icon. If this is not explicitly
-       set, the icon named in \l iconName will be used. The icon color will not be changed unless you
-       set the \l colorize property to true or put ".tint." in the filename, in which case the i
-       con will be colored based on the context of the icon and the color of the background behind 
-       the icon.
-     */
+       A URL pointing to an image to display as the icon. By default, this is
+       a special URL representing the icon named by \l iconName from the Material Design
+       icon collection or FontAwesome. The icon will be colorized using the specificed \l color,
+       unless you put ".color." in the filename, for example, "app-icon.color.svg".
+
+       \sa iconName
+       \sa Icon
+      */
     property string iconSource: "icon://" + iconName
 
     /*!

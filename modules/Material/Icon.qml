@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Michael Spencer
+ * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
  *               2015 Bogdan Cuza
  *
  * This program is free software: you can redistribute it and/or modify
@@ -38,9 +38,8 @@ Item {
     /*!
        A URL pointing to an image to display as the icon. By default, this is
        a special URL representing the icon named by \l name from the Material Design
-       icon collection or FontAwesome. The icon color will not be changed unless you
-       set the \l colorize property to true or put ".tint." in the filename, in which case
-       the \l color property will be used to color the icon.
+       icon collection or FontAwesome. The icon will be colorized using the specificed \l color,
+       unless you put ".color." in the filename, for example, "app-icon.color.svg".
 
        \sa name
       */
@@ -54,13 +53,13 @@ Item {
     width: size
     height: size
 
-    property bool colorize: icon.source.indexOf("icon://") == 0 || icon.source.indexOf(".tint.") != -1
+    property bool colorize: icon.source.indexOf("icon://") == 0 || icon.source.indexOf(".color.") == -1
 
     Image {
         id: image
 
         anchors.fill: parent
-        visible: icon.source != "" && !colorize
+        visible: source != "" && !colorize
 
         source: {
             if (icon.source.indexOf("icon://") == 0) {
@@ -88,7 +87,7 @@ Item {
         source: image
         color: Theme.alpha(icon.color, 1)
         cached: true
-        visible: icon.source != "" && colorize && image.source != ""
+        visible: image.source != "" && colorize
         opacity: icon.color.a
     }  
 

@@ -13,7 +13,7 @@ ApplicationWindow {
     }
 
     property var styles: [
-            "Icons", "Color Palette", "Typography"
+            "Icons", "Custom Icons", "Color Palette", "Typography"
     ]
 
     property var basicComponents: [
@@ -65,16 +65,9 @@ ApplicationWindow {
                 enabled: false
             },
 
-            // Demo a sample custom icon (borrowed from elementary OS)
             Action {
-                iconSource: Qt.resolvedUrl("list-add.svg")
-                name: "Custom icon"
-            },
-
-            // Demo a sample tinted custom icon (borrowed from elementary OS)
-            Action {
-                iconSource: Qt.resolvedUrl("go-last.tint.svg")
-                name: "Custom tinted icon"
+                iconName: "action/account_circle"
+                name: "Accounts"
             }
         ]
 
