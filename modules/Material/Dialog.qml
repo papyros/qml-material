@@ -33,7 +33,7 @@ PopupBase {
     visible: opacity > 0
 
     width: Math.max(minimumWidth,
-                    content.contentWidth + units.dp(32))
+                    content.contentWidth + 2 * contentMargins)
 
     height: Math.min(units.dp(350),
                      headerView.height + units.dp(32) +
@@ -41,6 +41,8 @@ PopupBase {
                      content.topMargin +
                      content.bottomMargin +
                      buttonContainer.height)
+
+    property int contentMargins: units.dp(16)
 
     property int minimumWidth: units.dp(270)
 
@@ -182,10 +184,10 @@ PopupBase {
                     id: column
                     anchors {
                         left: parent.left
-                        margins: units.dp(16)
+                        margins: contentMargins
                     }
 
-                    width: content.width - units.dp(32)
+                    width: content.width - 2 * contentMargins
                     spacing: units.dp(16)
                 }
             }

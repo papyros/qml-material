@@ -55,7 +55,7 @@ Item {
 
             ListItem.SimpleMenu {
                 text: "Subtitled list item"
-                model: ["A", "B", "C"]
+                model: ["A", "B and some long text that should not clip", "C"]
             }
         }
     }

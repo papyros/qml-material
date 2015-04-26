@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import Material 0.1
+import Material.Extras 0.1
 import Material.ListItems 0.1 as ListItem
 
 /*!
@@ -111,11 +112,11 @@ Item {
     property bool hidden: false
 
     /*!
-	   The maximum number of actions that can be displayed before they spill over 
+       The maximum number of actions that can be displayed before they spill over 
        into a drop-down menu. When using an action bar with a page, this inherits 
        from the global \l Toolbar::maxActionCount. If you are using an action bar
        for custom purposes outside of a toolbar, this defaults to \c 3.
-	 */
+     */
     property int maxActionCount: toolbar ? toolbar.maxActionCount : 3
 
     /*!
@@ -130,6 +131,14 @@ Item {
        The toolbar containing this action bar.
      */
     property Item toolbar
+
+    QtObject {
+        id: __internal
+
+        property var visibleActions: ListUtils.filter(actions, function(action) {
+            return action.visible
+        })
+    }
 
     IconButton {
         id: leftItem
@@ -149,7 +158,7 @@ Item {
         size: units.dp(24)
         action: backAction
 
-        opacity: show ? enabled ? 1 : 0.3 : 0
+        opacity: show ? enabled ? 1 : 0.6 : 0
 
         Behavior on opacity {
             NumberAnimation { duration: 200 }
@@ -194,19 +203,21 @@ Item {
         spacing: units.dp(24)
 
         Repeater {
-            model: actions.length > maxActionCount ? maxActionCount - 1 
-                                                   : actions.length
+            model: __internal.visibleActions.length > maxActionCount 
+                    ? maxActionCount - 1 
+                    : __internal.visibleActions.length
 
             delegate: IconButton {
                 id: iconAction
 
                 objectName: "action/" + action.objectName
 
-                action: actions[index]
+                action: __internal.visibleActions[index]
 
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                                   Theme.dark.iconColor)
-                size: name == "content/add" ? units.dp(27) : units.dp(24)
+                size: iconSource == "icon://content/add" ? units.dp(27) : units.dp(24)
+                
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
         }
@@ -214,12 +225,12 @@ Item {
         IconButton {
             id: overflowButton
 
-            name: "navigation/more_vert"
+            iconName: "navigation/more_vert"
             objectName: "action/overflow"
             size: units.dp(27)
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                               Theme.dark.iconColor)
-            visible: actions.length > maxActionCount
+            visible: __internal.visibleActions.length > maxActionCount
             anchors.verticalCenter: parent.verticalCenter
 
             onClicked: overflowMenu.open(overflowButton, units.dp(4), units.dp(-4))
@@ -260,17 +271,18 @@ Item {
             anchors.centerIn: parent
 
             Repeater {
-                model: actions.length - (maxActionCount - 1)
+                model: __internal.visibleActions.length - (maxActionCount - 1)
 
                 ListItem.Standard {
                     id: listItem
 
                     objectName: "action/" + action.objectName
 
-                    property Action action: actions[index + maxActionCount - 1]
+                    property Action action: __internal.visibleActions[index + maxActionCount - 1]
 
                     text: action.name
-                    iconName: action.iconName
+                    iconSource: action.iconSource
+                    enabled: action.enabled
 
                     onClicked: {
                         action.triggered(listItem)

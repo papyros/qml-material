@@ -337,7 +337,6 @@ var map = {
     'medium': '\uf23a',
     'medkit': '\uf0fa',
     'meh_o': '\uf11a',
-    'mercury': '\uf223',
     'microphone': '\uf130',
     'microphone_slash': '\uf131',
     'minus': '\uf068',
@@ -582,5 +581,6 @@ var map = {
     'yen': '\uf157',
     'youtube': '\uf167',
     'youtube_play': '\uf16a',
-    'youtube_square': '\uf166'
+    'youtube_square': '\uf166',
+
 };

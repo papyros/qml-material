@@ -32,7 +32,15 @@ ApplicationWindow {
 
         tabs: [ "Style", "Basic Components", "Compound Components" ]
 
+        actionBar.maxActionCount: 4
+
         actions: [
+            Action {
+                iconName: "action/search"
+                name: "Search"
+                enabled: false
+            },
+
             Action {
                 iconName: "image/color_lens"
                 name: "Colors"
@@ -46,18 +54,27 @@ ApplicationWindow {
             },
 
             Action {
-                iconName: "action/search"
-                name: "Search"
+                iconName: "alert/warning"
+                name: "THIS SHOULD BE HIDDEN!"
+                visible: false
             },
 
             Action {
                 iconName: "action/language"
                 name: "Language"
+                enabled: false
             },
 
+            // Demo a sample custom icon (borrowed from elementary OS)
             Action {
-                iconName: "action/account_circle"
-                name: "Account"
+                iconSource: Qt.resolvedUrl("list-add.svg")
+                name: "Custom icon"
+            },
+
+            // Demo a sample tinted custom icon (borrowed from elementary OS)
+            Action {
+                iconSource: Qt.resolvedUrl("go-last.tint.svg")
+                name: "Custom tinted icon"
             }
         ]
 
