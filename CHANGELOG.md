@@ -21,6 +21,7 @@ QML Material CHANGELOG
  * [ListItem] Correctly calculate the width of a simple menu item
  * [ActionBar] Hide non-visible actions in the action bar
  * [Icon] Support custom icons with an iconSource property
+ * [ActionBar] Support disabling actions in the action bar
 
 
 ### Version 0.0.6 (April 16, 2015)

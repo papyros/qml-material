@@ -19,6 +19,8 @@ View {
     signal clicked()
     signal pressAndHold()
 
+    opacity: enabled ? 1 : 0.6
+
     ThinDivider {
         anchors.bottom: parent.bottom
         anchors.leftMargin: dividerInset
@@ -34,7 +36,7 @@ View {
 
         anchors.fill: parent
 
-        enabled: listItem.interactive
+        enabled: listItem.interactive && listItem.enabled
         z: -1
     }
 

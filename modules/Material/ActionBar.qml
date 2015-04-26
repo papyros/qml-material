@@ -158,7 +158,7 @@ Item {
         size: units.dp(24)
         action: backAction
 
-        opacity: show ? enabled ? 1 : 0.3 : 0
+        opacity: show ? enabled ? 1 : 0.6 : 0
 
         Behavior on opacity {
             NumberAnimation { duration: 200 }
@@ -282,6 +282,7 @@ Item {
 
                     text: action.name
                     iconSource: action.iconSource
+                    enabled: action.enabled
 
                     onClicked: {
                         action.triggered(listItem)

@@ -32,7 +32,15 @@ ApplicationWindow {
 
         tabs: [ "Style", "Basic Components", "Compound Components" ]
 
+        actionBar.maxActionCount: 4
+
         actions: [
+            Action {
+                iconName: "action/search"
+                name: "Search"
+                enabled: false
+            },
+
             Action {
                 iconName: "image/color_lens"
                 name: "Colors"
@@ -51,15 +59,10 @@ ApplicationWindow {
                 visible: false
             },
 
-
-            Action {
-                iconName: "action/search"
-                name: "Search"
-            },
-
             Action {
                 iconName: "action/language"
                 name: "Language"
+                enabled: false
             },
 
             // Demo a sample custom icon (borrowed from elementary OS)
