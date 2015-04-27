@@ -73,7 +73,12 @@ PopupBase {
         NumberAnimation { duration: 200 }
     }
 
-    Keys.onEscapePressed: dialog.close()
+    Keys.onPressed: {
+        if (event.key === Qt.Key_Escape || event.key === Qt.Key_Back) {
+            dialog.close()
+            event.accepted = true
+        }
+    }
 
     function show() {
         open()

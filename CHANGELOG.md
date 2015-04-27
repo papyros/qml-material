@@ -22,6 +22,7 @@ QML Material CHANGELOG
  * [ActionBar] Hide non-visible actions in the action bar
  * [Icon] Support custom icons with an iconSource property
  * [ActionBar] Support disabling actions in the action bar
+ * [Dialog] Correctly handle back button on Android devices
 
 
 ### Version 0.0.6 (April 16, 2015)
