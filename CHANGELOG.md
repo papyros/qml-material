@@ -25,6 +25,7 @@ QML Material CHANGELOG
  * [Dialog] Correctly handle back button on Android devices
  * [Documentation] Fix qdoc warnings
  * [PageStack] Pop pages when the Android back button is tapped
+ * [Popup] Support preventing a popup from being dismissed
 
 
 ### Version 0.0.6 (April 16, 2015)
