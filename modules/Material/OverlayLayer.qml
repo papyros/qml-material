@@ -49,7 +49,7 @@ Rectangle {
         enabled: overlayLayer.currentOverlay != null && 
                 overlayLayer.currentOverlay.globalMouseAreaEnabled
         hoverEnabled: enabled
-        
+
         onWheel: wheel.accepted = true
 
         onClicked: {

@@ -53,8 +53,8 @@ View {
         return height
     }
     property int targetHeight: actionBarHeight + (tabs.length > 0 ? tabbar.height : 0)
-    property int maxActionCount: (Device.formFactor === "desktop"
-                                  ? 5 : Device.formFactor === "tablet" ? 4 : 3)
+    property int maxActionCount: Device.type === Device.desktop
+                                 ? 5 : Device.type === Device.tablet ? 4 : 3
     property bool clientSideDecorations: false
     property string color: "white"
     property var page
@@ -69,9 +69,9 @@ View {
                             ? page.backgroundColor : page.actionBar.backgroundColor
                           : Theme.primaryColor
 
-    implicitHeight: Device.type == Device.phone ? units.dp(48)
-                                                : Device.type == Device.tablet ? units.dp(56)
-                                                                               : units.dp(64)
+    implicitHeight: Device.type == Device.phone || Device.type === Device.phablet 
+            ? units.dp(48) : Device.type == Device.tablet ? units.dp(56) : units.dp(64)
+
     height: targetHeight
     elevation: backgroundColor === page.color ? 0 : page.actionBar.elevation
     fullWidth: true
