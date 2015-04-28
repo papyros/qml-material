@@ -35,6 +35,7 @@ import "ListItems" as ListItem
 
    Examples:
    \qml
+   Item{
        property bool wideAspect: width > units.gu(80)
 
        Sidebar {
@@ -42,6 +43,7 @@ import "ListItems" as ListItem
 
            // Anchoring is automatic
        }
+   }
    \endqml
 */
 View {
