@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Sidebar | Material for QtQuick</title>
+  <title>Icon | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Sidebar</h3>
+		<h3 class="header">Icon</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		A sidebar component for use in adaptive layouts. <a href="#description">More...</a>
+		Brief description... <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -49,32 +49,37 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-autoFlick">autoFlick : bool</a>
+				<a href="#id-qml-property-color">color : color</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-borderColor">borderColor : color</a>
+				<a href="#id-qml-property-colorize">colorize : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-contents">contents : alias</a>
+				<a href="#id-qml-property-iconDirectory">iconDirectory : url</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-expanded">expanded : bool</a>
+				<a href="#id-qml-property-name">name : string</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-header">header : alias</a>
+				<a href="#id-qml-property-size">size : real</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-mode">mode : string</a>
+				<a href="#id-qml-property-source">source : string</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-valid">valid : bool</a>
 			</li>
 		
 
@@ -88,21 +93,8 @@
 
 		
 			
-            <p outputclass="brief">A sidebar component for use in adaptive layouts</p>
-            <p>To use, simply add an instance to your code, and anchor other components to it.</p>
-            <p>To show or hide, set the expanded property.</p>
-            <p>By default, the sidebar has a flickable built in, and whatever contents are added will be placed in the flickable. When you want this disabled, or want to fill the entire sidebar, set the autoFill property to false.</p>
-            <p>Examples:</p>
-            <blockquote><div class="highlight"><pre><span class="nx">Item</span><span class="p">{</span>
-    <span class="nx">property</span> <span class="nx">bool</span> <span class="k">wideAspect:</span> <span class="nx">width</span> <span class="o">&gt;</span> <span class="nx">units</span><span class="p">.</span><span class="nx">gu</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
-
-    <span class="nx">Sidebar</span> <span class="p">{</span>
-        <span class="k">expanded:</span> <span class="nx">wideAspect</span>
-
-        <span class="c1">// Anchoring is automatic</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div></blockquote>
+            <p outputclass="brief">Brief description...</p>
+            <p>Details...</p>
         
 		
 
@@ -113,42 +105,59 @@
 
 		
 
-			<h5 id="id-qml-property-autoFlick">autoFlick : bool</h5>
+			<h5 id="id-qml-property-color">color : color</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-borderColor">borderColor : color</h5>
+			<h5 id="id-qml-property-colorize">colorize : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-contents">contents : alias</h5>
+			<h5 id="id-qml-property-iconDirectory">iconDirectory : url</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-expanded">expanded : bool</h5>
+			<h5 id="id-qml-property-name">name : string</h5>
+
+			
+				
+                <p>The name of the icon to display.</p>
+                <p>
+                    <b>See also </b>
+                    <a href="qml-material-icon.html#id-qml-property-source">source</a>.</p>
+            
+			
+		
+
+			<h5 id="id-qml-property-size">size : real</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-header">header : alias</h5>
+			<h5 id="id-qml-property-source">source : string</h5>
 
 			
-				<i class="light">No description provided.</i>
+				
+                <p>A URL pointing to an image to display as the icon. By default, this is a special URL representing the icon named by <a href="qml-material-icon.html#id-qml-property-name">name</a> from the Material Design icon collection or FontAwesome. The icon will be colorized using the specificed <a href="qml-material-icon.html#id-qml-property-color">color</a>, unless you put ".color." in the filename, for example, "app-icon.color.svg".</p>
+                <p>
+                    <b>See also </b>
+                    <a href="qml-material-icon.html#id-qml-property-name">name</a>.</p>
+            
 			
 		
 
-			<h5 id="id-qml-property-mode">mode : string</h5>
+			<h5 id="id-qml-property-valid">valid : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
