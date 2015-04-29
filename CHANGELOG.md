@@ -24,6 +24,7 @@ QML Material CHANGELOG
  * [ActionBar] Support disabling actions in the action bar
  * [Dialog] Correctly handle back button on Android devices
  * [Documentation] Fix qdoc warnings
+ * [PageStack] Pop pages when the Android back button is tapped
 
 
 ### Version 0.0.6 (April 16, 2015)

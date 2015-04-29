@@ -166,19 +166,28 @@ FocusScope {
      */
     function pop() {
         if (Controls.Stack.view.currentItem == page)
-            Controls.Stack.view.pop();
+            return Controls.Stack.view.pop();
     }
 
     /*!
        Push the specified component onto the page stack.
      */
     function push(component, properties) {
-        Controls.Stack.view.push({item: component, properties: properties});
+        return Controls.Stack.view.push({item: component, properties: properties});
     }
 
     onRightSidebarChanged: {
         if (rightSidebar)
             rightSidebar.mode = "right"
+    }
+
+    Keys.onPressed: {
+        // Pop the page from the page stack when the Android back button is tapped
+        if (event.key === Qt.Key_Back) {
+            if (pop()) {
+                event.accepted = true;
+            }
+        }
     }
 
     ActionBar {
