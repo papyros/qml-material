@@ -48,7 +48,7 @@ Rectangle {
         anchors.fill: parent
         enabled: overlayLayer.currentOverlay != null && overlayLayer.currentOverlay.globalMouseAreaEnabled
         hoverEnabled: enabled
-        onClicked: overlayLayer.currentOverlay.close()
+        onClicked: if (overlayLayer.currentOverlay.dismissOnTap) overlayLayer.currentOverlay.close()
         onWheel: wheel.accepted = true
     }
 }
