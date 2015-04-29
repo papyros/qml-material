@@ -39,12 +39,12 @@ Controls.Button {
      */
     property color backgroundColor: Theme.accentColor
 
-
     /*!
        \internal
        The elevation of the icon. This will be higher for a white background color.
      */
     property int elevation: backgroundColor == "white" ? 0 : 1
+    
     /*!
        The color of the icon displayed on the action button. By default, this is
        automatically selected based on the \l backgroundColor.
@@ -58,6 +58,16 @@ Controls.Button {
        Design icon collection by Google.
      */
     property string iconName
+
+    /*!
+       Floating action buttons come in two sizes:
+
+       \list
+       \li \b {Default size} - for most use cases
+       \li \b {Mini size} - only used to create visual continuity with other screen elements
+       \endlist
+     */
+    property bool isMiniSize: false
 
     style: ControlStyles.ButtonStyle {
         background: Item {
@@ -103,9 +113,8 @@ Controls.Button {
             }
         }
         label: Item {
-            implicitHeight: units.dp(40)
-            implicitWidth: units.dp(40)
-
+            implicitHeight: isMiniSize ? units.dp(40) : units.dp(56)
+            implicitWidth: implicitHeight
             Icon {
                 id: icon
 

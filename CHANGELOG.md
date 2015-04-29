@@ -27,6 +27,7 @@ QML Material CHANGELOG
  * [PageStack] Pop pages when the Android back button is tapped
  * [Popup] Support preventing a popup from being dismissed
  * [ActionBar] Control the overflow menu with Android hardware keys
+ * [ActionButton] Add support for the mini and default FAB sizes
 
 
 ### Version 0.0.6 (April 16, 2015)
