@@ -59,6 +59,13 @@ Controls.Button {
      */
     property string iconName
 
+    /*!
+       Floating action buttons come in two sizes:
+       Default size: For most use cases
+       Mini size: Only used to create visual continuity with other screen elements
+     */
+    property bool isMiniSize: false
+
     style: ControlStyles.ButtonStyle {
         background: Item {
             RectangularGlow {
@@ -103,9 +110,8 @@ Controls.Button {
             }
         }
         label: Item {
-            implicitHeight: units.dp(40)
-            implicitWidth: units.dp(40)
-
+            implicitHeight: isMiniSize ? units.dp(40) : units.dp(56)
+            implicitWidth: implicitHeight
             Icon {
                 id: icon
 
