@@ -13,7 +13,7 @@ ApplicationWindow {
     }
 
     property var styles: [
-            "Icons", "Color Palette", "Typography"
+            "Icons", "Custom Icons", "Color Palette", "Typography"
     ]
 
     property var basicComponents: [
@@ -32,7 +32,15 @@ ApplicationWindow {
 
         tabs: [ "Style", "Basic Components", "Compound Components" ]
 
+        actionBar.maxActionCount: 4
+
         actions: [
+            Action {
+                iconName: "action/search"
+                name: "Search"
+                enabled: false
+            },
+
             Action {
                 iconName: "image/color_lens"
                 name: "Colors"
@@ -46,18 +54,20 @@ ApplicationWindow {
             },
 
             Action {
-                iconName: "action/search"
-                name: "Search"
+                iconName: "alert/warning"
+                name: "THIS SHOULD BE HIDDEN!"
+                visible: false
             },
 
             Action {
                 iconName: "action/language"
                 name: "Language"
+                enabled: false
             },
 
             Action {
                 iconName: "action/account_circle"
-                name: "Account"
+                name: "Accounts"
             }
         ]
 

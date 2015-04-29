@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Michael Spencer
+ * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
  *               2015 Bogdan Cuza
  *
  * This program is free software: you can redistribute it and/or modify
@@ -38,9 +38,20 @@ Item {
 
     /*!
        The name of the icon to display.
-       \qmlproperty string name
+       
+       \sa source
     */
     property string name
+
+    /*!
+       A URL pointing to an image to display as the icon. By default, this is
+       a special URL representing the icon named by \l name from the Material Design
+       icon collection or FontAwesome. The icon will be colorized using the specificed \l color,
+       unless you put ".color." in the filename, for example, "app-icon.color.svg".
+
+       \sa name
+      */
+    property string source: "icon://" + name
 
     property bool valid: name.indexOf("awesome") == 0 
             ? awesomeIcon.valid : image.status == Image.Ready
@@ -50,17 +61,25 @@ Item {
     width: size
     height: size
 
+    property bool colorize: icon.source.indexOf("icon://") == 0 || icon.source.indexOf(".color.") == -1
+
     Image {
         id: image
 
         anchors.fill: parent
-        visible: false
+        visible: source != "" && !colorize
 
         source: {
-            var list = name.split("/");
-            if (name == "" || list[0] == "awesome")
-                return "";
-            return Qt.resolvedUrl("icons/%1/%2.svg".arg(list[0]).arg(list[1]));
+            if (icon.source.indexOf("icon://") == 0) {
+                var name = icon.source.substring(7)
+                var list = name.split("/");
+
+                if (name == "" || list[0] == "awesome")
+                    return "";
+                return Qt.resolvedUrl("icons/%1/%2.svg".arg(list[0]).arg(list[1]));
+            } else {
+                return icon.source
+            }
         }
 
         sourceSize {
@@ -76,7 +95,7 @@ Item {
         source: image
         color: Theme.alpha(icon.color, 1)
         cached: true
-        visible: image.source != ""
+        visible: image.source != "" && colorize
         opacity: icon.color.a
     }  
 
@@ -85,15 +104,20 @@ Item {
 
         anchors.centerIn: parent
         size: icon.size * 0.9
-        visible: icon.name.indexOf("awesome/") == 0
+        visible: name != ""
         color: icon.color
 
         name: {
-            var list = icon.name.split("/")
-            if (list[0] == "awesome") {
-                return list[1]
+            if (icon.source.indexOf("icon://") == 0) {
+                var name = icon.source.substring(7)
+                var list = name.split("/")
+
+                if (list[0] == "awesome") {
+                    return list[1]
+                }
             }
-            return ''
+
+            return ""
         }
     }
 }

@@ -21,7 +21,7 @@ Item {
 
 			anchors.horizontalCenter: parent.horizontalCenter
 
-			source: Qt.resolvedUrl("balloon.jpg")
+			source: Qt.resolvedUrl("images/balloon.jpg")
 			width: units.dp(400)
 			height: units.dp(250)
 
@@ -50,7 +50,7 @@ Item {
 
 		Image {
 			id: contentImage
-	    	source: Qt.resolvedUrl("balloon.jpg")
+	    	source: Qt.resolvedUrl("images/balloon.jpg")
 	    	anchors.fill: parent
 	    }
 
@@ -71,10 +71,10 @@ Item {
 	            delegate: IconButton {
 	                id: iconAction
 
-	                name: modelData
+	                iconName: modelData
 
 	                color: Theme.dark.iconColor
-	                size: name == "content/add" ? units.dp(27) : units.dp(24)
+	                size: iconName == "content/add" ? units.dp(27) : units.dp(24)
 	                anchors.verticalCenter: parent.verticalCenter
 	            }
 	        }
