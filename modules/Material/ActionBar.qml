@@ -132,6 +132,17 @@ Item {
      */
     property Item toolbar
 
+    property alias overflowMenuShowing: overflowMenu.showing
+    property bool overflowMenuAvailable: __internal.visibleActions.length > maxActionCount
+
+    function openOverflowMenu() {
+        overflowMenu.open(overflowButton, units.dp(4), units.dp(-4));
+    }
+
+    function closeOverflowMenu() {
+        overflowMenu.close();
+    }
+
     QtObject {
         id: __internal
 
@@ -230,10 +241,10 @@ Item {
             size: units.dp(27)
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                               Theme.dark.iconColor)
-            visible: __internal.visibleActions.length > maxActionCount
+            visible: actionBar.overflowMenuAvailable
             anchors.verticalCenter: parent.verticalCenter
 
-            onClicked: overflowMenu.open(overflowButton, units.dp(4), units.dp(-4))
+            onClicked: openOverflowMenu()
         }
     }
 
