@@ -21,7 +21,7 @@ Item {
 
 			anchors.horizontalCenter: parent.horizontalCenter
 
-			source: Qt.resolvedUrl("balloon.jpg")
+			source: Qt.resolvedUrl("images/balloon.jpg")
 			width: units.dp(400)
 			height: units.dp(250)
 
@@ -50,7 +50,7 @@ Item {
 
 		Image {
 			id: contentImage
-	    	source: Qt.resolvedUrl("balloon.jpg")
+	    	source: Qt.resolvedUrl("images/balloon.jpg")
 	    	anchors.fill: parent
 	    }
 

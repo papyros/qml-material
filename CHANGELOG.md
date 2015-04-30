@@ -22,6 +22,10 @@ QML Material CHANGELOG
  * [ActionBar] Hide non-visible actions in the action bar
  * [Icon] Support custom icons with an iconSource property
  * [ActionBar] Support disabling actions in the action bar
+ * [Dialog] Correctly handle back button on Android devices
+ * [Documentation] Fix qdoc warnings
+ * [PageStack] Pop pages when the Android back button is tapped
+ * [Popup] Support preventing a popup from being dismissed
 
 
 ### Version 0.0.6 (April 16, 2015)

@@ -19,6 +19,14 @@ import QtQuick 2.0
 import QtQuick.Controls 1.2 as Controls
 import Material 0.1
 
+/*!
+   \qmltype PageStack
+   \inqmlmodule Material 0.1
+
+   \brief Brief description...
+
+   Details...
+*/
 Controls.StackView {
     id: stackView
 

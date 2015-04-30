@@ -23,7 +23,7 @@ import QtQuick.Window 2.2
    \qmltype Window
    \inqmlmodule Material 0.1
 
-   \brief A subclass of \l Window that provides some additional features for developing Applications
+   \brief A subclass of QtQuick.Window that provides some additional features for developing Applications
    that conform to Material Design.
 
    Here is a short working example of an application:

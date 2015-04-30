@@ -20,6 +20,15 @@ import QtQuick.Controls 1.2 as Controls
 import QtQuick.Layouts 1.1
 import Material 0.1
 
+
+/*!
+   \qmltype Toolbar
+   \inqmlmodule Material 0.1
+
+   \brief Brief description...
+
+   Details...
+*/
 View {
     id: toolbar
 

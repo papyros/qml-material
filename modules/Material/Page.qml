@@ -21,7 +21,7 @@ import QtQuick.Controls 1.2 as Controls
 import Material 0.1
 
 /*!
-   \qmltype ActionBar
+   \qmltype Page
    \inqmlmodule Material 0.1
 
    \brief Brief description...
@@ -113,7 +113,7 @@ FocusScope {
     default property alias data: content.data
 
     /*!
-       \qmlproperty PageSidebar
+       \qmlproperty PageSidebar rightSidebar
        A sidebar to show on the right of the page. This will have its own
        action bar and title, which will split the toolbar into two action bars.
      */
@@ -134,21 +134,23 @@ FocusScope {
        The following example highlights the different available tab items:
 
        \qml
-       tabs: [
-           // Each tab can have text and an icon
-           {
-               text: "Overview",
-               icon: "action/home"
-           },
+       Page{
+           tabs: [
+               // Each tab can have text and an icon
+               {
+                   text: "Overview",
+                   icon: "action/home"
+               },
 
-           // You can also leave out the icon
-           {
-               text:"Projects",
-           },
+               // You can also leave out the icon
+               {
+                   text:"Projects",
+               },
 
-           // Or just simply use a string
-           "Inbox"
-       ]
+               // Or just simply use a string
+               "Inbox"
+           ]
+        }
        \endqml
      */
     property var tabs: []
@@ -164,19 +166,28 @@ FocusScope {
      */
     function pop() {
         if (Controls.Stack.view.currentItem == page)
-            Controls.Stack.view.pop();
+            return Controls.Stack.view.pop();
     }
 
     /*!
        Push the specified component onto the page stack.
      */
     function push(component, properties) {
-        Controls.Stack.view.push({item: component, properties: properties});
+        return Controls.Stack.view.push({item: component, properties: properties});
     }
 
     onRightSidebarChanged: {
         if (rightSidebar)
             rightSidebar.mode = "right"
+    }
+
+    Keys.onPressed: {
+        // Pop the page from the page stack when the Android back button is tapped
+        if (event.key === Qt.Key_Back) {
+            if (pop()) {
+                event.accepted = true;
+            }
+        }
     }
 
     ActionBar {
