@@ -182,7 +182,7 @@ Item {
             }
         }
 
-        visible: customContentView.children.length == 0
+        visible: customContentView.children.length === 0
 
         text: actionBar.title
         style: "title"

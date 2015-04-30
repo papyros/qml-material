@@ -41,7 +41,7 @@ BaseListItem {
 
     dividerInset: actionItem.visible ? listItem.height : 0 
 
-    interactive: contentItem.children.length == 0
+    interactive: contentItem.children.length === 0
 
     implicitWidth: {
         var width = listItem.margins * 2
