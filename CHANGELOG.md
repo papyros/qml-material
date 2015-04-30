@@ -29,6 +29,7 @@ QML Material CHANGELOG
  * [ActionBar] Control the overflow menu with Android hardware keys
  * [ActionButton] Add support for the mini and default FAB sizes
  * [Dialog] Expose dialog buttons via aliases
+ * Create separate styles for RadioButton and Slider
 
 
 ### Version 0.0.6 (April 16, 2015)

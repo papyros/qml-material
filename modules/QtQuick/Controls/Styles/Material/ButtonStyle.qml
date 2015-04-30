@@ -36,7 +36,7 @@ ButtonStyle {
     property int controlElevation: control.hasOwnProperty("elevation") ? control.elevation : 1
 
     property color controlBackground: control.hasOwnProperty("backgroundColor") 
-            ? control.backgroundColor : "transparent"
+            ? control.backgroundColor : controlElevation == 0 ? "transparent" : "white"
 
     property string context: control.hasOwnProperty("context") ? control.context : "default"
 
