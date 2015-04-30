@@ -7,3 +7,4 @@ SwitchStyle 0.1 SwitchStyle.qml
 ToolBarStyle.qml 0.1 ToolBarStyle.qml
 ToolButtonStyle.qml 0.1 ToolButtonStyle.qml
 RadioButtonStyle 0.1 RadioButtonStyle.qml
+SliderStyle 0.1 SliderStyle.qml
