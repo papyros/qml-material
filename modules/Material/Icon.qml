@@ -61,7 +61,7 @@ Item {
     width: size
     height: size
 
-    property bool colorize: icon.source.indexOf("icon://") == 0 || icon.source.indexOf(".color.") == -1
+    property bool colorize: icon.source.indexOf("icon://") === 0 || icon.source.indexOf(".color.") === -1
 
     Image {
         id: image
@@ -74,7 +74,7 @@ Item {
                 var name = icon.source.substring(7)
                 var list = name.split("/");
 
-                if (name == "" || list[0] == "awesome")
+                if (name == "" || list[0] === "awesome")
                     return "";
                 return Qt.resolvedUrl("icons/%1/%2.svg".arg(list[0]).arg(list[1]));
             } else {
@@ -95,7 +95,7 @@ Item {
         source: image
         color: Theme.alpha(icon.color, 1)
         cached: true
-        visible: image.source != "" && colorize
+        visible: image.source !== "" && colorize
         opacity: icon.color.a
     }  
 
@@ -112,7 +112,7 @@ Item {
                 var name = icon.source.substring(7)
                 var list = name.split("/")
 
-                if (list[0] == "awesome") {
+                if (list[0] === "awesome") {
                     return list[1]
                 }
             }

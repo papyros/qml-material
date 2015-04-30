@@ -74,8 +74,8 @@ ButtonStyle {
             id: mouseArea
 
             anchors.fill: parent
-            focused: control.focus && background.context != "dialog" 
-                    && background.context != "snackbar"
+            focused: control.focus && background.context !== "dialog"
+                    && background.context !== "snackbar"
             focusWidth: parent.width - units.dp(30)
             focusColor: Qt.darker(background.backgroundColor, 1.05)
 

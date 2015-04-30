@@ -22,10 +22,10 @@ import Material 0.1
 import "../Base/"
 
 ToolButtonStyle {
-	panel: View {
-		radius: units.dp(2)
+    panel: View {
+        radius: units.dp(2)
 
-		implicitHeight: label.text == "" 
+        implicitHeight: label.text == "" 
                 ? units.dp(44) : Math.max(units.dp(36), label.height + units.dp(16))
         implicitWidth: label.text == "" 
                 ? units.dp(44) : Math.max(units.dp(64), label.width + units.dp(16))
@@ -38,8 +38,8 @@ ToolButtonStyle {
             centered: true
             circular: label.text == ""
 
-	        width: parent.width + units.dp(8)
-	        height: parent.height + units.dp(8)
+            width: parent.width + units.dp(8)
+            height: parent.height + units.dp(8)
             
             Connections {
                 target: control.__behavior
@@ -55,22 +55,22 @@ ToolButtonStyle {
             spacing: units.dp(8)
 
             Image {
-	            id: image
-	            anchors.verticalCenter: parent.verticalCenter
-	            source: control.iconSource
+                id: image
+                anchors.verticalCenter: parent.verticalCenter
+                source: control.iconSource
                 width: units.dp(24)
                 height: width
-	        }
+            }
 
-        	Label {
-	            id: label
-	            anchors.verticalCenter: parent.verticalCenter
-	            text: control.iconSource != "" ? "" : control.text
-	            style: "button"
-	            color: Theme.lightDark(Theme.primaryColor, Theme.light.textColor,
+            Label {
+                id: label
+                anchors.verticalCenter: parent.verticalCenter
+                text: control.iconSource !== "" ? "" : control.text
+                style: "button"
+                color: Theme.lightDark(Theme.primaryColor, Theme.light.textColor,
                                                            Theme.dark.textColor)
                 visible: text == ""
-	        }
-	    }
+            }
+        }
     }
 }

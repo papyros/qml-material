@@ -36,7 +36,7 @@ BaseListItem {
     property alias secondaryItem: secondaryItem.children
     property alias content: contentItem.children
 
-    interactive: contentItem.children.length == 0
+    interactive: contentItem.children.length === 0
 
     dividerInset: actionItem.children.length === 0 ? 0 : listItem.height
 
