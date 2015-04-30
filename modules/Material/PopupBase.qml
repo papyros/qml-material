@@ -27,6 +27,7 @@ FocusScope {
     property bool globalMouseAreaEnabled: true
     property bool dismissOnTap: true
     property bool showing: false
+    property Item nextFocusItem
 
     signal opened
 
@@ -50,5 +51,8 @@ FocusScope {
     function close() {
         showing = false
         parent.currentOverlay = null
+        if (nextFocusItem) {
+            nextFocusItem.forceActiveFocus()
+        }
     }
 }
