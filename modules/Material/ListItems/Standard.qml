@@ -24,6 +24,7 @@ BaseListItem {
     id: listItem
 
     implicitHeight: units.dp(48)
+    height: units.dp(48)
 
     property alias text: label.text
     property alias valueText: valueLabel.text
