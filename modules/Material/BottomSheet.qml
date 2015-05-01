@@ -36,6 +36,8 @@ PopupBase {
     implicitHeight: containerView.childrenRect.height
     width: parent.width
 
+    visible: percentOpen > 0
+
     property real percentOpen: showing ? 1 : 0
 
     Behavior on percentOpen {
