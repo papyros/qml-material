@@ -182,9 +182,26 @@ FocusScope {
     }
 
     Keys.onPressed: {
-        // Pop the page from the page stack when the Android back button is tapped
         if (event.key === Qt.Key_Back) {
-            if (pop()) {
+            // When the Android back button is tapped
+            if (__actionBar.overflowMenuShowing) {
+                // Close the action bar overflow menu if it's open
+                __actionBar.closeOverflowMenu();
+                event.accepted = true;
+            } else {
+                // or pop the page from the page stack
+                if (pop()) {
+                    event.accepted = true;
+                }
+            }
+        } else if (event.key === Qt.Key_Menu) {
+            // Display or hide the action bar overflow menu when the Android menu button is tapped
+            if (__actionBar.overflowMenuAvailable) {
+                if (__actionBar.overflowMenuShowing) {
+                    __actionBar.closeOverflowMenu();
+                } else {
+                    __actionBar.openOverflowMenu();
+                }
                 event.accepted = true;
             }
         }

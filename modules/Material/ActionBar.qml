@@ -132,6 +132,41 @@ Item {
      */
     property Item toolbar
 
+    /*!
+       \internal
+       \qmlproperty bool overflowMenuShowing
+
+       Returns \c true if the overflow menu is open.
+     */
+    readonly property alias overflowMenuShowing: overflowMenu.showing
+
+    /*!
+       \internal
+
+       Returns true if the overflow menu is available.
+     */
+    readonly property bool overflowMenuAvailable: __internal.visibleActions.length > maxActionCount
+
+    /*!
+       \internal
+
+       Opens the overflow menu, if it is present and not already open open.
+     */
+    function openOverflowMenu() {
+        if (overflowMenuAvailable && !overflowMenuShowing)
+            overflowMenu.open(overflowButton, units.dp(4), units.dp(-4));
+    }
+
+    /*!
+       \internal
+
+       Closes the overflow menu, if it is present and already open open.
+     */
+    function closeOverflowMenu() {
+        if (overflowMenuAvailable && overflowMenuShowing)
+            overflowMenu.close();
+    }
+
     QtObject {
         id: __internal
 
@@ -230,10 +265,10 @@ Item {
             size: units.dp(27)
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                               Theme.dark.iconColor)
-            visible: __internal.visibleActions.length > maxActionCount
+            visible: actionBar.overflowMenuAvailable
             anchors.verticalCenter: parent.verticalCenter
 
-            onClicked: overflowMenu.open(overflowButton, units.dp(4), units.dp(-4))
+            onClicked: openOverflowMenu()
         }
     }
 
