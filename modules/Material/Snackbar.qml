@@ -26,7 +26,7 @@ View {
     property string text
     property bool opened
     property int duration: 2000
-    property bool fullWidth: Device.type === Device.phone
+    property bool fullWidth: Device.type === Device.phone || Device.type === Device.phablet
 
     signal clicked
 

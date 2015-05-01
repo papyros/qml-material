@@ -23,7 +23,7 @@ import Material 0.1
 BaseListItem {
     id: listItem
 
-    height: units.dp(48)
+    implicitHeight: units.dp(48)
 
     property alias text: label.text
     property alias valueText: valueLabel.text
