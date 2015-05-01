@@ -165,7 +165,7 @@ FocusScope {
        the current page on the page stack.
      */
     function pop() {
-        if (Controls.Stack.view.currentItem == page)
+        if (Controls.Stack.view.currentItem === page)
             return Controls.Stack.view.pop();
     }
 

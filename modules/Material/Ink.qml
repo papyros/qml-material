@@ -123,7 +123,7 @@ MouseArea {
             NumberAnimation { duration: focusTimer.interval; }
         }
 
-        color: focusColor.a == 0 ? Qt.rgba(1,1,1,0.4) : focusColor
+        color: focusColor.a === 0 ? Qt.rgba(1,1,1,0.4) : focusColor
 
         property bool focusedState
 

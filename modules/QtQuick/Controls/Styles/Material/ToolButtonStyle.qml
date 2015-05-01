@@ -65,7 +65,7 @@ ToolButtonStyle {
         	Label {
 	            id: label
 	            anchors.verticalCenter: parent.verticalCenter
-	            text: control.iconSource != "" ? "" : control.text
+                text: control.iconSource !== "" ? "" : control.text
 	            style: "button"
 	            color: Theme.lightDark(Theme.primaryColor, Theme.light.textColor,
                                                            Theme.dark.textColor)

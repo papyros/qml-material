@@ -37,7 +37,7 @@ ProgressBarStyle {
             visible: control.indeterminate
             Rectangle {
                 id: rect
-                property var end: 0
+                property int end: 0
                 width: end - x
                 height: control.height
                 color: control.color

@@ -53,8 +53,8 @@ View {
         return height
     }
     property int targetHeight: actionBarHeight + (tabs.length > 0 ? tabbar.height : 0)
-    property int maxActionCount: (Device.formFactor == "desktop"
-                                  ? 5 : Device.formFactor == "tablet" ? 4 : 3)
+    property int maxActionCount: (Device.formFactor === "desktop"
+                                  ? 5 : Device.formFactor === "tablet" ? 4 : 3)
     property bool clientSideDecorations: false
     property string color: "white"
     property var page
@@ -65,7 +65,7 @@ View {
 
     opacity: page && page.actionBar.hidden ? 0 : 1
 
-    backgroundColor: page ? page.actionBar.backgroundColor.a == 0 
+    backgroundColor: page ? page.actionBar.backgroundColor.a === 0
                             ? page.backgroundColor : page.actionBar.backgroundColor
                           : Theme.primaryColor
 
@@ -73,7 +73,7 @@ View {
                                                 : Device.type == Device.tablet ? units.dp(56)
                                                                                : units.dp(64)
     height: targetHeight
-    elevation: backgroundColor == page.color ? 0 : page.actionBar.elevation
+    elevation: backgroundColor === page.color ? 0 : page.actionBar.elevation
     fullWidth: true
     clipContent: true
 
@@ -142,7 +142,7 @@ View {
         anchors.fill: rightSidebarStack
 
         color: page.rightSidebar && page.rightSidebar.actionBar.backgroundColor
-               ? Qt.darker(page.rightSidebar.actionBar.backgroundColor,1).a == 0
+               ? Qt.darker(page.rightSidebar.actionBar.backgroundColor,1).a === 0
                  ? page.rightSidebar.color
                  : page.rightSidebar.actionBar.backgroundColor
                : Theme.primaryColor

@@ -108,11 +108,11 @@ Text {
     font.weight: {
         var weight = fontInfo.font
 
-        if (weight == "medium") {
+        if (weight === "medium") {
             return Font.DemiBold
-        } else if (weight == "regular") {
+        } else if (weight === "regular") {
             return Font.Normal
-        } else if (weight == "light") {
+        } else if (weight === "light") {
             return Font.Light
         }
     }
