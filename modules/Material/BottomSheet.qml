@@ -36,22 +36,21 @@ PopupBase {
     implicitHeight: containerView.childrenRect.height
     width: parent.width
 
-    Behavior on opacity {
-        NumberAnimation { duration: 200 }
+    property real percentOpen: showing ? 1 : 0
+
+    Behavior on percentOpen {
+
+        NumberAnimation {
+            duration: 200
+            easing {
+                 type: Easing.OutCubic
+            }
+        }
     }
 
     anchors {
         bottom: parent.bottom
-        bottomMargin: bottomSheet.showing ? 0 : -height
-
-        Behavior on bottomMargin {
-            NumberAnimation {
-                duration: 200
-                easing {
-                     type: Easing.OutCubic
-                }
-            }
-        }
+        bottomMargin: (bottomSheet.percentOpen - 1) * height
     }
 
     View {
