@@ -34,6 +34,7 @@ View {
     property int spacing
 
     property alias text: label.text
+    property alias style: label.style
 
     Label {
         id: label

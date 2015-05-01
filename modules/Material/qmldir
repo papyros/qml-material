@@ -6,6 +6,8 @@ ApplicationWindow 0.1 ApplicationWindow.qml
 AppTheme 0.1 AppTheme.qml
 AwesomeIcon 0.1 AwesomeIcon.qml
 Button 0.1 Button.qml
+BottomActionSheet 0.1 BottomActionSheet.qml
+BottomSheet 0.1 BottomSheet.qml
 Card 0.1 Card.qml
 CheckBox 0.1 CheckBox.qml
 singleton Device 0.1 Device.qml

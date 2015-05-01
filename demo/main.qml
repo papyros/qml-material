@@ -22,7 +22,7 @@ ApplicationWindow {
     ]
 
     property var compoundComponents: [
-            "Dialog", "Forms", "List Items", "Page Stack"
+            "Bottom Sheet", "Dialog", "Forms", "List Items", "Page Stack"
     ]
 
     initialPage: Page {

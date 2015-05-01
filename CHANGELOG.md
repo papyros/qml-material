@@ -64,6 +64,7 @@ QML Material CHANGELOG
  * [Demo] Add the color palette to the demo
  * [ProgressBar] Port ProgressBar to inherit from QtQuick Controls
  * Minor bug fixes and code improvements
+ * [BottomSheet] Add a basic bottom sheet and an action list subclass
 
 
 ### Version 0.0.4 (February 20, 2015)
