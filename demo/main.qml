@@ -18,7 +18,7 @@ ApplicationWindow {
 
     property var basicComponents: [
             "Button", "CheckBox", "Progress Bar", "Radio Button", 
-            "Slider", "Switch", "TextField"
+            "Slider", "Switch", "TextField", "Bottom Sheet"
     ]
 
     property var compoundComponents: [
@@ -63,6 +63,7 @@ ApplicationWindow {
                 iconName: "action/language"
                 name: "Language"
                 enabled: false
+                hasDividerAfter: true
             },
 
             Action {
