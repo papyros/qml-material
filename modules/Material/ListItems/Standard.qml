@@ -23,6 +23,7 @@ import Material 0.1
 BaseListItem {
     id: listItem
 
+    implicitHeight: units.dp(48)
     height: units.dp(48)
 
     property alias text: label.text

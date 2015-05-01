@@ -69,7 +69,7 @@ View {
                             ? page.backgroundColor : page.actionBar.backgroundColor
                           : Theme.primaryColor
 
-    implicitHeight: Device.type == Device.phone ? units.dp(48)
+    implicitHeight: Device.type == Device.phone || Device.type === Device.phablet ? units.dp(48)
                                                 : Device.type == Device.tablet ? units.dp(56)
                                                                                : units.dp(64)
     height: targetHeight
