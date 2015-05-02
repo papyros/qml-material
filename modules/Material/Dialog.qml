@@ -90,8 +90,22 @@ PopupBase {
     }
 
     Keys.onPressed: {
-        if (event.key === Qt.Key_Escape || event.key === Qt.Key_Back) {
-            dialog.close()
+        if (event.key === Qt.Key_Escape) {
+            closeKeyPressed(event)
+        }
+    }
+
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Back) {
+            closeKeyPressed(event)
+        }
+    }
+
+    function closeKeyPressed(event) {
+        if (dialog.showing) {
+            if (dialog.dismissOnTap) {
+                dialog.close()
+            }
             event.accepted = true
         }
     }

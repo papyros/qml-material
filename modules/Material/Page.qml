@@ -181,7 +181,7 @@ FocusScope {
             rightSidebar.mode = "right"
     }
 
-    Keys.onPressed: {
+    Keys.onReleased: {
         if (event.key === Qt.Key_Back) {
             // When the Android back button is tapped
             if (__actionBar.overflowMenuShowing) {

@@ -31,6 +31,7 @@ QML Material CHANGELOG
  * [Dialog] Expose dialog buttons via aliases
  * Create separate styles for RadioButton and Slider
  * [TextField] Port to QtQuick.Controls
+ * [Dialog] Active focus is passed off when Dialog closes
 
 
 ### Version 0.0.6 (April 16, 2015)
