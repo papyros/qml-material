@@ -65,7 +65,7 @@ import Material 0.1
 FocusScope {
     id: page
 
-    /*
+    /*!
       \qmlproperty ActionBar actionBar
 
       The action bar for this page. Use it as a group property to customize

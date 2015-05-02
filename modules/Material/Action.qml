@@ -25,6 +25,31 @@ import QtQuick 2.0
 
    One of the most common uses of actions is displaying actions in the action bar of a page
    using the \l Page::actions property. See the example for \l Page for more details.
+
+   \qml
+    Page{
+        actions: [
+            // Shown but not enabled
+            Action {
+                iconName: "action/search"
+                name: "Search"
+                enabled: false
+            },
+            // Triggers a function
+            Action {
+                iconName: "image/color_lens"
+                name: "Colors"
+                onTriggered: colorPicker.show()
+            },
+            // Starts a hover animation
+            Action {
+                iconName: "action/settings"
+                name: "Settings"
+                hoverAnimation: true
+            }
+        ]
+    }
+   \endqml
  */
 QtObject {
     id: action
@@ -49,7 +74,7 @@ QtObject {
     /*!
        A URL pointing to an image to display as the icon. By default, this is
        a special URL representing the icon named by \l iconName from the Material Design
-       icon collection or FontAwesome. The icon will be colorized using the specificed \l color,
+       icon collection or FontAwesome. The icon will be colorized using the specificed color,
        unless you put ".color." in the filename, for example, "app-icon.color.svg".
 
        \sa iconName

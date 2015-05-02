@@ -29,6 +29,20 @@ import QtGraphicalEffects 1.0
 
    An ActionButton is a floating action button that provides a primary action
    on the current page.
+
+   \l {http://www.google.com/design/spec/components/buttons-floating-action-button.htm}{Google Material Design description}
+
+   \qml
+    ActionButton {
+        anchors {
+            right: parent.right
+            bottom: parent.bottom
+            margins: units.dp(32)
+        }
+
+        iconName: "content/add"
+    }
+   \endqml
  */
 Controls.Button {
     id: button

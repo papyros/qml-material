@@ -23,6 +23,17 @@ import Material 0.1
    \inqmlmodule Material 0.1
 
    \brief A helper class used in \l ApplicationWindow to set your app's theme colors.
+
+   \qml
+    ApplicationWindow{
+        theme { // This is AppTheme
+            primaryColor: Palette.colors["blue"]["500"]
+            primaryDarkColor: Palette.colors["blue"]["700"]
+            accentColor: Palette.colors["teal"]["500"]
+            tabHighlightColor: "white"
+        }
+    }
+   \endqml
  */
 QtObject {
     id: appTheme
