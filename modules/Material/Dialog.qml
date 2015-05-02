@@ -91,7 +91,9 @@ PopupBase {
 
     Keys.onPressed: {
         if ((event.key === Qt.Key_Escape || event.key === Qt.Key_Back) && dialog.showing) {
-            dialog.close()
+            if (dialog.dismissOnTap) {
+                dialog.close()
+            }
             event.accepted = true
         }
     }
