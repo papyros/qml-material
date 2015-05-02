@@ -16,6 +16,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 import QtQuick 2.0
+import QtQuick.Window 2.2
 import Material 0.1
 import Material.Extras 0.1
 
@@ -27,6 +28,7 @@ FocusScope {
     property bool globalMouseAreaEnabled: true
     property bool dismissOnTap: true
     property bool showing: false
+    property Item __lastFocusedItem
 
     signal opened
 
@@ -39,6 +41,7 @@ FocusScope {
     }
 
     function open() {
+        __lastFocusedItem = Window.activeFocusItem
         parent = Utils.findRootChild(popup, overlayLayer)
         showing = true
         forceActiveFocus()
@@ -50,5 +53,8 @@ FocusScope {
     function close() {
         showing = false
         parent.currentOverlay = null
+        if (__lastFocusedItem !== null) {
+            __lastFocusedItem.forceActiveFocus()
+        }
     }
 }
