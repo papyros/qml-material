@@ -69,7 +69,7 @@ Item {
 
     Column {
         anchors.centerIn: parent
-        spacing: units.dp(20)
+        spacing: Units.dp(20)
 
         Button {
             text: "Show Action Dialog"

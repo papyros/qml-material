@@ -23,8 +23,8 @@ import Material 0.1
 BaseListItem {
     id: listItem
 
-    implicitHeight: units.dp(48)
-    height: units.dp(48)
+    implicitHeight: Units.dp(48)
+    height: Units.dp(48)
 
     property alias text: label.text
     property alias valueText: valueLabel.text
@@ -71,12 +71,12 @@ BaseListItem {
         anchors.leftMargin: listItem.margins
         anchors.rightMargin: listItem.margins
 
-        spacing: units.dp(16)
+        spacing: Units.dp(16)
 
         Item {
             id: actionItem
 
-            Layout.preferredWidth: units.dp(40)
+            Layout.preferredWidth: Units.dp(40)
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
 
@@ -92,7 +92,7 @@ BaseListItem {
 
                 visible: valid
                 color: listItem.selected ? Theme.primaryColor : Theme.light.iconColor
-                size: units.dp(24)
+                size: Units.dp(24)
             }
         }
 

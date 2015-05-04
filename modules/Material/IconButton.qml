@@ -48,8 +48,8 @@ Item {
         centered: true
         circular: true
 
-        width: parent.width + units.dp(20)
-        height: parent.height + units.dp(20)
+        width: parent.width + Units.dp(20)
+        height: parent.height + Units.dp(20)
 
         z: 0
 

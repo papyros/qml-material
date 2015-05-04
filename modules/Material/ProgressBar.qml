@@ -35,8 +35,8 @@ Controls.ProgressBar {
      */
     property color color: Theme.primaryColor
 
-    width: units.dp(200)
-    height: units.dp(4)
+    width: Units.dp(200)
+    height: Units.dp(4)
 
     style: MaterialStyle.ProgressBarStyle {}
 }

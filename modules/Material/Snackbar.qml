@@ -40,21 +40,21 @@ View {
         left: parent.left
         right: fullWidth ? parent.right : undefined
         bottom: parent.bottom
-        leftMargin: fullWidth ? 0 : units.dp(16)
-        bottomMargin: opened ? fullWidth ? 0 : units.dp(16) :  -snackbar.height
+        leftMargin: fullWidth ? 0 : Units.dp(16)
+        bottomMargin: opened ? fullWidth ? 0 : Units.dp(16) :  -snackbar.height
 
         Behavior on bottomMargin {
             NumberAnimation { duration: 300 }
         }
     }
-    radius: fullWidth ? 0 : units.dp(2)
+    radius: fullWidth ? 0 : Units.dp(2)
     backgroundColor: "#323232"
-    height: units.dp(48)
+    height: Units.dp(48)
     width: fullWidth ? parent.width
-                     : Math.min(Math.max(implicitWidth, units.dp(288)), units.dp(568))
+                     : Math.min(Math.max(implicitWidth, Units.dp(288)), Units.dp(568))
     opacity: opened ? 1 : 0
-    implicitWidth: buttonText == "" ? snackText.paintedWidth + units.dp(48)
-                                    : snackText.paintedWidth + units.dp(72) + snackButton.width
+    implicitWidth: buttonText == "" ? snackText.paintedWidth + Units.dp(48)
+                                    : snackText.paintedWidth + Units.dp(72) + snackButton.width
 
     Timer {
         id: timer
@@ -75,9 +75,9 @@ View {
             left: parent.left
             top: parent.top
             bottom: parent.bottom
-            leftMargin: units.dp(24)
-            topMargin: units.dp(16)
-            rightMargin: units.dp(24)
+            leftMargin: Units.dp(24)
+            topMargin: Units.dp(16)
+            rightMargin: Units.dp(24)
         }
         text: snackbar.text
         color: "white"
@@ -97,11 +97,11 @@ View {
             bottom: parent.bottom
 
             // Recommended button touch target is 36dp
-            topMargin: units.dp(6)
-            bottomMargin: units.dp(6)
+            topMargin: Units.dp(6)
+            bottomMargin: Units.dp(6)
 
             // Normal margin is 24dp, but button itself uses 8dp margins
-            rightMargin: snackbar.buttonText == "" ? 0 : units.dp(16)
+            rightMargin: snackbar.buttonText == "" ? 0 : Units.dp(16)
         }
     }
 

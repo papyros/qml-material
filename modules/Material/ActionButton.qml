@@ -74,13 +74,13 @@ Controls.Button {
             RectangularGlow {
 
                 anchors.centerIn: parent
-                anchors.verticalCenterOffset: elevation == 1 ? units.dp(1.5)
-                                                             : units.dp(1)
+                anchors.verticalCenterOffset: elevation == 1 ? Units.dp(1.5)
+                                                             : Units.dp(1)
 
                 width: parent.width
                 height: parent.height
 
-                glowRadius: elevation == 1 ? units.dp(0.75) : units.dp(0.3)
+                glowRadius: elevation == 1 ? Units.dp(0.75) : Units.dp(0.3)
                 opacity: elevation == 1 ? 0.6 : 0.3
                 spread: elevation == 1 ? 0.7 : 0.85
                 color: "black"
@@ -113,7 +113,7 @@ Controls.Button {
             }
         }
         label: Item {
-            implicitHeight: isMiniSize ? units.dp(40) : units.dp(56)
+            implicitHeight: isMiniSize ? Units.dp(40) : Units.dp(56)
             implicitWidth: implicitHeight
             Icon {
                 id: icon

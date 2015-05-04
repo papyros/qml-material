@@ -8,11 +8,11 @@ Item {
     ColumnLayout {
         id: column
         anchors.centerIn: parent
-        spacing: units.dp(32)
+        spacing: Units.dp(32)
 
         TextField {
             text: "Big Field with text"
-            font.pixelSize: units.dp(32)
+            font.pixelSize: Units.dp(32)
             anchors.horizontalCenter: parent.horizontalCenter
         }
 

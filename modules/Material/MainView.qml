@@ -31,24 +31,24 @@ Item {
     /*!
        \internal
        The pixel density of the screen the application's window is currently on. See \l Screen
-       and \l units.
+       and \l Units.
      */
 
-    width: units.dp(800)
-    height: units.dp(600)
+    width: Units.dp(800)
+    height: Units.dp(600)
 
     Component.onCompleted: {
-      units.pixelDensity = Qt.binding( function() { return Screen.pixelDensity } );
+      Units.pixelDensity = Qt.binding( function() { return Screen.pixelDensity } );
       Device.type = Qt.binding( function () {
         var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) + Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
         if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
-          units.multiplier = 1;
+          Units.multiplier = 1;
           return Device.phone;
         } else if (diagonal >= 5 && diagonal < 6.5) {
-          units.multiplier = 1;
+          Units.multiplier = 1;
           return Device.phablet;
         } else if (diagonal >= 6.5 && diagonal < 10.1) {
-          units.multiplier = 1;
+          Units.multiplier = 1;
           return Device.tablet;
         } else if (diagonal >= 10.1 && diagonal < 29) {
           return Device.desktop;

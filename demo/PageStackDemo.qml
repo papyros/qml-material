@@ -6,7 +6,7 @@ Item {
 
 	Column {
 		anchors.centerIn: parent
-		spacing: units.dp(20)
+		spacing: Units.dp(20)
 
 		Button {
 			anchors.horizontalCenter: parent.horizontalCenter
@@ -22,8 +22,8 @@ Item {
 			anchors.horizontalCenter: parent.horizontalCenter
 
 			source: Qt.resolvedUrl("images/balloon.jpg")
-			width: units.dp(400)
-			height: units.dp(250)
+			width: Units.dp(400)
+			height: Units.dp(250)
 
 			Ink {
 				anchors.fill: parent
@@ -45,8 +45,8 @@ Item {
 	OverlayView {
 		id: overlayView
 
-		width: units.dp(800)
-		height: units.dp(500)
+		width: Units.dp(800)
+		height: Units.dp(500)
 
 		Image {
 			id: contentImage
@@ -58,12 +58,12 @@ Item {
 			anchors {
 				top: parent.top
 				right: parent.right
-				rightMargin: units.dp(16)
+				rightMargin: Units.dp(16)
 			}
-			height: units.dp(48)
+			height: Units.dp(48)
 			opacity: overlayView.transitionOpacity
 			
-			spacing: units.dp(24)
+			spacing: Units.dp(24)
 
 	        Repeater {
 	            model: ["content/add", "image/edit", "action/delete"]
@@ -74,7 +74,7 @@ Item {
 	                iconName: modelData
 
 	                color: Theme.dark.iconColor
-	                size: iconName == "content/add" ? units.dp(27) : units.dp(24)
+	                size: iconName == "content/add" ? Units.dp(27) : Units.dp(24)
 	                anchors.verticalCenter: parent.verticalCenter
 	            }
 	        }

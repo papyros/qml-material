@@ -29,7 +29,7 @@ CheckBoxStyle {
     property bool darkBackground: control.hasOwnProperty("darkBackground")
             ? control.darkBackground : false
 
-    spacing: units.dp(2)
+    spacing: Units.dp(2)
 
     label: Item {
         implicitWidth: text.implicitWidth + 2
@@ -57,8 +57,8 @@ CheckBoxStyle {
     indicator: Item {
         id: parentRect
 
-        implicitWidth: units.dp(54)
-        implicitHeight: units.dp(54)
+        implicitWidth: Units.dp(54)
+        implicitHeight: Units.dp(54)
 
         Rectangle {
             id: indicatorRect
@@ -70,11 +70,11 @@ CheckBoxStyle {
                     : style.darkBackground ? Theme.alpha("#fff", 0.30)
                                            : Theme.alpha("#000", 0.26)
 
-            width: units.dp(24)
-            height: units.dp(24)
-            radius: units.dp(2)
+            width: Units.dp(24)
+            height: Units.dp(24)
+            radius: Units.dp(2)
 
-            border.width: units.dp(2)
+            border.width: Units.dp(2)
 
             border.color: control.enabled ? control.checked ? style.color
                                                             : style.darkBackground ? Theme.alpha("#fff", 0.70)
@@ -108,7 +108,7 @@ CheckBoxStyle {
 
                 opacity: control.checked ? 1 : 0
 
-                property int thickness: units.dp(4)
+                property int thickness: Units.dp(4)
 
                 Behavior on opacity {
                     NumberAnimation {
@@ -126,7 +126,7 @@ CheckBoxStyle {
                         bottom: parent.bottom
                     }
 
-                    radius: units.dp(1)
+                    radius: Units.dp(1)
                     color: style.darkBackground ? Theme.light.textColor : Theme.dark.textColor
                     width: container.thickness * 2
 
@@ -138,7 +138,7 @@ CheckBoxStyle {
                         bottom: parent.bottom
                     }
 
-                    radius: units.dp(1)
+                    radius: Units.dp(1)
                     color: style.darkBackground ? Theme.light.textColor : Theme.dark.textColor
                     height: container.thickness
                 }

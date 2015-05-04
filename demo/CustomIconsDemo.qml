@@ -30,8 +30,8 @@ Column {
 
 	Row {
 		Item {
-			width: units.dp(56)
-			height: units.dp(56)
+			width: Units.dp(56)
+			height: Units.dp(56)
 			
 			Icon {
 				anchors.centerIn: parent
@@ -41,8 +41,8 @@ Column {
 		}
 
 		Item {
-			width: units.dp(56)
-			height: units.dp(56)
+			width: Units.dp(56)
+			height: Units.dp(56)
 			
 			Icon {
 				anchors.centerIn: parent
@@ -52,8 +52,8 @@ Column {
 		}
 
 		Rectangle {
-			width: units.dp(56)
-			height: units.dp(56)
+			width: Units.dp(56)
+			height: Units.dp(56)
 			color: "#333"
 			Icon {
 				anchors.centerIn: parent
@@ -63,8 +63,8 @@ Column {
 		}
 
 		Rectangle {
-			width: units.dp(56)
-			height: units.dp(56)
+			width: Units.dp(56)
+			height: Units.dp(56)
 			color: "#333"
 			Icon {
 				anchors.centerIn: parent
@@ -80,8 +80,8 @@ Column {
 
 	Row {
 		Item {
-			width: units.dp(56)
-			height: units.dp(40)
+			width: Units.dp(56)
+			height: Units.dp(40)
 			
 			Icon {
 				anchors.centerIn: parent
@@ -91,8 +91,8 @@ Column {
 		}
 
 		Item {
-			width: units.dp(56)
-			height: units.dp(40)
+			width: Units.dp(56)
+			height: Units.dp(40)
 			
 			Icon {
 				anchors.centerIn: parent
@@ -108,8 +108,8 @@ Column {
 
 	Row {
 		Item {
-			width: units.dp(56)
-			height: units.dp(40)
+			width: Units.dp(56)
+			height: Units.dp(40)
 			
 			IconButton {
 				anchors.centerIn: parent
@@ -119,8 +119,8 @@ Column {
 		}
 
 		Item {
-			width: units.dp(56)
-			height: units.dp(40)
+			width: Units.dp(56)
+			height: Units.dp(40)
 			
 			IconButton {
 				anchors.centerIn: parent

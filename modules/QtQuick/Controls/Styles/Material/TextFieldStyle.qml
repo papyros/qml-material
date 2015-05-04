@@ -42,7 +42,7 @@ TextFieldStyle {
     
     font {
         family: "Roboto"
-        pixelSize: units.dp(16)
+        pixelSize: Units.dp(16)
     }
 
     placeholderTextColor: "transparent"
@@ -58,7 +58,7 @@ TextFieldStyle {
                                     : control.activeFocus ? style.color
                                                           : Theme.light.hintColor
 
-            height: control.activeFocus ? units.dp(2) : units.dp(1)
+            height: control.activeFocus ? Units.dp(2) : Units.dp(1)
 
             anchors {
                 left: parent.left
@@ -81,8 +81,8 @@ TextFieldStyle {
 
             anchors.verticalCenter: parent.verticalCenter
             text: control.placeholderText
-            font.pixelSize: units.dp(16)
-            anchors.margins: -units.dp(12)
+            font.pixelSize: Units.dp(16)
+            anchors.margins: -Units.dp(12)
             color: underline.color
 
             states: [
@@ -96,7 +96,7 @@ TextFieldStyle {
                     }
                     PropertyChanges {
                         target: fieldPlaceholder
-                        font.pixelSize: units.dp(12)
+                        font.pixelSize: Units.dp(12)
                     }
                 },
                 State {
@@ -131,14 +131,14 @@ TextFieldStyle {
                 left: parent.left
                 right: parent.right
                 top: underline.top
-                topMargin: units.dp(4)
+                topMargin: Units.dp(4)
             }
 
             Label {
                 id: helperTextLabel
                 visible: helperText
                 text: helperText
-                font.pixelSize: units.dp(12)
+                font.pixelSize: Units.dp(12)
                 color: style.hasError ? style.errorColor : Qt.darker(Theme.light.hintColor)
 
                 Behavior on color {
@@ -153,7 +153,7 @@ TextFieldStyle {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 visible: characterLimit
                 text: control.length + " / " + characterLimit
-                font.pixelSize: units.dp(12)
+                font.pixelSize: Units.dp(12)
                 color: style.hasError ? style.errorColor : Theme.light.hintColor
                 horizontalAlignment: Text.AlignLeft
 

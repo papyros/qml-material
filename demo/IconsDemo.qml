@@ -19,13 +19,13 @@ Item {
         id: flickable
 
         anchors.fill: parent
-        contentHeight: content.height + units.dp(16)
+        contentHeight: content.height + Units.dp(16)
         contentWidth: width
 
         Column {
             id: content
             width: flickable.width
-            y: units.dp(8)
+            y: Units.dp(8)
 
             Repeater {
                 model: [
@@ -57,7 +57,7 @@ Item {
 
                     Item {
                         width: parent.width
-                        height: units.dp(8)
+                        height: Units.dp(8)
                         visible: header.expanded
                     }
 
@@ -65,17 +65,17 @@ Item {
                         anchors {
                             left: parent.left
                             right: parent.right
-                            margins: units.dp(16)
+                            margins: Units.dp(16)
                         }
 
                         visible: header.expanded
-                        rowSpacing: units.dp(10)
-                        columns: Math.floor(width/units.dp(240))
+                        rowSpacing: Units.dp(10)
+                        columns: Math.floor(width/Units.dp(240))
 
                         Repeater {
                             model: folderModel
                             delegate: Row {
-                                spacing: units.dp(20)
+                                spacing: Units.dp(20)
                                 width: grid.width/grid.columns
                                 visible: icon.valid
 
@@ -107,7 +107,7 @@ Item {
 
                     Item {
                         width: parent.width
-                        height: units.dp(16)
+                        height: Units.dp(16)
                         visible: header.expanded
                     }
 
@@ -137,7 +137,7 @@ Item {
 
             Item {
                 width: parent.width
-                height: units.dp(8)
+                height: Units.dp(8)
                 visible: fontHeader.expanded
             }
 
@@ -146,18 +146,18 @@ Item {
                 anchors {
                     left: parent.left
                     right: parent.right
-                    margins: units.dp(16)
+                    margins: Units.dp(16)
                 }
 
                 visible: fontHeader.expanded
-                rowSpacing: units.dp(10)
-                columns: Math.floor(width/units.dp(240))
+                rowSpacing: Units.dp(10)
+                columns: Math.floor(width/Units.dp(240))
 
                 Repeater {
                     id: awesomeList
                     model: Object.keys(awesomeIcon.icons)
                     delegate: Row {
-                        spacing: units.dp(20)
+                        spacing: Units.dp(20)
                         width: grid.width/grid.columns
                         visible: icon.valid
 

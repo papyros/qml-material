@@ -10,7 +10,7 @@ Subtitled {
 
     subText: listView.currentItem.text
 
-    onClicked: menu.open(listItem, units.dp(16), 0)
+    onClicked: menu.open(listItem, Units.dp(16), 0)
 
     Label {
         id: hiddenLabel
@@ -24,7 +24,7 @@ Subtitled {
         for (var i = 0; i < model.length; i++) {
             hiddenLabel.text = model[i]
             
-            maxWidth = Math.max(maxWidth, hiddenLabel.implicitWidth + units.dp(33))
+            maxWidth = Math.max(maxWidth, hiddenLabel.implicitWidth + Units.dp(33))
         }
 
         return maxWidth
@@ -35,12 +35,12 @@ Subtitled {
 
         anchor: Item.TopLeft
 
-        width: Math.max(units.dp(56 * 2), Math.min(listItem.width - units.dp(32), columnWidth))
-        height: Math.min(10 * units.dp(48) + units.dp(16), model.length * units.dp(48) + units.dp(16))
+        width: Math.max(Units.dp(56 * 2), Math.min(listItem.width - Units.dp(32), columnWidth))
+        height: Math.min(10 * Units.dp(48) + Units.dp(16), model.length * Units.dp(48) + Units.dp(16))
 
         Rectangle {
             anchors.fill: parent
-            radius: units.dp(2)
+            radius: Units.dp(2)
         }
 
         ListView {
@@ -50,7 +50,7 @@ Subtitled {
                 left: parent.left
                 right: parent.right
                 top: parent.top
-                topMargin: units.dp(8)
+                topMargin: Units.dp(8)
             }
 
             interactive: false

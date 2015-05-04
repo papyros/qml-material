@@ -60,9 +60,9 @@ PopupBase {
         }
 
         if(dropdown.y + height > root.height)
-            offsetY = -((globalPos.y + height + units.dp(16)) - root.height)
+            offsetY = -((globalPos.y + height + Units.dp(16)) - root.height)
         if(dropdown.x + width > root.width)
-            offsetX = -((globalPos.x + width + units.dp(16)) - root.width)
+            offsetX = -((globalPos.x + width + Units.dp(16)) - root.width)
 
         dropdown.x += offsetX
         dropdown.y += offsetY
@@ -96,7 +96,7 @@ PopupBase {
     View {
         id: view
         elevation: 2
-        radius: units.dp(2)
+        radius: Units.dp(2)
         anchors.left: __internal.left ? parent.left : undefined
         anchors.right: __internal.right ? parent.right : undefined
         anchors.top: __internal.top ? parent.top : undefined

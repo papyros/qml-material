@@ -5,7 +5,7 @@ Item {
 
     Column {
         anchors.centerIn: parent
-        spacing: units.dp(20)
+        spacing: Units.dp(20)
 
         Button {
             text: "Simple Button"
@@ -30,7 +30,7 @@ Item {
         Button {
             text: "Wide Button"
 
-            width: units.dp(200)
+            width: Units.dp(200)
             elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
 
@@ -70,7 +70,7 @@ Item {
         anchors {
             right: parent.right
             bottom: parent.bottom
-            margins: units.dp(32)
+            margins: Units.dp(32)
         }
 
         iconName: "content/add"

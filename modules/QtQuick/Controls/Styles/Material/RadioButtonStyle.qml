@@ -45,16 +45,16 @@ RadioButtonStyle {
     }
 
     indicator: Rectangle {
-        implicitWidth: units.dp(48)
-        implicitHeight: units.dp(48)
+        implicitWidth: Units.dp(48)
+        implicitHeight: Units.dp(48)
         radius: implicitHeight / 2
         color: control.activeFocus ? Theme.alpha(control.color, 0.20) : "transparent"
 
         Rectangle {
             anchors.centerIn: parent
 
-            implicitWidth: units.dp(20)
-            implicitHeight: units.dp(20)
+            implicitWidth: Units.dp(20)
+            implicitHeight: Units.dp(20)
             radius: implicitHeight / 2
             color: "transparent"
 
@@ -65,7 +65,7 @@ RadioButtonStyle {
                 : style.darkBackground ? Theme.alpha("#fff", 0.30)
                                        : Theme.alpha("#000", 0.26)
 
-            border.width: units.dp(2)
+            border.width: Units.dp(2)
             antialiasing: true
 
             Behavior on border.color {
@@ -74,8 +74,8 @@ RadioButtonStyle {
 
             Rectangle {
                 anchors.centerIn: parent
-                implicitWidth: control.checked ? units.dp(10) : 0
-                implicitHeight: control.checked ? units.dp(10) : 0
+                implicitWidth: control.checked ? Units.dp(10) : 0
+                implicitHeight: control.checked ? Units.dp(10) : 0
                 color: control.enabled ? style.color
                                        : style.darkBackground ? Theme.alpha("#fff", 0.30)
                                                               : Theme.alpha("#000", 0.26)

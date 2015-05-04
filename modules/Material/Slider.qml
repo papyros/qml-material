@@ -39,8 +39,8 @@ Controls.Slider {
 
     tickmarksEnabled: false
 
-    implicitHeight: numericValueLabel ? units.dp(54) : units.dp(32)
-    implicitWidth: units.dp(200)
+    implicitHeight: numericValueLabel ? Units.dp(54) : Units.dp(32)
+    implicitWidth: Units.dp(200)
 
     style: MaterialStyle.SliderStyle {}
 }

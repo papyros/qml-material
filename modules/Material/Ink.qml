@@ -36,7 +36,7 @@ MouseArea {
     property bool circular: false
     property bool centered: false
 
-    property int focusWidth: width - units.dp(32)
+    property int focusWidth: width - Units.dp(32)
     property bool focused
     property color focusColor: "transparent"
 
@@ -107,7 +107,7 @@ MouseArea {
 
         width: focused
                 ? focusedState ? focusWidth
-                               : Math.min(parent.width - units.dp(8), focusWidth + units.dp(12))
+                               : Math.min(parent.width - Units.dp(8), focusWidth + Units.dp(12))
                 : parent.width/5
         height: width
 

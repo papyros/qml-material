@@ -23,7 +23,7 @@ Item {
 
     ColumnLayout {
         id: column
-        spacing: units.dp(16)
+        spacing: Units.dp(16)
 
         ListItem.Header {
             text: "Font Weights"
@@ -33,22 +33,22 @@ Item {
             font.family: "Roboto"
             font.weight: Font.Light
             text: "Roboto Light"
-            font.pixelSize: units.dp(34)
+            font.pixelSize: Units.dp(34)
 
             anchors {
                 left: parent.left
-                margins: units.dp(16)
+                margins: Units.dp(16)
             }
         }
 
         Label {
             font.family: "Roboto"
             text: "Roboto Regular"
-            font.pixelSize: units.dp(34)
+            font.pixelSize: Units.dp(34)
 
             anchors {
                 left: parent.left
-                margins: units.dp(16)
+                margins: Units.dp(16)
             }
         }
 
@@ -56,11 +56,11 @@ Item {
             font.family: "Roboto"
             font.weight: Font.DemiBold
             text: "Roboto Medium"
-            font.pixelSize: units.dp(34)
+            font.pixelSize: Units.dp(34)
 
             anchors {
                 left: parent.left
-                margins: units.dp(16)
+                margins: Units.dp(16)
             }
         }
 
@@ -68,11 +68,11 @@ Item {
             font.family: "Roboto"
             font.weight: Font.Bold
             text: "Roboto Bold"
-            font.pixelSize: units.dp(34)
+            font.pixelSize: Units.dp(34)
 
             anchors {
                 left: parent.left
-                margins: units.dp(16)
+                margins: Units.dp(16)
             }
         }
 
@@ -85,12 +85,12 @@ Item {
             delegate: Row {
                 anchors {
                     left: parent.left
-                    margins: units.dp(16)
+                    margins: Units.dp(16)
                 }
 
                 Label {
                     text: modelData
-                    width: units.dp(100)
+                    width: Units.dp(100)
                 }
 
                 Label {

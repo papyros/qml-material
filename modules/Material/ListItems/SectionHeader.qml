@@ -27,7 +27,7 @@ BaseListItem {
     property alias iconName: icon.name
     property bool expanded: false
 
-    height: units.dp(48)
+    height: Units.dp(48)
 
     RowLayout {
         anchors.fill: parent
@@ -35,10 +35,10 @@ BaseListItem {
         anchors.leftMargin: listItem.margins
         anchors.rightMargin: listItem.margins
 
-        spacing: units.dp(16)
+        spacing: Units.dp(16)
 
         Item {
-            Layout.preferredWidth: units.dp(40)
+            Layout.preferredWidth: Units.dp(40)
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
 
@@ -54,7 +54,7 @@ BaseListItem {
 
                 visible: name != ""
                 color: listItem.expanded ? Theme.primaryColor : Theme.light.iconColor
-                size: units.dp(24)
+                size: Units.dp(24)
             }
         }
 
@@ -71,7 +71,7 @@ BaseListItem {
         }
 
         Item {
-            Layout.preferredWidth: units.dp(40)
+            Layout.preferredWidth: Units.dp(40)
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignRight
 
@@ -83,7 +83,7 @@ BaseListItem {
 
                 name: "navigation/expand_more"
                 rotation: listItem.expanded ? 180 : 0
-                size: units.dp(24)
+                size: Units.dp(24)
 
                 Behavior on rotation {
                     NumberAnimation { duration: 200 }

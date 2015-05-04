@@ -27,7 +27,7 @@ Item {
     property bool valid: text.implicitWidth > 0
 
     property alias color: text.color
-    property int size: units.dp(24)
+    property int size: Units.dp(24)
 
     width: text.width
     height: text.height

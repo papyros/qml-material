@@ -34,7 +34,7 @@ Item {
     id: icon
 
     property color color: Theme.light.iconColor
-    property real size: units.dp(24)
+    property real size: Units.dp(24)
 
     /*!
        The name of the icon to display.

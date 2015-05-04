@@ -70,7 +70,7 @@ View {
                           : Theme.primaryColor
 
     implicitHeight: Device.type == Device.phone || Device.type === Device.phablet 
-            ? units.dp(48) : Device.type == Device.tablet ? units.dp(56) : units.dp(64)
+            ? Units.dp(48) : Device.type == Device.tablet ? Units.dp(56) : Units.dp(64)
 
     height: targetHeight
     elevation: backgroundColor === page.color ? 0 : page.actionBar.elevation
@@ -242,10 +242,10 @@ View {
         anchors {
             verticalCenter: stack.verticalCenter
             right: parent.right
-            rightMargin: units.dp(16)
+            rightMargin: Units.dp(16)
         }
 
-        spacing: units.dp(24)
+        spacing: Units.dp(24)
 
         IconButton {
             iconName: "navigation/close"

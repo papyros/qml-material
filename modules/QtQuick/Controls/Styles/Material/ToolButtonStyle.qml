@@ -23,12 +23,12 @@ import "../Base/"
 
 ToolButtonStyle {
     panel: View {
-        radius: units.dp(2)
+        radius: Units.dp(2)
 
         implicitHeight: label.text == "" 
-                ? units.dp(44) : Math.max(units.dp(36), label.height + units.dp(16))
+                ? Units.dp(44) : Math.max(Units.dp(36), label.height + Units.dp(16))
         implicitWidth: label.text == "" 
-                ? units.dp(44) : Math.max(units.dp(64), label.width + units.dp(16))
+                ? Units.dp(44) : Math.max(Units.dp(64), label.width + Units.dp(16))
 
         Ink {
             id: mouseArea
@@ -38,8 +38,8 @@ ToolButtonStyle {
             centered: true
             circular: label.text == ""
 
-            width: parent.width + units.dp(8)
-            height: parent.height + units.dp(8)
+            width: parent.width + Units.dp(8)
+            height: parent.height + Units.dp(8)
             
             Connections {
                 target: control.__behavior
@@ -52,13 +52,13 @@ ToolButtonStyle {
         Row {
             anchors.centerIn: parent
 
-            spacing: units.dp(8)
+            spacing: Units.dp(8)
 
             Image {
                 id: image
                 anchors.verticalCenter: parent.verticalCenter
                 source: control.iconSource
-                width: units.dp(24)
+                width: Units.dp(24)
                 height: width
             }
 

@@ -38,7 +38,7 @@ BottomSheet {
             id: header
             text: title
             visible: title !== ""
-            height: units.dp(56)
+            height: Units.dp(56)
             style: "subheading"
             backgroundColor: "white"
             elevation: listView.atYBeginning ? 0 : 1
@@ -60,8 +60,8 @@ BottomSheet {
 
                 interactive: bottomSheet.height < bottomSheet.implicitHeight
                 
-                topMargin: title !== "" ? 0 : units.dp(8)
-                bottomMargin: units.dp(8)
+                topMargin: title !== "" ? 0 : Units.dp(8)
+                bottomMargin: Units.dp(8)
 
                 contentWidth: width
                 contentHeight: subColumn.height
@@ -91,7 +91,7 @@ BottomSheet {
 
                             Item {
                                 width: parent.width
-                                height: units.dp(16)
+                                height: Units.dp(16)
                                 visible: modelData.hasDividerAfter
 
                                 ThinDivider {

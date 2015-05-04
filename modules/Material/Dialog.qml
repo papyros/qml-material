@@ -35,16 +35,16 @@ PopupBase {
     width: Math.max(minimumWidth,
                     content.contentWidth + 2 * contentMargins)
 
-    height: Math.min(units.dp(350),
-                     headerView.height + units.dp(32) +
+    height: Math.min(Units.dp(350),
+                     headerView.height + Units.dp(32) +
                      content.contentHeight +
                      content.topMargin +
                      content.bottomMargin +
                      buttonContainer.height)
 
-    property int contentMargins: units.dp(16)
+    property int contentMargins: Units.dp(16)
 
-    property int minimumWidth: units.dp(270)
+    property int minimumWidth: Units.dp(270)
 
     property alias title: titleLabel.text
     property alias text: textLabel.text
@@ -119,7 +119,7 @@ PopupBase {
 
         anchors.fill: parent
         elevation: 5
-        radius: units.dp(2)
+        radius: Units.dp(2)
 
         MouseArea {
             anchors.fill: parent
@@ -135,11 +135,11 @@ PopupBase {
                 left: parent.left
                 right: parent.right
                 top: parent.top
-                topMargin: units.dp(8)
+                topMargin: Units.dp(8)
             }
 
             clip: true
-            height: headerView.height + units.dp(32)
+            height: headerView.height + Units.dp(32)
 
             View {
                 backgroundColor: "white"
@@ -152,7 +152,7 @@ PopupBase {
                     top: parent.top
                 }
 
-                height: headerView.height + units.dp(16)
+                height: headerView.height + Units.dp(16)
             }
         }
 
@@ -160,16 +160,16 @@ PopupBase {
         Column {
             id: headerView
 
-            spacing: units.dp(16)
+            spacing: Units.dp(16)
 
             anchors {
                 left: parent.left
                 right: parent.right
                 top: parent.top
 
-                leftMargin: units.dp(16)
-                rightMargin: units.dp(16)
-                topMargin: units.dp(16)
+                leftMargin: Units.dp(16)
+                rightMargin: Units.dp(16)
+                topMargin: Units.dp(16)
             }
 
             Label {
@@ -206,13 +206,13 @@ PopupBase {
                 left: parent.left
                 right: parent.right
                 top: headerView.bottom
-                topMargin: units.dp(8)
-                bottomMargin: units.dp(-8)
+                topMargin: Units.dp(8)
+                bottomMargin: Units.dp(-8)
                 bottom: buttonContainer.top
             }
 
-            interactive: contentHeight + units.dp(8) > height
-            bottomMargin: hasActions ? 0 : units.dp(8)
+            interactive: contentHeight + Units.dp(8) > height
+            bottomMargin: hasActions ? 0 : Units.dp(8)
 
             Rectangle {
                 Column {
@@ -223,7 +223,7 @@ PopupBase {
                     }
 
                     width: content.width - 2 * contentMargins
-                    spacing: units.dp(16)
+                    spacing: Units.dp(16)
                 }
             }
         }
@@ -236,19 +236,19 @@ PopupBase {
             id: buttonContainer
 
             anchors {
-                bottomMargin: units.dp(8)
+                bottomMargin: Units.dp(8)
                 bottom: parent.bottom
                 right: parent.right
                 left: parent.left
             }
 
-            height: hasActions ? buttonView.height + units.dp(8) : 0
+            height: hasActions ? buttonView.height + Units.dp(8) : 0
             clip: true
 
             View {
                 id: buttonView
 
-                height: hasActions ? positiveButton.implicitHeight + units.dp(8) : 0
+                height: hasActions ? positiveButton.implicitHeight + Units.dp(8) : 0
                 visible: hasActions
 
                 backgroundColor: "white"
@@ -272,8 +272,8 @@ PopupBase {
                     anchors {
                         top: parent.top
                         right: positiveButton.left
-                        topMargin: units.dp(8)
-                        rightMargin: units.dp(8)
+                        topMargin: Units.dp(8)
+                        rightMargin: Units.dp(8)
                     }
 
                     onClicked: {
@@ -291,8 +291,8 @@ PopupBase {
 
                     anchors {
                         top: parent.top
-                        topMargin: units.dp(8)
-                        rightMargin: units.dp(16)
+                        topMargin: Units.dp(8)
+                        rightMargin: Units.dp(16)
                         right: parent.right
                     }
 

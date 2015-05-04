@@ -43,9 +43,9 @@ ButtonStyle {
     background: View {
         id: background
 
-        implicitHeight: units.dp(36)
+        implicitHeight: Units.dp(36)
 
-        radius: units.dp(2)
+        radius: Units.dp(2)
 
         backgroundColor: control.enabled || controlElevation === 0 
                 ? controlBackground
@@ -76,7 +76,7 @@ ButtonStyle {
             anchors.fill: parent
             focused: control.focus && background.context !== "dialog"
                     && background.context !== "snackbar"
-            focusWidth: parent.width - units.dp(30)
+            focusWidth: parent.width - Units.dp(30)
             focusColor: Qt.darker(background.backgroundColor, 1.05)
 
             Connections {
@@ -88,11 +88,11 @@ ButtonStyle {
         }
     }
     label: Item {
-        implicitHeight: Math.max(units.dp(36), label.height + units.dp(16))
+        implicitHeight: Math.max(Units.dp(36), label.height + Units.dp(16))
         implicitWidth: context == "dialog" 
-                ? Math.max(units.dp(64), label.width + units.dp(16))
-                : context == "snackbar" ? label.width + units.dp(16)
-                                        : Math.max(units.dp(88), label.width + units.dp(32))
+                ? Math.max(Units.dp(64), label.width + Units.dp(16))
+                : context == "snackbar" ? label.width + Units.dp(16)
+                                        : Math.max(Units.dp(88), label.width + Units.dp(32))
 
         Label {
             id: label
