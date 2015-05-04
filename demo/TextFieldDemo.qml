@@ -1,14 +1,18 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 import Material 0.1
 
 Item {
+    implicitHeight: column.height
 
-    Column {
+    ColumnLayout {
+        id: column
         anchors.centerIn: parent
-        spacing: units.dp(20)
+        spacing: units.dp(32)
 
         TextField {
-            text: "Text Field with text"
+            text: "Big Field with text"
+            font.pixelSize: units.dp(32)
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
@@ -21,25 +25,30 @@ Item {
             text: "Text under label"
             placeholderText: "Floating label"
             floatingLabel: true
-
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
         TextField {
             placeholderText: "Character limit"
             floatingLabel: true
-
-            anchors.horizontalCenter: parent.horizontalCenter
             characterLimit: 10
+            anchors.horizontalCenter: parent.horizontalCenter
         }
 
         TextField {
+            id: passwordField
             placeholderText: "Password"
             floatingLabel: true
-
-            input.echoMode: TextInput.Password
-
+            echoMode: TextInput.Password
+            helperText: "Hint: It's not password."
             anchors.horizontalCenter: parent.horizontalCenter
+
+            onAccepted: {
+                if (passwordField.text === "password") {
+                    passwordField.helperText = "Told ya."
+                    passwordField.hasError = true
+                }
+            }
         }
     }
 }
