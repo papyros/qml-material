@@ -8,9 +8,12 @@ Dialog {
 
     positiveButtonEnabled: textField.acceptableInput
 
+    property alias textField: textField
+
     property alias validator: textField.validator
     property alias inputMask: textField.inputMask
-
+    property alias inputMethodHints: textField.inputMethodHints
+    
     property alias placeholderText: textField.placeholderText
     property alias value: textField.text
 
