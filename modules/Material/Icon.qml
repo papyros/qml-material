@@ -95,7 +95,7 @@ Item {
         source: image
         color: Theme.alpha(icon.color, 1)
         cached: true
-        visible: image.source !== "" && colorize
+        visible: image.source != "" && colorize
         opacity: icon.color.a
     }  
 
