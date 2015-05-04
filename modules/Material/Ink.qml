@@ -1,7 +1,7 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Michael Spencer
- * Copyright (C) 2014 Marcin Baszczewski
+ * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
+ *               2014 Marcin Baszczewski
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
