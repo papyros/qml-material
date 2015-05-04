@@ -33,6 +33,7 @@ QML Material CHANGELOG
  * [TextField] Port to QtQuick.Controls
  * [Dialog] Active focus is passed off when Dialog closes
  * [Tabs] Capitalize tab titles
+ * [ActionBar] Elide titles displayed in the action bar
 
 
 ### Version 0.0.6 (April 16, 2015)

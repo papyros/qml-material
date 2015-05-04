@@ -4,7 +4,7 @@ import Material.ListItems 0.1 as ListItem
 
 Page {
     id: page
-    title: "Page Title"
+    title: "Page Title that is very long to demonstrate eliding titles in ActionBar"
 
     tabs: [
         // Each tab can have text and an icon
@@ -21,16 +21,6 @@ Page {
         // Or just simply use a string
         "Inbox"
     ]
-
-    actionBar {
-        customContent: TextField {
-            placeholderText: "Custom action bar content..."
-
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-       }
-    }
 
     // TabView is simply a customized ListView
     // You can use any model/delegate for the tab contents,

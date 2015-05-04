@@ -222,6 +222,7 @@ Item {
         style: "title"
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
                                                             Theme.dark.textColor)
+        elide: Text.ElideRight
     }
 
     Row {
