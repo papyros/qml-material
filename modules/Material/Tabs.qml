@@ -105,6 +105,7 @@ Row {
                             : darkBackground ? Theme.dark.shade(0.6) : Theme.light.shade(0.6)
 
                     style: "body2"
+                    font.capitalization: Font.AllUppercase
                     anchors.verticalCenter: parent.verticalCenter
 
                     Behavior on color {
