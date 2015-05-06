@@ -20,6 +20,12 @@ import QtQuick.Window 2.2
 import Material 0.1
 import Material.Extras 0.1
 
+/*!
+   \qmltype PopupBase
+   \inqmlmodule Material 0.1
+
+   \brief A base class for popups such as dialogs or dropdowns.
+ */
 FocusScope {
     id: popup
 

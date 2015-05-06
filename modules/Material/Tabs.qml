@@ -18,6 +18,13 @@
 import QtQuick 2.0
 import Material 0.1
 
+/*!
+   \qmltype Tabs
+   \inqmlmodule Material 0.1
+   \internal
+
+   \brief Provides a tab bar for use in the toolbar.
+ */
 Row {
     id: tabbar
 

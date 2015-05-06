@@ -24,9 +24,9 @@ import Material 0.1
    \qmltype Page
    \inqmlmodule Material 0.1
 
-   \brief Brief description...
+   \brief Represents a page on the navigation page stack.
 
-   Details...
+   Example:
 
    \qml
    import QtQuick 2.0

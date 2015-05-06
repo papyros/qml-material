@@ -21,6 +21,12 @@ import QtQuick.Controls 1.2 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
 import Material 0.1
 
+/*!
+   \qmltype RadioButton
+   \inqmlmodule Material 0.1
+
+   \brief Radio buttons allow the user to select one option from a set.
+*/
 Controls.RadioButton {
     id: radioButton
 

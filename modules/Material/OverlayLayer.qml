@@ -17,6 +17,12 @@
  */
 import QtQuick 2.0
 
+/*!
+   \qmltype OverlayLayer
+   \inqmlmodule Material 0.1
+
+   \brief Provides a layer to display popups and other overlay components.
+ */
 Rectangle {
     id: overlayLayer
     objectName: "overlayLayer"

@@ -19,6 +19,12 @@
 import QtQuick 2.0
 import Material 0.1
 
+/*!
+   \qmltype Snackbar
+   \inqmlmodule Material 0.1
+
+   \brief Snackbars provide lightweight feedback about an operation
+ */
 View {
     id: snackbar
 

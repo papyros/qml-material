@@ -18,6 +18,12 @@
 import QtQuick 2.0
 import Material 0.1
 
+/*!
+   \qmltype InputDialog
+   \inqmlmodule Material 0.1
+
+   \brief A dialog with a single text field input.
+ */
 Dialog {
     id: inputDialog
     

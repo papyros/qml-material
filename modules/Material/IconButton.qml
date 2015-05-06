@@ -19,6 +19,12 @@ import QtQuick 2.0
 import Material 0.1
 import Material.Extras 0.1
 
+/*!
+   \qmltype IconButton
+   \inqmlmodule Material 0.1
+
+   \brief Icon buttons are appropriate for app bars, toolbars, action buttons or toggles.
+ */
 Item {
     id: iconButton
 

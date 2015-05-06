@@ -17,6 +17,12 @@
  */
 import QtQuick 2.0
 
+/*!
+   \qmltype ThinDivider
+   \inqmlmodule Material 0.1
+
+   \brief A 1dp high divider for use in lists and other columns of content.
+ */
 Rectangle {
     anchors {
         left: parent.left

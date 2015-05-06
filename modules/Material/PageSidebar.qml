@@ -19,6 +19,13 @@ import QtQuick 2.0
 import QtQuick.Controls 1.2 as Controls
 import Material 0.1
 
+/*!
+   \qmltype PageSidebar
+   \inqmlmodule Material 0.1
+
+   \brief Represents a split sidebar in a page, with its own title, actions, and color 
+   in the action bar.
+ */
 Page {
     id: pageSidebar
 

@@ -19,6 +19,13 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import Material 0.1
 
+/*!
+   \qmltype View
+   \inqmlmodule Material 0.1
+
+   \brief Provides a base view component, with support for Material Design elevation, 
+   background colors, and tinting.
+ */
 Item {
     id: item
     width: 100

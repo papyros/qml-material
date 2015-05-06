@@ -18,6 +18,12 @@
 
 import QtQuick 2.0
 
+/*!
+   \qmltype ThinDivider
+   \inqmlmodule Material 0.1
+
+   \brief Provides a wave animation for transitioning between views of content.
+ */
 Rectangle {
     id: wave
 

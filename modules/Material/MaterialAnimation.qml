@@ -19,6 +19,12 @@ import QtQuick 2.0
 
 pragma Singleton
 
+/*!
+   \qmltype MaterialAnimation
+   \inqmlmodule Material 0.1
+
+   \brief A singleton with common animation durations.
+ */
 QtObject {
     id: materialAnimation
 

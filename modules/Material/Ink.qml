@@ -20,6 +20,12 @@ import QtQuick 2.0
 import Material 0.1
 import Material.Extras 0.1
 
+/*!
+   \qmltype Ink
+   \inqmlmodule Material 0.1
+
+   \brief Represents a ripple ink animation used in buttons and many other components.
+ */
 MouseArea {
     id: view
 

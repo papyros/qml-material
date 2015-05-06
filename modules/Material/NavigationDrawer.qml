@@ -19,6 +19,12 @@
 import QtQuick 2.0
 import Material 0.1
 
+/*!
+   \qmltype NavigationDrawer
+   \inqmlmodule Material 0.1
+
+   \brief The navigation drawer slides in from the left and is a common pattern in apps.
+ */
 PopupBase {
     id: navDrawer
     objectName: "navDrawer"

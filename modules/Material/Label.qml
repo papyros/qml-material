@@ -18,6 +18,12 @@
 import QtQuick 2.0
 import Material 0.1
 
+/*!
+   \qmltype Label
+   \inqmlmodule Material 0.1
+
+   \brief A text label with many different font styles from Material Design.
+ */
 Text {
     id: label
     property string style: "body1"

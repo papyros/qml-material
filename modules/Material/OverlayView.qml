@@ -19,6 +19,12 @@ import QtQuick 2.0
 import Material 0.1
 import Material.Extras 0.1
 
+/*!
+   \qmltype OverlayView
+   \inqmlmodule Material 0.1
+
+   \brief A view that pops out of the content to display as an overlay.
+ */
 PopupBase {
 	id: overlay
 

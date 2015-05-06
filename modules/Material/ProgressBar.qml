@@ -23,7 +23,7 @@ import Material 0.1
 
 /*!
    \qmltype ProgressBar
-   \inqmlmodule Material
+   \inqmlmodule Material 0.1
 
    \brief Visual indicator of progress in some operation.
 */

@@ -17,6 +17,12 @@
  */
 import QtQuick 2.0
 
+/*!
+   \qmltype Object
+   \inqmlmodule Material 0.1
+
+   \brief A base class for non-visual objects.
+ */
 QtObject {
     id: object
     default property alias children: object.__childrenFix

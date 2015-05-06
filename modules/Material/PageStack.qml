@@ -23,9 +23,7 @@ import Material 0.1
    \qmltype PageStack
    \inqmlmodule Material 0.1
 
-   \brief Brief description...
-
-   Details...
+   \brief Manages the page stack used for navigation.
 */
 Controls.StackView {
     id: stackView

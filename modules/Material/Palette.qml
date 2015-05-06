@@ -20,6 +20,12 @@ import Material 0.1
 
 pragma Singleton
 
+/*!
+   \qmltype Palette
+   \inqmlmodule Material 0.1
+
+   \brief Provides access to the Material Design color palette.
+ */
 Object {
     property var colors: {
         'red': {

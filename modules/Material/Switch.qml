@@ -21,6 +21,12 @@ import QtQuick.Controls.Styles 1.2 as ControlStyles
 
 import Material 0.1
 
+/*!
+   \qmltype Switch
+   \inqmlmodule Material 0.1
+
+   \brief On/off switches toggle the state of a single settings option
+ */
 Controls.Switch {
     id: control
 

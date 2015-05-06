@@ -22,7 +22,7 @@ import Material 0.1
 
 /*!
    \qmltype ProgressCircle
-   \inqmlmodule Material
+   \inqmlmodule Material 0.1
 
    \brief Visual circular indicator of progress in some operation.
 */

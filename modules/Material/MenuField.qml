@@ -21,7 +21,12 @@ import QtQuick.Layouts 1.1
 import Material 0.1
 import Material.ListItems 0.1
 
+/*!
+   \qmltype MenuField
+   \inqmlmodule Material 0.1
 
+   \brief A input field similar to a text field but that opens a dropdown menu.
+ */
 Item {
     id: field
 

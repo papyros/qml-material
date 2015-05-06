@@ -21,6 +21,13 @@ import Material 0.1
 import QtQuick.Controls 1.2 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
 
+/*!
+   \qmltype Slider
+   \inqmlmodule Material 0.1
+
+   \brief Sliders let users select a value from a continuous or discrete range of 
+   values by moving the slider thumb.
+ */
 Controls.Slider {
     id: slider
 

@@ -17,6 +17,12 @@
  */
 import QtQuick 2.2
 
+/*!
+   \qmltype TabView
+   \inqmlmodule Material 0.1
+
+   \brief A container for displaying tabs in a page.
+ */
 ListView {
     id: tabView
 
