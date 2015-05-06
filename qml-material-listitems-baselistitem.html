@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Dropdown | Material for QtQuick</title>
+  <title>BaseListItem | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,14 +33,14 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Dropdown</h3>
+		<h3 class="header">BaseListItem</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Represents a dropdown menu that can display a variety of content. <a href="#description">More...</a>
+		The base class for list items. <a href="#description">More...</a>
 
 		<blockquote>
-			<code>import Material 0.1</code>
+			<code>import Material.ListItems .</code>
 		</blockquote>
 
 		<h5>Properties and Methods</h5>
@@ -49,27 +49,42 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-anchor">anchor : int</a>
+				<a href="#id-qml-property-dividerInset">dividerInset : int</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-data">data : alias</a>
+				<a href="#id-qml-property-interactive">interactive : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-internalView">internalView : alias</a>
+				<a href="#id-qml-property-margins">margins : int</a>
 			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-selected">selected : bool</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-showDivider">showDivider : bool</a>
+			</li>
+		
+
 		
 
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-dropdown-open">open(<i>caller</i>, <i>offsetX</i>, <i>offsetY</i>)</a>
+				<a href="#id-qml-signal-clicked">signal clicked()</a>
 			</li>
 		
-
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-signal-pressAndHold">signal pressAndHold()</a>
+			</li>
 		
 		</ul>
 
@@ -78,7 +93,8 @@
 
 		
 			
-            <p outputclass="brief">Represents a dropdown menu that can display a variety of content.</p>
+            <p outputclass="brief">The base class for list items.</p>
+            <p>Provides ink effects, mouse/touch handling and tinting on mouse hover.</p>
         
 		
 
@@ -89,21 +105,35 @@
 
 		
 
-			<h5 id="id-qml-property-anchor">anchor : int</h5>
+			<h5 id="id-qml-property-dividerInset">dividerInset : int</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-data">data : alias</h5>
+			<h5 id="id-qml-property-interactive">interactive : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-internalView">internalView : alias</h5>
+			<h5 id="id-qml-property-margins">margins : int</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-selected">selected : bool</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-showDivider">showDivider : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
@@ -111,21 +141,28 @@
 		
 
 		
-			<h4>Methods</h4>
+
+		
+
+		
+			<h4>Signals</h4>
 			<div class="divider"></div>
 		
 
 		
 
-			<h5 id="id-qml-method-dropdown-open">open(<i>caller</i>, <i>offsetX</i>, <i>offsetY</i>)</h5>
+			<h5 id="id-qml-signal-clicked">signal clicked()</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-		
+			<h5 id="id-qml-signal-pressAndHold">signal pressAndHold()</h5>
 
+			
+				<i class="light">No description provided.</i>
+			
 		
 
 		<br/>
