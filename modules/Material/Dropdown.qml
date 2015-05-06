@@ -19,6 +19,12 @@ import QtQuick 2.0
 import Material 0.1
 import Material.Extras 0.1
 
+/*!
+   \qmltype Dropdown
+   \inqmlmodule Material 0.1
+
+   \brief Represents a dropdown menu that can display a variety of content.
+ */
 PopupBase {
     id: dropdown
 

@@ -25,9 +25,7 @@ import QtGraphicalEffects 1.0
    \qmltype Icon
    \inqmlmodule Material 0.1
 
-   \brief Brief description...
-
-   Details...
+   \brief Displays an icon from the Material Design and FontAwesome icon collections.
 */
 Item {
     id: icon

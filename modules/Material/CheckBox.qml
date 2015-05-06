@@ -20,6 +20,12 @@ import QtQuick.Controls 1.2 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
 import Material 0.1
 
+/*!
+   \qmltype CheckBox
+   \inqmlmodule Material 0.1
+
+   \brief Checkboxes allow the user to select multiple options from a set.
+ */
 Controls.CheckBox {
     id: checkBox
 

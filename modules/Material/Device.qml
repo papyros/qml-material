@@ -19,6 +19,12 @@ import QtQuick 2.0
 
 pragma Singleton
 
+/*!
+   \qmltype Device
+   \inqmlmodule Material 0.1
+
+   \brief A singleton that provides information about the current device.
+ */
 Object {
     id: device
 

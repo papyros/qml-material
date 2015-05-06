@@ -18,6 +18,13 @@
 import QtQuick 2.0
 import Material 0.1
 
+/*!
+   \qmltype Card
+   \inqmlmodule Material 0.1
+
+   \brief A card is a piece of paper with unique related data that serves as an entry point 
+   to more detailed information.
+ */
 View {
     width: Units.dp(300)
     height: Units.dp(250)

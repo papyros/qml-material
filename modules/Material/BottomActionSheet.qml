@@ -19,6 +19,13 @@ import QtQuick 2.0
 import Material 0.1
 import Material.ListItems 0.1 as ListItem
 
+/*!
+   \qmltype BottomActionSheet
+   \inqmlmodule Material 0.1
+
+   \brief Represents a bottom sheet displaying a list of actions with an optional title.
+
+ */
 BottomSheet {
     id: bottomSheet
 

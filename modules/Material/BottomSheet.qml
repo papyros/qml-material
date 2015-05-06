@@ -19,6 +19,13 @@
 import QtQuick 2.0
 import Material 0.1
 
+/*!
+   \qmltype BottomSheet
+   \inqmlmodule Material 0.1
+
+   \brief A bottom sheet is a sheet of paper that slides up from the bottom edge
+   of the screen and presents a set of clear and simple actions.
+ */
 PopupBase {
     id: bottomSheet
 

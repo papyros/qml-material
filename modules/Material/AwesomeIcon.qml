@@ -19,6 +19,15 @@ import QtQuick 2.0
 import Material 0.1
 import 'awesome.js' as Awesome
 
+/*!
+   \qmltype AwesomeIcon
+   \inqmlmodule Material 0.1
+
+   \brief Displays an icon from the FontAwesome icon collection.
+
+   Most of the time, this is used indirectly by the \l Icon component, which
+   is used by action bars, list items, and many other common Material components.
+ */
 Item {
     id: widget
 
