@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Michael Spencer <sonrisesoftware@gmail.com>
+ * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
  *               2015 Jordan Neidlinger <jneidlinger@barracuda.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,6 +20,12 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import ".."
 
+/*!
+   \qmltype Subtitled
+   \inqmlmodule Material.ListItems 0.1
+
+   \brief A list item with a two or three lines of text and optional primary and secondary actions.
+ */
 BaseListItem {
     id: listItem
 

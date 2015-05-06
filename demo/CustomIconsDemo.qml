@@ -24,7 +24,7 @@ Column {
 	
 	anchors.fill: parent
 
-	ListItem.Header {
+	ListItem.Subheader {
 		text: "Custom icons with different colors"
 	}
 
@@ -74,7 +74,7 @@ Column {
 		}
 	}
 
-	ListItem.Header {
+	ListItem.Subheader {
 		text: "Non-colorized custom icons"
 	}
 
@@ -102,7 +102,7 @@ Column {
 		}
 	}
 
-	ListItem.Header {
+	ListItem.Subheader {
 		text: "Custom icons in IconButtons"
 	}
 

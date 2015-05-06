@@ -41,7 +41,7 @@ BottomSheet {
 
         anchors.fill: parent
 
-        ListItem.Header {
+        ListItem.Subheader {
             id: header
             text: title
             visible: title !== ""
@@ -49,6 +49,7 @@ BottomSheet {
             style: "subheading"
             backgroundColor: "white"
             elevation: listView.atYBeginning ? 0 : 1
+            fullWidth: true
             z: 2
         }
 
@@ -96,15 +97,8 @@ BottomSheet {
                                 }
                             }
 
-                            Item {
-                                width: parent.width
-                                height: Units.dp(16)
+                            ListItem.Divider {
                                 visible: modelData.hasDividerAfter
-
-                                ThinDivider {
-                                    anchors.centerIn: parent
-                                    width: parent.width
-                                }
                             }
                         }
                     }

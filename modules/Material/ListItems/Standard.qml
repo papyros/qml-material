@@ -1,11 +1,11 @@
 /*
- * QML Air - A lightweight and mostly flat UI widget collection for QML
- * Copyright (C) 2014 Michael Spencer
+ * QML Material - An application framework implementing Material Design.
+ * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 2.1 of the
+ * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -20,6 +20,12 @@ import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.1
 import Material 0.1
 
+/*!
+   \qmltype Standard
+   \inqmlmodule Material.ListItems 0.1
+
+   \brief A simple list item with a single line of text and optional primary and secondary actions.
+ */
 BaseListItem {
     id: listItem
 

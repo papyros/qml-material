@@ -25,7 +25,7 @@ Item {
         id: column
         spacing: Units.dp(16)
 
-        ListItem.Header {
+        ListItem.Subheader {
             text: "Font Weights"
         }
 
@@ -76,7 +76,7 @@ Item {
             }
         }
 
-        ListItem.Header {
+        ListItem.Subheader {
             text: "Label Styles"
         }
 

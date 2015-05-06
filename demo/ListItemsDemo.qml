@@ -15,8 +15,8 @@ Item {
         Column {
             anchors.fill: parent
 
-            ListItem.Header {
-                text: "Section header"
+            ListItem.Subheader {
+                text: "Section Subheader"
             }
 
             ListItem.Standard {
