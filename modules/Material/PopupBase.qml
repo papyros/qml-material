@@ -53,7 +53,11 @@ FocusScope {
 
     function close() {
         showing = false
-        parent.currentOverlay = null
+        
+        if (parent.hasOwnProperty("currentOverlay")) {
+            parent.currentOverlay = null
+        }
+
         if (__lastFocusedItem !== null) {
             __lastFocusedItem.forceActiveFocus()
         }

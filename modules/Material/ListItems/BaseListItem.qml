@@ -29,8 +29,8 @@ import ".."
 View {
     id: listItem
     anchors {
-        left: parent.left
-        right: parent.right
+        left: parent ? parent.left : undefined
+        right: parent ? parent.right : undefined
     }
 
     property int margins: Units.dp(16)

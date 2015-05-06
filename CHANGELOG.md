@@ -35,6 +35,7 @@ QML Material CHANGELOG
  * [Tabs] Capitalize tab titles
  * [ActionBar] Elide titles displayed in the action bar
  * [InputDialog] Expose the text field and input method
+ * [NavigationDrawer] Update the nav drawer to work properly
 
 
 ### Version 0.0.6 (April 16, 2015)

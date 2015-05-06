@@ -19,6 +19,12 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import Material 0.1
 
+/*!
+   \qmltype MainView
+   \inqmlmodule Material 0.1
+
+   \brief A root component with support for overlays and configuring the app theme.
+ */
 Item {
     id: mainView
 
@@ -80,5 +86,13 @@ Item {
                 return Device.unknown;
             }
         });
+
+        // Nasty hack because singletons cannot import the module they were declared in, so
+        // the grid unit cannot be defined in either Device or Units, because it requires both.
+        // See https://bugreports.qt.io/browse/QTBUG-39703
+        Units.gridUnit = Qt.binding(function() {
+            return Device.type === Device.phone || Device.type === Device.phablet
+                    ? Units.dp(48) : Device.type == Device.tablet ? Units.dp(56) : Units.dp(64)
+        })
     }
 }

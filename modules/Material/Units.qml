@@ -65,4 +65,10 @@ Object {
     function dp(number) {
         return Math.round(number*((pixelDensity*25.4)/160)*multiplier);
     }
+
+    function gu(number) {
+        return number * gridUnit
+    }
+
+    property int gridUnit
 }

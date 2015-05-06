@@ -17,15 +17,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import Material 0.1
 
-View {
-    width: Units.dp(320)
-    fullHeight: true
-
+PopupBase {
+    id: navDrawer
     objectName: "navDrawer"
-    z: 15
 
-    property string mode: "left" // or "right"
+    overlayLayer: "dialogOverlayLayer"
+    overlayColor: Qt.rgba(0, 0, 0, 0.3)
+
+    width: Math.min(parent.width - Units.gu(1), Units.gu(5))
 
     anchors {
         left: mode === "left" ? parent.left : undefined
@@ -33,8 +34,8 @@ View {
         top: parent.top
         bottom: parent.bottom
 
-        leftMargin: showing ? 0 : -width
-        rightMargin: showing ? 0 : -width
+        leftMargin: showing ? 0 : -width - Units.dp(10)
+        rightMargin: showing ? 0 : -width - Units.dp(10)
 
         Behavior on leftMargin {
             NumberAnimation { duration: 200 }
@@ -44,16 +45,28 @@ View {
         }
     }
 
-    backgroundColor: "white"
-    elevation: 3
+    property string mode: "left" // or "right"
 
-    property bool showing
+    property alias enabled: action.visible
 
-    function open() {
-        showing = true
+    readonly property Action action: action
+
+    onEnabledChanged: {
+        if (!enabled)
+            close()
     }
 
-    function close() {
-        showing = false
+    Action {
+        id: action
+        iconName: "navigation/menu"
+        name: "Navigation Drawer"
+        onTriggered: navDrawer.toggle()
+    }
+
+    View {
+        anchors.fill: parent
+        fullHeight: true
+        elevation: 3
+        backgroundColor: "white"
     }
 }

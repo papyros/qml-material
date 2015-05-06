@@ -69,9 +69,7 @@ View {
                             ? page.backgroundColor : page.actionBar.backgroundColor
                           : Theme.primaryColor
 
-    implicitHeight: Device.type == Device.phone || Device.type === Device.phablet 
-            ? Units.dp(48) : Device.type == Device.tablet ? Units.dp(56) : Units.dp(64)
-
+    implicitHeight: Units.gu(1)
     height: targetHeight
     elevation: backgroundColor === page.color ? 0 : page.actionBar.elevation
     fullWidth: true

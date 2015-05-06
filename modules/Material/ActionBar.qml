@@ -39,8 +39,7 @@ import Material.ListItems 0.1 as ListItem
 Item {
     id: actionBar
 
-    implicitHeight: Device.type === Device.phone || Device.type === Device.phablet
-                    ? Units.dp(48) : Device.type == Device.tablet ? Units.dp(56) : Units.dp(64)
+    implicitHeight: Units.gu(1)
 
     anchors {
         left: parent.left
