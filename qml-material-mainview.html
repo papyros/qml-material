@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>PageStack | Material for QtQuick</title>
+  <title>MainView | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">PageStack</h3>
+		<h3 class="header">MainView</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Manages the page stack used for navigation. <a href="#description">More...</a>
+		A root component with support for overlays and configuring the app theme. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -47,24 +47,15 @@
 		
 		<ul>
 		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-theme">theme : <a href="qml-material-apptheme.html">AppTheme</a>
+                </a>
+			</li>
+		
 
 		
 
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-signal-popped">signal popped()</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-signal-pushed">signal pushed(Item<i>page</i>)</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-signal-replaced">signal replaced(Item<i>page</i>)</a>
-			</li>
 		
 		</ul>
 
@@ -73,44 +64,33 @@
 
 		
 			
-            <p outputclass="brief">Manages the page stack used for navigation.</p>
+            <p outputclass="brief">A root component with support for overlays and configuring the app theme.</p>
         
 		
 
 		
-
-		
-
-		
-
-		
-
-		
-			<h4>Signals</h4>
+			<h4>Properties</h4>
 			<div class="divider"></div>
 		
 
 		
 
-			<h5 id="id-qml-signal-popped">signal popped()</h5>
+			<h5 id="id-qml-property-theme">theme : <a href="qml-material-apptheme.html">AppTheme</a>
+                </h5>
 
 			
-				<i class="light">No description provided.</i>
+				
+                <p>A grouped property that allows the application to customize the the primary color, the primary dark color, and the accent color. See <a href="qml-material-theme.html">Theme</a> for more details.</p>
+            
 			
 		
 
-			<h5 id="id-qml-signal-pushed">signal pushed(Item<i>page</i>)</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
 		
 
-			<h5 id="id-qml-signal-replaced">signal replaced(Item<i>page</i>)</h5>
+		
 
-			
-				<i class="light">No description provided.</i>
-			
+		
+
 		
 
 		<br/>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Units | Material for QtQuick</title>
+  <title>Snackbar | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Units</h3>
+		<h3 class="header">Snackbar</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Provides access to screen-independent Units known as DPs (device-independent pixels). <a href="#description">More...</a>
+		Snackbars provide lightweight feedback about an operation. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -49,27 +49,47 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-gridUnit">gridUnit : int</a>
+				<a href="#id-qml-property-buttonColor">buttonColor : color</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-multiplier">multiplier : real</a>
+				<a href="#id-qml-property-buttonText">buttonText : string</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-duration">duration : int</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-fullWidth">fullWidth : bool</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-opened">opened : bool</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-text">text : string</a>
 			</li>
 		
 
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-units-dp">dp(<i>number</i>)</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-units-gu">gu(<i>number</i>)</a>
+				<a href="#id-qml-method-snackbar-open">open(<i>text</i>)</a>
 			</li>
 		
 
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-signal-clicked">signal clicked()</a>
+			</li>
 		
 		</ul>
 
@@ -78,22 +98,7 @@
 
 		
 			
-            <p outputclass="brief">Provides access to screen-independent Units known as DPs (device-independent pixels).</p>
-            <p>This singleton provides methods for building a user interface that automatically scales based on the screen density. Use the <a href="qml-material-units.html#id-qml-method-units-dp">Units::dp</a> function wherever you need to specify a screen size, and your app will automatically scale to any screen density.</p>
-            <p>Here is a short example:</p>
-            <blockquote><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
-<span class="kr">import</span> <span class="nx">Material</span> <span class="mf">0.1</span>
-
-<span class="nx">Rectangle</span> <span class="p">{</span>
-    <span class="k">width:</span> <span class="nx">Units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-    <span class="k">height:</span> <span class="nx">Units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
-
-    <span class="nx">Label</span> <span class="p">{</span>
-        <span class="k">text:</span><span class="s2">"A"</span>
-        <span class="k">font.pixelSize:</span> <span class="nx">Units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div></blockquote>
+            <p outputclass="brief">Snackbars provide lightweight feedback about an operation</p>
         
 		
 
@@ -104,14 +109,42 @@
 
 		
 
-			<h5 id="id-qml-property-gridUnit">gridUnit : int</h5>
+			<h5 id="id-qml-property-buttonColor">buttonColor : color</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-multiplier">multiplier : real</h5>
+			<h5 id="id-qml-property-buttonText">buttonText : string</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-duration">duration : int</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-fullWidth">fullWidth : bool</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-opened">opened : bool</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-text">text : string</h5>
 
 			
 				<i class="light">No description provided.</i>
@@ -125,16 +158,7 @@
 
 		
 
-			<h5 id="id-qml-method-units-dp">dp(<i>number</i>)</h5>
-
-			
-				
-                <p>This is the standard function to use for accessing device-independent pixels. You should use this anywhere you need to refer to distances on the screen.</p>
-            
-			
-		
-
-			<h5 id="id-qml-method-units-gu">gu(<i>number</i>)</h5>
+			<h5 id="id-qml-method-snackbar-open">open(<i>text</i>)</h5>
 
 			
 				<i class="light">No description provided.</i>
@@ -142,7 +166,17 @@
 		
 
 		
+			<h4>Signals</h4>
+			<div class="divider"></div>
+		
 
+		
+
+			<h5 id="id-qml-signal-clicked">signal clicked()</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
 		
 
 		<br/>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Toolbar | Material for QtQuick</title>
+  <title>MenuField | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Toolbar</h3>
+		<h3 class="header">MenuField</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Provides the container used to hold the action bar of pages. <a href="#description">More...</a>
+		A input field similar to a text field but that opens a dropdown menu. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -49,72 +49,72 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-actionBarHeight">actionBarHeight : int</a>
+				<a href="#id-qml-property-accentColor">accentColor : color</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-clientSideDecorations">clientSideDecorations : bool</a>
+				<a href="#id-qml-property-errorColor">errorColor : color</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-color">color : string</a>
+				<a href="#id-qml-property-floatingLabel">floatingLabel : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-maxActionCount">maxActionCount : int</a>
+				<a href="#id-qml-property-hasError">hasError : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-page">page : var</a>
+				<a href="#id-qml-property-hasHelperText">hasHelperText : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-pages">pages : var</a>
+				<a href="#id-qml-property-helperText">helperText : alias</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-selectedTab">selectedTab : alias</a>
+				<a href="#id-qml-property-inputRect">inputRect : rect</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-showBackButton">showBackButton : bool</a>
+				<a href="#id-qml-property-maxVisibleItems">maxVisibleItems : int</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-tabs">tabs : alias</a>
+				<a href="#id-qml-property-model">model : alias</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-targetHeight">targetHeight : int</a>
+				<a href="#id-qml-property-placeholderText">placeholderText : alias</a>
 			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-selectedIndex">selectedIndex : alias</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-selectedText">selectedText : string</a>
+			</li>
+		
+
 		
 
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-toolbar-pop">pop()</a>
+				<a href="#id-qml-signal-itemSelected">signal itemSelected(int<i>index</i>)</a>
 			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-toolbar-push">push(<i>page</i>)</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-toolbar-replace">replace(<i>page</i>)</a>
-			</li>
-		
-
 		
 		</ul>
 
@@ -123,7 +123,7 @@
 
 		
 			
-            <p outputclass="brief">Provides the container used to hold the action bar of pages.</p>
+            <p outputclass="brief">A input field similar to a text field but that opens a dropdown menu.</p>
         
 		
 
@@ -134,70 +134,84 @@
 
 		
 
-			<h5 id="id-qml-property-actionBarHeight">actionBarHeight : int</h5>
+			<h5 id="id-qml-property-accentColor">accentColor : color</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-clientSideDecorations">clientSideDecorations : bool</h5>
+			<h5 id="id-qml-property-errorColor">errorColor : color</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-color">color : string</h5>
+			<h5 id="id-qml-property-floatingLabel">floatingLabel : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-maxActionCount">maxActionCount : int</h5>
+			<h5 id="id-qml-property-hasError">hasError : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-page">page : var</h5>
+			<h5 id="id-qml-property-hasHelperText">hasHelperText : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-pages">pages : var</h5>
+			<h5 id="id-qml-property-helperText">helperText : alias</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-selectedTab">selectedTab : alias</h5>
+			<h5 id="id-qml-property-inputRect">inputRect : rect</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-showBackButton">showBackButton : bool</h5>
+			<h5 id="id-qml-property-maxVisibleItems">maxVisibleItems : int</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-tabs">tabs : alias</h5>
+			<h5 id="id-qml-property-model">model : alias</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-targetHeight">targetHeight : int</h5>
+			<h5 id="id-qml-property-placeholderText">placeholderText : alias</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-selectedIndex">selectedIndex : alias</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-selectedText">selectedText : string</h5>
 
 			
 				<i class="light">No description provided.</i>
@@ -205,35 +219,21 @@
 		
 
 		
-			<h4>Methods</h4>
+
+		
+
+		
+			<h4>Signals</h4>
 			<div class="divider"></div>
 		
 
 		
 
-			<h5 id="id-qml-method-toolbar-pop">pop()</h5>
+			<h5 id="id-qml-signal-itemSelected">signal itemSelected(int<i>index</i>)</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
-		
-
-			<h5 id="id-qml-method-toolbar-push">push(<i>page</i>)</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-method-toolbar-replace">replace(<i>page</i>)</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
-		
-
-		
-
 		
 
 		<br/>

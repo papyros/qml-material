@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Toolbar | Material for QtQuick</title>
+  <title>Ink | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Toolbar</h3>
+		<h3 class="header">Ink</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Provides the container used to hold the action bar of pages. <a href="#description">More...</a>
+		Represents a ripple ink animation used in buttons and many other components. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -49,69 +49,69 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-actionBarHeight">actionBarHeight : int</a>
+				<a href="#id-qml-property-centered">centered : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-clientSideDecorations">clientSideDecorations : bool</a>
+				<a href="#id-qml-property-circular">circular : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-color">color : string</a>
+				<a href="#id-qml-property-color">color : color</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-maxActionCount">maxActionCount : int</a>
+				<a href="#id-qml-property-currentCircle">currentCircle : Item</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-page">page : var</a>
+				<a href="#id-qml-property-endRadius">endRadius : int</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-pages">pages : var</a>
+				<a href="#id-qml-property-focusColor">focusColor : color</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-selectedTab">selectedTab : alias</a>
+				<a href="#id-qml-property-focusWidth">focusWidth : int</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-showBackButton">showBackButton : bool</a>
+				<a href="#id-qml-property-focused">focused : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-tabs">tabs : alias</a>
+				<a href="#id-qml-property-showFocus">showFocus : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-targetHeight">targetHeight : int</a>
+				<a href="#id-qml-property-startRadius">startRadius : int</a>
 			</li>
 		
 
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-toolbar-pop">pop()</a>
+				<a href="#id-qml-method-ink-createTapCircle">createTapCircle(<i>x</i>, <i>y</i>)</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-toolbar-push">push(<i>page</i>)</a>
+				<a href="#id-qml-method-ink-dist">dist(<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>)</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-toolbar-replace">replace(<i>page</i>)</a>
+				<a href="#id-qml-method-ink-radius">radius(<i>x</i>, <i>y</i>)</a>
 			</li>
 		
 
@@ -123,7 +123,7 @@
 
 		
 			
-            <p outputclass="brief">Provides the container used to hold the action bar of pages.</p>
+            <p outputclass="brief">Represents a ripple ink animation used in buttons and many other components.</p>
         
 		
 
@@ -134,70 +134,70 @@
 
 		
 
-			<h5 id="id-qml-property-actionBarHeight">actionBarHeight : int</h5>
+			<h5 id="id-qml-property-centered">centered : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-clientSideDecorations">clientSideDecorations : bool</h5>
+			<h5 id="id-qml-property-circular">circular : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-color">color : string</h5>
+			<h5 id="id-qml-property-color">color : color</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-maxActionCount">maxActionCount : int</h5>
+			<h5 id="id-qml-property-currentCircle">currentCircle : Item</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-page">page : var</h5>
+			<h5 id="id-qml-property-endRadius">endRadius : int</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-pages">pages : var</h5>
+			<h5 id="id-qml-property-focusColor">focusColor : color</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-selectedTab">selectedTab : alias</h5>
+			<h5 id="id-qml-property-focusWidth">focusWidth : int</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-showBackButton">showBackButton : bool</h5>
+			<h5 id="id-qml-property-focused">focused : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-tabs">tabs : alias</h5>
+			<h5 id="id-qml-property-showFocus">showFocus : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-targetHeight">targetHeight : int</h5>
+			<h5 id="id-qml-property-startRadius">startRadius : int</h5>
 
 			
 				<i class="light">No description provided.</i>
@@ -211,21 +211,21 @@
 
 		
 
-			<h5 id="id-qml-method-toolbar-pop">pop()</h5>
+			<h5 id="id-qml-method-ink-createTapCircle">createTapCircle(<i>x</i>, <i>y</i>)</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-method-toolbar-push">push(<i>page</i>)</h5>
+			<h5 id="id-qml-method-ink-dist">dist(<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>)</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-method-toolbar-replace">replace(<i>page</i>)</h5>
+			<h5 id="id-qml-method-ink-radius">radius(<i>x</i>, <i>y</i>)</h5>
 
 			
 				<i class="light">No description provided.</i>

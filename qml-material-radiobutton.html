@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>PageStack | Material for QtQuick</title>
+  <title>RadioButton | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">PageStack</h3>
+		<h3 class="header">RadioButton</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Manages the page stack used for navigation. <a href="#description">More...</a>
+		Radio buttons allow the user to select one option from a set. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -47,24 +47,24 @@
 		
 		<ul>
 		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-canToggle">canToggle : bool</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-color">color : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-darkBackground">darkBackground : bool</a>
+			</li>
+		
 
 		
 
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-signal-popped">signal popped()</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-signal-pushed">signal pushed(Item<i>page</i>)</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-signal-replaced">signal replaced(Item<i>page</i>)</a>
-			</li>
 		
 		</ul>
 
@@ -73,44 +73,50 @@
 
 		
 			
-            <p outputclass="brief">Manages the page stack used for navigation.</p>
+            <p outputclass="brief">Radio buttons allow the user to select one option from a set.</p>
         
 		
 
 		
-
-		
-
-		
-
-		
-
-		
-			<h4>Signals</h4>
+			<h4>Properties</h4>
 			<div class="divider"></div>
 		
 
 		
 
-			<h5 id="id-qml-signal-popped">signal popped()</h5>
+			<h5 id="id-qml-property-canToggle">canToggle : bool</h5>
 
 			
-				<i class="light">No description provided.</i>
+				
+                <p>Set to <tt>true</tt> if the radio button can be toggled from checked to unchecked</p>
+            
 			
 		
 
-			<h5 id="id-qml-signal-pushed">signal pushed(Item<i>page</i>)</h5>
+			<h5 id="id-qml-property-color">color : color</h5>
 
 			
-				<i class="light">No description provided.</i>
+				
+                <p>The switch color. By default this is the app's accent color</p>
+            
 			
 		
 
-			<h5 id="id-qml-signal-replaced">signal replaced(Item<i>page</i>)</h5>
+			<h5 id="id-qml-property-darkBackground">darkBackground : bool</h5>
 
 			
-				<i class="light">No description provided.</i>
+				
+                <p>Set to <tt>true</tt> if the switch is on a dark background</p>
+            
 			
+		
+
+		
+
+		
+
+		
+
 		
 
 		<br/>

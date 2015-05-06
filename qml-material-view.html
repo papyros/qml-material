@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Toolbar | Material for QtQuick</title>
+  <title>View | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Toolbar</h3>
+		<h3 class="header">View</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Provides the container used to hold the action bar of pages. <a href="#description">More...</a>
+		Provides a base view component, with support for Material Design elevation, background colors, and tinting. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -49,70 +49,70 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-actionBarHeight">actionBarHeight : int</a>
+				<a href="#id-qml-property-backgroundColor">backgroundColor : color</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-clientSideDecorations">clientSideDecorations : bool</a>
+				<a href="#id-qml-property-border">border : alias</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-color">color : string</a>
+				<a href="#id-qml-property-bottomShadow">bottomShadow : var</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-maxActionCount">maxActionCount : int</a>
+				<a href="#id-qml-property-clipContent">clipContent : alias</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-page">page : var</a>
+				<a href="#id-qml-property-data">data : alias</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-pages">pages : var</a>
+				<a href="#id-qml-property-elevation">elevation : int</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-selectedTab">selectedTab : alias</a>
+				<a href="#id-qml-property-elevationInverted">elevationInverted : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-showBackButton">showBackButton : bool</a>
+				<a href="#id-qml-property-fullHeight">fullHeight : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-tabs">tabs : alias</a>
+				<a href="#id-qml-property-fullWidth">fullWidth : bool</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-targetHeight">targetHeight : int</a>
+				<a href="#id-qml-property-radius">radius : real</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-style">style : string</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-tintColor">tintColor : color</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-topShadow">topShadow : var</a>
 			</li>
 		
 
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-toolbar-pop">pop()</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-toolbar-push">push(<i>page</i>)</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-toolbar-replace">replace(<i>page</i>)</a>
-			</li>
 		
 
 		
@@ -123,7 +123,7 @@
 
 		
 			
-            <p outputclass="brief">Provides the container used to hold the action bar of pages.</p>
+            <p outputclass="brief">Provides a base view component, with support for Material Design elevation, background colors, and tinting.</p>
         
 		
 
@@ -134,70 +134,91 @@
 
 		
 
-			<h5 id="id-qml-property-actionBarHeight">actionBarHeight : int</h5>
+			<h5 id="id-qml-property-backgroundColor">backgroundColor : color</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-clientSideDecorations">clientSideDecorations : bool</h5>
+			<h5 id="id-qml-property-border">border : alias</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-color">color : string</h5>
+			<h5 id="id-qml-property-bottomShadow">bottomShadow : var</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-maxActionCount">maxActionCount : int</h5>
+			<h5 id="id-qml-property-clipContent">clipContent : alias</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-page">page : var</h5>
+			<h5 id="id-qml-property-data">data : alias</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-pages">pages : var</h5>
+			<h5 id="id-qml-property-elevation">elevation : int</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-selectedTab">selectedTab : alias</h5>
+			<h5 id="id-qml-property-elevationInverted">elevationInverted : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-showBackButton">showBackButton : bool</h5>
+			<h5 id="id-qml-property-fullHeight">fullHeight : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-tabs">tabs : alias</h5>
+			<h5 id="id-qml-property-fullWidth">fullWidth : bool</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-targetHeight">targetHeight : int</h5>
+			<h5 id="id-qml-property-radius">radius : real</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-style">style : string</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-tintColor">tintColor : color</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-topShadow">topShadow : var</h5>
 
 			
 				<i class="light">No description provided.</i>
@@ -205,31 +226,7 @@
 		
 
 		
-			<h4>Methods</h4>
-			<div class="divider"></div>
-		
 
-		
-
-			<h5 id="id-qml-method-toolbar-pop">pop()</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-method-toolbar-push">push(<i>page</i>)</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-method-toolbar-replace">replace(<i>page</i>)</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
 		
 
 		
