@@ -70,5 +70,5 @@ Object {
         return number * gridUnit
     }
 
-    property int gridUnit
+    property int gridUnit: dp(64)
 }
