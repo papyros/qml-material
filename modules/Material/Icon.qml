@@ -50,7 +50,7 @@ Item {
       */
     property string source: "icon://" + name
 
-    property bool valid: name.indexOf("awesome") == 0 
+    property bool valid: source.indexOf("icon://awesome/") == 0 
             ? awesomeIcon.valid : image.status == Image.Ready
 
     property url iconDirectory: Qt.resolvedUrl("icons")
