@@ -1,42 +1,47 @@
 QML Material CHANGELOG
 ======================
 
- * Initial work on a QtQuick.Controls theme
- * [Demo] Add a Typography section to the demo
- * [Button] Properly handle dark background for flat buttons
- * [Tabs] Allow switching tabs programmatically in a page
- * [Demo] Organize the different demos into tabs
- * [Tabs] Implement the MD spec for coloring tab text
- * [Icon] Add a valid property to Icon and AwesomeIcon
- * [Demo] Display all the Material Design icons in the Icons demo
- * Move the QtQuick.Controls style into the modules directory
- * [Icon] Update the FontAwesome icon table
- * [RadioButton] Improve selection support
- * [Demo] Update radio button demo with grouping
- * [Tests] Add UI tests for the ActionBar component
- * [IconButton] Add animation on mouse over
- * [ListItem] Add a new expandable section header list item
- * [Dialog] Add support for full-width content
- * [Icons] Update the FontAwesome parsing script to pull from the website
- * [ListItem] Correctly calculate the width of a simple menu item
- * [ActionBar] Hide non-visible actions in the action bar
- * [Icon] Support custom icons with an iconSource property
- * [ActionBar] Support disabling actions in the action bar
- * [Dialog] Correctly handle back button on Android devices
- * [Documentation] Fix qdoc warnings
- * [PageStack] Pop pages when the Android back button is tapped
- * [Popup] Support preventing a popup from being dismissed
- * [ActionBar] Control the overflow menu with Android hardware keys
- * [ActionButton] Add support for the mini and default FAB sizes
- * [Dialog] Expose dialog buttons via aliases
- * Create separate styles for RadioButton and Slider
- * [TextField] Port to QtQuick.Controls
- * [Dialog] Active focus is passed off when Dialog closes
- * [Tabs] Capitalize tab titles
- * [ActionBar] Elide titles displayed in the action bar
- * [InputDialog] Expose the text field and input method
- * [NavigationDrawer] Update the nav drawer to work properly
+### Version 0.1.0 (May 6, 2015)
 
+ * Create a style for theming QtQuick.Controls apps
+ * Components
+   * [ActionBar] Control the overflow menu with Android hardware keys
+   * [ActionBar] Elide titles displayed in the action bar
+   * [ActionBar] Hide non-visible actions in the action bar
+   * [ActionBar] Support disabling actions in the action bar
+   * [ActionButton] Add support for the mini and default FAB sizes
+   * [Button] Properly handle dark background for flat buttons
+   * [Dialog] Active focus is passed off when Dialog closes
+   * [Dialog] Add support for full-width content
+   * [Dialog] Correctly handle back button on Android devices 
+   * [Icon] Add a valid property to Icon and AwesomeIcon
+   * [Icon] Support custom icons with an iconSource property
+   * [Icon] Update the FontAwesome icon table
+   * [Icon] Update the FontAwesome parsing script to pull from the website
+   * [IconButton] Add animation on mouse over
+   * [InputDialog] Expose the text field and input method
+   * [ListItem] Add a new expandable section header list item
+   * [ListItem] Correctly calculate the width of a simple menu item
+   * [NavigationDrawer] Update the nav drawer to work properly
+   * [PageStack] Pop pages when the Android back button is tapped
+   * [Popup] Support preventing a popup from being dismissed
+   * [RadioButton] Improve selection support
+   * [Tabs] Allow switching tabs programmatically in a page
+   * [Tabs] Capitalize tab titles
+   * [Tabs] Implement the MD spec for coloring tab text
+   * [TextField] Port to QtQuick.Controls
+ * Documentation
+   * Publish documentation to http://papyros.io/qml-material
+   * Write brief summaries for all the components
+   * Fix qdoc warnings
+ * Demo
+   * Add a Typography section to the demo
+   * Organize the different demos into tabs
+   * Display all the Material Design icons in the Icons demo
+   * Update radio button demo with grouping
+ * Testing 
+   * Add UI tests for the ActionBar component
+ 
 
 ### Version 0.0.6 (April 16, 2015)
 
