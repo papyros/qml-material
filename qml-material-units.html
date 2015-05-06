@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>units | Material for QtQuick</title>
+  <title>Units | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">units</h3>
+		<h3 class="header">Units</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Provides access to screen-independent units known as DPs (device-independent pixels). <a href="#description">More...</a>
+		Provides access to screen-independent Units known as DPs (device-independent pixels). <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -68,19 +68,19 @@
 
 		
 			
-            <p outputclass="brief">Provides access to screen-independent units known as DPs (device-independent pixels).</p>
-            <p>This singleton provides methods for building a user interface that automatically scales based on the screen density. Use the <a href="qml-material-units.html#id-qml-method-units-dp">units::dp</a> function wherever you need to specify a screen size, and your app will automatically scale to any screen density.</p>
+            <p outputclass="brief">Provides access to screen-independent Units known as DPs (device-independent pixels).</p>
+            <p>This singleton provides methods for building a user interface that automatically scales based on the screen density. Use the <a href="qml-material-units.html#id-qml-method-units-dp">Units::dp</a> function wherever you need to specify a screen size, and your app will automatically scale to any screen density.</p>
             <p>Here is a short example:</p>
             <blockquote><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 <span class="kr">import</span> <span class="nx">Material</span> <span class="mf">0.1</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
-    <span class="k">width:</span> <span class="nx">units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-    <span class="k">height:</span> <span class="nx">units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+    <span class="k">width:</span> <span class="nx">Units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">height:</span> <span class="nx">Units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
 
     <span class="nx">Label</span> <span class="p">{</span>
         <span class="k">text:</span><span class="s2">"A"</span>
-        <span class="k">font.pixelSize:</span> <span class="nx">units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+        <span class="k">font.pixelSize:</span> <span class="nx">Units</span><span class="p">.</span><span class="nx">dp</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div></blockquote>

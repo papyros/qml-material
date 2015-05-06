@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Window | Material for QtQuick</title>
+  <title>BottomActionSheet | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Window</h3>
+		<h3 class="header">BottomActionSheet</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		A subclass of QtQuick.Window that provides some additional features for developing Applications that conform to Material Design. <a href="#description">More...</a>
+		Represents a bottom sheet displaying a list of actions with an optional title. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -49,8 +49,13 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-theme">theme : <a href="qml-material-apptheme.html">AppTheme</a>
+				<a href="#id-qml-property-actions">actions : <a href="qml-material-action.html">Action</a>
                 </a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-title">title : string</a>
 			</li>
 		
 
@@ -64,15 +69,7 @@
 
 		
 			
-            <p outputclass="brief">A subclass of QtQuick.Window that provides some additional features for developing Applications that conform to Material Design.</p>
-            <p>Here is a short working example of an application:</p>
-            <blockquote><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
-<span class="kr">import</span> <span class="nx">Material</span> <span class="mf">0.1</span>
-
-<span class="nx">Window</span> <span class="p">{</span>
-    <span class="k">title:</span> <span class="s2">"Application Name"</span>
-<span class="p">}</span>
-</pre></div></blockquote>
+            <p outputclass="brief">Represents a bottom sheet displaying a list of actions with an optional title.</p>
         
 		
 
@@ -83,13 +80,18 @@
 
 		
 
-			<h5 id="id-qml-property-theme">theme : <a href="qml-material-apptheme.html">AppTheme</a>
+			<h5 id="id-qml-property-actions">actions : <a href="qml-material-action.html">Action</a>
                 </h5>
 
 			
-				
-                <p>A grouped property that allows the application to customize the the primary color, the primary dark color, and the accent color. See <a href="qml-material-theme.html">Theme</a> for more details.</p>
-            
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-title">title : string</h5>
+
+			
+				<i class="light">No description provided.</i>
 			
 		
 

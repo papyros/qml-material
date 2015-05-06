@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Icon | Material for QtQuick</title>
+  <title>CheckBox | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Icon</h3>
+		<h3 class="header">CheckBox</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Displays an icon from the Material Design and FontAwesome icon collections. <a href="#description">More...</a>
+		Checkboxes allow the user to select multiple options from a set. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -54,32 +54,7 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-colorize">colorize : bool</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-iconDirectory">iconDirectory : url</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-name">name : string</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-size">size : real</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-source">source : string</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-valid">valid : bool</a>
+				<a href="#id-qml-property-darkBackground">darkBackground : bool</a>
 			</li>
 		
 
@@ -93,7 +68,7 @@
 
 		
 			
-            <p outputclass="brief">Displays an icon from the Material Design and FontAwesome icon collections.</p>
+            <p outputclass="brief">Checkboxes allow the user to select multiple options from a set.</p>
         
 		
 
@@ -107,59 +82,18 @@
 			<h5 id="id-qml-property-color">color : color</h5>
 
 			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-property-colorize">colorize : bool</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-property-iconDirectory">iconDirectory : url</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-property-name">name : string</h5>
-
-			
 				
-                <p>The name of the icon to display.</p>
-                <p>
-                    <b>See also </b>
-                    <a href="qml-material-icon.html#id-qml-property-source">source</a>.</p>
+                <p>The checkbox color. By default this is the app's accent color</p>
             
 			
 		
 
-			<h5 id="id-qml-property-size">size : real</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-property-source">source : string</h5>
+			<h5 id="id-qml-property-darkBackground">darkBackground : bool</h5>
 
 			
 				
-                <p>A URL pointing to an image to display as the icon. By default, this is a special URL representing the icon named by <a href="qml-material-icon.html#id-qml-property-name">name</a> from the Material Design icon collection or FontAwesome. The icon will be colorized using the specificed <a href="qml-material-icon.html#id-qml-property-color">color</a>, unless you put ".color." in the filename, for example, "app-icon.color.svg".</p>
-                <p>
-                    <b>See also </b>
-                    <a href="qml-material-icon.html#id-qml-property-name">name</a>.</p>
+                <p>Set to <tt>true</tt> if the checkbox is on a dark background</p>
             
-			
-		
-
-			<h5 id="id-qml-property-valid">valid : bool</h5>
-
-			
-				<i class="light">No description provided.</i>
 			
 		
 
