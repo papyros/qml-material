@@ -70,6 +70,13 @@ Controls.Button {
     property bool isMiniSize: false
 
     style: ControlStyles.ButtonStyle {
+        padding {
+            left: 0
+            right: 0
+            top: 0
+            bottom: 0
+        }
+
         background: Item {
             RectangularGlow {
 
@@ -121,6 +128,7 @@ Controls.Button {
                 anchors.centerIn: parent
                 name: control.iconName
                 color: button.iconColor
+                size: Units.dp(24)
             }
         }
     }
