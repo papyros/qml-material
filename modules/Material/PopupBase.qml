@@ -31,6 +31,7 @@ FocusScope {
     property Item __lastFocusedItem
 
     signal opened
+    signal closed
 
     function toggle(widget) {
         if (showing) {
@@ -56,5 +57,7 @@ FocusScope {
         if (__lastFocusedItem !== null) {
             __lastFocusedItem.forceActiveFocus()
         }
+
+        closed()
     }
 }

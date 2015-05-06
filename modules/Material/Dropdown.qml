@@ -35,6 +35,7 @@ PopupBase {
     visible: view.opacity > 0
 
     function open(caller, offsetX, offsetY) {
+        __lastFocusedItem = Window.activeFocusItem
         parent = Utils.findRootChild(dropdown, overlayLayer)
 
         if(typeof offsetX === "undefined")
@@ -77,11 +78,6 @@ PopupBase {
         parent.currentOverlay = dropdown
 
         opened()
-    }
-
-    function close() {
-        showing = false
-        parent.currentOverlay = null
     }
 
     QtObject {
