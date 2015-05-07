@@ -1,6 +1,9 @@
 QML Material CHANGELOG
 ======================
 
+ * [ProgressBar] Update progress bar and circle to work asynchronously
+
+
 ### Version 0.1.0 (May 6, 2015)
 
  * Create a style for theming QtQuick.Controls apps

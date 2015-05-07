@@ -48,11 +48,6 @@ Controls.ProgressBar {
 
     style: Styles.ProgressBarStyle {
         id: progressBarStyle
-        background: Rectangle {
-            implicitWidth: control.width
-            implicitHeight: control.height
-            color: "transparent"
-        }
 
         progress: Canvas {
             id: canvas
@@ -192,10 +187,11 @@ Controls.ProgressBar {
                 height: parent.height
                 transformOrigin: Item.TopLeft
 
-                Loader {
+                Rectangle {
                     id: backgroundLoader
-                    anchors.fill: parent
-                    sourceComponent: background
+                    implicitWidth: control.width
+                    implicitHeight: control.height
+                    color: "transparent"
                 }
 
                 Loader {
