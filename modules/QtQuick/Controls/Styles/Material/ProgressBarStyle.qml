@@ -21,12 +21,8 @@ import QtQuick.Controls.Styles 1.3
 import Material 0.1
 
 ProgressBarStyle {
-    background: Rectangle {
-        width: control.width
-        height: control.height
-        color: control.color
-        opacity: 0.2
-    }
+    id: progressBarStyle
+
     progress: Rectangle {
         color: control.indeterminate ? "transparent" : control.color
 
@@ -71,6 +67,41 @@ ProgressBarStyle {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    panel: Item {
+        property bool horizontal: control.orientation == Qt.Horizontal
+        implicitWidth: horizontal ? backgroundLoader.implicitWidth : backgroundLoader.implicitHeight
+        implicitHeight: horizontal ? backgroundLoader.implicitHeight : backgroundLoader.implicitWidth
+
+        Item {
+            width: horizontal ? parent.width : parent.height
+            height: !horizontal ? parent.width : parent.height
+            y: horizontal ? 0 : width
+            rotation: horizontal ? 0 : -90
+            transformOrigin: Item.TopLeft
+
+            Rectangle {
+                id: backgroundLoader
+                implicitWidth: control.width
+                implicitHeight: control.height
+                color: control.color
+                opacity: 0.2
+            }
+
+            Loader {
+                sourceComponent: progressBarStyle.progress
+                anchors.topMargin: padding.top
+                anchors.leftMargin: padding.left
+                anchors.rightMargin: padding.right
+                anchors.bottomMargin: padding.bottom
+
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.bottom: parent.bottom
+                width: currentProgress * (parent.width - padding.left - padding.right)
             }
         }
     }
