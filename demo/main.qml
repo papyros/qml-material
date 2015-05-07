@@ -164,7 +164,8 @@ ApplicationWindow {
                     Loader {
                         id: example
                         anchors.fill: parent
-
+                        asynchronous: true
+                        visible: status == Loader.Ready
                         // selectedComponent will always be valid, as it defaults to the first component
                         source: {
                             if (navDrawer.enabled) {
@@ -173,6 +174,11 @@ ApplicationWindow {
                                 return Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
                             }
                         }
+                    }
+
+                    ProgressCircle {
+                        anchors.centerIn: parent
+                        visible: example.status == Loader.Loading
                     }
                 }
                 Scrollbar {
