@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
+ * Copyright (C) 2015 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -17,25 +17,24 @@
  */
 import QtQuick 2.0
 import QtQuick.Controls 1.2 as Controls
+
 /*!
-   \qmltype Action
+   \qmltype Tab
    \inqmlmodule Material 0.1
 
-   \brief Represents an action shown in an action bar, context menu, or list.
+   \brief Tab represents the content of a tab in a TabView.
 
-   One of the most common uses of actions is displaying actions in the action bar of a page
-   using the \l Page::actions property. See the example for \l Page for more details.
+   This extends the QtQuick.Controls Tab component to add iconName and iconSource properties.
  */
-Controls.Action {
-    id: action
-
-    /*!
-       Set to \c true to display a divider between this action and the next action. Used in lists
-       or context menus.
+Controls.Tab {
+	
+	/*!
+       The icon displayed for the action. This can be a Material Design icon or an icon from
+       FontAwesome. See \l Icon from more details.
      */
-    property bool hasDividerAfter
+	property string iconName
 
-    /*!
+	/*!
        A URL pointing to an image to display as the icon. By default, this is
        a special URL representing the icon named by \l iconName from the Material Design
        icon collection or FontAwesome. The icon will be colorized using the specificed \l color,
@@ -45,29 +44,5 @@ Controls.Action {
        \sa Icon
      */
     property string iconSource: "icon://" + iconName
-
-    /*!
-       The text displayed for the action.
-     */
-    property string name
-
-    /*!
-      A short summary of the action, which may be displayed depending on the UI showing the
-      action. For example, a list of actions could display the summary as the secondary line of
-      text.
-     */
-    property string summary
-
-    /*!
-       Set to \c false to hide the action in the UI.
-     */
-    property bool visible: true
-
-    /*!
-       Set to \c true to rotate the icon 90 degrees on mouseover.
-     */    
-    property bool hoverAnimation: false
-
-    property alias text: action.name
-    property alias tooltip: action.summary
 }
+

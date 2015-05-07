@@ -40,7 +40,7 @@ import Material 0.1
                name: "Print"
 
                // Icon name from the Google Material Design icon pack
-               iconName: "action/print" 
+               iconName: "action/print"
            }
        ]
 
@@ -81,7 +81,7 @@ FocusScope {
 
     /*!
        The action shown to the left of the title in the action bar. By default,
-       this is a back button which shows when there is a page behind the current 
+       this is a back button which shows when there is a page behind the current
        page in the page stack. However, you can replace it with your own action,
        for example, an icon to open a navigation drawer when on your root page.
      */
@@ -123,37 +123,26 @@ FocusScope {
        The index of the selected tab. This will be an index from the \l tabs
        property.
      */
-    property int selectedTab
+    property alias selectedTab: __actionBar.selectedTab
 
     /*!
-       An array of tab titles displayed under the page title in the action bar.
-       Each item can either be a simple string or a Javascript object with a title
-       property and an optional icon property with the name of an icon from the Google
-       Material Design icon collection.
-
-       The following example highlights the different available tab items:
-
-       \qml
-       Page{
-           tabs: [
-               // Each tab can have text and an icon
-               {
-                   text: "Overview",
-                   icon: "action/home"
-               },
-
-               // You can also leave out the icon
-               {
-                   text:"Projects",
-               },
-
-               // Or just simply use a string
-               "Inbox"
-           ]
-        }
-       \endqml
+       The tab bar displayed below the actions in the action bar. Exposed for
+       additional customization.
      */
-    property var tabs: []
+    property alias tabBar: __actionBar.tabBar
+
+    /*!
+       The model to use as the tab items in the action bar. This can either be a Javascript
+       array wih an object for each tab, or it can be a TabView object to display tabs for.
+
+       If it is a Javascript array, each object represents one tab, and can either be a simple
+       string (used as the tab title), or an object with title, iconName, and/or iconSource 
+       properties.
+       
+       If it is a TabView component, the title of each Tab object will be used, as well as
+       iconName and iconSource properties if present (as provided by the Material subclass of Tab).
+     */
+    property alias tabs: __actionBar.tabs
 
     /*!
        The title of the page shown in the action bar.

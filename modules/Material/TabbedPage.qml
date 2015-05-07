@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014 Michael Spencer <sonrisesoftware@gmail.com>
+ * Copyright (C) 2015 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -15,22 +15,37 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.2
+import QtQuick 2.0
+import QtQuick.Controls 1.2 as Controls
+import QtQuick.Controls.Styles 1.2 as Styles
 
 /*!
-   \qmltype TabView
+   \qmltype Tab
    \inqmlmodule Material 0.1
 
-   \brief A container for displaying tabs in a page.
+   \brief A special page for tabs.
+
+   This adds a full-size TabView to a page add hooks up the tab bar to the TabView.
  */
-ListView {
-    id: tabView
+Page {
+    id: page
 
-    orientation: Qt.Horizontal
+    tabs: tabView
 
-    highlightMoveDuration: 400
-    clip: true
+    default property alias content: tabView.children
 
-    snapMode: ListView.SnapOneItem
-    interactive: false
+    Controls.TabView {
+        id: tabView
+        
+        currentIndex: page.selectedTab
+        anchors.fill: parent
+
+        tabsVisible: false
+
+        // Override the style to remove the frame
+        style: Styles.TabViewStyle {
+            frameOverlap: 0
+            frame: Item {}
+        }
+    }
 }

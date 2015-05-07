@@ -50,14 +50,12 @@ View {
 
         return height
     }
-    property int targetHeight: actionBarHeight + (tabs.length > 0 ? tabbar.height : 0)
+    property int targetHeight: actionBarHeight
     property int maxActionCount: Device.type === Device.desktop
                                  ? 5 : Device.type === Device.tablet ? 4 : 3
     property bool clientSideDecorations: false
     property string color: "white"
     property var page
-    property alias tabs: tabbar.tabs
-    property alias selectedTab: tabbar.selectedIndex
     property bool showBackButton
 
     opacity: page && page.actionBar.hidden ? 0 : 1
@@ -78,26 +76,6 @@ View {
 
     Behavior on opacity {
         NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
-    }
-
-    onSelectedTabChanged: {
-        if (page)
-            page.selectedTab = selectedTab
-    }
-
-    onPageChanged: {
-        toolbar.selectedTab = page.selectedTab
-    }
-
-    Connections {
-        target: page
-
-        // Ignore errors when the page is invalid or null
-        ignoreUnknownSignals: true
-
-        onSelectedTabChanged: {
-            toolbar.selectedTab = page.selectedTab
-        }
     }
 
     function pop(page) {
@@ -245,20 +223,4 @@ View {
             onClicked: Qt.quit()
         }
     }
-
-    Tabs {
-        id: tabbar
-        color: toolbar.backgroundColor
-        visible: tabs.length > 0
-
-        tabs: page ? page.tabs : []
-        darkBackground: Theme.isDarkColor(toolbar.backgroundColor)
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: stack.bottom
-        }
-    }
-
 }

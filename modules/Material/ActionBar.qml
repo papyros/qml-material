@@ -99,7 +99,8 @@ Item {
        \internal
        The height of the extended content view.
      */
-    readonly property int extendedHeight: extendedContentView.childrenRect.height
+    readonly property int extendedHeight: extendedContentView.height +
+                                          (tabBar.visible ? tabBar.height : 0)
 
     /*!
        Set to true to hide the action bar. This is used when displaying an
@@ -118,6 +119,34 @@ Item {
     property int maxActionCount: toolbar ? toolbar.maxActionCount : 3
 
     /*!
+       The index of the selected tab. This will be an index from the \l tabs
+       property.
+     */
+    property alias selectedTab: tabBar.selectedIndex
+
+    /*!
+       The tab bar displayed below the actions in the action bar. Exposed for
+       additional customization.
+     */
+    property alias tabBar: tabBar
+
+    /*!
+       The model to use as the tab items in the action bar. This can either be a Javascript
+       array wih an object for each tab, or it can be a TabView object to display tabs for.
+
+       If it is a Javascript array, each object represents one tab, and can either be a simple
+       string (used as the tab title), or an object with title, iconName, and/or iconSource 
+       properties.
+       
+       If it is a TabView component, the title of each Tab object will be used, as well as
+       iconName and iconSource properties if present (as provided by the Material subclass of Tab).
+
+       When used in a page, this will be set to the tabs of the page, so set the \l Page::tabs
+       property instead of changing this directly.
+     */
+    property alias tabs: tabBar.tabs
+
+    /*!
        The title displayed in the action bar. When used in a page, the title will
        be set to the title of the page, so set the \l Page::title property instead
        of changing this directly.
@@ -129,6 +158,8 @@ Item {
        The toolbar containing this action bar.
      */
     property Item toolbar
+
+    property int leftKeyline: label.x
 
     /*!
        \internal
@@ -291,6 +322,21 @@ Item {
             left: label.left
             right: parent.right
             rightMargin: Units.dp(16)
+        }
+
+        height: childrenRect.height
+    }
+
+    TabBar {
+        id: tabBar
+
+        darkBackground: Theme.isDarkColor(actionBar.backgroundColor)
+        leftKeyline: actionBar.leftKeyline
+
+        anchors {
+            top: extendedContentView.bottom
+            left: parent.left
+            right: parent.right
         }
     }
 
