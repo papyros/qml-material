@@ -130,6 +130,8 @@ Item {
      */
     property Item toolbar
 
+    property int leftKeyline: label.x
+
     /*!
        \internal
        \qmlproperty bool overflowMenuShowing

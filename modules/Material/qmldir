@@ -37,8 +37,8 @@ Sidebar 0.1 Sidebar.qml
 Slider 0.1 Slider.qml
 Snackbar 0.1 Snackbar.qml
 Switch 0.1 Switch.qml
+TabBar 0.1 TabBar.qml
 TabView 0.1 TabView.qml
-Tabs 0.1 Tabs.qml
 TextField 0.1 TextField.qml
 ThinDivider 0.1 ThinDivider.qml
 TimePicker 0.1 TimePicker.qml

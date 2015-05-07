@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
+ * Copyright (C) 2015 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -15,21 +15,48 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
+import QtQuick 2.2
+import QtQuick.Layouts 1.1
+
 import Material 0.1
+import Material.ListItems 0.1
 
-/*!
-   \qmltype Tabs
-   \inqmlmodule Material 0.1
-   \internal
+Item {
+	id: tabbar
 
-   \brief Provides a tab bar for use in the toolbar.
- */
-Row {
-    id: tabbar
+	property var tabs
+	property int leftKeyline
 
-    property var tabs: []
-    property int selectedIndex: 0
+	property bool isLargeDevice: Device.type == Device.desktop || Device.type == Device.tablet 
+
+	property bool fullWidth: isLargeDevice
+			? false : width - maxTabsWidth <= Units.dp(16) && tabsWidth <= width
+
+	property int tabsWidth: {
+		var width = 0
+
+		for (var i = 0; i < tabRow.children.length; i++) {
+			width += tabRow.children[i].implicitWidth
+		}
+
+		return width
+	}
+
+	property int maxTabsWidth: {
+		var tabWidth = 0
+
+		for (var i = 0; i < tabRow.children.length; i++) {
+			tabWidth = Math.max(tabRow.children[i].implicitWidth, tabWidth)
+		}
+
+		return tabWidth * tabRow.children.length
+	}
+
+	property int tabPadding: isLargeDevice ? Units.dp(24) : Units.dp(12)
+
+	property int tabMinWidth: isLargeDevice ? Units.dp(160) : Units.dp(72)
+
+	property int selectedIndex: 0
 
     property bool darkBackground
 
@@ -39,14 +66,62 @@ Row {
 
     height: Units.dp(48)
 
-    Repeater {
-        id: repeater
-        model: tabbar.tabs
+    onWidthChanged: {
+    	print(maxTabsWidth, width, fullWidth)
+    }
 
-        delegate: View {
+	Row {
+		id: tabRow
+
+		height: parent.height
+		x: fullWidth ? 0 : Math.max(leftKeyline - tabPadding, 0)
+
+		Repeater {
+			id: repeater
+			model: tabs
+			delegate: tabDelegate
+		}
+	}
+
+	Rectangle {
+        id: selectionIndicator
+        anchors {
+            bottom: parent.bottom
+        }
+
+        height: Units.dp(2)
+        color: tabbar.highlightColor
+        x: tabRow.children[tabbar.selectedIndex].x + tabRow.x
+        width: tabRow.children[tabbar.selectedIndex].width
+
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
+
+        Behavior on x {
+            NumberAnimation { duration: 200 }
+        }
+
+        Behavior on width {
+            NumberAnimation { duration: 200 }
+        }
+    }
+
+	Component {
+		id: tabDelegate
+
+		View {
             id: tabItem
-            width:Units.dp(48) + row.width
+
+            width: tabbar.fullWidth ? tabbar.width/repeater.count : implicitWidth
             height: tabbar.height
+
+            implicitWidth: isLargeDevice 
+            		? Math.min(2 * tabPadding + row.width, Units.dp(264))
+            		: Math.min(Math.max(2 * tabPadding + row.width, tabMinWidth), Units.dp(264))
+
+
+            onImplicitWidthChanged: print("Tab", index, implicitWidth)
 
             property bool selected: index == tabbar.selectedIndex
 
@@ -54,32 +129,6 @@ Row {
                 anchors.fill: parent
 
                 onClicked: tabbar.selectedIndex = index
-            }
-
-            Rectangle {
-                id: selectionIndicator
-                anchors {
-                    bottom: parent.bottom
-                }
-
-                height: Units.dp(2)
-                color: tabbar.highlightColor
-                opacity: tabItem.selected ? 1 : 0
-                //x: index < tabbar.selectedIndex ? tabItem.width : 0
-                //width: index == tabbar.selectedIndex ? tabItem.width : 0
-                width: parent.width
-
-                Behavior on opacity {
-                    NumberAnimation { duration: 200 }
-                }
-
-                Behavior on x {
-                    NumberAnimation { duration: 200 }
-                }
-
-                Behavior on width {
-                    NumberAnimation { duration: 200 }
-                }
             }
 
             Row {
@@ -114,6 +163,7 @@ Row {
                     style: "body2"
                     font.capitalization: Font.AllUppercase
                     anchors.verticalCenter: parent.verticalCenter
+                    maximumLineCount: 2
 
                     Behavior on color {
                         ColorAnimation { duration: 200 }
@@ -121,5 +171,5 @@ Row {
                 }
             }
         }
-    }
+	}
 }

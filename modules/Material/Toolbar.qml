@@ -246,13 +246,14 @@ View {
         }
     }
 
-    Tabs {
+    Tabbar {
         id: tabbar
         color: toolbar.backgroundColor
         visible: tabs.length > 0
 
         tabs: page ? page.tabs : []
         darkBackground: Theme.isDarkColor(toolbar.backgroundColor)
+        leftKeyline: page ? page.actionBar.leftKeyline : 0
 
         anchors {
             left: parent.left
