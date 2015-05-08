@@ -5,6 +5,8 @@ import Material.ListItems 0.1 as ListItem
 ApplicationWindow {
     id: demo
 
+    title: "Material for QtQuick Demo"
+
     theme {
         primaryColor: Palette.colors["blue"]["500"]
         primaryDarkColor: Palette.colors["blue"]["700"]
@@ -34,7 +36,7 @@ ApplicationWindow {
     initialPage: Page {
         id: page
 
-        title: "Material Demo"
+        title: "Demo"
 
         tabs: navDrawer.enabled ? [] : sectionTitles
 
