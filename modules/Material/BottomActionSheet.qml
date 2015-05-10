@@ -92,7 +92,7 @@ BottomSheet {
                                 enabled: modelData.enabled
                                 
                                 onClicked: {
-                                    actionSheet.close()
+                                    bottomSheet.close()
                                     modelData.triggered(listItem)
                                 }
                             }
