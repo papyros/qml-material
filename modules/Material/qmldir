@@ -2,15 +2,14 @@ module Material
 Action 0.1 Action.qml
 ActionBar 0.1 ActionBar.qml
 ActionButton 0.1 ActionButton.qml
-ApplicationWindow 0.1 ApplicationWindow.qml
 AppTheme 0.1 AppTheme.qml
+ApplicationWindow 0.1 ApplicationWindow.qml
 AwesomeIcon 0.1 AwesomeIcon.qml
-Button 0.1 Button.qml
 BottomActionSheet 0.1 BottomActionSheet.qml
 BottomSheet 0.1 BottomSheet.qml
+Button 0.1 Button.qml
 Card 0.1 Card.qml
 CheckBox 0.1 CheckBox.qml
-singleton Device 0.1 Device.qml
 Dialog 0.1 Dialog.qml
 Dropdown 0.1 Dropdown.qml
 Icon 0.1 Icon.qml
@@ -19,7 +18,6 @@ Ink 0.1 Ink.qml
 InputDialog 0.1 InputDialog.qml
 Label 0.1 Label.qml
 MainView 0.1 MainView.qml
-singleton MaterialAnimation 0.1 MaterialAnimation.qml
 MenuField 0.1 MenuField.qml
 NavigationDrawer 0.1 NavigationDrawer.qml
 Object 0.1 Object.qml
@@ -28,23 +26,27 @@ OverlayView 0.1 OverlayView.qml
 Page 0.1 Page.qml
 PageSidebar 0.1 PageSidebar.qml
 PageStack 0.1 PageStack.qml
-singleton Palette 0.1 Palette.qml
+Popover 0.1 Popover.qml
 PopupBase 0.1 PopupBase.qml
 ProgressBar 0.1 ProgressBar.qml
 ProgressCircle 0.1 ProgressCircle.qml
 RadioButton 0.1 RadioButton.qml
-Sidebar 0.1 Sidebar.qml
 Scrollbar 0.1 Scrollbar.qml
+Sidebar 0.1 Sidebar.qml
 Slider 0.1 Slider.qml
 Snackbar 0.1 Snackbar.qml
 Switch 0.1 Switch.qml
 TabView 0.1 TabView.qml
 Tabs 0.1 Tabs.qml
 TextField 0.1 TextField.qml
-singleton Theme 0.1 Theme.qml
 ThinDivider 0.1 ThinDivider.qml
 Toolbar 0.1 Toolbar.qml
-singleton Units 0.1 Units.qml
+Tooltip 0.1 Tooltip.qml
 View 0.1 View.qml
 Wave 0.1 Wave.qml
 Window 0.1 Window.qml
+singleton Device 0.1 Device.qml
+singleton MaterialAnimation 0.1 MaterialAnimation.qml
+singleton Palette 0.1 Palette.qml
+singleton Theme 0.1 Theme.qml
+singleton Units 0.1 Units.qml

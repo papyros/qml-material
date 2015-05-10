@@ -32,6 +32,11 @@ Rectangle {
     property Item currentOverlay
     color: "transparent"
 
+    onEnabledChanged: {
+        if (!enabled && overlayLayer.currentOverlay != null)
+            overlayLayer.currentOverlay.close()
+    }
+
     states: State {
         name: "ShowState"
         when: overlayLayer.currentOverlay != null

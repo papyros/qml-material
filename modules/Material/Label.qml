@@ -100,7 +100,7 @@ Text {
         },
 
         "tooltip": {
-            "size_desktop": 10,
+            "size_desktop": 13,
             "size": 14,
             "font": "medium"
         }

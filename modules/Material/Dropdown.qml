@@ -39,6 +39,12 @@ PopupBase {
         __lastFocusedItem = Window.activeFocusItem
         parent = Utils.findRootChild(dropdown, overlayLayer)
 
+        if (!parent.enabled)
+            return
+
+        if (parent.currentOverlay)
+            parent.currentOverlay.close()
+
         if(typeof offsetX === "undefined")
             offsetX = 0
 

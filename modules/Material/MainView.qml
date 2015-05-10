@@ -43,15 +43,18 @@ Item {
     OverlayLayer {
         id: dialogOverlayLayer
         objectName: "dialogOverlayLayer"
+        z: 100
     }
 
     OverlayLayer {
         id: tooltipOverlayLayer
         objectName: "tooltipOverlayLayer"
+        z: 100
     }
 
     OverlayLayer {
         id: overlayLayer
+        z: 100
     }
 
     width: Units.dp(800)

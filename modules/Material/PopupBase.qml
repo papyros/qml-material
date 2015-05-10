@@ -50,6 +50,10 @@ FocusScope {
     function open() {
         __lastFocusedItem = Window.activeFocusItem
         parent = Utils.findRootChild(popup, overlayLayer)
+        
+        if (!parent.enabled)
+            return
+
         showing = true
         forceActiveFocus()
         parent.currentOverlay = popup

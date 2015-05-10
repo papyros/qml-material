@@ -1,6 +1,7 @@
 /*
  * QML Material - An application framework implementing Material Design.
  * Copyright (C) 2015 Jordan Neidlinger <jneidlinger@gmail.com>
+ *               2015 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -33,7 +34,7 @@ import Material.Extras 0.1
    See the Material Design guidelines for more details: 
    http://www.google.com/design/spec/components/tooltips.html
  */
-PopupBase {
+Popover {
     id: dropdown
 
     property alias text: tooltipLabel.text
@@ -43,43 +44,10 @@ PopupBase {
     overlayLayer: "tooltipOverlayLayer"
     globalMouseAreaEnabled: false
 
-    width: tooltipLabel.paintedWidth + (Device.isMobile ? Units.dp(32) : Units.dp(16))
-    height: Device.isMobile ? Units.dp(44) : Units.dp(22)
+    width: tooltipLabel.paintedWidth + Units.dp(32)
+    implicitHeight: Device.isMobile ? Units.dp(44) : Units.dp(40)
 
-    visible: view.opacity > 0
-
-    function open(caller, offsetX, offsetY) {
-        parent = Utils.findRootChild(dropdown, overlayLayer)
-
-        if(typeof offsetX === "undefined")
-            offsetX = 0
-
-        if(typeof offsetY === "undefined")
-            offsetY = 0
-
-        var position = caller.mapToItem(dropdown.parent, 0, 0)
-        var globalPos = caller.mapToItem(null, 0, 0)
-        var root = Utils.findRoot(dropdown)
-
-        dropdown.x = position.x + (caller.width / 2 - dropdown.width / 2)
-        dropdown.y = position.y + caller.height//    - dropdown.height
-
-        if(dropdown.x + width > root.width)
-            offsetX = -(((dropdown.x + width) - root.width) + Units.dp(8))
-
-        dropdown.x += offsetX
-        dropdown.y += offsetY
-
-        showing = true
-        parent.currentOverlay = dropdown
-
-        opened()
-    }
-
-    function close() {
-        showing = false
-        parent.currentOverlay = null
-    }
+    backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
 
     Timer {
         id: timer
@@ -114,37 +82,10 @@ PopupBase {
         }
     }
 
-    View {
-        id: view
-
-        elevation: 2
-        radius: Units.dp(2)
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-            topMargin: dropdown.showing ? 0 : -dropdown.height/4
-
-            Behavior on topMargin {
-                NumberAnimation { duration: 200 }
-            }
-        }
-
-        height: dropdown.height
-
-        backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
-
-        opacity: dropdown.showing ? 1 : 0
-
-        Behavior on opacity {
-            NumberAnimation { duration: 200 }
-        }
-
-        Label {
-            id: tooltipLabel
-            style: "tooltip"
-            color: Theme.dark.textColor
-            anchors.centerIn: parent
-        }
+    Label {
+        id: tooltipLabel
+        style: "tooltip"
+        color: Theme.dark.textColor
+        anchors.centerIn: parent
     }
 }
