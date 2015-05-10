@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Tooltip | Material for QtQuick</title>
+  <title>Popover | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,7 +33,7 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Tooltip</h3>
+		<h3 class="header">Popover</h3>
 	  	<div class="divider"></div>
 		<br>
 
@@ -49,15 +49,35 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-mouseArea">mouseArea : MouseArea</a>
+				<a href="#id-qml-property-backgroundColor">backgroundColor : alias</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-text">text : alias</a>
+				<a href="#id-qml-property-data">data : alias</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-isBelow">isBelow : bool</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-padding">padding : int</a>
 			</li>
 		
 
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-method-popover-close">close()</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-method-popover-open">open(<i>caller</i>, <i>offsetX</i>, <i>offsetY</i>)</a>
+			</li>
 		
 
 		
@@ -69,7 +89,7 @@
 		
 			
             <p outputclass="brief">A tooltip is a label that appears on hover and explains a non-text UI element.</p>
-            <p>To display a tooltip for your view, simply create an instance of Tooltip, set the text property to your tooltip text, and then set the <a href="qml-material-tooltip.html#id-qml-property-mouseArea">mouseArea</a> property to your MouseArea or Ink that will trigger the tooltip. If you use a MouseArea, make sure hoverEnabled is set to true.</p>
+            <p>To display a tooltip for your view, simply create an instance of Tooltip, set the text property to your tooltip text, and then set the mouseArea property to your MouseArea or Ink that will trigger the tooltip. If you use a MouseArea, make sure hoverEnabled is set to true.</p>
             <p>See the Material Design guidelines for more details: http://www.google.com/design/spec/components/tooltips.html</p>
         
 		
@@ -81,14 +101,28 @@
 
 		
 
-			<h5 id="id-qml-property-mouseArea">mouseArea : MouseArea</h5>
+			<h5 id="id-qml-property-backgroundColor">backgroundColor : alias</h5>
 
 			
 				<i class="light">No description provided.</i>
 			
 		
 
-			<h5 id="id-qml-property-text">text : alias</h5>
+			<h5 id="id-qml-property-data">data : alias</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-isBelow">isBelow : bool</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-property-padding">padding : int</h5>
 
 			
 				<i class="light">No description provided.</i>
@@ -96,7 +130,24 @@
 		
 
 		
+			<h4>Methods</h4>
+			<div class="divider"></div>
+		
 
+		
+
+			<h5 id="id-qml-method-popover-close">close()</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-method-popover-open">open(<i>caller</i>, <i>offsetX</i>, <i>offsetY</i>)</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
 		
 
 		
