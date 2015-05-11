@@ -44,7 +44,7 @@ BaseListItem {
 
     interactive: contentItem.children.length === 0
 
-    dividerInset: actionItem.children.length === 0 ? 0 : listItem.height
+    dividerInset: actionItem.visible ? listItem.height : 0
 
     property int maximumLineCount: 2
 
