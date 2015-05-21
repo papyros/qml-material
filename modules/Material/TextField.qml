@@ -30,12 +30,13 @@ import Material 0.1
  */
 Controls.TextField {
 
-    property color color: Theme.primaryColor
+    property color color: Theme.accentColor
     property color errorColor: Palette.colors["red"]["500"]
     property string helperText
     property bool floatingLabel: false
     property bool hasError: characterLimit && length > characterLimit
     property int characterLimit
+    property bool showBorder: true
 
     style: MaterialStyle.TextFieldStyle {}
 }

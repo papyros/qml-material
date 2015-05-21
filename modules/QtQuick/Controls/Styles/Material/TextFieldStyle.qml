@@ -32,6 +32,7 @@ TextFieldStyle {
     property bool hasError: control.hasOwnProperty("hasError") 
             ? control.hasError : characterLimit && control.length > characterLimit
     property int characterLimit: control.hasOwnProperty("characterLimit") ? control.characterLimit : 0
+    property bool showBorder: control.hasOwnProperty("showBorder") ? control.showBorder : true
 
     padding {
         left: 0
@@ -59,6 +60,7 @@ TextFieldStyle {
                                                           : Theme.light.hintColor
 
             height: control.activeFocus ? Units.dp(2) : Units.dp(1)
+            visible: style.showBorder
 
             anchors {
                 left: parent.left
@@ -83,7 +85,9 @@ TextFieldStyle {
             text: control.placeholderText
             font.pixelSize: Units.dp(16)
             anchors.margins: -Units.dp(12)
-            color: underline.color
+            color: style.hasError ? style.errorColor
+                                  : control.activeFocus && control.text !== "" 
+                                        ? style.color : Theme.light.hintColor
 
             states: [
                 State {
@@ -136,7 +140,7 @@ TextFieldStyle {
 
             Label {
                 id: helperTextLabel
-                visible: helperText
+                visible: helperText && style.showBorder
                 text: helperText
                 font.pixelSize: Units.dp(12)
                 color: style.hasError ? style.errorColor : Qt.darker(Theme.light.hintColor)
@@ -151,7 +155,7 @@ TextFieldStyle {
             Label {
                 id: charLimitLabel
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                visible: characterLimit
+                visible: characterLimit && style.showBorder
                 text: control.length + " / " + characterLimit
                 font.pixelSize: Units.dp(12)
                 color: style.hasError ? style.errorColor : Theme.light.hintColor
