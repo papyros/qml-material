@@ -55,7 +55,7 @@ DialogBase {
                     id:hoursLabel
                     style: "display3"
                     color: isHours ? "white" : "#99ffffff"
-                    text:"12"
+                    text: "12"
                     anchors.verticalCenter: parent.verticalCenter
 
                     MouseArea {
@@ -142,6 +142,14 @@ DialogBase {
                     anchors.horizontalCenter: parent.horizontalCenter
                     transformOrigin: Item.Bottom
                     rotation: (360 / ((prefer24Hour && isHours) ? 24 : 12)) * pathView.currentIndex
+
+                    Behavior on rotation {
+                        RotationAnimation {
+                            duration: 200
+                            direction: RotationAnimation.Shortest
+                        }
+
+                    }
                 }
 
                 PathView {
@@ -153,7 +161,11 @@ DialogBase {
                         return getTimeList(limit, zeroBased)
                     }
                     highlightRangeMode: PathView.NoHighlightRange
-                    highlightMoveDuration: 1
+                    highlightMoveDuration: 200
+                    onCurrentIndexChanged: {
+                        var idx = currentIndex
+                    }
+
                     delegate: Rectangle {
 
                         width: Units.dp(20)
@@ -171,16 +183,23 @@ DialogBase {
                             anchors.fill: parent
                             propagateComposedEvents: true
                             onClicked: {
-                                var currentIndex = modelData
+                                var idx = parseInt(modelData)
                                 if(isHours && prefer24Hour)
-                                        currentIndex--
-                                pathView.currentIndex = currentIndex
+                                    currentIndex--
+                                else if(!isHours)
+                                    idx /= 5
+                                pathView.currentIndex = idx
                                 if(isHours){
                                     hoursLabel.text = modelData
-                                    isHours = !isHours
+                                    isHours = false
                                 }
-                                else
-                                    minutesLabel.text = modelData
+                                else {
+                                    var num = modelData
+                                    if(num < 10)
+                                        minutesLabel.text = "0" + num
+                                    else
+                                        minutesLabel.text = num
+                                }
                             }
                         }
                     }
@@ -188,13 +207,15 @@ DialogBase {
                     MouseArea {
                         anchors.fill: parent
                         onPositionChanged: {
-                            var cx = centerPoint.x + (centerPoint.width / 2)
-                            var cy = centerPoint.y + (centerPoint.height / 2)
-                            pathView.currentIndex = degreesForPoint(cx, cy, mouseX, mouseY, pathView.height / 2) / 12
-                            if(isHours)
-                                hoursLabel.text = pathView.modelData
-                            else
-                                minutesLabel.text = pathView.modelData
+                            if(drag.active) {
+                                var cx = centerPoint.x + (centerPoint.width / 2)
+                                var cy = centerPoint.y + (centerPoint.height / 2)
+                                pathView.currentIndex = degreesForPoint(cx, cy, mouseX, mouseY, pathView.height / 2) / 12
+                                if(isHours)
+                                    hoursLabel.text = pathView.modelData
+                                else
+                                    minutesLabel.text = pathView.modelData
+                            }
                         }
                     }
 
@@ -347,7 +368,7 @@ DialogBase {
                             hours += 1
                         date.setHours(hoursLabel.text)
                         date.setMinutes(minutesLabel.text)
-                        accepted(date.getTime());
+                        accepted(date.getTime())
                     }
                 }
             }
@@ -363,9 +384,7 @@ DialogBase {
         var newY = cy + dy / delta * radius
 
         var radians = Math.abs(2 *Math.atan2(newY - cy, newX - cx))
-        console.log(radians)
         var deg = (radians * (180 / Math.PI)) % 360
-        console.log(deg)
         return deg
     }
 
@@ -386,7 +405,6 @@ DialogBase {
         for(var i = start; i < limit; i += jump) {
             items[i / jump] = i
         }
-        console.log(items)
         return items
     }
 }
