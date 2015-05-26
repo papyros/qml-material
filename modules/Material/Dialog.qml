@@ -30,14 +30,8 @@ import Material.Extras 0.1
    \brief Dialogs inform users about critical information, require users to make 
    decisions, or encapsulate multiple tasks within a discrete process
  */
-PopupBase {
+DialogBase {
     id: dialog
-
-    overlayLayer: "dialogOverlayLayer"
-    overlayColor: Qt.rgba(0, 0, 0, 0.3)
-
-    opacity: showing ? 1 : 0
-    visible: opacity > 0
 
     width: Math.max(minimumWidth,
                     content.contentWidth + 2 * contentMargins)
@@ -83,18 +77,6 @@ PopupBase {
     signal accepted()
     signal rejected()
 
-    anchors {
-        centerIn: parent
-        verticalCenterOffset: showing ? 0 : -(dialog.height/3)
-
-        Behavior on verticalCenterOffset {
-            NumberAnimation { duration: 200 }
-        }
-    }
-
-    Behavior on opacity {
-        NumberAnimation { duration: 200 }
-    }
 
     Keys.onPressed: {
         if (event.key === Qt.Key_Escape) {
@@ -117,25 +99,11 @@ PopupBase {
         }
     }
 
-    function show() {
-        open()
-    }
-
     View {
         id: dialogContainer
 
         anchors.fill: parent
-        elevation: 5
         radius: Units.dp(2)
-
-        MouseArea {
-            anchors.fill: parent
-            propagateComposedEvents: false
-
-            onClicked: {
-                mouse.accepted = false
-            }
-        }
 
         Item {
             anchors {

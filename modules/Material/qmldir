@@ -11,6 +11,8 @@ Button 0.1 Button.qml
 Card 0.1 Card.qml
 CheckBox 0.1 CheckBox.qml
 Dialog 0.1 Dialog.qml
+DialogBase 0.1 DialogBase.qml
+TimePicker 0.1 TimePicker.qml
 Dropdown 0.1 Dropdown.qml
 Icon 0.1 Icon.qml
 IconButton 0.1 IconButton.qml
