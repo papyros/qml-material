@@ -24,22 +24,13 @@ import Material 0.1
 TextFieldStyle {
     id: style
 
-    property color color: control.hasOwnProperty("color") ? control.color : Theme.accentColor
-    property color errorColor: control.hasOwnProperty("errorColor") 
-            ? control.errorColor : Palette.colors["red"]["500"]
-    property string helperText: control.hasOwnProperty("helperText") ? control.helperText : ""
-    property bool floatingLabel: control.hasOwnProperty("floatingLabel") ? control.floatingLabel : ""
-    property bool hasError: control.hasOwnProperty("hasError") 
-            ? control.hasError : characterLimit && control.length > characterLimit
-    property int characterLimit: control.hasOwnProperty("characterLimit") ? control.characterLimit : 0
-
     padding {
         left: 0
         right: 0
         top: 0
         bottom: 0
     }
-    
+
     font {
         family: "Roboto"
         pixelSize: Units.dp(16)
@@ -47,18 +38,30 @@ TextFieldStyle {
 
     placeholderTextColor: "transparent"
     selectedTextColor: "white"
-    selectionColor: style.color
+    selectionColor: control.hasOwnProperty("color") ? control.color : Theme.accentColor
     textColor: Theme.light.textColor
 
     background : Item {
+        id: background
+
+        property color color: control.hasOwnProperty("color") ? control.color : Theme.accentColor
+        property color errorColor: control.hasOwnProperty("errorColor")
+                ? control.errorColor : Palette.colors["red"]["500"]
+        property string helperText: control.hasOwnProperty("helperText") ? control.helperText : ""
+        property bool floatingLabel: control.hasOwnProperty("floatingLabel") ? control.floatingLabel : ""
+        property bool hasError: control.hasOwnProperty("hasError")
+                ? control.hasError : characterLimit && control.length > characterLimit
+        property int characterLimit: control.hasOwnProperty("characterLimit") ? control.characterLimit : 0
+        property bool showBorder: control.hasOwnProperty("showBorder") ? control.showBorder : true
 
         Rectangle {
             id: underline
-            color: style.hasError ? style.errorColor
-                                    : control.activeFocus ? style.color
+            color: background.hasError ? background.errorColor
+                                    : control.activeFocus ? background.color
                                                           : Theme.light.hintColor
 
             height: control.activeFocus ? Units.dp(2) : Units.dp(1)
+            visible: background.showBorder
 
             anchors {
                 left: parent.left
@@ -83,12 +86,14 @@ TextFieldStyle {
             text: control.placeholderText
             font.pixelSize: Units.dp(16)
             anchors.margins: -Units.dp(12)
-            color: underline.color
+            color: background.hasError ? background.errorColor
+                                  : control.activeFocus && control.text !== ""
+                                        ? background.color : Theme.light.hintColor
 
             states: [
                 State {
                     name: "floating"
-                    when: control.displayText.length > 0 && floatingLabel
+                    when: control.displayText.length > 0 && background.floatingLabel
                     AnchorChanges {
                         target: fieldPlaceholder
                         anchors.verticalCenter: undefined
@@ -101,7 +106,7 @@ TextFieldStyle {
                 },
                 State {
                     name: "hidden"
-                    when: control.displayText.length > 0 && !floatingLabel
+                    when: control.displayText.length > 0 && !background.floatingLabel
                     PropertyChanges {
                         target: fieldPlaceholder
                         visible: false
@@ -136,33 +141,32 @@ TextFieldStyle {
 
             Label {
                 id: helperTextLabel
-                visible: helperText
-                text: helperText
+                visible: background.helperText && background.showBorder
+                text: background.helperText
                 font.pixelSize: Units.dp(12)
-                color: style.hasError ? style.errorColor : Qt.darker(Theme.light.hintColor)
+                color: background.hasError ? background.errorColor
+                                           : Qt.darker(Theme.light.hintColor)
 
                 Behavior on color {
                     ColorAnimation { duration: 200 }
                 }
 
-                property string helperText: control.hasOwnProperty("helperText") ? control.helperText : ""
+                property string helperText: control.hasOwnProperty("helperText")
+                        ? control.helperText : ""
             }
 
             Label {
                 id: charLimitLabel
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                visible: characterLimit
-                text: control.length + " / " + characterLimit
+                visible: background.characterLimit && background.showBorder
+                text: control.length + " / " + background.characterLimit
                 font.pixelSize: Units.dp(12)
-                color: style.hasError ? style.errorColor : Theme.light.hintColor
+                color: background.hasError ? background.errorColor : Theme.light.hintColor
                 horizontalAlignment: Text.AlignLeft
 
                 Behavior on color {
                     ColorAnimation { duration: 200 }
                 }
-
-                property int characterLimit: control.hasOwnProperty("characterLimit") 
-                        ? control.characterLimit : 0
             }
         }
     }

@@ -35,22 +35,27 @@ Subtitled {
 
     onClicked: menu.open(listItem, Units.dp(16), 0)
 
+    property int __maxWidth: 0
+
     Label {
         id: hiddenLabel
         style: "subheading"
         visible: false
+
+        onContentWidthChanged: {
+            __maxWidth = Math.max(contentWidth + Units.dp(33), __maxWidth)
+        }
     }
 
-    property int columnWidth: {
-        var maxWidth = 0
-
+    onModelChanged: {
+        var longestString = 0;
         for (var i = 0; i < model.length; i++) {
-            hiddenLabel.text = model[i]
-            
-            maxWidth = Math.max(maxWidth, hiddenLabel.implicitWidth + Units.dp(33))
+            if(model[i].length > longestString)
+            {
+                longestString = model[i].length
+                hiddenLabel.text = model[i]
+            }
         }
-
-        return maxWidth
     }
 
     Dropdown {
@@ -58,7 +63,7 @@ Subtitled {
 
         anchor: Item.TopLeft
 
-        width: Math.max(Units.dp(56 * 2), Math.min(listItem.width - Units.dp(32), columnWidth))
+        width: Math.max(Units.dp(56 * 2), Math.min(listItem.width - Units.dp(32), __maxWidth))
         height: Math.min(10 * Units.dp(48) + Units.dp(16), model.length * Units.dp(48) + Units.dp(16))
 
         Rectangle {
@@ -77,7 +82,7 @@ Subtitled {
             }
 
             interactive: false
-            height: contentHeight
+            height: count > 0 ? contentHeight : 0
             model: listItem.model
 
             delegate: Standard {

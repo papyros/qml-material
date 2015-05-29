@@ -29,10 +29,10 @@ CheckBoxStyle {
     property bool darkBackground: control.hasOwnProperty("darkBackground")
             ? control.darkBackground : false
 
-    spacing: Units.dp(2)
+    spacing: control.text !== "" ? Units.dp(2) : 0
 
     label: Item {
-        implicitWidth: text.implicitWidth + 2
+        implicitWidth: control.text !== "" ? text.implicitWidth + 2 : 0
         implicitHeight: text.implicitHeight
 
         baselineOffset: text.baselineOffset
