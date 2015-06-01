@@ -13,26 +13,13 @@ DialogBase {
     property bool prefer24Hour: false
     property real clockPadding: Units.dp(24)
     property bool isHours: true
+    property bool resetFlag: false
 
     signal accepted(real time)
     signal rejected()
 
     onHidden: {
         reset()
-    }
-
-    onIsHoursChanged: {
-        var currentIndex = 0
-        if(isHours) {
-            currentIndex = parseInt(hoursLabel.text)
-            if(!prefer24Hour && currentIndex == 12)
-                currentIndex = 0
-        } else {
-            currentIndex = parseInt(minutesLabel.text) / 5
-            if(currentIndex === 12)
-                currentIndex = 0
-        }
-        pathView.currentIndex = currentIndex
     }
 
     Column {
@@ -61,8 +48,9 @@ DialogBase {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            if(!isHours)
-                                isHours = true
+                            if(!isHours){
+                                setIsHours(true)
+                            }
                         }
                     }
                 }
@@ -84,8 +72,9 @@ DialogBase {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            if(isHours)
-                                isHours = false
+                            if(isHours){
+                                setIsHours(false)
+                            }
                         }
                     }
                 }
@@ -101,13 +90,6 @@ DialogBase {
                     left: timeContainer.right
                 }
             }
-        }
-
-        // Spacer
-        Rectangle {
-            height: Units.dp(20)
-            width: parent.width
-            color: "transparent"
         }
 
         Rectangle {
@@ -147,6 +129,12 @@ DialogBase {
                         RotationAnimation {
                             duration: 200
                             direction: RotationAnimation.Shortest
+                            onRunningChanged: {
+                                if(!running && isHours && !resetFlag){
+                                    setIsHours(false)
+                                    resetFlag = true
+                                }
+                            }
                         }
 
                     }
@@ -162,9 +150,6 @@ DialogBase {
                     }
                     highlightRangeMode: PathView.NoHighlightRange
                     highlightMoveDuration: 200
-                    onCurrentIndexChanged: {
-                        var idx = currentIndex
-                    }
 
                     delegate: Rectangle {
 
@@ -174,8 +159,8 @@ DialogBase {
 
                         Label {
                             anchors.centerIn: parent
-                            text: modelData
-                            visible: modelData > 0
+                            text: modelData < 10 && !isHours ? "0" + modelData : modelData
+                            visible: modelData >= 0
                             style: "body2"
                         }
 
@@ -191,7 +176,6 @@ DialogBase {
                                 pathView.currentIndex = idx
                                 if(isHours){
                                     hoursLabel.text = modelData
-                                    isHours = false
                                 }
                                 else {
                                     var num = modelData
@@ -200,21 +184,6 @@ DialogBase {
                                     else
                                         minutesLabel.text = num
                                 }
-                            }
-                        }
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onPositionChanged: {
-                            if(drag.active) {
-                                var cx = centerPoint.x + (centerPoint.width / 2)
-                                var cy = centerPoint.y + (centerPoint.height / 2)
-                                pathView.currentIndex = degreesForPoint(cx, cy, mouseX, mouseY, pathView.height / 2) / 12
-                                if(isHours)
-                                    hoursLabel.text = pathView.modelData
-                                else
-                                    minutesLabel.text = pathView.modelData
                             }
                         }
                     }
@@ -320,12 +289,12 @@ DialogBase {
                 bottomMargin: Units.dp(8)
             }
             width: parent.width
-            height: Units.dp(24)
+            height: buttonView.height + Units.dp(16)
 
             View {
                 id: buttonView
                 anchors.verticalCenter: parent.verticalCenter
-                height: parent.height
+                height: negativeButton.height + Units.dp(8)
                 width: parent.width
 
                 Button {
@@ -375,22 +344,29 @@ DialogBase {
         }
     }
 
-    function degreesForPoint(cx,cy,x,y, radius) {
-        var dx = x - cx
-        var dy = y - cy
-
-        var delta = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))
-        var newX = cx + dx / delta * radius
-        var newY = cy + dy / delta * radius
-
-        var radians = Math.abs(2 *Math.atan2(newY - cy, newX - cx))
-        var deg = (radians * (180 / Math.PI)) % 360
-        return deg
+    function setIsHours(_isHours) {
+        isHours = _isHours
+        var currentIndex = 0
+        if(isHours) {
+            currentIndex = parseInt(hoursLabel.text)
+            if(!prefer24Hour && currentIndex === 12)
+                currentIndex = 0
+        } else {
+            currentIndex = parseInt(minutesLabel.text) / 5
+            if(currentIndex === 12)
+                currentIndex = 0
+        }
+        if(currentIndex == 0 && !isHours)
+            currentIndex = 0.1
+        pathView.currentIndex = currentIndex
     }
 
     function reset(){
         pathView.currentIndex = 0
+        hoursLabel.text = "12"
+        minutesLabel.text = "00"
         isHours = true
+        amPmPicker.isAm = true
     }
 
     function getTimeList(limit, isZeroBased) {
