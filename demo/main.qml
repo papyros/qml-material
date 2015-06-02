@@ -24,7 +24,7 @@ ApplicationWindow {
     ]
 
     property var compoundComponents: [
-            "Bottom Sheet", "Dialog", "Forms", "List Items", "Page Stack", "Time Picker"
+            "Bottom Sheet", "Dialog", "Forms", "List Items", "Page Stack", "Time Picker", "Date Picker"
     ]
 
     property var sections: [ styles, basicComponents, compoundComponents ]
