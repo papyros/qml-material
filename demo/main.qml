@@ -20,7 +20,7 @@ ApplicationWindow {
 
     property var basicComponents: [
             "Button", "CheckBox", "Progress Bar", "Radio Button", 
-            "Slider", "Switch", "TextField"
+            "Slider", "Switch", "TextField", "Date Picker"
     ]
 
     property var compoundComponents: [
