@@ -10,6 +10,8 @@ BottomSheet 0.1 BottomSheet.qml
 Button 0.1 Button.qml
 Card 0.1 Card.qml
 CheckBox 0.1 CheckBox.qml
+DatePicker 0.1 DatePicker.qml
+DatePickerDialog 0.1 DatePickerDialog.qml
 Dialog 0.1 Dialog.qml
 Dropdown 0.1 Dropdown.qml
 Icon 0.1 Icon.qml
