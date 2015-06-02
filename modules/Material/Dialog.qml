@@ -26,12 +26,17 @@ import Material.Extras 0.1
 /*!
    \qmltype Dialog
    \inqmlmodule Material 0.1
-
-   \brief Dialogs inform users about critical information, require users to make 
+   \brief Dialogs inform users about critical information, require users to make
    decisions, or encapsulate multiple tasks within a discrete process
  */
-DialogBase {
+PopupBase {
     id: dialog
+
+    overlayLayer: "dialogOverlayLayer"
+    overlayColor: Qt.rgba(0, 0, 0, 0.3)
+
+    opacity: showing ? 1 : 0
+    visible: opacity > 0
 
     width: Math.max(minimumWidth,
                     content.contentWidth + 2 * contentMargins)
@@ -49,10 +54,10 @@ DialogBase {
 
     property alias title: titleLabel.text
     property alias text: textLabel.text
+    property bool showHeaderView: title != "" || text != ""
 
     /*!
        \qmlproperty Button negativeButton
-
        The negative button, displayed as the leftmost button on the right of the dialog buttons.
        This is usually used to dismiss the dialog.
      */
@@ -60,7 +65,6 @@ DialogBase {
 
     /*!
        \qmlproperty Button primaryButton
-
        The primary button, displayed as the rightmost button in the dialog buttons row. This is
        usually used to accept the dialog's action.
      */
@@ -69,6 +73,7 @@ DialogBase {
     property string negativeButtonText: "Cancel"
     property string positiveButtonText: "Ok"
     property alias positiveButtonEnabled: positiveButton.enabled
+    property alias buttonHeight : buttonContainer.height
 
     property bool hasActions: true
 
@@ -77,6 +82,18 @@ DialogBase {
     signal accepted()
     signal rejected()
 
+    anchors {
+        centerIn: parent
+        verticalCenterOffset: showing ? 0 : -(dialog.height/3)
+
+        Behavior on verticalCenterOffset {
+            NumberAnimation { duration: 200 }
+        }
+    }
+
+    Behavior on opacity {
+        NumberAnimation { duration: 200 }
+    }
 
     Keys.onPressed: {
         if (event.key === Qt.Key_Escape) {
@@ -99,18 +116,32 @@ DialogBase {
         }
     }
 
+    function show() {
+        open()
+    }
+
     View {
         id: dialogContainer
 
         anchors.fill: parent
+        elevation: 5
         radius: Units.dp(2)
+
+        MouseArea {
+            anchors.fill: parent
+            propagateComposedEvents: false
+
+            onClicked: {
+                mouse.accepted = false
+            }
+        }
 
         Item {
             anchors {
                 left: parent.left
                 right: parent.right
                 top: parent.top
-                topMargin: Units.dp(8)
+                topMargin: showHeaderView ? Units.dp(8) : 0
             }
 
             clip: true
@@ -127,7 +158,7 @@ DialogBase {
                     top: parent.top
                 }
 
-                height: headerView.height + Units.dp(16)
+                height:  headerView.height + Units.dp(16)
             }
         }
 
@@ -144,7 +175,7 @@ DialogBase {
 
                 leftMargin: Units.dp(16)
                 rightMargin: Units.dp(16)
-                topMargin: Units.dp(16)
+                topMargin: showHeaderView ? Units.dp(16) : 0
             }
 
             Label {
@@ -181,7 +212,7 @@ DialogBase {
                 left: parent.left
                 right: parent.right
                 top: headerView.bottom
-                topMargin: Units.dp(8)
+                topMargin: showHeaderView ? Units.dp(8) : 0
                 bottomMargin: Units.dp(-8)
                 bottom: buttonContainer.top
             }

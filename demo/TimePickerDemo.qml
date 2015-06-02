@@ -4,7 +4,7 @@ import Material 0.1
 
 Item {
 
-    TimePicker {
+    TimePickerDialog {
         id: timePicker
     }
 

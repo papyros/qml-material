@@ -4,7 +4,7 @@ import Material.Extras 0.1
 import QtQuick.Controls 1.2 as QuickControls
 import QtQuick.Controls.Styles 1.2
 
-DialogBase {
+Item {
     id: timePicker
     width: Units.dp(270)
 
@@ -15,12 +15,7 @@ DialogBase {
     property bool isHours: true
     property bool resetFlag: false
 
-    signal accepted(real time)
-    signal rejected()
-
-    onHidden: {
-        reset()
-    }
+    property date timePicked: new Date(Date.now())
 
     Column {
         id:content
@@ -184,6 +179,14 @@ DialogBase {
                                     else
                                         minutesLabel.text = num
                                 }
+
+                                // reset the date obj
+                                var hours = parseInt(hoursLabel.text)
+                                if(!amPmPicker.isAm && !prefer24Hour)
+                                    hours += 12
+                                timePicked.setHours(hours)
+                                var minutes = parseInt(minutesLabel.text)
+                                timePicked.setMinutes(minutes)
                             }
                         }
                     }
@@ -277,67 +280,6 @@ DialogBase {
                     anchors.fill: parent
                     onClicked: {
                         amPmPicker.isAm = false
-                    }
-                }
-            }
-        }
-
-        Rectangle {
-            id: buttonContainer
-
-            anchors {
-                bottomMargin: Units.dp(8)
-            }
-            width: parent.width
-            height: buttonView.height + Units.dp(16)
-
-            View {
-                id: buttonView
-                anchors.verticalCenter: parent.verticalCenter
-                height: negativeButton.height + Units.dp(8)
-                width: parent.width
-
-                Button {
-                    id: negativeButton
-                    text: "CANCEL"
-                    textColor: Theme.accentColor
-                    context: "dialog"
-
-                    anchors {
-                        top: parent.top
-                        right: positiveButton.left
-                        topMargin: Units.dp(8)
-                        rightMargin: Units.dp(8)
-                    }
-
-                    onClicked: {
-                        close();
-                        rejected();
-                    }
-                }
-
-                Button {
-                    id: positiveButton
-                    text: "OK"
-                    textColor: Theme.accentColor
-                    context: "dialog"
-
-                    anchors {
-                        top: parent.top
-                        topMargin: Units.dp(8)
-                        rightMargin: Units.dp(16)
-                        right: parent.right
-                    }
-
-                    onClicked: {
-                        close()
-                        var date = new Date(Date.now())
-                        var hours = parseInt(hoursLabel.text)
-                        if(!amPmPicker.isAm && !prefer24Hour)
-                            hours += 1
-                        date.setHours(hoursLabel.text)
-                        date.setMinutes(minutesLabel.text)
-                        accepted(date.getTime())
                     }
                 }
             }
