@@ -42,12 +42,12 @@ PopupBase {
     width: Math.max(minimumWidth,
                     content.contentWidth + 2 * contentMargins)
 
-    height: Math.min(Units.dp(350),
-                     headerView.height + Units.dp(32) +
+    height: Math.min(parent.height - Units.dp(64),
+                     headerView.height + (contentMargins * 2) +
                      content.contentHeight +
                      content.topMargin +
                      content.bottomMargin +
-                     buttonContainer.height)
+                     (floatingActions ? 0 : buttonContainer.height))
 
     property int contentMargins: Units.dp(16)
 
@@ -77,6 +77,7 @@ PopupBase {
     property alias positiveButtonEnabled: positiveButton.enabled
 
     property bool hasActions: true
+    property bool floatingActions: false
 
     default property alias dialogContent: column.data
 
@@ -176,7 +177,7 @@ PopupBase {
 
                 leftMargin: Units.dp(16)
                 rightMargin: Units.dp(16)
-                topMargin: Units.dp(16)
+                topMargin: title == "" && text == "" ? 0 : Units.dp(16)
             }
 
             Label {
@@ -185,7 +186,7 @@ PopupBase {
                 width: parent.width
                 wrapMode: Text.Wrap
                 style: "title"
-                visible: text != ""
+                visible: title != ""
             }
 
             Label {
@@ -213,13 +214,13 @@ PopupBase {
                 left: parent.left
                 right: parent.right
                 top: headerView.bottom
-                topMargin: Units.dp(8)
+                topMargin: title == "" && text == "" ? 0 :Units.dp(8)
                 bottomMargin: Units.dp(-8)
-                bottom: buttonContainer.top
+                bottom: floatingActions ? parent.bottom : buttonContainer.top
             }
 
             interactive: contentHeight + Units.dp(8) > height
-            bottomMargin: hasActions ? 0 : Units.dp(8)
+            bottomMargin: hasActions  || contentMargins == 0 ? 0 : Units.dp(8)
 
             Rectangle {
                 Column {
@@ -258,7 +259,7 @@ PopupBase {
                 height: hasActions ? positiveButton.implicitHeight + Units.dp(8) : 0
                 visible: hasActions
 
-                backgroundColor: "white"
+                backgroundColor: floatingActions ? "transparent" : "white"
                 elevation: content.atYEnd ? 0 : 1
                 fullWidth: true
                 elevationInverted: true
