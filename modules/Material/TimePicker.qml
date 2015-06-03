@@ -13,9 +13,36 @@ Item {
     property bool prefer24Hour: false
     property real clockPadding: Units.dp(24)
     property bool isHours: true
+    property int hoursChangeCount: 0
     property bool resetFlag: false
 
     property date timePicked: new Date(Date.now())
+    property bool completed: false
+
+    Component.onCompleted: {
+        completed = true
+        var date = new Date(timePicked)
+        var minutes = date.getMinutes()
+        date.setMinutes(minutes)
+        timePicked = date
+    }
+
+    onTimePickedChanged: {
+        if(completed) {
+            var hours = timePicked.getHours()
+            if(hours > 11 && !prefer24Hour){
+                hours -= 12
+                amPmPicker.isAm = false
+            } else {
+                amPmPicker.isAm = true
+            }
+
+            hoursPathView.currentIndex = hours
+
+            var minutes = timePicked.getMinutes()
+            minutesPathView.currentIndex = (Math.floor(minutes / 5) * 5) / 5
+        }
+    }
 
     Column {
         id:content
@@ -37,7 +64,7 @@ Item {
                     id:hoursLabel
                     style: "display3"
                     color: isHours ? "white" : "#99ffffff"
-                    text: "12"
+                    text: timePicked.getHours()
                     anchors.verticalCenter: parent.verticalCenter
 
                     MouseArea {
@@ -61,7 +88,7 @@ Item {
                     id: minutesLabel
                     style: "display3"
                     color: !isHours ? "white" : "#99ffffff"
-                    text:"00"
+                    text: timePicked.getMinutes()
                     anchors.verticalCenter: parent.verticalCenter
 
                     MouseArea {
@@ -118,35 +145,40 @@ Item {
                     y: clockPadding
                     anchors.horizontalCenter: parent.horizontalCenter
                     transformOrigin: Item.Bottom
-                    rotation: (360 / ((prefer24Hour && isHours) ? 24 : 12)) * pathView.currentIndex
+                    rotation: {
+                        var idx = isHours ? hoursPathView.currentIndex : minutesPathView.currentIndex
+                        return (360 / ((prefer24Hour && isHours) ? 24 : 12)) * idx
+                    }
 
                     Behavior on rotation {
                         RotationAnimation {
+                            id: pointerRotation
                             duration: 200
                             direction: RotationAnimation.Shortest
                             onRunningChanged: {
-                                if(!running && isHours && !resetFlag){
+                                if(!running && isHours && !resetFlag && hoursChangeCount > 0 && completed){
                                     setIsHours(false)
                                     resetFlag = true
                                 }
                             }
                         }
-
                     }
                 }
 
-                PathView {
-                    id: pathView
-                    anchors.fill: parent
-                    model: {
-                        var limit = isHours ? prefer24Hour ? 24 : 12 : 60
-                        var zeroBased = !isHours || (isHours && prefer24Hour)
-                        return getTimeList(limit, zeroBased)
+                Component {
+                    id: pathViewHighlight
+                    Rectangle {
+                        id: highlight
+                        width: Units.dp(40)
+                        height: Units.dp(40)
+                        color: Theme.accentColor
+                        radius: width / 2
                     }
-                    highlightRangeMode: PathView.NoHighlightRange
-                    highlightMoveDuration: 200
+                }
 
-                    delegate: Rectangle {
+                Component {
+                    id: pathViewItem
+                    Rectangle {
 
                         width: Units.dp(20)
                         height: Units.dp(20)
@@ -154,7 +186,10 @@ Item {
 
                         Label {
                             anchors.centerIn: parent
-                            text: modelData < 10 && !isHours ? "0" + modelData : modelData
+                            text:{
+                                var model = isHours ? hoursPathView.model : minutesPathView.model
+                                return model.data < 10 && !isHours ? "0" + modelData : modelData
+                            }
                             visible: modelData >= 0
                             style: "body2"
                         }
@@ -163,42 +198,86 @@ Item {
                             anchors.fill: parent
                             propagateComposedEvents: true
                             onClicked: {
-                                var idx = parseInt(modelData)
-                                if(isHours && prefer24Hour)
-                                    currentIndex--
-                                else if(!isHours)
-                                    idx /= 5
-                                pathView.currentIndex = idx
-                                if(isHours){
-                                    hoursLabel.text = modelData
-                                }
-                                else {
-                                    var num = modelData
-                                    if(num < 10)
-                                        minutesLabel.text = "0" + num
-                                    else
-                                        minutesLabel.text = num
+                                var newDate = new Date(timePicked)
+                                var time = parseInt(modelData)
+                                if(isHours) {
+                                    if(!prefer24Hour && !amPmPicker.isAm)
+                                        time += 12
+
+                                    newDate.setHours(time)
+                                    hoursChangeCount++
+                                } else {
+                                    newDate.setMinutes(time)
                                 }
 
-                                // reset the date obj
-                                var hours = parseInt(hoursLabel.text)
-                                if(!amPmPicker.isAm && !prefer24Hour)
-                                    hours += 12
-                                timePicked.setHours(hours)
-                                var minutes = parseInt(minutesLabel.text)
-                                timePicked.setMinutes(minutes)
+                                timePicked = newDate
                             }
                         }
                     }
+                }
+
+
+                PathView {
+                    id: hoursPathView
+                    anchors.fill: parent
+                    visible: isHours
+                    model: {
+                        var limit = prefer24Hour ? 24 : 12
+                        var zeroBased = prefer24Hour
+                        return getTimeList(limit, zeroBased)
+                    }
+                    highlightRangeMode: PathView.NoHighlightRange
+                    highlightMoveDuration: 200
+
+                    onCurrentIndexChanged: {
+                        hoursLabel.text = currentIndex
+                    }
+
+                    delegate: pathViewItem
 
                     interactive: false
-                    highlight: Rectangle {
-                        id: highlight
-                        width: Units.dp(40)
-                        height: Units.dp(40)
-                        color: Theme.accentColor
-                        radius: width / 2
+                    highlight: pathViewHighlight
+
+                    path: Path {
+                        startX: circle.width / 2
+                        startY: clockPadding
+
+                        PathArc {
+                            x: circle.width / 2
+                            y: circle.height - clockPadding
+                            radiusX: circle.width / 2 - clockPadding
+                            radiusY: circle.width / 2 - clockPadding
+                            useLargeArc: false
+                        }
+
+                        PathArc {
+                            x: circle.width / 2
+                            y: clockPadding
+                            radiusX: circle.width / 2 - clockPadding
+                            radiusY: circle.width / 2 - clockPadding
+                            useLargeArc: false
+                        }
                     }
+                }
+
+                PathView {
+                    id: minutesPathView
+                    anchors.fill: parent
+                    visible: !isHours
+                    model: {
+                        return getTimeList(60, true)
+                    }
+                    highlightRangeMode: PathView.NoHighlightRange
+                    highlightMoveDuration: 200
+
+                    onCurrentIndexChanged: {
+                        var minutes = currentIndex * 5
+                        minutesLabel.text = minutes < 10 ? "0" + minutes : minutes
+                    }
+
+                    delegate: pathViewItem
+                    highlight: pathViewHighlight
+                    interactive: false
 
                     path: Path {
                         startX: circle.width / 2
@@ -287,28 +366,20 @@ Item {
     }
 
     function setIsHours(_isHours) {
+        if(_isHours == isHours)
+            return
+
+        var prevRotation = pointerRotation.duration
+        pointerRotation.duration = 0
         isHours = _isHours
-        var currentIndex = 0
-        if(isHours) {
-            currentIndex = parseInt(hoursLabel.text)
-            if(!prefer24Hour && currentIndex === 12)
-                currentIndex = 0
-        } else {
-            currentIndex = parseInt(minutesLabel.text) / 5
-            if(currentIndex === 12)
-                currentIndex = 0
-        }
-        if(currentIndex == 0 && !isHours)
-            currentIndex = 0.1
-        pathView.currentIndex = currentIndex
+        pointerRotation.duration = prevRotation
     }
 
     function reset(){
-        pathView.currentIndex = 0
-        hoursLabel.text = "12"
-        minutesLabel.text = "00"
+        hoursChangeCount = 0
         isHours = true
         amPmPicker.isAm = true
+        timePicked = new Date(Date.now())
     }
 
     function getTimeList(limit, isZeroBased) {
@@ -323,6 +394,7 @@ Item {
         for(var i = start; i < limit; i += jump) {
             items[i / jump] = i
         }
+        console.log(items)
         return items
     }
 }
