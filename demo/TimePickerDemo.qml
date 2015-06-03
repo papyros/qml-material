@@ -6,6 +6,10 @@ Item {
 
     TimePickerDialog {
         id: timePicker
+
+        onTimePicked: {
+            console.log(timePickerTime)
+        }
     }
 
     Column {

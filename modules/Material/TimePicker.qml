@@ -24,6 +24,7 @@ Item {
         var date = new Date(timePicked)
         var minutes = date.getMinutes()
         date.setMinutes(minutes)
+        date.setMinutes(Math.floor(minutes / 5) * 5)
         timePicked = date
     }
 
@@ -40,7 +41,7 @@ Item {
             hoursPathView.currentIndex = hours
 
             var minutes = timePicked.getMinutes()
-            minutesPathView.currentIndex = (Math.floor(minutes / 5) * 5) / 5
+            minutesPathView.currentIndex = Math.floor(minutes / 5)
         }
     }
 

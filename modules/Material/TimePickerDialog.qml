@@ -10,10 +10,6 @@ Dialog {
     property alias isHours: timePicker.isHours
     signal timePicked(date timePicked)
 
-    onShowingChanged: {
-        timePicker.reset()
-    }
-
     TimePicker {
         id: timePicker
         isHours: true
@@ -21,7 +17,6 @@ Dialog {
 
     onAccepted: {
         timePicked(timePickerTime)
-        console.log(timePickerTime.hours + " " +  timePickerTime.minutes)
         timePicker.reset()
     }
 
