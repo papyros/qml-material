@@ -7,6 +7,7 @@ Dialog {
     showHeaderView: false
 
     property alias isHours: timePicker.isHours
+    property alias prefer24Hour: timePicker.prefer24Hour
     signal timePicked(date timePicked)
 
     TimePicker {

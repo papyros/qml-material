@@ -6,10 +6,10 @@ Item {
 
     TimePickerDialog {
         id: timePicker
-
         onTimePicked: {
             updateLabelForDate(timePicked)
         }
+        prefer24Hour: twentyFourHourSwitch.checked
     }
 
     Column {
@@ -29,6 +29,21 @@ Item {
             id: timeLabel
             style: "display1"
             anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Row {
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: Units.dp(16)
+
+            Label {
+                text: "24 hour clock:"
+                style: "dialog"
+            }
+
+            Switch {
+                id: twentyFourHourSwitch
+                checked: false
+            }
         }
     }
 
