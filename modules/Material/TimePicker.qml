@@ -6,14 +6,14 @@ import QtQuick.Controls.Styles 1.2
 
 Item {
     id: timePicker
-    width: Units.dp(270)
+    width: parent.width
 
     height: content.height
 
     property bool prefer24Hour: false
     property real clockPadding: Units.dp(24)
     property bool isHours: true
-    property int hoursChangeCount: 0
+    property int changeCount: 0
     property bool resetFlag: false
 
     property date timePicked: new Date(Date.now())
@@ -156,7 +156,8 @@ Item {
                             duration: 200
                             direction: RotationAnimation.Shortest
                             onRunningChanged: {
-                                if(!running && isHours && !resetFlag && hoursChangeCount > 0 && completed){
+                                // Switch contexts after we intially set hours, and only then
+                                if(!running && isHours && !resetFlag && changeCount > 0) {
                                     setIsHours(false)
                                     resetFlag = true
                                 }
@@ -198,18 +199,19 @@ Item {
                             anchors.fill: parent
                             propagateComposedEvents: true
                             onClicked: {
-                                var newDate = new Date(timePicked)
+                                var newDate = new Date(timePicked) // Grab a new date from existing
+
                                 var time = parseInt(modelData)
                                 if(isHours) {
                                     if(!prefer24Hour && !amPmPicker.isAm)
                                         time += 12
 
                                     newDate.setHours(time)
-                                    hoursChangeCount++
                                 } else {
                                     newDate.setMinutes(time)
                                 }
 
+                                changeCount++
                                 timePicked = newDate
                             }
                         }
@@ -230,7 +232,10 @@ Item {
                     highlightMoveDuration: 200
 
                     onCurrentIndexChanged: {
-                        hoursLabel.text = currentIndex
+                        var newText = currentIndex
+                        if(currentIndex == 0 && !prefer24Hour)
+                            newText = 12
+                        hoursLabel.text = newText
                     }
 
                     delegate: pathViewItem
@@ -365,9 +370,17 @@ Item {
         }
     }
 
+    /**
+      Switches contexts
+
+      If previously we hadn't set hours, and we're now switching contexts, disable the auto switch to minutes
+      */
     function setIsHours(_isHours) {
         if(_isHours == isHours)
             return
+
+        if(!resetFlag)
+            resetFlag = true
 
         var prevRotation = pointerRotation.duration
         pointerRotation.duration = 0
@@ -375,13 +388,20 @@ Item {
         pointerRotation.duration = prevRotation
     }
 
+    /**
+      Resets the view after closing
+    */
     function reset(){
-        hoursChangeCount = 0
+        changeCount = 0
         isHours = true
+        resetFlag = false
         amPmPicker.isAm = true
         timePicked = new Date(Date.now())
     }
 
+    /**
+      Provides list of ints for pathview based on the context and user prefs
+     */
     function getTimeList(limit, isZeroBased) {
         var items = []
         if(!isZeroBased) {
@@ -394,7 +414,6 @@ Item {
         for(var i = start; i < limit; i += jump) {
             items[i / jump] = i
         }
-        console.log(items)
         return items
     }
 }
