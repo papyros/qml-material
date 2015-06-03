@@ -8,7 +8,7 @@ Item {
         id: timePicker
 
         onTimePicked: {
-            console.log(timePickerTime)
+            updateLabelForDate(timePicked)
         }
     }
 
@@ -24,5 +24,22 @@ Item {
                 timePicker.show()
             }
         }
+
+        Label {
+            id: timeLabel
+            style: "display1"
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+    }
+
+    Component.onCompleted: {
+        var date = new Date(Date.now())
+        updateLabelForDate(new Date(Date.now()))
+    }
+
+    function updateLabelForDate(date) {
+        var hours = date.getHours()
+        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
+        timeLabel.text = hours + ":" + minutes
     }
 }

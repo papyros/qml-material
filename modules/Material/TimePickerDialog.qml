@@ -6,7 +6,6 @@ Dialog {
     contentMargins: 0
     showHeaderView: false
 
-    property alias timePickerTime: timePicker.timePicked
     property alias isHours: timePicker.isHours
     signal timePicked(date timePicked)
 
@@ -16,7 +15,7 @@ Dialog {
     }
 
     onAccepted: {
-        timePicked(timePickerTime)
+        timePicked(timePicker.getCurrentTime())
         timePicker.reset()
     }
 

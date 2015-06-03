@@ -13,36 +13,39 @@ Item {
     property bool prefer24Hour: false
     property real clockPadding: Units.dp(24)
     property bool isHours: true
-    property int changeCount: 0
-    property bool resetFlag: false
 
-    property date timePicked: new Date(Date.now())
-    property bool completed: false
+    QtObject {
+        id: internal
+        property int changeCount: 0
+        property bool resetFlag: false
+        property date timePicked: new Date(Date.now())
+        property bool completed: false
+
+        onTimePickedChanged: {
+            if(completed) {
+                var hours = timePicked.getHours()
+                if(hours > 11 && !prefer24Hour){
+                    hours -= 12
+                    amPmPicker.isAm = false
+                } else {
+                    amPmPicker.isAm = true
+                }
+
+                hoursPathView.currentIndex = hours
+
+                var minutes = internal.timePicked.getMinutes()
+                minutesPathView.currentIndex = Math.floor(minutes / 5)
+            }
+        }
+    }
 
     Component.onCompleted: {
-        completed = true
-        var date = new Date(timePicked)
+        internal.completed = true
+        var date = new Date(internal.timePicked)
         var minutes = date.getMinutes()
         date.setMinutes(minutes)
         date.setMinutes(Math.floor(minutes / 5) * 5)
-        timePicked = date
-    }
-
-    onTimePickedChanged: {
-        if(completed) {
-            var hours = timePicked.getHours()
-            if(hours > 11 && !prefer24Hour){
-                hours -= 12
-                amPmPicker.isAm = false
-            } else {
-                amPmPicker.isAm = true
-            }
-
-            hoursPathView.currentIndex = hours
-
-            var minutes = timePicked.getMinutes()
-            minutesPathView.currentIndex = Math.floor(minutes / 5)
-        }
+        internal.timePicked = date
     }
 
     Column {
@@ -65,7 +68,7 @@ Item {
                     id:hoursLabel
                     style: "display3"
                     color: isHours ? "white" : "#99ffffff"
-                    text: timePicked.getHours()
+                    text: internal.timePicked.getHours()
                     anchors.verticalCenter: parent.verticalCenter
 
                     MouseArea {
@@ -89,7 +92,7 @@ Item {
                     id: minutesLabel
                     style: "display3"
                     color: !isHours ? "white" : "#99ffffff"
-                    text: timePicked.getMinutes()
+                    text: internal.timePicked.getMinutes()
                     anchors.verticalCenter: parent.verticalCenter
 
                     MouseArea {
@@ -158,9 +161,9 @@ Item {
                             direction: RotationAnimation.Shortest
                             onRunningChanged: {
                                 // Switch contexts after we intially set hours, and only then
-                                if(!running && isHours && !resetFlag && changeCount > 0) {
+                                if(!running && isHours && !internal.resetFlag && internal.changeCount > 0) {
                                     setIsHours(false)
-                                    resetFlag = true
+                                    internal.resetFlag = true
                                 }
                             }
                         }
@@ -200,7 +203,7 @@ Item {
                             anchors.fill: parent
                             propagateComposedEvents: true
                             onClicked: {
-                                var newDate = new Date(timePicked) // Grab a new date from existing
+                                var newDate = new Date(internal.timePicked) // Grab a new date from existing
 
                                 var time = parseInt(modelData)
                                 if(isHours) {
@@ -212,8 +215,8 @@ Item {
                                     newDate.setMinutes(time)
                                 }
 
-                                changeCount++
-                                timePicked = newDate
+                                internal.changeCount++
+                                internal.timePicked = newDate
                             }
                         }
                     }
@@ -380,8 +383,8 @@ Item {
         if(_isHours == isHours)
             return
 
-        if(!resetFlag)
-            resetFlag = true
+        if(!internal.resetFlag)
+            internal.resetFlag = true
 
         var prevRotation = pointerRotation.duration
         pointerRotation.duration = 0
@@ -389,15 +392,23 @@ Item {
         pointerRotation.duration = prevRotation
     }
 
+    function getCurrentTime() {
+        var date = new Date(internal.timePicked)
+        if(amPmPicker.isAm && date.getHours() > 11)
+            date.setHours(date.getHours() - 12)
+
+        return date
+    }
+
     /**
       Resets the view after closing
     */
     function reset(){
-        changeCount = 0
+        internal.changeCount = 0
         isHours = true
-        resetFlag = false
+        internal.resetFlag = false
         amPmPicker.isAm = true
-        timePicked = new Date(Date.now())
+        internal.timePicked = new Date(Date.now())
     }
 
     /**
