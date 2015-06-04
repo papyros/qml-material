@@ -23,11 +23,11 @@ import Material.Extras 0.1
 import QtQuick.Controls 1.2 as QuickControls
 import QtQuick.Controls.Styles 1.2
 
-Item {
+FocusScope {
 	id: timePicker
 
-    width: parent.width
-    height: content.height
+	width: parent.width
+	height: content.height
 
 	/*!
 	   Set to \c true if selection is 24 hour based. Defaults to false
@@ -49,6 +49,41 @@ Item {
 	 */
 	property int bottomMargin: 0
 
+	Keys.onUpPressed: {
+		var date = internal.timePicked
+
+		if(isHours)
+			date.setHours(internal.timePicked.getHours() + 1)
+		else
+			date.setMinutes(internal.timePicked.getMinutes() + 1)
+
+		internal.timePicked = date
+	}
+
+	Keys.onDownPressed: {
+		var date = internal.timePicked
+
+		if(isHours)
+			date.setHours(internal.timePicked.getHours() - 1)
+		else
+			date.setMinutes(internal.timePicked.getMinutes() - 1)
+
+		internal.timePicked = date
+	}
+
+	property string __digitsPressed
+
+	Keys.onDigit0Pressed: setDigitsPressed(0)
+	Keys.onDigit1Pressed: setDigitsPressed(1)
+	Keys.onDigit2Pressed: setDigitsPressed(2)
+	Keys.onDigit3Pressed: setDigitsPressed(3)
+	Keys.onDigit4Pressed: setDigitsPressed(4)
+	Keys.onDigit5Pressed: setDigitsPressed(5)
+	Keys.onDigit6Pressed: setDigitsPressed(6)
+	Keys.onDigit7Pressed: setDigitsPressed(7)
+	Keys.onDigit8Pressed: setDigitsPressed(8)
+	Keys.onDigit9Pressed: setDigitsPressed(9)
+
     QtObject {
         id: internal
         property bool resetFlag: false
@@ -68,7 +103,7 @@ Item {
                 hoursPathView.currentIndex = hours
 
                 var minutes = internal.timePicked.getMinutes()
-				minutesPathView.currentIndex = minutes// Math.floor(minutes / 5)
+				minutesPathView.currentIndex = minutes
             }
         }
     }
@@ -76,6 +111,7 @@ Item {
     Component.onCompleted: {
 		internal.completed = true
 		internal.timePicked = new Date(Date.now())
+				forceActiveFocus()
     }
 
     Column {
@@ -508,5 +544,31 @@ Item {
         }
         return items
     }
+
+	function setDigitsPressed(minute)
+	{
+		if(__digitsPressed.length > 1) {
+			__digitsPressed = ""
+			__digitsPressed = minute
+		}
+		else {
+			__digitsPressed += minute
+		}
+
+		var date = internal.timePicked
+		var value = parseInt(__digitsPressed)
+
+		if((isHours && value > 23) || (!isHours && value > 59)) {
+			__digitsPressed = ""
+			return
+		}
+
+		if(isHours)
+			date.setHours(value)
+		else
+			date.setMinutes(value)
+
+		internal.timePicked = date
+	}
 }
 
