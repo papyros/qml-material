@@ -1,10 +1,10 @@
 import QtQuick 2.0
+import Material 0.1
 
 Dialog {
-
-    height: timePicker.height + buttonHeight
     contentMargins: 0
-    showHeaderView: false
+    hasActions: true
+    floatingActions: true
 
     property alias isHours: timePicker.isHours
     property alias prefer24Hour: timePicker.prefer24Hour
@@ -13,6 +13,7 @@ Dialog {
     TimePicker {
         id: timePicker
         isHours: true
+        bottomMargin: Units.dp(48)
     }
 
     onAccepted: {

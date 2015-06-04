@@ -13,6 +13,7 @@ Item {
     property bool prefer24Hour: false
     property real clockPadding: Units.dp(24)
     property bool isHours: true
+    property int bottomMargin: 0
 
     QtObject {
         id: internal
@@ -50,7 +51,7 @@ Item {
 
     Column {
         id:content
-        height: childrenRect.height
+        height: childrenRect.height + bottomMargin
         width: parent.width
 
         Rectangle {
@@ -396,6 +397,8 @@ Item {
         var date = new Date(internal.timePicked)
         if(amPmPicker.isAm && date.getHours() > 11)
             date.setHours(date.getHours() - 12)
+        else if(!amPmPicker.isAm && date.getHours() < 11)
+            date.setHours(date.getHours() + 12)
 
         return date
     }
