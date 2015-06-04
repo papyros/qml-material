@@ -53,8 +53,6 @@ Item {
     }
 
     function updateLabelForDate(date) {
-        var hours = date.getHours()
-        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
-        timeLabel.text = hours + ":" + minutes
+		timeLabel.text = date.toLocaleTimeString(Qt.locale(), "hh:mm ap")
     }
 }

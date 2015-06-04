@@ -5,7 +5,7 @@ import QtQuick.Controls 1.2 as QuickControls
 import QtQuick.Controls.Styles 1.2
 
 Item {
-    id: timePicker
+	id: timePicker
     width: parent.width
 
     height: content.height
@@ -17,12 +17,11 @@ Item {
 
     QtObject {
         id: internal
-        property int changeCount: 0
         property bool resetFlag: false
-        property date timePicked: new Date(Date.now())
+		property date timePicked
         property bool completed: false
 
-        onTimePickedChanged: {
+		onTimePickedChanged: {
             if(completed) {
                 var hours = timePicked.getHours()
                 if(hours > 11 && !prefer24Hour){
@@ -35,18 +34,14 @@ Item {
                 hoursPathView.currentIndex = hours
 
                 var minutes = internal.timePicked.getMinutes()
-                minutesPathView.currentIndex = Math.floor(minutes / 5)
+				minutesPathView.currentIndex = minutes// Math.floor(minutes / 5)
             }
         }
     }
 
     Component.onCompleted: {
-        internal.completed = true
-        var date = new Date(internal.timePicked)
-        var minutes = date.getMinutes()
-        date.setMinutes(minutes)
-        date.setMinutes(Math.floor(minutes / 5) * 5)
-        internal.timePicked = date
+		internal.completed = true
+		internal.timePicked = new Date(Date.now())
     }
 
     Column {
@@ -93,13 +88,13 @@ Item {
                     id: minutesLabel
                     style: "display3"
                     color: !isHours ? "white" : "#99ffffff"
-                    text: internal.timePicked.getMinutes()
+					text: internal.timePicked.getMinutes() < 10 ? "0" +  internal.timePicked.getMinutes() : internal.timePicked.getMinutes()
                     anchors.verticalCenter: parent.verticalCenter
 
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            if(isHours){
+							if(isHours){
                                 setIsHours(false)
                             }
                         }
@@ -137,36 +132,33 @@ Item {
                     id: centerPoint
                     anchors.centerIn: parent
                     color: "#444"
-                    width: Units.dp(3)
-                    height: Units.dp(3)
+					width: Units.dp(3)
+					height: Units.dp(3)
                     radius: width / 2
                 }
 
                 Rectangle {
                     id: pointer
                     color: "#000"
-                    width: Units.dp(1)
+					width: Units.dp(1)
                     height: circle.height / 2 - clockPadding
                     y: clockPadding
                     anchors.horizontalCenter: parent.horizontalCenter
-                    transformOrigin: Item.Bottom
+					antialiasing: true
+					transformOrigin: Item.Bottom
                     rotation: {
                         var idx = isHours ? hoursPathView.currentIndex : minutesPathView.currentIndex
-                        return (360 / ((prefer24Hour && isHours) ? 24 : 12)) * idx
+						if(isHours)
+							return (360 / ((prefer24Hour) ? 24 : 12)) * idx
+						else
+							return 360 / 60 * idx
                     }
 
                     Behavior on rotation {
                         RotationAnimation {
                             id: pointerRotation
                             duration: 200
-                            direction: RotationAnimation.Shortest
-                            onRunningChanged: {
-                                // Switch contexts after we intially set hours, and only then
-                                if(!running && isHours && !internal.resetFlag && internal.changeCount > 0) {
-                                    setIsHours(false)
-                                    internal.resetFlag = true
-                                }
-                            }
+							direction: RotationAnimation.Shortest
                         }
                     }
                 }
@@ -185,10 +177,12 @@ Item {
                 Component {
                     id: pathViewItem
                     Rectangle {
-
-                        width: Units.dp(20)
-                        height: Units.dp(20)
+						id: rectangle
+						width: !isHours && modelData % 5 == 0 ? Units.dp(10) : isHours ? Units.dp(25) : Units.dp(5)
+						height: !isHours && modelData % 5 == 0 ? Units.dp(10) : isHours ? Units.dp(25) : Units.dp(5)
                         color: "transparent"
+
+						property bool isSelected: false
 
                         Label {
                             anchors.centerIn: parent
@@ -196,43 +190,99 @@ Item {
                                 var model = isHours ? hoursPathView.model : minutesPathView.model
                                 return model.data < 10 && !isHours ? "0" + modelData : modelData
                             }
-                            visible: modelData >= 0
+							visible: modelData >= 0 && (isHours ? true : modelData % 5 == 0)
                             style: "body2"
-                        }
+						}
 
-                        MouseArea {
-                            anchors.fill: parent
-                            propagateComposedEvents: true
-                            onClicked: {
-                                var newDate = new Date(internal.timePicked) // Grab a new date from existing
+						Connections {
+							target: parentMouseArea
 
-                                var time = parseInt(modelData)
-                                if(isHours) {
-                                    if(!prefer24Hour && !amPmPicker.isAm)
-                                        time += 12
+							onClicked: {
+								checkClick(false)
+							}
 
-                                    newDate.setHours(time)
-                                } else {
-                                    newDate.setMinutes(time)
-                                }
+							onPositionChanged: {
+								checkClick(true)
+							}
 
-                                internal.changeCount++
-                                internal.timePicked = newDate
-                            }
-                        }
+							function checkClick(isPress)
+							{
+								if((isPress ? parentMouseArea.leftButtonPressed : true) && rectangle.visible) {
+									var thisPosition = rectangle.mapToItem(null, 0, 0, width, height)
+
+									if(parentMouseArea.globalX > thisPosition.x &&
+										parentMouseArea.globalY > thisPosition.y &&
+										parentMouseArea.globalX < (thisPosition.x + width) &&
+										parentMouseArea.globalY < (thisPosition.y + height)) {
+
+										if(!rectangle.isSelected) {
+											rectangle.isSelected = true
+
+											var newDate = new Date(internal.timePicked) // Grab a new date from existing
+
+											var time = parseInt(modelData)
+											if(isHours) {
+												if(!prefer24Hour && !amPmPicker.isAm && time < 12) {
+													time += 12
+												}
+												else if(!prefer24Hour && amPmPicker.isAm && time === 12) {
+													time = 0
+												}
+
+												newDate.setHours(time)
+											} else {
+												newDate.setMinutes(time)
+											}
+
+											internal.timePicked = newDate
+										}
+									}
+									else {
+										rectangle.isSelected = false
+									}
+								}
+							}
+						}
                     }
                 }
+
+				MouseArea {
+					property bool leftButtonPressed
+					property int globalX
+					property int globalY
+					id: parentMouseArea
+					anchors.fill: circle
+					hoverEnabled: true
+
+					onClicked: {
+						globalX = parentMouseArea.mapToItem(null, mouse.x, mouse.y).x
+						globalY = parentMouseArea.mapToItem(null, mouse.x, mouse.y).y
+					}
+
+					onPositionChanged: {
+						if(parentMouseArea.pressedButtons & Qt.LeftButton)
+						{
+							leftButtonPressed = true
+							globalX = parentMouseArea.mapToItem(null, mouse.x, mouse.y).x
+							globalY = parentMouseArea.mapToItem(null, mouse.x, mouse.y).y
+						}
+						else
+						{
+							leftButtonPressed = false
+						}
+					}
+				}
 
 
                 PathView {
                     id: hoursPathView
                     anchors.fill: parent
                     visible: isHours
-                    model: {
-                        var limit = prefer24Hour ? 24 : 12
-                        var zeroBased = prefer24Hour
-                        return getTimeList(limit, zeroBased)
-                    }
+					model: {
+						var limit = prefer24Hour ? 24 : 12
+						var zeroBased = prefer24Hour
+						return getTimeList(limit, zeroBased)
+					}
                     highlightRangeMode: PathView.NoHighlightRange
                     highlightMoveDuration: 200
 
@@ -273,18 +323,12 @@ Item {
                 PathView {
                     id: minutesPathView
                     anchors.fill: parent
-                    visible: !isHours
-                    model: {
-                        return getTimeList(60, true)
-                    }
+					visible: !isHours
+					model: {
+						return getTimeList(60, true)
+					}
                     highlightRangeMode: PathView.NoHighlightRange
                     highlightMoveDuration: 200
-
-                    onCurrentIndexChanged: {
-                        var minutes = currentIndex * 5
-                        minutesLabel.text = minutes < 10 ? "0" + minutes : minutes
-                    }
-
                     delegate: pathViewItem
                     highlight: pathViewHighlight
                     interactive: false
@@ -407,7 +451,6 @@ Item {
       Resets the view after closing
     */
     function reset(){
-        internal.changeCount = 0
         isHours = true
         internal.resetFlag = false
         amPmPicker.isAm = true
@@ -425,7 +468,7 @@ Item {
 
         var start = isZeroBased ? 0 : 1
 
-        var jump = limit > 24 ? 5 : 1
+		var jump = limit > 24 ? 1 : 1
         for(var i = start; i < limit; i += jump) {
             items[i / jump] = i
         }
