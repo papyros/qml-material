@@ -1,3 +1,22 @@
+/*
+ * QML Material - An application framework implementing Material Design.
+ * Copyright (C) 2015 Steve Coffey
+ * Copyright (C) 2015 Jordan Neidlinger <JNeidlinger@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 2.1 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import QtQuick 2.0
 import Material 0.1
 import Material.Extras 0.1
@@ -6,14 +25,29 @@ import QtQuick.Controls.Styles 1.2
 
 Item {
 	id: timePicker
-    width: parent.width
 
+    width: parent.width
     height: content.height
 
+	/*!
+	   Set to \c true if selection is 24 hour based. Defaults to false
+	 */
     property bool prefer24Hour: false
+
+	/*!
+	   The visual padding around the clock element
+	 */
     property real clockPadding: Units.dp(24)
+
+	/*!
+	   Set to \c true if the time picker should first show the hours. Defaults to true
+	 */
     property bool isHours: true
-    property int bottomMargin: 0
+
+	/*!
+	   Sets the bottom margin for the time picker
+	 */
+	property int bottomMargin: 0
 
     QtObject {
         id: internal
