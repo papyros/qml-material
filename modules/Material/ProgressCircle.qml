@@ -81,9 +81,9 @@ Controls.ProgressBar {
 
                 Connections {
                     target: control
-                    onColorChanged: requestPaint()
-                    onValueChanged: requestPaint()
-                    onDashThicknessChanged: requestPaint()
+                    onColorChanged: canvas.requestPaint()
+                    onValueChanged: canvas.requestPaint()
+                    onDashThicknessChanged: canvas.requestPaint()
                     onIndeterminateChanged:
                     {
                         if(control.indeterminate)
@@ -93,7 +93,7 @@ Controls.ProgressBar {
                             internal.rotate = 0
                         }
 
-                        requestPaint();
+                        canvas.requestPaint();
                     }
                 }
 
