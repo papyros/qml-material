@@ -26,22 +26,27 @@ import Material.Extras 0.1
 /*!
    \qmltype Dialog
    \inqmlmodule Material 0.1
-
-   \brief Dialogs inform users about critical information, require users to make 
+   \brief Dialogs inform users about critical information, require users to make
    decisions, or encapsulate multiple tasks within a discrete process
  */
-DialogBase {
+PopupBase {
     id: dialog
+
+    overlayLayer: "dialogOverlayLayer"
+    overlayColor: Qt.rgba(0, 0, 0, 0.3)
+
+    opacity: showing ? 1 : 0
+    visible: opacity > 0
 
     width: Math.max(minimumWidth,
                     content.contentWidth + 2 * contentMargins)
 
-    height: Math.min(Units.dp(350),
-                     headerView.height + Units.dp(32) +
+    height: Math.min(parent.height - Units.dp(64),
+                     headerView.height + (contentMargins * 2) +
                      content.contentHeight +
                      content.topMargin +
                      content.bottomMargin +
-                     buttonContainer.height)
+                     (floatingActions ? 0 : buttonContainer.height))
 
     property int contentMargins: Units.dp(16)
 
@@ -52,7 +57,6 @@ DialogBase {
 
     /*!
        \qmlproperty Button negativeButton
-
        The negative button, displayed as the leftmost button on the right of the dialog buttons.
        This is usually used to dismiss the dialog.
      */
@@ -60,7 +64,6 @@ DialogBase {
 
     /*!
        \qmlproperty Button primaryButton
-
        The primary button, displayed as the rightmost button in the dialog buttons row. This is
        usually used to accept the dialog's action.
      */
@@ -71,12 +74,25 @@ DialogBase {
     property alias positiveButtonEnabled: positiveButton.enabled
 
     property bool hasActions: true
+    property bool floatingActions: false
 
     default property alias dialogContent: column.data
 
     signal accepted()
     signal rejected()
 
+    anchors {
+        centerIn: parent
+        verticalCenterOffset: showing ? 0 : -(dialog.height/3)
+
+        Behavior on verticalCenterOffset {
+            NumberAnimation { duration: 200 }
+        }
+    }
+
+    Behavior on opacity {
+        NumberAnimation { duration: 200 }
+    }
 
     Keys.onPressed: {
         if (event.key === Qt.Key_Escape) {
@@ -99,11 +115,25 @@ DialogBase {
         }
     }
 
+    function show() {
+        open()
+    }
+
     View {
         id: dialogContainer
 
         anchors.fill: parent
+        elevation: 5
         radius: Units.dp(2)
+
+        MouseArea {
+            anchors.fill: parent
+            propagateComposedEvents: false
+
+            onClicked: {
+                mouse.accepted = false
+            }
+        }
 
         Item {
             anchors {
@@ -144,7 +174,7 @@ DialogBase {
 
                 leftMargin: Units.dp(16)
                 rightMargin: Units.dp(16)
-                topMargin: Units.dp(16)
+                topMargin: title == "" && text == "" ? 0 : Units.dp(16)
             }
 
             Label {
@@ -153,7 +183,7 @@ DialogBase {
                 width: parent.width
                 wrapMode: Text.Wrap
                 style: "title"
-                visible: text != ""
+                visible: title != ""
             }
 
             Label {
@@ -181,13 +211,13 @@ DialogBase {
                 left: parent.left
                 right: parent.right
                 top: headerView.bottom
-                topMargin: Units.dp(8)
+                topMargin: title == "" && text == "" ? 0 :Units.dp(8)
                 bottomMargin: Units.dp(-8)
-                bottom: buttonContainer.top
+                bottom: floatingActions ? parent.bottom : buttonContainer.top
             }
 
             interactive: contentHeight + Units.dp(8) > height
-            bottomMargin: hasActions ? 0 : Units.dp(8)
+            bottomMargin: hasActions  || contentMargins == 0 ? 0 : Units.dp(8)
 
             Rectangle {
                 Column {
@@ -226,7 +256,7 @@ DialogBase {
                 height: hasActions ? positiveButton.implicitHeight + Units.dp(8) : 0
                 visible: hasActions
 
-                backgroundColor: "white"
+                backgroundColor: floatingActions ? "transparent" : "white"
                 elevation: content.atYEnd ? 0 : 1
                 fullWidth: true
                 elevationInverted: true
@@ -279,5 +309,4 @@ DialogBase {
             }
         }
     }
-
 }

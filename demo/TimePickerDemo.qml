@@ -4,8 +4,12 @@ import Material 0.1
 
 Item {
 
-    TimePicker {
+    TimePickerDialog {
         id: timePicker
+        onTimePicked: {
+            updateLabelForDate(timePicked)
+        }
+        prefer24Hour: twentyFourHourSwitch.checked
     }
 
     Column {
@@ -20,5 +24,37 @@ Item {
                 timePicker.show()
             }
         }
+
+        Label {
+            id: timeLabel
+            style: "display1"
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Row {
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: Units.dp(16)
+
+            Label {
+                text: "24 hour clock:"
+                style: "dialog"
+            }
+
+            Switch {
+                id: twentyFourHourSwitch
+                checked: false
+            }
+        }
+    }
+
+    Component.onCompleted: {
+        var date = new Date(Date.now())
+        updateLabelForDate(new Date(Date.now()))
+    }
+
+    function updateLabelForDate(date) {
+        var hours = date.getHours()
+        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
+        timeLabel.text = hours + ":" + minutes
     }
 }
