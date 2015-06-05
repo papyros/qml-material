@@ -33,3 +33,10 @@ Now check out the `demo` folder to see how to use Material Design from QtQuick!
 QML Material is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.
 
 The Material Design icons by Google are released under an [Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/) license. The icons are directly copied from Google's GitHub repository at https://github.com/google/material-design-icons.
+
+### Papyros Backers
+
+Papyros is supported by the following contributors on our [Bountysource Salt campaign](https://salt.bountysource.com/teams/papyros):
+
+* Hoang Anh
+* And several other sponsors listed in the BACKERS.md file
