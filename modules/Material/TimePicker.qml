@@ -255,7 +255,29 @@ FocusScope {
 					antialiasing: true
 					transformOrigin: Item.Bottom
 
-					rotation: {
+					Connections {
+						target: hoursPathView
+						onCurrentIndexChanged: {
+							if(isHours)
+								pointer.setAngle()
+						}
+					}
+
+					Connections {
+						target: minutesPathView
+						onCurrentIndexChanged: {
+							if(!isHours)
+								pointer.setAngle()
+						}
+					}
+
+					Connections {
+						target: timePicker
+						onIsHoursChanged: pointer.setAngle()
+					}
+
+					function setAngle()
+					{
 						var idx = isHours ? hoursPathView.currentIndex : minutesPathView.currentIndex
 						var angle
 						if(isHours)
@@ -263,12 +285,12 @@ FocusScope {
 						else
 							angle = 360 / 60 * idx
 
-						if(Math.abs(rotation - angle) == 180)
+						if(Math.abs(pointer.rotation - angle) == 180)
 							pointerRotation.direction = RotationAnimation.Clockwise
 						else
 							pointerRotation.direction = RotationAnimation.Shortest
 
-						return angle
+						pointer.rotation = angle
 					}
 
 					Behavior on rotation {
