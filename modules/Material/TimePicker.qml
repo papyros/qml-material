@@ -26,23 +26,23 @@ import QtQuick.Controls.Styles 1.2
 FocusScope {
 	id: timePicker
 
-	width: parent.width
+	width: Units.dp(300)
 	height: content.height
 
 	/*!
 	   Set to \c true if selection is 24 hour based. Defaults to false
 	 */
-    property bool prefer24Hour: false
+	property bool prefer24Hour: false
 
 	/*!
 	   The visual padding around the clock element
 	 */
-    property real clockPadding: Units.dp(24)
+	property real clockPadding: Units.dp(24)
 
 	/*!
 	   Set to \c true if the time picker should first show the hours. Defaults to true
 	 */
-    property bool isHours: true
+	property bool isHours: true
 
 	/*!
 	   Sets the bottom margin for the time picker
@@ -71,6 +71,16 @@ FocusScope {
 		internal.timePicked = date
 	}
 
+	Keys.onLeftPressed: {
+		if(!isHours)
+			setIsHours(true)
+	}
+
+	Keys.onRightPressed: {
+		if(isHours)
+			setIsHours(false)
+	}
+
 	property string __digitsPressed
 
 	Keys.onDigit0Pressed: setDigitsPressed(0)
@@ -84,184 +94,221 @@ FocusScope {
 	Keys.onDigit8Pressed: setDigitsPressed(8)
 	Keys.onDigit9Pressed: setDigitsPressed(9)
 
-    QtObject {
-        id: internal
-        property bool resetFlag: false
+	QtObject {
+		id: internal
+		property bool resetFlag: false
 		property date timePicked
-        property bool completed: false
+		property bool completed: false
 
 		onTimePickedChanged: {
-            if(completed) {
-                var hours = timePicked.getHours()
-                if(hours > 11 && !prefer24Hour){
-                    hours -= 12
-                    amPmPicker.isAm = false
-                } else {
-                    amPmPicker.isAm = true
-                }
+			if(completed) {
+				var hours = timePicked.getHours()
+				if(hours > 11 && !prefer24Hour){
+					hours -= 12
+					amPmPicker.isAm = false
+				} else {
+					amPmPicker.isAm = true
+				}
 
-                hoursPathView.currentIndex = hours
+				hoursPathView.currentIndex = hours
 
-                var minutes = internal.timePicked.getMinutes()
+				var minutes = internal.timePicked.getMinutes()
 				minutesPathView.currentIndex = minutes
-            }
-        }
-    }
+			}
+		}
+	}
 
-    Component.onCompleted: {
+	Component.onCompleted: {
 		internal.completed = true
 		internal.timePicked = new Date(Date.now())
 				forceActiveFocus()
-    }
+	}
 
-    Column {
-        id:content
-        height: childrenRect.height + bottomMargin
-        width: parent.width
+	Column {
+		id:content
+		height: childrenRect.height + bottomMargin
+		width: parent.width
 
-        Rectangle {
-            id: headerView
-            width: parent.width
-            height: Units.dp(100)
-            color: Theme.primaryColor
+		Rectangle {
+			id: headerView
+			width: parent.width
+			height: Units.dp(88)
+			color: Theme.accentColor
 
-            Row {
-                id: timeContainer
-                anchors.centerIn: parent
-                height: Units.dp(48)
+			Row {
+				id: timeContainer
+				anchors.centerIn: parent
+				height: Units.dp(48)
 
-                Label {
-                    id:hoursLabel
-                    style: "display3"
-                    color: isHours ? "white" : "#99ffffff"
-                    text: internal.timePicked.getHours()
-                    anchors.verticalCenter: parent.verticalCenter
+				Label {
+					id:hoursLabel
+					style: "display3"
+					color: isHours ? "white" : "#99ffffff"
+					text: internal.timePicked.getHours()
+					anchors.verticalCenter: parent.verticalCenter
 
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            if(!isHours){
-                                setIsHours(true)
-                            }
-                        }
-                    }
-                }
+					MouseArea {
+						anchors.fill: parent
+						onClicked: {
+							if(!isHours){
+								setIsHours(true)
+							}
+						}
+					}
+				}
 
-                Label {
-                    style: "display3"
-                    color: "white"
-                    text:":"
-                    anchors.verticalCenter: parent.verticalCenter
-                }
+				Label {
+					style: "display3"
+					color: "white"
+					text:":"
+					anchors.verticalCenter: parent.verticalCenter
+				}
 
-                Label {
-                    id: minutesLabel
-                    style: "display3"
-                    color: !isHours ? "white" : "#99ffffff"
+				Label {
+					id: minutesLabel
+					style: "display3"
+					color: !isHours ? "white" : "#99ffffff"
 					text: internal.timePicked.getMinutes() < 10 ? "0" +  internal.timePicked.getMinutes() : internal.timePicked.getMinutes()
-                    anchors.verticalCenter: parent.verticalCenter
+					anchors.verticalCenter: parent.verticalCenter
 
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
+					MouseArea {
+						anchors.fill: parent
+						onClicked: {
 							if(isHours){
-                                setIsHours(false)
-                            }
-                        }
-                    }
-                }
-            }
+								setIsHours(false)
+							}
+						}
+					}
+				}
+			}
 
-            Label {
-                id: ampmLabel
-                visible: !prefer24Hour
-                style: "body2"
-                text: amPmPicker.isAm ? "AM" : "PM"
-                anchors {
-                    bottom: timeContainer.bottom
-                    left: timeContainer.right
-                }
-            }
-        }
+			Column {
+				id: amPmPicker
+				visible: !prefer24Hour
 
-        Rectangle {
-            id: picker
-            width: parent.width
-            height: width
-            color: "white"
+				property bool isAm: true
 
-            Rectangle {
-                id: circle
-                color: "#ddd"
-                anchors.centerIn: parent
-                width: parent.width * 0.8
-                height: width
-                radius: width / 2
+				anchors {
+					bottom: timeContainer.bottom
+					left: timeContainer.right
+					leftMargin: Units.dp(12)
+				}
 
-                Rectangle {
-                    id: centerPoint
-                    anchors.centerIn: parent
-                    color: "#444"
-					width: Units.dp(3)
-					height: Units.dp(3)
-                    radius: width / 2
-                }
+				spacing: Units.dp(4)
 
-                Rectangle {
-                    id: pointer
-                    color: "#000"
-					width: Units.dp(1)
-                    height: circle.height / 2 - clockPadding
-                    y: clockPadding
-                    anchors.horizontalCenter: parent.horizontalCenter
+				Label {
+					style: "subheading"
+					font.weight: Font.DemiBold
+					color: amPmPicker.isAm ? "white" : "#99ffffff"
+					text: "AM"
+
+					MouseArea {
+						anchors.fill: parent
+						onClicked: amPmPicker.isAm = true
+					}
+				}
+
+				Label {
+					style: "subheading"
+					font.weight: Font.DemiBold
+					color: !amPmPicker.isAm ? "white" : "#99ffffff"
+					text: "PM"
+
+					MouseArea {
+						anchors.fill: parent
+						onClicked: amPmPicker.isAm = false
+					}
+				}
+			}
+		}
+
+		Rectangle {
+			id: picker
+			width: parent.width
+			height: width
+			color: "white"
+
+			Rectangle {
+				id: circle
+				color: "#ddd"
+				anchors.centerIn: parent
+				width: parent.width * 0.9
+				height: width
+				radius: width / 2
+
+				Rectangle {
+					id: centerPoint
+					anchors.centerIn: parent
+					color: Theme.accentColor
+					width: Units.dp(8)
+					height: Units.dp(8)
+					radius: width / 2
+				}
+
+				Rectangle {
+					id: pointer
+					color: Theme.accentColor
+					width: Units.dp(2)
+					height: circle.height / 2 - clockPadding
+					y: clockPadding
+					anchors.horizontalCenter: parent.horizontalCenter
 					antialiasing: true
 					transformOrigin: Item.Bottom
-                    rotation: {
-                        var idx = isHours ? hoursPathView.currentIndex : minutesPathView.currentIndex
+
+					rotation: {
+						var idx = isHours ? hoursPathView.currentIndex : minutesPathView.currentIndex
+						var angle
 						if(isHours)
-							return (360 / ((prefer24Hour) ? 24 : 12)) * idx
+							angle = (360 / ((prefer24Hour) ? 24 : 12)) * idx
 						else
-							return 360 / 60 * idx
-                    }
+							angle = 360 / 60 * idx
 
-                    Behavior on rotation {
-                        RotationAnimation {
-                            id: pointerRotation
-                            duration: 200
+						if(Math.abs(rotation - angle) == 180)
+							pointerRotation.direction = RotationAnimation.Clockwise
+						else
+							pointerRotation.direction = RotationAnimation.Shortest
+
+						return angle
+					}
+
+					Behavior on rotation {
+						RotationAnimation {
+							id: pointerRotation
+							duration: 200
 							direction: RotationAnimation.Shortest
-                        }
-                    }
-                }
+						}
+					}
+				}
 
-                Component {
-                    id: pathViewHighlight
-                    Rectangle {
-                        id: highlight
-                        width: Units.dp(40)
-                        height: Units.dp(40)
-                        color: Theme.accentColor
-                        radius: width / 2
-                    }
-                }
+				Component {
+					id: pathViewHighlight
+					Rectangle {
+						id: highlight
+						width: Units.dp(40)
+						height: Units.dp(40)
+						color: Theme.accentColor
+						radius: width / 2
+					}
+				}
 
-                Component {
-                    id: pathViewItem
-                    Rectangle {
+				Component {
+					id: pathViewItem
+					Rectangle {
 						id: rectangle
-						width: !isHours && modelData % 5 == 0 ? Units.dp(10) : isHours ? Units.dp(25) : Units.dp(5)
-						height: !isHours && modelData % 5 == 0 ? Units.dp(10) : isHours ? Units.dp(25) : Units.dp(5)
-                        color: "transparent"
+						width: !isHours && modelData % 5 == 0 ? Units.dp(12) : isHours ? Units.dp(30) : Units.dp(8)
+						height: !isHours && modelData % 5 == 0 ? Units.dp(12) : isHours ? Units.dp(30) : Units.dp(8)
+						color: "transparent"
 
 						property bool isSelected: false
 
-                        Label {
-                            anchors.centerIn: parent
-                            text:{
-                                var model = isHours ? hoursPathView.model : minutesPathView.model
-                                return model.data < 10 && !isHours ? "0" + modelData : modelData
-                            }
+						Label {
+							anchors.centerIn: parent
+							text:{
+								var model = isHours ? hoursPathView.model : minutesPathView.model
+								return model.data < 10 && !isHours ? "0" + modelData : modelData
+							}
 							visible: modelData >= 0 && (isHours ? true : modelData % 5 == 0)
-                            style: "body2"
+							style: "subheading"
 						}
 
 						Connections {
@@ -313,8 +360,8 @@ FocusScope {
 								}
 							}
 						}
-                    }
-                }
+					}
+				}
 
 				MouseArea {
 					property bool leftButtonPressed
@@ -330,7 +377,7 @@ FocusScope {
 					}
 
 					onPositionChanged: {
-                        if(containsPress)
+						if(containsPress)
 						{
 							leftButtonPressed = true
 							globalX = parentMouseArea.mapToItem(null, mouse.x, mouse.y).x
@@ -344,206 +391,145 @@ FocusScope {
 				}
 
 
-                PathView {
-                    id: hoursPathView
-                    anchors.fill: parent
-                    visible: isHours
+				PathView {
+					id: hoursPathView
+					anchors.fill: parent
+					visible: isHours
 					model: {
 						var limit = prefer24Hour ? 24 : 12
 						var zeroBased = prefer24Hour
 						return getTimeList(limit, zeroBased)
 					}
-                    highlightRangeMode: PathView.NoHighlightRange
-                    highlightMoveDuration: 200
+					highlightRangeMode: PathView.NoHighlightRange
+					highlightMoveDuration: 200
 
-                    onCurrentIndexChanged: {
-                        var newText = currentIndex
-                        if(currentIndex == 0 && !prefer24Hour)
-                            newText = 12
-                        hoursLabel.text = newText
-                    }
+					onCurrentIndexChanged: {
+						var newText = currentIndex
+						if(currentIndex == 0 && !prefer24Hour)
+							newText = 12
+						hoursLabel.text = newText
+					}
 
-                    delegate: pathViewItem
+					delegate: pathViewItem
 
-                    interactive: false
-                    highlight: pathViewHighlight
+					interactive: false
+					highlight: pathViewHighlight
 
-                    path: Path {
-                        startX: circle.width / 2
-                        startY: clockPadding
+					path: Path {
+						startX: circle.width / 2
+						startY: clockPadding
 
-                        PathArc {
-                            x: circle.width / 2
-                            y: circle.height - clockPadding
-                            radiusX: circle.width / 2 - clockPadding
-                            radiusY: circle.width / 2 - clockPadding
-                            useLargeArc: false
-                        }
+						PathArc {
+							x: circle.width / 2
+							y: circle.height - clockPadding
+							radiusX: circle.width / 2 - clockPadding
+							radiusY: circle.width / 2 - clockPadding
+							useLargeArc: false
+						}
 
-                        PathArc {
-                            x: circle.width / 2
-                            y: clockPadding
-                            radiusX: circle.width / 2 - clockPadding
-                            radiusY: circle.width / 2 - clockPadding
-                            useLargeArc: false
-                        }
-                    }
-                }
+						PathArc {
+							x: circle.width / 2
+							y: clockPadding
+							radiusX: circle.width / 2 - clockPadding
+							radiusY: circle.width / 2 - clockPadding
+							useLargeArc: false
+						}
+					}
+				}
 
-                PathView {
-                    id: minutesPathView
-                    anchors.fill: parent
+				PathView {
+					id: minutesPathView
+					anchors.fill: parent
 					visible: !isHours
 					model: {
 						return getTimeList(60, true)
 					}
-                    highlightRangeMode: PathView.NoHighlightRange
-                    highlightMoveDuration: 200
-                    delegate: pathViewItem
-                    highlight: pathViewHighlight
-                    interactive: false
+					highlightRangeMode: PathView.NoHighlightRange
+					highlightMoveDuration: 200
+					delegate: pathViewItem
+					highlight: pathViewHighlight
+					interactive: false
 
-                    path: Path {
-                        startX: circle.width / 2
-                        startY: clockPadding
+					path: Path {
+						startX: circle.width / 2
+						startY: clockPadding
 
-                        PathArc {
-                            x: circle.width / 2
-                            y: circle.height - clockPadding
-                            radiusX: circle.width / 2 - clockPadding
-                            radiusY: circle.width / 2 - clockPadding
-                            useLargeArc: false
-                        }
+						PathArc {
+							x: circle.width / 2
+							y: circle.height - clockPadding
+							radiusX: circle.width / 2 - clockPadding
+							radiusY: circle.width / 2 - clockPadding
+							useLargeArc: false
+						}
 
-                        PathArc {
-                            x: circle.width / 2
-                            y: clockPadding
-                            radiusX: circle.width / 2 - clockPadding
-                            radiusY: circle.width / 2 - clockPadding
-                            useLargeArc: false
-                        }
-                    }
-                }
-            }
-        }
+						PathArc {
+							x: circle.width / 2
+							y: clockPadding
+							radiusX: circle.width / 2 - clockPadding
+							radiusY: circle.width / 2 - clockPadding
+							useLargeArc: false
+						}
+					}
+				}
+			}
+		}
+	}
 
-        Rectangle {
-            id: amPmPicker
-            height: Units.dp(40)
-            width: circle.width
-            anchors.horizontalCenter: parent.horizontalCenter
-            visible: !prefer24Hour
+	/**
+	  Switches contexts
 
-            property bool isAm: true
+	  If previously we hadn't set hours, and we're now switching contexts, disable the auto switch to minutes
+	  */
+	function setIsHours(_isHours) {
+		if(_isHours == isHours)
+			return
 
-            Rectangle {
-                id: amButton
-                height: Units.dp(40)
-                width: Units.dp(40)
-                radius: width / 2
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                color: amPmPicker.isAm ? Theme.primaryColor : "white"
+		if(!internal.resetFlag)
+			internal.resetFlag = true
 
-                Label {
-                    id: amLabel
-                    text: "AM"
-                    anchors.centerIn: parent
-                    style: "menu"
-                    color: amPmPicker.isAm ? "white" : "black"
-                }
+		var prevRotation = pointerRotation.duration
+		pointerRotation.duration = 0
+		isHours = _isHours
+		pointerRotation.duration = prevRotation
+	}
 
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        amPmPicker.isAm = true
-                    }
-                }
-            }
+	function getCurrentTime() {
+		var date = new Date(internal.timePicked)
+		if(amPmPicker.isAm && date.getHours() > 11)
+			date.setHours(date.getHours() - 12)
+		else if(!amPmPicker.isAm && date.getHours() < 11)
+			date.setHours(date.getHours() + 12)
 
-            Rectangle {
-                id: pmButton
-                property bool selected: !amButton.selected
-                height: Units.dp(40)
-                width: Units.dp(40)
-                radius: width / 2
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                color: !amPmPicker.isAm ? Theme.primaryColor : "white"
+		return date
+	}
 
-                Label {
-                    id: pmLabel
-                    text: "PM"
-                    anchors.centerIn: parent
-                    style: "menu"
-                    color: !amPmPicker.isAm ? "white" : "black"
-                }
+	/**
+	  Resets the view after closing
+	*/
+	function reset(){
+		isHours = true
+		internal.resetFlag = false
+		amPmPicker.isAm = true
+		internal.timePicked = new Date(Date.now())
+	}
 
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        amPmPicker.isAm = false
-                    }
-                }
-            }
-        }
-    }
+	/**
+	  Provides list of ints for pathview based on the context and user prefs
+	 */
+	function getTimeList(limit, isZeroBased) {
+		var items = []
+		if(!isZeroBased) {
+			items[0] = limit
+		}
 
-    /**
-      Switches contexts
-
-      If previously we hadn't set hours, and we're now switching contexts, disable the auto switch to minutes
-      */
-    function setIsHours(_isHours) {
-        if(_isHours == isHours)
-            return
-
-        if(!internal.resetFlag)
-            internal.resetFlag = true
-
-        var prevRotation = pointerRotation.duration
-        pointerRotation.duration = 0
-        isHours = _isHours
-        pointerRotation.duration = prevRotation
-    }
-
-    function getCurrentTime() {
-        var date = new Date(internal.timePicked)
-        if(amPmPicker.isAm && date.getHours() > 11)
-            date.setHours(date.getHours() - 12)
-        else if(!amPmPicker.isAm && date.getHours() < 11)
-            date.setHours(date.getHours() + 12)
-
-        return date
-    }
-
-    /**
-      Resets the view after closing
-    */
-    function reset(){
-        isHours = true
-        internal.resetFlag = false
-        amPmPicker.isAm = true
-        internal.timePicked = new Date(Date.now())
-    }
-
-    /**
-      Provides list of ints for pathview based on the context and user prefs
-     */
-    function getTimeList(limit, isZeroBased) {
-        var items = []
-        if(!isZeroBased) {
-            items[0] = limit
-        }
-
-        var start = isZeroBased ? 0 : 1
+		var start = isZeroBased ? 0 : 1
 
 		var jump = limit > 24 ? 1 : 1
-        for(var i = start; i < limit; i += jump) {
-            items[i / jump] = i
-        }
-        return items
-    }
+		for(var i = start; i < limit; i += jump) {
+			items[i / jump] = i
+		}
+		return items
+	}
 
 	function setDigitsPressed(minute)
 	{
@@ -571,4 +557,3 @@ FocusScope {
 		internal.timePicked = date
 	}
 }
-
