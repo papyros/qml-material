@@ -192,6 +192,7 @@ Item {
         action: backAction
 
         opacity: show ? enabled ? 1 : 0.6 : 0
+        visible: opacity > 0
 
         Behavior on opacity {
             NumberAnimation { duration: 200 }
