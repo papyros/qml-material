@@ -67,6 +67,7 @@ PopupBase {
         iconName: "navigation/menu"
         name: "Navigation Drawer"
         onTriggered: navDrawer.toggle()
+        enabled: navDrawer.enabled
     }
 
     View {
