@@ -40,6 +40,8 @@ TabView 0.1 TabView.qml
 Tabs 0.1 Tabs.qml
 TextField 0.1 TextField.qml
 ThinDivider 0.1 ThinDivider.qml
+TimePicker 0.1 TimePicker.qml
+TimePickerDialog 0.1 TimePickerDialog.qml
 Toolbar 0.1 Toolbar.qml
 Tooltip 0.1 Tooltip.qml
 View 0.1 View.qml
