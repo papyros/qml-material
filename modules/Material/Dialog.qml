@@ -27,7 +27,7 @@ import Material.Extras 0.1
    \qmltype Dialog
    \inqmlmodule Material 0.1
 
-   \brief Dialogs inform users about critical information, require users to make 
+   \brief Dialogs inform users about critical information, require users to make
    decisions, or encapsulate multiple tasks within a discrete process
  */
 PopupBase {
@@ -278,9 +278,9 @@ PopupBase {
 
                     anchors {
                         top: parent.top
-                        right: positiveButton.left
+                        right: positiveButton.visible ? positiveButton.left : parent.right
                         topMargin: Units.dp(8)
-                        rightMargin: Units.dp(8)
+                        rightMargin: positiveButton.visible ? Units.dp(8) : Units.dp(16)
                     }
 
                     onClicked: {
