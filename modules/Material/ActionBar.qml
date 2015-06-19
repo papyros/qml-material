@@ -28,13 +28,13 @@ import Material.ListItems 0.1 as ListItem
 
    \brief An action bar holds the title and actions displayed in the application toolbar.
 
-   The reason this exists separately from \l Toolbar is for animation purposes. 
-   Each page contains its own \c ActionBar, and when the application transitions 
+   The reason this exists separately from \l Toolbar is for animation purposes.
+   Each page contains its own \c ActionBar, and when the application transitions
    between pages, the toolbar animates the transition between action bars.
 
-   Normally, you don't need to manually create an instance of this class, and just 
+   Normally, you don't need to manually create an instance of this class, and just
    use the instance provided by the page. See the example in the \l Page documentation
-   for more details. 
+   for more details.
  */
 Item {
     id: actionBar
@@ -69,7 +69,7 @@ Item {
     property Action backAction
 
     /*!
-       The background color for the toolbar when the action bar's page is active. 
+       The background color for the toolbar when the action bar's page is active.
        By default this is the primary color defined in \l Theme::primaryColor
      */
     property color backgroundColor: Theme.primaryColor
@@ -110,8 +110,8 @@ Item {
     property bool hidden: false
 
     /*!
-       The maximum number of actions that can be displayed before they spill over 
-       into a drop-down menu. When using an action bar with a page, this inherits 
+       The maximum number of actions that can be displayed before they spill over
+       into a drop-down menu. When using an action bar with a page, this inherits
        from the global \l Toolbar::maxActionCount. If you are using an action bar
        for custom purposes outside of a toolbar, this defaults to \c 3.
      */
@@ -198,7 +198,7 @@ Item {
             NumberAnimation { duration: 200 }
         }
 
-        property bool show: backAction && backAction.visible    
+        property bool show: backAction && backAction.visible
     }
 
     Label {
@@ -218,6 +218,7 @@ Item {
 
         visible: customContentView.children.length === 0
 
+        textFormat: Text.PlainText
         text: actionBar.title
         style: "title"
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
@@ -238,8 +239,8 @@ Item {
         spacing: Units.dp(24)
 
         Repeater {
-            model: __internal.visibleActions.length > maxActionCount 
-                    ? maxActionCount - 1 
+            model: __internal.visibleActions.length > maxActionCount
+                    ? maxActionCount - 1
                     : __internal.visibleActions.length
 
             delegate: IconButton {
@@ -252,7 +253,7 @@ Item {
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                                   Theme.dark.iconColor)
                 size: iconSource == "icon://content/add" ? Units.dp(27) : Units.dp(24)
-                
+
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
         }
