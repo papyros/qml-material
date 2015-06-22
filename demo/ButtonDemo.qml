@@ -66,7 +66,7 @@ Item {
         }
     }
 
-    ActionButton {
+    MenuActionButton {
         anchors {
             right: parent.right
             bottom: parent.bottom
@@ -74,6 +74,32 @@ Item {
         }
 
         iconName: "content/add"
+        actions: [
+            Action {
+                iconName: "action/alarm"
+                backgroundColor: Palette.colors['blue']['500']
+            },
+            Action {
+                iconName: "action/alarm"
+                backgroundColor: Palette.colors['blue']['500']
+            },
+            Action {
+                iconName: "action/alarm"
+                backgroundColor: Palette.colors['blue']['500']
+            },
+            Action {
+                iconName: "action/alarm"
+                backgroundColor: Palette.colors['blue']['500']
+            },
+            Action {
+                iconName: "action/alarm"
+                backgroundColor: Palette.colors['blue']['500']
+            },
+            Action {
+                iconName: "action/alarm"
+                backgroundColor: Palette.colors['blue']['500']
+            }
+        ]
     }
 
     Snackbar {

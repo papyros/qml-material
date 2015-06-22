@@ -19,7 +19,7 @@ ApplicationWindow {
     ]
 
     property var basicComponents: [
-            "Button", "CheckBox", "Progress Bar", "Radio Button", 
+            "Button", "CheckBox", "Progress Bar", "Radio Button",
             "Slider", "Switch", "TextField"
     ]
 
@@ -243,7 +243,7 @@ ApplicationWindow {
                 }
             }
         }
-        
+
         onRejected: {
             // TODO set default colors again but we currently don't know what that is
         }

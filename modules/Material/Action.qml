@@ -81,8 +81,13 @@ QtObject {
 
     /*!
        Set to \c true to rotate the icon 90 degrees on mouseover.
-     */    
+     */
     property bool hoverAnimation: false
+
+    /*!
+       The color shown behind the action in some UIs, for example, in the \l MenuActionButton.
+     */
+    property color backgroundColor: "transparent"
 
     /*!
        Called when the UI representing the action is triggered. \c caller contains the UI element
