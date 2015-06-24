@@ -6,6 +6,7 @@ deployment.files += qmldir \
                     icons \
                     fonts \
                     ListItems \
+                    Tiles \
                     Transitions
 
 deployment.path = $$[QT_INSTALL_QML]/Material
