@@ -26,7 +26,7 @@ Object {
     property var window
 
     onColorChanged: {
-        if (__decorations) {
+        if (__decorations && color != "#000000") {
             __decorations.backgroundColor = color
         }
     }
@@ -43,7 +43,8 @@ Object {
 
         if (__decorations) {
             __decorations.window = window
-            __decorations.backgroundColor = color
+            if (color != "#000000")
+                __decorations.backgroundColor = color
         } else {
             console.log("Window decoration customization not supported.")
         }
