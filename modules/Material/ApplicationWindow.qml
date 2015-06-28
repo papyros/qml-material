@@ -83,8 +83,15 @@ Controls.ApplicationWindow {
      */
     property alias theme: __theme
 
+    property color decorationColor: Theme.primaryDarkColor
+
     AppTheme {
         id: __theme
+    }
+
+    WindowDecorations {
+        color: decorationColor
+        window: app
     }
 
     PageStack {
@@ -127,14 +134,14 @@ Controls.ApplicationWindow {
         if (clientSideDecorations)
             flags |= Qt.FramelessWindowHint
 
-        Units.pixelDensity = Qt.binding(function() { 
+        Units.pixelDensity = Qt.binding(function() {
             return Screen.pixelDensity
         });
 
         Device.type = Qt.binding(function () {
-            var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) + 
+            var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) +
                     Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
-            
+
             if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
                 Units.multiplier = 1;
                 return Device.phone;

@@ -47,6 +47,7 @@ Tooltip 0.1 Tooltip.qml
 View 0.1 View.qml
 Wave 0.1 Wave.qml
 Window 0.1 Window.qml
+WindowDecorations 0.1 WindowDecorations.qml
 singleton Device 0.1 Device.qml
 singleton MaterialAnimation 0.1 MaterialAnimation.qml
 singleton Palette 0.1 Palette.qml
