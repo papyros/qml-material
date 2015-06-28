@@ -69,6 +69,13 @@ Item {
     property Action backAction
 
     /*!
+       The background color of the window decoration when the action bar's page is active,
+       usually a darker version of the \l backgroundColor.
+       By default this is the primary dark color defined in \l Theme::primaryDarkColor
+     */
+    property color decorationColor: Theme.primaryDarkColor
+
+    /*!
        The background color for the toolbar when the action bar's page is active.
        By default this is the primary color defined in \l Theme::primaryColor
      */

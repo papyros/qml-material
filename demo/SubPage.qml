@@ -23,6 +23,9 @@ Page {
     id: page
     title: "Page Title that is very long to demonstrate eliding titles in ActionBar"
 
+    actionBar.backgroundColor: Palette.colors.grey['200']
+    actionBar.decorationColor: Palette.colors.grey['300']
+
     tabs: [
         // Each tab can have text and an icon
         {

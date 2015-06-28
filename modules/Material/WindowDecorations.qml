@@ -22,7 +22,7 @@ Object {
     id: windowDecorations
     property var __decorations
 
-    property color color
+    property color color: Theme.primaryDarkColor
     property var window
 
     onColorChanged: {

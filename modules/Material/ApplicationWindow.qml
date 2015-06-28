@@ -83,7 +83,7 @@ Controls.ApplicationWindow {
      */
     property alias theme: __theme
 
-    property color decorationColor: Theme.primaryDarkColor
+    property color decorationColor: __toolbar.decorationColor
 
     AppTheme {
         id: __theme
