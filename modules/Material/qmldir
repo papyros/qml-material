@@ -12,6 +12,7 @@ Card 0.1 Card.qml
 CheckBox 0.1 CheckBox.qml
 Dialog 0.1 Dialog.qml
 Dropdown 0.1 Dropdown.qml
+GridList 0.1 GridList.qml
 Icon 0.1 Icon.qml
 IconButton 0.1 IconButton.qml
 Ink 0.1 Ink.qml
