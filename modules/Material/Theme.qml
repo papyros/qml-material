@@ -140,5 +140,15 @@ Object {
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-LightItalic.ttf")}
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Thin.ttf")}
     FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-ThinItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-Bold.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-BoldItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-Italic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-Light.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-LightItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-Medium.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-MediumItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-Regular.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-Thin.ttf")}
+    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoMono-ThinItalic.ttf")}
 
 }
