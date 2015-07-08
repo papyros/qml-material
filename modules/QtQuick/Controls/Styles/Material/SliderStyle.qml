@@ -32,25 +32,41 @@ SliderStyle {
     property bool numericValueLabel: control.hasOwnProperty("numericValueLabel")
             ? control.numericValueLabel : false
 
+    property bool alwaysShowValueLabel: control.hasOwnProperty("alwaysShowValueLabel")
+            ? control.alwaysShowValueLabel : false
+
+    property string knobLabel: control.hasOwnProperty("knobLabel")
+            ? control.knobLabel : control.value
+
+    property int knobDiameter: control.hasOwnProperty("knobDiameter")
+            ? control.knobDiameter : Units.dp(32)
+
     property Component knob : Item {
-        implicitHeight: control.pressed || control.focus ? implicitWidth : 0
-        implicitWidth: control.pressed || control.focus
-                       ? knobLabel.implicitWidth > Units.dp(32)
-                         ? knobLabel.implicitWidth
-                         : Units.dp(32)
-                       : 0
+        implicitHeight: control.pressed || control.focus || control.alwaysShowValueLabel
+                ? knobDiameter : 0
+        implicitWidth: control.pressed || control.focus || control.alwaysShowValueLabel
+                ? knobDiameter : 0
 
         Label {
-            id: knobLabel
-            width: implicitWidth > Units.dp(32) ? implicitWidth : Units.dp(32)
-            height: width
+            anchors {
+                fill: parent
+                topMargin: Units.dp(4)
+                bottomMargin: Units.dp(2)
+                leftMargin: Units.dp(4)
+                rightMargin: Units.dp(4)
+            }
+
             horizontalAlignment: Qt.AlignHCenter
             verticalAlignment: Qt.AlignVCenter
-            text: control.valueInfo ? control.valueInfo(control.value) : control.value
+            text: knobLabel
+            fontSizeMode: Text.Fit
+            font.pixelSize: knobDiameter - Units.dp(19)
+            minimumPixelSize: Units.dp(6)
+            wrapMode: Text.WordWrap
             color: Theme.lightDark(styleColor,
-                                            Theme.light.textColor,
-                                            Theme.dark.textColor)
-            opacity: control.pressed || control.focus ? 1 : 0
+                                    Theme.light.textColor,
+                                    Theme.dark.textColor)
+            opacity: control.pressed || control.focus || control.alwaysShowValueLabel ? 1 : 0
             z: 1
 
             property color styleColor: control.hasOwnProperty("color")
