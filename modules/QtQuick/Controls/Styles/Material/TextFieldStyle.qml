@@ -32,10 +32,11 @@ TextFieldStyle {
     }
 
     font {
-        family: "Roboto"
+        family: echoMode == TextInput.Password ? "Default" : "Roboto"
         pixelSize: Units.dp(16)
     }
 
+    renderType: Text.QtRendering
     placeholderTextColor: "transparent"
     selectedTextColor: "white"
     selectionColor: control.hasOwnProperty("color") ? control.color : Theme.accentColor
