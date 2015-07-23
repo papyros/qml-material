@@ -4,7 +4,7 @@ import Material.ListItems 0.1 as ListItem
 
 ApplicationWindow {
     id: demo
-
+    visible: true
     title: "Material for QtQuick Demo"
 
     theme {
