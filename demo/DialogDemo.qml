@@ -4,65 +4,85 @@ import Material 0.1
 import Material.Extras 0.1
 
 Item {
-    property string currentText
 
     Dialog {
-        id: actionableDialog
+        id: alertNoTitleBar
+        width: Units.dp(300)
+        text: "Discard draft?"
+        hasActions: true
+        positiveButtonText: "discard"
+        negativeButtonText: "cancel"
+    }
+
+    Dialog {
+        id: alertWithTitleBar
+        width: Units.dp(300)
+        title: "Use Google's location service?"
+        text: "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running."
+        hasActions: true
+        positiveButtonText: "agree"
+        negativeButtonText: "disagree"
+    }
+
+    Dialog {
+        id: textFieldDialog
         title: "Change Text"
         hasActions: true
 
         TextField {
             id: optionText
-            text: currentText
             width: parent.width
             placeholderText: "New Option to Confirm"
         }
 
         onAccepted: {
-            currentText = optionText.text
+            dialogSnackBar.open("You entered: %1".arg(optionText.text))
         }
     }
 
     Dialog {
         id: scrollingDialog
-        title: "Choose Size"
-        //hasActions: false
+        title: "Phone ringtone"
 
         QuickControls.ExclusiveGroup {
             id: optionGroup
         }
 
         RadioButton {
-            text: "Small"
+            text: "None"
             checked: true
             exclusiveGroup: optionGroup
         }
         RadioButton {
-            text: "Normal"
+            text: "Callisto"
             exclusiveGroup: optionGroup
         }
         RadioButton {
-            text: "Big"
+            text: "Dione"
             exclusiveGroup: optionGroup
         }
         RadioButton {
-            text: "Gigantic"
+            text: "Ganymede"
             exclusiveGroup: optionGroup
         }
         RadioButton {
-            text: "Enourmous"
+            text: "Hangouts Call"
             exclusiveGroup: optionGroup
         }
         RadioButton {
-            text: "Titanic"
+            text: "Luna"
             exclusiveGroup: optionGroup
         }
         RadioButton {
-            text: "Humongous"
+            text: "Oberon"
             exclusiveGroup: optionGroup
         }
         RadioButton {
-            text: "Ginourmous"
+            text: "Phobos"
+            exclusiveGroup: optionGroup
+        }
+        RadioButton {
+            text: "Pyxis"
             exclusiveGroup: optionGroup
         }
     }
@@ -72,25 +92,43 @@ Item {
         spacing: Units.dp(20)
 
         Button {
-            text: "Show Action Dialog"
+            text: "Show alert without title bar"
             anchors.horizontalCenter: parent.horizontalCenter
             elevation: 1
             onClicked: {
-                actionableDialog.show()
+                alertNoTitleBar.show()
             }
         }
 
         Button {
-            text: "Show Scrolling Dialog"
+            text: "Show alert with title bar"
+            anchors.horizontalCenter: parent.horizontalCenter
+            elevation: 1
+            onClicked: {
+                alertWithTitleBar.show()
+            }
+        }
+
+        Button {
+            text: "Show text field dialog"
+            anchors.horizontalCenter: parent.horizontalCenter
+            elevation: 1
+            onClicked: {
+                textFieldDialog.show()
+            }
+        }
+
+        Button {
+            text: "Show scrolling dialog"
             anchors.horizontalCenter: parent.horizontalCenter
             elevation: 1
             onClicked: {
                 scrollingDialog.show()
             }
         }
+    }
 
-        Label {
-            text: currentText
-        }
+    Snackbar {
+        id: dialogSnackBar
     }
 }
