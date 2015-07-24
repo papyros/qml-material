@@ -6,13 +6,31 @@ import Material.Extras 0.1
 
 ColumnLayout {
 
-    DatePickerDialog {
+    Dialog {
         id: datePickerDialog
+        hasActions: true
+        contentMargins: 0
+        floatingActions: true
+
+        DatePicker {
+            frameVisible: false
+            dayAreaBottomMargin : Units.dp(48)
+        }
+
     }
 
-    DatePickerDialog {
+    Dialog {
         id: landscapeDatePickerDialog
-        datePicker.isLandscape: true
+        hasActions: true
+        contentMargins: 0
+        floatingActions: true
+
+        DatePicker {
+            frameVisible: false
+            dayAreaBottomMargin : Units.dp(48)
+            isLandscape: true
+        }
+
     }
 
     ColumnLayout {
