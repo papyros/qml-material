@@ -28,6 +28,36 @@ From the root of the repository, run:
 
 Now check out the `demo` folder to see how to use Material Design from QtQuick!
 
+### Material.Extras
+
+The material framework comes with a collection of useful non-UI-related extras in the `Material.Extras` module. This includes a Promises library, date and list utility functions, and an HTTP library based on Promises. Here are some examples of what you can do with these additional components:
+
+Promise:
+
+    import QtQuick 2.3
+    import Material.Extras 0.1
+
+    Item {
+        function makePromise() {
+            var myvalue = "";
+
+            var promise = new Promises.Promse();
+            promise.info.myinfo = "cool info";
+            promise.then(function( data, info ) {
+                    // send data to the next step
+                    return info.myinfo + " " + data;
+            });
+
+            promise.done(function( data, info ) {
+                    // do something with the data of resolve(...)
+            });
+
+            promise.error(function( error, info ) {
+                    // do something with the data of reject(...)
+            });
+        }
+    }
+
 ### Licensing
 
 QML Material is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.
