@@ -2,6 +2,7 @@ QML Material CHANGELOG
 ======================
 
  * [ProgressBar] Update progress bar and circle to work asynchronously
+ * Merge in the qml-extras repository for simplicity
 
 
 ### Version 0.1.0 (May 6, 2015)
@@ -16,7 +17,7 @@ QML Material CHANGELOG
    * [Button] Properly handle dark background for flat buttons
    * [Dialog] Active focus is passed off when Dialog closes
    * [Dialog] Add support for full-width content
-   * [Dialog] Correctly handle back button on Android devices 
+   * [Dialog] Correctly handle back button on Android devices
    * [Icon] Add a valid property to Icon and AwesomeIcon
    * [Icon] Support custom icons with an iconSource property
    * [Icon] Update the FontAwesome icon table
@@ -42,9 +43,9 @@ QML Material CHANGELOG
    * Organize the different demos into tabs
    * Display all the Material Design icons in the Icons demo
    * Update radio button demo with grouping
- * Testing 
+ * Testing
    * Add UI tests for the ActionBar component
- 
+
 
 ### Version 0.0.6 (April 16, 2015)
 

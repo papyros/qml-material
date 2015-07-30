@@ -15,7 +15,7 @@ Brought to you by the [Papyros development team](https://github.com/papyros/qml-
 
 ### Dependencies
 
-Requires Qt 5.4 or higher and [QML Extras](https://github.com/papyros/qml-extras) installed as QML module.
+Requires Qt 5.4 or higher.
 
 ### Installation
 
