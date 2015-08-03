@@ -116,7 +116,7 @@ View {
             visible: snackbar.buttonText != ""
             text: snackbar.buttonText
             context: "snackbar"
-            width: visible ? implictWidth : 0
+            width: visible ? implicitWidth : 0
             onClicked: snackbar.clicked()
         }
 
