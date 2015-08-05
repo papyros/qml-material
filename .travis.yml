@@ -11,12 +11,6 @@ install:
   - sudo apt-get -y install qt54tools
 
 before_script:
-  - source /opt/qt54/bin/qt54-env.sh
-  - git clone git://github.com/papyros/qml-extras.git
-  - pushd qml-extras
-  - qmake
-  - sudo make install
-  - popd
   - git clone git://github.com/papyros/docmaker.git
   - sudo pip install -r docmaker/requirements.txt
   - npm install -g jslint
