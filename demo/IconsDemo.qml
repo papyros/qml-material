@@ -5,6 +5,9 @@ import Material.Extras 0.1
 import Qt.labs.folderlistmodel 2.1
 
 Item {
+    id: section
+    state: "list"
+
     AwesomeIcon {
         id: awesomeIcon
         visible: false
@@ -73,32 +76,43 @@ Item {
 
                         Repeater {
                             model: folderModel
-                            delegate: Row {
-                                spacing: Units.dp(20)
-                                width: Units.dp(240)
+                            delegate: Item {
+                                width: section.state == "list" ? Units.dp(240) : icon.size
+                                height: icon.size
                                 visible: icon.valid
+                                Row {
+                                    spacing: Units.dp(20)
 
-                                Icon {
-                                    id: icon
-                                    name: {
-                                        var iconName = modelData.toLowerCase() + "/" + fileName
+                                    Icon {
+                                        id: icon
+                                        name: {
+                                            var iconName = modelData.toLowerCase() + "/" + fileName
 
-                                        var index = iconName.indexOf("svg")
+                                            var index = iconName.indexOf("svg")
 
-                                        return iconName.substring(0, index - 1)
+                                            return iconName.substring(0, index - 1)
+                                        }
+                                        size: section.state == "list" ? Units.dp(24) : Units.dp(64)
                                     }
-                                    anchors.verticalCenter: parent.verticalCenter
+
+                                    Label {
+                                        id: iconLabel
+                                        visible: section.state == "list"
+                                        text: {
+                                            var index = fileName.indexOf("svg")
+
+                                            return fileName.substring(0, index - 1).replace(/_/g, " ")
+                                        }
+                                    }
+
                                 }
-
-                                Label {
-                                    text: {
-                                        var index = fileName.indexOf("svg")
-
-                                        return fileName.substring(0, index - 1).replace(/_/g, " ")
+                                MouseArea {
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    Tooltip {
+                                        text: icon.name
+                                        mouseArea: parent
                                     }
-                                    width: parent.width - icon.width - parent.spacing
-                                    wrapMode: Text.Wrap
-                                    anchors.verticalCenter: parent.verticalCenter
                                 }
                             }
                         }
@@ -141,7 +155,6 @@ Item {
             }
 
             Flow {
-                id: grid
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -154,20 +167,34 @@ Item {
                 Repeater {
                     id: awesomeList
                     model: Object.keys(awesomeIcon.icons)
-                    delegate: Row {
-                        spacing: Units.dp(20)
-                        width: Units.dp(240)
+                    delegate: Item {
+                        width: section.state == "list" ? Units.dp(240) : icon.size
+                        height: icon.size
                         visible: icon.valid
+                        Row {
+                            spacing: Units.dp(20)
 
-                        Icon {
-                            id: icon
-                            name: "awesome/" + modelData
-                            anchors.verticalCenter: parent.verticalCenter
+                            Icon {
+                                id: icon
+                                name: "awesome/" + modelData
+                                size: section.state === "list" ? Units.dp(24) : Units.dp(64)
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+
+                            Label {
+                                visible: section.state === "list"
+                                text: modelData
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+
                         }
-
-                        Label {
-                            text: modelData
-                            anchors.verticalCenter: parent.verticalCenter
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            Tooltip {
+                                text: icon.name
+                                mouseArea: parent
+                            }
                         }
                     }
                 }
@@ -178,5 +205,33 @@ Item {
     Scrollbar {
         flickableItem: flickable
     }
+
+
+    ActionButton {
+        anchors {
+            right: parent.right
+            bottom: parent.bottom
+            margins: Units.dp(32)
+        }
+
+        iconName: section.state === "list" ? "action/view_module"
+                                           : "action/view_list"
+
+        onClicked: {
+            if (section.state === "list")
+                section.state = "module"
+            else
+                section.state = "list"
+        }
+    }
+
+    states: [
+        State {
+            name: "list"
+        },
+        State {
+            name: "module"
+        }
+    ]
 }
 
