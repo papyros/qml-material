@@ -61,7 +61,7 @@ Item {
                         visible: header.expanded
                     }
 
-                    Grid {
+                    Flow {
                         anchors {
                             left: parent.left
                             right: parent.right
@@ -69,14 +69,13 @@ Item {
                         }
 
                         visible: header.expanded
-                        rowSpacing: Units.dp(10)
-                        columns: Math.floor(width/Units.dp(240))
+                        spacing: Units.dp(10)
 
                         Repeater {
                             model: folderModel
                             delegate: Row {
                                 spacing: Units.dp(20)
-                                width: grid.width/grid.columns
+                                width: Units.dp(240)
                                 visible: icon.valid
 
                                 Icon {
@@ -141,7 +140,7 @@ Item {
                 visible: fontHeader.expanded
             }
 
-            Grid {
+            Flow {
                 id: grid
                 anchors {
                     left: parent.left
@@ -150,15 +149,14 @@ Item {
                 }
 
                 visible: fontHeader.expanded
-                rowSpacing: Units.dp(10)
-                columns: Math.floor(width/Units.dp(240))
+                spacing: Units.dp(10)
 
                 Repeater {
                     id: awesomeList
                     model: Object.keys(awesomeIcon.icons)
                     delegate: Row {
                         spacing: Units.dp(20)
-                        width: grid.width/grid.columns
+                        width: Units.dp(240)
                         visible: icon.valid
 
                         Icon {
