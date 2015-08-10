@@ -68,6 +68,6 @@ Controls.Action {
      */    
     property bool hoverAnimation: false
 
-	property alias text: action.name
-	property alias tooltip: action.summary
+    property alias text: action.name
+    property alias tooltip: action.summary
 }
