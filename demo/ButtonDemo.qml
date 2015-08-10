@@ -74,12 +74,12 @@ Item {
             margins: Units.dp(32)
         }
 
-		action: Action {
-			id: addContent
-			text: "&Copy"
-			shortcut: "Ctrl+C"
-			onTriggered: snackbar.open("We do actions too!")
-		}
+        action: Action {
+            id: addContent
+            text: "&Copy"
+            shortcut: "Ctrl+C"
+            onTriggered: snackbar.open("We do actions too!")
+        }
         iconName: "content/add"
     }
 
