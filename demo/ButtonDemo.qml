@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Material 0.1
+import QtQuick.Controls 1.2 as Controls
 
 Item {
 
@@ -73,6 +74,12 @@ Item {
             margins: Units.dp(32)
         }
 
+		action: Action {
+			id: addContent
+			text: "&Copy"
+			shortcut: "Ctrl+C"
+			onTriggered: snackbar.open("We do actions too!")
+		}
         iconName: "content/add"
     }
 
