@@ -21,15 +21,15 @@
 .import "promises.js" as Promises
 
 function post(path, args, timeout) {
-    return request(path, "POST", args, timeout)
+    return request(path, "POST", args, timeout);
 }
 
 function patch(path, args, timeout) {
-    return request(path, "POST", args, timeout)
+    return request(path, "POST", args, timeout);
 }
 
 function put(path, args, timeout) {
-    return request(path, "PUT", args, timeout)
+    return request(path, "PUT", args, timeout);
 }
 
 //function delete(path, options, args) {
@@ -37,35 +37,34 @@ function put(path, args, timeout) {
 //}
 
 function get(path, args, timeout) {
-    return request(path, "GET", args, timeout)
+    return request(path, "GET", args, timeout);
 }
 
 function request(path, call, args, timeout) {
-    var address = path
+    var address = path;
 
-    if (!args) args = {}
+    if (!args) args = {};
 
-    var options = args.options ? args.options : []
-    var headers = args.headers ? args.headers : {}
-    var body = args.body ? args.body : undefined
+    var options = args.options ? args.options : [];
+    var headers = args.headers ? args.headers : {};
+    var body = args.body ? args.body : undefined;
 
     if (options.length > 0)
-        address += (address.indexOf('?') == -1 ? "?" : "&") + options.join("&").replace(/ /g, "%20")
+        address += (address.indexOf('?') == -1 ? "?" : "&") + options.join("&").replace(/ /g, "%20");
 
-    print(call, address, body)
-    print("Headers", JSON.stringify(headers))
+    print(call, address, body);
+    print("Headers", JSON.stringify(headers));
 
-    var promise = new Promises.Promise()
-
+    var promise = new Promises.Promise();
     var doc = new XMLHttpRequest();
+    var timer;
 
-    var timer
     if(timeout !== undefined) {
-        console.log("Creating timer.")
-        timer = Qt.createQmlObject("import QtQuick 2.3; Timer {interval: " + timeout + "; repeat: false; running: true;}", Qt.application, "XHRTimer")
-        timer.triggered.connect(function(){
-            doc.hasTimeout = true
-            doc.abort()
+        console.log("Creating timer.");
+        timer = Qt.createQmlObject("import QtQuick 2.3; Timer {interval: " + timeout + "; repeat: false; running: true;}", Qt.application, "XHRTimer");
+        timer.triggered.connect(function() {
+            doc.hasTimeout = true;
+            doc.abort();
         });
     }
 
@@ -76,67 +75,69 @@ function request(path, call, args, timeout) {
             //print(doc.responseText)
 
             if (timer) {
-                console.log("Destroing timer.")
-                timer.destroy()
-                timer = undefined
+                console.log("Destroing timer.");
+                timer.destroy();
+                timer = undefined;
             }
 
-            var responseArray = doc.getAllResponseHeaders().split('\n')
-            var responseHeaders = {}
+            var responseArray = doc.getAllResponseHeaders().split('\n');
+            var responseHeaders = {};
+
             for (var i = 0; i < responseArray.length; i++) {
-                var header = responseArray[i]
-                var items = split(header, ':', 1)
-                responseHeaders[items[0]] = items[1]
+                var header = responseArray[i];
+                var items = split(header, ':', 1);
+                responseHeaders[items[0]] = items[1];
             }
 
             //print("Status:",doc.status, "for call", call, address, headers['If-None-Match'], responseHeaders['etag'])
 
-            promise.info.headers = responseHeaders
-            promise.info.status = doc.status
+            promise.info.headers = responseHeaders;
+            promise.info.status = doc.status;
 
             if (doc.status == 200 || doc.status == 201 || doc.status == 202 || doc.status === 304) {
-                print("Calling back with no error...")
-                promise.resolve(doc.responseText)
+                print("Calling back with no error...");
+                promise.resolve(doc.responseText);
             } else {
-                print("Calling back with error...")
+                print("Calling back with error...");
                 var error = doc.responseText;
                 if (doc.hasTimeout) {
-                    error = "Connection timeout."
+                    error = "Connection timeout.";
                 }
-                promise.reject(error)
+                promise.reject(error);
             }
         }
-    }
+    };
 
     doc.open(call, address, true);
     for (var key in headers) {
         //print(key + ": " + headers[key])
-        doc.setRequestHeader(key, headers[key])
+        doc.setRequestHeader(key, headers[key]);
     }
+
     if (body)
-        doc.send(body)
+        doc.send(body);
     else
         doc.send();
 
-    return promise
+    return promise;
 }
 
 function split(string, sep, limit) {
-    var array = []
+    var array = [];
     for (var i = 0; i < limit; i++) {
-        var index = string.indexOf(sep)
+        var index = string.indexOf(sep);
         if (index === -1) {
-            array.push(string)
-            string = undefined
+            array.push(string);
+            string = undefined;
             break;
         } else {
-            array.push(string.substring(0, index))
-            string = string.substring(index+1)
+            array.push(string.substring(0, index));
+            string = string.substring(index+1);
         }
     }
 
     if (string !== undefined)
-        array.push(string.trim())
+        array.push(string.trim());
 
-    return array
+    return array;
 }
