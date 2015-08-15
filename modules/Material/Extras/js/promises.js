@@ -34,85 +34,86 @@ function subclass(constructor, superConstructor) {
 // Promise class
 
 function Promise(delayed) {
-    this.thenHandlers = []
-    this.onDone = []
-    this.onError = []
-    this.info = {}
+    this.thenHandlers = [];
+    this.onDone = [];
+    this.onError = [];
+    this.info = {};
 
     if (delayed !== undefined)
-        this.code = delayed
-};
-
-Promise.prototype.then = function (handler) {
-    this.thenHandlers.push(handler)
-    return this
+        this.code = delayed;
 }
 
+Promise.prototype.then = function (handler) {
+    this.thenHandlers.push(handler);
+    return this;
+};
+
 Promise.prototype.done = function (onResolved) {
-    this.onDone.push(onResolved)
-    return this
+    this.onDone.push(onResolved);
+    return this;
 };
 
 Promise.prototype.error = function (onError) {
-    this.onError.push(onError)
-    return this
+    this.onError.push(onError);
+    return this;
 };
 
 Promise.prototype.resolve = function (value) {
+    var handler, i;
     //print("Success")
-    for (var i = 0; i < this.thenHandlers.length; i++) {
-        var handler = this.thenHandlers[i]
-        value = handler(value, this.info)
+    for (i = 0; i < this.thenHandlers.length; i++) {
+        handler = this.thenHandlers[i];
+        value = handler(value, this.info);
     }
 
-    for (var i = 0; i < this.onDone.length; i++) {
-        var handler = this.onDone[i]
-        handler(value, this.info)
+    for (i = 0; i < this.onDone.length; i++) {
+        handler = this.onDone[i];
+        handler(value, this.info);
     }
 };
 
 Promise.prototype.reject = function (error) {
     //print("Failure", error)
     for (var i = 0; i < this.onError.length; i++) {
-        var handler = this.onError[i]
-        handler(error, this.info)
+        var handler = this.onError[i];
+        handler(error, this.info);
     }
 };
 
 Promise.prototype.start = function(args) {
-    this.code(args)
-}
+    this.code(args);
+};
 
 // JoinedPromise class
 
-subclass(JoinedPromise, Promise)
+subclass(JoinedPromise, Promise);
 
 function JoinedPromise() {
     Promise.call(this);
 
-    this.promiseCount = 0
+    this.promiseCount = 0;
 }
 
 JoinedPromise.prototype.add = function(promise) {
-    this.promiseCount++
+    this.promiseCount++;
 
-    var join = this
+    var join = this;
 
     promise.done(function(data) {
-        join.promiseCount--
+        join.promiseCount--;
 
-        if (join.promiseCount == 0) {
-            print("All joined promises done!")
-            join.resolve()
+        if (join.promiseCount === 0) {
+            print("All joined promises done!");
+            join.resolve();
         }
-    })
+    });
 
     promise.error(function (error) {
-        join.promiseCount = -1
+        join.promiseCount = -1;
 
-        print("A joined promise failed, shortcutting to failure!")
-        join.reject(error)
-    })
+        print("A joined promise failed, shortcutting to failure!");
+        join.reject(error);
+    });
 
-    return this
-}
+    return this;
+};
