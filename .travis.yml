@@ -19,7 +19,7 @@ before_script:
   - popd
   - git clone git://github.com/papyros/docmaker.git
   - sudo pip install -r docmaker/requirements.txt
-  - npm install -g jslint
+  - npm install -g jshint
   - export PATH=$PATH:$(pwd)/docmaker
 
 script:
