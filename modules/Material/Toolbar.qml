@@ -107,12 +107,13 @@ View {
         if (page.rightSidebar && page.rightSidebar.actionBar)
             rightSidebarStack.pop()
 
-        page = pages.pop()
+        pages.pop()
+        page = pages[pages.length - 1]
     }
 
     function push(page) {
         stack.push(page.actionBar)
-        pages.push(toolbar.page)
+        pages.push(page)
 
         page.actionBar.toolbar = toolbar
         toolbar.page = page
