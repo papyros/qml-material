@@ -40,7 +40,7 @@ Item {
     property color errorColor: "#F44336"
 
     property alias model: listView.model
-    readonly property string selectedText: listView.currentItem.text
+    readonly property string selectedText: (listView.currentItem) ? listView.currentItem.text : ""
     property alias selectedIndex: listView.currentIndex
     property int maxVisibleItems: 4
 
@@ -90,7 +90,7 @@ Item {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter
 
-                text: listView.currentItem.text
+                text: (listView.currentItem) ? listView.currentItem.text : ""
                 style: "subheading"
                 elide: Text.ElideRight
             }
