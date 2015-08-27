@@ -51,9 +51,9 @@ Controls.RadioButton {
     Ink {
         id: inkArea
         anchors {
+            verticalCenter: parent.verticalCenter
             left: parent.left
             leftMargin: Units.dp(4)
-            verticalCenter: parent.verticalCenter
         }
 
         width: Units.dp(40)
