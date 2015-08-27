@@ -27,7 +27,7 @@ Item {
 	property var tabs
 	property int leftKeyline
 
-	property bool isLargeDevice: Device.type == Device.desktop || Device.type == Device.tablet 
+	property bool isLargeDevice: Device.type == Device.desktop || Device.type == Device.tablet
 
 	property bool fullWidth: isLargeDevice
 			? false : width - maxTabsWidth <= Units.dp(16) && tabsWidth <= width
@@ -60,7 +60,6 @@ Item {
 
     property bool darkBackground
 
-    property color color: darkBackground ? Theme.dark.textColor : Theme.light.textColor
     property color highlightColor: Theme.tabHighlightColor
     property color textColor: darkBackground ? Theme.dark.textColor : Theme.light.accentColor
 
@@ -116,7 +115,7 @@ Item {
             width: tabbar.fullWidth ? tabbar.width/repeater.count : implicitWidth
             height: tabbar.height
 
-            implicitWidth: isLargeDevice 
+            implicitWidth: isLargeDevice
             		? Math.min(2 * tabPadding + row.width, Units.dp(264))
             		: Math.min(Math.max(2 * tabPadding + row.width, tabMinWidth), Units.dp(264))
 
@@ -141,7 +140,7 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
 
                     name: modelData.hasOwnProperty("icon") ? modelData.icon : ""
-                    color: tabItem.selected 
+                    color: tabItem.selected
                             ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
                             : darkBackground ? Theme.dark.shade(0.6) : Theme.light.shade(0.6)
 
