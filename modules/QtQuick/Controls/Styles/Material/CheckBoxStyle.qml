@@ -76,11 +76,12 @@ CheckBoxStyle {
 
             border.width: Units.dp(2)
 
-            border.color: control.enabled ? control.checked ? style.color
-                                                            : style.darkBackground ? Theme.alpha("#fff", 0.70)
-                                                                                   : Theme.alpha("#000", 0.54)
-                                          : style.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                                 : Theme.alpha("#000", 0.26)
+            border.color: control.enabled
+                    ? control.checked ? style.color
+                                      : style.darkBackground ? Theme.alpha("#fff", 0.70)
+                                                             : Theme.alpha("#000", 0.54)
+                    : style.darkBackground ? Theme.alpha("#fff", 0.30)
+                                           : Theme.alpha("#000", 0.26)
 
             color: control.checked ? __internalColor : "transparent"
 
