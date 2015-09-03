@@ -22,7 +22,9 @@ import Material 0.1
 import Material.ListItems 0.1
 
 Item {
-	id: tabbar
+	id: tabBar
+
+    property bool centered: false
 
 	property var tabs
 	property int leftKeyline
@@ -69,40 +71,51 @@ Item {
     	print(maxTabsWidth, width, fullWidth)
     }
 
-	Row {
-		id: tabRow
-
-		height: parent.height
-		x: fullWidth ? 0 : Math.max(leftKeyline - tabPadding, 0)
-
-		Repeater {
-			id: repeater
-			model: tabs
-			delegate: tabDelegate
-		}
-	}
-
-	Rectangle {
-        id: selectionIndicator
+	Item {
         anchors {
+            top: parent.top
             bottom: parent.bottom
+            left: centered ? undefined : parent.left
+            leftMargin: fullWidth ? 0 : Math.max(leftKeyline - tabPadding, 0)
+            horizontalCenter: centered ? parent.horizontalCenter : undefined
         }
 
-        height: Units.dp(2)
-        color: tabbar.highlightColor
-        x: tabRow.children[tabbar.selectedIndex].x + tabRow.x
-        width: tabRow.children[tabbar.selectedIndex].width
+        width: tabRow.width
 
-        Behavior on opacity {
-            NumberAnimation { duration: 200 }
-        }
+        Row {
+    		id: tabRow
 
-        Behavior on x {
-            NumberAnimation { duration: 200 }
-        }
+    		height: parent.height
+    		
+    		Repeater {
+    			id: repeater
+    			model: tabs
+    			delegate: tabDelegate
+    		}
+    	}
 
-        Behavior on width {
-            NumberAnimation { duration: 200 }
+        Rectangle {
+            id: selectionIndicator
+            anchors {
+                bottom: parent.bottom
+            }
+
+            height: Units.dp(2)
+            color: tabBar.highlightColor
+            x: tabRow.children[tabBar.selectedIndex].x
+            width: tabRow.children[tabBar.selectedIndex].width
+
+            Behavior on opacity {
+                NumberAnimation { duration: 200 }
+            }
+
+            Behavior on x {
+                NumberAnimation { duration: 200 }
+            }
+
+            Behavior on width {
+                NumberAnimation { duration: 200 }
+            }
         }
     }
 
@@ -112,8 +125,8 @@ Item {
 		View {
             id: tabItem
 
-            width: tabbar.fullWidth ? tabbar.width/repeater.count : implicitWidth
-            height: tabbar.height
+            width: tabBar.fullWidth ? tabBar.width/repeater.count : implicitWidth
+            height: tabBar.height
 
             implicitWidth: isLargeDevice
             		? Math.min(2 * tabPadding + row.width, Units.dp(264))
@@ -122,12 +135,12 @@ Item {
 
             onImplicitWidthChanged: print("Tab", index, implicitWidth)
 
-            property bool selected: index == tabbar.selectedIndex
+            property bool selected: index == tabBar.selectedIndex
 
             Ink {
                 anchors.fill: parent
 
-                onClicked: tabbar.selectedIndex = index
+                onClicked: tabBar.selectedIndex = index
             }
 
             Row {

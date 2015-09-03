@@ -100,7 +100,7 @@ Item {
        The height of the extended content view.
      */
     readonly property int extendedHeight: extendedContentView.height +
-                                          (tabbar.visible ? tabbar.height : 0)
+                                          (tabBar.visible ? tabBar.height : 0)
 
     /*!
        Set to true to hide the action bar. This is used when displaying an
@@ -122,7 +122,13 @@ Item {
        The index of the selected tab. This will be an index from the \l tabs
        property.
      */
-    property alias selectedTab: tabbar.selectedIndex
+    property alias selectedTab: tabBar.selectedIndex
+
+    /*!
+       The tab bar displayed below the actions in the action bar. Exposed for
+       additional customization.
+     */
+    property alias tabBar: tabBar
 
     /*!
        An array of tab titles displayed under the page title in the action bar.
@@ -133,7 +139,7 @@ Item {
        When used in a page, this will be set to the tabs of the page, so set the \l Page::tabs
        property instead of changing this directly.
      */
-    property alias tabs: tabbar.tabs
+    property alias tabs: tabBar.tabs
 
     /*!
        The title displayed in the action bar. When used in a page, the title will
@@ -316,8 +322,8 @@ Item {
         height: childrenRect.height
     }
 
-    Tabbar {
-        id: tabbar
+    TabBar {
+        id: tabBar
 
         visible: tabs.length > 0
         darkBackground: Theme.isDarkColor(actionBar.backgroundColor)

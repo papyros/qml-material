@@ -126,6 +126,12 @@ FocusScope {
     property alias selectedTab: __actionBar.selectedTab
 
     /*!
+       The tab bar displayed below the actions in the action bar. Exposed for
+       additional customization.
+     */
+    property alias tabBar: __actionBar.tabBar
+
+    /*!
        An array of tab titles displayed under the page title in the action bar.
        Each item can either be a simple string or a Javascript object with a title
        property and an optional icon property with the name of an icon from the Google
