@@ -7,6 +7,9 @@ ApplicationWindow {
 
     title: "Material for QtQuick Demo"
 
+    // Necessary when loading the window from C++
+    visible: true
+
     theme {
         primaryColor: Palette.colors["blue"]["500"]
         primaryDarkColor: Palette.colors["blue"]["700"]
