@@ -29,7 +29,7 @@ Controls.StackView {
     id: stackView
 
     signal pushed(Item page)
-    signal popped()
+    signal popped(Item page)
     signal replaced(Item page)
 
     property int __lastDepth: 0
@@ -41,7 +41,7 @@ Controls.StackView {
             stackView.currentItem.forceActiveFocus()
 
             if (__lastDepth > stackView.depth) {
-                popped();
+                popped(stackView.currentItem);
             } else if (__lastDepth < stackView.depth) {
                 pushed(stackView.currentItem);
             } else {
