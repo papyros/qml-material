@@ -67,6 +67,8 @@ Item {
     Icon {
         id: icon
 
+        anchors.centerIn: parent
+
         source: iconButton.iconSource
         rotation: iconButton.hoverAnimation ? ink.containsMouse ? 90 : 0
                                             : 0
