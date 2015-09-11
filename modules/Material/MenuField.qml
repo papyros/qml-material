@@ -40,6 +40,7 @@ Item {
     property color errorColor: "#F44336"
 
     property alias model: listView.model
+    property string textRole
     readonly property string selectedText: listView.currentItem.text
     property alias selectedIndex: listView.currentIndex
     property int maxVisibleItems: 4
@@ -129,7 +130,7 @@ Item {
                 delegate: Standard {
                     id: delegateItem
 
-                    text: modelData
+                    text: textRole ? model[textRole] : modelData
 
                     onClicked: {
                         itemSelected(index)
