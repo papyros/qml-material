@@ -59,7 +59,6 @@ View {
     property alias tabs: tabbar.tabs
     property alias selectedTab: tabbar.selectedIndex
     property bool showBackButton
-    property var pages: []
 
     opacity: page && page.actionBar.hidden ? 0 : 1
 
@@ -101,19 +100,17 @@ View {
         }
     }
 
-    function pop() {
-        stack.pop()
+    function pop(page) {
+        stack.pop(page.actionBar)
 
         if (page.rightSidebar && page.rightSidebar.actionBar)
-            rightSidebarStack.pop()
+            rightSidebarStack.pop(page.rightSidebar.actionBar)
 
-        pages.pop()
-        page = pages[pages.length - 1]
+        toolbar.page = page
     }
 
     function push(page) {
         stack.push(page.actionBar)
-        pages.push(page)
 
         page.actionBar.toolbar = toolbar
         toolbar.page = page
@@ -130,9 +127,6 @@ View {
 
         if (page.rightSidebar && page.rightSidebar.actionBar)
             rightSidebarStack.replace(page.rightSidebar.actionBar)
-
-        pages.pop()
-        pages.push(toolbar.page)
     }
 
     Rectangle {
