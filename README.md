@@ -15,7 +15,7 @@ Brought to you by the [Papyros development team](https://github.com/papyros/qml-
 
 ### Dependencies
 
-Requires Qt 5.4 or higher and [QML Extras](https://github.com/papyros/qml-extras) installed as QML module.
+Requires Qt 5.4 or higher.
 
 ### Installation
 
@@ -27,6 +27,36 @@ From the root of the repository, run:
     $ sudo make install
 
 Now check out the `demo` folder to see how to use Material Design from QtQuick!
+
+### Material.Extras
+
+The material framework comes with a collection of useful non-UI-related extras in the `Material.Extras` module. This includes a Promises library, date and list utility functions, and an HTTP library based on Promises. Here are some examples of what you can do with these additional components:
+
+Promise:
+
+    import QtQuick 2.3
+    import Material.Extras 0.1
+
+    Item {
+        function makePromise() {
+            var myvalue = "";
+
+            var promise = new Promises.Promse();
+            promise.info.myinfo = "cool info";
+            promise.then(function( data, info ) {
+                    // send data to the next step
+                    return info.myinfo + " " + data;
+            });
+
+            promise.done(function( data, info ) {
+                    // do something with the data of resolve(...)
+            });
+
+            promise.error(function( error, info ) {
+                    // do something with the data of reject(...)
+            });
+        }
+    }
 
 ### Licensing
 

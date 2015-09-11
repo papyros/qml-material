@@ -1,0 +1,15 @@
+module Material.Extras
+
+AutomaticGrid 0.1 AutomaticGrid.qml
+CircleImage 0.1 CircleImage.qml
+CircleMask 0.1 CircleMask.qml
+ColumnFlow 0.1 ColumnFlow.qml
+Document 0.1 Document.qml
+Image 0.1 Image.qml
+Object 0.1 Object.qml
+
+DateUtils 0.1 js/dateutils.js
+Http 0.1 js/httplib.js
+ListUtils 0.1 js/listutils.js
+Promises 0.1 js/promises.js
+Utils 0.1 js/utils.js

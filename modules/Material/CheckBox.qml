@@ -45,12 +45,12 @@ Controls.CheckBox {
         anchors {
             verticalCenter: parent.verticalCenter
             left: parent.left
-            leftMargin: Units.dp(3)
+            leftMargin: Units.dp(4)
         }
 
-        width: Units.dp(48)
-        height: Units.dp(48)
-        color: checkBox.checked ? Theme.alpha(checkBox.color, 0.20) 
+        width: Units.dp(40)
+        height: Units.dp(40)
+        color: checkBox.checked ? Theme.alpha(checkBox.color, 0.20)
                                 : checkBox.darkBackground ? Qt.rgba(1,1,1,0.1)
                                                           : Qt.rgba(0,0,0,0.1)
         enabled: checkBox.enabled

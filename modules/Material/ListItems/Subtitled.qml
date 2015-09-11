@@ -123,7 +123,7 @@ BaseListItem {
 
                 Layout.fillWidth: true
 
-                visible: children.length > 0
+                visible: visibleChildren.length > 0
                 height: visible ? subLabel.implicitHeight : 0
             }
 
@@ -150,7 +150,7 @@ BaseListItem {
             Layout.preferredHeight: parent.height
             Layout.column: 4
 
-            visible: childrenRect.width > 0
+            visible: visibleChildren.length > 0
         }
     }
 }
