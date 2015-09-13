@@ -60,6 +60,7 @@ View {
     property alias selectedTab: tabbar.selectedIndex
     property bool showBackButton
     property var pages: []
+    property bool tabbarCentered: false
 
     opacity: page && page.actionBar.hidden ? 0 : 1
 
@@ -68,6 +69,7 @@ View {
                           : Theme.primaryColor
 
     implicitHeight: Units.gu(1)
+    implicitWidth: tabbar.implicitWidth
     height: targetHeight
     elevation: backgroundColor === page.color ? 0 : page.actionBar.elevation
     fullWidth: true
@@ -261,10 +263,11 @@ View {
         darkBackground: Theme.isDarkColor(toolbar.backgroundColor)
 
         anchors {
-            left: parent.left
-            right: parent.right
-            top: stack.bottom
-        }
-    }
+            horizontalCenter: tabbarCentered ? parent.horizontalCenter : undefined;
 
+            left: !tabbarCentered ? parent.left : undefined
+            right: !tabbarCentered ?parent.right : undefined
+            top: !tabbarCentered ? stack.bottom : undefined
+         }
+    }
 }
