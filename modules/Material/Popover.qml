@@ -37,6 +37,7 @@ PopupBase {
     id: popover
 
     visible: view.opacity > 0
+    closeOnResize: true
 
     property bool isBelow
     

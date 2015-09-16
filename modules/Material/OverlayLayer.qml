@@ -37,6 +37,9 @@ Rectangle {
             overlayLayer.currentOverlay.close()
     }
 
+    onWidthChanged: closeIfNecessary()
+    onHeightChanged: closeIfNecessary()
+
     states: State {
         name: "ShowState"
         when: overlayLayer.currentOverlay != null
@@ -52,6 +55,11 @@ Rectangle {
             duration: 300
             easing.type: Easing.InOutQuad
         }
+    }
+
+    function closeIfNecessary() {
+        if (overlayLayer.currentOverlay != null && overlayLayer.currentOverlay.closeOnResize)
+            overlayLayer.currentOverlay.close()
     }
 
     MouseArea {

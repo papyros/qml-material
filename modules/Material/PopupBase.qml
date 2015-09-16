@@ -34,6 +34,7 @@ FocusScope {
     property bool globalMouseAreaEnabled: true
     property bool dismissOnTap: true
     property bool showing: false
+    property bool closeOnResize: false
     property Item __lastFocusedItem
 
     signal opened

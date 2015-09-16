@@ -34,6 +34,7 @@ PopupBase {
     property alias internalView: view
 
     visible: view.opacity > 0
+    closeOnResize: true
 
     function open(caller, offsetX, offsetY) {
         __lastFocusedItem = Window.activeFocusItem
