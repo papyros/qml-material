@@ -86,7 +86,27 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-leftKeyline">leftKeyline : int</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
 				<a href="#id-qml-property-maxActionCount">maxActionCount : int</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-selectedTab">selectedTab : alias</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-tabBar">tabBar : alias</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-property-tabs">tabs : alias</a>
 			</li>
 		
 			<li>
@@ -185,11 +205,48 @@
 			
 		
 
+			<h5 id="id-qml-property-leftKeyline">leftKeyline : int</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
 			<h5 id="id-qml-property-maxActionCount">maxActionCount : int</h5>
 
 			
 				
                 <p>The maximum number of actions that can be displayed before they spill over into a drop-down menu. When using an action bar with a page, this inherits from the global <a href="qml-material-toolbar.html#id-qml-property-maxActionCount">Toolbar::maxActionCount</a>. If you are using an action bar for custom purposes outside of a toolbar, this defaults to <tt>3</tt>.</p>
+            
+			
+		
+
+			<h5 id="id-qml-property-selectedTab">selectedTab : alias</h5>
+
+			
+				
+                <p>The index of the selected tab. This will be an index from the <a href="qml-material-actionbar.html#id-qml-property-tabs">tabs</a> property.</p>
+            
+			
+		
+
+			<h5 id="id-qml-property-tabBar">tabBar : alias</h5>
+
+			
+				
+                <p>The tab bar displayed below the actions in the action bar. Exposed for additional customization.</p>
+            
+			
+		
+
+			<h5 id="id-qml-property-tabs">tabs : alias</h5>
+
+			
+				
+                <p>The model to use as the tab items in the action bar. This can either be a Javascript array wih an object for each tab, or it can be a TabView object to display tabs for.</p>
+                <p>If it is a Javascript array, each object represents one tab, and can either be a simple string (used as the tab title), or an object with title, iconName, and/or iconSource properties.</p>
+                <p>If it is a TabView component, the title of each Tab object will be used, as well as iconName and iconSource properties if present (as provided by the Material subclass of Tab).</p>
+                <p>When used in a page, this will be set to the tabs of the page, so set the <a href="qml-material-page.html#id-qml-property-tabs">Page::tabs</a> property instead of changing this directly.</p>
             
 			
 		

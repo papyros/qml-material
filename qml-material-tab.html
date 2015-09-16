@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Tabs | Material for QtQuick</title>
+  <title>Tab | Material for QtQuick</title>
   
   <meta name="description" content="">
 
@@ -33,11 +33,11 @@
 
     <div class="container">
 		<br>
-		<h3 class="header">Tabs</h3>
+		<h3 class="header">Tab</h3>
 	  	<div class="divider"></div>
 		<br>
 
-		Provides a tab bar for use in the toolbar. <a href="#description">More...</a>
+		Tab represents the content of a tab in a TabView. <a href="#description">More...</a>
 
 		<blockquote>
 			<code>import Material 0.1</code>
@@ -49,32 +49,12 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-color">color : color</a>
+				<a href="#id-qml-property-iconName">iconName : string</a>
 			</li>
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-darkBackground">darkBackground : bool</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-highlightColor">highlightColor : color</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-selectedIndex">selectedIndex : int</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-tabs">tabs : var</a>
-			</li>
-		
-			<li>
-				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-property-textColor">textColor : color</a>
+				<a href="#id-qml-property-iconSource">iconSource : string</a>
 			</li>
 		
 
@@ -88,7 +68,8 @@
 
 		
 			
-            <p outputclass="brief">Provides a tab bar for use in the toolbar.</p>
+            <p outputclass="brief">Tab represents the content of a tab in a TabView.</p>
+            <p>This extends the QtQuick.Controls Tab component to add <a href="qml-material-tab.html#id-qml-property-iconName">iconName</a> and <a href="qml-material-tab.html#id-qml-property-iconSource">iconSource</a> properties.</p>
         
 		
 
@@ -99,45 +80,24 @@
 
 		
 
-			<h5 id="id-qml-property-color">color : color</h5>
+			<h5 id="id-qml-property-iconName">iconName : string</h5>
 
 			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-property-darkBackground">darkBackground : bool</h5>
-
-			
-				<i class="light">No description provided.</i>
+				
+                <p>The icon displayed for the action. This can be a Material Design icon or an icon from FontAwesome. See <a href="qml-material-icon.html">Icon</a> from more details.</p>
+            
 			
 		
 
-			<h5 id="id-qml-property-highlightColor">highlightColor : color</h5>
+			<h5 id="id-qml-property-iconSource">iconSource : string</h5>
 
 			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-property-selectedIndex">selectedIndex : int</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-property-tabs">tabs : var</h5>
-
-			
-				<i class="light">No description provided.</i>
-			
-		
-
-			<h5 id="id-qml-property-textColor">textColor : color</h5>
-
-			
-				<i class="light">No description provided.</i>
+				
+                <p>A URL pointing to an image to display as the icon. By default, this is a special URL representing the icon named by <a href="qml-material-tab.html#id-qml-property-iconName">iconName</a> from the Material Design icon collection or FontAwesome. The icon will be colorized using the specificed color, unless you put ".color." in the filename, for example, "app-icon.color.svg".</p>
+                <p>
+                    <b>See also </b>
+                    <a href="qml-material-tab.html#id-qml-property-iconName">iconName</a> and <a href="qml-material-icon.html">Icon</a>.</p>
+            
 			
 		
 
