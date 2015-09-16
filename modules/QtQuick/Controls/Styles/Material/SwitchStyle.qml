@@ -36,15 +36,15 @@ SwitchStyle {
         radius: height/2
 
         elevation: 2
-        backgroundColor: control.enabled ? control.checked ? color  : darkBackground ? "#BDBDBD"
-                                                                                     : "#FAFAFA"
+        backgroundColor: control.enabled ? control.checked ? color : darkBackground ? "#BDBDBD"
+                                                                                    : "#FAFAFA"
                                          : darkBackground ? "#424242" : "#BDBDBD"
     }
 
     groove: Item {
         width: Units.dp(40)
         height: Units.dp(22)
-        
+
         Rectangle {
 
             anchors.centerIn: parent
@@ -55,10 +55,10 @@ SwitchStyle {
             radius: height/2
 
             color: control.enabled ? control.checked ? Theme.alpha(style.color, 0.5)
-                                                           : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
-                                                                            : Qt.rgba(0, 0, 0, 0.26)
-                                      : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
-                                                       : Qt.rgba(0, 0, 0, 0.12)
+                                                     : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
+                                                                      : Qt.rgba(0, 0, 0, 0.30)
+                                   : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
+                                                    : Qt.rgba(0, 0, 0, 0.12)
 
             Behavior on color {
 

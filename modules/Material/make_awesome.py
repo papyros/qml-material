@@ -6,7 +6,8 @@ import re
 
 # Don't include the gender icons from FontAwesome
 icon_blacklist = [
-    "genderless", "transgender.*", "neuter", "mars.*", "venus.*", "mercury.*"
+    "genderless", "transgender.*", "neuter", "mars.*", "venus.*", "mercury.*",
+    "intersex"
 ]
 
 js_template_header = """

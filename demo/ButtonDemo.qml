@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Material 0.1
+import QtQuick.Controls 1.2 as Controls
 
 Item {
 
@@ -34,7 +35,7 @@ Item {
             elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
 
-            onClicked: snackbar.open("That button is too wide!")
+            onClicked: snackbar.open("That button is wide, and so is this snackbar!")
         }
 
         Button {
@@ -44,7 +45,7 @@ Item {
             activeFocusOnPress: true
             anchors.horizontalCenter: parent.horizontalCenter
 
-            onClicked: snackbar.open("The text is really very very very long")
+            onClicked: snackbar.open("The text is really very very very very very long and now it needs to wrap, so this should show as two lines!")
         }
 
         Button {
@@ -69,10 +70,16 @@ Item {
     ActionButton {
         anchors {
             right: parent.right
-            bottom: parent.bottom
+            bottom: snackbar.top
             margins: Units.dp(32)
         }
 
+        action: Action {
+            id: addContent
+            text: "&Copy"
+            shortcut: "Ctrl+C"
+            onTriggered: snackbar.open("We do actions too!")
+        }
         iconName: "content/add"
     }
 

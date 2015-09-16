@@ -27,36 +27,44 @@ import Material 0.1
 QtObject {
     id: appTheme
 
-	/*!
+    /*!
        The accent theme color used in your app for a highlight color in many UI components.
        This is a helper property to set \l Theme::accentColor.
      */ 
-    property color accentColor: Theme.accentColor
+    property string accentColor
 
     /*!
        The default background color used throughout the app. This is a helper property 
        to set \l Theme::backgroundColor.
      */
-    property color backgroundColor: Theme.backgroundColor
-    property color tabHighlightColor: Theme.tabHighlightColor
+    property string backgroundColor
+    property string tabHighlightColor
 
 
     /*!
        The primary theme color used in your app for the toolbar and other primary UI elements. 
        This is a helper property to set \l Theme::primaryColor.
      */ 
-    property color primaryColor: Theme.primaryColor
+    property string primaryColor
 
     /*!
        A darker version of the primary theme color used by the system status bar and  
        window decorations. This is a helper property to set \l Theme::primaryDarkColor.
      */ 
-    property color primaryDarkColor: Theme.primaryDarkColor
+    property string primaryDarkColor: primaryColor
     
-    onPrimaryColorChanged: Theme.primaryColor = primaryColor
-    onPrimaryDarkColorChanged: Theme.primaryDarkColor = primaryDarkColor
-    onAccentColorChanged: Theme.accentColor = accentColor
-    onBackgroundColorChanged: Theme.backgroundColor = backgroundColor
-    onTabHighlightColorChanged: Theme.tabHighlightColor = tabHighlightColor
+    onPrimaryColorChanged: Theme.primaryColor = getColor(primaryColor, "500")
+    onPrimaryDarkColorChanged: Theme.primaryDarkColor = getColor(primaryDarkColor, "700")
+    onAccentColorChanged: Theme.accentColor = getColor(accentColor, "A200")
+    onBackgroundColorChanged: Theme.backgroundColor = getColor(backgroundColor, "500")
+    onTabHighlightColorChanged: Theme.tabHighlightColor = getColor(tabHighlightColor, "500")
+
+    function getColor(color, shade) {
+        if (Palette.colors.hasOwnProperty(color)) {
+            return Palette.colors[color][shade]
+        } else {
+            return color
+        }
+    }
 }
 

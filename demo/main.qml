@@ -7,10 +7,13 @@ ApplicationWindow {
 
     title: "Material for QtQuick Demo"
 
+    // Necessary when loading the window from C++
+    visible: true
+
     theme {
         primaryColor: Palette.colors["blue"]["500"]
         primaryDarkColor: Palette.colors["blue"]["700"]
-        accentColor: Palette.colors["teal"]["500"]
+        accentColor: Palette.colors["red"]["A200"]
         tabHighlightColor: "white"
     }
 
@@ -19,12 +22,12 @@ ApplicationWindow {
     ]
 
     property var basicComponents: [
-            "Button", "CheckBox", "Progress Bar", "Radio Button", 
+            "Button", "CheckBox", "Progress Bar", "Radio Button",
             "Slider", "Switch", "TextField"
     ]
 
     property var compoundComponents: [
-            "Bottom Sheet", "Dialog", "Forms", "List Items", "Page Stack", "Time Picker"
+            "Bottom Sheet", "Dialog", "Forms", "List Items", "Page Stack", "Time Picker", "Date Picker"
     ]
 
     property var sections: [ styles, basicComponents, compoundComponents ]
@@ -243,7 +246,7 @@ ApplicationWindow {
                 }
             }
         }
-        
+
         onRejected: {
             // TODO set default colors again but we currently don't know what that is
         }

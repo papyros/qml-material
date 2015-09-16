@@ -16,7 +16,8 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
+import QtQuick 2.3
+import QtQuick.Layouts 1.1
 import Material 0.1
 
 /*!
@@ -44,11 +45,11 @@ View {
     }
 
     anchors {
-        left: parent.left
+        left: fullWidth ? parent.left : undefined
         right: fullWidth ? parent.right : undefined
         bottom: parent.bottom
-        leftMargin: fullWidth ? 0 : Units.dp(16)
-        bottomMargin: opened ? fullWidth ? 0 : Units.dp(16) :  -snackbar.height
+        bottomMargin: opened ? 0 :  -snackbar.height
+        horizontalCenter: fullWidth ? undefined : parent.horizontalCenter
 
         Behavior on bottomMargin {
             NumberAnimation { duration: 300 }
@@ -56,12 +57,9 @@ View {
     }
     radius: fullWidth ? 0 : Units.dp(2)
     backgroundColor: "#323232"
-    height: Units.dp(48)
-    width: fullWidth ? parent.width
-                     : Math.min(Math.max(implicitWidth, Units.dp(288)), Units.dp(568))
+    height: snackLayout.height
+    width: fullWidth ? undefined : snackLayout.width
     opacity: opened ? 1 : 0
-    implicitWidth: buttonText == "" ? snackText.paintedWidth + Units.dp(48)
-                                    : snackText.paintedWidth + Units.dp(72) + snackButton.width
 
     Timer {
         id: timer
@@ -75,40 +73,55 @@ View {
         }
     }
 
-    Label {
-        id: snackText
+    RowLayout {
+        id: snackLayout
+
         anchors {
-            right: snackbar.buttonText == "" ? parent.right : snackButton.left
-            left: parent.left
-            top: parent.top
-            bottom: parent.bottom
-            leftMargin: Units.dp(24)
-            topMargin: Units.dp(16)
-            rightMargin: Units.dp(24)
+            verticalCenter: parent.verticalCenter
+            left: snackbar.fullWidth ? parent.left : undefined
+            right: snackbar.fullWidth ? parent.right : undefined
         }
-        text: snackbar.text
-        color: "white"
-    }
 
-    Button {
-        id: snackButton
-        opacity: snackbar.buttonText == "" ? 0 : 1
-        textColor: snackbar.buttonColor
-        text: snackbar.buttonText
-        context: "snackbar"
-        onClicked: snackbar.clicked()
-        anchors {
-            right: parent.right
-            //left: snackText.right
-            top: parent.top
-            bottom: parent.bottom
+        spacing: 0
 
-            // Recommended button touch target is 36dp
-            topMargin: Units.dp(6)
-            bottomMargin: Units.dp(6)
+        Item {
+            width: Units.dp(24)
+        }
 
-            // Normal margin is 24dp, but button itself uses 8dp margins
-            rightMargin: snackbar.buttonText == "" ? 0 : Units.dp(16)
+        Label {
+            id: snackText
+            Layout.fillWidth: true
+            Layout.minimumWidth: snackbar.fullWidth ? -1 : Units.dp(216) - snackButton.width
+            Layout.maximumWidth: snackbar.fullWidth ? -1 :
+                Math.min(Units.dp(496) - snackButton.width - middleSpacer.width - Units.dp(48),
+                         snackbar.parent.width - snackButton.width - middleSpacer.width - Units.dp(48))
+
+            Layout.preferredHeight: lineCount == 2 ? Units.dp(80) : Units.dp(48)
+            verticalAlignment: Text.AlignVCenter
+            maximumLineCount: 2
+            wrapMode: Text.Wrap
+            elide: Text.ElideRight
+            text: snackbar.text
+            color: "white"
+        }
+
+        Item {
+            id: middleSpacer
+            width: snackbar.buttonText == "" ? 0 : snackbar.fullWidth ? Units.dp(24) : Units.dp(48)
+        }
+
+        Button {
+            id: snackButton
+            textColor: snackbar.buttonColor
+            visible: snackbar.buttonText != ""
+            text: snackbar.buttonText
+            context: "snackbar"
+            width: visible ? implicitWidth : 0
+            onClicked: snackbar.clicked()
+        }
+
+        Item {
+            width: Units.dp(24)
         }
     }
 

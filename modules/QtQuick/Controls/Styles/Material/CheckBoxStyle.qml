@@ -29,7 +29,7 @@ CheckBoxStyle {
     property bool darkBackground: control.hasOwnProperty("darkBackground")
             ? control.darkBackground : false
 
-    spacing: control.text !== "" ? Units.dp(2) : 0
+    spacing: 0
 
     label: Item {
         implicitWidth: control.text !== "" ? text.implicitWidth + 2 : 0
@@ -57,30 +57,31 @@ CheckBoxStyle {
     indicator: Item {
         id: parentRect
 
-        implicitWidth: Units.dp(54)
-        implicitHeight: Units.dp(54)
+        implicitWidth: Units.dp(48)
+        implicitHeight: implicitWidth
 
         Rectangle {
             id: indicatorRect
 
             anchors.centerIn: parent
 
-            property color __internalColor: control.enabled 
+            property color __internalColor: control.enabled
                     ? style.color
                     : style.darkBackground ? Theme.alpha("#fff", 0.30)
                                            : Theme.alpha("#000", 0.26)
 
-            width: Units.dp(24)
-            height: Units.dp(24)
+            width: Units.dp(18)
+            height: width
             radius: Units.dp(2)
 
             border.width: Units.dp(2)
 
-            border.color: control.enabled ? control.checked ? style.color
-                                                            : style.darkBackground ? Theme.alpha("#fff", 0.70)
-                                                                                   : Theme.alpha("#000", 0.54)
-                                          : style.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                                 : Theme.alpha("#000", 0.26)
+            border.color: control.enabled
+                    ? control.checked ? style.color
+                                      : style.darkBackground ? Theme.alpha("#fff", 0.70)
+                                                             : Theme.alpha("#000", 0.54)
+                    : style.darkBackground ? Theme.alpha("#fff", 0.30)
+                                           : Theme.alpha("#000", 0.26)
 
             color: control.checked ? __internalColor : "transparent"
 
@@ -108,7 +109,7 @@ CheckBoxStyle {
 
                 opacity: control.checked ? 1 : 0
 
-                property int thickness: Units.dp(4)
+                property int thickness: Units.dp(3)
 
                 Behavior on opacity {
                     NumberAnimation {
@@ -134,7 +135,7 @@ CheckBoxStyle {
                 Rectangle {
                     anchors {
                         left: parent.left
-                        right: vert.left
+                        right: parent.right
                         bottom: parent.bottom
                     }
 
