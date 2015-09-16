@@ -36,12 +36,10 @@ ApplicationWindow {
 
     property string selectedComponent: styles[0]
 
-    initialPage: Page {
+    initialPage: TabbedPage {
         id: page
 
         title: "Demo"
-
-        tabs: navDrawer.enabled ? [] : sectionTitles
 
         actionBar.maxActionCount: navDrawer.enabled ? 3 : 4
 
@@ -125,71 +123,25 @@ ApplicationWindow {
             }
         }
 
-        TabView {
-            id: tabView
-            anchors.fill: parent
-            currentIndex: page.selectedTab
-            model: sections
+        Repeater {
+            model: !navDrawer.enabled ? sections : 0
 
-            delegate: Item {
-                width: tabView.width
-                height: tabView.height
-                clip: true
+            delegate: Tab {
+                title: sectionTitles[index]
 
                 property string selectedComponent: modelData[0]
+                property var section: modelData
 
-                Sidebar {
-                    id: sidebar
-
-                    expanded: !navDrawer.enabled
-
-                    Column {
-                        width: parent.width
-
-                        Repeater {
-                            model: modelData
-                            delegate: ListItem.Standard {
-                                text: modelData
-                                selected: modelData == selectedComponent
-                                onClicked: selectedComponent = modelData
-                            }
-                        }
-                    }
-                }
-                Flickable {
-                    id: flickable
-                    anchors {
-                        left: sidebar.right
-                        right: parent.right
-                        top: parent.top
-                        bottom: parent.bottom
-                    }
-                    clip: true
-                    contentHeight: Math.max(example.implicitHeight + 40, height)
-                    Loader {
-                        id: example
-                        anchors.fill: parent
-                        asynchronous: true
-                        visible: status == Loader.Ready
-                        // selectedComponent will always be valid, as it defaults to the first component
-                        source: {
-                            if (navDrawer.enabled) {
-                                return Qt.resolvedUrl("%1Demo.qml").arg(demo.selectedComponent.replace(" ", ""))
-                            } else {
-                                return Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
-                            }
-                        }
-                    }
-
-                    ProgressCircle {
-                        anchors.centerIn: parent
-                        visible: example.status == Loader.Loading
-                    }
-                }
-                Scrollbar {
-                    flickableItem: flickable
-                }
+                sourceComponent: tabDelegate
             }
+        }
+
+        Loader {
+            anchors.fill: parent
+            sourceComponent: tabDelegate
+
+            property var section: []
+            visible: navDrawer.enabled
         }
     }
 
@@ -249,6 +201,64 @@ ApplicationWindow {
 
         onRejected: {
             // TODO set default colors again but we currently don't know what that is
+        }
+    }
+
+    Component {
+        id: tabDelegate
+
+        Item {
+            Sidebar {
+                id: sidebar
+
+                expanded: !navDrawer.enabled
+
+                Column {
+                    width: parent.width
+
+                    Repeater {
+                        model: section
+                        delegate: ListItem.Standard {
+                            text: modelData
+                            selected: modelData == selectedComponent
+                            onClicked: selectedComponent = modelData
+                        }
+                    }
+                }
+            }
+            Flickable {
+                id: flickable
+                anchors {
+                    left: sidebar.right
+                    right: parent.right
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                clip: true
+                contentHeight: Math.max(example.implicitHeight + 40, height)
+                Loader {
+                    id: example
+                    anchors.fill: parent
+                    asynchronous: true
+                    visible: status == Loader.Ready
+                    // selectedComponent will always be valid, as it defaults to the first component
+                    source: {
+                        if (navDrawer.enabled) {
+                            return Qt.resolvedUrl("%1Demo.qml").arg(demo.selectedComponent.replace(" ", ""))
+                        } else {
+                            return Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
+                        }
+                    }
+                }
+
+                ProgressCircle {
+                    anchors.centerIn: parent
+                    visible: example.status == Loader.Loading
+                }
+            }
+            Scrollbar {
+                flickableItem: flickable
+            }
         }
     }
 }

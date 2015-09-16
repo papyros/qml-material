@@ -132,32 +132,15 @@ FocusScope {
     property alias tabBar: __actionBar.tabBar
 
     /*!
-       An array of tab titles displayed under the page title in the action bar.
-       Each item can either be a simple string or a Javascript object with a title
-       property and an optional icon property with the name of an icon from the Google
-       Material Design icon collection.
+       The model to use as the tab items in the action bar. This can either be a Javascript
+       array wih an object for each tab, or it can be a TabView object to display tabs for.
 
-       The following example highlights the different available tab items:
-
-       \qml
-       Page{
-           tabs: [
-               // Each tab can have text and an icon
-               {
-                   text: "Overview",
-                   icon: "action/home"
-               },
-
-               // You can also leave out the icon
-               {
-                   text:"Projects",
-               },
-
-               // Or just simply use a string
-               "Inbox"
-           ]
-        }
-       \endqml
+       If it is a Javascript array, each object represents one tab, and can either be a simple
+       string (used as the tab title), or an object with title, iconName, and/or iconSource 
+       properties.
+       
+       If it is a TabView component, the title of each Tab object will be used, as well as
+       iconName and iconSource properties if present (as provided by the Material subclass of Tab).
      */
     property alias tabs: __actionBar.tabs
 

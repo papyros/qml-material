@@ -65,11 +65,10 @@ Item {
     property color highlightColor: Theme.tabHighlightColor
     property color textColor: darkBackground ? Theme.dark.textColor : Theme.light.accentColor
 
-    height: Units.dp(48)
+    property bool isTabView: String(tabs).indexOf("TabView") != -1
 
-    onWidthChanged: {
-    	print(maxTabsWidth, width, fullWidth)
-    }
+    visible: isTabView ? tabs.count > 0 : tabs.length > 0
+    height: Units.dp(48)
 
 	Item {
         anchors {
@@ -89,7 +88,7 @@ Item {
     		
     		Repeater {
     			id: repeater
-    			model: tabs
+    			model: isTabView ? tabs.count : tabs
     			delegate: tabDelegate
     		}
     	}
@@ -137,6 +136,8 @@ Item {
 
             property bool selected: index == tabBar.selectedIndex
 
+            property var tab: isTabView ? tabs.getTab(index) : modelData
+
             Ink {
                 anchors.fill: parent
 
@@ -152,12 +153,14 @@ Item {
                 Icon {
                     anchors.verticalCenter: parent.verticalCenter
 
-                    name: modelData.hasOwnProperty("icon") ? modelData.icon : ""
+                    source: tabItem.tab.hasOwnProperty("iconSource") 
+                            ? tabItem.tab.iconSource : tabItem.tab.hasOwnProperty("iconName") 
+                            ? "icon://" + tabItem.tab.iconName : ""
                     color: tabItem.selected
                             ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
                             : darkBackground ? Theme.dark.shade(0.6) : Theme.light.shade(0.6)
 
-                    visible: name != ""
+                    visible: source != "" && source != "icon://"
 
                     Behavior on color {
                         ColorAnimation { duration: 200 }
@@ -167,7 +170,8 @@ Item {
                 Label {
                     id: label
 
-                    text: modelData.hasOwnProperty("text") ? modelData.text : modelData
+                    text: typeof(tabItem.tab) == "string" 
+                            ? tabItem.tab : tabItem.tab.title
                     color: tabItem.selected
                             ? darkBackground ? Theme.dark.textColor : Theme.light.accentColor
                             : darkBackground ? Theme.dark.shade(0.6) : Theme.light.shade(0.6)

@@ -19,43 +19,15 @@ import QtQuick 2.2
 import Material 0.1
 import Material.ListItems 0.1 as ListItem
 
-Page {
+TabbedPage {
     id: page
     title: "Page Title that is very long to demonstrate eliding titles in ActionBar"
 
-    tabs: [
-        // Each tab can have text and an icon
-        {
-            text: "Overview",
-            icon: "action/home"
-        },
+    Tab {
+        title: "Overview"
+        iconName: "action/home"
 
-        // You can also leave out the icon
-        {
-            text:"Projects",
-        },
-
-        // Or just simply use a string
-        "Inbox"
-    ]
-
-    // TabView is simply a customized ListView
-    // You can use any model/delegate for the tab contents,
-    // but a VisualItemModel works well
-    TabView {
-        id: tabView
-        anchors.fill: parent
-        currentIndex: page.selectedTab
-        model: tabs
-    }
-
-    VisualItemModel {
-        id: tabs
-
-        // Tab 1 "Overview"
         Rectangle {
-            width: tabView.width
-            height: tabView.height
             color: Palette.colors.red["200"]
 
             Button {
@@ -65,19 +37,17 @@ Page {
                 onClicked: page.selectedTab = 2
             }
         }
+    }
 
-        // Tab 2 "Projects"
-        Rectangle {
-            width: tabView.width
-            height: tabView.height
-            color: Palette.colors.purple["200"]
-        }
+    Tab {
+        title: "Projects"
 
-        // Tab 3 "Inbox"
-        Rectangle {
-            width: tabView.width
-            height: tabView.height
-            color: Palette.colors.orange["200"]
-        }
+        Rectangle { color: Palette.colors.purple["200"] }
+    }
+
+    Tab {
+        title: "Inbox"
+
+        Rectangle { color: Palette.colors.orange["200"] }
     }
 }
