@@ -45,9 +45,9 @@ ApplicationWindow {
 
         actions: [
             Action {
-                iconName: "action/search"
-                name: "Search"
-                enabled: false
+                iconName: "alert/warning"
+                name: "Dummy error"
+                onTriggered: demo.showError("Something went wrong", "Do you want to retry?", "Close", true)
             },
 
             Action {
