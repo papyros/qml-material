@@ -27,7 +27,7 @@ ApplicationWindow {
     ]
 
     property var compoundComponents: [
-            "Bottom Sheet", "Dialog", "Forms", "List Items", "Page Stack", "Time Picker", "Date Picker"
+            "Bottom Sheet", "Dialog", "Full-Screen Dialog", "Forms", "List Items", "Page Stack", "Time Picker", "Date Picker"
     ]
 
     property var sections: [ styles, basicComponents, compoundComponents ]
@@ -244,9 +244,9 @@ ApplicationWindow {
                     // selectedComponent will always be valid, as it defaults to the first component
                     source: {
                         if (navDrawer.enabled) {
-                            return Qt.resolvedUrl("%1Demo.qml").arg(demo.selectedComponent.replace(" ", ""))
+                            return Qt.resolvedUrl("%1Demo.qml").arg(demo.selectedComponent.replace(/[\s-]/g, ""))
                         } else {
-                            return Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(" ", ""))
+                            return Qt.resolvedUrl("%1Demo.qml").arg(selectedComponent.replace(/[\s-]/g, ""))
                         }
                     }
                 }

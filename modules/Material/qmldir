@@ -13,6 +13,7 @@ CheckBox 0.1 CheckBox.qml
 DatePicker 0.1 DatePicker.qml
 Dialog 0.1 Dialog.qml
 Dropdown 0.1 Dropdown.qml
+FullScreenDialog 0.1 FullScreenDialog.qml
 Icon 0.1 Icon.qml
 IconButton 0.1 IconButton.qml
 Ink 0.1 Ink.qml
