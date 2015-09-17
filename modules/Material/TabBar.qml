@@ -132,8 +132,6 @@ Item {
             		: Math.min(Math.max(2 * tabPadding + row.width, tabMinWidth), Units.dp(264))
 
 
-            onImplicitWidthChanged: print("Tab", index, implicitWidth)
-
             property bool selected: index == tabBar.selectedIndex
 
             property var tab: isTabView ? tabs.getTab(index) : modelData
