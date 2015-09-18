@@ -26,7 +26,7 @@ Item {
 
     property bool centered: false
 
-	property var tabs
+	property var tabs: []
 	property int leftKeyline
 
 	property bool isLargeDevice: Device.type == Device.desktop || Device.type == Device.tablet
