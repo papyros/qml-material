@@ -26,7 +26,7 @@ Item {
 
     property bool centered: false
 
-	property var tabs
+	property var tabs: []
 	property int leftKeyline
 
 	property bool isLargeDevice: Device.type == Device.desktop || Device.type == Device.tablet
@@ -131,8 +131,6 @@ Item {
             		? Math.min(2 * tabPadding + row.width, Units.dp(264))
             		: Math.min(Math.max(2 * tabPadding + row.width, tabMinWidth), Units.dp(264))
 
-
-            onImplicitWidthChanged: print("Tab", index, implicitWidth)
 
             property bool selected: index == tabBar.selectedIndex
 
