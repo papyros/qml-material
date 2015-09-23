@@ -79,6 +79,7 @@ Controls.RadioButton {
         onClicked: {
             if(radioButton.canToggle || !radioButton.checked)
                 radioButton.checked = !radioButton.checked
+            radioButton.clicked()
         }
     }
 }

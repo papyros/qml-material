@@ -58,6 +58,9 @@ Controls.CheckBox {
         circular: true
         centered: true
 
-        onClicked: checkBox.checked = !checkBox.checked
+        onClicked: {
+          checkBox.checked = !checkBox.checked
+          checkBox.clicked()
+        }
     }
 }
