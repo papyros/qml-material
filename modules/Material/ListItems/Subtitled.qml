@@ -150,7 +150,7 @@ BaseListItem {
             Layout.preferredHeight: parent.height
             Layout.column: 4
 
-            visible: visibleChildren.length > 0
+            visible: children.length > 0
         }
     }
 }
