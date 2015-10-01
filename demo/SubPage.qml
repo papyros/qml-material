@@ -50,4 +50,10 @@ TabbedPage {
 
         Rectangle { color: Palette.colors.orange["200"] }
     }
+
+    Tab {
+        title: "Disabled Tab"
+        enabled: false
+        Rectangle { color: Palette.colors.purple["200"] }
+    }
 }
