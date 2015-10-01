@@ -138,7 +138,7 @@ Item {
 
             Ink {
                 anchors.fill: parent
-
+                enabled: tab.enabled
                 onClicked: tabBar.selectedIndex = index
             }
 
@@ -156,7 +156,7 @@ Item {
                             ? "icon://" + tabItem.tab.iconName : ""
                     color: tabItem.selected
                             ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
-                            : darkBackground ? Theme.dark.shade(0.6) : Theme.light.shade(0.6)
+                            : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
 
                     visible: source != "" && source != "icon://"
 
@@ -172,7 +172,7 @@ Item {
                             ? tabItem.tab : tabItem.tab.title
                     color: tabItem.selected
                             ? darkBackground ? Theme.dark.textColor : Theme.light.accentColor
-                            : darkBackground ? Theme.dark.shade(0.6) : Theme.light.shade(0.6)
+                            : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
 
                     style: "body2"
                     font.capitalization: Font.AllUppercase
