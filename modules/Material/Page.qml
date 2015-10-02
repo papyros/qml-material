@@ -149,6 +149,8 @@ FocusScope {
      */
     property string title
 
+    signal backReleased(var event)
+
     /*!
        Pop this page from the page stack. This does nothing if this page is not
        the current page on the page stack.
@@ -178,8 +180,9 @@ FocusScope {
                 __actionBar.closeOverflowMenu();
                 event.accepted = true;
             } else {
+                backReleased(event);
                 // or pop the page from the page stack
-                if (pop()) {
+                if (!event.accepted && pop()) {
                     event.accepted = true;
                 }
             }
