@@ -26,6 +26,11 @@ TabbedPage {
     actionBar.backgroundColor: Palette.colors.grey['200']
     actionBar.decorationColor: Palette.colors.grey['300']
 
+    onGoBack: {
+        confirmationDialog.show()
+        event.accepted = true
+    }
+
     Tab {
         title: "Overview"
         iconName: "action/home"
@@ -58,5 +63,15 @@ TabbedPage {
         title: "Disabled Tab"
         enabled: false
         Rectangle { color: Palette.colors.purple["200"] }
+    }
+
+    Dialog {
+        id: confirmationDialog
+
+        title: "Do you want to go back?"
+        positiveButtonText: "Go Back"
+        negativeButtonText: "Cancel"
+
+        onAccepted: page.forcePop()
     }
 }
