@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 ROOT=$1
 VERSION=$2
