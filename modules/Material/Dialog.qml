@@ -18,7 +18,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.4
 import QtQuick.Layouts 1.1
 import Material 0.1
 import Material.Extras 0.1

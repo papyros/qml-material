@@ -61,7 +61,7 @@ function request(path, call, args, timeout) {
 
     if(timeout !== undefined) {
         console.log("Creating timer.");
-        timer = Qt.createQmlObject("import QtQuick 2.3; Timer {interval: " + timeout + "; repeat: false; running: true;}", Qt.application, "XHRTimer");
+        timer = Qt.createQmlObject("import QtQuick 2.4; Timer {interval: " + timeout + "; repeat: false; running: true;}", Qt.application, "XHRTimer");
         timer.triggered.connect(function() {
             doc.hasTimeout = true;
             doc.abort();
