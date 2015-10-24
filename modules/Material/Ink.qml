@@ -36,7 +36,7 @@ MouseArea {
     property int startRadius: circular ? width/10 : width/6
     property int endRadius
 
-    property Item currentCircle
+    property Item lastCircle
     property color color: Qt.rgba(0,0,0,0.1)
 
     property bool circular: false
@@ -53,19 +53,18 @@ MouseArea {
     }
 
     onCanceled: {
-        currentCircle.removeCircle();
+        lastCircle.removeCircle();
     }
 
     onReleased: {
-        currentCircle.removeCircle();
+        lastCircle.removeCircle();
     }
 
     function createTapCircle(x, y) {
         endRadius = centered ? width/2 : radius(x, y)
         showFocus = false
 
-        if (!currentCircle)
-            currentCircle = tapCircle.createObject(view, {
+        lastCircle = tapCircle.createObject(view, {
                                                        "circleX": centered ? width/2 : x,
                                                        "circleY": centered ? height/2 : y
                                                    });
