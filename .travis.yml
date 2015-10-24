@@ -3,7 +3,7 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 
 install:
-  - sudo add-apt-repository -y ppa:beineri/opt-qt541
+  - sudo add-apt-repository -y ppa:beineri/opt-qt542
   - sudo apt-get update
   - sudo apt-get -y install pep8 pyflakes python python-pip npm
   - sudo apt-get -y install qt54declarative

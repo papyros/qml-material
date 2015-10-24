@@ -137,7 +137,7 @@ Rectangle {
             compare(action4Spy.count, 0)
             mouseClick(button, 10, 10)
 
-            wait(400) // Wait for the overflow to fully open
+            wait(800) // Wait for the overflow to fully open
 
             verify(overflow.showing)
             mouseClick(listItem, 10, 10)
