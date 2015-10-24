@@ -33,14 +33,20 @@ SliderStyle {
             ? control.numericValueLabel : false
 
     property Component knob : Item {
-        implicitHeight: control.pressed || control.focus ? Units.dp(32) : 0
-        implicitWidth: control.pressed || control.focus ? Units.dp(32) : 0
+        implicitHeight: control.pressed || control.focus ? implicitWidth : 0
+        implicitWidth: control.pressed || control.focus
+                       ? knobLabel.implicitWidth > Units.dp(32)
+                         ? knobLabel.implicitWidth
+                         : Units.dp(32)
+                       : 0
 
         Label {
-            anchors.fill: parent
+            id: knobLabel
+            width: implicitWidth > Units.dp(32) ? implicitWidth : Units.dp(32)
+            height: width
             horizontalAlignment: Qt.AlignHCenter
             verticalAlignment: Qt.AlignVCenter
-            text: control.value
+            text: control.valueInfo(control.value)
             color: Theme.lightDark(styleColor,
                                             Theme.light.textColor,
                                             Theme.dark.textColor)
