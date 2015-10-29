@@ -30,6 +30,7 @@ Item {
     property alias sourceSize: image.sourceSize
     property alias asynchronous: image.asynchronous
     property alias cache: image.cache
+    property alias fillMode: image.fillMode
 
     width: image.implicitWidth
     height: image.implicitHeight
