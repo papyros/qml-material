@@ -30,7 +30,7 @@ MouseArea {
     id: view
 
     clip: true
-    hoverEnabled: enabled
+    hoverEnabled: !Device.hasTouchscreen
     z: 2
 
     property int startRadius: circular ? width/10 : width/6
@@ -95,7 +95,7 @@ MouseArea {
 
         anchors.fill: parent
 
-        color: Theme.isDarkColor(focusColor) && focusColor.a > 0    
+        color: Theme.isDarkColor(focusColor) && focusColor.a > 0
                 ? Qt.rgba(0,0,0,0.2) : Qt.rgba(0,0,0,0.1)
 
         opacity: showFocus && focused ? 1 : 0

@@ -37,7 +37,7 @@ Object {
     readonly property int desktop: 3
     readonly property int tv: 4
     readonly property int unknown: 5 //it's either bigger than tv or smaller than phone
-    
+
     readonly property string name: {
         switch (type) {
             case 0:
@@ -54,7 +54,7 @@ Object {
                 return "device";
         }
     }
-    
+
     readonly property string iconName: {
         switch (type) {
             case 0:
@@ -73,4 +73,7 @@ Object {
     }
 
     readonly property bool isMobile: type == phone || type == phablet || type == tablet
+
+    readonly property bool hasMouse: !isMobile
+    readonly property bool hasTouchscreen: isMobile
 }
