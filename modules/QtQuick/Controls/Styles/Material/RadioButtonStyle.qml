@@ -73,7 +73,10 @@ RadioButtonStyle {
             }
 
             Rectangle {
-                anchors.centerIn: parent
+                anchors {
+                    centerIn: parent
+                    alignWhenCentered: false
+                }
                 implicitWidth: control.checked ? Units.dp(10) : 0
                 implicitHeight: control.checked ? Units.dp(10) : 0
                 color: control.enabled ? style.color
