@@ -18,7 +18,7 @@
  */
 
 .pragma library
-.import QtQuick 2.0 as QtQuick
+.import QtQuick 2.4 as QtQuick
 
 function generateID() {
     var guid = (function() {

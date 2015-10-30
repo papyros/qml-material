@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
+import QtQuick 2.4
 import QtQuick.Window 2.2
 import Material 0.1
 import Material.Extras 0.1
@@ -74,13 +74,13 @@ PopupBase {
             dropdown.y = position.y + caller.height - dropdown.height
         }
 
-        if(dropdown.y + height > root.height)
-            offsetY = -((globalPos.y + height + Units.dp(16)) - root.height)
-        if(dropdown.x + width > root.width)
-            offsetX = -((globalPos.x + width + Units.dp(16)) - root.width)
-
         dropdown.x += offsetX
         dropdown.y += offsetY
+
+        if(dropdown.y + height > root.height)
+            dropdown.y += -((dropdown.y + height + Units.dp(16)) - root.height)
+        if(dropdown.x + width > root.width)
+            dropdown.x += -((dropdown.x + width + Units.dp(16)) - root.width)
 
         showing = true
         parent.currentOverlay = dropdown
@@ -123,8 +123,6 @@ PopupBase {
             PropertyChanges {
                 target: view
                 opacity: 0
-                width: 0
-                height: 0
             }
         },
 
