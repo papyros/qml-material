@@ -32,6 +32,8 @@ import QtGraphicalEffects 1.0
  */
 Controls.Button {
     id: button
+    
+    visible: action ? action.visible : true
 
     /*!
        The color of the action button. By default, this is the accent color of your
@@ -57,7 +59,7 @@ Controls.Button {
        The name of the icon to display in the action button, selected from the Material
        Design icon collection by Google.
      */
-    property string iconName
+    property string iconName: action ? action.iconName : ""
 
     /*!
        Floating action buttons come in two sizes:
