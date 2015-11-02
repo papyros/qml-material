@@ -121,8 +121,11 @@ Controls.ApplicationWindow {
         id: overlayLayer
     }
 
-    width: Units.dp(800)
-    height: Units.dp(600)
+    // Trust me, this is for the greater good
+    // The behavior on the desktop will remain unmodified, while
+    // the application will be resized automatically on mobile devices
+    width: 0
+    height: 0
 
     Dialog {
         id: errorDialog
@@ -202,5 +205,16 @@ Controls.ApplicationWindow {
             return Device.type === Device.phone || Device.type === Device.phablet
                     ? Units.dp(48) : Device.type == Device.tablet ? Units.dp(56) : Units.dp(64)
         })
+        
+        // Show the application maximized on a mobile device, the window will be resized automatically.
+        // On the desktop devices, everything will work exactly as it did before
+        if (Device.isMobile) {
+            showMaximized()
+        } else {
+            width  = Units.dp (800)
+            height = Units.dp (600)
+
+            showNormal()
+        }
     }
 }
