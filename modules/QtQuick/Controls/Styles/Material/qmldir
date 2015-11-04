@@ -9,3 +9,4 @@ ToolButtonStyle.qml 0.1 ToolButtonStyle.qml
 RadioButtonStyle 0.1 RadioButtonStyle.qml
 SliderStyle 0.1 SliderStyle.qml
 TextFieldStyle 0.1 TextFieldStyle.qml
+TextHandle 0.1 TextHandle.qml

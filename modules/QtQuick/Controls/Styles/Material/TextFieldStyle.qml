@@ -42,6 +42,22 @@ TextFieldStyle {
     selectionColor: control.hasOwnProperty("color") ? control.color : Theme.accentColor
     textColor: Theme.light.textColor
 
+    //make sure to QT_QUICK_CONTROLS_MOBILE=ON to properly test this
+    property Component __editMenu: MaterialEditMenu {
+        id: menu
+    }
+
+    property Component __cursorHandle: TextHandle {
+        side: control.selectionEnd - control.selectionStart
+        color: Palette.colors["blue"]["400"]
+    }
+
+    property Component __selectionHandle: TextHandle {
+        side: control.selectionStart - control.selectionEnd
+        color: Palette.colors["blue"]["400"]
+    }
+
+
     background : Item {
         id: background
 
