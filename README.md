@@ -34,29 +34,31 @@ The material framework comes with a collection of useful non-UI-related extras i
 
 Promise:
 
-    import QtQuick 2.3
-    import Material.Extras 0.1
+```qml
+import QtQuick 2.3
+import Material.Extras 0.1
 
-    Item {
-        function makePromise() {
-            var myvalue = "";
+Item {
+    function makePromise() {
+        var myvalue = "";
 
-            var promise = new Promises.Promse();
-            promise.info.myinfo = "cool info";
-            promise.then(function( data, info ) {
-                    // send data to the next step
-                    return info.myinfo + " " + data;
-            });
+        var promise = new Promises.Promse();
+        promise.info.myinfo = "cool info";
+        promise.then(function( data, info ) {
+                // send data to the next step
+                return info.myinfo + " " + data;
+        });
 
-            promise.done(function( data, info ) {
-                    // do something with the data of resolve(...)
-            });
+        promise.done(function( data, info ) {
+                // do something with the data of resolve(...)
+        });
 
-            promise.error(function( error, info ) {
-                    // do something with the data of reject(...)
-            });
-        }
+        promise.error(function( error, info ) {
+                // do something with the data of reject(...)
+        });
     }
+}
+```
 
 ### Licensing
 
