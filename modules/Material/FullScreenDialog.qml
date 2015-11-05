@@ -30,14 +30,14 @@ PopupBase {
         // orientation > 1 means landscape, orientation < 1 means portrait
         var orientation = parent.width / parent.height
         if (orientation >= 1 /*landscape*/) {
-            if (parent.width / Units.multiplier <= _minimumWidth) {
+            if (Units.dp(parent.width) <= _minimumWidth) {
                 width = parent.width
             } else {
                 width = parent.width / 2
             }
             height = parent.height
         } else {
-            if (parent.height / Units.multiplier < _minimumHeight) {
+            if (Units.dp(parent.height) < _minimumHeight) {
                 width = parent.width
                 height = parent.height
             } else {
