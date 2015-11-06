@@ -21,6 +21,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
+import QtQuick.Window 2.1
 import QtQuick.Layouts 1.0
 import Material 0.1
 
@@ -49,19 +50,9 @@ Item {
 
             Behavior on x { NumberAnimation { duration: 500; easing.type: Easing.InOutQuad } }
 
-            Component.onCompleted: {
-                var par = control
-                //heuristic: if a flickable is found in the parents,
-                //reparent to it, so it scrolls together
-                while (par.parent && par.parent.contentY === undefined) {
-                    par = par.parent
-                }
-
-                popup.parent = par
-            }
+            parent: Window.contentItem
 
             function popup(startRect) {
-//                 var selectedTextTopPadding = Units.dp(8);
                 var mapped = parent.mapFromItem(input, startRect.x, startRect.y);
                 var mapWidget = parent.mapFromItem(input.parent, input.x, input.y, input.width, input.height);
 
@@ -178,7 +169,7 @@ Item {
         id: popupTimer
         interval: 200
         onTriggered: {
-            if (input.canPaste || selectionStart !== selectionEnd) {
+            if (!root.editing && (input.canPaste || selectionStart !== selectionEnd)) {
                 var startRect = input.positionToRectangle(input.selectionStart);
 
                 getEditControlsInstance().popup(startRect);
