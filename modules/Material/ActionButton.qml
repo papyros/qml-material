@@ -67,6 +67,11 @@ Controls.Button {
     property int iconSize: Units.dp(24)
 
     /*!
+       The rotation of the icon (in degrees).
+     */
+    property int iconRotation: 0
+
+    /*!
        Floating action buttons come in two sizes:
 
        \list
@@ -136,6 +141,7 @@ Controls.Button {
                 name: control.iconName
                 color: button.iconColor
                 size: iconSize
+                rotation: iconRotation
             }
         }
     }
