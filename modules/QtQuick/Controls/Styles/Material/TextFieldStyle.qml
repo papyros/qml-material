@@ -65,7 +65,7 @@ TextFieldStyle {
         property color errorColor: control.hasOwnProperty("errorColor")
                 ? control.errorColor : Palette.colors["red"]["500"]
         property string helperText: control.hasOwnProperty("helperText") ? control.helperText : ""
-        property bool floatingLabel: control.hasOwnProperty("floatingLabel") ? control.floatingLabel : ""
+        property bool floatingLabel: control.hasOwnProperty("floatingLabel") ? control.floatingLabel : false
         property bool hasError: control.hasOwnProperty("hasError")
                 ? control.hasError : characterLimit && control.length > characterLimit
         property int characterLimit: control.hasOwnProperty("characterLimit") ? control.characterLimit : 0
@@ -149,6 +149,7 @@ TextFieldStyle {
         }
 
         RowLayout {
+            id: helper
             anchors {
                 left: parent.left
                 right: parent.right
