@@ -37,8 +37,8 @@ Item {
 
     signal clicked
 
-    width: icon.width
-    height: icon.height
+    implicitWidth: icon.width
+    implicitHeight: icon.height
     enabled: action ? action.enabled : true
     opacity: enabled ? 1 : 0.6
 
