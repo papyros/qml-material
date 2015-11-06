@@ -56,11 +56,10 @@ Item {
                 var mapped = parent.mapFromItem(input, startRect.x, startRect.y);
                 var mapWidget = parent.mapFromItem(input.parent, input.x, input.y, input.width, input.height);
 
-                popup.x = Math.min(Math.max(mapWidget.x, mapped.x), mapWidget.x+mapWidget.width-bg.width);
+                popup.x = Math.min(Math.max(mapWidget.x, mapped.x-bg.anchors.leftMargin), mapWidget.x+mapWidget.width-bg.width);
                 popup.y = Math.max(0, mapped.y - bg.height);
-            }
-            function dismiss() {
-                popup.visible = false;
+
+                console.log("showing...", popup.x, popup.y, parent)
             }
 
             View {
