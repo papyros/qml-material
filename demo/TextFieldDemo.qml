@@ -62,5 +62,8 @@ Item {
                 }
             }
         }
+        TextArea {
+
+        }
     }
 }
