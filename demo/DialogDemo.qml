@@ -1,5 +1,5 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.2 as QuickControls
+import QtQuick 2.4
+import QtQuick.Controls 1.3 as QuickControls
 import Material 0.1
 import Material.Extras 0.1
 

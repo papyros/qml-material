@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
+import QtQuick 2.4
 
 pragma Singleton
 
@@ -32,7 +32,7 @@ pragma Singleton
    Here is a short example:
 
    \qml
-   import QtQuick 2.0
+   import QtQuick 2.4
    import Material 0.1
 
    Rectangle {
