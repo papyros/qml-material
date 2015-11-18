@@ -1,3 +1,5 @@
+#! /bin/bash
+
 CATEGORIES=(action av communication device file image maps notification social toggle alert content editor hardware navigation)
 
 for CATEGORY in $CATEGORIES; do
