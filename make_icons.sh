@@ -2,7 +2,7 @@
 
 CATEGORIES=(action av communication device file image maps notification social toggle alert content editor hardware navigation)
 
-for CATEGORY in $CATEGORIES; do
+for CATEGORY in ${CATEGORIES[*]}; do	
 	rm -r modules/Material/icons/$CATEGORY/
 	mkdir modules/Material/icons/$CATEGORY
 
