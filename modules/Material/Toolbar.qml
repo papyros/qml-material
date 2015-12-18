@@ -83,6 +83,8 @@ View {
 
         if (page.rightSidebar && page.rightSidebar.actionBar)
             rightSidebarStack.pop(page.rightSidebar.actionBar)
+        else
+            rightSidebarStack.pop(emptyRightSidebar)
 
         toolbar.page = page
     }
@@ -95,6 +97,8 @@ View {
 
         if (page.rightSidebar && page.rightSidebar.actionBar)
             rightSidebarStack.push(page.rightSidebar.actionBar)
+        else
+            rightSidebarStack.push(emptyRightSidebar)
     }
 
     function replace(page) {
@@ -105,6 +109,8 @@ View {
 
         if (page.rightSidebar && page.rightSidebar.actionBar)
             rightSidebarStack.replace(page.rightSidebar.actionBar)
+        else
+            rightSidebarStack.replace(emptyRightSidebar)
     }
 
     Rectangle {
@@ -222,5 +228,11 @@ View {
                 Theme.dark.textColor)
             onClicked: Qt.quit()
         }
+    }
+
+    Component {
+        id: emptyRightSidebar
+
+        Item {}
     }
 }
