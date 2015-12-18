@@ -139,6 +139,7 @@ View {
     Controls.StackView {
         id: rightSidebarStack
         height: actionBarHeight
+        visible: page.rightSidebar
         width: page && page.rightSidebar
                ? page.rightSidebar.width
                : 0
