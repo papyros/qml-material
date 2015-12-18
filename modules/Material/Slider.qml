@@ -41,6 +41,13 @@ Controls.Slider {
      */
     property bool darkBackground
 
+    /*!
+      Reimplement this function if you want to show different information in the value indicator.
+    */
+    function valueInfo(v) {
+        return v.toFixed(0)
+    }
+
     property color color: darkBackground ? Theme.dark.accentColor
                                          : Theme.light.accentColor
 
