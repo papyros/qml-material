@@ -58,6 +58,10 @@ View {
     property var page
     property bool showBackButton
 
+    property color decorationColor: page && page.actionBar
+            ? page.actionBar.decorationColor
+            : Theme.primaryDarkColor
+
     opacity: page && page.actionBar.hidden ? 0 : 1
 
     backgroundColor: page ? page.actionBar.backgroundColor.a === 0
@@ -69,6 +73,10 @@ View {
     elevation: backgroundColor === page.color ? 0 : page.actionBar.elevation
     fullWidth: true
     clipContent: true
+
+    Behavior on decorationColor {
+        ColorAnimation { duration: MaterialAnimation.pageTransitionDuration }
+    }
 
     Behavior on height {
         NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }

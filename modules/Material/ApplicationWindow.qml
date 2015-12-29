@@ -84,8 +84,15 @@ Controls.ApplicationWindow {
      */
     property alias theme: __theme
 
+    property color decorationColor: __toolbar.decorationColor
+
     AppTheme {
         id: __theme
+    }
+
+    WindowDecorations {
+        color: decorationColor
+        window: app
     }
 
     PageStack {
