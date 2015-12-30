@@ -42,6 +42,7 @@ BaseListItem {
     property alias content: contentItem.children
 
     property alias itemLabel: label
+    property alias itemValueLabel: valueLabel
 
     property alias textColor: label.color
     property alias iconColor: icon.color
