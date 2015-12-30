@@ -39,8 +39,8 @@ Object {
 
     function updateColor() {
         __decorations.backgroundColor = color
-        __decorations.iconColor = Theme.lightDark(color, Theme.light.iconColor,
-                Theme.dark.iconColor)
+        __decorations.iconColor = Theme.lightDark(color, Theme.light.subTextColor,
+                Theme.dark.subTextColor)
         __decorations.textColor = Theme.lightDark(color, Theme.light.textColor,
                 Theme.dark.textColor)
         __decorations.update()
