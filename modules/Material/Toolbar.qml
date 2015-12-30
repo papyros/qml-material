@@ -58,6 +58,10 @@ View {
     property var page
     property bool showBackButton
 
+    property color decorationColor: page && page.actionBar
+            ? page.actionBar.decorationColor
+            : Theme.primaryDarkColor
+
     opacity: page && page.actionBar.hidden ? 0 : 1
 
     backgroundColor: page ? page.actionBar.backgroundColor.a === 0
@@ -69,6 +73,10 @@ View {
     elevation: backgroundColor === page.color ? 0 : page.actionBar.elevation
     fullWidth: true
     clipContent: true
+
+    Behavior on decorationColor {
+        ColorAnimation { duration: MaterialAnimation.pageTransitionDuration }
+    }
 
     Behavior on height {
         NumberAnimation { duration: MaterialAnimation.pageTransitionDuration }
@@ -83,6 +91,8 @@ View {
 
         if (page.rightSidebar && page.rightSidebar.actionBar)
             rightSidebarStack.pop(page.rightSidebar.actionBar)
+        else
+            rightSidebarStack.pop(emptyRightSidebar)
 
         toolbar.page = page
     }
@@ -95,6 +105,8 @@ View {
 
         if (page.rightSidebar && page.rightSidebar.actionBar)
             rightSidebarStack.push(page.rightSidebar.actionBar)
+        else
+            rightSidebarStack.push(emptyRightSidebar)
     }
 
     function replace(page) {
@@ -105,6 +117,8 @@ View {
 
         if (page.rightSidebar && page.rightSidebar.actionBar)
             rightSidebarStack.replace(page.rightSidebar.actionBar)
+        else
+            rightSidebarStack.replace(emptyRightSidebar)
     }
 
     Rectangle {
@@ -222,5 +236,11 @@ View {
                 Theme.dark.textColor)
             onClicked: Qt.quit()
         }
+    }
+
+    Component {
+        id: emptyRightSidebar
+
+        Item {}
     }
 }

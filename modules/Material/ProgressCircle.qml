@@ -180,7 +180,7 @@ Controls.ProgressBar {
                     ctx.translate(canvas.width / 2, canvas.height / 2);
                     ctx.rotate(control.indeterminate ? internal.rotate : currentProgress * (3 * Math.PI / 2));
 
-                    ctx.arc(0, 0, Math.min(canvas.width, canvas.height) / 2 - ctx.lineWidth,
+                    ctx.arc(0, 0, Math.max(0, Math.min(canvas.width, canvas.height) / 2 - ctx.lineWidth),
                         control.indeterminate ? internal.arcStartPoint : 0,
                         control.indeterminate ? internal.arcEndPoint : currentProgress * (2 * Math.PI),
                         false);

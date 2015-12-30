@@ -16,6 +16,14 @@ Item {
 		    onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
 		}
 
+		Button {
+			anchors.horizontalCenter: parent.horizontalCenter
+
+		    text: "Push subpage with sidebar"
+		    elevation: 1
+		    onClicked: pageStack.push(Qt.resolvedUrl("SidebarPage.qml"))
+		}
+
 		Image {
 			id: image
 
@@ -62,7 +70,7 @@ Item {
 			}
 			height: Units.dp(48)
 			opacity: overlayView.transitionOpacity
-			
+
 			spacing: Units.dp(24)
 
 	        Repeater {

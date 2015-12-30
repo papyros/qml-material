@@ -19,44 +19,33 @@ import QtQuick 2.4
 import Material 0.1
 import Material.ListItems 0.1 as ListItem
 
-TabbedPage {
+Page {
     id: page
-    title: "Page Title that is very long to demonstrate eliding titles in ActionBar"
+    title: "Page with right sidebar"
 
-    actionBar.backgroundColor: Palette.colors.grey['200']
-    actionBar.decorationColor: Palette.colors.grey['300']
-
-    Tab {
-        title: "Overview"
-        iconName: "action/home"
-
-        Rectangle {
-            color: Palette.colors.red["200"]
-
-            Button {
-                anchors.centerIn: parent
-                darkBackground: true
-                text: "Go to tab 3"
-                onClicked: page.selectedTab = 2
-            }
+    actions: [
+        Action {
+            iconName: "action/search"
+            text: "Search"
         }
+    ]
+
+    Button {
+        anchors.centerIn: parent
+        text: "Sub page"
+        onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
     }
 
-    Tab {
-        title: "Projects"
+    rightSidebar: PageSidebar {
+        title: "Sidebar"
 
-        Rectangle { color: Palette.colors.purple["200"] }
-    }
+        width: Units.dp(320)
 
-    Tab {
-        title: "Inbox"
-
-        Rectangle { color: Palette.colors.orange["200"] }
-    }
-
-    Tab {
-        title: "Disabled Tab"
-        enabled: false
-        Rectangle { color: Palette.colors.purple["200"] }
+        actions: [
+            Action {
+                iconName: "action/delete"
+                text: "Delete"
+            }
+        ]
     }
 }
