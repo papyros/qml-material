@@ -27,7 +27,7 @@ OverlayView 0.1 OverlayView.qml
 Page 0.1 Page.qml
 PageSidebar 0.1 PageSidebar.qml
 PageStack 0.1 PageStack.qml
-PlatformExtenions 0.1 PlatformExtensions.qml
+PlatformExtensions 0.1 PlatformExtensions.qml
 Popover 0.1 Popover.qml
 PopupBase 0.1 PopupBase.qml
 ProgressBar 0.1 ProgressBar.qml
