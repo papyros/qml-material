@@ -21,7 +21,7 @@ import Material 0.1
 
 /*!
    \qmltype SectionHeader
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief A list item that serves as the the header for an expandable list section.
  */

@@ -22,7 +22,7 @@ pragma Singleton
 
 /*!
    \qmltype Palette
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Provides access to the Material Design color palette.
  */

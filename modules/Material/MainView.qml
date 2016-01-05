@@ -21,7 +21,7 @@ import Material 0.1
 
 /*!
    \qmltype MainView
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A root component with support for overlays and configuring the app theme.
  */

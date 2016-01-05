@@ -22,7 +22,7 @@ import Material 0.1
 
 /*!
    \qmltype Standard
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief A simple list item with a single line of text and optional primary and secondary actions.
  */

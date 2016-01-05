@@ -21,7 +21,7 @@ import Material 0.1
 
 /*!
    \qmltype PageSidebar
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Represents a split sidebar in a page, with its own title, actions, and color 
    in the action bar.

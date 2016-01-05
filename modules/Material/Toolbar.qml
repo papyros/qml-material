@@ -23,7 +23,7 @@ import Material 0.1
 
 /*!
    \qmltype Toolbar
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Provides the container used to hold the action bar of pages.
 */

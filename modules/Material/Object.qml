@@ -19,7 +19,7 @@ import QtQuick 2.4
 
 /*!
    \qmltype Object
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A base class for non-visual objects.
  */

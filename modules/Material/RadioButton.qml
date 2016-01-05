@@ -23,7 +23,7 @@ import Material 0.1
 
 /*!
    \qmltype RadioButton
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Radio buttons allow the user to select one option from a set.
 */

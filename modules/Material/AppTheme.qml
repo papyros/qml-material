@@ -20,7 +20,7 @@ import Material 0.1
 
 /*!
    \qmltype AppTheme
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A helper class used in \l ApplicationWindow to set your app's theme colors.
  */

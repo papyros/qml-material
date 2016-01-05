@@ -23,7 +23,7 @@ import Material.ListItems 0.1
 
 /*!
    \qmltype MenuField
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A input field similar to a text field but that opens a dropdown menu.
  */

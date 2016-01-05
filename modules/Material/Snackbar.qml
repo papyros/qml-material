@@ -22,7 +22,7 @@ import Material 0.1
 
 /*!
    \qmltype Snackbar
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Snackbars provide lightweight feedback about an operation
  */

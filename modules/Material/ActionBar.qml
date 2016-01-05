@@ -24,7 +24,7 @@ import Material.ListItems 0.1 as ListItem
 
 /*!
    \qmltype ActionBar
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief An action bar holds the title and actions displayed in the application toolbar.
 

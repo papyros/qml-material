@@ -25,7 +25,7 @@ import Material.Extras 0.1
 
 /*!
    \qmltype Dialog
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
    \brief Dialogs inform users about critical information, require users to make
    decisions, or encapsulate multiple tasks within a discrete process
  */

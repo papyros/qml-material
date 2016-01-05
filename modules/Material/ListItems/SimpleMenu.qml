@@ -21,7 +21,7 @@ import Material.Extras 0.1
 
 /*!
    \qmltype SimpleMenu
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief A list item that opens a dropdown menu when tapped.
  */

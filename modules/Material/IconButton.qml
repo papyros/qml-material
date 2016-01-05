@@ -21,7 +21,7 @@ import Material.Extras 0.1
 
 /*!
    \qmltype IconButton
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Icon buttons are appropriate for app bars, toolbars, action buttons or toggles.
  */

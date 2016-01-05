@@ -21,7 +21,7 @@ import QtQuick.Controls.Styles 1.3 as Styles
 
 /*!
    \qmltype Tab
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A special page for tabs.
 

@@ -23,7 +23,7 @@ import Material.Extras 0.1
 
 /*!
    \qmltype ApplicationWindow
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A window that provides features commonly used for Material Design apps.
 

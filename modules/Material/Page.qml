@@ -22,7 +22,7 @@ import Material 0.1
 
 /*!
    \qmltype Page
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Represents a page on the navigation page stack.
 

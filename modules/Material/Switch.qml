@@ -23,7 +23,7 @@ import Material 0.1
 
 /*!
    \qmltype Switch
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief On/off switches toggle the state of a single settings option
  */

@@ -20,7 +20,7 @@ import Material 0.1
 
 /*!
    \qmltype Label
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A text label with many different font styles from Material Design.
  */

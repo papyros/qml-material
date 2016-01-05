@@ -22,7 +22,7 @@ import Material.Extras 0.1
 
 /*!
    \qmltype Dropdown
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Represents a dropdown menu that can display a variety of content.
  */
