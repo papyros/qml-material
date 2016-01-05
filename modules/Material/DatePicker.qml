@@ -26,7 +26,7 @@ import Material 0.1
 
 /*!
    \qmltype DatePicker
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Date Picker provides a simple way to select a valid, formatted date
  */

@@ -22,7 +22,7 @@ import Material 0.1
 
 /*!
    \qmltype Button
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A push button with a text label.
 

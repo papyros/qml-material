@@ -20,7 +20,7 @@ import Material 0.1
 
 /*!
    \qmltype Subheader
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief Subheaders are special list tiles that delineate distinct sections of a list or grid list.
  */

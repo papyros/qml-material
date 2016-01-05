@@ -22,7 +22,7 @@ import ".."
 
 /*!
    \qmltype Subtitled
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief A list item with a two or three lines of text and optional primary and secondary actions.
  */

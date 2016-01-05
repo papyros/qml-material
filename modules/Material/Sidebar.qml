@@ -21,7 +21,7 @@ import "ListItems" as ListItem
 
 /*!
    \qmltype Sidebar
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A sidebar component for use in adaptive layouts
 

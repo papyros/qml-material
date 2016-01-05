@@ -20,7 +20,7 @@ import Material 0.1
 
 /*!
    \qmltype InputDialog
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A dialog with a single text field input.
  */

@@ -19,7 +19,7 @@ import QtQuick 2.4
 
 /*!
    \qmltype Theme
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Provides access to standard colors that follow the Material Design specification, but
    specifically designed for light or dark surfaces.

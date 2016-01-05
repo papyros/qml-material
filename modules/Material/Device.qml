@@ -21,7 +21,7 @@ pragma Singleton
 
 /*!
    \qmltype Device
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A singleton that provides information about the current device.
  */

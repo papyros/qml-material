@@ -22,7 +22,7 @@ import Material.Extras 0.1
 
 /*!
    \qmltype Ink
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Represents a ripple ink animation used in buttons and many other components.
  */

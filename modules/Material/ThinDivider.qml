@@ -19,7 +19,7 @@ import QtQuick 2.4
 
 /*!
    \qmltype ThinDivider
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A 1dp high divider for use in lists and other columns of content.
  */

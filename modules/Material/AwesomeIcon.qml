@@ -21,7 +21,7 @@ import 'awesome.js' as Awesome
 
 /*!
    \qmltype AwesomeIcon
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Displays an icon from the FontAwesome icon collection.
 

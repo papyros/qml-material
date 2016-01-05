@@ -22,7 +22,7 @@ import Material 0.1
 
 /*!
    \qmltype CheckBox
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Checkboxes allow the user to select multiple options from a set.
  */

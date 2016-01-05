@@ -20,7 +20,7 @@ import QtQuick.Controls 1.3 as Controls
 
 /*!
    \qmltype Tab
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Tab represents the content of a tab in a TabView.
 

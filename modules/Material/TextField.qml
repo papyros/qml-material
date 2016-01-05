@@ -24,7 +24,7 @@ import Material 0.1
 
 /*!
    \qmltype TextField
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A single-line text input control.
  */

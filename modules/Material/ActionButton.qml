@@ -23,7 +23,7 @@ import QtGraphicalEffects 1.0
 
 /*!
    \qmltype ActionButton
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A floating action button.
 

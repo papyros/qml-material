@@ -21,7 +21,7 @@ import Material 0.1
 
 /*!
    \qmltype View
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Provides a base view component, with support for Material Design elevation, 
    background colors, and tinting.

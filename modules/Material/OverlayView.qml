@@ -21,7 +21,7 @@ import Material.Extras 0.1
 
 /*!
    \qmltype OverlayView
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A view that pops out of the content to display as an overlay.
  */

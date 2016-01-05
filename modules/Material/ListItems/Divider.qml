@@ -20,7 +20,7 @@ import Material 0.1
 
 /*!
    \qmltype Divider
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief A divider divides content in a list.
  */

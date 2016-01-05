@@ -21,7 +21,7 @@ import Material 0.1
 
 /*!
    \qmltype PageStack
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Manages the page stack used for navigation.
 */

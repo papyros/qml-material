@@ -20,7 +20,7 @@ import QtQuick 2.4
 
 /*!
    \qmltype Wave
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Provides a wave animation for transitioning between views of content.
  */

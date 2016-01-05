@@ -21,7 +21,7 @@ import Material 0.1
 
 /*!
    \qmltype NavigationDrawer
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief The navigation drawer slides in from the left and is a common pattern in apps.
  */
