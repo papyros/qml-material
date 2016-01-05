@@ -38,6 +38,10 @@ PopupBase {
     y: (parent.height - height)/2
 
     property alias transitionOpacity: shadow.opacity
+    property alias shadowVisible: shadow.visible
+    property alias shadowColor: shadow.backgroundColor
+    property alias shadowRaidus: shadow.radius
+    property alias shadowBorder: shadow.border
 
     states: [
     	State {
@@ -78,7 +82,8 @@ PopupBase {
 
     function close() {
         showing = false
-        parent.currentOverlay = null
+        if(typeof parent.currentOverlay !== 'undefined')
+            parent.currentOverlay = null
         sourceView = null
     }
 
