@@ -21,6 +21,7 @@ Label 0.1 Label.qml
 MainView 0.1 MainView.qml
 MenuField 0.1 MenuField.qml
 NavigationDrawer 0.1 NavigationDrawer.qml
+NavigationDrawerPage 0.1 NavigationDrawerPage.qml
 Object 0.1 Object.qml
 OverlayLayer 0.1 OverlayLayer.qml
 OverlayView 0.1 OverlayView.qml

@@ -1,6 +1,6 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2015 Michael Spencer <sonrisesoftware@gmail.com>
+ * Copyright (C) 2016 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -17,35 +17,31 @@
  */
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
-import QtQuick.Controls.Styles 1.3 as Styles
 
-/*!
-   \qmltype TabbedPage
-   \inqmlmodule Material
-
-   \brief A special page for tabs.
-
-   This adds a full-size TabView to a page add hooks up the tab bar to the TabView.
- */
 Page {
-    id: page
+    id: navPage
 
-    tabs: tabView
+    backAction: navDrawer.action
+    title: page.title
+    actions: page.actions
+    actionBar.backgroundColor: page.actionBar.backgroundColor
+    actionBar.decorationColor: page.actionBar.decorationColor
 
-    default property alias content: tabView.children
+    property var navDrawer
 
-    Controls.TabView {
-        id: tabView
+    property var page
 
-        currentIndex: page.selectedTab
+    function navigate(page) {
+        navPage.page = page
+        navDrawer.close()
+    }
+
+    onNavDrawerChanged: navDrawer.parent = navPage
+
+    onPageChanged: stackView.push({ item: page, replace: true })
+
+    Controls.StackView {
+        id: stackView
         anchors.fill: parent
-
-        tabsVisible: false
-
-        // Override the style to remove the frame
-        style: Styles.TabViewStyle {
-            frameOverlap: 0
-            frame: Item {}
-        }
     }
 }
