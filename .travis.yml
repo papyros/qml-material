@@ -20,11 +20,11 @@ script:
   - source /opt/qt54/bin/qt54-env.sh
   - qmake
   - make check
-  - ./lint.sh
-  - ./build_docs.sh
+  - ./scripts/lint.sh
+  - ./scripts/build_docs.sh
 
 after_success:
-  - ./deploy.sh
+  - ./scripts/deploy.sh
 
 notifications:
   slack: papyros:Z7PeY2Y4mh0GWPoypZZNLd3D
