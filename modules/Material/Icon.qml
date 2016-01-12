@@ -48,7 +48,7 @@ Item {
 
        \sa name
       */
-    property string source: "icon://" + name
+    property string source: name ? "image://material/" + name : ""
 
     property bool valid: source.indexOf("icon://awesome/") == 0 
             ? awesomeIcon.valid : image.status == Image.Ready
@@ -58,31 +58,14 @@ Item {
     width: size
     height: size
 
-    property bool colorize: icon.source.indexOf("icon://") === 0 || icon.source.indexOf(".color.") === -1
+    property bool colorize: icon.source.indexOf("image://material/") === 0 || icon.source.indexOf(".color.") === -1
 
     Image {
         id: image
 
-        anchors.fill: parent
-        visible: source != "" && !colorize
+        visible: !colorize
 
-        source: {
-            if (icon.source.indexOf("icon://") == 0) {
-                var name = icon.source.substring(7)
-                var list = name.split("/");
-
-                if (name == "" || list[0] === "awesome")
-                    return "";
-                return Qt.resolvedUrl("icons/%1/%2.svg".arg(list[0]).arg(list[1]));
-            } else {
-                return icon.source
-            }
-        }
-
-        sourceSize {
-            width: size * Screen.devicePixelRatio
-            height: size * Screen.devicePixelRatio
-        }
+        source: icon.source
     }
 
     ColorOverlay {
@@ -95,26 +78,4 @@ Item {
         visible: image.source != "" && colorize
         opacity: icon.color.a
     }  
-
-    AwesomeIcon {
-        id: awesomeIcon
-
-        anchors.centerIn: parent
-        size: icon.size * 0.9
-        visible: name != ""
-        color: icon.color
-
-        name: {
-            if (icon.source.indexOf("icon://") == 0) {
-                var name = icon.source.substring(7)
-                var list = name.split("/")
-
-                if (list[0] === "awesome") {
-                    return list[1]
-                }
-            }
-
-            return ""
-        }
-    }
 }

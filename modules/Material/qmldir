@@ -1,4 +1,5 @@
 module Material
+plugin materialiconprovider
 Action 0.1 Action.qml
 ActionBar 0.1 ActionBar.qml
 ActionButton 0.1 ActionButton.qml

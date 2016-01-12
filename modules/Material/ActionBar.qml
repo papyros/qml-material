@@ -290,7 +290,7 @@ Item {
 
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                                   Theme.dark.iconColor)
-                size: iconSource == "icon://content/add" ? Units.dp(27) : Units.dp(24)
+                size: Units.dp(24)
 
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }

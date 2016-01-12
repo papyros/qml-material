@@ -153,14 +153,13 @@ Item {
                 Icon {
                     anchors.verticalCenter: parent.verticalCenter
 
-                    source: tabItem.tab.hasOwnProperty("iconSource")
-                            ? tabItem.tab.iconSource : tabItem.tab.hasOwnProperty("iconName")
-                            ? "icon://" + tabItem.tab.iconName : ""
+                    source: tabItem.tab.hasOwnProperty("iconSource") 
+                            ? tabItem.tab.iconSource : ""
                     color: tabItem.selected
                             ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
                             : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
 
-                    visible: source != "" && source != "icon://"
+                    visible: source != ""
 
                     Behavior on color {
                         ColorAnimation { duration: 200 }
