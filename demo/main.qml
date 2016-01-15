@@ -30,9 +30,9 @@ ApplicationWindow {
             "Bottom Sheet", "Dialog", "Forms", "List Items", "Page Stack", "Time Picker", "Date Picker"
     ]
 
-    property var sections: [ styles, basicComponents, compoundComponents ]
+    property var sections: [ basicComponents, styles, compoundComponents ]
 
-    property var sectionTitles: [ "Style", "Basic Components", "Compound Components" ]
+    property var sectionTitles: [ "Basic Components", "Style", "Compound Components" ]
 
     property string selectedComponent: styles[0]
 
