@@ -22,25 +22,38 @@
 #include <qquickimageprovider.h>
 #include <QImage>
 #include <QPainter>
+#include <QSvgRenderer>
+
+#include <QDebug>
 
 class MaterialIconProvider : public QQuickImageProvider
 {
 public:
     MaterialIconProvider()
-        : QQuickImageProvider(QQuickImageProvider::Pixmap)
+        : QQuickImageProvider(QQuickImageProvider::Image)
     {
     }
 
-    QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize)
+    QImage requestImage(const QString &id, QSize *size, const QSize &requestedSize)
     {
-        int width = 100;
-        int height = 50;
-        QImage icon = QImage("/lib/qt/qml/Material/icons/" + id + ".svg");
+        QString iconPath = "/lib/qt/qml/Material/icons/" + id + ".svg";
+
+        QSvgRenderer renderer;
+        if (!renderer.load(iconPath))
+            qWarning() << "Unable to load image:" << iconPath;
+
+        QImage image(requestedSize.width() > 0 ? requestedSize.width() : renderer.defaultSize().width(),
+                     requestedSize.height() > 0 ? requestedSize.height() : renderer.defaultSize().height(),
+                     QImage::Format_ARGB32_Premultiplied);
+        image.fill(Qt::transparent);
 
         if (size)
-            *size = QSize(width, height);
+            *size = image.size();
 
-        return QPixmap::fromImage(icon);
+        QPainter p(&image);
+        renderer.render(&p);
+
+        return image;
     }
 };
 

@@ -35,7 +35,7 @@ Item {
 
     /*!
        The name of the icon to display.
-       
+
        \sa source
     */
     property string name
@@ -50,7 +50,7 @@ Item {
       */
     property string source: name ? "image://material/" + name : ""
 
-    property bool valid: source.indexOf("icon://awesome/") == 0 
+    property bool valid: source.indexOf("icon://awesome/") == 0
             ? awesomeIcon.valid : image.status == Image.Ready
 
     property url iconDirectory: Qt.resolvedUrl("icons")
@@ -64,7 +64,8 @@ Item {
         id: image
 
         visible: !colorize
-
+        sourceSize.width: parent.width
+        sourceSize.height: parent.height
         source: icon.source
     }
 
@@ -77,5 +78,5 @@ Item {
         cached: true
         visible: image.source != "" && colorize
         opacity: icon.color.a
-    }  
+    }
 }
