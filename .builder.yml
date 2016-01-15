@@ -5,6 +5,7 @@ dependencies:
     - qt5-svg
     - qt5-graphicaleffects
     - cmake
+    - extra-cmake-modules
 build:
     - cmake {srcdir}
     - make
