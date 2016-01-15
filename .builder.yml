@@ -4,6 +4,7 @@ dependencies:
     - qt5-quickcontrols
     - qt5-svg
     - qt5-graphicaleffects
+    - cmake
 build:
     - cmake {srcdir}
     - make
