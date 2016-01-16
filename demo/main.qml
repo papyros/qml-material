@@ -11,9 +11,8 @@ ApplicationWindow {
     visible: true
 
     theme {
-        primaryColor: Palette.colors["blue"]["500"]
-        primaryDarkColor: Palette.colors["blue"]["700"]
-        accentColor: Palette.colors["red"]["A200"]
+        primaryColor: "blue"
+        accentColor: "red"
         tabHighlightColor: "white"
     }
 
