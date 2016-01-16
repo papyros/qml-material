@@ -98,7 +98,12 @@
 		
 			<li>
 				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
-				<a href="#id-qml-method-page-pop">pop()</a>
+				<a href="#id-qml-method-page-forcePop">forcePop()</a>
+			</li>
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-method-page-pop">pop(<i>event</i>, <i>force</i>)</a>
 			</li>
 		
 			<li>
@@ -107,6 +112,11 @@
 			</li>
 		
 
+		
+			<li>
+				<i class="tiny mdi-navigation-chevron-right" style="vertical-align: -8%"></i>
+				<a href="#id-qml-signal-goBack">signal goBack(var<i>event</i>)</a>
+			</li>
 		
 		</ul>
 
@@ -249,11 +259,19 @@
 
 		
 
-			<h5 id="id-qml-method-page-pop">pop()</h5>
+			<h5 id="id-qml-method-page-forcePop">forcePop()</h5>
+
+			
+				<i class="light">No description provided.</i>
+			
+		
+
+			<h5 id="id-qml-method-page-pop">pop(<i>event</i>, <i>force</i>)</h5>
 
 			
 				
                 <p>Pop this page from the page stack. This does nothing if this page is not the current page on the page stack.</p>
+                <p>Use <tt>force</tt> to avoid calling the <a href="qml-material-page.html#id-qml-signal-goBack">goBack</a> signal. This is useful if you use the <a href="qml-material-page.html#id-qml-signal-goBack">goBack</a> signal to show a confirmation dialog, and want to close the page from your dialog without showing the dialog again. You can also use <tt>forcePop()</tt> as a shortcut to this behavior.</p>
             
 			
 		
@@ -268,7 +286,20 @@
 		
 
 		
+			<h4>Signals</h4>
+			<div class="divider"></div>
+		
 
+		
+
+			<h5 id="id-qml-signal-goBack">signal goBack(var<i>event</i>)</h5>
+
+			
+				
+                <p>This signal is emitted when the back action is triggered or back key is released.</p>
+                <p>By default, the page will be popped from the page stack. To change the default behavior, for example to show a confirmation dialog, listen for this signal using <tt>onGoBack</tt> and set <tt>event.accepted</tt> to <tt>true</tt>. To dismiss the page from your dialog without triggering this signal and re-showing the dialog, call <tt>page.forcePop()</tt>.</p>
+            
+			
 		
 
 		<br/>
