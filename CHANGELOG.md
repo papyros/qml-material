@@ -34,7 +34,7 @@ QML Material CHANGELOG
  * Icons:
    * Add all the new and updated Material icons
    * Add new and updated Material icons
-   * Update the FontAwesome icons to 4.4.0
+   * Update the FontAwesome icons to 4.5.0
    * Update the Material Design icons
  * ListItem: Expose the list item labels to allow customization
  * MenuField: Simple implementation of a textRole
