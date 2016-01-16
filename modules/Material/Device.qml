@@ -16,6 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
+import QtQuick.Controls 1.3
+import QtQuick.Controls.Private 1.0
 
 pragma Singleton
 
@@ -72,8 +74,7 @@ Object {
         }
     }
 
-    readonly property bool isMobile: type == phone || type == phablet || type == tablet
-
-    readonly property bool hasMouse: !isMobile
-    readonly property bool hasTouchscreen: isMobile
+    readonly property bool isMobile: Settings.isMobile
+    readonly property bool hasTouchScreen: Settings.hasTouchScreen
+    readonly property bool hoverEnabled: Settings.hoverEnabled
 }
