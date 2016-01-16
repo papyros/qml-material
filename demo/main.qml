@@ -33,7 +33,7 @@ ApplicationWindow {
 
     property var sectionTitles: [ "Basic Components", "Style", "Compound Components" ]
 
-    property string selectedComponent: styles[0]
+    property string selectedComponent: sections[0][0]
 
     initialPage: TabbedPage {
         id: page
@@ -86,6 +86,8 @@ ApplicationWindow {
 
             enabled: page.width < Units.dp(500)
 
+            onEnabledChanged: smallLoader.active = enabled
+
             Flickable {
                 anchors.fill: parent
 
@@ -136,11 +138,13 @@ ApplicationWindow {
         }
 
         Loader {
+            id: smallLoader
             anchors.fill: parent
             sourceComponent: tabDelegate
 
             property var section: []
-            visible: navDrawer.enabled
+            visible: active
+            active: false
         }
     }
 
@@ -207,6 +211,7 @@ ApplicationWindow {
         id: tabDelegate
 
         Item {
+
             Sidebar {
                 id: sidebar
 
