@@ -150,6 +150,17 @@ FocusScope {
     property string title
 
     /*!
+        This signal is emitted when the Back button is released.
+        When handling this signal, use the \l {KeyEvent::}{accepted} property of the \a event
+        parameter to control whether this Page override the default behaviour.
+        The default is to ignore the event and pop the \l PageStack if this isn't a top level \l Page,
+        or exit the application if it is a top level \l Page.
+        If \e accepted is set to \c true, the default behaviour is overriden and this \l Page stays on the \l PageStack.
+        The corresponding handler is \c onBackReleased.
+    */
+    signal backReleased(var event)
+
+    /*!
        Pop this page from the page stack. This does nothing if this page is not
        the current page on the page stack.
      */
@@ -178,8 +189,10 @@ FocusScope {
                 __actionBar.closeOverflowMenu();
                 event.accepted = true;
             } else {
-                // or pop the page from the page stack
-                if (pop()) {
+                // or signal the back button has been tapped
+                backReleased(event);
+                // and pop the page from the page stack if no handlers accepted the event
+                if (!event.accepted && pop()) {
                     event.accepted = true;
                 }
             }
