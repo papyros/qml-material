@@ -40,13 +40,16 @@ Object {
     }
 
     Component.onCompleted: {
-        platformExtensions = Qt.createQmlObject('import Papyros.Material 0.1; PlatformExtensions {}',
-                platform, "PapyrosExtensions");
+        try {
+            var code = 'import Papyros.Material 0.1; PlatformExtensions {}'
+            platformExtensions = Qt.createQmlObject(code, platform, "PapyrosExtensions");
 
-        if (platformExtensions) {
             platformExtensions.window = window
             if (decorationColor != "#000000")
                 platformExtensions.decorationColor = decorationColor
+        } catch (error) {
+            // Ignore the error; it only means that the Papyros
+            // platform extensions are not available
         }
     }
 }
