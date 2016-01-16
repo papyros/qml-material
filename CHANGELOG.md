@@ -48,7 +48,7 @@ QML Material CHANGELOG
    * Add customization options to the slider's label knob
    * Support custom slider tooltips via a valueInfo function
  * Tabs:
-   * Improved tabs support
+   * Improved tabs support using a TabbedPage
    * Support disabled tabs
  * TextField:
    * Support borderless textfields

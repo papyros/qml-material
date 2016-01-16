@@ -20,7 +20,7 @@
 
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.1
+import Material 0.2
 import Material.Extras 0.1
 
 /*!

@@ -18,7 +18,7 @@
 
 import QtQuick 2.4
 import QtTest 1.0
-import Material 0.1
+import Material 0.2
 
 Rectangle {
     width: 100
