@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
+import QtQuick.Controls 1.1 as Controls
 import Material 0.1
 
 Item {
@@ -36,6 +37,17 @@ Item {
         }
 
         TextField {
+            placeholderText: "Text Field with Menu"
+            anchors.horizontalCenter: parent.horizontalCenter
+            menu: Controls.Menu {
+                Controls.MenuItem {
+                    text: "Print \"awesome\""
+                    onTriggered: console.log("awesome");
+                }
+            }
+        }
+
+        TextField {
             id: passwordField
             placeholderText: "Password"
             floatingLabel: true
@@ -49,6 +61,9 @@ Item {
                     passwordField.hasError = true
                 }
             }
+        }
+        TextArea {
+
         }
     }
 }

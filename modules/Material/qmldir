@@ -42,6 +42,7 @@ Switch 0.1 Switch.qml
 Tab 0.1 Tab.qml
 TabBar 0.1 TabBar.qml
 TabbedPage 0.1 TabbedPage.qml
+TextArea 0.1 TextArea.qml
 TextField 0.1 TextField.qml
 ThinDivider 0.1 ThinDivider.qml
 TimePicker 0.1 TimePicker.qml

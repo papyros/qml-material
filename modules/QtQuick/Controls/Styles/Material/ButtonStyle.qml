@@ -92,6 +92,7 @@ ButtonStyle {
         implicitWidth: context == "dialog"
                 ? Math.max(Units.dp(64), label.width + Units.dp(16))
                 : context == "snackbar" ? label.width + Units.dp(16)
+                : context == "editmenu" ? label.width
                                         : Math.max(Units.dp(88), label.width + Units.dp(32))
 
         Label {

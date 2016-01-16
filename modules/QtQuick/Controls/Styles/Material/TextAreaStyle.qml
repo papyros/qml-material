@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.4
+import QtQuick 2.0
 import QtQuick.Controls.Styles 1.3
 import QtQuick.Layouts 1.1
 import Material 0.1
@@ -32,7 +32,7 @@ TextFieldStyle {
     }
 
     font {
-        family: echoMode == TextInput.Password ? "Default" : "Roboto"
+        family: "Roboto"
         pixelSize: Units.dp(16)
     }
 
@@ -64,12 +64,6 @@ TextFieldStyle {
         property color color: control.hasOwnProperty("color") ? control.color : Theme.accentColor
         property color errorColor: control.hasOwnProperty("errorColor")
                 ? control.errorColor : Palette.colors["red"]["500"]
-        property string helperText: control.hasOwnProperty("helperText") ? control.helperText : ""
-        property bool floatingLabel: control.hasOwnProperty("floatingLabel") ? control.floatingLabel : false
-        property bool hasError: control.hasOwnProperty("hasError")
-                ? control.hasError : characterLimit && control.length > characterLimit
-        property int characterLimit: control.hasOwnProperty("characterLimit") ? control.characterLimit : 0
-        property bool showBorder: control.hasOwnProperty("showBorder") ? control.showBorder : true
 
         Rectangle {
             id: underline
@@ -146,46 +140,6 @@ TextFieldStyle {
             ]
 
             Component.onCompleted: floatingTransition.enabled = true
-        }
-
-        RowLayout {
-            id: helper
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: underline.top
-                topMargin: Units.dp(4)
-            }
-
-            Label {
-                id: helperTextLabel
-                visible: background.helperText && background.showBorder
-                text: background.helperText
-                font.pixelSize: Units.dp(12)
-                color: background.hasError ? background.errorColor
-                                           : Qt.darker(Theme.light.hintColor)
-
-                Behavior on color {
-                    ColorAnimation { duration: 200 }
-                }
-
-                property string helperText: control.hasOwnProperty("helperText")
-                        ? control.helperText : ""
-            }
-
-            Label {
-                id: charLimitLabel
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                visible: background.characterLimit && background.showBorder
-                text: control.length + " / " + background.characterLimit
-                font.pixelSize: Units.dp(12)
-                color: background.hasError ? background.errorColor : Theme.light.hintColor
-                horizontalAlignment: Text.AlignLeft
-
-                Behavior on color {
-                    ColorAnimation { duration: 200 }
-                }
-            }
         }
     }
 }

@@ -67,7 +67,7 @@ Controls.Button {
        The context of the button, which is used to control special styling of
        buttons in dialogs or snackbars.
      */
-    property string context: "default" // or "dialog" or "snackbar"
+    property string context: "default" // "dialog", "snackbar" or "editmenu"
 
     /*!
        Set to \c true if the button has a dark background color
