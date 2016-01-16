@@ -34,6 +34,8 @@ Page {
 
     default property alias content: tabView.children
 
+    onSelectedTabChanged: tabView.currentIndex = page.selectedTab
+
     Controls.TabView {
         id: tabView
 

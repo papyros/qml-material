@@ -67,8 +67,14 @@ Item {
 
     property bool isTabView: String(tabs).indexOf("TabView") != -1
 
+    readonly property int tabCount: repeater.count
+
     visible: isTabView ? tabs.count > 0 : tabs.length > 0
     height: Units.dp(48)
+
+    onTabCountChanged: {
+        selectedIndex = Math.min(selectedIndex, tabCount)
+    }
 
     Item {
         anchors {
@@ -85,7 +91,7 @@ Item {
             id: tabRow
 
             height: parent.height
-            
+
             Repeater {
                 id: repeater
                 model: isTabView ? tabs.count : tabs
@@ -103,10 +109,6 @@ Item {
             color: tabBar.highlightColor
             x: tabRow.children[tabBar.selectedIndex].x
             width: tabRow.children[tabBar.selectedIndex].width
-
-            Behavior on opacity {
-                NumberAnimation { duration: 200 }
-            }
 
             Behavior on x {
                 NumberAnimation { duration: 200 }
@@ -151,8 +153,8 @@ Item {
                 Icon {
                     anchors.verticalCenter: parent.verticalCenter
 
-                    source: tabItem.tab.hasOwnProperty("iconSource") 
-                            ? tabItem.tab.iconSource : tabItem.tab.hasOwnProperty("iconName") 
+                    source: tabItem.tab.hasOwnProperty("iconSource")
+                            ? tabItem.tab.iconSource : tabItem.tab.hasOwnProperty("iconName")
                             ? "icon://" + tabItem.tab.iconName : ""
                     color: tabItem.selected
                             ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
@@ -168,7 +170,7 @@ Item {
                 Label {
                     id: label
 
-                    text: typeof(tabItem.tab) == "string" 
+                    text: typeof(tabItem.tab) == "string"
                             ? tabItem.tab : tabItem.tab.title
                     color: tabItem.selected
                             ? darkBackground ? Theme.dark.textColor : Theme.light.accentColor
