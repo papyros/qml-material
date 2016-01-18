@@ -46,6 +46,14 @@ Item {
     readonly property string selectedText: (listView.currentItem) ? listView.currentItem.text : ""
 
     property alias selectedIndex: listView.currentIndex
+    property var selectedComponent: {
+        var get = model['get'];
+        if (get) {
+            return model.get(selectedIndex);
+        } else {
+            return null;
+        }
+    }
     property int maxVisibleItems: 4
 
     property alias placeholderText: fieldPlaceholder.text
