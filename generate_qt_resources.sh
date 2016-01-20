@@ -46,3 +46,4 @@ sed "s|.*awesome.js.*||g" -i Material.qrc
 generate_resource_file 'MaterialQtQuick.qrc'    'QtQuick/'               'qmldir' '*.qml'
 generate_resource_file 'FontAwesome.qrc'        'Material/'              'awesome.js' 'FontAwesome.otf'
 generate_resource_file 'FontRoboto.qrc'         'Material/fonts/roboto/' '*.ttf'
+generate_resource_file 'Icons.qrc'              'Material/icons/'        '*.svg'
