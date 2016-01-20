@@ -2,10 +2,10 @@
 #
 # Script to generate Qt Resource files for easy inclusion of qml-material into other projects.
 # The script generates four resource files:
-#   -Material.qrc:      The main qml-material components;
-#   -QtQuick.qrc:       The Material Design style required by qml-material's components;
-#   -FontAwesome.qrc:   The Font Awesome files
-#   -FontRoboto.qrc:    The Roboto font files (note: these are big!)
+#   -Material.qrc:          The main qml-material components;
+#   -MaterialQtQuick.qrc:   The Material Design style required by qml-material's components;
+#   -FontAwesome.qrc:       The Font Awesome files
+#   -FontRoboto.qrc:        The Roboto font files (note: these are big!)
 
 
 cd modules
@@ -38,11 +38,11 @@ function generate_resource_file() {
 </RCC>' >> ${output_file}
 }
 
-#                       Output file       Folder to search         List of patterns to search for
-generate_resource_file 'Material.qrc'    'Material/'              'qmldir' '*.qml' '*.js'
+#                       Output file             Folder to search         List of patterns to search for
+generate_resource_file 'Material.qrc'           'Material/'              'qmldir' '*.qml' '*.js'
 # Remove awesome.js from Material.qrc as we include it in FontAwesome.qrc instead
 sed "s|.*awesome.js.*||g" -i Material.qrc
 
-generate_resource_file 'QtQuick.qrc'     'QtQuick/'               'qmldir' '*.qml'
-generate_resource_file 'FontAwesome.qrc' 'Material/'              'awesome.js' 'FontAwesome.otf'
-generate_resource_file 'FontRoboto.qrc'  'Material/fonts/roboto/' '*.ttf'
+generate_resource_file 'MaterialQtQuick.qrc'    'QtQuick/'               'qmldir' '*.qml'
+generate_resource_file 'FontAwesome.qrc'        'Material/'              'awesome.js' 'FontAwesome.otf'
+generate_resource_file 'FontRoboto.qrc'         'Material/fonts/roboto/' '*.ttf'
