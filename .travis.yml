@@ -8,7 +8,7 @@ install:
   - sudo apt-get -y install pep8 pyflakes python python-pip npm
   - sudo apt-get -y install qt54declarative
   - sudo apt-get -y install qt54quickcontrols qt54graphicaleffects
-  - sudo apt-get -y install qt54tools
+  - sudo apt-get -y install qt54tools qt54svg
 
 before_script:
   - git clone git://github.com/papyros/docmaker.git

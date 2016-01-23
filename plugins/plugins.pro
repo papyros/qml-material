@@ -2,6 +2,7 @@ TEMPLATE = lib
 CONFIG += plugin
 QT += qml quick svg
 
+DESTDIR = ../modules/Material
 TARGET  = materialiconprovider
 
 SOURCES += materialiconprovider.cpp
