@@ -51,8 +51,10 @@ Tooltip 0.1 Tooltip.qml
 View 0.1 View.qml
 Wave 0.1 Wave.qml
 Window 0.1 Window.qml
+Resizer 0.1 Resizer.qml
 singleton Device 0.1 Device.qml
 singleton MaterialAnimation 0.1 MaterialAnimation.qml
 singleton Palette 0.1 Palette.qml
 singleton Theme 0.1 Theme.qml
 singleton Units 0.1 Units.qml
+singleton Storage 0.1 Storage.qml

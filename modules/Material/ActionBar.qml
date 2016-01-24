@@ -18,6 +18,7 @@
  */
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
+import QtQuick.Window 2.2
 import Material 0.2
 import Material.Extras 0.1
 import Material.ListItems 0.1 as ListItem
@@ -201,6 +202,43 @@ Item {
     function closeOverflowMenu() {
         if (overflowMenuAvailable && overflowMenuShowing)
             overflowMenu.close();
+    }
+
+    /*!
+       \internal
+
+       put mousearea under everything blow
+     */    
+    MouseArea { 
+        anchors.fill: parent
+
+        property var previousPosition
+		property var enable : Storage.target.clientSideDecorations 
+
+        onPressed: {
+            previousPosition = Qt.point(mouseX, mouseY)
+        }
+
+        onDoubleClicked: {
+			if( enable ){
+				if( Storage.target.visibility != Window.FullScreen ){
+					Storage.target.visibility = Window.FullScreen
+				}else{
+					Storage.target.visibility = Window.Windowed
+				}
+			}
+        }
+
+        onPositionChanged: {
+            if (pressedButtons == Qt.LeftButton 
+				&& Storage.target.visibility != Window.FullScreen 
+				&& enable ) {
+                var dx = mouseX - previousPosition.x
+                var dy = mouseY - previousPosition.y
+                Storage.target.x = Storage.target.x + dx 
+                Storage.target.y = Storage.target.y + dy
+            }
+        }
     }
 
     QtObject {
