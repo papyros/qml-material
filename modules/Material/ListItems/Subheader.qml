@@ -41,11 +41,14 @@ View {
 
     property alias text: label.text
     property alias style: label.style
+    property alias textColor: label.color
 
     Label {
         id: label
 
-        style: "body1"
+        font.pixelSize: Units.dp(14)
+        font.family: "Roboto"
+        font.weight: Font.DemiBold
 
         anchors {
             verticalCenter: parent.verticalCenter

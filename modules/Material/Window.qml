@@ -51,7 +51,7 @@ Window {
     PlatformExtensions {
         id: platformExtensions
         decorationColor: Theme.primaryDarkColor
-        window: app
+        window: window
     }
 
     AppTheme {
