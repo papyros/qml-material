@@ -127,6 +127,10 @@ Controls.ApplicationWindow {
         id: overlayLayer
     }
 
+    Resizer{
+        id: __resizer
+    }
+
     width: Units.dp(800)
     height: Units.dp(600)
 
@@ -175,6 +179,8 @@ Controls.ApplicationWindow {
     Component.onCompleted: {
         if (clientSideDecorations)
             flags |= Qt.FramelessWindowHint
+
+		Storage.target =  platformExtensions.window;
 
         function calculateDiagonal() {
             return Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) +
