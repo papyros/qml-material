@@ -32,7 +32,7 @@ Page {
 
     tabs: tabView
 
-    default property alias content: tabView.children
+    default property alias content: tabView.data
 
     onSelectedTabChanged: tabView.currentIndex = page.selectedTab
 
