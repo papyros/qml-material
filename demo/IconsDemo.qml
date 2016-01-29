@@ -166,7 +166,7 @@ Item {
 
                 Repeater {
                     id: awesomeList
-                    model: Object.keys(awesomeIcon.icons)
+                    //model: Object.keys(awesomeIcon.icons)
                     delegate: Item {
                         width: section.state == "list" ? Units.dp(240) : icon.size
                         height: icon.size

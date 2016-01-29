@@ -30,7 +30,7 @@ Item {
 
     property Action action
     property string iconName
-    property string iconSource: action ? action.iconSource : "icon://" + iconName
+    property string iconSource: action ? action.iconSource : "image://material/" + iconName
     property bool hoverAnimation: action ? action.hoverAnimation : false
     property alias color: icon.color
     property alias size: icon.size

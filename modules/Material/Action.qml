@@ -44,7 +44,7 @@ Controls.Action {
        \sa iconName
        \sa Icon
      */
-    property string iconSource: "icon://" + iconName
+    property string iconSource: "image://material/" + iconName
 
     /*!
        The text displayed for the action.

@@ -43,6 +43,6 @@ Controls.Tab {
        \sa iconName
        \sa Icon
      */
-    property string iconSource: "icon://" + iconName
+    property string iconSource: iconName ? "image://material/" + iconName : ""
 }
 
