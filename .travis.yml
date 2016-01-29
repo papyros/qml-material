@@ -22,7 +22,7 @@ before_script:
 script:
   - source /opt/qt55/bin/qt55-env.sh
   - cmake .
-  - Xvfb make test
+  - xvfb-run ctest -V
   - ./scripts/lint.sh
   - ./scripts/build_docs.sh
 
