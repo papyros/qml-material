@@ -20,9 +20,9 @@ before_script:
   # - export PATH=$PATH:$(pwd)/docmaker
   - git clone git://anongit.kde.org/extra-cmake-modules
   - pushd extra-cmake-modules
-  - cmake .
+  - cmake . -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib -DLIBEXEC_INSTALL_DIR=lib -DQML_INSTALL_DIR=lib/qt/qml
   - make
-  - sudo make install -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib -DLIBEXEC_INSTALL_DIR=lib -DQML_INSTALL_DIR=lib/qt/qml
+  - sudo make install
   - popd
 
 script:
