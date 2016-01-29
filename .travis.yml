@@ -29,7 +29,7 @@ script:
   - source /opt/qt55/bin/qt55-env.sh
   - cmake .
   - make
-  - xvfb-run ctest -V
+  - xvfb-run -a -s "-screen 0 800x600x24" ctest -V
   - ./scripts/lint.sh
   # - ./scripts/build_docs.sh
 
