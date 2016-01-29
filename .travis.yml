@@ -12,6 +12,8 @@ install:
   - sudo apt-get -y install qt55tools
   - sudo apt-get -y install cmake
   - sudo apt-get -y install xvfb
+  # Create a link for node so jshint works
+  - sudo ln -s /usr/bin/nodejs /usr/bin/node
   - sudo npm install -g jshint
 
 before_script:
