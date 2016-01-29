@@ -19,7 +19,7 @@ before_script:
   - export PATH=$PATH:$(pwd)/docmaker
 
 script:
-  - source /opt/qt54/bin/qt54-env.sh
+  - source /opt/qt55/bin/qt55-env.sh
   - cmake .
   - Xvfb make test
   - ./scripts/lint.sh
