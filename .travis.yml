@@ -12,22 +12,28 @@ install:
   - sudo apt-get -y install qt55tools
   - sudo apt-get -y install cmake
   - sudo apt-get -y install xvfb
+  - sudo npm install -g jshint
 
 before_script:
-  - git clone git://github.com/papyros/docmaker.git
-  - sudo pip install -r docmaker/requirements.txt
-  - sudo npm install -g jshint
-  - export PATH=$PATH:$(pwd)/docmaker
+  # - git clone git://github.com/papyros/docmaker.git
+  # - sudo pip install -r docmaker/requirements.txt
+  # - export PATH=$PATH:$(pwd)/docmaker
+  - git clone git://anongit.kde.org/extra-cmake-modules
+  - pushd extra-cmake-modules
+  - cmake .
+  - make
+  - sudo make install -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib -DLIBEXEC_INSTALL_DIR=lib -DQML_INSTALL_DIR=lib/qt/qml
+  - popd
 
 script:
   - source /opt/qt55/bin/qt55-env.sh
   - cmake .
   - xvfb-run ctest -V
   - ./scripts/lint.sh
-  - ./scripts/build_docs.sh
+  # - ./scripts/build_docs.sh
 
-after_success:
-  - ./scripts/deploy.sh
+# after_success:
+  # - ./scripts/deploy.sh
 
 notifications:
   slack: papyros:Z7PeY2Y4mh0GWPoypZZNLd3D
