@@ -37,6 +37,8 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
              Test
              QuickTest)
 
+find_package(GTK2 REQUIRED)
+
 add_subdirectory(modules)
 # add_subdirectory(documentation)
 add_subdirectory(tests)

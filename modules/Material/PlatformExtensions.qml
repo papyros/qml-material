@@ -22,6 +22,7 @@ Object {
     id: platform
 
     property var platformExtensions
+    property var platformStyle
 
     property color decorationColor: Theme.primaryDarkColor
     property var window: null
@@ -50,6 +51,12 @@ Object {
         } catch (error) {
             // Ignore the error; it only means that the Papyros
             // platform extensions are not available
+        }
+
+        if (platformExtensions && platformExtensions.supportsColoredDecorations) {
+            Theme.decorationColor = Qt.binding(function() { Theme.primaryDarkColor })
+        } else if (PlatformStyle.decorationColor != "#000000") {
+            Theme.decorationColor = PlatformStyle.decorationColor()
         }
     }
 }

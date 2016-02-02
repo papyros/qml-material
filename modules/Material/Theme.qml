@@ -50,6 +50,14 @@ Object {
     property color primaryDarkColor: Qt.rgba(0,0,0, 0.54)
 
     /*!
+       The actual color of the window decorations. If running on Papyros, this color will match the
+       primary dark color. If a platform style was found, the decoration color will be used from the
+       platform style. Otherwise, a light gray default color will be used.
+
+     */
+    property color decorationColor: "#f3f3f3"
+
+    /*!
        The accent color complements the primary color, and is used for any primary action buttons
        along with switches, sliders, and other components that do not specifically set a color.
        This can be customized via the  \l ApplicationWindow::theme group property. According
