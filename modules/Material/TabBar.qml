@@ -70,7 +70,7 @@ Item {
     readonly property int tabCount: isTabView ? tabs.count : tabs.length
 
     visible: tabCount > 0
-    height: Units.dp(48)
+    implicitHeight: Units.dp(48)
 
     onTabCountChanged: {
         selectedIndex = Math.min(selectedIndex, tabCount)

@@ -107,7 +107,7 @@ Item {
        The height of the extended content view.
      */
     readonly property int extendedHeight: extendedContentView.height +
-                                          (tabBar.visible ? tabBar.height : 0)
+            (tabBar.visible && !integratedTabBar ? tabBar.height : 0)
 
     /*!
        Set to true to hide the action bar. This is used when displaying an
@@ -116,6 +116,8 @@ Item {
        instead.
      */
     property bool hidden: false
+
+    property bool integratedTabBar: false
 
     /*!
        The maximum number of actions that can be displayed before they spill over
@@ -246,7 +248,7 @@ Item {
             verticalCenter: actionsRow.verticalCenter
             left: parent.left
             right: actionsRow.left
-            leftMargin: leftItem.show ? Units.dp(72) : Units.dp(16)
+            leftMargin:Units.dp(16) + (leftItem.show ? Units.gu(1) : 0)
             rightMargin: Units.dp(16)
 
             Behavior on leftMargin {
@@ -254,7 +256,8 @@ Item {
             }
         }
 
-        visible: customContentView.children.length === 0
+        visible: customContentView.children.length === 0 &&
+                (!integratedTabBar || !tabBar.visible)
 
         textFormat: Text.PlainText
         text: actionBar.title
@@ -339,11 +342,13 @@ Item {
 
         darkBackground: Theme.isDarkColor(actionBar.backgroundColor)
         leftKeyline: actionBar.leftKeyline
+        height: integratedTabBar ? parent.implicitHeight : implicitHeight
 
         anchors {
-            top: extendedContentView.bottom
+            top: integratedTabBar ? undefined : extendedContentView.bottom
+            bottom: integratedTabBar ? actionsRow.bottom : undefined
             left: parent.left
-            right: parent.right
+            right: integratedTabBar ? actionsRow.left : parent.right
         }
     }
 
