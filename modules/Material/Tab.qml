@@ -27,7 +27,7 @@ import QtQuick.Controls 1.3 as Controls
    This extends the QtQuick.Controls Tab component to add iconName and iconSource properties.
  */
 Controls.Tab {
-	
+
 	/*!
        The icon displayed for the action. This can be a Material Design icon or an icon from
        FontAwesome. See \l Icon from more details.
@@ -44,5 +44,18 @@ Controls.Tab {
        \sa Icon
      */
     property string iconSource: "icon://" + iconName
-}
 
+    /*!
+     * Controls whether a close button will be shown for this tab.
+     *
+     * \since 0.3
+     */
+    property bool canRemove: false
+
+    /*!
+     * The index of the tab in a TabbedPage.
+     *
+     * \since 0.3
+     */
+    property int index
+}

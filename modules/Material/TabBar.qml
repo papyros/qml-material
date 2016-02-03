@@ -67,13 +67,75 @@ Item {
 
     property bool isTabView: String(tabs).indexOf("TabView") != -1
 
-    readonly property int tabCount: repeater.count
+    readonly property int tabCount: isTabView ? tabs.count : tabs.length
 
-    visible: isTabView ? tabs.count > 0 : tabs.length > 0
+    visible: tabCount > 0
     height: Units.dp(48)
 
     onTabCountChanged: {
         selectedIndex = Math.min(selectedIndex, tabCount)
+    }
+
+    function removeTab(index) {
+        if (tabs.hasOwnProperty("removeTab")) {
+            tabs.removeTab(index)
+        }
+    }
+
+    property Item activeTab: selectedIndex < tabCount &&
+                             tabRow.children[selectedIndex] !== undefined
+            ? tabRow.children[selectedIndex] : null
+
+    property int activeTabX: activeTab ? activeTab.x : -1
+    property int activeTabWidth: activeTab ? activeTab.width : -1
+
+    property int __animated
+
+    onActiveTabChanged: __animated = false
+
+    Component.onCompleted: animateStablization.restart()
+
+    onActiveTabXChanged: {
+        if (activeTabX == -1)
+            return
+        if (__animated) {
+            selectionIndicator.x = activeTab.x
+        } else {
+            animateStablization.restart()
+        }
+    }
+    onActiveTabWidthChanged: {
+        if (activeTabWidth == -1)
+            return
+        if (__animated) {
+            selectionIndicator.width = activeTab.width
+        } else {
+            animateStablization.restart()
+        }
+    }
+
+    Timer {
+        id: animateStablization
+        interval: 5
+        onTriggered: {
+            __animated = true
+            seqX.to = activeTabX
+            seqWidth.to = activeTabWidth
+            selectionAnimation.restart()
+        }
+    }
+
+    ParallelAnimation {
+        id: selectionAnimation
+
+        NumberAnimation {
+            id: seqX
+            target: selectionIndicator; property: "x"; duration: 200
+        }
+        NumberAnimation {
+            id: seqWidth
+            target: selectionIndicator; property: "width"; duration: 200
+        }
     }
 
     Item {
@@ -107,16 +169,6 @@ Item {
 
             height: Units.dp(2)
             color: tabBar.highlightColor
-            x: tabRow.children[tabBar.selectedIndex].x
-            width: tabRow.children[tabBar.selectedIndex].width
-
-            Behavior on x {
-                NumberAnimation { duration: 200 }
-            }
-
-            Behavior on width {
-                NumberAnimation { duration: 200 }
-            }
         }
     }
 
@@ -142,47 +194,57 @@ Item {
                 anchors.fill: parent
                 enabled: tab.enabled
                 onClicked: tabBar.selectedIndex = index
-            }
 
-            Row {
-                id: row
+                Row {
+                    id: row
 
-                anchors.centerIn: parent
-                spacing: Units.dp(10)
+                    anchors.centerIn: parent
+                    spacing: Units.dp(10)
 
-                Icon {
-                    anchors.verticalCenter: parent.verticalCenter
+                    Icon {
+                        anchors.verticalCenter: parent.verticalCenter
 
-                    source: tabItem.tab.hasOwnProperty("iconSource")
-                            ? tabItem.tab.iconSource : tabItem.tab.hasOwnProperty("iconName")
-                            ? "icon://" + tabItem.tab.iconName : ""
-                    color: tabItem.selected
-                            ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
-                            : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
+                        source: tabItem.tab.hasOwnProperty("iconSource")
+                                ? tabItem.tab.iconSource : tabItem.tab.hasOwnProperty("iconName")
+                                ? "icon://" + tabItem.tab.iconName : ""
+                        color: tabItem.selected
+                                ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
+                                : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
 
-                    visible: source != "" && source != "icon://"
+                        visible: source != "" && source != "icon://"
 
-                    Behavior on color {
-                        ColorAnimation { duration: 200 }
+                        Behavior on color {
+                            ColorAnimation { duration: 200 }
+                        }
                     }
-                }
 
-                Label {
-                    id: label
+                    Label {
+                        id: label
 
-                    text: typeof(tabItem.tab) == "string"
-                            ? tabItem.tab : tabItem.tab.title
-                    color: tabItem.selected
-                            ? darkBackground ? Theme.dark.textColor : Theme.light.accentColor
-                            : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
+                        text: typeof(tabItem.tab) == "string"
+                                ? tabItem.tab : tabItem.tab.title
+                        color: tabItem.selected
+                                ? darkBackground ? Theme.dark.textColor : Theme.light.accentColor
+                                : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
 
-                    style: "body2"
-                    font.capitalization: Font.AllUppercase
-                    anchors.verticalCenter: parent.verticalCenter
-                    maximumLineCount: 2
+                        style: "body2"
+                        font.capitalization: Font.AllUppercase
+                        anchors.verticalCenter: parent.verticalCenter
+                        maximumLineCount: 2
 
-                    Behavior on color {
-                        ColorAnimation { duration: 200 }
+                        Behavior on color {
+                            ColorAnimation { duration: 200 }
+                        }
+                    }
+
+                    IconButton {
+                        iconName: "navigation/close"
+                        visible: tab.hasOwnProperty("canRemove") && tab.canRemove && tabs.hasOwnProperty("removeTab")
+                        color: tabItem.selected
+                                ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
+                                : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
+                        onClicked: tabBar.removeTab(index)
+                        size: Units.dp(20)
                     }
                 }
             }

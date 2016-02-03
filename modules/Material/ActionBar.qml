@@ -129,7 +129,7 @@ Item {
        The index of the selected tab. This will be an index from the \l tabs
        property.
      */
-    property alias selectedTab: tabBar.selectedIndex
+    property alias selectedTabIndex: tabBar.selectedIndex
 
     /*!
        The tab bar displayed below the actions in the action bar. Exposed for
@@ -142,9 +142,9 @@ Item {
        array wih an object for each tab, or it can be a TabView object to display tabs for.
 
        If it is a Javascript array, each object represents one tab, and can either be a simple
-       string (used as the tab title), or an object with title, iconName, and/or iconSource 
+       string (used as the tab title), or an object with title, iconName, and/or iconSource
        properties.
-       
+
        If it is a TabView component, the title of each Tab object will be used, as well as
        iconName and iconSource properties if present (as provided by the Material subclass of Tab).
 

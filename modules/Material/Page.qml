@@ -123,7 +123,7 @@ FocusScope {
        The index of the selected tab. This will be an index from the \l tabs
        property.
      */
-    property alias selectedTab: __actionBar.selectedTab
+    property alias selectedTabIndex: __actionBar.selectedTabIndex
 
     /*!
        The tab bar displayed below the actions in the action bar. Exposed for
