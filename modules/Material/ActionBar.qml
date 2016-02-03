@@ -117,6 +117,19 @@ Item {
      */
     property bool hidden: false
 
+    /*!
+     * \internal
+     * The size of the left icon and the action icons.
+     *
+     * \since 0.3
+     */
+    property int iconSize: Units.gridUnit == Units.dp(48) ? Units.dp(20) : Units.dp(24)
+
+    /*!
+     * Set to true to integrate the tab bar into a single row with the actions.
+     *
+     * \since 0.3
+     */
     property bool integratedTabBar: false
 
     /*!
@@ -228,7 +241,7 @@ Item {
 
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                             Theme.dark.iconColor)
-        size: Units.dp(24)
+        size: iconSize
         action: backAction
 
         opacity: show ? enabled ? 1 : 0.6 : 0
@@ -293,7 +306,7 @@ Item {
 
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                                   Theme.dark.iconColor)
-                size: iconSource == "icon://content/add" ? Units.dp(27) : Units.dp(24)
+                size: iconSize
 
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
