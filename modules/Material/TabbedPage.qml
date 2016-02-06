@@ -62,7 +62,11 @@ Page {
 
         onCountChanged: {
             for (var i = 0; i < count; i++) {
-                getTab(i).index = i
+                var tab = getTab(i)
+                if (tab.hasOwnProperty("index"))
+                    tab.index = i
+                if (tab.hasOwnProperty("__tabView"))
+                    tab.__tabView = tabView
             }
         }
     }

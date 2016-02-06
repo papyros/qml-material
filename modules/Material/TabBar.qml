@@ -76,8 +76,10 @@ Item {
         selectedIndex = Math.min(selectedIndex, tabCount)
     }
 
-    function removeTab(index) {
-        if (tabs.hasOwnProperty("removeTab")) {
+    function removeTab(tab, index) {
+        if (tab.hasOwnProperty("close")) {
+            tab.close()
+        } else if (tabs.hasOwnProperty("removeTab")) {
             tabs.removeTab(index)
         }
     }
@@ -239,11 +241,11 @@ Item {
 
                     IconButton {
                         iconName: "navigation/close"
-                        visible: tab.hasOwnProperty("canRemove") && tab.canRemove && tabs.hasOwnProperty("removeTab")
+                        visible: tab.hasOwnProperty("canRemove") && tab.canRemove && (tabs.hasOwnProperty("removeTab") || tab.hasOwnProperty("close"))
                         color: tabItem.selected
                                 ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
                                 : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
-                        onClicked: tabBar.removeTab(index)
+                        onClicked: tabBar.removeTab(tab, index)
                         size: Units.dp(20)
                     }
                 }

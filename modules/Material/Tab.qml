@@ -27,6 +27,7 @@ import QtQuick.Controls 1.3 as Controls
    This extends the QtQuick.Controls Tab component to add iconName and iconSource properties.
  */
 Controls.Tab {
+    id: tab
 
 	/*!
        The icon displayed for the action. This can be a Material Design icon or an icon from
@@ -58,4 +59,43 @@ Controls.Tab {
      * \since 0.3
      */
     property int index
+
+    /*!
+     * \internal
+     * This holds the tab view this tab is in.
+     *
+     * \since 0.3
+     */
+    property Item __tabView
+
+    /*!
+     * This signal is emitted when the user tries to close the tab.
+     *
+     * This signal includes a close parameter. The close.accepted property is
+     * true by default so that the tab is allowed to close; but you can
+     * implement an onClosing handler and set \c{close.accepted = false} if you
+     * need to do something else before the tab can be closed.
+     *
+     * \since 0.3
+     */
+    signal closing(var close)
+
+    /*!
+     * Close the tab.
+     *
+     * When this method is called, or when the user tries to close the tab
+     * by its tab close button, the closing signal will be emitted. If there
+     * is no handler, or the handler does not revoke permission to close, the
+     * tab will subsequently close.
+     *
+     * \since 0.3
+     */
+    function close() {
+        var event = {accepted: true}
+        closing(event)
+
+        if (event.accepted) {
+            __tabView.removeTab(tab)
+        }
+    }
 }
