@@ -95,7 +95,7 @@ Controls.Tab {
         closing(event)
 
         if (event.accepted) {
-            __tabView.removeTab(tab)
+            __tabView.removeTab(index)
         }
     }
 }
