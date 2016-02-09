@@ -107,7 +107,7 @@ Item {
        The height of the extended content view.
      */
     readonly property int extendedHeight: extendedContentView.height +
-                                          (tabBar.visible ? tabBar.height : 0)
+            (tabBar.visible && !integratedTabBar ? tabBar.height : 0)
 
     /*!
        Set to true to hide the action bar. This is used when displaying an
@@ -116,6 +116,21 @@ Item {
        instead.
      */
     property bool hidden: false
+
+    /*!
+     * \internal
+     * The size of the left icon and the action icons.
+     *
+     * \since 0.3
+     */
+    property int iconSize: Units.gridUnit == Units.dp(48) ? Units.dp(20) : Units.dp(24)
+
+    /*!
+     * Set to true to integrate the tab bar into a single row with the actions.
+     *
+     * \since 0.3
+     */
+    property bool integratedTabBar: false
 
     /*!
        The maximum number of actions that can be displayed before they spill over
@@ -129,7 +144,7 @@ Item {
        The index of the selected tab. This will be an index from the \l tabs
        property.
      */
-    property alias selectedTab: tabBar.selectedIndex
+    property alias selectedTabIndex: tabBar.selectedIndex
 
     /*!
        The tab bar displayed below the actions in the action bar. Exposed for
@@ -142,9 +157,9 @@ Item {
        array wih an object for each tab, or it can be a TabView object to display tabs for.
 
        If it is a Javascript array, each object represents one tab, and can either be a simple
-       string (used as the tab title), or an object with title, iconName, and/or iconSource 
+       string (used as the tab title), or an object with title, iconName, and/or iconSource
        properties.
-       
+
        If it is a TabView component, the title of each Tab object will be used, as well as
        iconName and iconSource properties if present (as provided by the Material subclass of Tab).
 
@@ -226,7 +241,7 @@ Item {
 
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                             Theme.dark.iconColor)
-        size: Units.dp(24)
+        size: iconSize
         action: backAction
 
         opacity: show ? enabled ? 1 : 0.6 : 0
@@ -246,7 +261,7 @@ Item {
             verticalCenter: actionsRow.verticalCenter
             left: parent.left
             right: actionsRow.left
-            leftMargin: leftItem.show ? Units.dp(72) : Units.dp(16)
+            leftMargin:Units.dp(16) + (leftItem.show ? Units.gu(1) : 0)
             rightMargin: Units.dp(16)
 
             Behavior on leftMargin {
@@ -254,7 +269,8 @@ Item {
             }
         }
 
-        visible: customContentView.children.length === 0
+        visible: customContentView.children.length === 0 &&
+                (!integratedTabBar || !tabBar.visible)
 
         textFormat: Text.PlainText
         text: actionBar.title
@@ -290,7 +306,7 @@ Item {
 
                 color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                                   Theme.dark.iconColor)
-                size: iconSource == "icon://content/add" ? Units.dp(27) : Units.dp(24)
+                size: iconSize
 
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
@@ -339,11 +355,13 @@ Item {
 
         darkBackground: Theme.isDarkColor(actionBar.backgroundColor)
         leftKeyline: actionBar.leftKeyline
+        height: integratedTabBar ? parent.implicitHeight : implicitHeight
 
         anchors {
-            top: extendedContentView.bottom
+            top: integratedTabBar ? undefined : extendedContentView.bottom
+            bottom: integratedTabBar ? actionsRow.bottom : undefined
             left: parent.left
-            right: parent.right
+            right: integratedTabBar ? actionsRow.left : parent.right
         }
     }
 

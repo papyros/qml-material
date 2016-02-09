@@ -30,16 +30,24 @@ import QtQuick.Controls.Styles 1.3 as Styles
 Page {
     id: page
 
+    default property alias content: tabView.data
+
+    /*!
+     * The currently selected tab.
+     *
+     * \since 0.3
+     */
+    readonly property Tab selectedTab: tabView.count > 0
+            ? tabView.getTab(selectedTabIndex) : null
+
     tabs: tabView
 
-    default property alias content: tabView.children
-
-    onSelectedTabChanged: tabView.currentIndex = page.selectedTab
+    onSelectedTabIndexChanged: tabView.currentIndex = page.selectedTabIndex
 
     Controls.TabView {
         id: tabView
 
-        currentIndex: page.selectedTab
+        currentIndex: page.selectedTabIndex
         anchors.fill: parent
 
         tabsVisible: false
@@ -48,6 +56,18 @@ Page {
         style: Styles.TabViewStyle {
             frameOverlap: 0
             frame: Item {}
+        }
+
+        onCurrentIndexChanged: page.selectedTabIndex = currentIndex
+
+        onCountChanged: {
+            for (var i = 0; i < count; i++) {
+                var tab = getTab(i)
+                if (tab.hasOwnProperty("index"))
+                    tab.index = i
+                if (tab.hasOwnProperty("__tabView"))
+                    tab.__tabView = tabView
+            }
         }
     }
 }
