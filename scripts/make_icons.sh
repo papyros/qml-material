@@ -1,13 +1,13 @@
 #! /bin/bash
 
-CATEGORIES=(action av communication device file image maps notification social toggle alert content editor hardware navigation)
+CATEGORIES=(action alert av communication content device editor file hardware image maps navigation notification places social toggle)
 
-for CATEGORY in ${CATEGORIES[*]}; do	
+for CATEGORY in ${CATEGORIES[*]}; do
 	rm -r modules/Material/icons/$CATEGORY/
 	mkdir modules/Material/icons/$CATEGORY
 
 	ICONS=$(ls ../material-design-icons/$CATEGORY/svg/production/*48px*)
-	
+
 	for FILE in $ICONS; do
 		ICON=$(basename $FILE)
 		NEW_NAME=$(echo $ICON | sed -E 's/ic_(.*)_48px.svg/\1.svg/')
@@ -15,7 +15,7 @@ for CATEGORY in ${CATEGORIES[*]}; do
 	done
 
 	ICONS=$(ls ../material-design-icons/$CATEGORY/svg/production/*24px*)
-	
+
 	for FILE in $ICONS; do
 		ICON=$(basename $FILE)
 		NEW_NAME=$(echo $ICON | sed -E 's/ic_(.*)_24px.svg/\1.svg/')
