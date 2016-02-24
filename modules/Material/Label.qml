@@ -16,11 +16,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype Label
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A text label with many different font styles from Material Design.
  */

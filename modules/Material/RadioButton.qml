@@ -19,11 +19,11 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype RadioButton
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Radio buttons allow the user to select one option from a set.
 */
@@ -63,6 +63,7 @@ Controls.RadioButton {
         onClicked: {
             if(radioButton.canToggle || !radioButton.checked)
                 radioButton.checked = !radioButton.checked
+            radioButton.clicked()
         }
 
         circular: true
@@ -79,6 +80,7 @@ Controls.RadioButton {
         onClicked: {
             if(radioButton.canToggle || !radioButton.checked)
                 radioButton.checked = !radioButton.checked
+            radioButton.clicked()
         }
     }
 }

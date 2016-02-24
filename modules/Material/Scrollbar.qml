@@ -19,7 +19,7 @@ import QtQuick 2.4
 
 /*!
    \qmltype Scrollbar
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Scrollbars show scrolling progress for listviews and flickables.
 */

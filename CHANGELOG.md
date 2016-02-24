@@ -1,8 +1,102 @@
 QML Material CHANGELOG
 ======================
 
- * [ProgressBar] Update progress bar and circle to work asynchronously
- * Merge in the qml-extras repository for simplicity
+### Version 0.2.0 (January 16, 2016)
+
+**Features**
+ * General:
+   * Add a showError() function for easily displaying errors
+   * Import the Material.Extras module from a separate git repository
+   * Add details about Material.Extras
+   * Use Settings from QtQuick.Controls for mobile characteristics
+   * Support using simple names for theme colors
+ * Action: Have Action extend QtQuick's Action object
+ * ActionButton: Follow Action iconName & visible
+ * CircleImage: Expose the fillMode property
+ * DatePicker: Initial add of the Material DatePicker
+ * Platform extensions:
+   * Implement platform extensions for Papyros
+   * Material Design window decorations for Papyros
+ * Demo:
+   * Use the new-style simple color names for the theme
+   * Replace account_child with account_circle in the form demo
+   * Modify snackbar demo to show wide and multi-line examples
+   * Set the window title of the demo app
+   * Use async loader for demo components for better performance
+   * Use Flow instead of Grid with variable columns for the icon demo
+   * Add date picker to demo
+   * Change between list and icon view on the icon demo
+   * Update dialog demo to show better examples
+   * Add example customized slider to demo
+ * Dialog:
+   * Allow hiding the primary button
+   * Update dialog to latest MD spec
+ * Icons:
+   * Add all the new and updated Material icons
+   * Add new and updated Material icons
+   * Update the FontAwesome icons to 4.5.0
+   * Update the Material Design icons
+ * ListItem: Expose the list item labels to allow customization
+ * MenuField: Simple implementation of a textRole
+ * NavigationDrawer: Add NavigationDrawerPage for easy use of nav drawers
+ * PageStack:
+   * Add a goBack signal to Page to allow overriding the default back behavior
+   * Allow the page stack to be popped to an arbitrary page
+ * ProgressCircle: HiDPI support for ProgressCircle
+ * RadioButton and CheckBox: Trigger the click event
+ * Slider:
+   * Add customization options to the slider's label knob
+   * Support custom slider tooltips via a valueInfo function
+ * Tabs:
+   * Improved tabs support using a TabbedPage
+   * Support disabled tabs
+ * TextField:
+   * Support borderless textfields
+   * Update to latest MD spec, add multi-line support
+ * TimePicker: Implement a time picker component
+ * Tooltip: Improve the tooltip class and split it into a base Popover
+
+**Bug Fixes**
+ * General: Fix a bug causing units to be calculated incorrectly
+ * ActionBar: Only support plain text in the action bar title
+ * BottomSheet: Fix wrong ID
+ * Button:
+   * Fix the style of disabled buttons
+   * Fix typo in button width calculation
+ * CheckBox: Update the size of the checkbox
+ * Demo:
+   * Don't load the demo page twice initially
+   * Properly display the demo window when loading from C++
+ * Dropdown:
+   * Close an open dropdown when resizing the app window
+   * Fix Dropdown positioning in window edges
+ * IconButton: Fix alignment of the icon in the icon button
+ * Ink: Allow concurrent Ink animations
+ * ListItem:
+   * Fix content item not showing when it should
+   * Fix divider insets on subtitled list items
+   * Show the list item's sub text when the content item is hidden
+   * Subtitled - Fix invisible secondary item
+ * MenuField:
+   * Fix bug that MenuField cannot scroll menu items
+   * Fix TypeError when no item is selected
+ * PageSidebar: Properly push and pop the right sidebar actionbar
+ * Page: Disable the left action when it is hidden
+ * ProgressBar: Fixup style to allow use in async loader
+ * ProgressCircle:
+   * Fixup style to allow use in async loader
+   * Fix a incorrect reference to the canvas
+   * Suppress meaningless error
+ * RadioButton: centered the checked indicator
+ * SimpleMenu: Fix all the binding loop warnings
+ * Switch: Fix the groove background to match the spec
+ * Tabs:
+   * Fix tabbar when navigating back up the page stack
+   * Initialize tabs to empty
+   * Properly support changing the number of tabs in a TabbedPage
+ * TextField:
+   * Fix errors in the text field style
+   * Fixes bad Roboto font rendering on Windows
 
 
 ### Version 0.1.0 (May 6, 2015)

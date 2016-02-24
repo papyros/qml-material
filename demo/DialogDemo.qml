@@ -1,6 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as QuickControls
-import Material 0.1
+import Material 0.2
 import Material.Extras 0.1
 
 Item {

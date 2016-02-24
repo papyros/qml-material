@@ -22,7 +22,7 @@ import ".."
 
 /*!
    \qmltype Subtitled
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief A list item with a two or three lines of text and optional primary and secondary actions.
  */
@@ -42,7 +42,11 @@ BaseListItem {
     property alias secondaryItem: secondaryItem.children
     property alias content: contentItem.children
 
-    interactive: contentItem.children.length === 0
+    property alias itemLabel: label
+    property alias itemSubLabel: subLabel
+    property alias itemValueLabel: valueLabel
+
+    interactive: !contentItem.showing
 
     dividerInset: actionItem.visible ? listItem.height : 0
 
@@ -122,9 +126,9 @@ BaseListItem {
                 id: contentItem
 
                 Layout.fillWidth: true
+                Layout.preferredHeight: showing ? subLabel.implicitHeight : 0
 
-                visible: visibleChildren.length > 0
-                height: visible ? subLabel.implicitHeight : 0
+                property bool showing: visibleChildren.length > 0
             }
 
             Label {
@@ -138,7 +142,7 @@ BaseListItem {
                 wrapMode: Text.WordWrap
                 style: "body1"
 
-                visible: text != "" && !contentItem.visible
+                visible: text != "" && !contentItem.showing
                 maximumLineCount: listItem.maximumLineCount - 1
             }
         }

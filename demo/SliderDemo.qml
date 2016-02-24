@@ -1,6 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.1
+import Material 0.2
 
 ColumnLayout {
     spacing: 0
@@ -82,6 +82,25 @@ ColumnLayout {
                     minimumValue: 0
                     maximumValue: 100
                     activeFocusOnPress: true
+                    darkBackground: index == 1
+                }
+
+                Label {
+                    text: "Customized Numeric Value Label"
+                    wrapMode: Text.WordWrap
+                    Layout.alignment:  Qt.AlignBottom
+                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                }
+
+                Slider {
+                    Layout.alignment: Qt.AlignCenter
+                    numericValueLabel: true
+                    stepSize: 1
+                    minimumValue: 0
+                    maximumValue: 100
+                    alwaysShowValueLabel: true
+                    knobLabel: value + "%"
+                    knobDiameter: Units.dp(42)
                     darkBackground: index == 1
                 }
 

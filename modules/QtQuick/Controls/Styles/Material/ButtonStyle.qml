@@ -18,7 +18,7 @@
 
 import QtQuick 2.4
 import QtQuick.Controls.Styles 1.3
-import Material 0.1
+import Material 0.2
 
 ButtonStyle {
     id: style
@@ -30,12 +30,12 @@ ButtonStyle {
         bottom: 0
     }
 
-    property bool darkBackground: control.hasOwnProperty("darkBackground") 
+    property bool darkBackground: control.hasOwnProperty("darkBackground")
                 ? control.darkBackground : Theme.isDarkColor(controlBackground)
 
     property int controlElevation: control.hasOwnProperty("elevation") ? control.elevation : 1
 
-    property color controlBackground: control.hasOwnProperty("backgroundColor") 
+    property color controlBackground: control.hasOwnProperty("backgroundColor")
             ? control.backgroundColor : controlElevation == 0 ? "transparent" : "white"
 
     property string context: control.hasOwnProperty("context") ? control.context : "default"
@@ -47,7 +47,7 @@ ButtonStyle {
 
         radius: Units.dp(2)
 
-        backgroundColor: control.enabled || controlElevation === 0 
+        backgroundColor: control.enabled || controlElevation === 0
                 ? controlBackground
                 : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
                                  : Qt.rgba(0, 0, 0, 0.12)
@@ -89,7 +89,7 @@ ButtonStyle {
     }
     label: Item {
         implicitHeight: Math.max(Units.dp(36), label.height + Units.dp(16))
-        implicitWidth: context == "dialog" 
+        implicitWidth: context == "dialog"
                 ? Math.max(Units.dp(64), label.width + Units.dp(16))
                 : context == "snackbar" ? label.width + Units.dp(16)
                                         : Math.max(Units.dp(88), label.width + Units.dp(32))

@@ -18,12 +18,12 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Window 2.2
-import Material 0.1
+import Material 0.2
 import Material.Extras 0.1
 
 /*!
    \qmltype ApplicationWindow
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A window that provides features commonly used for Material Design apps.
 
@@ -34,7 +34,7 @@ import Material.Extras 0.1
 
    \qml
    import QtQuick 2.4
-   import Material 0.1
+   import Material 0.2
 
    ApplicationWindow {
        title: "Application Name"
@@ -86,6 +86,12 @@ Controls.ApplicationWindow {
 
     AppTheme {
         id: __theme
+    }
+
+    PlatformExtensions {
+        id: platformExtensions
+        decorationColor: __toolbar.decorationColor
+        window: app
     }
 
     PageStack {
@@ -175,22 +181,42 @@ Controls.ApplicationWindow {
         if (clientSideDecorations)
             flags |= Qt.FramelessWindowHint
 
+        function calculateDiagonal() {
+            return Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) +
+                    Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
+        }
+
         Units.pixelDensity = Qt.binding(function() {
             return Screen.pixelDensity
         });
 
-        Device.type = Qt.binding(function () {
-            var diagonal = Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) +
-                    Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
+        Units.multiplier = Qt.binding(function() {
+            var diagonal = calculateDiagonal();
+            var baseMultiplier = platformExtensions.multiplier
 
             if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
-                Units.multiplier = 1;
+                return baseMultiplier;
+            } else if (diagonal >= 5 && diagonal < 6.5) {
+                return baseMultiplier;
+            } else if (diagonal >= 6.5 && diagonal < 10.1) {
+                return baseMultiplier;
+            } else if (diagonal >= 10.1 && diagonal < 29) {
+                return 1.4 * baseMultiplier;
+            } else if (diagonal >= 29 && diagonal < 92) {
+                return 1.4 * baseMultiplier;
+            } else {
+                return 1.4 * baseMultiplier;
+            }
+        });
+
+        Device.type = Qt.binding(function () {
+            var diagonal = calculateDiagonal();
+
+            if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
                 return Device.phone;
             } else if (diagonal >= 5 && diagonal < 6.5) {
-                Units.multiplier = 1;
                 return Device.phablet;
             } else if (diagonal >= 6.5 && diagonal < 10.1) {
-                Units.multiplier = 1;
                 return Device.tablet;
             } else if (diagonal >= 10.1 && diagonal < 29) {
                 return Device.desktop;
@@ -204,8 +230,14 @@ Controls.ApplicationWindow {
         // Nasty hack because singletons cannot import the module they were declared in, so
         // the grid unit cannot be defined in either Device or Units, because it requires both.
         Units.gridUnit = Qt.binding(function() {
-            return Device.type === Device.phone || Device.type === Device.phablet
-                    ? Units.dp(48) : Device.type == Device.tablet ? Units.dp(56) : Units.dp(64)
+            var isPortrait = app.width < app.height
+            if (Device.type === Device.phone || Device.type === Device.phablet) {
+                return isPortrait ? Units.dp(56) : Units.dp(48)
+            } else if (Device.type == Device.tablet) {
+                return Units.dp(64)
+            } else {
+                return Device.hasTouchScreen ? Units.dp(64) : Units.dp(48)
+            }
         })
     }
 }

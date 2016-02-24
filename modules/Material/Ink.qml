@@ -17,12 +17,12 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.1
+import Material 0.2
 import Material.Extras 0.1
 
 /*!
    \qmltype Ink
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Represents a ripple ink animation used in buttons and many other components.
  */
@@ -30,13 +30,13 @@ MouseArea {
     id: view
 
     clip: true
-    hoverEnabled: enabled
+    hoverEnabled: Device.hoverEnabled
     z: 2
 
     property int startRadius: circular ? width/10 : width/6
     property int endRadius
 
-    property Item currentCircle
+    property Item lastCircle
     property color color: Qt.rgba(0,0,0,0.1)
 
     property bool circular: false
@@ -53,19 +53,18 @@ MouseArea {
     }
 
     onCanceled: {
-        currentCircle.removeCircle();
+        lastCircle.removeCircle();
     }
 
     onReleased: {
-        currentCircle.removeCircle();
+        lastCircle.removeCircle();
     }
 
     function createTapCircle(x, y) {
         endRadius = centered ? width/2 : radius(x, y)
         showFocus = false
 
-        if (!currentCircle)
-            currentCircle = tapCircle.createObject(view, {
+        lastCircle = tapCircle.createObject(view, {
                                                        "circleX": centered ? width/2 : x,
                                                        "circleY": centered ? height/2 : y
                                                    });
@@ -96,7 +95,7 @@ MouseArea {
 
         anchors.fill: parent
 
-        color: Theme.isDarkColor(focusColor) && focusColor.a > 0    
+        color: Theme.isDarkColor(focusColor) && focusColor.a > 0
                 ? Qt.rgba(0,0,0,0.2) : Qt.rgba(0,0,0,0.1)
 
         opacity: showFocus && focused ? 1 : 0

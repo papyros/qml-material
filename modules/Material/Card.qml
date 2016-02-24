@@ -16,11 +16,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype Card
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A card is a piece of paper with unique related data that serves as an entry point 
    to more detailed information.

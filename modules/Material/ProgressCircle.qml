@@ -19,11 +19,11 @@ import QtQuick 2.4
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles 1.3 as Styles
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype ProgressCircle
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Visual circular indicator of progress in some operation.
 */
@@ -180,7 +180,7 @@ Controls.ProgressBar {
                     ctx.translate(canvas.width / 2, canvas.height / 2);
                     ctx.rotate(control.indeterminate ? internal.rotate : currentProgress * (3 * Math.PI / 2));
 
-                    ctx.arc(0, 0, Math.min(canvas.width, canvas.height) / 2 - ctx.lineWidth,
+                    ctx.arc(0, 0, Math.max(0, Math.min(canvas.width, canvas.height) / 2 - ctx.lineWidth),
                         control.indeterminate ? internal.arcStartPoint : 0,
                         control.indeterminate ? internal.arcEndPoint : currentProgress * (2 * Math.PI),
                         false);

@@ -19,7 +19,7 @@
 import QtQuick 2.4
 import QtQuick.Controls.Styles 1.3
 import QtQuick.Layouts 1.1
-import Material 0.1
+import Material 0.2
 
 TextFieldStyle {
     id: style

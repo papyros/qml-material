@@ -1,5 +1,5 @@
 import QtQuick 2.4
-import Material 0.1
+import Material 0.2
 import Material.ListItems 0.1 as ListItem
 
 ApplicationWindow {
@@ -11,9 +11,8 @@ ApplicationWindow {
     visible: true
 
     theme {
-        primaryColor: Palette.colors["blue"]["500"]
-        primaryDarkColor: Palette.colors["blue"]["700"]
-        accentColor: Palette.colors["red"]["A200"]
+        primaryColor: "blue"
+        accentColor: "red"
         tabHighlightColor: "white"
     }
 
@@ -30,11 +29,11 @@ ApplicationWindow {
             "Bottom Sheet", "Dialog", "Full-Screen Dialog", "Forms", "List Items", "Page Stack", "Time Picker", "Date Picker"
     ]
 
-    property var sections: [ styles, basicComponents, compoundComponents ]
+    property var sections: [ basicComponents, styles, compoundComponents ]
 
-    property var sectionTitles: [ "Style", "Basic Components", "Compound Components" ]
+    property var sectionTitles: [ "Basic Components", "Style", "Compound Components" ]
 
-    property string selectedComponent: styles[0]
+    property string selectedComponent: sections[0][0]
 
     initialPage: TabbedPage {
         id: page
@@ -87,6 +86,8 @@ ApplicationWindow {
 
             enabled: page.width < Units.dp(500)
 
+            onEnabledChanged: smallLoader.active = enabled
+
             Flickable {
                 anchors.fill: parent
 
@@ -137,11 +138,13 @@ ApplicationWindow {
         }
 
         Loader {
+            id: smallLoader
             anchors.fill: parent
             sourceComponent: tabDelegate
 
             property var section: []
-            visible: navDrawer.enabled
+            visible: active
+            active: false
         }
     }
 
@@ -208,6 +211,7 @@ ApplicationWindow {
         id: tabDelegate
 
         Item {
+
             Sidebar {
                 id: sidebar
 

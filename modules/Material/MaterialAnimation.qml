@@ -21,7 +21,7 @@ pragma Singleton
 
 /*!
    \qmltype MaterialAnimation
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A singleton with common animation durations.
  */

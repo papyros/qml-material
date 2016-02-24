@@ -17,4 +17,4 @@
  */
 
 #include <QtQuickTest/QtQuickTest>
-QUICK_TEST_MAIN(materials)
+QUICK_TEST_MAIN(material)
