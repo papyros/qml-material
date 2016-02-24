@@ -19,7 +19,7 @@ import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 /*!
    \qmltype Action
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Represents an action shown in an action bar, context menu, or list.
 

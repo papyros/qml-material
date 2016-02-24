@@ -17,29 +17,44 @@
  */
 
 import QtQuick 2.4
-import Material 0.1
+import Material 0.2
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
 
 /*!
    \qmltype Slider
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
-   \brief Sliders let users select a value from a continuous or discrete range of 
+   \brief Sliders let users select a value from a continuous or discrete range of
    values by moving the slider thumb.
  */
 Controls.Slider {
     id: slider
 
     /*!
-       Set to \c true to enable a float numeric value label above the slider knob
+       Set to \c true to enable a floating numeric value label above the slider knob
      */
     property bool numericValueLabel: false
+
+    /*!
+       Set to \c true to always show the numeric value label, even when not pressed
+     */
+    property bool alwaysShowValueLabel: false
 
     /*!
        Set to \c true if the switch is on a dark background
      */
     property bool darkBackground
+
+    /*!
+       The label to display within the value label knob, by default the sliders current value
+     */
+    property string knobLabel: slider.value.toFixed(0)
+
+    /*!
+       The diameter of the value label knob
+     */
+    property int knobDiameter: Units.dp(32)
 
     property color color: darkBackground ? Theme.dark.accentColor
                                          : Theme.light.accentColor

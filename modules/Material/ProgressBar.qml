@@ -19,11 +19,11 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype ProgressBar
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Visual indicator of progress in some operation.
 */

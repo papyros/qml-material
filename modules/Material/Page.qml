@@ -18,11 +18,11 @@
 
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype Page
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Represents a page on the navigation page stack.
 
@@ -30,7 +30,7 @@ import Material 0.1
 
    \qml
    import QtQuick 2.4
-   import Material 0.1
+   import Material 0.2
 
    Page {
        title: "Application Name"
@@ -123,7 +123,7 @@ FocusScope {
        The index of the selected tab. This will be an index from the \l tabs
        property.
      */
-    property alias selectedTab: __actionBar.selectedTab
+    property alias selectedTabIndex: __actionBar.selectedTabIndex
 
     /*!
        The tab bar displayed below the actions in the action bar. Exposed for
@@ -136,9 +136,9 @@ FocusScope {
        array wih an object for each tab, or it can be a TabView object to display tabs for.
 
        If it is a Javascript array, each object represents one tab, and can either be a simple
-       string (used as the tab title), or an object with title, iconName, and/or iconSource 
+       string (used as the tab title), or an object with title, iconName, and/or iconSource
        properties.
-       
+
        If it is a TabView component, the title of each Tab object will be used, as well as
        iconName and iconSource properties if present (as provided by the Material subclass of Tab).
      */
@@ -150,12 +150,44 @@ FocusScope {
     property string title
 
     /*!
+       This signal is emitted when the back action is triggered or back key is released.
+
+       By default, the page will be popped from the page stack. To change the default
+       behavior, for example to show a confirmation dialog, listen for this signal using
+       \c onGoBack and set \c event.accepted to \c true. To dismiss the page from your
+       dialog without triggering this signal and re-showing the dialog, call
+       \c page.forcePop().
+     */
+    signal goBack(var event)
+
+    /*!
        Pop this page from the page stack. This does nothing if this page is not
        the current page on the page stack.
+
+       Use \c force to avoid calling the \l goBack signal. This is useful if you
+       use the \l goBack signal to show a confirmation dialog, and want to close
+       the page from your dialog without showing the dialog again. You can also
+       use \c forcePop() as a shortcut to this behavior.
      */
-    function pop() {
-        if (Controls.Stack.view.currentItem === page)
-            return Controls.Stack.view.pop();
+    function pop(event, force) {
+        if (Controls.Stack.view.currentItem !== page)
+            return false
+
+        if (!event)
+            event = {accepted: false}
+
+        if (!force)
+            goBack(event)
+
+        if (event.accepted) {
+            return true
+        } else {
+            return Controls.Stack.view.pop()
+        }
+    }
+
+    function forcePop() {
+        pop(null, true)
     }
 
     /*!
@@ -178,7 +210,7 @@ FocusScope {
                 __actionBar.closeOverflowMenu();
                 event.accepted = true;
             } else {
-                // or pop the page from the page stack
+                // Or pop the page from the page stack
                 if (pop()) {
                     event.accepted = true;
                 }

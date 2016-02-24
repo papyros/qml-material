@@ -18,11 +18,11 @@
 import QtQuick 2.4
 import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.1
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype Standard
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief A simple list item with a single line of text and optional primary and secondary actions.
  */
@@ -42,6 +42,7 @@ BaseListItem {
     property alias content: contentItem.children
 
     property alias itemLabel: label
+    property alias itemValueLabel: valueLabel
 
     property alias textColor: label.color
     property alias iconColor: icon.color

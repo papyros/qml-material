@@ -17,11 +17,11 @@
  */
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype SectionHeader
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief A list item that serves as the the header for an expandable list section.
  */

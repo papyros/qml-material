@@ -16,12 +16,20 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.1
+import Material 0.2
 import Material.ListItems 0.1 as ListItem
 
 TabbedPage {
     id: page
     title: "Page Title that is very long to demonstrate eliding titles in ActionBar"
+
+    actionBar.backgroundColor: Palette.colors.grey['200']
+    actionBar.decorationColor: Palette.colors.grey['300']
+
+    onGoBack: {
+        confirmationDialog.show()
+        event.accepted = true
+    }
 
     Tab {
         title: "Overview"
@@ -49,5 +57,21 @@ TabbedPage {
         title: "Inbox"
 
         Rectangle { color: Palette.colors.orange["200"] }
+    }
+
+    Tab {
+        title: "Disabled Tab"
+        enabled: false
+        Rectangle { color: Palette.colors.purple["200"] }
+    }
+
+    Dialog {
+        id: confirmationDialog
+
+        title: "Do you want to go back?"
+        positiveButtonText: "Go Back"
+        negativeButtonText: "Cancel"
+
+        onAccepted: page.forcePop()
     }
 }

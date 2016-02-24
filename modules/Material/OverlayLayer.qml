@@ -19,7 +19,7 @@ import QtQuick 2.4
 
 /*!
    \qmltype OverlayLayer
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Provides a layer to display popups and other overlay components.
  */

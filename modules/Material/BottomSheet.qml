@@ -17,11 +17,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype BottomSheet
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A bottom sheet is a sheet of paper that slides up from the bottom edge
    of the screen and presents a set of clear and simple actions.

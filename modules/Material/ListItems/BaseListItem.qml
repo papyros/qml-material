@@ -20,7 +20,7 @@ import ".."
 
 /*!
    \qmltype BaseListItem
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief The base class for list items.
 

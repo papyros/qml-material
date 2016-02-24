@@ -16,12 +16,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
+import QtQuick.Controls 1.3
+import QtQuick.Controls.Private 1.0
 
 pragma Singleton
 
 /*!
    \qmltype Device
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief A singleton that provides information about the current device.
  */
@@ -37,7 +39,7 @@ Object {
     readonly property int desktop: 3
     readonly property int tv: 4
     readonly property int unknown: 5 //it's either bigger than tv or smaller than phone
-    
+
     readonly property string name: {
         switch (type) {
             case 0:
@@ -54,7 +56,7 @@ Object {
                 return "device";
         }
     }
-    
+
     readonly property string iconName: {
         switch (type) {
             case 0:
@@ -72,5 +74,7 @@ Object {
         }
     }
 
-    readonly property bool isMobile: type == phone || type == phablet || type == tablet
+    readonly property bool isMobile: Settings.isMobile
+    readonly property bool hasTouchScreen: Settings.hasTouchScreen
+    readonly property bool hoverEnabled: Settings.hoverEnabled
 }

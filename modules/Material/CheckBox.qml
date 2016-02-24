@@ -18,11 +18,11 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype CheckBox
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Checkboxes allow the user to select multiple options from a set.
  */
@@ -58,6 +58,9 @@ Controls.CheckBox {
         circular: true
         centered: true
 
-        onClicked: checkBox.checked = !checkBox.checked
+        onClicked: {
+          checkBox.checked = !checkBox.checked
+          checkBox.clicked()
+        }
     }
 }

@@ -16,11 +16,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.1
+import Material 0.2
 
 /*!
    \qmltype Subheader
-   \inqmlmodule Material.ListItems 0.1
+   \inqmlmodule Material.ListItems
 
    \brief Subheaders are special list tiles that delineate distinct sections of a list or grid list.
  */
@@ -41,11 +41,14 @@ View {
 
     property alias text: label.text
     property alias style: label.style
+    property alias textColor: label.color
 
     Label {
         id: label
 
-        style: "body1"
+        font.pixelSize: Units.dp(14)
+        font.family: "Roboto"
+        font.weight: Font.DemiBold
 
         anchors {
             verticalCenter: parent.verticalCenter

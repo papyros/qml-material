@@ -21,7 +21,7 @@ pragma Singleton
 
 /*!
    \qmltype Units
-   \inqmlmodule Material 0.1
+   \inqmlmodule Material
 
    \brief Provides access to screen-independent Units known as DPs (device-independent pixels).
 
@@ -33,7 +33,7 @@ pragma Singleton
 
    \qml
    import QtQuick 2.4
-   import Material 0.1
+   import Material 0.2
 
    Rectangle {
        width: Units.dp(100)
