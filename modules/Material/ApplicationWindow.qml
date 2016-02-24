@@ -114,6 +114,11 @@ Controls.ApplicationWindow {
     }
 
     OverlayLayer {
+        id: fullDialogOverlayLayer
+        objectName: "fullDialogOverlayLayer"
+    }
+
+    OverlayLayer {
         id: dialogOverlayLayer
         objectName: "dialogOverlayLayer"
     }
