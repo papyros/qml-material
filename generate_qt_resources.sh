@@ -39,11 +39,11 @@ function generate_resource_file() {
 }
 
 #                       Output file             Folder to search         List of patterns to search for
-generate_resource_file 'Material.qrc'           'Material/'              'qmldir' '*.qml' '*.js'
+generate_resource_file 'Material.qrc'           'Material'               'qmldir' '*.qml' '*.js'
 # Remove awesome.js from Material.qrc as we include it in FontAwesome.qrc instead
 sed -i.bak "s|.*awesome.js.*||g" Material.qrc && rm -f Material.qrc.bak
 
-generate_resource_file 'MaterialQtQuick.qrc'    'QtQuick/'               'qmldir' '*.qml'
-generate_resource_file 'FontAwesome.qrc'        'Material/'              'awesome.js' 'FontAwesome.otf'
-generate_resource_file 'FontRoboto.qrc'         'Material/fonts/roboto/' '*.ttf'
-generate_resource_file 'Icons.qrc'              'Material/icons/'        '*.svg'
+generate_resource_file 'MaterialQtQuick.qrc'    'QtQuick'                'qmldir' '*.qml'
+generate_resource_file 'FontAwesome.qrc'        'Material'               'awesome.js' 'FontAwesome.otf'
+generate_resource_file 'FontRoboto.qrc'         'Material/fonts/roboto'  '*.ttf'
+generate_resource_file 'Icons.qrc'              'Material/icons'         '*.svg'
