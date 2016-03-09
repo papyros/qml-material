@@ -8,26 +8,26 @@
         <file>Material/icons/action/account_box.svg</file>
         <file>Material/icons/action/account_circle.svg</file>
         <file>Material/icons/action/add_shopping_cart.svg</file>
+        <file>Material/icons/action/alarm.svg</file>
         <file>Material/icons/action/alarm_add.svg</file>
         <file>Material/icons/action/alarm_off.svg</file>
         <file>Material/icons/action/alarm_on.svg</file>
-        <file>Material/icons/action/alarm.svg</file>
         <file>Material/icons/action/all_out.svg</file>
         <file>Material/icons/action/android.svg</file>
         <file>Material/icons/action/announcement.svg</file>
         <file>Material/icons/action/aspect_ratio.svg</file>
         <file>Material/icons/action/assessment.svg</file>
+        <file>Material/icons/action/assignment.svg</file>
         <file>Material/icons/action/assignment_ind.svg</file>
         <file>Material/icons/action/assignment_late.svg</file>
-        <file>Material/icons/action/assignment_returned.svg</file>
         <file>Material/icons/action/assignment_return.svg</file>
-        <file>Material/icons/action/assignment.svg</file>
+        <file>Material/icons/action/assignment_returned.svg</file>
         <file>Material/icons/action/assignment_turned_in.svg</file>
         <file>Material/icons/action/autorenew.svg</file>
         <file>Material/icons/action/backup.svg</file>
-        <file>Material/icons/action/bookmark_border.svg</file>
-        <file>Material/icons/action/bookmark.svg</file>
         <file>Material/icons/action/book.svg</file>
+        <file>Material/icons/action/bookmark.svg</file>
+        <file>Material/icons/action/bookmark_border.svg</file>
         <file>Material/icons/action/bug_report.svg</file>
         <file>Material/icons/action/build.svg</file>
         <file>Material/icons/action/cached.svg</file>
@@ -46,21 +46,23 @@
         <file>Material/icons/action/dashboard.svg</file>
         <file>Material/icons/action/date_range.svg</file>
         <file>Material/icons/action/delete.svg</file>
+        <file>Material/icons/action/delete_forever.svg</file>
         <file>Material/icons/action/description.svg</file>
         <file>Material/icons/action/dns.svg</file>
-        <file>Material/icons/action/done_all.svg</file>
         <file>Material/icons/action/done.svg</file>
+        <file>Material/icons/action/done_all.svg</file>
         <file>Material/icons/action/donut_large.svg</file>
         <file>Material/icons/action/donut_small.svg</file>
         <file>Material/icons/action/eject.svg</file>
-        <file>Material/icons/action/event_seat.svg</file>
+        <file>Material/icons/action/euro_symbol.svg</file>
         <file>Material/icons/action/event.svg</file>
+        <file>Material/icons/action/event_seat.svg</file>
         <file>Material/icons/action/exit_to_app.svg</file>
         <file>Material/icons/action/explore.svg</file>
         <file>Material/icons/action/extension.svg</file>
         <file>Material/icons/action/face.svg</file>
-        <file>Material/icons/action/favorite_border.svg</file>
         <file>Material/icons/action/favorite.svg</file>
+        <file>Material/icons/action/favorite_border.svg</file>
         <file>Material/icons/action/feedback.svg</file>
         <file>Material/icons/action/find_in_page.svg</file>
         <file>Material/icons/action/find_replace.svg</file>
@@ -69,36 +71,37 @@
         <file>Material/icons/action/flight_takeoff.svg</file>
         <file>Material/icons/action/flip_to_back.svg</file>
         <file>Material/icons/action/flip_to_front.svg</file>
+        <file>Material/icons/action/g_translate.svg</file>
         <file>Material/icons/action/gavel.svg</file>
         <file>Material/icons/action/get_app.svg</file>
         <file>Material/icons/action/gif.svg</file>
         <file>Material/icons/action/grade.svg</file>
         <file>Material/icons/action/group_work.svg</file>
-        <file>Material/icons/action/help_outline.svg</file>
         <file>Material/icons/action/help.svg</file>
+        <file>Material/icons/action/help_outline.svg</file>
         <file>Material/icons/action/highlight_off.svg</file>
         <file>Material/icons/action/history.svg</file>
         <file>Material/icons/action/home.svg</file>
         <file>Material/icons/action/hourglass_empty.svg</file>
         <file>Material/icons/action/hourglass_full.svg</file>
-        <file>Material/icons/action/https.svg</file>
         <file>Material/icons/action/http.svg</file>
+        <file>Material/icons/action/https.svg</file>
         <file>Material/icons/action/important_devices.svg</file>
-        <file>Material/icons/action/info_outline.svg</file>
         <file>Material/icons/action/info.svg</file>
+        <file>Material/icons/action/info_outline.svg</file>
         <file>Material/icons/action/input.svg</file>
         <file>Material/icons/action/invert_colors.svg</file>
-        <file>Material/icons/action/label_outline.svg</file>
         <file>Material/icons/action/label.svg</file>
+        <file>Material/icons/action/label_outline.svg</file>
         <file>Material/icons/action/language.svg</file>
         <file>Material/icons/action/launch.svg</file>
         <file>Material/icons/action/lightbulb_outline.svg</file>
         <file>Material/icons/action/line_style.svg</file>
         <file>Material/icons/action/line_weight.svg</file>
         <file>Material/icons/action/list.svg</file>
+        <file>Material/icons/action/lock.svg</file>
         <file>Material/icons/action/lock_open.svg</file>
         <file>Material/icons/action/lock_outline.svg</file>
-        <file>Material/icons/action/lock.svg</file>
         <file>Material/icons/action/loyalty.svg</file>
         <file>Material/icons/action/markunread_mailbox.svg</file>
         <file>Material/icons/action/motorcycle.svg</file>
@@ -120,8 +123,8 @@
         <file>Material/icons/action/perm_phone_msg.svg</file>
         <file>Material/icons/action/perm_scan_wifi.svg</file>
         <file>Material/icons/action/pets.svg</file>
-        <file>Material/icons/action/picture_in_picture_alt.svg</file>
         <file>Material/icons/action/picture_in_picture.svg</file>
+        <file>Material/icons/action/picture_in_picture_alt.svg</file>
         <file>Material/icons/action/play_for_work.svg</file>
         <file>Material/icons/action/polymer.svg</file>
         <file>Material/icons/action/power_settings_new.svg</file>
@@ -132,14 +135,17 @@
         <file>Material/icons/action/receipt.svg</file>
         <file>Material/icons/action/record_voice_over.svg</file>
         <file>Material/icons/action/redeem.svg</file>
+        <file>Material/icons/action/remove_shopping_cart.svg</file>
         <file>Material/icons/action/reorder.svg</file>
         <file>Material/icons/action/report_problem.svg</file>
         <file>Material/icons/action/restore.svg</file>
+        <file>Material/icons/action/restore_page.svg</file>
         <file>Material/icons/action/room.svg</file>
         <file>Material/icons/action/rounded_corner.svg</file>
         <file>Material/icons/action/rowing.svg</file>
         <file>Material/icons/action/schedule.svg</file>
         <file>Material/icons/action/search.svg</file>
+        <file>Material/icons/action/settings.svg</file>
         <file>Material/icons/action/settings_applications.svg</file>
         <file>Material/icons/action/settings_backup_restore.svg</file>
         <file>Material/icons/action/settings_bluetooth.svg</file>
@@ -155,28 +161,28 @@
         <file>Material/icons/action/settings_phone.svg</file>
         <file>Material/icons/action/settings_power.svg</file>
         <file>Material/icons/action/settings_remote.svg</file>
-        <file>Material/icons/action/settings.svg</file>
         <file>Material/icons/action/settings_voice.svg</file>
-        <file>Material/icons/action/shopping_basket.svg</file>
-        <file>Material/icons/action/shopping_cart.svg</file>
         <file>Material/icons/action/shop.svg</file>
         <file>Material/icons/action/shop_two.svg</file>
+        <file>Material/icons/action/shopping_basket.svg</file>
+        <file>Material/icons/action/shopping_cart.svg</file>
         <file>Material/icons/action/speaker_notes.svg</file>
+        <file>Material/icons/action/speaker_notes_off.svg</file>
         <file>Material/icons/action/spellcheck.svg</file>
         <file>Material/icons/action/stars.svg</file>
         <file>Material/icons/action/store.svg</file>
         <file>Material/icons/action/subject.svg</file>
         <file>Material/icons/action/supervisor_account.svg</file>
         <file>Material/icons/action/swap_horiz.svg</file>
-        <file>Material/icons/action/swap_vertical_circle.svg</file>
         <file>Material/icons/action/swap_vert.svg</file>
+        <file>Material/icons/action/swap_vertical_circle.svg</file>
         <file>Material/icons/action/system_update_alt.svg</file>
         <file>Material/icons/action/tab.svg</file>
         <file>Material/icons/action/tab_unselected.svg</file>
         <file>Material/icons/action/theaters.svg</file>
         <file>Material/icons/action/thumb_down.svg</file>
-        <file>Material/icons/action/thumbs_up_down.svg</file>
         <file>Material/icons/action/thumb_up.svg</file>
+        <file>Material/icons/action/thumbs_up_down.svg</file>
         <file>Material/icons/action/timeline.svg</file>
         <file>Material/icons/action/toc.svg</file>
         <file>Material/icons/action/today.svg</file>
@@ -187,8 +193,8 @@
         <file>Material/icons/action/trending_down.svg</file>
         <file>Material/icons/action/trending_flat.svg</file>
         <file>Material/icons/action/trending_up.svg</file>
-        <file>Material/icons/action/turned_in_not.svg</file>
         <file>Material/icons/action/turned_in.svg</file>
+        <file>Material/icons/action/turned_in_not.svg</file>
         <file>Material/icons/action/update.svg</file>
         <file>Material/icons/action/verified_user.svg</file>
         <file>Material/icons/action/view_agenda.svg</file>
@@ -202,27 +208,31 @@
         <file>Material/icons/action/view_quilt.svg</file>
         <file>Material/icons/action/view_stream.svg</file>
         <file>Material/icons/action/view_week.svg</file>
-        <file>Material/icons/action/visibility_off.svg</file>
         <file>Material/icons/action/visibility.svg</file>
+        <file>Material/icons/action/visibility_off.svg</file>
         <file>Material/icons/action/watch_later.svg</file>
         <file>Material/icons/action/work.svg</file>
         <file>Material/icons/action/youtube_searched_for.svg</file>
         <file>Material/icons/action/zoom_in.svg</file>
         <file>Material/icons/action/zoom_out.svg</file>
         <file>Material/icons/alert/add_alert.svg</file>
-        <file>Material/icons/alert/error_outline.svg</file>
         <file>Material/icons/alert/error.svg</file>
+        <file>Material/icons/alert/error_outline.svg</file>
         <file>Material/icons/alert/warning.svg</file>
         <file>Material/icons/av/add_to_queue.svg</file>
         <file>Material/icons/av/airplay.svg</file>
         <file>Material/icons/av/album.svg</file>
         <file>Material/icons/av/art_track.svg</file>
         <file>Material/icons/av/av_timer.svg</file>
+        <file>Material/icons/av/branding_watermark.svg</file>
+        <file>Material/icons/av/call_to_action.svg</file>
         <file>Material/icons/av/closed_caption.svg</file>
         <file>Material/icons/av/equalizer.svg</file>
         <file>Material/icons/av/explicit.svg</file>
         <file>Material/icons/av/fast_forward.svg</file>
         <file>Material/icons/av/fast_rewind.svg</file>
+        <file>Material/icons/av/featured_play_list.svg</file>
+        <file>Material/icons/av/featured_video.svg</file>
         <file>Material/icons/av/fiber_dvr.svg</file>
         <file>Material/icons/av/fiber_manual_record.svg</file>
         <file>Material/icons/av/fiber_new.svg</file>
@@ -239,34 +249,36 @@
         <file>Material/icons/av/library_books.svg</file>
         <file>Material/icons/av/library_music.svg</file>
         <file>Material/icons/av/loop.svg</file>
+        <file>Material/icons/av/mic.svg</file>
         <file>Material/icons/av/mic_none.svg</file>
         <file>Material/icons/av/mic_off.svg</file>
-        <file>Material/icons/av/mic.svg</file>
         <file>Material/icons/av/movie.svg</file>
         <file>Material/icons/av/music_video.svg</file>
         <file>Material/icons/av/new_releases.svg</file>
         <file>Material/icons/av/not_interested.svg</file>
+        <file>Material/icons/av/note.svg</file>
+        <file>Material/icons/av/pause.svg</file>
         <file>Material/icons/av/pause_circle_filled.svg</file>
         <file>Material/icons/av/pause_circle_outline.svg</file>
-        <file>Material/icons/av/pause.svg</file>
         <file>Material/icons/av/play_arrow.svg</file>
         <file>Material/icons/av/play_circle_filled.svg</file>
+        <file>Material/icons/av/play_circle_filled_white.svg</file>
         <file>Material/icons/av/play_circle_outline.svg</file>
-        <file>Material/icons/av/playlist_add_check.svg</file>
         <file>Material/icons/av/playlist_add.svg</file>
+        <file>Material/icons/av/playlist_add_check.svg</file>
         <file>Material/icons/av/playlist_play.svg</file>
+        <file>Material/icons/av/queue.svg</file>
         <file>Material/icons/av/queue_music.svg</file>
         <file>Material/icons/av/queue_play_next.svg</file>
-        <file>Material/icons/av/queue.svg</file>
         <file>Material/icons/av/radio.svg</file>
         <file>Material/icons/av/recent_actors.svg</file>
         <file>Material/icons/av/remove_from_queue.svg</file>
-        <file>Material/icons/av/repeat_one.svg</file>
         <file>Material/icons/av/repeat.svg</file>
+        <file>Material/icons/av/repeat_one.svg</file>
+        <file>Material/icons/av/replay.svg</file>
         <file>Material/icons/av/replay_10.svg</file>
         <file>Material/icons/av/replay_30.svg</file>
         <file>Material/icons/av/replay_5.svg</file>
-        <file>Material/icons/av/replay.svg</file>
         <file>Material/icons/av/shuffle.svg</file>
         <file>Material/icons/av/skip_next.svg</file>
         <file>Material/icons/av/skip_previous.svg</file>
@@ -277,31 +289,31 @@
         <file>Material/icons/av/subscriptions.svg</file>
         <file>Material/icons/av/subtitles.svg</file>
         <file>Material/icons/av/surround_sound.svg</file>
-        <file>Material/icons/av/videocam_off.svg</file>
-        <file>Material/icons/av/videocam.svg</file>
+        <file>Material/icons/av/video_call.svg</file>
+        <file>Material/icons/av/video_label.svg</file>
         <file>Material/icons/av/video_library.svg</file>
+        <file>Material/icons/av/videocam.svg</file>
+        <file>Material/icons/av/videocam_off.svg</file>
         <file>Material/icons/av/volume_down.svg</file>
         <file>Material/icons/av/volume_mute.svg</file>
         <file>Material/icons/av/volume_off.svg</file>
         <file>Material/icons/av/volume_up.svg</file>
-        <file>Material/icons/av/web_asset.svg</file>
         <file>Material/icons/av/web.svg</file>
+        <file>Material/icons/av/web_asset.svg</file>
         <file>Material/icons/communication/business.svg</file>
+        <file>Material/icons/communication/call.svg</file>
         <file>Material/icons/communication/call_end.svg</file>
         <file>Material/icons/communication/call_made.svg</file>
         <file>Material/icons/communication/call_merge.svg</file>
-        <file>Material/icons/communication/call_missed_outgoing.svg</file>
         <file>Material/icons/communication/call_missed.svg</file>
+        <file>Material/icons/communication/call_missed_outgoing.svg</file>
         <file>Material/icons/communication/call_received.svg</file>
         <file>Material/icons/communication/call_split.svg</file>
-        <file>Material/icons/communication/call.svg</file>
-        <file>Material/icons/communication/chat_bubble_outline.svg</file>
-        <file>Material/icons/communication/chat_bubble.svg</file>
         <file>Material/icons/communication/chat.svg</file>
+        <file>Material/icons/communication/chat_bubble.svg</file>
+        <file>Material/icons/communication/chat_bubble_outline.svg</file>
         <file>Material/icons/communication/clear_all.svg</file>
         <file>Material/icons/communication/comment.svg</file>
-        <file>Material/icons/communication/contact_mail_24px.svg</file>
-        <file>Material/icons/communication/contact_mail_48px.svg</file>
         <file>Material/icons/communication/contact_mail.svg</file>
         <file>Material/icons/communication/contact_phone.svg</file>
         <file>Material/icons/communication/contacts.svg</file>
@@ -318,14 +330,15 @@
         <file>Material/icons/communication/mail_outline.svg</file>
         <file>Material/icons/communication/message.svg</file>
         <file>Material/icons/communication/no_sim.svg</file>
+        <file>Material/icons/communication/phone.svg</file>
         <file>Material/icons/communication/phonelink_erase.svg</file>
         <file>Material/icons/communication/phonelink_lock.svg</file>
         <file>Material/icons/communication/phonelink_ring.svg</file>
         <file>Material/icons/communication/phonelink_setup.svg</file>
-        <file>Material/icons/communication/phone.svg</file>
         <file>Material/icons/communication/portable_wifi_off.svg</file>
         <file>Material/icons/communication/present_to_all.svg</file>
         <file>Material/icons/communication/ring_volume.svg</file>
+        <file>Material/icons/communication/rss_feed.svg</file>
         <file>Material/icons/communication/screen_share.svg</file>
         <file>Material/icons/communication/speaker_phone.svg</file>
         <file>Material/icons/communication/stay_current_landscape.svg</file>
@@ -337,10 +350,10 @@
         <file>Material/icons/communication/textsms.svg</file>
         <file>Material/icons/communication/voicemail.svg</file>
         <file>Material/icons/communication/vpn_key.svg</file>
-        <file>Material/icons/content/add_box.svg</file>
-        <file>Material/icons/content/add_circle_outline.svg</file>
-        <file>Material/icons/content/add_circle.svg</file>
         <file>Material/icons/content/add.svg</file>
+        <file>Material/icons/content/add_box.svg</file>
+        <file>Material/icons/content/add_circle.svg</file>
+        <file>Material/icons/content/add_circle_outline.svg</file>
         <file>Material/icons/content/archive.svg</file>
         <file>Material/icons/content/backspace.svg</file>
         <file>Material/icons/content/block.svg</file>
@@ -349,6 +362,7 @@
         <file>Material/icons/content/content_cut.svg</file>
         <file>Material/icons/content/content_paste.svg</file>
         <file>Material/icons/content/create.svg</file>
+        <file>Material/icons/content/delete_sweep.svg</file>
         <file>Material/icons/content/drafts.svg</file>
         <file>Material/icons/content/filter_list.svg</file>
         <file>Material/icons/content/flag.svg</file>
@@ -357,16 +371,17 @@
         <file>Material/icons/content/gesture.svg</file>
         <file>Material/icons/content/inbox.svg</file>
         <file>Material/icons/content/link.svg</file>
+        <file>Material/icons/content/low_priority.svg</file>
         <file>Material/icons/content/mail.svg</file>
         <file>Material/icons/content/markunread.svg</file>
         <file>Material/icons/content/move_to_inbox.svg</file>
         <file>Material/icons/content/next_week.svg</file>
         <file>Material/icons/content/redo.svg</file>
-        <file>Material/icons/content/remove_circle_outline.svg</file>
-        <file>Material/icons/content/remove_circle.svg</file>
         <file>Material/icons/content/remove.svg</file>
-        <file>Material/icons/content/reply_all.svg</file>
+        <file>Material/icons/content/remove_circle.svg</file>
+        <file>Material/icons/content/remove_circle_outline.svg</file>
         <file>Material/icons/content/reply.svg</file>
+        <file>Material/icons/content/reply_all.svg</file>
         <file>Material/icons/content/report.svg</file>
         <file>Material/icons/content/save.svg</file>
         <file>Material/icons/content/select_all.svg</file>
@@ -376,8 +391,8 @@
         <file>Material/icons/content/unarchive.svg</file>
         <file>Material/icons/content/undo.svg</file>
         <file>Material/icons/content/weekend.svg</file>
-        <file>Material/icons/device/access_alarms.svg</file>
         <file>Material/icons/device/access_alarm.svg</file>
+        <file>Material/icons/device/access_alarms.svg</file>
         <file>Material/icons/device/access_time.svg</file>
         <file>Material/icons/device/add_alarm.svg</file>
         <file>Material/icons/device/airplanemode_active.svg</file>
@@ -399,10 +414,10 @@
         <file>Material/icons/device/battery_full.svg</file>
         <file>Material/icons/device/battery_std.svg</file>
         <file>Material/icons/device/battery_unknown.svg</file>
+        <file>Material/icons/device/bluetooth.svg</file>
         <file>Material/icons/device/bluetooth_connected.svg</file>
         <file>Material/icons/device/bluetooth_disabled.svg</file>
         <file>Material/icons/device/bluetooth_searching.svg</file>
-        <file>Material/icons/device/bluetooth.svg</file>
         <file>Material/icons/device/brightness_auto.svg</file>
         <file>Material/icons/device/brightness_high.svg</file>
         <file>Material/icons/device/brightness_low.svg</file>
@@ -420,8 +435,8 @@
         <file>Material/icons/device/ic_signal_wifi_statusbar_3_bar_26x24px.svg</file>
         <file>Material/icons/device/ic_signal_wifi_statusbar_4_bar_26x24px.svg</file>
         <file>Material/icons/device/ic_signal_wifi_statusbar_connected_no_internet_1_26x24px.svg</file>
-        <file>Material/icons/device/ic_signal_wifi_statusbar_connected_no_internet_2_26x24px.svg</file>
         <file>Material/icons/device/ic_signal_wifi_statusbar_connected_no_internet_26x24px.svg</file>
+        <file>Material/icons/device/ic_signal_wifi_statusbar_connected_no_internet_2_26x24px.svg</file>
         <file>Material/icons/device/ic_signal_wifi_statusbar_connected_no_internet_3_26x24px.svg</file>
         <file>Material/icons/device/ic_signal_wifi_statusbar_connected_no_internet_4_26x24px.svg</file>
         <file>Material/icons/device/ic_signal_wifi_statusbar_not_connected_26x24px.svg</file>
@@ -451,14 +466,14 @@
         <file>Material/icons/device/signal_cellular_null.svg</file>
         <file>Material/icons/device/signal_cellular_off.svg</file>
         <file>Material/icons/device/signal_wifi_0_bar.svg</file>
-        <file>Material/icons/device/signal_wifi_1_bar_lock.svg</file>
         <file>Material/icons/device/signal_wifi_1_bar.svg</file>
-        <file>Material/icons/device/signal_wifi_2_bar_lock.svg</file>
+        <file>Material/icons/device/signal_wifi_1_bar_lock.svg</file>
         <file>Material/icons/device/signal_wifi_2_bar.svg</file>
-        <file>Material/icons/device/signal_wifi_3_bar_lock.svg</file>
+        <file>Material/icons/device/signal_wifi_2_bar_lock.svg</file>
         <file>Material/icons/device/signal_wifi_3_bar.svg</file>
-        <file>Material/icons/device/signal_wifi_4_bar_lock.svg</file>
+        <file>Material/icons/device/signal_wifi_3_bar_lock.svg</file>
         <file>Material/icons/device/signal_wifi_4_bar.svg</file>
+        <file>Material/icons/device/signal_wifi_4_bar_lock.svg</file>
         <file>Material/icons/device/signal_wifi_off.svg</file>
         <file>Material/icons/device/storage.svg</file>
         <file>Material/icons/device/usb.svg</file>
@@ -480,6 +495,7 @@
         <file>Material/icons/editor/border_style.svg</file>
         <file>Material/icons/editor/border_top.svg</file>
         <file>Material/icons/editor/border_vertical.svg</file>
+        <file>Material/icons/editor/bubble_chart.svg</file>
         <file>Material/icons/editor/drag_handle.svg</file>
         <file>Material/icons/editor/format_align_center.svg</file>
         <file>Material/icons/editor/format_align_justify.svg</file>
@@ -517,32 +533,38 @@
         <file>Material/icons/editor/merge_type.svg</file>
         <file>Material/icons/editor/mode_comment.svg</file>
         <file>Material/icons/editor/mode_edit.svg</file>
+        <file>Material/icons/editor/monetization_on.svg</file>
         <file>Material/icons/editor/money_off.svg</file>
+        <file>Material/icons/editor/multiline_chart.svg</file>
+        <file>Material/icons/editor/pie_chart.svg</file>
+        <file>Material/icons/editor/pie_chart_outlined.svg</file>
         <file>Material/icons/editor/publish.svg</file>
         <file>Material/icons/editor/short_text.svg</file>
+        <file>Material/icons/editor/show_chart.svg</file>
         <file>Material/icons/editor/space_bar.svg</file>
         <file>Material/icons/editor/strikethrough_s.svg</file>
         <file>Material/icons/editor/text_fields.svg</file>
+        <file>Material/icons/editor/title.svg</file>
         <file>Material/icons/editor/vertical_align_bottom.svg</file>
         <file>Material/icons/editor/vertical_align_center.svg</file>
         <file>Material/icons/editor/vertical_align_top.svg</file>
         <file>Material/icons/editor/wrap_text.svg</file>
         <file>Material/icons/file/attachment.svg</file>
+        <file>Material/icons/file/cloud.svg</file>
         <file>Material/icons/file/cloud_circle.svg</file>
         <file>Material/icons/file/cloud_done.svg</file>
         <file>Material/icons/file/cloud_download.svg</file>
         <file>Material/icons/file/cloud_off.svg</file>
         <file>Material/icons/file/cloud_queue.svg</file>
-        <file>Material/icons/file/cloud.svg</file>
         <file>Material/icons/file/cloud_upload.svg</file>
         <file>Material/icons/file/create_new_folder.svg</file>
         <file>Material/icons/file/file_download.svg</file>
         <file>Material/icons/file/file_upload.svg</file>
+        <file>Material/icons/file/folder.svg</file>
         <file>Material/icons/file/folder_open.svg</file>
         <file>Material/icons/file/folder_shared.svg</file>
-        <file>Material/icons/file/folder.svg</file>
-        <file>Material/icons/hardware/cast_connected.svg</file>
         <file>Material/icons/hardware/cast.svg</file>
+        <file>Material/icons/hardware/cast_connected.svg</file>
         <file>Material/icons/hardware/computer.svg</file>
         <file>Material/icons/hardware/desktop_mac.svg</file>
         <file>Material/icons/hardware/desktop_windows.svg</file>
@@ -551,8 +573,9 @@
         <file>Material/icons/hardware/devices_other.svg</file>
         <file>Material/icons/hardware/dock.svg</file>
         <file>Material/icons/hardware/gamepad.svg</file>
-        <file>Material/icons/hardware/headset_mic.svg</file>
         <file>Material/icons/hardware/headset.svg</file>
+        <file>Material/icons/hardware/headset_mic.svg</file>
+        <file>Material/icons/hardware/keyboard.svg</file>
         <file>Material/icons/hardware/keyboard_arrow_down.svg</file>
         <file>Material/icons/hardware/keyboard_arrow_left.svg</file>
         <file>Material/icons/hardware/keyboard_arrow_right.svg</file>
@@ -561,30 +584,29 @@
         <file>Material/icons/hardware/keyboard_capslock.svg</file>
         <file>Material/icons/hardware/keyboard_hide.svg</file>
         <file>Material/icons/hardware/keyboard_return.svg</file>
-        <file>Material/icons/hardware/keyboard.svg</file>
         <file>Material/icons/hardware/keyboard_tab.svg</file>
         <file>Material/icons/hardware/keyboard_voice.svg</file>
+        <file>Material/icons/hardware/laptop.svg</file>
         <file>Material/icons/hardware/laptop_chromebook.svg</file>
         <file>Material/icons/hardware/laptop_mac.svg</file>
-        <file>Material/icons/hardware/laptop.svg</file>
         <file>Material/icons/hardware/laptop_windows.svg</file>
         <file>Material/icons/hardware/memory.svg</file>
         <file>Material/icons/hardware/mouse.svg</file>
         <file>Material/icons/hardware/phone_android.svg</file>
         <file>Material/icons/hardware/phone_iphone.svg</file>
-        <file>Material/icons/hardware/phonelink_off.svg</file>
         <file>Material/icons/hardware/phonelink.svg</file>
+        <file>Material/icons/hardware/phonelink_off.svg</file>
         <file>Material/icons/hardware/power_input.svg</file>
         <file>Material/icons/hardware/router.svg</file>
         <file>Material/icons/hardware/scanner.svg</file>
         <file>Material/icons/hardware/security.svg</file>
         <file>Material/icons/hardware/sim_card.svg</file>
         <file>Material/icons/hardware/smartphone.svg</file>
-        <file>Material/icons/hardware/speaker_group.svg</file>
         <file>Material/icons/hardware/speaker.svg</file>
+        <file>Material/icons/hardware/speaker_group.svg</file>
+        <file>Material/icons/hardware/tablet.svg</file>
         <file>Material/icons/hardware/tablet_android.svg</file>
         <file>Material/icons/hardware/tablet_mac.svg</file>
-        <file>Material/icons/hardware/tablet.svg</file>
         <file>Material/icons/hardware/toys.svg</file>
         <file>Material/icons/hardware/tv.svg</file>
         <file>Material/icons/hardware/videogame_asset.svg</file>
@@ -592,8 +614,8 @@
         <file>Material/icons/image/add_a_photo.svg</file>
         <file>Material/icons/image/add_to_photos.svg</file>
         <file>Material/icons/image/adjust.svg</file>
-        <file>Material/icons/image/assistant_photo.svg</file>
         <file>Material/icons/image/assistant.svg</file>
+        <file>Material/icons/image/assistant_photo.svg</file>
         <file>Material/icons/image/audiotrack.svg</file>
         <file>Material/icons/image/blur_circular.svg</file>
         <file>Material/icons/image/blur_linear.svg</file>
@@ -608,20 +630,22 @@
         <file>Material/icons/image/brightness_7.svg</file>
         <file>Material/icons/image/broken_image.svg</file>
         <file>Material/icons/image/brush.svg</file>
+        <file>Material/icons/image/burst_mode.svg</file>
+        <file>Material/icons/image/camera.svg</file>
         <file>Material/icons/image/camera_alt.svg</file>
         <file>Material/icons/image/camera_front.svg</file>
         <file>Material/icons/image/camera_rear.svg</file>
         <file>Material/icons/image/camera_roll.svg</file>
-        <file>Material/icons/image/camera.svg</file>
         <file>Material/icons/image/center_focus_strong.svg</file>
         <file>Material/icons/image/center_focus_weak.svg</file>
-        <file>Material/icons/image/collections_bookmark.svg</file>
         <file>Material/icons/image/collections.svg</file>
-        <file>Material/icons/image/colorize.svg</file>
+        <file>Material/icons/image/collections_bookmark.svg</file>
         <file>Material/icons/image/color_lens.svg</file>
+        <file>Material/icons/image/colorize.svg</file>
         <file>Material/icons/image/compare.svg</file>
-        <file>Material/icons/image/control_point_duplicate.svg</file>
         <file>Material/icons/image/control_point.svg</file>
+        <file>Material/icons/image/control_point_duplicate.svg</file>
+        <file>Material/icons/image/crop.svg</file>
         <file>Material/icons/image/crop_16_9.svg</file>
         <file>Material/icons/image/crop_3_2.svg</file>
         <file>Material/icons/image/crop_5_4.svg</file>
@@ -633,16 +657,16 @@
         <file>Material/icons/image/crop_portrait.svg</file>
         <file>Material/icons/image/crop_rotate.svg</file>
         <file>Material/icons/image/crop_square.svg</file>
-        <file>Material/icons/image/crop.svg</file>
         <file>Material/icons/image/dehaze.svg</file>
         <file>Material/icons/image/details.svg</file>
         <file>Material/icons/image/edit.svg</file>
+        <file>Material/icons/image/exposure.svg</file>
         <file>Material/icons/image/exposure_neg_1.svg</file>
         <file>Material/icons/image/exposure_neg_2.svg</file>
         <file>Material/icons/image/exposure_plus_1.svg</file>
         <file>Material/icons/image/exposure_plus_2.svg</file>
-        <file>Material/icons/image/exposure.svg</file>
         <file>Material/icons/image/exposure_zero.svg</file>
+        <file>Material/icons/image/filter.svg</file>
         <file>Material/icons/image/filter_1.svg</file>
         <file>Material/icons/image/filter_2.svg</file>
         <file>Material/icons/image/filter_3.svg</file>
@@ -651,15 +675,14 @@
         <file>Material/icons/image/filter_6.svg</file>
         <file>Material/icons/image/filter_7.svg</file>
         <file>Material/icons/image/filter_8.svg</file>
-        <file>Material/icons/image/filter_9_plus.svg</file>
         <file>Material/icons/image/filter_9.svg</file>
+        <file>Material/icons/image/filter_9_plus.svg</file>
         <file>Material/icons/image/filter_b_and_w.svg</file>
         <file>Material/icons/image/filter_center_focus.svg</file>
         <file>Material/icons/image/filter_drama.svg</file>
         <file>Material/icons/image/filter_frames.svg</file>
         <file>Material/icons/image/filter_hdr.svg</file>
         <file>Material/icons/image/filter_none.svg</file>
-        <file>Material/icons/image/filter.svg</file>
         <file>Material/icons/image/filter_tilt_shift.svg</file>
         <file>Material/icons/image/filter_vintage.svg</file>
         <file>Material/icons/image/flare.svg</file>
@@ -676,36 +699,37 @@
         <file>Material/icons/image/hdr_strong.svg</file>
         <file>Material/icons/image/hdr_weak.svg</file>
         <file>Material/icons/image/healing.svg</file>
-        <file>Material/icons/image/image_aspect_ratio.svg</file>
         <file>Material/icons/image/image.svg</file>
+        <file>Material/icons/image/image_aspect_ratio.svg</file>
         <file>Material/icons/image/iso.svg</file>
         <file>Material/icons/image/landscape.svg</file>
         <file>Material/icons/image/leak_add.svg</file>
         <file>Material/icons/image/leak_remove.svg</file>
         <file>Material/icons/image/lens.svg</file>
         <file>Material/icons/image/linked_camera.svg</file>
+        <file>Material/icons/image/looks.svg</file>
         <file>Material/icons/image/looks_3.svg</file>
         <file>Material/icons/image/looks_4.svg</file>
         <file>Material/icons/image/looks_5.svg</file>
         <file>Material/icons/image/looks_6.svg</file>
         <file>Material/icons/image/looks_one.svg</file>
-        <file>Material/icons/image/looks.svg</file>
         <file>Material/icons/image/looks_two.svg</file>
         <file>Material/icons/image/loupe.svg</file>
         <file>Material/icons/image/monochrome_photos.svg</file>
         <file>Material/icons/image/movie_creation.svg</file>
         <file>Material/icons/image/movie_filter.svg</file>
         <file>Material/icons/image/music_note.svg</file>
-        <file>Material/icons/image/nature_people.svg</file>
         <file>Material/icons/image/nature.svg</file>
+        <file>Material/icons/image/nature_people.svg</file>
         <file>Material/icons/image/navigate_before.svg</file>
         <file>Material/icons/image/navigate_next.svg</file>
         <file>Material/icons/image/palette.svg</file>
+        <file>Material/icons/image/panorama.svg</file>
         <file>Material/icons/image/panorama_fish_eye.svg</file>
         <file>Material/icons/image/panorama_horizontal.svg</file>
-        <file>Material/icons/image/panorama.svg</file>
         <file>Material/icons/image/panorama_vertical.svg</file>
         <file>Material/icons/image/panorama_wide_angle.svg</file>
+        <file>Material/icons/image/photo.svg</file>
         <file>Material/icons/image/photo_album.svg</file>
         <file>Material/icons/image/photo_camera.svg</file>
         <file>Material/icons/image/photo_filter.svg</file>
@@ -713,7 +737,6 @@
         <file>Material/icons/image/photo_size_select_actual.svg</file>
         <file>Material/icons/image/photo_size_select_large.svg</file>
         <file>Material/icons/image/photo_size_select_small.svg</file>
-        <file>Material/icons/image/photo.svg</file>
         <file>Material/icons/image/picture_as_pdf.svg</file>
         <file>Material/icons/image/portrait.svg</file>
         <file>Material/icons/image/remove_red_eye.svg</file>
@@ -728,10 +751,10 @@
         <file>Material/icons/image/tag_faces.svg</file>
         <file>Material/icons/image/texture.svg</file>
         <file>Material/icons/image/timelapse.svg</file>
+        <file>Material/icons/image/timer.svg</file>
         <file>Material/icons/image/timer_10.svg</file>
         <file>Material/icons/image/timer_3.svg</file>
         <file>Material/icons/image/timer_off.svg</file>
-        <file>Material/icons/image/timer.svg</file>
         <file>Material/icons/image/tonality.svg</file>
         <file>Material/icons/image/transform.svg</file>
         <file>Material/icons/image/tune.svg</file>
@@ -745,6 +768,7 @@
         <file>Material/icons/image/wb_sunny.svg</file>
         <file>Material/icons/maps/add_location.svg</file>
         <file>Material/icons/maps/beenhere.svg</file>
+        <file>Material/icons/maps/directions.svg</file>
         <file>Material/icons/maps/directions_bike.svg</file>
         <file>Material/icons/maps/directions_boat.svg</file>
         <file>Material/icons/maps/directions_bus.svg</file>
@@ -752,14 +776,14 @@
         <file>Material/icons/maps/directions_railway.svg</file>
         <file>Material/icons/maps/directions_run.svg</file>
         <file>Material/icons/maps/directions_subway.svg</file>
-        <file>Material/icons/maps/directions.svg</file>
         <file>Material/icons/maps/directions_transit.svg</file>
         <file>Material/icons/maps/directions_walk.svg</file>
         <file>Material/icons/maps/edit_location.svg</file>
+        <file>Material/icons/maps/ev_station.svg</file>
         <file>Material/icons/maps/flight.svg</file>
         <file>Material/icons/maps/hotel.svg</file>
-        <file>Material/icons/maps/layers_clear.svg</file>
         <file>Material/icons/maps/layers.svg</file>
+        <file>Material/icons/maps/layers_clear.svg</file>
         <file>Material/icons/maps/local_activity.svg</file>
         <file>Material/icons/maps/local_airport.svg</file>
         <file>Material/icons/maps/local_atm.svg</file>
@@ -793,22 +817,28 @@
         <file>Material/icons/maps/my_location.svg</file>
         <file>Material/icons/maps/navigation.svg</file>
         <file>Material/icons/maps/near_me.svg</file>
-        <file>Material/icons/maps/person_pin_circle.svg</file>
         <file>Material/icons/maps/person_pin.svg</file>
+        <file>Material/icons/maps/person_pin_circle.svg</file>
         <file>Material/icons/maps/pin_drop.svg</file>
         <file>Material/icons/maps/place.svg</file>
         <file>Material/icons/maps/rate_review.svg</file>
+        <file>Material/icons/maps/restaurant.svg</file>
         <file>Material/icons/maps/restaurant_menu.svg</file>
         <file>Material/icons/maps/satellite.svg</file>
         <file>Material/icons/maps/store_mall_directory.svg</file>
+        <file>Material/icons/maps/streetview.svg</file>
+        <file>Material/icons/maps/subway.svg</file>
         <file>Material/icons/maps/terrain.svg</file>
         <file>Material/icons/maps/traffic.svg</file>
+        <file>Material/icons/maps/train.svg</file>
+        <file>Material/icons/maps/tram.svg</file>
+        <file>Material/icons/maps/transfer_within_a_station.svg</file>
         <file>Material/icons/maps/zoom_out_map.svg</file>
         <file>Material/icons/navigation/apps.svg</file>
         <file>Material/icons/navigation/arrow_back.svg</file>
         <file>Material/icons/navigation/arrow_downward.svg</file>
-        <file>Material/icons/navigation/arrow_drop_down_circle.svg</file>
         <file>Material/icons/navigation/arrow_drop_down.svg</file>
+        <file>Material/icons/navigation/arrow_drop_down_circle.svg</file>
         <file>Material/icons/navigation/arrow_drop_up.svg</file>
         <file>Material/icons/navigation/arrow_forward.svg</file>
         <file>Material/icons/navigation/arrow_upward.svg</file>
@@ -819,8 +849,10 @@
         <file>Material/icons/navigation/close.svg</file>
         <file>Material/icons/navigation/expand_less.svg</file>
         <file>Material/icons/navigation/expand_more.svg</file>
-        <file>Material/icons/navigation/fullscreen_exit.svg</file>
+        <file>Material/icons/navigation/first_page.svg</file>
         <file>Material/icons/navigation/fullscreen.svg</file>
+        <file>Material/icons/navigation/fullscreen_exit.svg</file>
+        <file>Material/icons/navigation/last_page.svg</file>
         <file>Material/icons/navigation/menu.svg</file>
         <file>Material/icons/navigation/more_horiz.svg</file>
         <file>Material/icons/navigation/more_vert.svg</file>
@@ -830,8 +862,8 @@
         <file>Material/icons/navigation/unfold_less.svg</file>
         <file>Material/icons/navigation/unfold_more.svg</file>
         <file>Material/icons/notification/adb.svg</file>
-        <file>Material/icons/notification/airline_seat_flat_angled.svg</file>
         <file>Material/icons/notification/airline_seat_flat.svg</file>
+        <file>Material/icons/notification/airline_seat_flat_angled.svg</file>
         <file>Material/icons/notification/airline_seat_individual_suite.svg</file>
         <file>Material/icons/notification/airline_seat_legroom_extra.svg</file>
         <file>Material/icons/notification/airline_seat_legroom_normal.svg</file>
@@ -841,8 +873,10 @@
         <file>Material/icons/notification/bluetooth_audio.svg</file>
         <file>Material/icons/notification/confirmation_number.svg</file>
         <file>Material/icons/notification/disc_full.svg</file>
-        <file>Material/icons/notification/do_not_disturb_alt.svg</file>
         <file>Material/icons/notification/do_not_disturb.svg</file>
+        <file>Material/icons/notification/do_not_disturb_alt.svg</file>
+        <file>Material/icons/notification/do_not_disturb_off.svg</file>
+        <file>Material/icons/notification/do_not_disturb_on.svg</file>
         <file>Material/icons/notification/drive_eta.svg</file>
         <file>Material/icons/notification/enhanced_encryption.svg</file>
         <file>Material/icons/notification/event_available.svg</file>
@@ -864,14 +898,15 @@
         <file>Material/icons/notification/phone_missed.svg</file>
         <file>Material/icons/notification/phone_paused.svg</file>
         <file>Material/icons/notification/power.svg</file>
+        <file>Material/icons/notification/priority_high.svg</file>
         <file>Material/icons/notification/rv_hookup.svg</file>
         <file>Material/icons/notification/sd_card.svg</file>
         <file>Material/icons/notification/sim_card_alert.svg</file>
-        <file>Material/icons/notification/sms_failed.svg</file>
         <file>Material/icons/notification/sms.svg</file>
+        <file>Material/icons/notification/sms_failed.svg</file>
+        <file>Material/icons/notification/sync.svg</file>
         <file>Material/icons/notification/sync_disabled.svg</file>
         <file>Material/icons/notification/sync_problem.svg</file>
-        <file>Material/icons/notification/sync.svg</file>
         <file>Material/icons/notification/system_update.svg</file>
         <file>Material/icons/notification/tap_and_play.svg</file>
         <file>Material/icons/notification/time_to_leave.svg</file>
@@ -880,39 +915,63 @@
         <file>Material/icons/notification/vpn_lock.svg</file>
         <file>Material/icons/notification/wc.svg</file>
         <file>Material/icons/notification/wifi.svg</file>
+        <file>Material/icons/places/ac_unit.svg</file>
+        <file>Material/icons/places/airport_shuttle.svg</file>
+        <file>Material/icons/places/all_inclusive.svg</file>
+        <file>Material/icons/places/beach_access.svg</file>
+        <file>Material/icons/places/business_center.svg</file>
+        <file>Material/icons/places/casino.svg</file>
+        <file>Material/icons/places/child_care.svg</file>
+        <file>Material/icons/places/child_friendly.svg</file>
+        <file>Material/icons/places/fitness_center.svg</file>
+        <file>Material/icons/places/free_breakfast.svg</file>
+        <file>Material/icons/places/golf_course.svg</file>
+        <file>Material/icons/places/hot_tub.svg</file>
+        <file>Material/icons/places/kitchen.svg</file>
+        <file>Material/icons/places/pool.svg</file>
+        <file>Material/icons/places/room_service.svg</file>
+        <file>Material/icons/places/rv_hookup.svg</file>
+        <file>Material/icons/places/smoke_free.svg</file>
+        <file>Material/icons/places/smoking_rooms.svg</file>
+        <file>Material/icons/places/spa.svg</file>
         <file>Material/icons/social/cake.svg</file>
         <file>Material/icons/social/domain.svg</file>
-        <file>Material/icons/social/group_add.svg</file>
         <file>Material/icons/social/group.svg</file>
+        <file>Material/icons/social/group_add.svg</file>
         <file>Material/icons/social/location_city.svg</file>
-        <file>Material/icons/social/mood_bad.svg</file>
         <file>Material/icons/social/mood.svg</file>
+        <file>Material/icons/social/mood_bad.svg</file>
+        <file>Material/icons/social/notifications.svg</file>
         <file>Material/icons/social/notifications_active.svg</file>
         <file>Material/icons/social/notifications_none.svg</file>
         <file>Material/icons/social/notifications_off.svg</file>
         <file>Material/icons/social/notifications_paused.svg</file>
-        <file>Material/icons/social/notifications.svg</file>
         <file>Material/icons/social/pages.svg</file>
         <file>Material/icons/social/party_mode.svg</file>
-        <file>Material/icons/social/people_outline.svg</file>
         <file>Material/icons/social/people.svg</file>
+        <file>Material/icons/social/people_outline.svg</file>
+        <file>Material/icons/social/person.svg</file>
         <file>Material/icons/social/person_add.svg</file>
         <file>Material/icons/social/person_outline.svg</file>
-        <file>Material/icons/social/person.svg</file>
         <file>Material/icons/social/plus_one.svg</file>
         <file>Material/icons/social/poll.svg</file>
         <file>Material/icons/social/public.svg</file>
         <file>Material/icons/social/school.svg</file>
+        <file>Material/icons/social/sentiment_dissatisfied.svg</file>
+        <file>Material/icons/social/sentiment_neutral.svg</file>
+        <file>Material/icons/social/sentiment_satisfied.svg</file>
+        <file>Material/icons/social/sentiment_very_dissatisfied.svg</file>
+        <file>Material/icons/social/sentiment_very_satisfied.svg</file>
         <file>Material/icons/social/share.svg</file>
         <file>Material/icons/social/whatshot.svg</file>
-        <file>Material/icons/toggle/check_box_outline_blank.svg</file>
         <file>Material/icons/toggle/check_box.svg</file>
+        <file>Material/icons/toggle/check_box_outline_blank.svg</file>
         <file>Material/icons/toggle/indeterminate_check_box.svg</file>
         <file>Material/icons/toggle/radio_button_checked.svg</file>
         <file>Material/icons/toggle/radio_button_unchecked.svg</file>
+        <file>Material/icons/toggle/star.svg</file>
         <file>Material/icons/toggle/star_border.svg</file>
         <file>Material/icons/toggle/star_half.svg</file>
-        <file>Material/icons/toggle/star.svg</file>
 
     </qresource>
 </RCC>
