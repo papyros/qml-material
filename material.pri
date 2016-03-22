@@ -14,6 +14,7 @@ RESOURCES += $$PWD/src/material.qrc \
              $$PWD/src/listitems/listitems.qrc \
              $$PWD/src/popups/popups.qrc \
              $$PWD/src/styles/styles.qrc \
-             $$PWD/src/window/window.qrc
+             $$PWD/src/window/window.qrc \
+             $$PWD/icons/icons.qrc
 
 OTHER_FILES = $$PWD/README.md $$PWD/CHANGELOG.md

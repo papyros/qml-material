@@ -2,7 +2,7 @@ module Material
 
 plugin material
 
-// Components
+# Components
 ActionButton 0.1 ActionButton.qml
 Card 0.1 Card.qml
 DatePicker 0.2 DatePicker.qml
@@ -15,7 +15,7 @@ TimePicker 0.2 TimePicker.qml
 Tooltip 0.1 Tooltip.qml
 Wave 0.1 Wave.qml
 
-// Controls
+# Controls
 Action 0.1 Action.qml
 Button 0.1 Button.qml
 CheckBox 0.1 CheckBox.qml
@@ -27,7 +27,7 @@ Switch 0.1 Switch.qml
 Tab 0.1 Tab.qml
 TextField 0.1 TextField.qml
 
-// Core
+# Core
 AwesomeIcon 0.1 AwesomeIcon.qml
 Icon 0.1 Icon.qml
 Ink 0.1 Ink.qml
@@ -38,7 +38,7 @@ singleton MaterialAnimation 0.1 MaterialAnimation.qml
 singleton Palette 0.1 Palette.qml
 singleton Theme 0.1 Theme.qml
 
-// Popups
+# Popups
 BottomActionSheet 0.1 BottomActionSheet.qml
 BottomSheet 0.1 BottomSheet.qml
 Dialog 0.1 Dialog.qml
@@ -49,7 +49,7 @@ Popover 0.2 Popover.qml
 PopupBase 0.1 PopupBase.qml
 TimePickerDialog 0.2 TimePickerDialog.qml
 
-// Window
+# Window
 ActionBar 0.1 ActionBar.qml
 AppTheme 0.1 AppTheme.qml
 ApplicationWindow 0.1 ApplicationWindow.qml
