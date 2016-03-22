@@ -17,7 +17,7 @@
  */
 import QtQuick 2.4
 import Material 0.2
-import 'awesome.js' as Awesome
+import "awesome.js" as Awesome
 
 /*!
    \qmltype AwesomeIcon
@@ -47,7 +47,7 @@ Item {
 
     property alias weight: text.font.weight
 
-    FontLoader { id: fontAwesome; source: Qt.resolvedUrl("fonts/fontawesome/FontAwesome.otf") }
+    FontLoader { id: fontAwesome; source: Qt.resolvedUrl("FontAwesome.otf") }
 
     Text {
         id: text

@@ -1,6 +1,7 @@
 /*
  * QML Material - An application framework implementing Material Design.
- * Copyright (C) 2014-2015 Michael Spencer <sonrisesoftware@gmail.com>
+ *
+ * Copyright (C) 2014-2016 Michael Spencer <sonrisesoftware@gmail.com>
  *               2015 Bogdan Cuza
  *
  * This program is free software: you can redistribute it and/or modify
@@ -35,7 +36,7 @@ Item {
 
     /*!
        The name of the icon to display.
-       
+
        \sa source
     */
     property string name
@@ -43,22 +44,26 @@ Item {
     /*!
        A URL pointing to an image to display as the icon. By default, this is
        a special URL representing the icon named by \l name from the Material Design
-       icon collection or FontAwesome. The icon will be colorized using the specificed \l color,
+       icon collection or FontAwesome. The icon will be colorized using the specified \l color,
        unless you put ".color." in the filename, for example, "app-icon.color.svg".
 
        \sa name
       */
-    property string source: "icon://" + name
+    property string source: {
+        if (name.indexOf('awesome') == 0) {
+            return 'awesome://' + name.substring(8)
+        } else {
+            return "qrc://icons/" + name + '.svg'
+        }
+    }
 
-    property bool valid: source.indexOf("icon://awesome/") == 0 
+    property bool valid: source.indexOf("icon://awesome/") == 0
             ? awesomeIcon.valid : image.status == Image.Ready
-
-    property url iconDirectory: Qt.resolvedUrl("icons")
 
     width: size
     height: size
 
-    property bool colorize: icon.source.indexOf("icon://") === 0 || icon.source.indexOf(".color.") === -1
+    property bool colorize: icon.source.indexOf(".color.") === -1
 
     Image {
         id: image
@@ -67,13 +72,8 @@ Item {
         visible: source != "" && !colorize
 
         source: {
-            if (icon.source.indexOf("icon://") == 0) {
-                var name = icon.source.substring(7)
-                var list = name.split("/");
-
-                if (name == "" || list[0] === "awesome")
-                    return "";
-                return Qt.resolvedUrl("icons/%1/%2.svg".arg(list[0]).arg(list[1]));
+            if (icon.source.indexOf("awesome://") == 0) {
+                return ''
             } else {
                 return icon.source
             }
@@ -94,7 +94,7 @@ Item {
         cached: true
         visible: image.source != "" && colorize
         opacity: icon.color.a
-    }  
+    }
 
     AwesomeIcon {
         id: awesomeIcon
@@ -105,16 +105,11 @@ Item {
         color: icon.color
 
         name: {
-            if (icon.source.indexOf("icon://") == 0) {
-                var name = icon.source.substring(7)
-                var list = name.split("/")
-
-                if (list[0] === "awesome") {
-                    return list[1]
-                }
+            if (icon.source.indexOf("awesome://") == 0) {
+                return icon.source.substring(10)
+            } else {
+                return ''
             }
-
-            return ""
         }
     }
 }

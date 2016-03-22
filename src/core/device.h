@@ -56,18 +56,14 @@ signals:
     void formFactorChanged();
     void nameChanged();
     void iconNameChanged();
-    void isMobileChanged();
-    void hasTouchScreenChanged();
-    void hoverEnabledChanged();
-
 private slots:
     void screenChanged();
     void geometryChanged();
 
 private:
-    QScreen *m_screen;
-
     float calculateDiagonal() const;
+    
+    QScreen *m_screen;
 };
 
 #endif // DEVICE_H
