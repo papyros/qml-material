@@ -1,19 +1,19 @@
 QT += qml quick
 
-HEADERS += src/plugin.h \
-           src/core/device.h
+HEADERS += $$PWD/src/plugin.h \
+           $$PWD/src/core/device.h
 
-SOURCES += src/plugin.cpp \
-           src/core/device.cpp
+SOURCES += $$PWD/src/plugin.cpp \
+           $$PWD/src/core/device.cpp
 
-RESOURCES += src/material.qrc \
-             src/components/components.qrc \
-             src/controls/controls.qrc \
-             src/core/core.qrc \
-             src/extras/extras.qrc \
-             src/listitems/listitems.qrc \
-             src/popups/popups.qrc \
-             src/styles/styles.qrc \
-             src/window/window.qrc
+RESOURCES += $$PWD/src/material.qrc \
+             $$PWD/src/components/components.qrc \
+             $$PWD/src/controls/controls.qrc \
+             $$PWD/src/core/core.qrc \
+             $$PWD/src/extras/extras.qrc \
+             $$PWD/src/listitems/listitems.qrc \
+             $$PWD/src/popups/popups.qrc \
+             $$PWD/src/styles/styles.qrc \
+             $$PWD/src/window/window.qrc
 
-OTHER_FILES = README.md CHANGELOG.md
+OTHER_FILES = $$PWD/README.md $$PWD/CHANGELOG.md

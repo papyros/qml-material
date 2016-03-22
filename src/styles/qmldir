@@ -1,4 +1,5 @@
 module QtQuick.Controls.Styles.Material
+
 ApplicationWindowStyle 0.1 ApplicationWindowStyle.qml
 ButtonStyle 0.1 ButtonStyle.qml
 CheckBoxStyle 0.1 CheckBoxStyle.qml
