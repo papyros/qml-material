@@ -1,0 +1,1 @@
+RESOURCES += src/material.qrc

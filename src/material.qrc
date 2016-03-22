@@ -1,0 +1,6 @@
+
+<RCC>
+    <qresource prefix="/Material">
+        <file>qmldir</file>
+    </qresource>
+</RCC>

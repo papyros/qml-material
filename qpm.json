@@ -1,0 +1,22 @@
+{
+  "name": "io.papyros.material",
+  "description": "",
+  "author": {
+    "name": "Michael Spencer",
+    "email": "sonrisesoftware@gmail.com"
+  },
+  "repository": {
+    "type": "GITHUB",
+    "url": "git@github.com:papyros/qml-material.git"
+  },
+  "version": {
+    "label": "0.3.0",
+    "revision": "",
+    "fingerprint": ""
+  },
+  "dependencies": [
+  ],
+  "license": "LGPL_2_1",
+  "pri_filename": "material.pri",
+  "webpage": "http://papyros.io/qml-material"
+}
