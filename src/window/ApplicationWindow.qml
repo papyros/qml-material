@@ -204,24 +204,6 @@ Controls.ApplicationWindow {
             }
         });
 
-        Device.type = Qt.binding(function () {
-            var diagonal = calculateDiagonal();
-
-            if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
-                return Device.phone;
-            } else if (diagonal >= 5 && diagonal < 6.5) {
-                return Device.phablet;
-            } else if (diagonal >= 6.5 && diagonal < 10.1) {
-                return Device.tablet;
-            } else if (diagonal >= 10.1 && diagonal < 29) {
-                return Device.desktop;
-            } else if (diagonal >= 29 && diagonal < 92) {
-                return Device.tv;
-            } else {
-                return Device.unknown;
-            }
-        });
-
         // Nasty hack because singletons cannot import the module they were declared in, so
         // the grid unit cannot be defined in either Device or Units, because it requires both.
         Units.gridUnit = Qt.binding(function() {
