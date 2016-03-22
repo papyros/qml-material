@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>Material/awesome.js</file>
-
-        <file>Material/fonts/fontawesome/FontAwesome.otf</file>
-
-    </qresource>
-</RCC>
