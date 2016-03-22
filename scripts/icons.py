@@ -5,6 +5,7 @@ import urllib
 
 
 def download_icon(name, out_dirname):
+    print(' - ' + name)
     group, name = name.split('/')
     url = ('https://raw.githubusercontent.com/google/material-design-icons/master/{}/svg/production/ic_{}_48px.svg'
            .format(group, name))
@@ -32,7 +33,7 @@ def download_icons(names, out_dirname):
         else:
             resources[group] = [name]
 
-    text = '<!DOCTYPE RCC><RCC version="1.0">\n\n'
+    text = '<!DOCTYPE RCC>\n<RCC version="1.0">\n\n'
 
     for group, names in resources.items():
         text += '<qresource prefix="/icons/{}">\n'.format(group)
@@ -46,7 +47,10 @@ def download_icons(names, out_dirname):
 
 
 if __name__ == '__main__':
-    filename = sys.argv[1]
+    if len(sys.argv) > 1:
+        filename = sys.argv[1]
+    else:
+        filename = 'icons.yml'
 
     config = load_yaml(filename)
 
@@ -58,5 +62,5 @@ if __name__ == '__main__':
 
     qrc = download_icons(icons, out_dirname)
 
-    with open(os.path.join(out_dirname, 'resources.qrc'), 'w') as f:
+    with open(os.path.join(out_dirname, 'icons.qrc'), 'w') as f:
         f.write(qrc)

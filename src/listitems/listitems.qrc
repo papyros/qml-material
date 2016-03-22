@@ -1,0 +1,15 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/Material/ListItems">
+	<file>BaseListItem.qml</file>
+	<file>Divider.qml</file>
+	<file>SectionHeader.qml</file>
+	<file>SimpleMenu.qml</file>
+	<file>Standard.qml</file>
+	<file>Subheader.qml</file>
+	<file>Subtitled.qml</file>
+	<file>qmldir</file>
+</qresource>
+
+</RCC>

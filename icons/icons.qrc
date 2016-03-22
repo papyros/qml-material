@@ -1,4 +1,5 @@
-<!DOCTYPE RCC><RCC version="1.0">
+<!DOCTYPE RCC>
+<RCC version="1.0">
 
 <qresource prefix="/icons/navigation">
 	<file alias="more_vert.svg">navigation_more_vert.svg</file>
