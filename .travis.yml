@@ -10,6 +10,7 @@ install:
   - sudo apt-get -y install qt55declarative
   - sudo apt-get -y install qt55quickcontrols qt55graphicaleffects
   - sudo apt-get -y install qt55tools
+  - sudo apt-get -y install qt55svg 
   - sudo apt-get -y install cmake
   - sudo apt-get -y install xvfb
   - sudo npm install -g jshint
