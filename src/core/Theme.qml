@@ -120,25 +120,4 @@ Object {
 
         return temp.a > 0 && a >= 0.3
     }
-
-    // TODO: Load all the fonts!
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-BlackItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Black.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Bold.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-BoldItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-Bold.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-BoldItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Medium.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-MediumItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Regular.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-Italic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-Light.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-LightItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/RobotoCondensed-Regular.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Italic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Light.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-LightItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-Thin.ttf")}
-    FontLoader {source: Qt.resolvedUrl("fonts/roboto/Roboto-ThinItalic.ttf")}
-
 }

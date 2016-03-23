@@ -49,13 +49,7 @@ Item {
 
        \sa name
       */
-    property string source: {
-        if (name.indexOf('awesome') == 0) {
-            return 'awesome://' + name.substring(8)
-        } else {
-            return "qrc://icons/" + name + '.svg'
-        }
-    }
+    property string source: "icon://" + name
 
     property bool valid: source.indexOf("icon://awesome/") == 0
             ? awesomeIcon.valid : image.status == Image.Ready
@@ -72,8 +66,11 @@ Item {
         visible: source != "" && !colorize
 
         source: {
-            if (icon.source.indexOf("awesome://") == 0) {
+            if (icon.source.indexOf("icon://awesome/") == 0) {
                 return ''
+            } else if (icon.source.indexOf('icon://') === 0) {
+                var name = icon.source.substring(7)
+                return "qrc:/icons/" + name + '.svg'
             } else {
                 return icon.source
             }
@@ -105,8 +102,8 @@ Item {
         color: icon.color
 
         name: {
-            if (icon.source.indexOf("awesome://") == 0) {
-                return icon.source.substring(10)
+            if (icon.source.indexOf("icon://awesome/") == 0) {
+                return icon.source.substring(15)
             } else {
                 return ''
             }

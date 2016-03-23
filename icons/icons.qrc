@@ -2,6 +2,8 @@
 <RCC version="1.0">
 
 <qresource prefix="/icons/navigation">
+	<file alias="arrow_back.svg">navigation_arrow_back.svg</file>
+	<file alias="close.svg">navigation_close.svg</file>
 	<file alias="more_vert.svg">navigation_more_vert.svg</file>
 </qresource>
 

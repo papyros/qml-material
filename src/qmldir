@@ -35,6 +35,7 @@ Object 0.1 Object.qml
 PlatformExtensions 0.2 PlatformExtensions.qml
 UnitsHelper 0.3 UnitsHelper.qml
 View 0.1 View.qml
+Utils 0.3 utils.js
 singleton MaterialAnimation 0.1 MaterialAnimation.qml
 singleton Palette 0.1 Palette.qml
 singleton Theme 0.1 Theme.qml

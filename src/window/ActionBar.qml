@@ -19,7 +19,6 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
 import Material 0.3
-import Material.Extras 0.1
 import Material.ListItems 0.1 as ListItem
 
 /*!
@@ -221,7 +220,7 @@ Item {
     QtObject {
         id: __internal
 
-        property var visibleActions: ListUtils.filter(actions, function(action) {
+        property var visibleActions: Utils.filter(actions, function(action) {
             return action.visible
         })
     }
