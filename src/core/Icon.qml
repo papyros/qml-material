@@ -49,7 +49,7 @@ Item {
 
        \sa name
       */
-    property string source: "icon://" + name
+    property string source: name ? "icon://" + name : ""
 
     property bool valid: source.indexOf("icon://awesome/") == 0
             ? awesomeIcon.valid : image.status == Image.Ready
@@ -70,7 +70,11 @@ Item {
                 return ''
             } else if (icon.source.indexOf('icon://') === 0) {
                 var name = icon.source.substring(7)
-                return "qrc:/icons/" + name + '.svg'
+
+                if (name)
+                    return "qrc:/icons/" + name + '.svg'
+                else
+                    return ""
             } else {
                 return icon.source
             }
