@@ -18,18 +18,18 @@
 
 import QtQuick 2.4
 import QtQuick.Controls.Styles 1.3
-import Material 0.2
+import Material 0.3
 
 ToolBarStyle {
 	padding {
-        left: Units.dp(16)
-        right: Units.dp(16)
-        top: Units.dp(0)
-        bottom: Units.dp(0)
+        left: 16 * Units.dp
+        right: 16 * Units.dp
+        top: 0 * Units.dp
+        bottom: 0 * Units.dp
     }
     background: View {
         implicitHeight: Device.type == Device.phone || Device.type === Device.phablet 
-                ? Units.dp(48) : Device.type == Device.tablet ? Units.dp(56) : Units.dp(64)
+                ? 48 * Units.dp : Device.type == Device.tablet ? 56 * Units.dp : 64 * Units.dp
         fullWidth: true
         elevation: 2
         

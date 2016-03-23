@@ -19,7 +19,7 @@
 import QtQuick 2.4
 import QtQuick.Controls.Styles 1.3
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3
 
 TextFieldStyle {
     id: style
@@ -33,7 +33,7 @@ TextFieldStyle {
 
     font {
         family: echoMode == TextInput.Password ? "Default" : "Roboto"
-        pixelSize: Units.dp(16)
+        pixelSize: 16 * Units.dp
     }
 
     renderType: Text.QtRendering
@@ -61,7 +61,7 @@ TextFieldStyle {
                                     : control.activeFocus ? background.color
                                                           : Theme.light.hintColor
 
-            height: control.activeFocus ? Units.dp(2) : Units.dp(1)
+            height: control.activeFocus ? 2 * Units.dp : 1 * Units.dp
             visible: background.showBorder
 
             anchors {
@@ -85,8 +85,8 @@ TextFieldStyle {
 
             anchors.verticalCenter: parent.verticalCenter
             text: control.placeholderText
-            font.pixelSize: Units.dp(16)
-            anchors.margins: -Units.dp(12)
+            font.pixelSize: 16 * Units.dp
+            anchors.margins: -12 * Units.dp
             color: background.hasError ? background.errorColor
                                   : control.activeFocus && control.text !== ""
                                         ? background.color : Theme.light.hintColor
@@ -102,7 +102,7 @@ TextFieldStyle {
                     }
                     PropertyChanges {
                         target: fieldPlaceholder
-                        font.pixelSize: Units.dp(12)
+                        font.pixelSize: 12 * Units.dp
                     }
                 },
                 State {
@@ -137,14 +137,14 @@ TextFieldStyle {
                 left: parent.left
                 right: parent.right
                 top: underline.top
-                topMargin: Units.dp(4)
+                topMargin: 4 * Units.dp
             }
 
             Label {
                 id: helperTextLabel
                 visible: background.helperText && background.showBorder
                 text: background.helperText
-                font.pixelSize: Units.dp(12)
+                font.pixelSize: 12 * Units.dp
                 color: background.hasError ? background.errorColor
                                            : Qt.darker(Theme.light.hintColor)
 
@@ -161,7 +161,7 @@ TextFieldStyle {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 visible: background.characterLimit && background.showBorder
                 text: control.length + " / " + background.characterLimit
-                font.pixelSize: Units.dp(12)
+                font.pixelSize: 12 * Units.dp
                 color: background.hasError ? background.errorColor : Theme.light.hintColor
                 horizontalAlignment: Text.AlignLeft
 

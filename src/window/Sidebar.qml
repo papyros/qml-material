@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import "ListItems" as ListItem
 
 /*!
@@ -36,7 +36,7 @@ import "ListItems" as ListItem
    Examples:
    \qml
    Item{
-       property bool wideAspect: width > Units.gu(80)
+       property bool wideAspect: width > gu(80)
 
        Sidebar {
            expanded: wideAspect
@@ -60,7 +60,7 @@ View {
         rightMargin: expanded ? 0 : -width
     }
 
-    width: Units.dp(250)
+    width: 250 * Units.dp
 
     property bool expanded: true
 
@@ -110,7 +110,7 @@ View {
             backgroundColor: root.backgroundColor
             elevation: flickable.atYBeginning ? 0 : 1
             fullWidth: true
-            z: 2            
+            z: 2
         }
 
         Flickable {

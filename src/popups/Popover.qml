@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import Material.Extras 0.1
 
 /*!
@@ -43,7 +43,7 @@ PopupBase {
     
     property alias backgroundColor: view.backgroundColor
 
-    property int padding: Units.dp(16)
+    property int padding: 16 * Units.dp
 
     default property alias data: view.data
     
@@ -106,7 +106,7 @@ PopupBase {
         id: view
 
         elevation: 2
-        radius: Units.dp(2)
+        radius: 2 * Units.dp
 
         anchors {
             left: parent.left

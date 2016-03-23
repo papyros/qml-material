@@ -17,7 +17,7 @@
  */
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype SectionHeader
@@ -32,7 +32,7 @@ BaseListItem {
     property alias iconName: icon.name
     property bool expanded: false
 
-    height: Units.dp(48)
+    height: 48 * Units.dp
 
     RowLayout {
         anchors.fill: parent
@@ -40,10 +40,10 @@ BaseListItem {
         anchors.leftMargin: listItem.margins
         anchors.rightMargin: listItem.margins
 
-        spacing: Units.dp(16)
+        spacing: 16 * Units.dp
 
         Item {
-            Layout.preferredWidth: Units.dp(40)
+            Layout.preferredWidth: 40 * Units.dp
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
 
@@ -59,7 +59,7 @@ BaseListItem {
 
                 visible: name != ""
                 color: listItem.expanded ? Theme.primaryColor : Theme.light.iconColor
-                size: Units.dp(24)
+                size: 24 * Units.dp
             }
         }
 
@@ -76,7 +76,7 @@ BaseListItem {
         }
 
         Item {
-            Layout.preferredWidth: Units.dp(40)
+            Layout.preferredWidth: 40 * Units.dp
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignRight
 
@@ -88,7 +88,7 @@ BaseListItem {
 
                 name: "navigation/expand_more"
                 rotation: listItem.expanded ? 180 : 0
-                size: Units.dp(24)
+                size: 24 * Units.dp
 
                 Behavior on rotation {
                     NumberAnimation { duration: 200 }

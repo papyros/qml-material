@@ -17,7 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype NavigationDrawer
@@ -32,7 +32,7 @@ PopupBase {
     overlayLayer: "dialogOverlayLayer"
     overlayColor: Qt.rgba(0, 0, 0, 0.3)
 
-    width: Math.min(parent.width - Units.gu(1), Units.gu(5))
+    width: Math.min(parent.width - 1 * Device.gridUnit * Units.dp, 1 * Device.gridUnit * Units.dp)
 
     anchors {
         left: mode === "left" ? parent.left : undefined
@@ -40,12 +40,12 @@ PopupBase {
         top: parent.top
         bottom: parent.bottom
 
-        leftMargin: showing ? 0 : -width - Units.dp(10)
-        rightMargin: showing ? 0 : -width - Units.dp(10)
+        leftMargin: showing ? 0 : -width - 10 * Units.dp
+        rightMargin: showing ? 0 : -width - 10 * Units.dp
 
         Behavior on leftMargin {
             NumberAnimation { duration: 200 }
-        }       
+        }
         Behavior on rightMargin {
             NumberAnimation { duration: 200 }
         }

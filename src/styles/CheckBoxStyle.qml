@@ -18,7 +18,7 @@
 
 import QtQuick 2.4
 import QtQuick.Controls.Styles 1.3
-import Material 0.2
+import Material 0.3
 
 CheckBoxStyle {
     id: style
@@ -57,7 +57,7 @@ CheckBoxStyle {
     indicator: Item {
         id: parentRect
 
-        implicitWidth: Units.dp(48)
+        implicitWidth: 48 * Units.dp
         implicitHeight: implicitWidth
 
         Rectangle {
@@ -70,11 +70,11 @@ CheckBoxStyle {
                     : style.darkBackground ? Theme.alpha("#fff", 0.30)
                                            : Theme.alpha("#000", 0.26)
 
-            width: Units.dp(18)
+            width: 18 * Units.dp
             height: width
-            radius: Units.dp(2)
+            radius: 2 * Units.dp
 
-            border.width: Units.dp(2)
+            border.width: 2 * Units.dp
 
             border.color: control.enabled
                     ? control.checked ? style.color
@@ -109,7 +109,7 @@ CheckBoxStyle {
 
                 opacity: control.checked ? 1 : 0
 
-                property int thickness: Units.dp(3)
+                property int thickness: 3 * Units.dp
 
                 Behavior on opacity {
                     NumberAnimation {
@@ -127,7 +127,7 @@ CheckBoxStyle {
                         bottom: parent.bottom
                     }
 
-                    radius: Units.dp(1)
+                    radius: 1 * Units.dp
                     color: style.darkBackground ? Theme.light.textColor : Theme.dark.textColor
                     width: container.thickness * 2
 
@@ -139,7 +139,7 @@ CheckBoxStyle {
                         bottom: parent.bottom
                     }
 
-                    radius: Units.dp(1)
+                    radius: 1 * Units.dp
                     color: style.darkBackground ? Theme.light.textColor : Theme.dark.textColor
                     height: container.thickness
                 }

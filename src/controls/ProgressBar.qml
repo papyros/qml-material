@@ -19,7 +19,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype ProgressBar
@@ -35,8 +35,8 @@ Controls.ProgressBar {
      */
     property color color: Theme.primaryColor
 
-    width: Units.dp(200)
-    height: Units.dp(4)
+    width: 200 * Units.dp
+    height: 4 * Units.dp
 
     style: MaterialStyle.ProgressBarStyle {}
 }

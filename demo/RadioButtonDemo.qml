@@ -12,15 +12,15 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.minimumHeight: grid.height + Units.dp(80)
-            Layout.minimumWidth: grid.width + Units.dp(80)
+            Layout.minimumHeight: grid.height + dp(80)
+            Layout.minimumWidth: grid.width + dp(80)
             color: index == 0 ? "#EEE" : "#333"
 
             GridLayout {
                 id: grid
                 anchors.centerIn: parent
-                rowSpacing: Units.dp(20)
-                columnSpacing: Units.dp(20)
+                rowSpacing: dp(20)
+                columnSpacing: dp(20)
                 columns: 2
 
                 QuickControls.ExclusiveGroup { id: optionGroup }

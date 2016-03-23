@@ -39,7 +39,7 @@ Page {
     rightSidebar: PageSidebar {
         title: "Sidebar"
 
-        width: Units.dp(320)
+        width: dp(320)
 
         actions: [
             Action {

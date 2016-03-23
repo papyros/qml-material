@@ -20,7 +20,7 @@
 
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3
 import Material.Extras 0.1
 
 /*!
@@ -41,14 +41,14 @@ PopupBase {
     width: Math.max(minimumWidth,
                     content.contentWidth + 2 * contentMargins)
 
-    height: Math.min(parent.height - Units.dp(64),
+    height: Math.min(parent.height - 64 * Units.dp,
                      headerView.height +
                      content.contentHeight +
                      (floatingActions ? 0 : buttonContainer.height))
 
-    property int contentMargins: Units.dp(24)
+    property int contentMargins: 24 * Units.dp
 
-    property int minimumWidth: Device.isMobile ? Units.dp(280) : Units.dp(300)
+    property int minimumWidth: Device.isMobile ? 280 * Units.dp : 300 * Units.dp
 
     property alias title: titleLabel.text
     property alias text: textLabel.text
@@ -122,7 +122,7 @@ PopupBase {
 
         anchors.fill: parent
         elevation: 5
-        radius: Units.dp(2)
+        radius: 2 * Units.dp
         backgroundColor: "white"
 
         MouseArea {
@@ -172,7 +172,7 @@ PopupBase {
                 }
 
                 width: content.width - 2 * contentMargins
-                spacing: Units.dp(8)
+                spacing: 8 * Units.dp
             }
         }
 
@@ -237,7 +237,7 @@ PopupBase {
 
             Item {
                 width: parent.width
-                height: Units.dp(20)
+                height: 20 * Units.dp
                 visible: titleLabel.visible
             }
 
@@ -267,7 +267,7 @@ PopupBase {
                 left: parent.left
             }
 
-            height: hasActions ? Units.dp(52) : Units.dp(2)
+            height: hasActions ? 52 * Units.dp : 2 * Units.dp
 
             View {
                 id: buttonView
@@ -296,7 +296,7 @@ PopupBase {
                     anchors {
                         verticalCenter: parent.verticalCenter
                         right: positiveButton.visible ? positiveButton.left : parent.right
-                        rightMargin: Units.dp(8)
+                        rightMargin: 8 * Units.dp
                     }
 
                     onClicked: {
@@ -315,7 +315,7 @@ PopupBase {
 
                     anchors {
                         verticalCenter: parent.verticalCenter
-                        rightMargin: Units.dp(8)
+                        rightMargin: 8 * Units.dp
                         right: parent.right
                     }
 

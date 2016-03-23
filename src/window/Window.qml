@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import QtQuick.Window 2.2
 
 /*!
@@ -30,7 +30,7 @@ import QtQuick.Window 2.2
 
    \qml
    import QtQuick 2.4
-   import Material 0.2
+   import Material 0.3
 
    Window {
        title: "Application Name"
@@ -72,50 +72,20 @@ Window {
         id: overlayLayer
     }
 
-    width: Units.dp(800)
-    height: Units.dp(600)
+    width: dp(800)
+    height: dp(600)
 
-    Component.onCompleted: {
-        function calculateDiagonal() {
-            return Math.sqrt(Math.pow((Screen.width/Screen.pixelDensity), 2) +
-                    Math.pow((Screen.height/Screen.pixelDensity), 2)) * 0.039370;
-        }
+    // Units
 
-        Units.pixelDensity = Qt.binding(function() {
-            return Screen.pixelDensity
-        });
+    function dp(dp) {
+        return dp * Units.dp
+    }
 
-        Units.multiplier = Qt.binding(function() {
-            var diagonal = calculateDiagonal();
-            var baseMultiplier = platformExtensions.multiplier
+    function gu(gu) {
+        return units.gu(gu)
+    }
 
-            if (diagonal >= 3.5 && diagonal < 5) { //iPhone 1st generation to phablet
-                return baseMultiplier;
-            } else if (diagonal >= 5 && diagonal < 6.5) {
-                return baseMultiplier;
-            } else if (diagonal >= 6.5 && diagonal < 10.1) {
-                return baseMultiplier;
-            } else if (diagonal >= 10.1 && diagonal < 29) {
-                return 1.4 * baseMultiplier;
-            } else if (diagonal >= 29 && diagonal < 92) {
-                return 1.4 * baseMultiplier;
-            } else {
-                return 1.4 * baseMultiplier;
-            }
-        });
-
-        // Nasty hack because singletons cannot import the module they were declared in, so
-        // the grid unit cannot be defined in either Device or Units, because it requires both.
-        // See https://bugreports.qt.io/browse/QTBUG-39703
-        Units.gridUnit = Qt.binding(function() {
-            var isPortrait = window.width < window.height
-            if (Device.type === Device.phone || Device.type === Device.phablet) {
-                return isPortrait ? Units.dp(56) : Units.dp(48)
-            } else if (Device.type == Device.tablet) {
-                return Units.dp(64)
-            } else {
-                return Device.hasTouchScreen ? Units.dp(64) : Units.dp(48)
-            }
-        })
+    UnitsHelper {
+        id: units
     }
 }

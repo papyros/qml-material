@@ -13,6 +13,7 @@
 #include <QtQml>
 
 #include "core/device.h"
+#include "core/units.h"
 
 void Plugin::registerTypes(const char *uri)
 {
@@ -20,4 +21,5 @@ void Plugin::registerTypes(const char *uri)
     Q_ASSERT(uri == QStringLiteral("Material"));
 
     qmlRegisterSingletonType<Device>(uri, 0, 1, "Device", Device::qmlSingleton);
+    qmlRegisterUncreatableType<Units>(uri, 0, 3, "Units", QStringLiteral("Units can only be used via the attached property."));
 }

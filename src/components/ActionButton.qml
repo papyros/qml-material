@@ -18,7 +18,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles 1.3 as ControlStyles
-import Material 0.2
+import Material 0.3
 import QtGraphicalEffects 1.0
 
 /*!
@@ -83,13 +83,13 @@ Controls.Button {
             RectangularGlow {
 
                 anchors.centerIn: parent
-                anchors.verticalCenterOffset: elevation == 1 ? Units.dp(1.5)
-                                                             : Units.dp(1)
+                anchors.verticalCenterOffset: elevation == 1 ? 1.5 * Units.dp
+                                                             : 1 * Units.dp
 
                 width: parent.width
                 height: parent.height
 
-                glowRadius: elevation == 1 ? Units.dp(0.75) : Units.dp(0.3)
+                glowRadius: elevation == 1 ? 0.75 * Units.dp : 0.3 * Units.dp
                 opacity: elevation == 1 ? 0.6 : 0.3
                 spread: elevation == 1 ? 0.7 : 0.85
                 color: "black"
@@ -122,7 +122,7 @@ Controls.Button {
             }
         }
         label: Item {
-            implicitHeight: isMiniSize ? Units.dp(40) : Units.dp(56)
+            implicitHeight: isMiniSize ? 40 * Units.dp : 56 * Units.dp
             implicitWidth: implicitHeight
             Icon {
                 id: icon
@@ -130,7 +130,7 @@ Controls.Button {
                 anchors.centerIn: parent
                 name: control.iconName
                 color: button.iconColor
-                size: Units.dp(24)
+                size: 24 * Units.dp
             }
         }
     }

@@ -18,7 +18,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype CheckBox
@@ -45,11 +45,11 @@ Controls.CheckBox {
         anchors {
             verticalCenter: parent.verticalCenter
             left: parent.left
-            leftMargin: Units.dp(4)
+            leftMargin: 4 * Units.dp
         }
 
-        width: Units.dp(40)
-        height: Units.dp(40)
+        width: 40 * Units.dp
+        height: 40 * Units.dp
         color: checkBox.checked ? Theme.alpha(checkBox.color, 0.20)
                                 : checkBox.darkBackground ? Qt.rgba(1,1,1,0.1)
                                                           : Qt.rgba(0,0,0,0.1)

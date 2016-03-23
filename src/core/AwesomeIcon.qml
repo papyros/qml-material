@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import "awesome.js" as Awesome
 
 /*!
@@ -36,7 +36,7 @@ Item {
     property bool valid: text.implicitWidth > 0
 
     property alias color: text.color
-    property int size: Units.dp(24)
+    property int size: 24 * Units.dp
 
     width: text.width
     height: text.height

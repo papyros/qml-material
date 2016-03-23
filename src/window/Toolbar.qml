@@ -18,7 +18,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3
 
 
 /*!
@@ -68,7 +68,7 @@ View {
                             ? page.backgroundColor : page.actionBar.backgroundColor
                           : Theme.primaryColor
 
-    implicitHeight: Units.gu(1)
+    implicitHeight: 1 * Device.gridUnit * Units.dp
     height: targetHeight
     elevation: backgroundColor === page.color ? 0 : page.actionBar.elevation
     fullWidth: true
@@ -225,10 +225,10 @@ View {
         anchors {
             verticalCenter: stack.verticalCenter
             right: parent.right
-            rightMargin: Units.dp(16)
+            rightMargin: 16 * Units.dp
         }
 
-        spacing: Units.dp(24)
+        spacing: 24 * Units.dp
 
         IconButton {
             iconName: "navigation/close"

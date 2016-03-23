@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype Card
@@ -26,13 +26,13 @@ import Material 0.2
    to more detailed information.
  */
 View {
-    width: Units.dp(300)
-    height: Units.dp(250)
+    width: 300 * Units.dp
+    height: 250 * Units.dp
     elevation: flat ? 0 : 1
 
     property bool flat: false
 
     border.color: flat ? Qt.rgba(0,0,0,0.2) : "transparent"
-    radius: fullWidth || fullHeight ? 0 : Units.dp(2)
+    radius: fullWidth || fullHeight ? 0 : 2 * Units.dp
 
 }

@@ -33,6 +33,7 @@ Icon 0.1 Icon.qml
 Ink 0.1 Ink.qml
 Object 0.1 Object.qml
 PlatformExtensions 0.2 PlatformExtensions.qml
+UnitsHelper 0.3 UnitsHelper.qml
 View 0.1 View.qml
 singleton MaterialAnimation 0.1 MaterialAnimation.qml
 singleton Palette 0.1 Palette.qml

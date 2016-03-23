@@ -23,7 +23,7 @@ Item {
 
     ColumnLayout {
         id: column
-        spacing: Units.dp(16)
+        spacing: dp(16)
 
         ListItem.Subheader {
             text: "Font Weights"
@@ -33,22 +33,22 @@ Item {
             font.family: "Roboto"
             font.weight: Font.Light
             text: "Roboto Light"
-            font.pixelSize: Units.dp(34)
+            font.pixelSize: dp(34)
 
             anchors {
                 left: parent.left
-                margins: Units.dp(16)
+                margins: dp(16)
             }
         }
 
         Label {
             font.family: "Roboto"
             text: "Roboto Regular"
-            font.pixelSize: Units.dp(34)
+            font.pixelSize: dp(34)
 
             anchors {
                 left: parent.left
-                margins: Units.dp(16)
+                margins: dp(16)
             }
         }
 
@@ -56,11 +56,11 @@ Item {
             font.family: "Roboto"
             font.weight: Font.DemiBold
             text: "Roboto Medium"
-            font.pixelSize: Units.dp(34)
+            font.pixelSize: dp(34)
 
             anchors {
                 left: parent.left
-                margins: Units.dp(16)
+                margins: dp(16)
             }
         }
 
@@ -68,11 +68,11 @@ Item {
             font.family: "Roboto"
             font.weight: Font.Bold
             text: "Roboto Bold"
-            font.pixelSize: Units.dp(34)
+            font.pixelSize: dp(34)
 
             anchors {
                 left: parent.left
-                margins: Units.dp(16)
+                margins: dp(16)
             }
         }
 
@@ -85,12 +85,12 @@ Item {
             delegate: Row {
                 anchors {
                     left: parent.left
-                    margins: Units.dp(16)
+                    margins: dp(16)
                 }
 
                 Label {
                     text: modelData
-                    width: Units.dp(100)
+                    width: dp(100)
                 }
 
                 Label {

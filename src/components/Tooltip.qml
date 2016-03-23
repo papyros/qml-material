@@ -17,7 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import Material.Extras 0.1
 
 /*!
@@ -44,8 +44,8 @@ Popover {
     overlayLayer: "tooltipOverlayLayer"
     globalMouseAreaEnabled: false
 
-    width: tooltipLabel.paintedWidth + Units.dp(32)
-    implicitHeight: Device.isMobile ? Units.dp(44) : Units.dp(40)
+    width: tooltipLabel.paintedWidth + 32 * Units.dp
+    implicitHeight: Device.isMobile ? 44 * Units.dp : 40 * Units.dp
 
     backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
 
@@ -53,7 +53,7 @@ Popover {
         id: timer
 
         interval: 1000
-        onTriggered: open(mouseArea, 0, Units.dp(4))
+        onTriggered: open(mouseArea, 0, 4 * Units.dp)
     }
 
     Connections {
@@ -66,7 +66,7 @@ Popover {
 
         onPressAndHold: {
             if(text !== "" && !showing)
-                open(mouseArea, 0, Units.dp(4))
+                open(mouseArea, 0, 4 * Units.dp)
         }
 
         onEntered: {

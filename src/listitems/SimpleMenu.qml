@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import Material.Extras 0.1
 
 /*!
@@ -33,7 +33,7 @@ Subtitled {
 
     subText: listView.currentItem.text
 
-    onClicked: menu.open(listItem, Units.dp(16), 0)
+    onClicked: menu.open(listItem, 16 * Units.dp, 0)
 
     property int __maxWidth: 0
 
@@ -43,7 +43,7 @@ Subtitled {
         visible: false
 
         onContentWidthChanged: {
-            __maxWidth = Math.max(contentWidth + Units.dp(33), __maxWidth)
+            __maxWidth = Math.max(contentWidth + 33 * Units.dp, __maxWidth)
         }
     }
 
@@ -63,12 +63,12 @@ Subtitled {
 
         anchor: Item.TopLeft
 
-        width: Math.max(Units.dp(56 * 2), Math.min(listItem.width - Units.dp(32), __maxWidth))
-        height: Math.min(10 * Units.dp(48) + Units.dp(16), model.length * Units.dp(48) + Units.dp(16))
+        width: Math.max(56 * 2 * Units.dp, Math.min(listItem.width - 32 * Units.dp, __maxWidth))
+        height: Math.min(10 * 48 * Units.dp + 16 * Units.dp, model.length * 48 * Units.dp + 16 * Units.dp)
 
         Rectangle {
             anchors.fill: parent
-            radius: Units.dp(2)
+            radius: 2 * Units.dp
         }
 
         ListView {
@@ -78,7 +78,7 @@ Subtitled {
                 left: parent.left
                 right: parent.right
                 top: parent.top
-                topMargin: Units.dp(8)
+                topMargin: 8 * Units.dp
             }
 
             interactive: false

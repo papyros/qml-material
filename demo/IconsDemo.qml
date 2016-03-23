@@ -22,13 +22,13 @@ Item {
         id: flickable
 
         anchors.fill: parent
-        contentHeight: content.height + Units.dp(16)
+        contentHeight: content.height + dp(16)
         contentWidth: width
 
         Column {
             id: content
             width: flickable.width
-            y: Units.dp(8)
+            y: dp(8)
 
             Repeater {
                 model: [
@@ -60,7 +60,7 @@ Item {
 
                     Item {
                         width: parent.width
-                        height: Units.dp(8)
+                        height: dp(8)
                         visible: header.expanded
                     }
 
@@ -68,20 +68,20 @@ Item {
                         anchors {
                             left: parent.left
                             right: parent.right
-                            margins: Units.dp(16)
+                            margins: dp(16)
                         }
 
                         visible: header.expanded
-                        spacing: Units.dp(10)
+                        spacing: dp(10)
 
                         Repeater {
                             model: folderModel
                             delegate: Item {
-                                width: section.state == "list" ? Units.dp(240) : icon.size
+                                width: section.state == "list" ? dp(240) : icon.size
                                 height: icon.size
                                 visible: icon.valid
                                 Row {
-                                    spacing: Units.dp(20)
+                                    spacing: dp(20)
 
                                     Icon {
                                         id: icon
@@ -92,7 +92,7 @@ Item {
 
                                             return iconName.substring(0, index - 1)
                                         }
-                                        size: section.state == "list" ? Units.dp(24) : Units.dp(64)
+                                        size: section.state == "list" ? dp(24) : dp(64)
                                     }
 
                                     Label {
@@ -120,7 +120,7 @@ Item {
 
                     Item {
                         width: parent.width
-                        height: Units.dp(16)
+                        height: dp(16)
                         visible: header.expanded
                     }
 
@@ -150,7 +150,7 @@ Item {
 
             Item {
                 width: parent.width
-                height: Units.dp(8)
+                height: dp(8)
                 visible: fontHeader.expanded
             }
 
@@ -158,26 +158,26 @@ Item {
                 anchors {
                     left: parent.left
                     right: parent.right
-                    margins: Units.dp(16)
+                    margins: dp(16)
                 }
 
                 visible: fontHeader.expanded
-                spacing: Units.dp(10)
+                spacing: dp(10)
 
                 Repeater {
                     id: awesomeList
                     model: Object.keys(awesomeIcon.icons)
                     delegate: Item {
-                        width: section.state == "list" ? Units.dp(240) : icon.size
+                        width: section.state == "list" ? dp(240) : icon.size
                         height: icon.size
                         visible: icon.valid
                         Row {
-                            spacing: Units.dp(20)
+                            spacing: dp(20)
 
                             Icon {
                                 id: icon
                                 name: "awesome/" + modelData
-                                size: section.state === "list" ? Units.dp(24) : Units.dp(64)
+                                size: section.state === "list" ? dp(24) : dp(64)
                                 anchors.verticalCenter: parent.verticalCenter
                             }
 
@@ -211,7 +211,7 @@ Item {
         anchors {
             right: parent.right
             bottom: parent.bottom
-            margins: Units.dp(32)
+            margins: dp(32)
         }
 
         iconName: section.state === "list" ? "action/view_module"

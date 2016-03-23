@@ -18,7 +18,7 @@
 
 import QtQuick 2.4
 import QtQuick.Controls.Styles 1.3
-import Material 0.2
+import Material 0.3
 
 SliderStyle {
     id: style
@@ -39,7 +39,7 @@ SliderStyle {
             ? control.knobLabel : control.value
 
     property int knobDiameter: control.hasOwnProperty("knobDiameter")
-            ? control.knobDiameter : Units.dp(32)
+            ? control.knobDiameter : 32 * Units.dp
 
     property Component knob : Item {
         implicitHeight: control.pressed || control.focus || control.alwaysShowValueLabel
@@ -50,18 +50,18 @@ SliderStyle {
         Label {
             anchors {
                 fill: parent
-                topMargin: Units.dp(4)
-                bottomMargin: Units.dp(2)
-                leftMargin: Units.dp(4)
-                rightMargin: Units.dp(4)
+                topMargin: 4 * Units.dp
+                bottomMargin: 2 * Units.dp
+                leftMargin: 4 * Units.dp
+                rightMargin: 4 * Units.dp
             }
 
             horizontalAlignment: Qt.AlignHCenter
             verticalAlignment: Qt.AlignVCenter
             text: knobLabel
             fontSizeMode: Text.Fit
-            font.pixelSize: knobDiameter - Units.dp(19)
-            minimumPixelSize: Units.dp(6)
+            font.pixelSize: knobDiameter - 19 * Units.dp
+            minimumPixelSize: 6 * Units.dp
             wrapMode: Text.WordWrap
             color: Theme.lightDark(styleColor,
                                     Theme.light.textColor,
@@ -114,7 +114,7 @@ SliderStyle {
 
     groove: Rectangle {
         implicitWidth: 200
-        implicitHeight: Units.dp(2)
+        implicitHeight: 2 * Units.dp
 
         anchors.verticalCenter: parent.verticalCenter
 
@@ -124,7 +124,7 @@ SliderStyle {
         Rectangle {
             height: parent.height
             width: styleData.handlePosition
-            implicitHeight: Units.dp(2)
+            implicitHeight: 2 * Units.dp
             implicitWidth: 200
             color: style.color
         }
@@ -132,26 +132,26 @@ SliderStyle {
 
     handle: Item {
         anchors.centerIn: parent
-        implicitHeight: Units.dp(8)
-        implicitWidth: Units.dp(8)
+        implicitHeight: 8 * Units.dp
+        implicitWidth: 8 * Units.dp
 
         Loader {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.top
-            anchors.bottomMargin: Units.dp(16)
+            anchors.bottomMargin: 16 * Units.dp
             sourceComponent: style.numericValueLabel ? knob : null
         }
 
         Rectangle {
             anchors.centerIn: parent
-            implicitHeight: Units.dp(32)
-            implicitWidth: Units.dp(32)
+            implicitHeight: 32 * Units.dp
+            implicitWidth: 32 * Units.dp
             color: control.focus ?
                        Theme.alpha(style.color, 0.20) :
                        "transparent"
             radius: implicitHeight / 2
             Rectangle {
-                property var diameter: control.enabled ? Units.dp(16) : Units.dp(12)
+                property var diameter: control.enabled ? 16 * Units.dp : 12 * Units.dp
                 anchors.centerIn: parent
                 color: control.value === control.minimumValue ?
                            Theme.backgroundColor : style.color
@@ -161,14 +161,14 @@ SliderStyle {
                                                        : Theme.alpha("#000000", 0.26)
                               : style.color
 
-                border.width: Units.dp(2)
+                border.width: 2 * Units.dp
 
                 implicitHeight: control.pressed && !control.focus && !style.numericValueLabel ?
-                                    diameter + Units.dp(8) :
+                                    diameter + 8 * Units.dp :
                                     diameter
 
                 implicitWidth: control.pressed && !control.focus && !style.numericValueLabel ?
-                                   diameter + Units.dp(8) :
+                                   diameter + 8 * Units.dp :
                                    diameter
 
                 radius: implicitWidth / 2
@@ -190,7 +190,7 @@ SliderStyle {
 
         Rectangle {
             color: style.darkBackground ? "#FFFFFF" : "#000000"
-            width: Math.round(Units.dp(2)); height: Units.dp(2)
+            width: Math.round(2 * Units.dp); height: 2 * Units.dp
             y: repeater.height / 2
             x: styleData.handleWidth / 2 + index * ((repeater.width - styleData.handleWidth) / (repeater.count-1))
         }

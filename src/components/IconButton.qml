@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import Material.Extras 0.1
 
 /*!
@@ -54,8 +54,8 @@ Item {
         centered: true
         circular: true
 
-        width: parent.width + Units.dp(20)
-        height: parent.height + Units.dp(20)
+        width: parent.width + 20 * Units.dp
+        height: parent.height + 20 * Units.dp
 
         z: 0
 

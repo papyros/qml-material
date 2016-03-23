@@ -18,17 +18,17 @@
 
 import QtQuick 2.4
 import QtQuick.Controls.Styles 1.3
-import Material 0.2
+import Material 0.3
 import "../Base/"
 
 ToolButtonStyle {
     panel: View {
-        radius: Units.dp(2)
+        radius: 2 * Units.dp
 
         implicitHeight: label.text == "" 
-                ? Units.dp(44) : Math.max(Units.dp(36), label.height + Units.dp(16))
+                ? 44 * Units.dp : Math.max(36 * Units.dp, label.height + 16 * Units.dp)
         implicitWidth: label.text == "" 
-                ? Units.dp(44) : Math.max(Units.dp(64), label.width + Units.dp(16))
+                ? 44 * Units.dp : Math.max(64 * Units.dp, label.width + 16 * Units.dp)
 
         Ink {
             id: mouseArea
@@ -38,8 +38,8 @@ ToolButtonStyle {
             centered: true
             circular: label.text == ""
 
-            width: parent.width + Units.dp(8)
-            height: parent.height + Units.dp(8)
+            width: parent.width + 8 * Units.dp
+            height: parent.height + 8 * Units.dp
             
             Connections {
                 target: control.__behavior
@@ -52,13 +52,13 @@ ToolButtonStyle {
         Row {
             anchors.centerIn: parent
 
-            spacing: Units.dp(8)
+            spacing: 8 * Units.dp
 
             Image {
                 id: image
                 anchors.verticalCenter: parent.verticalCenter
                 source: control.iconSource
-                width: Units.dp(24)
+                width: 24 * Units.dp
                 height: width
             }
 

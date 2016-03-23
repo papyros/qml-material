@@ -22,12 +22,16 @@
 class Device : public QObject {
     Q_OBJECT
 
-    Q_PROPERTY(FormFactor formFactor READ formFactor NOTIFY formFactorChanged)
-    Q_PROPERTY(QString name READ name NOTIFY nameChanged)
-    Q_PROPERTY(QString iconName READ iconName NOTIFY iconNameChanged)
+    Q_PROPERTY(FormFactor formFactor READ formFactor NOTIFY geometryChanged)
+    Q_PROPERTY(QString name READ name NOTIFY geometryChanged)
+    Q_PROPERTY(QString iconName READ iconName NOTIFY geometryChanged)
+
+    Q_PROPERTY(bool isPortrait READ isPortrait NOTIFY geometryChanged)
     Q_PROPERTY(bool isMobile READ isMobile CONSTANT)
     Q_PROPERTY(bool hasTouchScreen READ hasTouchScreen CONSTANT)
     Q_PROPERTY(bool hoverEnabled READ hoverEnabled CONSTANT)
+
+    Q_PROPERTY(int gridUnit READ gridUnit NOTIFY geometryChanged)
 
 public:
     enum FormFactor {
@@ -48,21 +52,23 @@ public:
     QString name() const;
     QString iconName() const;
 
+    bool isPortrait() const;
     bool hasTouchScreen() const;
     bool isMobile() const;
     bool hoverEnabled() const;
 
+    int gridUnit() const;
+    int dpMultiplier() const;
+
 signals:
-    void formFactorChanged();
-    void nameChanged();
-    void iconNameChanged();
+    void geometryChanged();
+
 private slots:
     void screenChanged();
-    void geometryChanged();
 
 private:
     float calculateDiagonal() const;
-    
+
     QScreen *m_screen;
 };
 

@@ -17,8 +17,6 @@
  */
 import QtQuick 2.4
 
-pragma Singleton
-
 /*!
    \qmltype Units
    \inqmlmodule Material
@@ -33,15 +31,15 @@ pragma Singleton
 
    \qml
    import QtQuick 2.4
-   import Material 0.2
+   import Material 0.3
 
    Rectangle {
-       width: Units.dp(100)
-       height: Units.dp(80)
+       width: dp(100)
+       height: dp(80)
 
        Label {
            text:"A"
-           font.pixelSize: Units.dp(50)
+           font.pixelSize: dp(50)
        }
    }
    \endqml
@@ -50,25 +48,14 @@ Object {
     id: units
 
     /*!
-       \internal
-       This holds the pixel density used for converting millimeters into pixels. This is the exact
-       value from \l Screen:pixelDensity, but that property only works from within a \l Window type,
-       so this is hardcoded here and we update it from within \l ApplicationWindow
-     */
-    property real pixelDensity: 4.46
-    property real multiplier: 1.4 //default multiplier, but can be changed by user
-
-    /*!
        This is the standard function to use for accessing device-independent pixels. You should use
        this anywhere you need to refer to distances on the screen.
      */
     function dp(number) {
-        return Math.round(number*((pixelDensity*25.4)/160)*multiplier);
+        return Math.round(number * dp);
     }
 
     function gu(number) {
-        return number * gridUnit
+        return dp(number * Device.gridUnit)
     }
-
-    property int gridUnit: dp(64)
 }

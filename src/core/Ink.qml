@@ -17,7 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import Material.Extras 0.1
 
 /*!
@@ -42,7 +42,7 @@ MouseArea {
     property bool circular: false
     property bool centered: false
 
-    property int focusWidth: width - Units.dp(32)
+    property int focusWidth: width - 32 * Units.dp
     property bool focused
     property color focusColor: "transparent"
 
@@ -112,7 +112,7 @@ MouseArea {
 
         width: focused
                 ? focusedState ? focusWidth
-                               : Math.min(parent.width - Units.dp(8), focusWidth + Units.dp(12))
+                               : Math.min(parent.width - 8 * Units.dp, focusWidth + 12 * Units.dp)
                 : parent.width/5
         height: width
 

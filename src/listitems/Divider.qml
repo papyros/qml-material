@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype Divider
@@ -32,7 +32,7 @@ Item {
 		right: parent.right
 	}
 
-	height: Units.dp(16)
+	height: 16 * Units.dp
 
 	ThinDivider {
         anchors.verticalCenter: parent.verticalCenter

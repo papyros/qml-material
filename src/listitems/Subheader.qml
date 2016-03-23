@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype Subheader
@@ -29,8 +29,8 @@ View {
 
     //----- STYLE PROPERTIES -----//
 
-    height: Units.dp(48)
-    property int margins: Units.dp(16)
+    height: 48 * Units.dp
+    property int margins: 16 * Units.dp
 
     anchors {
         left: parent.left
@@ -46,7 +46,7 @@ View {
     Label {
         id: label
 
-        font.pixelSize: Units.dp(14)
+        font.pixelSize: 14 * Units.dp
         font.family: "Roboto"
         font.weight: Font.DemiBold
 

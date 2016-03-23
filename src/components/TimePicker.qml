@@ -18,7 +18,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import Material.Extras 0.1
 import QtQuick.Controls 1.3 as QuickControls
 import QtQuick.Controls.Styles 1.3
@@ -26,7 +26,7 @@ import QtQuick.Controls.Styles 1.3
 FocusScope {
     id: timePicker
 
-    width: Units.dp(300)
+    width: 300 * Units.dp
     height: content.height
 
     /*!
@@ -37,7 +37,7 @@ FocusScope {
     /*!
        The visual padding around the clock element
      */
-    property real clockPadding: Units.dp(24)
+    property real clockPadding: 24 * Units.dp
 
     /*!
        Set to \c true if the time picker should first show the hours. Defaults to true
@@ -132,13 +132,13 @@ FocusScope {
         Rectangle {
             id: headerView
             width: parent.width
-            height: Units.dp(88)
+            height: 88 * Units.dp
             color: Theme.accentColor
 
             Row {
                 id: timeContainer
                 anchors.centerIn: parent
-                height: Units.dp(48)
+                height: 48 * Units.dp
 
                 Label {
                     id:hoursLabel
@@ -191,10 +191,10 @@ FocusScope {
                 anchors {
                     bottom: timeContainer.bottom
                     left: timeContainer.right
-                    leftMargin: Units.dp(12)
+                    leftMargin: 12 * Units.dp
                 }
 
-                spacing: Units.dp(4)
+                spacing: 4 * Units.dp
 
                 Label {
                     style: "subheading"
@@ -240,15 +240,15 @@ FocusScope {
                     id: centerPoint
                     anchors.centerIn: parent
                     color: Theme.accentColor
-                    width: Units.dp(8)
-                    height: Units.dp(8)
+                    width: 8 * Units.dp
+                    height: 8 * Units.dp
                     radius: width / 2
                 }
 
                 Rectangle {
                     id: pointer
                     color: Theme.accentColor
-                    width: Units.dp(2)
+                    width: 2 * Units.dp
                     height: circle.height / 2 - clockPadding
                     y: clockPadding
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -306,8 +306,8 @@ FocusScope {
                     id: pathViewHighlight
                     Rectangle {
                         id: highlight
-                        width: Units.dp(40)
-                        height: Units.dp(40)
+                        width: 40 * Units.dp
+                        height: 40 * Units.dp
                         color: Theme.accentColor
                         radius: width / 2
                     }
@@ -317,8 +317,8 @@ FocusScope {
                     id: pathViewItem
                     Rectangle {
                         id: rectangle
-                        width: !isHours && modelData % 5 == 0 ? Units.dp(12) : isHours ? Units.dp(30) : Units.dp(8)
-                        height: !isHours && modelData % 5 == 0 ? Units.dp(12) : isHours ? Units.dp(30) : Units.dp(8)
+                        width: !isHours && modelData % 5 == 0 ? 12 * Units.dp : isHours ? 30 * Units.dp : 8 * Units.dp
+                        height: !isHours && modelData % 5 == 0 ? 12 * Units.dp : isHours ? 30 * Units.dp : 8 * Units.dp
                         color: "transparent"
 
                         property bool isSelected: false

@@ -18,7 +18,7 @@
 import QtQuick 2.4
 import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype Standard
@@ -29,8 +29,8 @@ import Material 0.2
 BaseListItem {
     id: listItem
 
-    implicitHeight: Units.dp(48)
-    height: Units.dp(48)
+    implicitHeight: 48 * Units.dp
+    height: 48 * Units.dp
 
     property alias text: label.text
     property alias valueText: valueLabel.text
@@ -78,12 +78,12 @@ BaseListItem {
         anchors.leftMargin: listItem.margins
         anchors.rightMargin: listItem.margins
 
-        spacing: Units.dp(16)
+        spacing: 16 * Units.dp
 
         Item {
             id: actionItem
 
-            Layout.preferredWidth: Units.dp(40)
+            Layout.preferredWidth: 40 * Units.dp
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
 
@@ -99,7 +99,7 @@ BaseListItem {
 
                 visible: valid
                 color: listItem.selected ? Theme.primaryColor : Theme.light.iconColor
-                size: Units.dp(24)
+                size: 24 * Units.dp
             }
         }
 

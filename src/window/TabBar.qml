@@ -18,7 +18,7 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
 
-import Material 0.2
+import Material 0.3
 import Material.ListItems 0.1
 
 Item {
@@ -32,7 +32,7 @@ Item {
     property bool isLargeDevice: Device.type == Device.desktop || Device.type == Device.tablet
 
     property bool fullWidth: isLargeDevice
-            ? false : width - maxTabsWidth <= Units.dp(16) && tabsWidth <= width
+            ? false : width - maxTabsWidth <= 16 * Units.dp && tabsWidth <= width
 
     property int tabsWidth: {
         var width = 0
@@ -54,9 +54,9 @@ Item {
         return tabWidth * tabRow.children.length
     }
 
-    property int tabPadding: isLargeDevice ? Units.dp(24) : Units.dp(12)
+    property int tabPadding: isLargeDevice ? 24 * Units.dp : 12 * Units.dp
 
-    property int tabMinWidth: isLargeDevice ? Units.dp(160) : Units.dp(72)
+    property int tabMinWidth: isLargeDevice ? 160 * Units.dp : 72 * Units.dp
 
     property int selectedIndex: 0
 
@@ -70,7 +70,7 @@ Item {
     readonly property int tabCount: isTabView ? tabs.count : tabs.length
 
     visible: tabCount > 0
-    implicitHeight: Units.dp(48)
+    implicitHeight: 48 * Units.dp
 
     onTabCountChanged: {
         selectedIndex = Math.min(selectedIndex, tabCount)
@@ -169,7 +169,7 @@ Item {
                 bottom: parent.bottom
             }
 
-            height: Units.dp(2)
+            height: 2 * Units.dp
             color: tabBar.highlightColor
         }
     }
@@ -184,8 +184,8 @@ Item {
             height: tabBar.height
 
             implicitWidth: isLargeDevice
-                    ? Math.min(2 * tabPadding + row.width, Units.dp(264))
-                    : Math.min(Math.max(2 * tabPadding + row.width, tabMinWidth), Units.dp(264))
+                    ? Math.min(2 * tabPadding + row.width, 264 * Units.dp)
+                    : Math.min(Math.max(2 * tabPadding + row.width, tabMinWidth), 264 * Units.dp)
 
 
             property bool selected: index == tabBar.selectedIndex
@@ -201,7 +201,7 @@ Item {
                     id: row
 
                     anchors.centerIn: parent
-                    spacing: Units.dp(10)
+                    spacing: 10 * Units.dp
 
                     Icon {
                         anchors.verticalCenter: parent.verticalCenter
@@ -246,7 +246,7 @@ Item {
                                 ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
                                 : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
                         onClicked: tabBar.removeTab(tab, index)
-                        size: Units.dp(20)
+                        size: 20 * Units.dp
                     }
                 }
             }

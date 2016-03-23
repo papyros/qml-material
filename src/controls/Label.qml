@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype Label
@@ -108,8 +108,8 @@ Text {
 
     property var fontInfo: fontStyles[style]
 
-    font.pixelSize: Units.dp(!Device.isMobile && fontInfo.size_desktop 
-            ? fontInfo.size_desktop : fontInfo.size)
+    font.pixelSize: (!Device.isMobile && fontInfo.size_desktop
+            ? fontInfo.size_desktop : fontInfo.size) * Units.dp
     font.family: "Roboto"
     font.weight: {
         var weight = fontInfo.font

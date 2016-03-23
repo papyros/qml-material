@@ -18,7 +18,7 @@
 
 import QtQuick 2.4
 import QtQuick.Controls.Styles 1.3
-import Material 0.2
+import Material 0.3
 
 SwitchStyle {
     id: style
@@ -30,8 +30,8 @@ SwitchStyle {
             ? control.darkBackground : false
 
     handle: View {
-        width: Units.dp(22)
-        height: Units.dp(22)
+        width: 22 * Units.dp
+        height: 22 * Units.dp
 
         radius: height/2
 
@@ -42,15 +42,15 @@ SwitchStyle {
     }
 
     groove: Item {
-        width: Units.dp(40)
-        height: Units.dp(22)
+        width: 40 * Units.dp
+        height: 22 * Units.dp
 
         Rectangle {
 
             anchors.centerIn: parent
 
-            width: parent.width - Units.dp(2)
-            height: Units.dp(16)
+            width: parent.width - 2 * Units.dp
+            height: 16 * Units.dp
 
             radius: height/2
 

@@ -18,7 +18,7 @@
 
 import QtQuick 2.4
 import QtQuick.Controls.Styles 1.3
-import Material 0.2
+import Material 0.3
 
 RadioButtonStyle {
     id: style
@@ -45,16 +45,16 @@ RadioButtonStyle {
     }
 
     indicator: Rectangle {
-        implicitWidth: Units.dp(48)
-        implicitHeight: Units.dp(48)
+        implicitWidth: 48 * Units.dp
+        implicitHeight: 48 * Units.dp
         radius: implicitHeight / 2
         color: control.activeFocus ? Theme.alpha(control.color, 0.20) : "transparent"
 
         Rectangle {
             anchors.centerIn: parent
 
-            implicitWidth: Units.dp(20)
-            implicitHeight: Units.dp(20)
+            implicitWidth: 20 * Units.dp
+            implicitHeight: 20 * Units.dp
             radius: implicitHeight / 2
             color: "transparent"
 
@@ -65,7 +65,7 @@ RadioButtonStyle {
                 : style.darkBackground ? Theme.alpha("#fff", 0.30)
                                        : Theme.alpha("#000", 0.26)
 
-            border.width: Units.dp(2)
+            border.width: 2 * Units.dp
             antialiasing: true
 
             Behavior on border.color {
@@ -77,8 +77,8 @@ RadioButtonStyle {
                     centerIn: parent
                     alignWhenCentered: false
                 }
-                implicitWidth: control.checked ? Units.dp(10) : 0
-                implicitHeight: control.checked ? Units.dp(10) : 0
+                implicitWidth: control.checked ? 10 * Units.dp : 0
+                implicitHeight: control.checked ? 10 * Units.dp : 0
                 color: control.enabled ? style.color
                                        : style.darkBackground ? Theme.alpha("#fff", 0.30)
                                                               : Theme.alpha("#000", 0.26)

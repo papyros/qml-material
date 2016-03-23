@@ -18,7 +18,7 @@
 
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype Page
@@ -30,7 +30,7 @@ import Material 0.2
 
    \qml
    import QtQuick 2.4
-   import Material 0.2
+   import Material 0.3
 
    Page {
        title: "Application Name"

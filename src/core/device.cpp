@@ -83,6 +83,11 @@ QString Device::iconName() const
     }
 }
 
+bool Device::isPortrait() const
+{
+    return m_screen->physicalSize().height() > m_screen->physicalSize().width();
+}
+
 bool Device::hasTouchScreen() const
 {
 // QTBUG-36007
@@ -114,6 +119,19 @@ bool Device::hoverEnabled() const
     return !isMobile() || !hasTouchScreen();
 }
 
+int Device::gridUnit() const
+{
+    Device::FormFactor formFactor = this->formFactor();
+
+    if (formFactor == Device::Phone || formFactor == Device::Phablet) {
+        return isPortrait() ? 56 : 48;
+    } else if (formFactor == Device::Tablet) {
+        return 64;
+    } else {
+        return hasTouchScreen() ? 64 : 48;
+    }
+}
+
 void Device::screenChanged()
 {
     if (m_screen)
@@ -124,14 +142,7 @@ void Device::screenChanged()
 
     connect(m_screen, &QScreen::geometryChanged, this, &Device::geometryChanged);
 
-    geometryChanged();
-}
-
-void Device::geometryChanged()
-{
-    emit formFactorChanged();
-    emit nameChanged();
-    emit iconNameChanged();
+    emit geometryChanged();
 }
 
 float Device::calculateDiagonal() const

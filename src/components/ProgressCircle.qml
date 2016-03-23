@@ -19,7 +19,7 @@ import QtQuick 2.4
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles 1.3 as Styles
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype ProgressCircle
@@ -40,10 +40,10 @@ Controls.ProgressBar {
        The thickness of the progress circle's stroke,
        3 dp by default
      */
-    property real dashThickness: Units.dp(3)
+    property real dashThickness: 3 * Units.dp
 
-    width: Units.dp(32)
-    height: Units.dp(32)
+    width: 32 * Units.dp
+    height: 32 * Units.dp
 
     indeterminate: true
 

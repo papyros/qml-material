@@ -4,10 +4,12 @@ TARGET = material
 QT += qml quick
 
 HEADERS += plugin.h \
-           core/device.h
+           core/device.h \
+           core/units.h
 
 SOURCES += plugin.cpp \
-           core/device.cpp
+           core/device.cpp \
+           core/units.cpp
 
 RESOURCES += ../icons/icons.qrc
 

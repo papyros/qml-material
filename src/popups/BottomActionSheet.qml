@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import Material.ListItems 0.1 as ListItem
 
 /*!
@@ -45,7 +45,7 @@ BottomSheet {
             id: header
             text: title
             visible: title !== ""
-            height: Units.dp(56)
+            height: 56 * Units.dp
             style: "subheading"
             backgroundColor: "white"
             elevation: listView.atYBeginning ? 0 : 1
@@ -68,8 +68,8 @@ BottomSheet {
 
                 interactive: bottomSheet.height < bottomSheet.implicitHeight
                 
-                topMargin: title !== "" ? 0 : Units.dp(8)
-                bottomMargin: Units.dp(8)
+                topMargin: title !== "" ? 0 : 8 * Units.dp
+                bottomMargin: 8 * Units.dp
 
                 contentWidth: width
                 contentHeight: subColumn.height

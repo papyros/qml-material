@@ -1,5 +1,5 @@
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 
 Dialog {
     contentMargins: 0
@@ -13,7 +13,7 @@ Dialog {
     TimePicker {
         id: timePicker
         isHours: true
-        bottomMargin: Units.dp(48)
+        bottomMargin: 48 * Units.dp
     }
 
     onAccepted: {

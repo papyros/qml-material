@@ -29,7 +29,7 @@ import ".."
 BaseListItem {
     id: listItem
 
-    height: maximumLineCount == 2 ? Units.dp(72) : Units.dp(88)
+    height: maximumLineCount == 2 ? 72 * Units.dp : 88 * Units.dp
 
     property alias text: label.text
     property alias subText: subLabel.text
@@ -60,12 +60,12 @@ BaseListItem {
 
         columns: 4
         rows: 1
-        columnSpacing: Units.dp(16)
+        columnSpacing: 16 * Units.dp
 
         Item {
             id: actionItem
 
-            Layout.preferredWidth: Units.dp(40)
+            Layout.preferredWidth: 40 * Units.dp
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
             Layout.column: 1
@@ -82,7 +82,7 @@ BaseListItem {
 
                 visible: valid
                 color: listItem.selected ? Theme.primaryColor : Theme.light.iconColor
-                size: Units.dp(24)
+                size: 24 * Units.dp
             }
         }
 
@@ -91,12 +91,12 @@ BaseListItem {
             Layout.fillWidth: true
             Layout.column: 2
 
-            spacing: Units.dp(3)
+            spacing: 3 * Units.dp
 
             RowLayout {
                 Layout.fillWidth: true
 
-                spacing: Units.dp(8)
+                spacing: 8 * Units.dp
 
                 Label {
                     id: label

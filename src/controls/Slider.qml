@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.2
+import Material 0.3
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
 
@@ -54,15 +54,15 @@ Controls.Slider {
     /*!
        The diameter of the value label knob
      */
-    property int knobDiameter: Units.dp(32)
+    property int knobDiameter: 32 * Units.dp
 
     property color color: darkBackground ? Theme.dark.accentColor
                                          : Theme.light.accentColor
 
     tickmarksEnabled: false
 
-    implicitHeight: numericValueLabel ? Units.dp(54) : Units.dp(32)
-    implicitWidth: Units.dp(200)
+    implicitHeight: numericValueLabel ? 54 * Units.dp : 32 * Units.dp
+    implicitWidth: 200 * Units.dp
 
     style: MaterialStyle.SliderStyle {}
 }

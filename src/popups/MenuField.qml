@@ -18,7 +18,7 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
 
-import Material 0.2
+import Material 0.3
 import Material.ListItems 0.1
 
 /*!
@@ -30,8 +30,8 @@ import Material.ListItems 0.1
 Item {
     id: field
 
-    implicitHeight: hasHelperText ? helperTextLabel.y + helperTextLabel.height + Units.dp(4)
-                                  : underline.y + Units.dp(8)
+    implicitHeight: hasHelperText ? helperTextLabel.y + helperTextLabel.height + 4 * Units.dp
+                                  : underline.y + 8 * Units.dp
     implicitWidth: spinBoxContents.implicitWidth
 
     activeFocusOnTab: true
@@ -71,22 +71,22 @@ Item {
     Item {
         id: spinBox
 
-        height: Units.dp(24)
+        height: 24 * Units.dp
         width: parent.width
 
         y: {
             if(!floatingLabel)
-                return Units.dp(16)
+                return 16 * Units.dp
             if(floatingLabel && !hasHelperText)
-                return Units.dp(40)
-            return Units.dp(28)
+                return 40 * Units.dp
+            return 28 * Units.dp
         }
 
         RowLayout {
             id: spinBoxContents
 
             height: parent.height
-            width: parent.width + Units.dp(5)
+            width: parent.width + 5 * Units.dp
 
             Label {
                 id: label
@@ -103,11 +103,11 @@ Item {
                 id: dropDownIcon
 
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                Layout.preferredWidth: Units.dp(24)
-                Layout.preferredHeight: Units.dp(24)
+                Layout.preferredWidth: 24 * Units.dp
+                Layout.preferredHeight: 24 * Units.dp
 
                 name: "navigation/arrow_drop_down"
-                size: Units.dp(24)
+                size: 24 * Units.dp
             }
         }
 
@@ -120,7 +120,7 @@ Item {
 
             //If there are more than max items, show an extra half item so
             // it's clear the user can scroll
-            height: Math.min(maxVisibleItems*Units.dp(48) + Units.dp(24), listView.contentHeight)
+            height: Math.min(maxVisibleItems*48 * Units.dp + 24 * Units.dp, listView.contentHeight)
 
             ListView {
                 id: listView
@@ -155,10 +155,10 @@ Item {
         text: field.placeholderText
         visible: floatingLabel
 
-        font.pixelSize: Units.dp(12)
+        font.pixelSize: 12 * Units.dp
 
         anchors.bottom: spinBox.top
-        anchors.bottomMargin: Units.dp(8)
+        anchors.bottomMargin: 8 * Units.dp
 
         color: Theme.light.hintColor
     }
@@ -168,13 +168,13 @@ Item {
 
         color: field.hasError ? field.errorColor : field.activeFocus ? field.accentColor : Theme.light.hintColor
 
-        height: field.activeFocus ? Units.dp(2) : Units.dp(1)
+        height: field.activeFocus ? 2 * Units.dp : 1 * Units.dp
 
         anchors {
             left: parent.left
             right: parent.right
             top: spinBox.bottom
-            topMargin: Units.dp(8)
+            topMargin: 8 * Units.dp
         }
 
         Behavior on height {
@@ -193,11 +193,11 @@ Item {
             left: parent.left
             right: parent.right
             top: underline.top
-            topMargin: Units.dp(4)
+            topMargin: 4 * Units.dp
         }
 
         visible: hasHelperText
-        font.pixelSize: Units.dp(12)
+        font.pixelSize: 12 * Units.dp
         color: field.hasError ? field.errorColor : Qt.darker(Theme.light.hintColor)
 
         Behavior on color {

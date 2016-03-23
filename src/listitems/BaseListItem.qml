@@ -33,7 +33,7 @@ View {
         right: parent ? parent.right : undefined
     }
 
-    property int margins: Units.dp(16)
+    property int margins: 16 * Units.dp
 
     property bool selected
     property bool interactive: true

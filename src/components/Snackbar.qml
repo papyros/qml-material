@@ -18,7 +18,7 @@
  */
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3
 
 /*!
    \qmltype Snackbar
@@ -55,7 +55,7 @@ View {
             NumberAnimation { duration: 300 }
         }
     }
-    radius: fullWidth ? 0 : Units.dp(2)
+    radius: fullWidth ? 0 : 2 * Units.dp
     backgroundColor: "#323232"
     height: snackLayout.height
     width: fullWidth ? undefined : snackLayout.width
@@ -85,18 +85,18 @@ View {
         spacing: 0
 
         Item {
-            width: Units.dp(24)
+            width: 24 * Units.dp
         }
 
         Label {
             id: snackText
             Layout.fillWidth: true
-            Layout.minimumWidth: snackbar.fullWidth ? -1 : Units.dp(216) - snackButton.width
+            Layout.minimumWidth: snackbar.fullWidth ? -1 : 216 * Units.dp - snackButton.width
             Layout.maximumWidth: snackbar.fullWidth ? -1 :
-                Math.min(Units.dp(496) - snackButton.width - middleSpacer.width - Units.dp(48),
-                         snackbar.parent.width - snackButton.width - middleSpacer.width - Units.dp(48))
+                Math.min(496 * Units.dp - snackButton.width - middleSpacer.width - 48 * Units.dp,
+                         snackbar.parent.width - snackButton.width - middleSpacer.width - 48 * Units.dp)
 
-            Layout.preferredHeight: lineCount == 2 ? Units.dp(80) : Units.dp(48)
+            Layout.preferredHeight: lineCount == 2 ? 80 * Units.dp : 48 * Units.dp
             verticalAlignment: Text.AlignVCenter
             maximumLineCount: 2
             wrapMode: Text.Wrap
@@ -107,7 +107,7 @@ View {
 
         Item {
             id: middleSpacer
-            width: snackbar.buttonText == "" ? 0 : snackbar.fullWidth ? Units.dp(24) : Units.dp(48)
+            width: snackbar.buttonText == "" ? 0 : snackbar.fullWidth ? 24 * Units.dp : 48 * Units.dp
         }
 
         Button {
@@ -121,7 +121,7 @@ View {
         }
 
         Item {
-            width: Units.dp(24)
+            width: 24 * Units.dp
         }
     }
 

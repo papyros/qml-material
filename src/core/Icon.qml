@@ -19,7 +19,7 @@
  */
 import QtQuick 2.4
 import QtQuick.Window 2.2
-import Material 0.2
+import Material 0.3
 import QtGraphicalEffects 1.0
 
 /*!
@@ -32,7 +32,7 @@ Item {
     id: icon
 
     property color color: Theme.light.iconColor
-    property real size: Units.dp(24)
+    property real size: 24 * Units.dp
 
     /*!
        The name of the icon to display.

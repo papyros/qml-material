@@ -18,7 +18,7 @@
  */
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3
 import Material.Extras 0.1
 import Material.ListItems 0.1 as ListItem
 
@@ -39,7 +39,7 @@ import Material.ListItems 0.1 as ListItem
 Item {
     id: actionBar
 
-    implicitHeight: Units.gu(1)
+    implicitHeight: 1 * Device.gridUnit * Units.dp
 
     anchors {
         left: parent.left
@@ -123,7 +123,7 @@ Item {
      *
      * \since 0.3
      */
-    property int iconSize: Units.gridUnit == Units.dp(48) ? Units.dp(20) : Units.dp(24)
+    property int iconSize: Units.gridUnit == 48 * Units.dp ? 20 * Units.dp : 24 * Units.dp
 
     /*!
      * Set to true to integrate the tab bar into a single row with the actions.
@@ -205,7 +205,7 @@ Item {
      */
     function openOverflowMenu() {
         if (overflowMenuAvailable && !overflowMenuShowing)
-            overflowMenu.open(overflowButton, Units.dp(4), Units.dp(-4));
+            overflowMenu.open(overflowButton, 4 * Units.dp, -4 * Units.dp);
     }
 
     /*!
@@ -232,7 +232,7 @@ Item {
         anchors {
             verticalCenter: actionsRow.verticalCenter
             left: parent.left
-            leftMargin: leftItem.show ? Units.dp(16) : -leftItem.width
+            leftMargin: leftItem.show ? 16 * Units.dp : -leftItem.width
 
             Behavior on leftMargin {
                 NumberAnimation { duration: 200 }
@@ -261,8 +261,8 @@ Item {
             verticalCenter: actionsRow.verticalCenter
             left: parent.left
             right: actionsRow.left
-            leftMargin:Units.dp(16) + (leftItem.show ? Units.gu(1) : 0)
-            rightMargin: Units.dp(16)
+            leftMargin:16 * Units.dp + (leftItem.show ? 1 * Device.gridUnit * Units.dp : 0)
+            rightMargin: 16 * Units.dp
 
             Behavior on leftMargin {
                 NumberAnimation { duration: 200 }
@@ -285,12 +285,12 @@ Item {
 
         anchors {
             right: parent.right
-            rightMargin: Units.dp(16)
+            rightMargin: 16 * Units.dp
         }
 
         height: parent.implicitHeight
 
-        spacing: Units.dp(24)
+        spacing: 24 * Units.dp
 
         Repeater {
             model: __internal.visibleActions.length > maxActionCount
@@ -317,7 +317,7 @@ Item {
 
             iconName: "navigation/more_vert"
             objectName: "action/overflow"
-            size: Units.dp(27)
+            size: 27 * Units.dp
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
                                                               Theme.dark.iconColor)
             visible: actionBar.overflowMenuAvailable
@@ -344,7 +344,7 @@ Item {
             top: actionsRow.bottom
             left: label.left
             right: parent.right
-            rightMargin: Units.dp(16)
+            rightMargin: 16 * Units.dp
         }
 
         height: childrenRect.height
@@ -369,8 +369,8 @@ Item {
         id: overflowMenu
         objectName: "overflowMenu"
 
-        width: Units.dp(250)
-        height: columnView.height + Units.dp(16)
+        width: 250 * Units.dp
+        height: columnView.height + 16 * Units.dp
 
         ColumnLayout {
             id: columnView
