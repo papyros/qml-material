@@ -16,7 +16,7 @@ script:
   - source /opt/qt55/bin/qt55-env.sh
   - qmake .
   - make
-  - make install
+  - sudo make install
   - xvfb-run -a -s "-screen 0 800x600x24" make check
   - ./scripts/lint.sh
 
