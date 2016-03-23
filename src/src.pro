@@ -1,6 +1,7 @@
 TEMPLATE = lib
 TARGET = material
 
+CONFIG += c++11
 QT += qml quick
 
 HEADERS += plugin.h \
