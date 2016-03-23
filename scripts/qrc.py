@@ -37,6 +37,7 @@ def create_qrc(dirname, prefix=None):
 
 
 if __name__ == '__main__':
+    create_qrc('demo')
     create_qrc('src/core', 'Material')
     create_qrc('src/controls', 'Material')
     create_qrc('src/components', 'Material')

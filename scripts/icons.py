@@ -10,7 +10,9 @@ def download_icon(name, out_dirname):
     url = ('https://raw.githubusercontent.com/google/material-design-icons/master/{}/svg/production/ic_{}_48px.svg'
            .format(group, name))
     filename = os.path.join(out_dirname, group + '_' + name + '.svg')
-    urllib.urlretrieve(url, filename)
+
+    if not os.path.exists(filename):
+        urllib.urlretrieve(url, filename)
 
 
 def load_yaml(fileName):

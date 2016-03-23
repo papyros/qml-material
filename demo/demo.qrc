@@ -1,0 +1,28 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource>
+	<file>BottomSheetDemo.qml</file>
+	<file>ButtonDemo.qml</file>
+	<file>CheckBoxDemo.qml</file>
+	<file>ColorPaletteDemo.qml</file>
+	<file>CustomIconsDemo.qml</file>
+	<file>DatePickerDemo.qml</file>
+	<file>DialogDemo.qml</file>
+	<file>FormsDemo.qml</file>
+	<file>IconsDemo.qml</file>
+	<file>ListItemsDemo.qml</file>
+	<file>PageStackDemo.qml</file>
+	<file>ProgressBarDemo.qml</file>
+	<file>RadioButtonDemo.qml</file>
+	<file>SidebarPage.qml</file>
+	<file>SliderDemo.qml</file>
+	<file>SubPage.qml</file>
+	<file>SwitchDemo.qml</file>
+	<file>TextFieldDemo.qml</file>
+	<file>TimePickerDemo.qml</file>
+	<file>TypographyDemo.qml</file>
+	<file>main.qml</file>
+</qresource>
+
+</RCC>

@@ -1,7 +1,7 @@
 TEMPLATE = subdirs
 
-SUBDIRS = src tests
+CONFIG += c++11
 
-tests.depends = src
+SUBDIRS = src demo tests
 
 OTHER_FILES = $$PWD/README.md $$PWD/CHANGELOG.md
