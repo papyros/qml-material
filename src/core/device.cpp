@@ -16,8 +16,10 @@ Device::Device(QObject *parent)
     QGuiApplication *app = (QGuiApplication *) QGuiApplication::instance();
     m_screen = app->primaryScreen();
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
     connect(app, &QGuiApplication::primaryScreenChanged,
             this, &Device::screenChanged);
+#endif
 }
 
 QObject *Device::qmlSingleton(QQmlEngine *engine, QJSEngine *scriptEngine)

@@ -64,13 +64,11 @@ void UnitsAttached::screenChanged(QScreen *screen)
 }
 
 int UnitsAttached::dp() const {
-    QString qtVersion = qVersion();
-
-    if (qtVersion > "5.6") {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
         return 1;
-    } else {
+#else
         return dpi()/160;
-    }
+#endif
 }
 
 int UnitsAttached::dpi() const
