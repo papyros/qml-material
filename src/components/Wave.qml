@@ -1,3 +1,5 @@
+/***** THIS FILE CANNOT BE RELICENSED UNDER THE MPL YET *****/
+
 /*
  * QML Material - An application framework implementing Material Design.
  * Copyright (C) 2014 Bogdan Cuza <bogdan.cuza@hotmail.com>
