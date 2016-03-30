@@ -1,8 +1,9 @@
 /*
  * QML Material - An application framework implementing Material Design.
  *
- * Copyright (C) 2015 Steve Coffey
+ * Copyright (C) 2015 Steve Coffey <scoffey@barracuda.com>
  *               2015 Jordan Neidlinger <JNeidlinger@gmail.com>
+ *               2016 Michael Spencer <sonrisesoftware@gmail.com>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
