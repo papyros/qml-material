@@ -1,4 +1,4 @@
-out: icons
+out: icons/core_icons.qrc
 icons:
   - navigation/arrow_back
   - navigation/close

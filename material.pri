@@ -1,12 +1,12 @@
 QT += qml quick
 
-HEADERS += plugin.h \
-           core/device.h \
-           core/units.h
+HEADERS += $$PWD/src/plugin.h \
+           $$PWD/src/core/device.h \
+           $$PWD/src/core/units.h
 
-SOURCES += plugin.cpp \
-           core/device.cpp \
-           core/units.cpp
+SOURCES += $$PWD/src/plugin.cpp \
+           $$PWD/src/core/device.cpp \
+           $$PWD/src/core/units.cpp
 
 RESOURCES += $$PWD/src/material.qrc \
              $$PWD/src/components/components.qrc \
@@ -17,6 +17,6 @@ RESOURCES += $$PWD/src/material.qrc \
              $$PWD/src/popups/popups.qrc \
              $$PWD/src/styles/styles.qrc \
              $$PWD/src/window/window.qrc \
-             $$PWD/icons/icons.qrc
+             $$PWD/icons/core_icons.qrc
 
 OTHER_FILES = $$PWD/README.md $$PWD/CHANGELOG.md

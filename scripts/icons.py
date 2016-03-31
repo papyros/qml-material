@@ -57,12 +57,18 @@ if __name__ == '__main__':
     config = load_yaml(filename)
 
     icons = config.get('icons', [])
-    out_dirname = config.get('out', 'icons')
+    out_filename = config.get('out', 'icons')
+
+    if out_filename.endswith('.qrc'):
+        out_dirname = os.path.dirname(out_filename)
+    else:
+        out_dirname = out_filename
+        out_filename = os.path.join(out_dirname, 'icons.qrc')
 
     if not os.path.exists(out_dirname):
         os.makedirs(out_dirname)
 
     qrc = download_icons(icons, out_dirname)
 
-    with open(os.path.join(out_dirname, 'icons.qrc'), 'w') as f:
+    with open(out_filename, 'w') as f:
         f.write(qrc)

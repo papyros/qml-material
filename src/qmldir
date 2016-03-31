@@ -1,6 +1,7 @@
 module Material
 
-plugin material
+# TODO: Include the plugin only when installing globally
+# plugin material
 
 # Components
 ActionButton 0.1 ActionButton.qml

@@ -8,12 +8,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-#ifndef PLUGIN_H
-#define PLUGIN_H
+#ifndef MATERIAL_PLUGIN_H
+#define MATERIAL_PLUGIN_H
 
 #include <QQmlExtensionPlugin>
 
-class Plugin : public QQmlExtensionPlugin
+class MaterialPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "io.papyros.Material")
@@ -22,4 +22,4 @@ public:
     void registerTypes(const char *uri);
 };
 
-#endif // PLUGIN_H
+#endif // MATERIAL_PLUGIN_H
