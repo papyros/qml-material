@@ -64,6 +64,8 @@ QString Device::name() const
             return tr("TV");
         case Unknown:
             return tr("device");
+        default:
+            return tr("unknown");
     }
 }
 

@@ -1,6 +1,6 @@
 module Material
 
-# TODO: Include the plugin only when installing globally
+# This will be automatically uncommented when installing globally
 # plugin material
 
 # Components

@@ -33,6 +33,11 @@ listitems.path = $$[QT_INSTALL_QML]/Material/ListItems
 styles.files += styles/*
 styles.path = $$[QT_INSTALL_QML]/QtQuick/Controls/Styles/Material
 
-INSTALLS += target material extras listitems styles
+qmldir.target = $$[QT_INSTALL_QML]/Material/qmldir
+qmldir.commands = sed \"s/$$LITERAL_HASH plugin material/plugin material/\" $$PWD/qmldir > $$qmldir.target
+qmldir.depends = $$PWD/qmldir
+qmldir.path = $$[QT_INSTALL_QML]/Material
+
+INSTALLS += target material extras listitems styles qmldir
 
 OTHER_FILES += $$material.files $$extras.files $$listitems.files $$styles.files
