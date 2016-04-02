@@ -27,6 +27,7 @@ def create_qrc(dirname, prefix=None):
 
     for filename in file_list:
         if (filename.endswith('.js') or filename.endswith('.qml') or
+                filename.endswith('.otf') or filename.endswith('.ttf') or
                 filename == 'qmldir'):
             contents += '\t<file>' + filename + '</file>\n'
 
@@ -46,3 +47,4 @@ if __name__ == '__main__':
     create_qrc('src/popups', 'Material')
     create_qrc('src/styles', 'QtQuick/Controls/Styles/Material')
     create_qrc('src/window', 'Material')
+    create_qrc('fonts', 'Material/Fonts')

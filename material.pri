@@ -20,3 +20,7 @@ RESOURCES += $$PWD/src/material.qrc \
              $$PWD/icons/core_icons.qrc
 
 OTHER_FILES = $$PWD/README.md $$PWD/CHANGELOG.md
+
+contains(OPTIONS, roboto) {
+    RESOURCES += $$PWD/fonts/fonts.qrc
+}

@@ -113,4 +113,13 @@ Object {
 
         return temp.a > 0 && a >= 0.3
     }
+
+    Component.onCompleted: {
+        try {
+            var code = 'import Material.Fonts 0.1; MaterialFontLoader {}'
+            Qt.createQmlObject(code, theme, "MaterialFontLoader")
+        } catch (error) {
+            // Ignore the error; it only means that the fonts were not enabled
+        }
+    }
 }

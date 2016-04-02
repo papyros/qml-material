@@ -3,6 +3,7 @@
 
 <qresource prefix="/Material">
 	<file>AwesomeIcon.qml</file>
+	<file>FontAwesome.otf</file>
 	<file>Icon.qml</file>
 	<file>Ink.qml</file>
 	<file>MaterialAnimation.qml</file>
