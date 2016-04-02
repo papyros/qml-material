@@ -31,6 +31,20 @@ If you want to bundle the Roboto fonts in your project, file **ABOVE** the `incl
 
     OPTIONS += roboto
 
+### Per-project installation using git submodules
+
+Add the submodule:
+
+    git submodule add git@github.com:papyros/qml-material.git material
+
+Add the `.pri` file to your project:
+
+    include(material/material.pri)
+
+To optionally bundle the Roboto fonts in your project, add this line **ABOVE** the previously added `include()`:
+
+    OPTIONS += roboto
+
 ### System-wide installation
 
 From the root of the repository, run:
