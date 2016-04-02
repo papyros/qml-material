@@ -4,20 +4,23 @@ language: generic
 
 install:
   - sudo add-apt-repository -y ppa:beineri/opt-qt551-trusty
+  - sudo add-apt-repository -y ppa:beineri/opt-qt56-trusty
   - sudo apt-get update
   - sudo apt-get -y install pep8 pyflakes python python-pip npm nodejs nodejs-legacy
-  - sudo apt-get -y install qt55declarative
-  - sudo apt-get -y install qt55quickcontrols qt55graphicaleffects
-  - sudo apt-get -y install qt55tools
+  - sudo apt-get -y install qt55declarative qt55quickcontrols qt55graphicaleffects qt55tools
+  - sudo apt-get -y install qt56declarative qt56quickcontrols qt56graphicaleffects qt56tools
   - sudo apt-get -y install xvfb
   - sudo npm install -g jshint
 
 script:
   - source /opt/qt55/bin/qt55-env.sh
-  - qmake .
-  - make
-  - sudo make install
+  - qmake . && make && sudo make install
   - xvfb-run -a -s "-screen 0 800x600x24" make check
+  - git clean -xfd
+  - source /opt/qt56/bin/qt56-env.sh
+  - qmake . && make && sudo make install
+  - xvfb-run -a -s "-screen 0 800x600x24" make check
+  - git clean -xfd
   - ./scripts/lint.sh
 
 notifications:
