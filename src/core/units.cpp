@@ -67,7 +67,9 @@ int UnitsAttached::dp() const {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
         return 1;
 #else
-        return dpi()/160;
+        auto dp = dpi()/160;
+
+        return dp > 0 ? dp : 1;
 #endif
 }
 
