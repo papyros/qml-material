@@ -19,49 +19,28 @@ Brought to you by the [Papyros development team](https://github.com/papyros/qml-
  * CMake
  * [Extra CMake Modules](http://api.kde.org/ecm/manual/ecm.7.html)
 
+### Per-project installation using QPM
+
+QPM package coming soon!
+
+Just install using:
+
+    qpm install io.papyros.material
+
+If you want to bundle the Roboto fonts in your project, file **ABOVE** the `include(vendor/vendor.pri)` line, add the following line:
+
+    OPTIONS += roboto
+
 ### System-wide installation
 
 From the root of the repository, run:
 
-    $ mkdir build; cd build
-    $ cmake .. # Add any additional args here as necessary for your platform
-    $ make
-    $ ctest -V # Optional, make sure everything is working correctly
-    $ sudo make install
+    mkdir build; cd build
+    qmake ..
+    make
+    make install # use sudo if necessary
 
 Now check out the `demo` folder to see how to use Material Design from QtQuick!
-
-### Material.Extras
-
-The material framework comes with a collection of useful non-UI-related extras in the `Material.Extras` module. This includes a Promises library, date and list utility functions, and an HTTP library based on Promises. Here are some examples of what you can do with these additional components:
-
-Promise:
-
-```qml
-import QtQuick 2.3
-import Material.Extras 0.1
-
-Item {
-    function makePromise() {
-        var myvalue = "";
-
-        var promise = new Promises.Promse();
-        promise.info.myinfo = "cool info";
-        promise.then(function( data, info ) {
-                // send data to the next step
-                return info.myinfo + " " + data;
-        });
-
-        promise.done(function( data, info ) {
-                // do something with the data of resolve(...)
-        });
-
-        promise.error(function( error, info ) {
-                // do something with the data of reject(...)
-        });
-    }
-}
-```
 
 ### Licensing
 
