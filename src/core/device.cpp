@@ -99,9 +99,10 @@ bool Device::hasTouchScreen() const
     return true;
 #else
     const auto devices = QTouchDevice::devices();
-    for (const QTouchDevice *dev : devices)
+    foreach(const QTouchDevice *dev, devices) {
         if (dev->type() == QTouchDevice::TouchScreen)
             return true;
+    }
     return false;
 #endif
 }
