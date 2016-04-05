@@ -42,7 +42,7 @@ if __name__ == '__main__':
     create_qrc('src/core', 'Material')
     create_qrc('src/controls', 'Material')
     create_qrc('src/components', 'Material')
-    create_qrc('src/extras', 'Material')
+    create_qrc('src/extras', 'Material/Extras')
     create_qrc('src/listitems', 'Material/ListItems')
     create_qrc('src/popups', 'Material')
     create_qrc('src/styles', 'QtQuick/Controls/Styles/Material')

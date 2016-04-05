@@ -1,7 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
 
-<qresource prefix="/Material">
+<qresource prefix="/Material/Extras">
 	<file>AutomaticGrid.qml</file>
 	<file>CircleImage.qml</file>
 	<file>CircleMask.qml</file>
