@@ -13,18 +13,20 @@
 #include <QGuiApplication>
 #include <QQuickItem>
 
+#if defined(Q_OS_ANDROID)
+#include <QtAndroidExtras>
+#endif
+
 UnitsAttached::UnitsAttached(QObject *attachee)
-    : QObject(attachee)
-    , m_screen(nullptr)
-    , m_window(nullptr)
+        : QObject(attachee), m_screen(nullptr), m_window(nullptr)
 {
     m_attachee = qobject_cast<QQuickItem *>(attachee);
 
     if (m_attachee) {
-        if (m_attachee->window()) //It might not be assigned to a window yet
+        if (m_attachee->window()) // It might not be assigned to a window yet
             windowChanged(m_attachee->window());
     } else {
-        QQuickWindow *window = qobject_cast<QQuickWindow*>(attachee);
+        QQuickWindow *window = qobject_cast<QQuickWindow *>(attachee);
         if (window)
             windowChanged(window);
     }
@@ -55,21 +57,22 @@ void UnitsAttached::screenChanged(QScreen *screen)
             oldScreen->disconnect(this);
 
         if (oldScreen == nullptr || screen == nullptr ||
-                screen->physicalDotsPerInch() != oldScreen->physicalDotsPerInch() ||
-                screen->logicalDotsPerInch() != oldScreen->logicalDotsPerInch() ||
-                screen->devicePixelRatio() != oldScreen->devicePixelRatio()) {
+            screen->physicalDotsPerInch() != oldScreen->physicalDotsPerInch() ||
+            screen->logicalDotsPerInch() != oldScreen->logicalDotsPerInch() ||
+            screen->devicePixelRatio() != oldScreen->devicePixelRatio()) {
             emit dpChanged();
         }
     }
 }
 
-int UnitsAttached::dp() const {
+int UnitsAttached::dp() const
+{
 #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
-        return 1;
+    return 1;
 #else
-        auto dp = dpi()/160;
+    auto dp = dpi() / 160;
 
-        return dp > 0 ? dp : 1;
+    return dp > 0 ? dp : 1;
 #endif
 }
 
@@ -87,7 +90,8 @@ int UnitsAttached::dpi() const
 
     QAndroidJniEnvironment env;
     QAndroidJniObject activity = QtAndroid::androidActivity();
-    QAndroidJniObject resources = activity.callObjectMethod("getResources", "()Landroid/content/res/Resources;");
+    QAndroidJniObject resources =
+            activity.callObjectMethod("getResources", "()Landroid/content/res/Resources;");
     if (env->ExceptionCheck()) {
         env->ExceptionDescribe();
         env->ExceptionClear();
@@ -95,7 +99,8 @@ int UnitsAttached::dpi() const
         return EXIT_FAILURE;
     }
 
-    QAndroidJniObject displayMetrics = resources.callObjectMethod("getDisplayMetrics", "()Landroid/util/DisplayMetrics;");
+    QAndroidJniObject displayMetrics =
+            resources.callObjectMethod("getDisplayMetrics", "()Landroid/util/DisplayMetrics;");
     if (env->ExceptionCheck()) {
         env->ExceptionDescribe();
         env->ExceptionClear();

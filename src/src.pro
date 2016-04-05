@@ -4,6 +4,8 @@ TARGET = material
 CONFIG += c++11
 QT += qml quick
 
+android {QT += androidextras}
+
 HEADERS += plugin.h \
            core/device.h \
            core/units.h
