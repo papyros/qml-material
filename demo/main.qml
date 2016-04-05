@@ -17,7 +17,7 @@ ApplicationWindow {
     }
 
     property var styles: [
-            "Icons", "Custom Icons", "Color Palette", "Typography"
+            "Custom Icons", "Color Palette", "Typography"
     ]
 
     property var basicComponents: [

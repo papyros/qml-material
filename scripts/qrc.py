@@ -28,6 +28,8 @@ def create_qrc(dirname, prefix=None):
     for filename in file_list:
         if (filename.endswith('.js') or filename.endswith('.qml') or
                 filename.endswith('.otf') or filename.endswith('.ttf') or
+                filename.endswith('.png') or filename.endswith('.jpg') or
+                filename.endswith('.jpeg') or filename.endswith('.svg') or
                 filename == 'qmldir'):
             contents += '\t<file>' + filename + '</file>\n'
 
