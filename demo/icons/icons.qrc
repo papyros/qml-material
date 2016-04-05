@@ -11,6 +11,7 @@
 
 <qresource prefix="/icons/image">
 	<file alias="color_lens.svg">image_color_lens.svg</file>
+	<file alias="edit.svg">image_edit.svg</file>
 </qresource>
 
 <qresource prefix="/icons/alert">
