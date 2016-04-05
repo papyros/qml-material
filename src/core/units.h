@@ -8,8 +8,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
- #ifndef UNITS_H
- #define UNITS_H
+#ifndef UNITS_H
+#define UNITS_H
 
 #include <QObject>
 
@@ -22,25 +22,35 @@ class UnitsAttached : public QObject
     Q_OBJECT
 
     Q_PROPERTY(int dp READ dp NOTIFY dpChanged)
+    Q_PROPERTY(qreal multiplier READ multiplier WRITE setMultiplier NOTIFY multiplierChanged)
 
 public:
-    UnitsAttached(QObject* attachee);
+    UnitsAttached(QObject *attachee);
 
     int dp() const;
     int dpi() const;
+    qreal multiplier() const;
 
-    void windowChanged(QQuickWindow*);
+public slots:
+    void setMultiplier(qreal multiplier);
 
 signals:
     void dpChanged();
+    void multiplierChanged();
 
 protected slots:
-    void screenChanged(QScreen*);
+    void screenChanged(QScreen *);
 
 private:
+    void updateDPI();
+    void windowChanged(QQuickWindow *);
+
     QPointer<QScreen> m_screen;
     QQuickWindow *m_window;
     QQuickItem *m_attachee;
+
+    int m_dpi;
+    qreal m_multiplier;
 };
 
 class Units : public QObject
@@ -48,7 +58,8 @@ class Units : public QObject
     Q_OBJECT
 
 public:
-    static UnitsAttached *qmlAttachedProperties(QObject *object) {
+    static UnitsAttached *qmlAttachedProperties(QObject *object)
+    {
         return new UnitsAttached(object);
     }
 };

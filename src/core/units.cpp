@@ -17,6 +17,8 @@
 #include <QtAndroidExtras>
 #endif
 
+#define DEFAULT_DPI 72
+
 UnitsAttached::UnitsAttached(QObject *attachee)
         : QObject(attachee), m_screen(nullptr), m_window(nullptr)
 {
@@ -60,6 +62,7 @@ void UnitsAttached::screenChanged(QScreen *screen)
             screen->physicalDotsPerInch() != oldScreen->physicalDotsPerInch() ||
             screen->logicalDotsPerInch() != oldScreen->logicalDotsPerInch() ||
             screen->devicePixelRatio() != oldScreen->devicePixelRatio()) {
+            updateDPI();
             emit dpChanged();
         }
     }
@@ -68,22 +71,36 @@ void UnitsAttached::screenChanged(QScreen *screen)
 int UnitsAttached::dp() const
 {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
-    return 1;
+    return m_multiplier;
 #else
     auto dp = dpi() / 160;
 
-    return dp > 0 ? dp : 1;
+    return dp > 0 ? dp * m_multiplier : m_multiplier;
 #endif
 }
 
-int UnitsAttached::dpi() const
+int UnitsAttached::dpi() const { return m_dpi; }
+
+qreal UnitsAttached::multiplier() const { return m_multiplier; }
+
+void UnitsAttached::setMultiplier(qreal multiplier)
 {
-    if (m_screen == nullptr)
-        return 72;
+    if (m_multiplier != multiplier) {
+        m_multiplier = multiplier;
+        emit multiplierChanged();
+    }
+}
+
+void UnitsAttached::updateDPI()
+{
+    if (m_screen == nullptr) {
+        m_dpi = DEFAULT_DPI;
+        return;
+    }
 
 #if defined(Q_OS_IOS)
     // iOS integration of scaling (retina, non-retina, 4K) does itself.
-    return m_screen->physicalDotsPerInch();
+    m_dpi = m_screen->physicalDotsPerInch();
 #elif defined(Q_OS_ANDROID)
     // https://bugreports.qt-project.org/browse/QTBUG-35701
     // recalculate dpi for Android
@@ -96,7 +113,8 @@ int UnitsAttached::dpi() const
         env->ExceptionDescribe();
         env->ExceptionClear();
 
-        return EXIT_FAILURE;
+        m_dpi = DEFAULT_DPI;
+        return;
     }
 
     QAndroidJniObject displayMetrics =
@@ -105,11 +123,12 @@ int UnitsAttached::dpi() const
         env->ExceptionDescribe();
         env->ExceptionClear();
 
-        return EXIT_FAILURE;
+        m_dpi = DEFAULT_DPI;
+        return;
     }
-    return displayMetrics.getField<int>("densityDpi");
+    m_dpi = displayMetrics.getField<int>("densityDpi");
 #else
     // standard dpi
-    return m_screen->logicalDotsPerInch() * m_screen->devicePixelRatio();
+    m_dpi = m_screen->logicalDotsPerInch() * m_screen->devicePixelRatio();
 #endif
 }
