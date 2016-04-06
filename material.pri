@@ -1,4 +1,9 @@
+CONFIG += c++11
 QT += qml quick
+
+android {
+    QT += androidextras svg xml
+}
 
 HEADERS += $$PWD/src/plugin.h \
            $$PWD/src/core/device.h \
