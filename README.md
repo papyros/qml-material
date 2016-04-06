@@ -15,9 +15,7 @@ Brought to you by the [Papyros development team](https://github.com/papyros/qml-
 
 ### Dependencies
 
- * Qt 5.4 or higher.
- * CMake
- * [Extra CMake Modules](http://api.kde.org/ecm/manual/ecm.7.html)
+ * Qt 5.5 or higher
 
 ### Per-project installation using QPM
 
@@ -55,6 +53,21 @@ From the root of the repository, run:
     make install # use sudo if necessary
 
 Now check out the `demo` folder to see how to use Material Design from QtQuick!
+
+### Icons usage
+
+When using the `Icon` component or the `iconName` property, qml-material looks for icons in the form of `qrc:/icons/<category>/<name>.svg`. Only a core set of icons used by qml-material icons are actually bundled with qml-material. To use icons in your own programs, you can either manually create a qrc file, or you can create `icons.yml` file and use the `icons.py` script from qml-material.
+
+To use the `icons.py` script, create a file called `icons.yml` that looks like this:
+
+    icons:
+      - action/settings
+      - alert/warning
+      - ...
+
+Run `icons.py`, located in the `scripts` folder of the repository. This will download the latest version of all the icons listed in this file, storing them in a folder called `icons`. It also generates a resource file called `icons/icons.qrc`, which you should add to your QMake or CMake project.
+
+Now whenever you add icons to the `icons.yml` file, just rerun `icons.py` and the new icons will be downloaded. To update your icons, just delete the `icons` folder and rerun `icons.py`.
 
 ### Licensing
 
