@@ -25,7 +25,7 @@ PopupBase {
     overlayLayer: "dialogOverlayLayer"
     overlayColor: Qt.rgba(0, 0, 0, 0.3)
 
-    width: Math.min(parent.width - 1 * Device.gridUnit * Units.dp, 1 * Device.gridUnit * Units.dp)
+    width: Math.min(parent.width - 1 * Device.gridUnit * Units.dp, 5 * Device.gridUnit * Units.dp)
 
     anchors {
         left: mode === "left" ? parent.left : undefined
