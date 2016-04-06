@@ -46,7 +46,6 @@
 
 <qresource prefix="/icons/navigation">
 	<file alias="arrow_drop_down.svg">navigation_arrow_drop_down.svg</file>
-	<file alias="menu.svg">navigation_menu.svg</file>
 </qresource>
 
 </RCC>
