@@ -1,5 +1,9 @@
 QT += qml quick
 
+android {
+	QT += androidextras
+}
+
 HEADERS += $$PWD/src/plugin.h \
            $$PWD/src/core/device.h \
            $$PWD/src/core/units.h
