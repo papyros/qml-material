@@ -127,6 +127,7 @@ void UnitsAttached::updateDPI()
         return;
     }
     m_dpi = displayMetrics.getField<int>("densityDpi");
+    m_multiplier = displayMetrics.getField<float>("density");
 #else
     // standard dpi
     m_dpi = m_screen->logicalDotsPerInch() * m_screen->devicePixelRatio();
