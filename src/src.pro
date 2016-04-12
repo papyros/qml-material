@@ -21,7 +21,7 @@ RESOURCES += ../icons/core_icons.qrc
 
 target.path = $$[QT_INSTALL_QML]/Material
 
-material.files += qmldir \
+material.files +=  \
                     components/* \
                     controls/* \
                     core/* \
@@ -38,10 +38,11 @@ listitems.path = $$[QT_INSTALL_QML]/Material/ListItems
 styles.files += styles/*
 styles.path = $$[QT_INSTALL_QML]/QtQuick/Controls/Styles/Material
 
-qmldir.target = $$[QT_INSTALL_QML]/Material/qmldir
+qmldir.target = $$OUT_PWD/qmldir
 qmldir.commands = sed \"s/$$LITERAL_HASH plugin material/plugin material/\" $$PWD/qmldir > $$qmldir.target
 qmldir.depends = $$PWD/qmldir
 qmldir.path = $$[QT_INSTALL_QML]/Material
+qmldir.files = $$qmldir.target
 
 INSTALLS += target material extras listitems styles qmldir
 
