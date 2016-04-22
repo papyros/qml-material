@@ -23,6 +23,9 @@ import Material 0.3
 Controls.Switch {
     id: control
 
+    /*!
+      This action can be used when integrating switch to actionBar
+      */
     property Action action
 
     onCheckedChanged: {
