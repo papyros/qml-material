@@ -23,6 +23,15 @@ import Material 0.3
 Controls.Switch {
     id: control
 
+    property Action action
+
+    onCheckedChanged: {
+        if(action !== null){
+            action.checked = checked
+            action.toggled(checked)
+        }
+    }
+
     /*!
        The switch color. By default this is the app's accent color
      */
@@ -43,8 +52,8 @@ Controls.Switch {
             backgroundColor: control.enabled ? control.checked ? control.color
                                                                : darkBackground ? "#BDBDBD"
                                                                                 : "#FAFAFA"
-                                             : darkBackground ? "#424242"
-                                                              : "#BDBDBD"
+            : darkBackground ? "#424242"
+            : "#BDBDBD"
         }
 
         groove: Item {
@@ -59,8 +68,8 @@ Controls.Switch {
                 color: control.enabled ? control.checked ? Theme.alpha(control.color, 0.5)
                                                          : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
                                                                           : Qt.rgba(0, 0, 0, 0.26)
-                                       : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
-                                                        : Qt.rgba(0, 0, 0, 0.12)
+                : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
+                : Qt.rgba(0, 0, 0, 0.12)
 
                 Behavior on color {
                     ColorAnimation {

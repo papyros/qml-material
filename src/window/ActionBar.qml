@@ -99,7 +99,7 @@ Item {
        The height of the extended content view.
      */
     readonly property int extendedHeight: extendedContentView.height +
-            (tabBar.visible && !integratedTabBar ? tabBar.height : 0)
+                                          (tabBar.visible && !integratedTabBar ? tabBar.height : 0)
 
     /*!
        Set to true to hide the action bar. This is used when displaying an
@@ -232,7 +232,7 @@ Item {
         }
 
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                                            Theme.dark.iconColor)
+                               Theme.dark.iconColor)
         size: iconSize
         action: backAction
 
@@ -262,13 +262,13 @@ Item {
         }
 
         visible: customContentView.children.length === 0 &&
-                (!integratedTabBar || !tabBar.visible)
+                 (!integratedTabBar || !tabBar.visible)
 
         textFormat: Text.PlainText
         text: actionBar.title
         style: "title"
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
-                                                            Theme.dark.textColor)
+                               Theme.dark.textColor)
         elide: Text.ElideRight
     }
 
@@ -286,22 +286,49 @@ Item {
 
         Repeater {
             model: __internal.visibleActions.length > maxActionCount
-                    ? maxActionCount - 1
-                    : __internal.visibleActions.length
+                   ? maxActionCount - 1
+                   : __internal.visibleActions.length
 
-            delegate: IconButton {
-                id: iconAction
 
-                objectName: "action/" + action.objectName
-
-                action: __internal.visibleActions[index]
-
-                color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                                                  Theme.dark.iconColor)
-                size: iconSize
-
+            delegate:Loader{
+                width:iconSize
+                height: iconSize
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
+                sourceComponent: __internal.visibleActions[index].checkable?switchDelegate:iconAction
+
+
+                Component{
+                    id:switchDelegate
+                    Switch{
+                        width: iconSize*2.5
+                        height: iconSize
+                        action: __internal.visibleActions[index]
+                        anchors{
+                            rightMargin: 15
+                            leftMargin: 15
+                        }
+                    }
+
+                }
+
+                Component{
+                    id: iconAction
+                    IconButton {
+
+                        objectName: "action/" + action.objectName
+
+                        action: __internal.visibleActions[index]
+
+                        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
+                                               Theme.dark.iconColor)
+                        size: iconSize
+
+                        anchors.verticalCenter: parent ? parent.verticalCenter : undefined
+                    }
+                }
             }
+
+
         }
 
         IconButton {
@@ -311,7 +338,7 @@ Item {
             objectName: "action/overflow"
             size: 27 * Units.dp
             color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                                              Theme.dark.iconColor)
+                                   Theme.dark.iconColor)
             visible: actionBar.overflowMenuAvailable
             anchors.verticalCenter: parent.verticalCenter
 
