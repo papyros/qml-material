@@ -294,7 +294,7 @@ Item {
                 width:iconSize
                 height: iconSize
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
-                sourceComponent: __internal.visibleActions[index].checkable?switchDelegate:iconAction
+                sourceComponent: __internal.visibleActions[index].displayAsSwitch?switchDelegate:iconAction
 
 
                 Component{
