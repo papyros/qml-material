@@ -35,8 +35,7 @@
 	<file>icons/file_file_download.svg</file>
 	<file>icons/image_color_lens.svg</file>
 	<file>icons/maps_place.svg</file>
-	<file>icons/navigation_arrow_drop_down.svg</file>
-	<file>icons/navigation_menu.svg</file>
+        <file>icons/navigation_arrow_drop_down.svg</file>
 	<file>icons/social_share.svg</file>
 	<file>images/balloon.jpg</file>
 	<file>images/go-last.color.svg</file>
