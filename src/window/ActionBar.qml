@@ -176,6 +176,30 @@ Item {
     property int leftKeyline: label.x
 
     /*!
+      The switch Component if displayAsSwitch is used for actions
+      */
+
+    property Component switchDelegate : Component{
+        Switch{
+        }
+    }
+
+    /*!
+      the iconButton component used for actions
+      */
+    property Component iconButtonDelegate: Component{
+        IconButton {
+
+            color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
+                                   Theme.dark.iconColor)
+            size: actionBar.iconSize
+
+            anchors.verticalCenter: parent ? parent.verticalCenter : undefined
+
+        }
+    }
+
+    /*!
        \internal
        \qmlproperty bool overflowMenuShowing
 
@@ -285,65 +309,52 @@ Item {
         spacing: 24 * Units.dp
 
         Repeater {
+            id : actionsRepeater
+
+            function  updateActions() {
+                for(var i=0; i < count;i++){
+
+                    if(itemAt(i).item.action !==  __internal.visibleActions[i])
+                        itemAt(i).item.action =  __internal.visibleActions[i]
+
+                    if(itemAt(i).item.objectName !== "action/" + itemAt(i).item.action.objectName)
+                        itemAt(i).item.objectName = "action/" + itemAt(i).item.action.objectName
+                }
+            }
+
             model: __internal.visibleActions.length > maxActionCount
                    ? maxActionCount - 1
                    : __internal.visibleActions.length
 
-
-            delegate:Loader{
-                width:iconSize
-                height: iconSize
+            delegate :Loader{
+                // content is resized to the loaded item size
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
-                sourceComponent: __internal.visibleActions[index].displayAsSwitch?switchDelegate:iconAction
-
-
-                Component{
-                    id:switchDelegate
-                    Switch{
-                        width: iconSize*2.5
-                        height: iconSize
-                        action: __internal.visibleActions[index]
-                        anchors{
-                            rightMargin: 15
-                            leftMargin: 15
-                        }
-                    }
-
-                }
-
-                Component{
-                    id: iconAction
-                    IconButton {
-
-                        objectName: "action/" + action.objectName
-
-                        action: __internal.visibleActions[index]
-
-                        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                               Theme.dark.iconColor)
-                        size: iconSize
-
-                        anchors.verticalCenter: parent ? parent.verticalCenter : undefined
-                    }
-                }
+                sourceComponent: __internal.visibleActions[index].displayAsSwitch?
+                                     switchDelegate:iconButtonDelegate
             }
 
-
+            Component.onCompleted: {
+                // first time setting repeater's actions
+                updateActions()
+                // bind the model changes to updating actions
+                modelChanged.connect(function(){updateActions()})
+            }
         }
+    }
 
-        IconButton {
-            id: overflowButton
 
-            iconName: "navigation/more_vert"
-            objectName: "action/overflow"
-            size: 27 * Units.dp
-            color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                   Theme.dark.iconColor)
-            visible: actionBar.overflowMenuAvailable
-            anchors.verticalCenter: parent.verticalCenter
+    IconButton {
+        id: overflowButton
 
-            onClicked: openOverflowMenu()
-        }
+        iconName: "navigation/more_vert"
+        objectName: "action/overflow"
+        size: 27 * Units.dp
+        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
+                               Theme.dark.iconColor)
+        visible: actionBar.overflowMenuAvailable
+        anchors.verticalCenter: parent.verticalCenter
+
+        onClicked: openOverflowMenu()
     }
 
     Item {
@@ -419,3 +430,4 @@ Item {
         }
     }
 }
+

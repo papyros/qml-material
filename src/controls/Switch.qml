@@ -28,12 +28,6 @@ Controls.Switch {
       */
     property Action action
 
-    onCheckedChanged: {
-        if(action !== null){
-            action.checked = checked
-            action.toggled(checked)
-        }
-    }
 
     /*!
        The switch color. By default this is the app's accent color
@@ -80,6 +74,13 @@ Controls.Switch {
                     }
                 }
             }
+        }
+    }
+
+    onCheckedChanged: {
+        if(action !== null){
+            action.checked = checked
+            action.toggled(checked)
         }
     }
 }
