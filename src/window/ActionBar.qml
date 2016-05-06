@@ -99,7 +99,7 @@ Item {
        The height of the extended content view.
      */
     readonly property int extendedHeight: extendedContentView.height +
-            (tabBar.visible && !integratedTabBar ? tabBar.height : 0)
+                                          (tabBar.visible && !integratedTabBar ? tabBar.height : 0)
 
     /*!
        Set to true to hide the action bar. This is used when displaying an
@@ -176,6 +176,30 @@ Item {
     property int leftKeyline: label.x
 
     /*!
+      The switch Component if displayAsSwitch is used for actions
+      */
+
+    property Component switchDelegate : Component{
+        Switch{
+        }
+    }
+
+    /*!
+      the iconButton component used for actions
+      */
+    property Component iconButtonDelegate: Component{
+        IconButton {
+
+            color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
+                                   Theme.dark.iconColor)
+            size: actionBar.iconSize
+
+            anchors.verticalCenter: parent ? parent.verticalCenter : undefined
+
+        }
+    }
+
+    /*!
        \internal
        \qmlproperty bool overflowMenuShowing
 
@@ -232,7 +256,7 @@ Item {
         }
 
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                                            Theme.dark.iconColor)
+                               Theme.dark.iconColor)
         size: iconSize
         action: backAction
 
@@ -262,13 +286,13 @@ Item {
         }
 
         visible: customContentView.children.length === 0 &&
-                (!integratedTabBar || !tabBar.visible)
+                 (!integratedTabBar || !tabBar.visible)
 
         textFormat: Text.PlainText
         text: actionBar.title
         style: "title"
         color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
-                                                            Theme.dark.textColor)
+                               Theme.dark.textColor)
         elide: Text.ElideRight
     }
 
@@ -285,38 +309,52 @@ Item {
         spacing: 24 * Units.dp
 
         Repeater {
+            id : actionsRepeater
+
+            function  updateActions() {
+                for(var i=0; i < count;i++){
+
+                    if(itemAt(i).item.action !==  __internal.visibleActions[i])
+                        itemAt(i).item.action =  __internal.visibleActions[i]
+
+                    if(itemAt(i).item.objectName !== "action/" + itemAt(i).item.action.objectName)
+                        itemAt(i).item.objectName = "action/" + itemAt(i).item.action.objectName
+                }
+            }
+
             model: __internal.visibleActions.length > maxActionCount
-                    ? maxActionCount - 1
-                    : __internal.visibleActions.length
+                   ? maxActionCount - 1
+                   : __internal.visibleActions.length
 
-            delegate: IconButton {
-                id: iconAction
-
-                objectName: "action/" + action.objectName
-
-                action: __internal.visibleActions[index]
-
-                color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                                                  Theme.dark.iconColor)
-                size: iconSize
-
+            delegate :Loader{
+                // content is resized to the loaded item size
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
+                sourceComponent: __internal.visibleActions[index].displayAsSwitch?
+                                     switchDelegate:iconButtonDelegate
+            }
+
+            Component.onCompleted: {
+                // first time setting repeater's actions
+                updateActions()
+                // bind the model changes to updating actions
+                modelChanged.connect(function(){updateActions()})
             }
         }
+    }
 
-        IconButton {
-            id: overflowButton
 
-            iconName: "navigation/more_vert"
-            objectName: "action/overflow"
-            size: 27 * Units.dp
-            color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                                              Theme.dark.iconColor)
-            visible: actionBar.overflowMenuAvailable
-            anchors.verticalCenter: parent.verticalCenter
+    IconButton {
+        id: overflowButton
 
-            onClicked: openOverflowMenu()
-        }
+        iconName: "navigation/more_vert"
+        objectName: "action/overflow"
+        size: 27 * Units.dp
+        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
+                               Theme.dark.iconColor)
+        visible: actionBar.overflowMenuAvailable
+        anchors.verticalCenter: parent.verticalCenter
+
+        onClicked: openOverflowMenu()
     }
 
     Item {
@@ -392,3 +430,4 @@ Item {
         }
     }
 }
+

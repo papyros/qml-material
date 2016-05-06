@@ -29,6 +29,11 @@ Controls.Action {
     property bool hasDividerAfter
 
     /*!
+      used to display the action as switch control on the ActionBar
+      */
+    property bool displayAsSwitch: false
+
+    /*!
        A URL pointing to an image to display as the icon. By default, this is
        a special URL representing the icon named by \l iconName from the Material Design
        icon collection or FontAwesome. The icon will be colorized using the specificed \l color,
@@ -63,4 +68,8 @@ Controls.Action {
 
     property alias text: action.name
     property alias tooltip: action.summary
+
+    onDisplayAsSwitchChanged: {
+        if(displayAsSwitch == true)checkable = true
+    }
 }
