@@ -14,12 +14,14 @@
 
 #include "core/device.h"
 #include "core/units.h"
+#include "core/iconhelper.h"
 
 class MaterialRegisterHelper {
 
 public:
     MaterialRegisterHelper(const char *uri) {
         qmlRegisterSingletonType<Device>(uri, 0, 1, "Device", Device::qmlSingleton);
+        qmlRegisterType<IconHelper>(uri, 0, 1, "IconHelper"/*, IconHelper::qmlSingleton*/);
         qmlRegisterUncreatableType<Units>(uri, 0, 3, "Units", QStringLiteral("Units can only be used via the attached property."));
     }
 };

@@ -64,7 +64,7 @@ Item {
                 var name = icon.source.substring(7)
 
                 if (name)
-                    return "qrc:/icons/" + name + '.svg'
+                    return iconHelper.parseIcon(name) + '.svg' //"qrc:/icons/" + name + '.svg'
                 else
                     return ""
             } else {
