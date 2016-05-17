@@ -25,6 +25,8 @@ BaseListItem {
     property alias text: label.text
     property alias iconName: icon.name
     property bool expanded: false
+    property color iconSelectedColor: listItem.expanded ? Theme.primaryColor : Theme.light.iconColor
+    property color labelSelectedColor: listItem.expanded ? Theme.primaryColor : Theme.light.textColor
 
     height: 48 * Units.dp
 
@@ -52,7 +54,7 @@ BaseListItem {
                 }
 
                 visible: name != ""
-                color: listItem.expanded ? Theme.primaryColor : Theme.light.iconColor
+                color: iconSelectedColor
                 size: 24 * Units.dp
             }
         }
@@ -66,7 +68,7 @@ BaseListItem {
             elide: Text.ElideRight
             style: "subheading"
 
-            color: listItem.expanded ? Theme.primaryColor : Theme.light.textColor
+            color: labelSelectedColor
         }
 
         Item {
