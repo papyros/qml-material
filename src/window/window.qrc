@@ -1,0 +1,21 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/Material">
+	<file>ActionBar.qml</file>
+	<file>AppTheme.qml</file>
+	<file>ApplicationWindow.qml</file>
+	<file>MainView.qml</file>
+	<file>NavigationDrawer.qml</file>
+	<file>NavigationDrawerPage.qml</file>
+	<file>Page.qml</file>
+	<file>PageSidebar.qml</file>
+	<file>PageStack.qml</file>
+	<file>Sidebar.qml</file>
+	<file>TabBar.qml</file>
+	<file>TabbedPage.qml</file>
+	<file>Toolbar.qml</file>
+	<file>Window.qml</file>
+</qresource>
+
+</RCC>

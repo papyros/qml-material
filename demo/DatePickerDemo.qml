@@ -14,7 +14,7 @@ ColumnLayout {
 
         DatePicker {
             frameVisible: false
-            dayAreaBottomMargin : Units.dp(48)
+            dayAreaBottomMargin : dp(48)
         }
 
     }
@@ -27,7 +27,7 @@ ColumnLayout {
 
         DatePicker {
             frameVisible: false
-            dayAreaBottomMargin : Units.dp(48)
+            dayAreaBottomMargin : dp(48)
             isLandscape: true
         }
 
@@ -35,7 +35,7 @@ ColumnLayout {
 
     ColumnLayout {
         anchors.centerIn: parent
-        spacing: Units.dp(16)
+        spacing: dp(16)
 
         Button {
             Layout.alignment: Qt.AlignCenter

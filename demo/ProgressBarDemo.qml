@@ -3,13 +3,13 @@ import QtQuick.Layouts 1.1
 import Material 0.2
 
 Item {
-    implicitHeight: grid.implicitHeight + Units.dp(40)
+    implicitHeight: grid.implicitHeight + dp(40)
     GridLayout {
         id: grid
         anchors.centerIn: parent
         columns: 2
-        columnSpacing: Units.dp(20)
-        rowSpacing: Units.dp(20)
+        columnSpacing: dp(20)
+        rowSpacing: dp(20)
 
         Label {
             text: "Determinate"
@@ -115,8 +115,8 @@ Item {
 
         ProgressCircle {
             Layout.alignment: Qt.AlignCenter
-            width: Units.dp(64)
-            height: Units.dp(64)
+            width: dp(64)
+            height: dp(64)
         }
 
         Label {
@@ -125,9 +125,9 @@ Item {
 
         ProgressCircle {
             Layout.alignment: Qt.AlignCenter
-            width: Units.dp(64)
-            height: Units.dp(64)
-            dashThickness: Units.dp(8)
+            width: dp(64)
+            height: dp(64)
+            dashThickness: dp(8)
         }
 
         Label {
@@ -137,8 +137,8 @@ Item {
         ProgressCircle {
             id: determinateProgress
             Layout.alignment: Qt.AlignCenter
-            width: Units.dp(64)
-            height: Units.dp(64)
+            width: dp(64)
+            height: dp(64)
             indeterminate: false
             minimumValue: 0
             maximumValue: 100

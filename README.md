@@ -15,50 +15,59 @@ Brought to you by the [Papyros development team](https://github.com/papyros/qml-
 
 ### Dependencies
 
-Requires Qt 5.4 or higher.
+ * Qt 5.5 or higher
 
-### Installation
+### Per-project installation using QPM
+
+QPM package coming soon!
+
+Just install using:
+
+    qpm install io.papyros.material
+
+If you want to bundle the Roboto fonts in your project, file **ABOVE** the `include(vendor/vendor.pri)` line, add the following line:
+
+    OPTIONS += roboto
+
+### Per-project installation using git submodules
+
+Add the submodule:
+
+    git submodule add git@github.com:papyros/qml-material.git material
+
+Add the `.pri` file to your project:
+
+    include(material/material.pri)
+
+To optionally bundle the Roboto fonts in your project, add this line **ABOVE** the previously added `include()`:
+
+    OPTIONS += roboto
+
+### System-wide installation
 
 From the root of the repository, run:
 
-    $ qmake
-    $ make
-    $ make check # Optional, make sure everything is working correctly
-    $ sudo make install
+    mkdir build; cd build
+    qmake ..
+    make
+    make install # use sudo if necessary
 
 Now check out the `demo` folder to see how to use Material Design from QtQuick!
 
-### Material.Extras
+### Icons usage
 
-The material framework comes with a collection of useful non-UI-related extras in the `Material.Extras` module. This includes a Promises library, date and list utility functions, and an HTTP library based on Promises. Here are some examples of what you can do with these additional components:
+When using the `Icon` component or the `iconName` property, qml-material looks for icons in the form of `qrc:/icons/<category>/<name>.svg`. Only a core set of icons used by qml-material icons are actually bundled with qml-material. To use icons in your own programs, you can either manually create a qrc file, or you can create `icons.yml` file and use the `icons.py` script from qml-material.
 
-Promise:
+To use the `icons.py` script, create a file called `icons.yml` that looks like this:
 
-```qml
-import QtQuick 2.3
-import Material.Extras 0.1
+    icons:
+      - action/settings
+      - alert/warning
+      - ...
 
-Item {
-    function makePromise() {
-        var myvalue = "";
+Run `icons.py`, located in the `scripts` folder of the repository. This will download the latest version of all the icons listed in this file, storing them in a folder called `icons`. It also generates a resource file called `icons/icons.qrc`, which you should add to your QMake or CMake project.
 
-        var promise = new Promises.Promse();
-        promise.info.myinfo = "cool info";
-        promise.then(function( data, info ) {
-                // send data to the next step
-                return info.myinfo + " " + data;
-        });
-
-        promise.done(function( data, info ) {
-                // do something with the data of resolve(...)
-        });
-
-        promise.error(function( error, info ) {
-                // do something with the data of reject(...)
-        });
-    }
-}
-```
+Now whenever you add icons to the `icons.yml` file, just rerun `icons.py` and the new icons will be downloaded. To update your icons, just delete the `icons` folder and rerun `icons.py`.
 
 ### Licensing
 

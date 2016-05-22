@@ -7,7 +7,7 @@ Item {
 
     Dialog {
         id: alertNoTitleBar
-        width: Units.dp(300)
+        width: dp(300)
         text: "Discard draft?"
         hasActions: true
         positiveButtonText: "discard"
@@ -16,7 +16,7 @@ Item {
 
     Dialog {
         id: alertWithTitleBar
-        width: Units.dp(300)
+        width: dp(300)
         title: "Use Google's location service?"
         text: "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running."
         hasActions: true
@@ -89,7 +89,7 @@ Item {
 
     Column {
         anchors.centerIn: parent
-        spacing: Units.dp(20)
+        spacing: dp(20)
 
         Button {
             text: "Show alert without title bar"

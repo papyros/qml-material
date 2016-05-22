@@ -1,0 +1,27 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/Material/Fonts">
+	<file>MaterialFontLoader.qml</file>
+	<file>qmldir</file>
+	<file>roboto/Roboto-Black.ttf</file>
+	<file>roboto/Roboto-BlackItalic.ttf</file>
+	<file>roboto/Roboto-Bold.ttf</file>
+	<file>roboto/Roboto-BoldItalic.ttf</file>
+	<file>roboto/Roboto-Italic.ttf</file>
+	<file>roboto/Roboto-Light.ttf</file>
+	<file>roboto/Roboto-LightItalic.ttf</file>
+	<file>roboto/Roboto-Medium.ttf</file>
+	<file>roboto/Roboto-MediumItalic.ttf</file>
+	<file>roboto/Roboto-Regular.ttf</file>
+	<file>roboto/Roboto-Thin.ttf</file>
+	<file>roboto/Roboto-ThinItalic.ttf</file>
+	<file>roboto/RobotoCondensed-Bold.ttf</file>
+	<file>roboto/RobotoCondensed-BoldItalic.ttf</file>
+	<file>roboto/RobotoCondensed-Italic.ttf</file>
+	<file>roboto/RobotoCondensed-Light.ttf</file>
+	<file>roboto/RobotoCondensed-LightItalic.ttf</file>
+	<file>roboto/RobotoCondensed-Regular.ttf</file>
+</qresource>
+
+</RCC>

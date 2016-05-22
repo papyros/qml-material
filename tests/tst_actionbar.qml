@@ -26,7 +26,7 @@ Rectangle {
 
     ActionBar {
         id: actionBar
-        
+
         width: parent.width
 
         actions: [
@@ -93,7 +93,7 @@ Rectangle {
 
             if (overflow.showing) {
                 mouseClick(button, 10, 10)
-                wait(400)
+                wait(10000)
             }
 
             verify(!overflow.showing)
@@ -108,6 +108,7 @@ Rectangle {
 
             compare(action1Spy.count, 0)
             mouseClick(button, 10, 10)
+            wait(10000) // Wait for the overflow to fully open
             compare(action1Spy.count, 1)
         }
 
@@ -121,6 +122,7 @@ Rectangle {
             verify(!overflow.showing)
             compare(overflowSpy.count, 0)
             mouseClick(button, 10, 10)
+            wait(10000) // Wait for the overflow to fully open
             compare(overflowSpy.count, 1)
             verify(overflow.showing)
         }
@@ -137,7 +139,7 @@ Rectangle {
             compare(action4Spy.count, 0)
             mouseClick(button, 10, 10)
 
-            wait(800) // Wait for the overflow to fully open
+            wait(10000) // Wait for the overflow to fully open
 
             verify(overflow.showing)
             mouseClick(listItem, 10, 10)

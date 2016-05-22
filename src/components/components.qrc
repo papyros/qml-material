@@ -1,0 +1,20 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/Material">
+	<file>ActionButton.qml</file>
+	<file>Card.qml</file>
+	<file>DatePicker.qml</file>
+	<file>IconButton.qml</file>
+	<file>OverlayLayer.qml</file>
+	<file>OverlayView.qml</file>
+	<file>ProgressCircle.qml</file>
+	<file>Scrollbar.qml</file>
+	<file>Snackbar.qml</file>
+	<file>ThinDivider.qml</file>
+	<file>TimePicker.qml</file>
+	<file>Tooltip.qml</file>
+	<file>Wave.qml</file>
+</qresource>
+
+</RCC>

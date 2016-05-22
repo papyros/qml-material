@@ -1,0 +1,14 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/Material/Extras">
+	<file>AutomaticGrid.qml</file>
+	<file>CircleImage.qml</file>
+	<file>CircleMask.qml</file>
+	<file>ColumnFlow.qml</file>
+	<file>Image.qml</file>
+	<file>circle.png</file>
+	<file>qmldir</file>
+</qresource>
+
+</RCC>

@@ -1,0 +1,8 @@
+out: icons/core_icons.qrc
+icons:
+  - navigation/arrow_back
+  - navigation/chevron_left
+  - navigation/chevron_right
+  - navigation/close
+  - navigation/menu
+  - navigation/more_vert

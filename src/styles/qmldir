@@ -1,0 +1,12 @@
+module QtQuick.Controls.Styles.Material
+
+ApplicationWindowStyle 0.1 ApplicationWindowStyle.qml
+ButtonStyle 0.1 ButtonStyle.qml
+CheckBoxStyle 0.1 CheckBoxStyle.qml
+ProgressBarStyle 0.1 ProgressBarStyle.qml
+SwitchStyle 0.1 SwitchStyle.qml
+ToolBarStyle.qml 0.1 ToolBarStyle.qml
+ToolButtonStyle.qml 0.1 ToolButtonStyle.qml
+RadioButtonStyle 0.1 RadioButtonStyle.qml
+SliderStyle 0.1 SliderStyle.qml
+TextFieldStyle 0.1 TextFieldStyle.qml
