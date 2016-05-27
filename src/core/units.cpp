@@ -20,7 +20,7 @@
 #define DEFAULT_DPI 72
 
 UnitsAttached::UnitsAttached(QObject *attachee)
-        : QObject(attachee), m_screen(nullptr), m_window(nullptr), m_multiplier(1), m_dpi(0)
+        : QObject(attachee), m_screen(nullptr), m_window(nullptr), m_dpi(0), m_multiplier(1)
 {
     m_attachee = qobject_cast<QQuickItem *>(attachee);
 
