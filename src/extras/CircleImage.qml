@@ -36,7 +36,7 @@ Item {
 
     Extras.Image {
         id: mask
-        source: Qt.resolvedUrl("images/circle.png")
+        source: Qt.resolvedUrl("circle.png")
         anchors.fill: image
         smooth: true
         visible: false
