@@ -68,6 +68,8 @@ PopupBase {
 
     default property alias dialogContent: column.data
 
+    property bool closeOnAccepted: true
+
     signal accepted()
     signal rejected()
 
@@ -312,7 +314,7 @@ PopupBase {
                     }
 
                     onClicked: {
-                        close()
+                        if(closeOnAccepted) close()
                         accepted();
                     }
                 }
