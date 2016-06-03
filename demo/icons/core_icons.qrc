@@ -1,0 +1,13 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/icons/navigation">
+	<file alias="arrow_back.svg">navigation_arrow_back.svg</file>
+	<file alias="chevron_left.svg">navigation_chevron_left.svg</file>
+	<file alias="chevron_right.svg">navigation_chevron_right.svg</file>
+	<file alias="close.svg">navigation_close.svg</file>
+	<file alias="menu.svg">navigation_menu.svg</file>
+	<file alias="more_vert.svg">navigation_more_vert.svg</file>
+</qresource>
+
+</RCC>
