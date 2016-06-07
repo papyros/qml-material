@@ -20,113 +20,113 @@ import Material 0.2
 import Material.ListItems 0.1 as ListItem
 
 Column {
-	id: column
-	
-	anchors.fill: parent
+    id: column
 
-	ListItem.Subheader {
-		text: "Custom icons with different colors"
-	}
+    anchors.fill: parent
 
-	Row {
-		Item {
-			width: dp(56)
-			height: dp(56)
-			
-			Icon {
-				anchors.centerIn: parent
-				source: Qt.resolvedUrl("images/weather-sunset.svg")
-				color: Theme.light.iconColor
-			}
-		}
+    ListItem.Subheader {
+        text: "Custom icons with different colors"
+    }
 
-		Item {
-			width: dp(56)
-			height: dp(56)
-			
-			Icon {
-				anchors.centerIn: parent
-				source: Qt.resolvedUrl("images/weather-pouring.svg")
-				color: Theme.light.iconColor
-			}
-		}
+    Row {
+        Item {
+            width: dp(56)
+            height: dp(56)
 
-		Rectangle {
-			width: dp(56)
-			height: dp(56)
-			color: "#333"
-			Icon {
-				anchors.centerIn: parent
-				source: Qt.resolvedUrl("images/weather-sunset.svg")
-				color: Theme.dark.iconColor
-			}
-		}
+            Icon {
+                anchors.centerIn: parent
+                source: Qt.resolvedUrl("images/weather-sunset.svg")
+                color: Theme.light.iconColor
+            }
+        }
 
-		Rectangle {
-			width: dp(56)
-			height: dp(56)
-			color: "#333"
-			Icon {
-				anchors.centerIn: parent
-				source: Qt.resolvedUrl("images/weather-pouring.svg")
-				color: Theme.dark.iconColor
-			}
-		}
-	}
+        Item {
+            width: dp(56)
+            height: dp(56)
 
-	ListItem.Subheader {
-		text: "Non-colorized custom icons"
-	}
+            Icon {
+                anchors.centerIn: parent
+                source: Qt.resolvedUrl("images/weather-pouring.svg")
+                color: Theme.light.iconColor
+            }
+        }
 
-	Row {
-		Item {
-			width: dp(56)
-			height: dp(40)
-			
-			Icon {
-				anchors.centerIn: parent
-				source: Qt.resolvedUrl("images/go-last.color.svg")
-				color: Theme.light.iconColor
-			}
-		}
+        Rectangle {
+            width: dp(56)
+            height: dp(56)
+            color: "#333"
+            Icon {
+                anchors.centerIn: parent
+                source: Qt.resolvedUrl("images/weather-sunset.svg")
+                color: Theme.dark.iconColor
+            }
+        }
 
-		Item {
-			width: dp(56)
-			height: dp(40)
-			
-			Icon {
-				anchors.centerIn: parent
-				source: Qt.resolvedUrl("images/list-add.color.svg")
-				color: Theme.light.iconColor
-			}
-		}
-	}
+        Rectangle {
+            width: dp(56)
+            height: dp(56)
+            color: "#333"
+            Icon {
+                anchors.centerIn: parent
+                source: Qt.resolvedUrl("images/weather-pouring.svg")
+                color: Theme.dark.iconColor
+            }
+        }
+    }
 
-	ListItem.Subheader {
-		text: "Custom icons in IconButtons"
-	}
+    ListItem.Subheader {
+        text: "Non-colorized custom icons"
+    }
 
-	Row {
-		Item {
-			width: dp(56)
-			height: dp(40)
-			
-			IconButton {
-				anchors.centerIn: parent
-				iconSource: Qt.resolvedUrl("images/weather-sunset.svg")
-				color: Theme.light.iconColor
-			}
-		}
+    Row {
+        Item {
+            width: dp(56)
+            height: dp(40)
 
-		Item {
-			width: dp(56)
-			height: dp(40)
-			
-			IconButton {
-				anchors.centerIn: parent
-				iconSource: Qt.resolvedUrl("images/list-add.color.svg")
-				color: Theme.light.iconColor
-			}
-		}
-	}
+            Icon {
+                anchors.centerIn: parent
+                source: Qt.resolvedUrl("images/go-last.color.svg")
+                color: Theme.light.iconColor
+            }
+        }
+
+        Item {
+            width: dp(56)
+            height: dp(40)
+
+            Icon {
+                anchors.centerIn: parent
+                source: Qt.resolvedUrl("images/list-add.color.svg")
+                color: Theme.light.iconColor
+            }
+        }
+    }
+
+    ListItem.Subheader {
+        text: "Custom icons in IconButtons"
+    }
+
+    Row {
+        Item {
+            width: dp(56)
+            height: dp(40)
+
+            IconButton {
+                anchors.centerIn: parent
+                iconSource: Qt.resolvedUrl("images/weather-sunset.svg")
+                color: Theme.light.iconColor
+            }
+        }
+
+        Item {
+            width: dp(56)
+            height: dp(40)
+
+            IconButton {
+                anchors.centerIn: parent
+                iconSource: Qt.resolvedUrl("images/list-add.color.svg")
+                color: Theme.light.iconColor
+            }
+        }
+    }
 }
