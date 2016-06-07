@@ -1,15 +1,5 @@
-/*
- * QML Material - An application framework implementing Material Design.
- *
- * Copyright (C) 2014-2016 Michael Spencer <sonrisesoftware@gmail.com>
- *               2015 Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
- *
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 import QtQuick 2.4
+import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
 import Material 0.3
 import Material.ListItems 0.1 as ListItem
@@ -28,10 +18,15 @@ import Material.ListItems 0.1 as ListItem
    use the instance provided by the page. See the example in the \l Page documentation
    for more details.
  */
+
 Item {
     id: actionBar
-
-    implicitHeight: 1 * Device.gridUnit * Units.dp
+    /*
+      this resolves the issue where Units.dp and dp() function had no effect in android phone
+      to solve this issue i've tried to get the actual height of the Status bar which is equal to 24dp
+      and estimate the Density independence of it, after all this is done only in case if we are running within android os
+    */
+    implicitHeight: Device.gridUnit * Qt.platform.os === "android" ? (Screen.height - Screen.desktopAvailableHeight)/24 : Units.dp
 
     anchors {
         left: parent.left
