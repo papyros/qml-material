@@ -37,7 +37,7 @@ Item {
       to solve this issue i've tried to get the actual height of the Status bar which is equal to 24dp
       and estimate the Density independence of it, after all this is done only in case if we are running within android os
     */
-    implicitHeight: Device.gridUnit * Qt.platform.os === "android" ? (Screen.height - Screen.desktopAvailableHeight)/24 : Units.dp
+    implicitHeight: Device.gridUnit * (Device.isMobile ? (Screen.height - Screen.desktopAvailableHeight)/24 : 1)
 
     anchors {
         left: parent.left
