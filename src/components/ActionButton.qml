@@ -64,6 +64,11 @@ Controls.Button {
      */
     property bool isMiniSize: false
 
+    /*!
+       Size of Icon
+     */
+    property int iconSize: 0
+
     style: ControlStyles.ButtonStyle {
         padding {
             left: 0
@@ -123,7 +128,7 @@ Controls.Button {
                 anchors.centerIn: parent
                 name: control.iconName
                 color: button.iconColor
-                size: 24 * Units.dp
+                size: iconSize ? iconSize : Math.round(parent.implicitHeight * 0.6)
             }
         }
     }
