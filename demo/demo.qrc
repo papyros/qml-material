@@ -21,7 +21,7 @@
 	<file>TextFieldDemo.qml</file>
 	<file>TimePickerDemo.qml</file>
 	<file>TypographyDemo.qml</file>
-	<file>icons/action_account_circle.svg</file>
+        <!--<file>icons/action_account_circle.svg</file>
 	<file>icons/action_autorenew.svg</file>
 	<file>icons/action_delete.svg</file>
 	<file>icons/action_language.svg</file>
@@ -37,7 +37,7 @@
 	<file>icons/maps_place.svg</file>
 	<file>icons/navigation_arrow_drop_down.svg</file>
 	<file>icons/navigation_menu.svg</file>
-	<file>icons/social_share.svg</file>
+        <file>icons/social_share.svg</file>-->
 	<file>images/balloon.jpg</file>
 	<file>images/go-last.color.svg</file>
 	<file>images/list-add.color.svg</file>

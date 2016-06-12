@@ -4,6 +4,7 @@ TARGET = material
 CONFIG += c++11
 QT += qml quick
 
+DEFINES += MATERIAL_ICON_PATH=\\\"$$[QT_INSTALL_QML]/Material/icons\\\"
 
 android {
     QT += androidextras svg xml
@@ -11,13 +12,15 @@ android {
 
 HEADERS += plugin.h \
            core/device.h \
-           core/units.h
+           core/units.h \
+           core/iconhelper.h
 
 SOURCES += plugin.cpp \
            core/device.cpp \
-           core/units.cpp
+           core/units.cpp \
+           core/iconhelper.cpp
 
-RESOURCES += ../icons/core_icons.qrc
+#RESOURCES += ../icons/core_icons.qrc
 
 target.path = $$[QT_INSTALL_QML]/Material
 

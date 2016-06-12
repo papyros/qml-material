@@ -16,6 +16,17 @@ ApplicationWindow {
         tabHighlightColor: "white"
     }
 
+    iconHelper {
+        useQtResource: true
+        /**************************
+        if set useQtResource to true, alternativePath should be the prefix value in qrc
+        if set useQtResource to false
+            if using material system-wide icons, alternativePath should be setted to empty, Eg. ""
+            if using application alternative icons, alternativePath should be setted to full path of icon path
+        ***************************/
+        alternativePath: "demoicons"
+    }
+
     property var styles: [
             "Custom Icons", "Color Palette", "Typography"
     ]

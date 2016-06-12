@@ -77,6 +77,26 @@ Controls.ApplicationWindow {
      */
     property alias theme: __theme
 
+    /*!
+       \qmlproperty IconHelper iconHelper
+
+       IconHelper is a c++ plugin that allows the application to use material icons wether in qrc or
+       in local-filesystem.
+     */
+    property alias iconHelper: __iconHelperPriv
+
+    IconHelper {
+        id: __iconHelperPriv
+        /**************************
+        if set useQtResource to true, alternativePath should be the prefix value in qrc
+        if set useQtResource to false
+            if using material system-wide icons, alternativePath should be setted to empty, Eg. ""
+            if using application alternative icons, alternativePath should be setted to full path of icon path
+        ***************************/
+        useQtResource: false
+        alternativePath: ""
+    }
+
     AppTheme {
         id: __theme
     }
