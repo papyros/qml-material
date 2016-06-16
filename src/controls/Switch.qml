@@ -24,6 +24,12 @@ Controls.Switch {
     id: control
 
     /*!
+      This action can be used when integrating switch to actionBar
+      */
+    property Action action
+
+
+    /*!
        The switch color. By default this is the app's accent color
      */
     property color color: darkBackground ? Theme.dark.accentColor
@@ -43,8 +49,8 @@ Controls.Switch {
             backgroundColor: control.enabled ? control.checked ? control.color
                                                                : darkBackground ? "#BDBDBD"
                                                                                 : "#FAFAFA"
-                                             : darkBackground ? "#424242"
-                                                              : "#BDBDBD"
+            : darkBackground ? "#424242"
+            : "#BDBDBD"
         }
 
         groove: Item {
@@ -59,8 +65,8 @@ Controls.Switch {
                 color: control.enabled ? control.checked ? Theme.alpha(control.color, 0.5)
                                                          : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
                                                                           : Qt.rgba(0, 0, 0, 0.26)
-                                       : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
-                                                        : Qt.rgba(0, 0, 0, 0.12)
+                : darkBackground ? Qt.rgba(1, 1, 1, 0.12)
+                : Qt.rgba(0, 0, 0, 0.12)
 
                 Behavior on color {
                     ColorAnimation {
@@ -68,6 +74,13 @@ Controls.Switch {
                     }
                 }
             }
+        }
+    }
+
+    onCheckedChanged: {
+        if(action !== null){
+            action.checked = checked
+            action.toggled(checked)
         }
     }
 }
