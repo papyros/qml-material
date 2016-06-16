@@ -34,6 +34,7 @@ Subtitled {
         id: hiddenLabel
         style: "subheading"
         visible: false
+        color: darkBackground ? Theme.dark.textColor : Theme.light.textColor
 
         onContentWidthChanged: {
             __maxWidth = Math.max(contentWidth + 33 * Units.dp, __maxWidth)

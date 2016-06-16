@@ -25,9 +25,12 @@ Item {
 		right: parent.right
 	}
 
+    property bool darkBackground
+
 	height: 16 * Units.dp
 
 	ThinDivider {
         anchors.verticalCenter: parent.verticalCenter
+        darkBackground: divider.darkBackground
     }
 }

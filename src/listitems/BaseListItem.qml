@@ -26,6 +26,7 @@ View {
         right: parent ? parent.right : undefined
     }
 
+    property bool darkBackground
     property int margins: 16 * Units.dp
 
     property bool selected
@@ -44,6 +45,7 @@ View {
         anchors.leftMargin: dividerInset
 
         visible: showDivider
+        darkBackground: listItem.darkBackground
     }
 
     Ink {
