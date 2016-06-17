@@ -79,6 +79,8 @@ Object {
         light: false
     }
 
+    property string iconsRoot: "qrc:/icons"
+
     /*!
        A utility method for changing the alpha on colors. Returns a new object, and does not modify
        the original color at all.
