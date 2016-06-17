@@ -7,11 +7,13 @@ android {
 
 HEADERS += $$PWD/src/plugin.h \
            $$PWD/src/core/device.h \
-           $$PWD/src/core/units.h
+           $$PWD/src/core/units.h \
+           $$PWD/src/core/iconhelper.h
 
 SOURCES += $$PWD/src/plugin.cpp \
            $$PWD/src/core/device.cpp \
-           $$PWD/src/core/units.cpp
+           $$PWD/src/core/units.cpp \
+           $$PWD/src/core/iconhelper.cpp
 
 RESOURCES += $$PWD/src/material.qrc \
              $$PWD/src/components/components.qrc \
