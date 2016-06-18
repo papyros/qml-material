@@ -9,6 +9,7 @@
  */
 
 import QtQuick 2.4
+import Material 0.3
 
 /*!
    \qmltype ThinDivider
@@ -22,6 +23,8 @@ Rectangle {
         right: parent.right
     }
 
-    color: Qt.rgba(0,0,0,0.1)
+    property bool darkBackground
+
+    color: darkBackground ? Theme.dark.hintColor : Theme.light.hintColor
     height: 1
 }
