@@ -54,7 +54,7 @@ Item {
         color: Theme.light.iconColor
         style: shadow ? Text.Raised : Text.Normal
         styleColor: Qt.rgba(0,0,0,0.5)
-        font.pixelSize: widget.size
+        font.pointSize: widget.size
 
         Behavior on color {
             ColorAnimation { duration: 200 }

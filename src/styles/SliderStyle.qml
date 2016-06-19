@@ -52,8 +52,8 @@ SliderStyle {
             verticalAlignment: Qt.AlignVCenter
             text: knobLabel
             fontSizeMode: Text.Fit
-            font.pixelSize: knobDiameter - 19 * Units.dp
-            minimumPixelSize: 6 * Units.dp
+            font.pointSize: knobDiameter - 19
+            minimumPointSize : 6
             wrapMode: Text.WordWrap
             color: Theme.lightDark(styleColor,
                                     Theme.light.textColor,
