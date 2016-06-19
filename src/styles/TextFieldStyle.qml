@@ -26,7 +26,7 @@ TextFieldStyle {
 
     font {
         family: echoMode == TextInput.Password ? "Default" : "Roboto"
-        pixelSize: 16 * Units.dp
+        pointSize: 16
     }
 
     renderType: Text.QtRendering
