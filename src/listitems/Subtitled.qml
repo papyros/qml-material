@@ -74,7 +74,8 @@ BaseListItem {
                 }
 
                 visible: valid
-                color: listItem.selected ? Theme.primaryColor : Theme.light.iconColor
+                color: listItem.selected ? Theme.primaryColor
+                        : darkBackground ? Theme.dark.iconColor : Theme.light.iconColor
                 size: 24 * Units.dp
             }
         }
@@ -99,6 +100,7 @@ BaseListItem {
 
                     elide: Text.ElideRight
                     style: "subheading"
+                    color: darkBackground ? Theme.dark.textColor : Theme.light.textColor
                 }
 
                 Label {
@@ -107,7 +109,7 @@ BaseListItem {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.preferredWidth: visible ? implicitWidth : 0
 
-                    color: Theme.light.subTextColor
+                    color: darkBackground ? Theme.dark.subTextColor : Theme.light.subTextColor
                     elide: Text.ElideRight
                     horizontalAlignment: Qt.AlignHCenter
                     style: "body1"
@@ -130,7 +132,7 @@ BaseListItem {
                 Layout.fillWidth: true
                 Layout.preferredHeight: implicitHeight * maximumLineCount/lineCount
 
-                color: Theme.light.subTextColor
+                color: darkBackground ? Theme.dark.subTextColor : Theme.light.subTextColor
                 elide: Text.ElideRight
                 wrapMode: Text.WordWrap
                 style: "body1"

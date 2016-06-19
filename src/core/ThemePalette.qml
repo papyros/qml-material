@@ -28,7 +28,8 @@ QtObject {
     readonly property color textColor: light ? shade(0.7) : shade(1)
     readonly property color subTextColor: light ? shade(0.54) : shade(0.70)
     readonly property color iconColor: light ? subTextColor : textColor
-    readonly property color hintColor: light ? shade(0.26) : shade(0.30)
+    readonly property color disabledColor: light ? shade(0.38) : shade(0.50)
+    readonly property color hintColor: disabledColor
     readonly property color dividerColor: shade(0.12)
 
     /*!
