@@ -67,7 +67,7 @@ Controls.Calendar {
 				Label {
 					id: dayTitle
 					font.weight: Font.DemiBold
-					font.pixelSize: 36 * Units.dp
+                    font.pointSize:  36
 					Layout.fillWidth: true
 					lineHeight: 0.9
 					wrapMode: Text.Wrap
