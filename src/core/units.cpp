@@ -20,7 +20,7 @@
 #define DEFAULT_DPI 72
 
 UnitsAttached::UnitsAttached(QObject *attachee)
-        : QObject(attachee), m_screen(nullptr), m_window(nullptr), m_dpi(0), m_multiplier(1)
+    : QObject(attachee), m_screen(nullptr), m_window(nullptr), m_multiplier(1), m_dpi(0)
 {
     m_attachee = qobject_cast<QQuickItem *>(attachee);
 
@@ -59,9 +59,9 @@ void UnitsAttached::screenChanged(QScreen *screen)
             oldScreen->disconnect(this);
 
         if (oldScreen == nullptr || screen == nullptr ||
-            screen->physicalDotsPerInch() != oldScreen->physicalDotsPerInch() ||
-            screen->logicalDotsPerInch() != oldScreen->logicalDotsPerInch() ||
-            screen->devicePixelRatio() != oldScreen->devicePixelRatio()) {
+                screen->physicalDotsPerInch() != oldScreen->physicalDotsPerInch() ||
+                screen->logicalDotsPerInch() != oldScreen->logicalDotsPerInch() ||
+                screen->devicePixelRatio() != oldScreen->devicePixelRatio()) {
             updateDPI();
             emit dpChanged();
         }
@@ -127,6 +127,7 @@ void UnitsAttached::updateDPI()
         return;
     }
     m_dpi = displayMetrics.getField<int>("densityDpi");
+    m_multiplier = displayMetrics.getField<float>("density");
 #else
     // standard dpi
     m_dpi = m_screen->logicalDotsPerInch() * m_screen->devicePixelRatio();

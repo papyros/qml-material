@@ -32,7 +32,7 @@ import QtQuick 2.4
 
        Label {
            text:"A"
-           font.pixelSize: dp(50)
+           font.pointSize: 50
        }
    }
    \endqml
