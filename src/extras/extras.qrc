@@ -7,7 +7,6 @@
 	<file>CircleMask.qml</file>
 	<file>ColumnFlow.qml</file>
 	<file>Image.qml</file>
-	<file>circle.png</file>
 	<file>qmldir</file>
 </qresource>
 
