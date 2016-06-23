@@ -1,6 +1,6 @@
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCES ${SOURCES}
+set(VENDOR_SOURCES ${VENDOR_SOURCES}
             ${CMAKE_CURRENT_LIST_DIR}/src/plugin.h
             ${CMAKE_CURRENT_LIST_DIR}/src/core/device.h
             ${CMAKE_CURRENT_LIST_DIR}/src/core/units.h
