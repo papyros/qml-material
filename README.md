@@ -73,7 +73,7 @@ Then, in your `main.cpp` file or wherever you set up a `QQmlApplicationEngine`, 
 
 You should then be able to `import Material 0.3` from your QML.
 
-Check out [this example](https://github.com/iBeliever/bible-app) of an app using QML Material and CMake if need further guidance. 
+Check out [this example](https://github.com/iBeliever/bible-app) of an app using QML Material and CMake if you need further guidance.
 
 ### System-wide installation
 
