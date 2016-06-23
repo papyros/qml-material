@@ -16,11 +16,11 @@ script:
   - source /opt/qt55/bin/qt55-env.sh
   - qmake . && make && sudo make install
   - xvfb-run -a -s "-screen 0 800x600x24" make check
-  - git clean -xfd
+  - sudo git clean -xfd
   - source /opt/qt56/bin/qt56-env.sh
   - qmake . && make && sudo make install
   - xvfb-run -a -s "-screen 0 800x600x24" make check
-  - git clean -xfd
+  - sudo git clean -xfd
   - ./scripts/lint.sh
 
 notifications:
