@@ -43,6 +43,18 @@ To optionally bundle the Roboto fonts in your project, add this line **ABOVE** t
 
     OPTIONS += roboto
 
+Then you'll need to register qml-material. In your `main.cpp` or similar,
+
+    #include "material/src/plugin.h"
+
+    // ... your code ...
+
+    engine.addImportPath(":/."); // engine is your QQMLEngine
+    MaterialPlugin qmlMaterial;
+    qmlMaterial.registerTypes("Material");
+
+You should then be able to `import Material 0.3` from your QML.
+
 ### System-wide installation
 
 From the root of the repository, run:
