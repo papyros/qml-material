@@ -1,6 +1,31 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
 
+<qresource prefix="/icons/image">
+	<file alias="color_lens.svg">image_color_lens.svg</file>
+	<file alias="color_lens.svg">image_color_lens.svg</file>
+</qresource>
+
+<qresource prefix="/icons/alert">
+	<file alias="warning.svg">alert_warning.svg</file>
+	<file alias="warning.svg">alert_warning.svg</file>
+</qresource>
+
+<qresource prefix="/icons/content">
+	<file alias="add.svg">content_add.svg</file>
+</qresource>
+
+<qresource prefix="/icons/editor">
+	<file alias="mode_edit.svg">editor_mode_edit.svg</file>
+</qresource>
+
+<qresource prefix="/icons/action">
+	<file alias="settings.svg">action_settings.svg</file>
+	<file alias="info.svg">action_info.svg</file>
+	<file alias="language.svg">action_language.svg</file>
+	<file alias="account_circle.svg">action_account_circle.svg</file>
+</qresource>
+
 <qresource prefix="/icons/navigation">
 	<file alias="arrow_back.svg">navigation_arrow_back.svg</file>
 	<file alias="chevron_left.svg">navigation_chevron_left.svg</file>
@@ -8,6 +33,7 @@
 	<file alias="close.svg">navigation_close.svg</file>
 	<file alias="menu.svg">navigation_menu.svg</file>
 	<file alias="more_vert.svg">navigation_more_vert.svg</file>
+	<file alias="arrow_drop_down.svg">navigation_arrow_drop_down.svg</file>
 </qresource>
 
 </RCC>
