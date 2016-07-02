@@ -231,8 +231,14 @@ Controls.ApplicationWindow {
         // Nasty hack because singletons cannot import the module they were declared in, so
         // the grid unit cannot be defined in either Device or Units, because it requires both.
         Units.gridUnit = Qt.binding(function() {
-            return Device.type === Device.phone || Device.type === Device.phablet
-                    ? Units.dp(48) : Device.type == Device.tablet ? Units.dp(56) : Units.dp(64)
+            var isPortrait = app.width < app.height
+            if (Device.type === Device.phone || Device.type === Device.phablet) {
+                return isPortrait ? Units.dp(56) : Units.dp(48)
+            } else if (Device.type == Device.tablet) {
+                return Units.dp(64)
+            } else {
+                return Device.hasTouchScreen ? Units.dp(64) : Units.dp(48)
+            }
         })
     }
 }
