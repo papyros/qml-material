@@ -64,9 +64,11 @@ Item {
     Ink {
         anchors.fill: parent
         onClicked: {
-            listView.positionViewAtIndex(listView.currentIndex, ListView.Center)
-            var offset = listView.currentItem.itemLabel.mapToItem(menu, 0, 0)
-            menu.open(label, 0, -offset.y)
+            if(listView.currentIndex !== -1) {
+                listView.positionViewAtIndex(listView.currentIndex, ListView.Center)
+                var offset = listView.currentItem.itemLabel.mapToItem(menu, 0, 0)
+            }
+            menu.open(label, 0, listView.currentIndex !== -1 ? -offset.y : 0)
         }
     }
 
