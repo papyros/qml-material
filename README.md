@@ -29,19 +29,51 @@ If you want to bundle the Roboto fonts in your project, file **ABOVE** the `incl
 
     OPTIONS += roboto
 
-### Per-project installation using git submodules
+### Per-project installation using git submodules and QMake
 
 Add the submodule:
 
     git submodule add git@github.com:papyros/qml-material.git material
 
-Add the `.pri` file to your project:
+Add the following DEFINE and `.pri` file to your project:
+
+    DEFINES += QPM_INIT\\(E\\)=\"E.addImportPath(QStringLiteral(\\\"qrc:/\\\"));\"
 
     include(material/material.pri)
+
+Then, in your `main.cpp` file or wherever you set up a `QQmlApplicationEngine`, call `QPM_INIT` on the engine like this:
+
+    QQmlApplicationEngine engine;
+    QPM_INIT(engine)
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+You should then be able to `import Material 0.3` from your QML.
 
 To optionally bundle the Roboto fonts in your project, add this line **ABOVE** the previously added `include()`:
 
     OPTIONS += roboto
+
+### Per-project installation using git submodules and CMake
+
+Add the submodule:
+
+    git submodule add git@github.com:papyros/qml-material.git material
+
+Add the following lines to your project's `CMakeLists.txt`, and make sure you add `${VENDOR_SOURCES}` to your `add_executable` line:
+
+    add_definitions("-DQPM_INIT\\(E\\)=E.addImportPath\\(QStringLiteral\\(\\\"qrc:/\\\"\\)\\)\\;")
+
+    include(material/vendor.cmake)
+
+Then, in your `main.cpp` file or wherever you set up a `QQmlApplicationEngine`, call `QPM_INIT` on the engine like this:
+
+    QQmlApplicationEngine engine;
+    QPM_INIT(engine)
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+You should then be able to `import Material 0.3` from your QML.
+
+Check out [this example](https://github.com/iBeliever/bible-app) of an app using QML Material and CMake if you need further guidance.
 
 ### System-wide installation
 

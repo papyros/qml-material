@@ -35,6 +35,7 @@ View {
     property alias text: label.text
     property alias style: label.style
     property alias textColor: label.color
+    property bool darkBackground
 
     Label {
         id: label
@@ -48,7 +49,7 @@ View {
             margins: margins
         }
 
-        color: Theme.light.subTextColor
+        color: darkBackground ? Theme.dark.subTextColor : Theme.light.subTextColor
     }
 
     property bool showDivider: false
@@ -56,5 +57,6 @@ View {
     ThinDivider {
         anchors.bottom: parent.bottom
         visible: showDivider
+        darkBackground: listItem.darkBackground
     }
 }

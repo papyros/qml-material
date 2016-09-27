@@ -63,10 +63,14 @@ Item {
             } else if (icon.source.indexOf('icon://') === 0) {
                 var name = icon.source.substring(7)
 
-                if (name)
-                    return "qrc:/icons/" + name + '.svg'
-                else
+                if (name) {
+                    if (Theme.iconsRoot.indexOf('qrc') != -1)
+                        return Theme.iconsRoot + '/' + name + '.svg'
+                    else
+                        return Theme.iconsRoot + '/' + name.replace('/', '_') + '.svg'
+                } else {
                     return ""
+                }
             } else {
                 return icon.source
             }

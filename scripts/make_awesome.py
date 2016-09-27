@@ -82,8 +82,8 @@ def download_font(url, filename):
 
 if __name__ == '__main__':
     icons = get_awesome_icons()
-    save_icons(icons, 'awesome.js')
+    save_icons(icons, 'src/core/awesome.js')
 
     download_font('http://github.com/FortAwesome/Font-Awesome/' +
                   'raw/master/fonts/FontAwesome.otf',
-                  'fonts/fontawesome/FontAwesome.otf')
+                  'src/core/FontAwesome.otf')

@@ -34,18 +34,8 @@ Item {
         mipmap: true
     }
 
-    Extras.Image {
-        id: mask
-        source: Qt.resolvedUrl("circle.png")
-        anchors.fill: image
-        smooth: true
-        visible: false
-        mipmap: true
-    }
-
-    OpacityMask {
+    CircleMask {
         anchors.fill: image
         source: image
-        maskSource: mask
     }
 }

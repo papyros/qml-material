@@ -52,7 +52,8 @@ BaseListItem {
                 }
 
                 visible: name != ""
-                color: listItem.expanded ? Theme.primaryColor : Theme.light.iconColor
+                color: listItem.expanded ? Theme.primaryColor
+                        : darkBackground ? Theme.dark.iconColor : Theme.light.iconColor
                 size: 24 * Units.dp
             }
         }
@@ -66,7 +67,8 @@ BaseListItem {
             elide: Text.ElideRight
             style: "subheading"
 
-            color: listItem.expanded ? Theme.primaryColor : Theme.light.textColor
+            color: listItem.expanded ? Theme.primaryColor
+                    : darkBackground ? Theme.dark.textColor : Theme.light.textColor
         }
 
         Item {
@@ -83,6 +85,7 @@ BaseListItem {
                 name: "navigation/expand_more"
                 rotation: listItem.expanded ? 180 : 0
                 size: 24 * Units.dp
+                color: darkBackground ? Theme.dark.iconColor : Theme.light.iconColor
 
                 Behavior on rotation {
                     NumberAnimation { duration: 200 }
