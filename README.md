@@ -33,7 +33,7 @@ If you want to bundle the Roboto fonts in your project, file **ABOVE** the `incl
 
 Add the submodule:
 
-    git submodule add git@github.com:papyros/qml-material.git material
+    git submodule add https://github.com/papyros/qml-material.git material
 
 Add the following DEFINE and `.pri` file to your project:
 
@@ -57,7 +57,7 @@ To optionally bundle the Roboto fonts in your project, add this line **ABOVE** t
 
 Add the submodule:
 
-    git submodule add git@github.com:papyros/qml-material.git material
+    git submodule add https://github.com/papyros/qml-material.git material
 
 Add the following lines to your project's `CMakeLists.txt`, and make sure you add `${VENDOR_SOURCES}` to your `add_executable` line:
 
