@@ -6,6 +6,7 @@ ApplicationWindow {
     id: demo
 
     title: "Material for QtQuick Demo"
+	clientSideDecorations : true
 
     // Necessary when loading the window from C++
     visible: true
