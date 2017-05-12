@@ -1,0 +1,18 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/QtQuick/Controls/Styles/Material">
+	<file>ApplicationWindowStyle.qml</file>
+	<file>ButtonStyle.qml</file>
+	<file>CheckBoxStyle.qml</file>
+	<file>ProgressBarStyle.qml</file>
+	<file>RadioButtonStyle.qml</file>
+	<file>SliderStyle.qml</file>
+	<file>SwitchStyle.qml</file>
+	<file>TextFieldStyle.qml</file>
+	<file>ToolBarStyle.qml</file>
+	<file>ToolButtonStyle.qml</file>
+	<file>qmldir</file>
+</qresource>
+
+</RCC>

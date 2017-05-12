@@ -1,0 +1,16 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/Material">
+	<file>BottomActionSheet.qml</file>
+	<file>BottomSheet.qml</file>
+	<file>Dialog.qml</file>
+	<file>Dropdown.qml</file>
+	<file>InputDialog.qml</file>
+	<file>MenuField.qml</file>
+	<file>Popover.qml</file>
+	<file>PopupBase.qml</file>
+	<file>TimePickerDialog.qml</file>
+</qresource>
+
+</RCC>

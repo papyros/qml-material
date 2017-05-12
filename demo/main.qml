@@ -18,7 +18,7 @@ ApplicationWindow {
     }
 
     property var styles: [
-            "Icons", "Custom Icons", "Color Palette", "Typography"
+            "Custom Icons", "Color Palette", "Typography"
     ]
 
     property var basicComponents: [
@@ -85,7 +85,7 @@ ApplicationWindow {
         NavigationDrawer {
             id: navDrawer
 
-            enabled: page.width < Units.dp(500)
+            enabled: page.width < dp(500)
 
             onEnabledChanged: smallLoader.active = enabled
 
@@ -158,12 +158,12 @@ ApplicationWindow {
         MenuField {
             id: selection
             model: ["Primary color", "Accent color", "Background color"]
-            width: Units.dp(160)
+            width: dp(160)
         }
 
         Grid {
             columns: 7
-            spacing: Units.dp(8)
+            spacing: dp(8)
 
             Repeater {
                 model: [
@@ -175,11 +175,11 @@ ApplicationWindow {
                 ]
 
                 Rectangle {
-                    width: Units.dp(30)
-                    height: Units.dp(30)
-                    radius: Units.dp(2)
+                    width: dp(30)
+                    height: dp(30)
+                    radius: dp(2)
                     color: Palette.colors[modelData]["500"]
-                    border.width: modelData === "white" ? Units.dp(2) : 0
+                    border.width: modelData === "white" ? dp(2) : 0
                     border.color: Theme.alpha("#000", 0.26)
 
                     Ink {

@@ -1,0 +1,21 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/Material">
+	<file>AwesomeIcon.qml</file>
+	<file>FontAwesome.otf</file>
+	<file>Icon.qml</file>
+	<file>Ink.qml</file>
+	<file>MaterialAnimation.qml</file>
+	<file>Object.qml</file>
+	<file>Palette.qml</file>
+	<file>PlatformExtensions.qml</file>
+	<file>Theme.qml</file>
+	<file>ThemePalette.qml</file>
+	<file>UnitsHelper.qml</file>
+	<file>View.qml</file>
+	<file>awesome.js</file>
+	<file>utils.js</file>
+</qresource>
+
+</RCC>

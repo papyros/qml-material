@@ -4,88 +4,88 @@ import Material.Extras 0.1
 
 Item {
 
-	Column {
-		anchors.centerIn: parent
-		spacing: Units.dp(20)
+    Column {
+        anchors.centerIn: parent
+        spacing: dp(20)
 
-		Button {
-			anchors.horizontalCenter: parent.horizontalCenter
+        Button {
+            anchors.horizontalCenter: parent.horizontalCenter
 
-		    text: "Push subpage"
-		    elevation: 1
-		    onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
-		}
+            text: "Push subpage"
+            elevation: 1
+            onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
+        }
 
-		Button {
-			anchors.horizontalCenter: parent.horizontalCenter
+        Button {
+            anchors.horizontalCenter: parent.horizontalCenter
 
-		    text: "Push subpage with sidebar"
-		    elevation: 1
-		    onClicked: pageStack.push(Qt.resolvedUrl("SidebarPage.qml"))
-		}
+            text: "Push subpage with sidebar"
+            elevation: 1
+            onClicked: pageStack.push(Qt.resolvedUrl("SidebarPage.qml"))
+        }
 
-		Image {
-			id: image
+        Image {
+            id: image
 
-			anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
 
-			source: Qt.resolvedUrl("images/balloon.jpg")
-			width: Units.dp(400)
-			height: Units.dp(250)
+            source: Qt.resolvedUrl("images/balloon.jpg")
+            width: dp(400)
+            height: dp(250)
 
-			Ink {
-				anchors.fill: parent
+            Ink {
+                anchors.fill: parent
 
-				onClicked: overlayView.open(image)
-			}
-		}
+                onClicked: overlayView.open(image)
+            }
+        }
 
-	    Label {
-	    	anchors.horizontalCenter: parent.horizontalCenter
+        Label {
+            anchors.horizontalCenter: parent.horizontalCenter
 
-	    	style: "subheading"
-	    	color: Theme.light.subTextColor
-	    	text: "Tap to edit picture"
-	    	font.italic: true
-	    }
-	}
+            style: "subheading"
+            color: Theme.light.subTextColor
+            text: "Tap to edit picture"
+            font.italic: true
+        }
+    }
 
-	OverlayView {
-		id: overlayView
+    OverlayView {
+        id: overlayView
 
-		width: Units.dp(800)
-		height: Units.dp(500)
+        width: dp(800)
+        height: dp(500)
 
-		Image {
-			id: contentImage
-	    	source: Qt.resolvedUrl("images/balloon.jpg")
-	    	anchors.fill: parent
-	    }
+        Image {
+            id: contentImage
+            source: Qt.resolvedUrl("images/balloon.jpg")
+            anchors.fill: parent
+        }
 
-		Row {
-			anchors {
-				top: parent.top
-				right: parent.right
-				rightMargin: Units.dp(16)
-			}
-			height: Units.dp(48)
-			opacity: overlayView.transitionOpacity
+        Row {
+            anchors {
+                top: parent.top
+                right: parent.right
+                rightMargin: dp(16)
+            }
+            height: dp(48)
+            opacity: overlayView.transitionOpacity
 
-			spacing: Units.dp(24)
+            spacing: dp(24)
 
-	        Repeater {
-	            model: ["content/add", "image/edit", "action/delete"]
+            Repeater {
+                model: ["content/add", "image/edit", "action/delete"]
 
-	            delegate: IconButton {
-	                id: iconAction
+                delegate: IconButton {
+                    id: iconAction
 
-	                iconName: modelData
+                    iconName: modelData
 
-	                color: Theme.dark.iconColor
-	                size: iconName == "content/add" ? Units.dp(27) : Units.dp(24)
-	                anchors.verticalCenter: parent.verticalCenter
-	            }
-	        }
-		}
-	}
+                    color: Theme.dark.iconColor
+                    size: iconName == "content/add" ? dp(27) : dp(24)
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+        }
+    }
 }

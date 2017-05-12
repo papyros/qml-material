@@ -15,53 +15,91 @@ Brought to you by the [Papyros development team](https://github.com/papyros/qml-
 
 ### Dependencies
 
- * Qt 5.4 or higher.
- * CMake
- * [Extra CMake Modules](http://api.kde.org/ecm/manual/ecm.7.html)
+ * Qt 5.5 or higher
+
+### Per-project installation using QPM
+
+QPM package coming soon!
+
+Just install using:
+
+    qpm install io.papyros.material
+
+If you want to bundle the Roboto fonts in your project, file **ABOVE** the `include(vendor/vendor.pri)` line, add the following line:
+
+    OPTIONS += roboto
+
+### Per-project installation using git submodules and QMake
+
+Add the submodule:
+
+    git submodule add git@github.com:papyros/qml-material.git material
+
+Add the following DEFINE and `.pri` file to your project:
+
+    DEFINES += QPM_INIT\\(E\\)=\"E.addImportPath(QStringLiteral(\\\"qrc:/\\\"));\"
+
+    include(material/material.pri)
+
+Then, in your `main.cpp` file or wherever you set up a `QQmlApplicationEngine`, call `QPM_INIT` on the engine like this:
+
+    QQmlApplicationEngine engine;
+    QPM_INIT(engine)
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+You should then be able to `import Material 0.3` from your QML.
+
+To optionally bundle the Roboto fonts in your project, add this line **ABOVE** the previously added `include()`:
+
+    OPTIONS += roboto
+
+### Per-project installation using git submodules and CMake
+
+Add the submodule:
+
+    git submodule add git@github.com:papyros/qml-material.git material
+
+Add the following lines to your project's `CMakeLists.txt`, and make sure you add `${VENDOR_SOURCES}` to your `add_executable` line:
+
+    add_definitions("-DQPM_INIT\\(E\\)=E.addImportPath\\(QStringLiteral\\(\\\"qrc:/\\\"\\)\\)\\;")
+
+    include(material/vendor.cmake)
+
+Then, in your `main.cpp` file or wherever you set up a `QQmlApplicationEngine`, call `QPM_INIT` on the engine like this:
+
+    QQmlApplicationEngine engine;
+    QPM_INIT(engine)
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+You should then be able to `import Material 0.3` from your QML.
+
+Check out [this example](https://github.com/iBeliever/bible-app) of an app using QML Material and CMake if you need further guidance.
 
 ### System-wide installation
 
 From the root of the repository, run:
 
-    $ mkdir build; cd build
-    $ cmake .. # Add any additional args here as necessary for your platform
-    $ make
-    $ ctest -V # Optional, make sure everything is working correctly
-    $ sudo make install
+    mkdir build; cd build
+    qmake ..
+    make
+    make install # use sudo if necessary
 
 Now check out the `demo` folder to see how to use Material Design from QtQuick!
 
-### Material.Extras
+### Icons usage
 
-The material framework comes with a collection of useful non-UI-related extras in the `Material.Extras` module. This includes a Promises library, date and list utility functions, and an HTTP library based on Promises. Here are some examples of what you can do with these additional components:
+When using the `Icon` component or the `iconName` property, qml-material looks for icons in the form of `qrc:/icons/<category>/<name>.svg`. Only a core set of icons used by qml-material icons are actually bundled with qml-material. To use icons in your own programs, you can either manually create a qrc file, or you can create `icons.yml` file and use the `icons.py` script from qml-material.
 
-Promise:
+To use the `icons.py` script, create a file called `icons.yml` that looks like this:
 
-```qml
-import QtQuick 2.3
-import Material.Extras 0.1
+    icons:
+      - action/settings
+      - alert/warning
+      - ...
 
-Item {
-    function makePromise() {
-        var myvalue = "";
+Run `icons.py`, located in the `scripts` folder of the repository. This will download the latest version of all the icons listed in this file, storing them in a folder called `icons`. It also generates a resource file called `icons/icons.qrc`, which you should add to your QMake or CMake project.
 
-        var promise = new Promises.Promse();
-        promise.info.myinfo = "cool info";
-        promise.then(function( data, info ) {
-                // send data to the next step
-                return info.myinfo + " " + data;
-        });
-
-        promise.done(function( data, info ) {
-                // do something with the data of resolve(...)
-        });
-
-        promise.error(function( error, info ) {
-                // do something with the data of reject(...)
-        });
-    }
-}
-```
+Now whenever you add icons to the `icons.yml` file, just rerun `icons.py` and the new icons will be downloaded. To update your icons, just delete the `icons` folder and rerun `icons.py`.
 
 ### Licensing
 

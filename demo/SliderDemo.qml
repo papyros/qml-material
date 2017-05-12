@@ -11,15 +11,15 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.minimumHeight: grid.height + Units.dp(80)
-            Layout.minimumWidth: grid.width + Units.dp(80)
+            Layout.minimumHeight: grid.height + dp(80)
+            Layout.minimumWidth: grid.width + dp(80)
             color: index == 0 ? "#EEE" : "#333"
 
             GridLayout {
                 id: grid
                 anchors.centerIn: parent
-                rowSpacing: Units.dp(20)
-                columnSpacing: Units.dp(10)
+                rowSpacing: dp(20)
+                columnSpacing: dp(10)
                 columns: 2
 
                 Label {
@@ -100,7 +100,7 @@ ColumnLayout {
                     maximumValue: 100
                     alwaysShowValueLabel: true
                     knobLabel: value + "%"
-                    knobDiameter: Units.dp(42)
+                    knobDiameter: dp(42)
                     darkBackground: index == 1
                 }
 

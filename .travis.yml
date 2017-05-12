@@ -4,46 +4,24 @@ language: generic
 
 install:
   - sudo add-apt-repository -y ppa:beineri/opt-qt551-trusty
-  - sudo add-apt-repository -y ppa:george-edison55/cmake-3.x
+  - sudo add-apt-repository -y ppa:beineri/opt-qt561-trusty
   - sudo apt-get update
   - sudo apt-get -y install pep8 pyflakes python python-pip npm nodejs nodejs-legacy
-  - sudo apt-get -y install qt55declarative
-  - sudo apt-get -y install qt55quickcontrols qt55graphicaleffects
-  - sudo apt-get -y install qt55tools
-  - sudo apt-get -y install cmake
+  - sudo apt-get -y install qt55declarative qt55quickcontrols qt55graphicaleffects qt55tools qt55svg
+  - sudo apt-get -y install qt56declarative qt56quickcontrols qt56graphicaleffects qt56tools qt56svg
   - sudo apt-get -y install xvfb
   - sudo npm install -g jshint
 
-before_script:
-  # - git clone git://github.com/papyros/docmaker.git
-  # - sudo pip install -r docmaker/requirements.txt
-  # - export PATH=$PATH:$(pwd)/docmaker
-  - git clone git://anongit.kde.org/extra-cmake-modules
-  - pushd extra-cmake-modules
-  - cmake . -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib -DLIBEXEC_INSTALL_DIR=lib -DQML_INSTALL_DIR=lib/qt/qml
-  - make
-  - sudo make install
-  - popd
-
 script:
   - source /opt/qt55/bin/qt55-env.sh
-  - cmake .
-  - make
-  - xvfb-run -a -s "-screen 0 800x600x24" ctest -V
+  - qmake . && make && sudo make install
+  - xvfb-run -a -s "-screen 0 800x600x24" make check
+  - sudo git clean -xfd
+  - source /opt/qt56/bin/qt56-env.sh
+  - qmake . && make && sudo make install
+  - xvfb-run -a -s "-screen 0 800x600x24" make check
+  - sudo git clean -xfd
   - ./scripts/lint.sh
-  # - ./scripts/build_docs.sh
-
-# after_success:
-  # - ./scripts/deploy.sh
 
 notifications:
   slack: papyros:Z7PeY2Y4mh0GWPoypZZNLd3D
-
-# The encryption label is the unique key used in the environment
-# variables set up when calling `travis encrypt-file` on the SSH key
-env:
-  global:
-    - ENCRYPTION_LABEL="a0d7d9cd7ef9"
-    - GIT_NAME="Travis CI"
-    - GIT_EMAIL="sonrisesoftware@gmail.com"
-    - SOURCE_BRANCH="develop"

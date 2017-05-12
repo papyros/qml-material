@@ -8,19 +8,19 @@ Item {
     View {
         anchors.centerIn: parent
 
-        width: Units.dp(350)
-        height: column.implicitHeight + Units.dp(32)
+        width: dp(350)
+        height: column.implicitHeight + dp(32)
 
         elevation: 1
-        radius: Units.dp(2)
+        radius: dp(2)
 
         ColumnLayout {
             id: column
 
             anchors {
                 fill: parent
-                topMargin: Units.dp(16)
-                bottomMargin: Units.dp(16)
+                topMargin: dp(16)
+                bottomMargin: dp(16)
             }
 
             Label {
@@ -29,7 +29,7 @@ Item {
                 anchors {
                     left: parent.left
                     right: parent.right
-                    margins: Units.dp(16)
+                    margins: dp(16)
                 }
 
                 style: "title"
@@ -38,7 +38,7 @@ Item {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: Units.dp(8)
+                Layout.preferredHeight: dp(8)
             }
 
             ListItem.Standard {
@@ -115,16 +115,16 @@ Item {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: Units.dp(8)
+                Layout.preferredHeight: dp(8)
             }
 
             RowLayout {
                 Layout.alignment: Qt.AlignRight
-                spacing: Units.dp(8)
+                spacing: dp(8)
 
                 anchors {
                     right: parent.right
-                    margins: Units.dp(16)
+                    margins: dp(16)
                 }
 
                 Button {

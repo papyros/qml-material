@@ -1,0 +1,6 @@
+out: icons
+icons:
+  - action/alarm
+  - action/search
+  - action/settings
+  - content/add

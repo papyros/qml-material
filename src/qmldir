@@ -1,0 +1,71 @@
+module Material
+
+# This will be automatically uncommented when installing globally
+# plugin material
+
+# Components
+ActionButton 0.1 ActionButton.qml
+Card 0.1 Card.qml
+DatePicker 0.2 DatePicker.qml
+IconButton 0.1 IconButton.qml
+ProgressCircle 0.1 ProgressCircle.qml
+Scrollbar 0.1 Scrollbar.qml
+Snackbar 0.1 Snackbar.qml
+ThinDivider 0.1 ThinDivider.qml
+TimePicker 0.2 TimePicker.qml
+Tooltip 0.1 Tooltip.qml
+Wave 0.1 Wave.qml
+
+# Controls
+Action 0.1 Action.qml
+Button 0.1 Button.qml
+CheckBox 0.1 CheckBox.qml
+Label 0.1 Label.qml
+ProgressBar 0.1 ProgressBar.qml
+RadioButton 0.1 RadioButton.qml
+Slider 0.1 Slider.qml
+Switch 0.1 Switch.qml
+Tab 0.1 Tab.qml
+TextField 0.1 TextField.qml
+
+# Core
+AwesomeIcon 0.1 AwesomeIcon.qml
+Icon 0.1 Icon.qml
+Ink 0.1 Ink.qml
+Object 0.1 Object.qml
+PlatformExtensions 0.2 PlatformExtensions.qml
+UnitsHelper 0.3 UnitsHelper.qml
+View 0.1 View.qml
+Utils 0.3 utils.js
+singleton MaterialAnimation 0.1 MaterialAnimation.qml
+singleton Palette 0.1 Palette.qml
+singleton Theme 0.1 Theme.qml
+
+# Popups
+BottomActionSheet 0.1 BottomActionSheet.qml
+BottomSheet 0.1 BottomSheet.qml
+Dialog 0.1 Dialog.qml
+Dropdown 0.1 Dropdown.qml
+InputDialog 0.1 InputDialog.qml
+MenuField 0.1 MenuField.qml
+Popover 0.2 Popover.qml
+PopupBase 0.1 PopupBase.qml
+TimePickerDialog 0.2 TimePickerDialog.qml
+
+# Window
+ActionBar 0.1 ActionBar.qml
+AppTheme 0.1 AppTheme.qml
+ApplicationWindow 0.1 ApplicationWindow.qml
+MainView 0.1 MainView.qml
+NavigationDrawer 0.1 NavigationDrawer.qml
+NavigationDrawerPage 0.2 NavigationDrawerPage.qml
+OverlayLayer 0.1 OverlayLayer.qml
+OverlayView 0.1 OverlayView.qml
+Page 0.1 Page.qml
+PageSidebar 0.1 PageSidebar.qml
+PageStack 0.1 PageStack.qml
+Window 0.1 Window.qml
+Sidebar 0.1 Sidebar.qml
+TabBar 0.1 TabBar.qml
+TabbedPage 0.2 TabbedPage.qml
+Toolbar 0.1 Toolbar.qml

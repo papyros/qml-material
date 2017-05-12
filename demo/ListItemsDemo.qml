@@ -7,7 +7,7 @@ Item {
     View {
         anchors {
             fill: parent
-            margins: Units.dp(32)
+            margins: dp(32)
         }
 
         elevation: 1
@@ -49,7 +49,7 @@ Item {
                 action: Icon {
                     anchors.centerIn: parent
                     name: "device/access_alarm"
-                    size: Units.dp(32)
+                    size: dp(32)
                 }
             }
 

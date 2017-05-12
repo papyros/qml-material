@@ -1,0 +1,17 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+<qresource prefix="/Material">
+	<file>Action.qml</file>
+	<file>Button.qml</file>
+	<file>CheckBox.qml</file>
+	<file>Label.qml</file>
+	<file>ProgressBar.qml</file>
+	<file>RadioButton.qml</file>
+	<file>Slider.qml</file>
+	<file>Switch.qml</file>
+	<file>Tab.qml</file>
+	<file>TextField.qml</file>
+</qresource>
+
+</RCC>

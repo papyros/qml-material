@@ -6,7 +6,7 @@ Item {
 
     Column {
         anchors.centerIn: parent
-        spacing: Units.dp(20)
+        spacing: dp(20)
 
         Button {
             text: "Simple Button"
@@ -31,7 +31,7 @@ Item {
         Button {
             text: "Wide Button"
 
-            width: Units.dp(200)
+            width: dp(200)
             elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
 
@@ -71,7 +71,7 @@ Item {
         anchors {
             right: parent.right
             bottom: snackbar.top
-            margins: Units.dp(32)
+            margins: dp(32)
         }
 
         action: Action {
