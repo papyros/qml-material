@@ -46,7 +46,11 @@ ApplicationWindow {
             Action {
                 iconName: "alert/warning"
                 name: "Dummy error"
-                onTriggered: demo.showError("Something went wrong", "Do you want to retry?", "Close", true)
+                onTriggered: {
+                    var promise = demo.showError("Something went wrong", "Do you want to retry?", "Close", true)
+                    promise.done(function() { console.log("Accepted") })
+                    promise.error(function() { console.log("Rejected") })
+                }
             },
 
             Action {
