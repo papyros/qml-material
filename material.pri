@@ -5,6 +5,8 @@ android {
     QT += androidextras svg xml
 }
 
+INCLUDEPATH += $$PWD/src
+
 HEADERS += $$PWD/src/plugin.h \
            $$PWD/src/core/device.h \
            $$PWD/src/core/units.h
