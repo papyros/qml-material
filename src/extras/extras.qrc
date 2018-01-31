@@ -8,6 +8,7 @@
 	<file>ColumnFlow.qml</file>
 	<file>Image.qml</file>
 	<file>qmldir</file>
+	<file>promises.js</file>
 </qresource>
 
 </RCC>

@@ -5,3 +5,4 @@ CircleImage 0.1 CircleImage.qml
 CircleMask 0.1 CircleMask.qml
 ColumnFlow 0.1 ColumnFlow.qml
 Image 0.1 Image.qml
+Promises 0.1 promises.js
